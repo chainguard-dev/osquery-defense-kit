@@ -1,0 +1,35 @@
+SELECT *,
+(strftime('%s', 'now') - start_time) AS age,
+disk_bytes_read / (strftime('%s', 'now') - start_time) AS bytes_per_second
+FROM processes
+WHERE bytes_per_second > 75000
+AND age > 300
+AND NOT (name = 'aned' AND cmdline = '/usr/libexec/aned' AND parent=1)
+AND NOT (name = 'backupd' AND path = '/System/Library/CoreServices/backupd.bundle/Contents/Resources/backupd')
+AND NOT (name = 'bindfs' AND cmdline LIKE "bindfs -f -o fsname=%")
+AND NOT (name = 'CloneKitService' AND path = '/Applications/Carbon Copy Cloner.app/Contents/Library/LoginItems/CCC Dashboard.app/Contents/Frameworks/CloneKit.framework/Versions/A/XPCServices/CloneKitService.xpc/Contents/MacOS/CloneKitService')
+AND NOT (name = 'com.apple.MobileSoftwareUpdate.UpdateBrainService' AND path LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/com.apple.MobileSoftwareUpdate.UpdateBrainService.%.xpc/Contents/MacOS/com.apple.MobileSoftwareUpdate.UpdateBrainService')
+AND NOT (name = 'com.docker.hyperkit' AND path = '/Applications/Docker.app/Contents/Resources/bin/com.docker.hyperkit')
+AND NOT (name = 'fseventsd' AND cmdline = '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd')
+AND NOT (name = 'Google Chrome' AND path = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome')
+AND NOT (name = 'gopls' AND path LIKE '/Users/%/bin/gopls')
+AND NOT (name = 'gopls' AND path LIKE '/Users/%/gopls/gopls')
+AND NOT (name = 'gopls' AND path LIKE '/home/%/bin/gopls')
+AND NOT (name = 'gopls' AND path LIKE '/home/%/gopls/gopls')
+AND NOT (name = 'idea' AND path = '/Applications/IntelliJ IDEA.app/Contents/MacOS/idea')
+AND NOT (name = 'kernel_task' AND path = '' AND parent IN (0,1) AND on_disk=-1)
+AND NOT (name = 'logd' AND cmdline = '/usr/libexec/logd' AND parent=1)
+AND NOT (name = 'mds_stores' AND path = '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores')
+AND NOT (name = 'mds' AND path = '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds')
+AND NOT (name = 'osqueryd' AND path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd')
+AND NOT (name = 'photolibraryd' AND cmdline = '/System/Library/PrivateFrameworks/PhotoLibraryServices.framework/Versions/A/Support/photolibraryd')
+AND NOT (name = 'qemu-system-aarch64' AND path = '/Applications/Docker.app/Contents/MacOS/qemu-system-aarch64')
+AND NOT (name = 'signpost_reporter' AND cmdline = '/usr/libexec/signpost_reporter' AND parent=1)
+AND NOT (name = 'Slack Helper (Renderer)' AND path = '/Applications/Slack.app/Contents/Frameworks/Slack Helper (Renderer).app/Contents/MacOS/Slack Helper (Renderer)')
+AND NOT (name = 'Spotify Helper (Renderer)' AND path = '/Applications/Spotify.app/Contents/Frameworks/Spotify Helper (Renderer).app/Contents/MacOS/Spotify Helper (Renderer)')
+AND NOT (name = 'Spotify' AND path = '/Applications/Spotify.app/Contents/MacOS/Spotify')
+AND NOT (name = 'syspolicyd' AND path = '/usr/libexec/syspolicyd' AND parent=1)
+AND NOT (name = 'WindowServer' AND path = '/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer')
+AND NOT (name = 'XprotectService' AND path = '/System/Library/PrivateFrameworks/XprotectFramework.framework/Versions/A/XPCServices/XprotectService.xpc/Contents/MacOS/XprotectService')
+AND NOT (name = "chrome" AND path = "/opt/google/chrome/chrome")
+AND NOT (path LIKE '/home/%/Apps/PhpStorm%/jbr/bin/java')
