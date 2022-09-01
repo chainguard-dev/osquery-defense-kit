@@ -13,7 +13,7 @@ AND NOT (name='launchd' AND path='/sbin/launchd' aND parent=0)
 AND NOT (name='logd' AND cmdline='/usr/libexec/logd' AND parent=1)
 AND NOT (name='oahd' AND path='/usr/libexec/rosetta/oahd')
 AND NOT (name='systemd' AND path='/usr/lib/systemd/systemd')
-AND NOT name IN ('firefox','gopls')
+AND NOT name IN ('firefox','gopls','containerd')
 AND path NOT LIKE '/Applications/%.app/Contents/%'
 AND path NOT LIKE '/System/Applications/%'
 AND path NOT LIKE '/System/Library/%'

@@ -11,6 +11,7 @@ AND s.remote_address NOT LIKE '172.1%'
 AND s.remote_address NOT LIKE '::ffff:172.%'
 AND s.remote_address NOT LIKE '10.%'
 AND s.remote_address NOT LIKE '::ffff:10.%'
+AND s.remote_address NOT LIKE 'fc00:%'
 AND s.state != 'LISTEN'
 AND NOT (p.cmdline LIKE '%.com.flexibits.fantastical2.mac.helper' AND remote_port = 443)
 AND NOT (p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%' AND remote_port = 443)
@@ -22,6 +23,7 @@ AND NOT (p.name IN ('chrome', 'Google Chrome Helper','Brave Browser Helper', 'Ch
 AND NOT (p.name IN ('Mail','thunderbird','Spark') AND remote_port IN (443,993))
 AND NOT (p.name IN ('spotify', 'Spotify Helper', 'Spotify') AND remote_port IN (443,8009,4070,32211))
 AND NOT (p.name='coredns' AND remote_port=53 AND protocol=17)
+AND NOT (p.name='systemd-resolve' AND remote_port=53 AND protocol=17)
 AND NOT (p.name='ssh' AND remote_port=22 AND protocol=6)
 AND NOT (p.path = '/usr/bin/gnome-software' AND remote_port = 443)
 AND NOT (p.path = '/usr/libexec/rapportd' AND remote_port > 49000 and protocol=6)
@@ -37,7 +39,7 @@ AND NOT (p.path LIKE '%/NetworkManager' AND remote_port = 67)
 AND NOT (p.path LIKE '%tailscaled%' AND remote_port IN (443,80))
 AND NOT (p.path='/System/Library/Frameworks/CoreTelephony.framework/Support/CommCenter' AND p.cwd='/' AND remote_port=4500 AND protocol=17)
 AND NOT (p.path='/System/Library/Frameworks/CoreTelephony.framework/Support/CommCenter' AND p.cwd='/' AND remote_port=500 AND protocol=17)
-AND NOT (p.path='/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking' AND p.cwd='/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc' AND remote_port=>1024 AND protocol=17)
+AND NOT (p.path='/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking' AND remote_port>1023 AND protocol=17)
 AND NOT (p.path='/System/Library/PrivateFrameworks/ApplePushService.framework/apsd' AND p.cwd='/' AND remote_port=5223 AND protocol=6)
 AND NOT (p.path='/usr/local/libexec/ReceiverHelper.app/Contents/MacOS/ReceiverHelper' AND p.cwd='/' AND remote_port=443 AND protocol=6)
 AND NOT (remote_port = 443 AND protocol IN (6,17) AND p.path = '/usr/sbin/mDNSResponder')
@@ -50,6 +52,8 @@ AND NOT (remote_port=443 AND protocol=6 AND p.name IN (
         'ko',
         'kubectl',
         'k9s',
+        'terraform',
+        'steam_osx',
         'slack',
         'Slack Helper',
         'Slack',
@@ -61,4 +65,6 @@ AND NOT (remote_port=443 AND protocol=6 AND p.name IN (
         'htop'
     )
 )
+AND NOT (remote_port=443 AND protocol=6 AND p.name LIKE 'terraform-provider-%')
+
 

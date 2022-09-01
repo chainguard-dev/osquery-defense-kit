@@ -42,7 +42,7 @@ WHERE port != 0
     AND NOT (p.name='sshd' AND p.cwd='/' AND lp.port=22 AND lp.protocol=6)
     AND NOT (p.name='tailscaled' AND p.cwd='/' AND lp.port=4161 AND lp.protocol=6)
     AND NOT (p.name='tailscaled' AND p.cwd='/' AND lp.port=41641 AND lp.protocol=17)
-    AND NOT (p.name='Socket Process' and p.cwd LIKE '/proc/%/fdinfo' AND lp.port>32000 AND lp.protocol=17)
+    AND NOT (p.name='Socket Process' and p.cwd LIKE '/proc/%/fdinfo%' AND lp.port>32000 AND lp.protocol=17)
     -- macOS --
     AND NOT (p.name IN ('launchd','netbiosd') AND p.cwd='/' AND lp.port IN (137,138) AND lp.protocol=17)
     AND NOT (p.name='Arc Helper' AND p.cwd='/' AND lp.port=5353 AND lp.protocol=17)
@@ -80,6 +80,7 @@ WHERE port != 0
     AND NOT (p.name='syslogd' AND p.cwd='/' AND lp.port>49000 AND lp.protocol=17)
     AND NOT (p.name='systemd-resolve' AND p.cwd='/' AND lp.port=5355 AND lp.protocol IN (6,17))
     AND NOT (p.name='Slack Helper' AND lp.port>49000 AND lp.protocol=17)
+    AND NOT (p.name='com.apple.WebKit.Networking' AND lp.port>49000 AND lp.protocol=17)
     AND NOT (p.name='TIDAL Helper (Renderer)' AND p.cwd='/' AND lp.port=5353 AND lp.protocol=17)
     AND NOT (p.name='vpnkit-bridge' AND p.cwd LIKE '/Users/%/Library/Containers/com.docker.docker/Data' AND lp.port>49000 AND lp.protocol=6)
     AND NOT (p.name='WireGuardNetworkExtension' AND p.cwd LIKE '/Users/%/Library/Containers/com.wireguard.macos.network-extension/Data' AND lp.port>49000 AND lp.protocol=17)
