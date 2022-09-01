@@ -1,8 +1,10 @@
 SELECT *
-FROM chrome_extensions
+FROM device_chrome_extensions
 WHERE (
         from_webstore != true
+        OR crxcavator_risk_total > 700
         OR CAST(permissions AS text) LIKE '%google.com%'
+        OR CAST(permissions AS text) LIKE '%chainguard.dev%'
         OR CAST(permissions AS text) LIKE '%github.com%'
         OR CAST(permissions AS text) LIKE '%clipboardWrite%'
         OR CAST(permissions AS text) LIKE '%<all_urls>%'
