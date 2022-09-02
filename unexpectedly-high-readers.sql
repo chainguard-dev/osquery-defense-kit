@@ -18,11 +18,15 @@ AND NOT (name='launcher' AND path='/usr/local/kolide-k2/bin/launcher-updates/165
 AND NOT (name='logd' AND cmdline='/usr/libexec/logd' AND parent=1)
 AND NOT (name='osqueryd' AND path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd')
 AND NOT (name='packagekitd' AND path='/usr/libexec/packagekitd')
+AND NOT (name='spindump' AND path='/usr/sbin/spindump')
+AND NOT (name='systemstats' AND path='/usr/sbin/systemstats')
 AND NOT (name='signpost_reporter' AND cmdline='/usr/libexec/signpost_reporter' AND parent=1)
 AND NOT (name='snapd' AND path='/usr/lib/snaptd/snaptd')
 AND NOT (name='syspolicyd' AND path='/usr/libexec/syspolicyd' AND parent=1)
 AND NOT (name='systemd-udevd' AND path='/usr/bin/udevadm')
 AND NOT (name='systemd' AND path='/usr/lib/systemd/systemd')
+AND NOT (name='node' AND cwd LIKE '%/console-ui/app')
+AND NOT (name='FindMy' AND path='/System/Applications/FindMy.app/Contents/MacOS/FindMy')
 AND NOT (path LIKE '/home/%/Apps/PhpStorm%/jbr/bin/java')
 AND path NOT LIKE '/Applications/%.app/Contents/%'
 AND path NOT LIKE '/System/Library/%'

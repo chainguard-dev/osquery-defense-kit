@@ -25,9 +25,11 @@ AND NOT (p.name IN ('spotify', 'Spotify Helper', 'Spotify') AND remote_port IN (
 AND NOT (p.name='coredns' AND remote_port=53 AND protocol=17)
 AND NOT (p.name='systemd-resolve' AND remote_port=53 AND protocol=17)
 AND NOT (p.name='ssh' AND remote_port=22 AND protocol=6)
+AND NOT (p.name='java' AND remote_port IN (30031,25565) AND protocol=6)
 AND NOT (p.path = '/usr/bin/gnome-software' AND remote_port = 443)
 AND NOT (p.path = '/usr/libexec/rapportd' AND remote_port > 49000 and protocol=6)
 AND NOT (p.path = '/usr/libexec/timed' AND remote_port = 123)
+AND NOT (p.path = '/usr/libexec/trustd' AND remote_port IN (80,443))
 AND NOT (p.path = '/usr/libexec/trustd' AND remote_port IN (80,443))
 AND NOT (p.path LIKE '/private/var/folders/%/Reflect 2.app/Contents/Frameworks/Reflect Helper.app/Contents/MacOS/Reflect Helper' AND p.cwd='/' AND remote_port=443 AND s.protocol IN (6,17))
 AND NOT (p.path LIKE '/private/var/folders/%/Visual Studio Code.app/Contents/%' AND p.cwd='/' AND remote_port=443 AND protocol=6)
@@ -35,7 +37,7 @@ AND NOT (p.path LIKE '/Users/%/.cache/trunk/cli/%/trunk' AND remote_port=443 AND
 AND NOT (p.path LIKE '/Users/%/Library/Application Support/WebEx Folder/%/Meeting Center.app/Contents/MacOS/Meeting Center' AND p.cwd='/' AND remote_port=443 AND protocol=6)
 AND NOT (p.path LIKE '/Users/%/Library/Application Support/WebEx Folder/%/Meeting Center.app/Contents/MacOS/Meeting Center' AND p.cwd='/' AND remote_port=9000 AND protocol=17)
 AND NOT (p.path LIKE '%/firefox' AND remote_port IN (443,80))
-AND NOT (p.path LIKE '%/NetworkManager' AND remote_port = 67)
+AND NOT (p.path LIKE '%/NetworkManager' AND remote_port IN (67,80))
 AND NOT (p.path LIKE '%tailscaled%' AND remote_port IN (443,80))
 AND NOT (p.path='/System/Library/Frameworks/CoreTelephony.framework/Support/CommCenter' AND p.cwd='/' AND remote_port=4500 AND protocol=17)
 AND NOT (p.path='/System/Library/Frameworks/CoreTelephony.framework/Support/CommCenter' AND p.cwd='/' AND remote_port=500 AND protocol=17)
@@ -47,14 +49,17 @@ AND NOT (remote_port = 443 AND protocol=6 AND p.path LIKE '/usr/libexec/%')
 AND NOT (remote_port IN (80, 443) AND protocol IN (6,17) AND p.path LIKE '/Applications/%.app/Contents/%')
 AND NOT (remote_port IN (80, 443) AND protocol IN (6,17) AND p.path LIKE '/System/Applications/%')
 AND NOT (remote_port IN (80, 443) AND protocol IN (6,17) AND p.path LIKE '/System/Library/%')
-AND NOT (remote_port=443 AND protocol=6 AND p.name IN (
+AND NOT (remote_port=443 AND protocol IN (6,17) AND p.name IN (
         'gitsign',
         'ko',
         'kubectl',
         'k9s',
+        'launcher-Helper',
         'terraform',
         'steam_osx',
         'slack',
+        'ngrok',
+        'jcef_helper',
         'Slack Helper',
         'Slack',
         'controlplane',
@@ -66,5 +71,5 @@ AND NOT (remote_port=443 AND protocol=6 AND p.name IN (
     )
 )
 AND NOT (remote_port=443 AND protocol=6 AND p.name LIKE 'terraform-provider-%')
-
+AND NOT (remote_port=443 AND protocol=6 AND p.name LIKE 'kubectl.%')
 
