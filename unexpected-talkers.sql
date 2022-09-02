@@ -6,6 +6,7 @@ WHERE protocol > 0
 AND s.remote_port > 0
 AND s.remote_address NOT IN ('127.0.0.1', '::ffff:127.0.0.1', '::1')
 AND s.remote_address NOT LIKE 'fe80:%'
+AND s.remote_address NOT LIKE '127.%'
 AND s.remote_address NOT LIKE '192.168.%'
 AND s.remote_address NOT LIKE '172.1%'
 AND s.remote_address NOT LIKE '172.2%'
@@ -23,7 +24,7 @@ AND NOT (p.name = 'syncthing' AND remote_port IN (22067,443,22000))
 AND NOT (p.name = 'zoom.us' AND remote_port IN (443,8801))
 AND NOT (p.name IN ('chrome', 'Google Chrome Helper', 'Chromium Helper') AND remote_port IN (8080,8000,8008,8443,8888) AND remote_address LIKE '192.168.%')
 AND NOT (p.name IN ('chrome', 'Google Chrome Helper','Brave Browser Helper', 'Chromium Helper') AND remote_port IN (443,80,8009,8443,5228,32211,53,10001,3478))
-AND NOT (p.name IN ('Mail','thunderbird','Spark') AND remote_port IN (443,993))
+AND NOT (p.name IN ('Mail','thunderbird','Spark') AND remote_port IN (443,587,993))
 AND NOT (p.name IN ('spotify', 'Spotify Helper', 'Spotify') AND remote_port IN (443,8009,4070,32211))
 AND NOT (p.name='coredns' AND remote_port=53 AND protocol=17)
 AND NOT (p.name='systemd-resolve' AND remote_port=53 AND protocol=17)

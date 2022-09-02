@@ -54,6 +54,8 @@ WHERE (
     AND PATH NOT LIKE '%/.dwz/'
     AND PATH NOT LIKE '%/.updated'
     AND PATH NOT LIKE '/%bin/bootstrapping/.default_components'
+    AND PATH NOT LIKE '%/google-cloud-sdk/.install/'
+
     AND (
         type != 'regular'
         OR size > 1
