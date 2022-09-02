@@ -47,6 +47,7 @@ WHERE port != 0
     AND NOT (p.name IN ('launchd','netbiosd') AND p.cwd='/' AND lp.port IN (137,138) AND lp.protocol=17)
     AND NOT (p.name='Arc Helper' AND p.cwd='/' AND lp.port=5353 AND lp.protocol=17)
     AND NOT (p.name='Arc Helper' AND p.cwd='/' AND lp.port>5000 AND lp.protocol=17)
+    AND NOT (p.name='Arc' AND p.cwd='/' AND lp.port>5000 AND lp.protocol=17)
     AND NOT (p.name='Brave Browser Helper' AND p.cwd='/' AND lp.port=5353 AND lp.protocol=17)
     AND NOT (p.name='Brave Browser Helper' AND p.cwd='/' AND lp.port>32000 AND lp.protocol=17)
     AND NOT (p.name='Code Helper' AND lp.port > 5000 AND lp.protocol=6)
