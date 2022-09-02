@@ -33,3 +33,4 @@ AND NOT (path LIKE '/home/%/Apps/PhpStorm%/jbr/bin/java')
 AND path NOT LIKE '/Applications/%.app/Contents/%'
 AND path NOT LIKE '/System/Library/%'
 AND path NOT LIKE '/System/Applications/%'
+AND path NOT LIKE '/Library/Apple/System/Library/%'
