@@ -53,7 +53,7 @@ WHERE port != 0
     AND NOT (p.name='Code Helper' AND lp.port > 5000 AND lp.protocol=6)
     AND NOT (p.name='com.docker.backend' AND p.cwd LIKE '/Users/%/Library/Containers/com.docker.docker/Data' AND lp.port > 1024 AND lp.protocol=6)
     AND NOT (p.name='CommCenter' AND p.cwd='/' AND lp.port=5060 AND lp.protocol IN (6,17))
-    AND NOT (p.name='configd' AND p.cwd='/' AND lp.port=68 AND lp.protocol=17)
+    AND NOT (p.name='configd' AND p.cwd='/' AND lp.port IN (68,546) AND lp.protocol=17)
     AND NOT (p.name='ControlCenter' AND p.cwd='/' AND lp.port IN (5000,7000) AND lp.protocol=6)
     AND NOT (p.name='cupsd' AND p.cwd='/' AND lp.port=631 AND lp.protocol=6)
     AND NOT (p.name='identityservicesd' AND p.cwd='/' AND lp.port>49000 AND lp.protocol=17)
