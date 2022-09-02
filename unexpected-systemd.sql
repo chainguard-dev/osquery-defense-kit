@@ -33,6 +33,7 @@ WHERE active_state != "inactive"
                 'alsa-state.service',
                 'alsa-store.service',
                 'anacron.timer',
+                'anacron.service',
                 'apcupsd.service',
                 'apparmor.service',
                 'apport.service',

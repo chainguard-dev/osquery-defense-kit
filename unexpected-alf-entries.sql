@@ -12,6 +12,8 @@ WHERE path NOT IN (
         '/Applications/Parallels%20Desktop.app/',
         '/Applications/RescueTime.app/',
         '/Applications/Spotify.app/',
+        '/Applications/Sketch.app/',
+        '/Applications/Sonos.app/',
         '/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/',
         '/Applications/UTM.app/Contents/XPCServices/QEMUHelper.xpc/Contents/MacOS/QEMULauncher.app/',
         '/Applications/Visual%20Studio%20Code.app/',

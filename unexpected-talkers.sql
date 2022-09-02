@@ -46,7 +46,7 @@ AND NOT (p.path LIKE '%tailscaled%' AND remote_port IN (443,80))
 AND NOT (p.name='cloud_sql_proxy' AND remote_port IN (443,3307))
 AND NOT (p.path='/System/Library/Frameworks/CoreTelephony.framework/Support/CommCenter' AND p.cwd='/' AND remote_port=4500 AND protocol=17)
 AND NOT (p.path='/System/Library/Frameworks/CoreTelephony.framework/Support/CommCenter' AND p.cwd='/' AND remote_port=500 AND protocol=17)
-AND NOT (p.path='/System/Library/Frameworks/CoreTelephony.framework/Support/CommCenter' AND p.cwd='/' AND remote_port>49000 AND protocol=6)
+AND NOT (p.path='/System/Library/Frameworks/CoreTelephony.framework/Support/CommCenter' AND p.cwd='/' AND remote_port>5000 AND protocol=6)
 AND NOT (p.path='/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking' AND remote_port>1023 AND protocol=17)
 AND NOT (p.path='/System/Library/PrivateFrameworks/ApplePushService.framework/apsd' AND p.cwd='/' AND remote_port=5223 AND protocol=6)
 AND NOT (p.path='/usr/local/libexec/ReceiverHelper.app/Contents/MacOS/ReceiverHelper' AND p.cwd='/' AND remote_port=443 AND protocol=6)
@@ -58,20 +58,20 @@ AND NOT (remote_port IN (80, 443) AND protocol IN (6,17) AND p.path LIKE '/Syste
 AND NOT (remote_port IN (80, 443) AND protocol IN (6,17) AND p.path LIKE '/Library/Apple/System/Library/%')
 AND NOT (remote_port=443 AND protocol IN (6,17) AND p.name IN (
         'chainctl',
-        'containerd',
         'code',
+        'containerd',
         'controlplane',
+        'electron',
         'gitsign',
-        'xmobar',
+        'grype',
         'htop',
         'istioctl',
         'jcef_helper',
         'k9s',
         'ko',
+        'kolide-pipeline',
         'ktail',
         'kubectl',
-        'electron',
-        'kolide-pipeline',
         'launcher-Helper',
         'ngrok',
         'pingsender',
@@ -79,7 +79,9 @@ AND NOT (remote_port=443 AND protocol IN (6,17) AND p.name IN (
         'slack',
         'Slack',
         'steam_osx',
-        'terraform'
+        'terraform',
+        'vcluster',
+        'xmobar'
     )
 )
 AND NOT (remote_port=443 AND protocol=6 AND p.name LIKE 'terraform-provider-%')
