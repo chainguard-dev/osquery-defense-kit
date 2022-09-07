@@ -17,12 +17,15 @@ WHERE bytes_per_second > 2000000
         '/usr/bin/fish',
         '/usr/bin/gnome-shell',
         '/usr/lib/systemd/systemd-journald',
+        '/usr/libexec/sharingd',
         '/usr/lib/systemd/systemd',
         '/usr/libexec/coreduetd',
         '/usr/libexec/coreduetd',
         '/usr/libexec/packagekitd',
         '/usr/libexec/rosetta/oahd',
-        '/usr/libexec/secd'
+        '/usr/libexec/secd',
+        '/usr/bin/aptd',
+        '/usr/sbin/screencapture'
     )
     AND NOT (name LIKE "jbd%/dm-%" AND on_disk = -1)
     AND NOT (name = 'bindfs' AND cmdline LIKE 'bindfs -f -o fsname=%')

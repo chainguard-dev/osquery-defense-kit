@@ -32,8 +32,11 @@ WHERE path NOT IN (
     AND path NOT LIKE '/opt/homebrew/Cellar/%/bin/%'
     AND path NOT LIKE '/private/var/folders/%/go-build%/exe/%'
     AND path NOT LIKE '/System/Applications/%'
+    AND path NOT LIKE "%/hugo"
+    AND path NOT LIKE "%/registry-redirect"
     AND path NOT LIKE '/System/Library/CoreServices/%'
     AND path NOT LIKE '/System/Library/Frameworks/%'
+    AND PATH NOT LIKE "%IntelliJ%"
     AND path NOT LIKE '/%/bin/syncthing'
     AND path NOT LIKE '/Users/%/go/bin/%'
     AND path NOT LIKE '/Users/%/go/src/%'

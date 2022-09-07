@@ -83,3 +83,8 @@ AND NOT (path LIKE '/Users/%/Library/LaunchAgents/homebrew.mxcl.mysql.plist' AND
 AND NOT (path LIKE '/Users/%/Library/LaunchAgents/homebrew.mxcl.yabai.plist' AND program_arguments = '/opt/homebrew/opt/yabai/bin/yabai')
 AND NOT (path LIKE '/Users/%/Library/LaunchAgents/homebrew.mxcl.yubikey-agent.plist' AND program_arguments = '/opt/homebrew/opt/yubikey-agent/bin/yubikey-agent -l /opt/homebrew/var/run/yubikey-agent.sock')
 AND NOT (path LIKE '/Users/%/Library/LaunchAgents/ws.agile.1PasswordAgent.plist' AND program LIKE '/Users/%/Library/Application Support/1Password/Agent/1PasswordAgent.app/Contents/MacOS/1PasswordAgent')
+AND NOT (path = '/Library/LaunchAgents/com.epson.esua.launcher.plist' AND program_arguments = '/Applications/Epson Software/EPSON Software Updater.app/Contents/EPSON Software Updater Agent.app/Contents/MacOS/EPSON Software Updater Agent')
+AND NOT (path = '/Library/LaunchAgents/com.epson.eventmanager.agent.plist' AND program_arguments = '/Applications/Epson Software/Event Manager.app/Contents/Resources/Assistants/Event Manager/EEventManager.app/Contents/MacOS/EEventManager')
+AND NOT (path = '/Library/LaunchAgents/com.epson.scannermonitor.plist' AND program_arguments = '/Library/Application Support/EPSON/Scanner/ScannerMonitor/Epson Scanner Monitor.app/Contents/MacOS/Epson Scanner Monitor')
+AND NOT (path LIKE '/Users/%/Library/LaunchAgents/homebrew.mxcl.skhd.plist' AND program_arguments = '/opt/homebrew/opt/skhd/bin/skhd')
+AND NOT (path LIKE '/Users/%/Library/LaunchAgents/ProtonMail Bridge.plist' AND program_arguments = '/Applications/ProtonMail Bridge.app/Contents/MacOS/ProtonMail Bridge --no-window')
