@@ -20,12 +20,12 @@ AND s.state != 'LISTEN'
 AND NOT (p.cmdline LIKE '%.com.flexibits.fantastical2.mac.helper' AND remote_port = 443)
 AND NOT (p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%' AND remote_port = 443)
 AND NOT (p.name = 'launcher' AND p.cwd='/' AND remote_port=443 AND protocol=6)
-AND NOT (p.name = 'syncthing' AND remote_port IN (22067,443,22000,22068,39051))
+AND NOT (p.name = 'syncthing' AND remote_port IN (22067,443,22000,22068,39051,587))
 AND NOT (p.name = 'zoom.us' AND remote_port IN (443,8801))
 AND NOT (p.name = 'avconferenced' AND remote_port = 1234)
 AND NOT (p.name IN ('chrome', 'Google Chrome Helper', 'Chromium Helper', 'Opera Helper') AND remote_port IN (8080,8000,8008,8443,8888) AND remote_address LIKE '192.168.%')
-AND NOT (p.name IN ('chrome', 'Google Chrome Helper','Brave Browser Helper', 'Chromium Helper', 'Opera Helper') AND remote_port IN (443,80,8009,8080,8443,5228,32211,53,10001,3478))
-AND NOT (p.name IN ('Mail', 'thunderbird', 'Spark', 'Notes') AND remote_port IN (443,587,465,993))
+AND NOT (p.name IN ('chrome', 'Google Chrome Helper','Brave Browser Helper', 'Chromium Helper', 'Opera Helper') AND remote_port IN (443,80,8009,8080,8888,8443,5228,32211,53,10001,3478,19305,19306,19307,19308,19309))
+AND NOT (p.name IN ('Mail', 'thunderbird', 'Spark', 'Notes') AND remote_port IN (443,587,465,585,993))
 AND NOT (p.name IN ('spotify', 'Spotify Helper', 'Spotify') AND remote_port IN (443,8009,4070,32211))
 AND NOT (p.name='cloud_sql_proxy' AND remote_port IN (443,3307))
 AND NOT (p.name='coredns' AND remote_port=53 AND protocol=17)
@@ -49,6 +49,7 @@ AND NOT (p.path LIKE '%/firefox' AND remote_port IN (443,80))
 AND NOT (p.path LIKE '%/NetworkManager' AND remote_port IN (67,80))
 AND NOT (p.path LIKE '%tailscaled%' AND remote_port IN (443,80))
 AND NOT (p.path LIKE '%tailscaled%' AND remote_port > 32000)
+AND NOT (p.path LIKE '%Tailscale%' AND remote_port > 32000)
 AND NOT (p.path='/System/Library/Frameworks/CoreTelephony.framework/Support/CommCenter' AND p.cwd='/' AND remote_port=4500 AND protocol=17)
 AND NOT (p.path='/System/Library/Frameworks/CoreTelephony.framework/Support/CommCenter' AND p.cwd='/' AND remote_port=500 AND protocol=17)
 AND NOT (p.path='/System/Library/Frameworks/CoreTelephony.framework/Support/CommCenter' AND p.cwd='/' AND remote_port>5000 AND protocol=6)
@@ -105,8 +106,8 @@ AND NOT (remote_port=443 AND protocol IN (6,17) AND p.name IN (
         'terraform',
         'tkn',
         'vcluster',
-        'xmobar'
-        'zoom',
+        'xmobar',
+        'zoom'
     )
 )
 AND NOT (remote_port=443 AND protocol=6 AND p.name LIKE 'terraform-provider-%')

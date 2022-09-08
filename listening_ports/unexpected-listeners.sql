@@ -43,6 +43,7 @@ WHERE port != 0
     AND NOT (p.name='sshd' AND p.cwd='/' AND lp.port=22 AND lp.protocol=6)
     AND NOT (p.name='tailscaled' AND p.cwd='/' AND lp.port=4161 AND lp.protocol=6)
     AND NOT (p.name='tailscaled' AND p.cwd='/' AND lp.port=41641 AND lp.protocol=17)
+    AND NOT (p.name='Sonos' AND p.cwd='/' AND lp.port=3400 AND lp.protocol=6)
     -- macOS --
     AND NOT (p.name IN ('launchd','netbiosd') AND p.cwd='/' AND lp.port IN (137,138) AND lp.protocol=17)
     AND NOT (p.name='Arc Helper' AND p.cwd='/' AND lp.port>5000 AND lp.protocol=17)
