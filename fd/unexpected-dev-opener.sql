@@ -26,13 +26,15 @@ WHERE pof.path LIKE '/dev/%'
         '/dev/rfkill',
         '/dev/snd/seq',
         '/dev/urandom',
-        '/dev/vga_arbiter'
+        '/dev/vga_arbiter',
+        '/dev/tty'
     )
 AND NOT pof.path LIKE '/dev/ttys%'
 AND NOT pof.path LIKE '/dev/pts/%'
 AND NOT pof.path LIKE '/dev/snd/control%'
 AND NOT pof.path LIKE '/dev/shm/.com.google.%'
 AND NOT pof.path LIKE '/dev/shm/.org.chromium.%'
+AND NOT pof.path LIKE '/dev/shm/wayland.mozilla.%'
 AND NOT (program LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd' AND device='/dev/auditpipe')
 AND NOT (program LIKE '/home/%/.local/share/Steam/%' AND device LIKE '/dev/shm/%')
 AND NOT (program LIKE '/nix/store/%/bin/.tailscaled-wrapped' AND device='/dev/net/tun')
@@ -56,6 +58,7 @@ AND NOT (program='/usr/bin/bash' AND device LIKE '/dev/shm/%')
 AND NOT (program='/usr/bin/cat' AND device LIKE '/dev/shm/%')
 AND NOT (program='/usr/bin/ffmpeg' AND device='/dev/nvidia-uvm')
 AND NOT (program='/usr/bin/ffmpeg' AND device LIKE '/dev/video%')
+AND NOT (program='/usr/sbin/netbiosd' AND device LIKE '/dev/nsmb%')
 AND NOT (program='/usr/bin/gnome-calendar' AND device='/dev/nvidiactl')
 AND NOT (program='/usr/bin/gnome-shell' AND device LIKE '/dev/input/event%')
 AND NOT (program='/usr/bin/gphoto2' AND device LIKE '/dev/bus/usb/%')

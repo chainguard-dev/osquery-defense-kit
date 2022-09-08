@@ -51,6 +51,7 @@ WHERE directory NOT LIKE '/Applications/%.app/%'
         '/usr/lib/libreoffice/program',
         '/usr/lib/polkit-1',
         '/usr/lib/slack',
+        '/usr/lib/firefox',
         '/usr/lib/snapd',
         '/usr/lib/systemd',
         '/usr/lib/telepathy',

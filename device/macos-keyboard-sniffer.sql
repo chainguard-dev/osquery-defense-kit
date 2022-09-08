@@ -5,4 +5,5 @@ JOIN signature s ON s.path = p.path
 WHERE event_tapped IN ('EventKeyDown', 'EventKeyUp')
 AND authority != "Software Signing"
 AND NOT (identifier='com.googlecode.iterm2' AND authority='Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)')
+AND NOT (identifier='skhd' AND p.path NOT LIKE '/opt/homebrew/Cellar/%/bin/skhd')
 GROUP BY p.path
