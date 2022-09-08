@@ -11,6 +11,7 @@ WHERE key = 'HISTFILE'
     OR (
         key = 'HOME'
         AND NOT value LIKE '/home/%'
+        AND NOT value LIKE "/private/tmp/%/.brew_home"
         AND NOT value LIKE "/var/lib/%"
         AND NOT value LIKE "/Users/%"
         AND NOT value IN ('/root', '/var/spool/cups/tmp', '/var/empty', '/var/db/cmiodalassistants', '/run/systemd' '/')

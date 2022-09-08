@@ -1,4 +1,4 @@
-SELECT *
+SELECT lp.address, lp.port, lp.protocol, p.pid, p.name, p.path, p.cmdline
 FROM listening_ports lp
     JOIN processes p ON lp.pid = p.pid
 WHERE port != 0
@@ -16,6 +16,7 @@ WHERE port != 0
     AND NOT (p.name='Brackets-node' AND lp.port=8123 AND lp.protocol=6)
     AND NOT (p.name='chrome' AND lp.port>32000 AND lp.protocol IN (6,17))
     AND NOT (p.name='code' AND p.cwd='/' AND lp.port=43233 AND lp.protocol=6)
+    AND NOT (p.name='code' AND p.cmdline LIKE "%extensionHost%" AND lp.port>32000 AND lp.protocol=6)
     AND NOT (p.name='containerd' AND p.cwd='/' AND lp.port=10010 AND lp.protocol=6)
     AND NOT (p.name='controlplane' AND p.cwd='/' AND lp.port IN (8008,8443) AND lp.protocol=6)
     AND NOT (p.name='coredns' AND p.cwd='/' AND lp.port IN (8181,8080,9153,53) AND lp.protocol=6)
