@@ -1,5 +1,7 @@
 SELECT
-  s.family, protocol, s.local_port, s.remote_port, s.local_address, s.remote_address, p.name, p.path, p.cmdline AS child_cmd, p.cwd, s.pid, s.net_namespace, pp.cmdline AS parent_cmd
+  s.family, protocol, s.local_port, s.remote_port, s.local_address,
+  s.remote_address, p.name, p.path, p.cmdline AS child_cmd, p.cwd, s.pid, s.net_namespace,
+  p.parent_id AS parent_pid, pp.cmdline AS parent_cmd
 FROM process_open_sockets s
 JOIN processes p ON s.pid = p.pid
 JOIN processes pp ON pp.pid = p.parent

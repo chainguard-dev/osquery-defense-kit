@@ -8,4 +8,6 @@ WHERE (
         OR path LIKE "/dev/mqueue/%"
 )
 AND filename NOT IN ('.', '..')
-OR filename LIKE "pulse-shm-%"
+AND filename NOT LIKE "pulse-shm-%"
+AND filename NOT LIKE "u1000-Shm%"
+AND filename NOT LIKE "u1000-Valve%"

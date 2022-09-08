@@ -37,3 +37,4 @@ WHERE bytes_per_second > 2000000
     AND path NOT LIKE '/Applications/%.app/Contents/%'
     AND path NOT LIKE '/System/Applications/%'
     AND path NOT LIKE '/System/Library/%'
+    AND path NOT LIKE '/home/%/.local/share/Steam'

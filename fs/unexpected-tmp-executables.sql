@@ -13,6 +13,7 @@ AND PATH NOT LIKE "/tmp/%.sh"
 AND PATH NOT LIKE "/tmp/terraformer/%"
 AND PATH NOT LIKE "/tmp/checkout/%"
 AND PATH NOT LIKE "/tmp/guile-%/guile-%"
+AND PATH NOT LIKE "/tmp/com.apple.installer%"
 -- Nix
 AND NOT (directory LIKE "/tmp/tmp%" AND gid=0 AND uid> 300 AND uid< 350)
 -- Don't alert if it's only on disk for a moment

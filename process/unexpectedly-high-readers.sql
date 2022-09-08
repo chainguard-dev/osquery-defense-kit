@@ -1,6 +1,6 @@
 SELECT *, (strftime('%s', 'now') - start_time) AS age, disk_bytes_read / (strftime('%s', 'now') - start_time) AS bytes_per_second
 FROM processes
-WHERE bytes_per_second > 1500000
+WHERE bytes_per_second > 1750000
 AND age > 180
 AND NOT (name IN ('slack', 'firefox', 'GoogleSoftwareUpdateAgent', 'zsh', 'bash', 'ykman-gui'))
 AND NOT (name='aned' AND cmdline='/usr/libexec/aned' AND parent=1)
@@ -29,6 +29,7 @@ AND NOT (name='syspolicyd' AND path='/usr/libexec/syspolicyd' AND parent=1)
 AND NOT (name='systemd-udevd' AND path='/usr/bin/udevadm')
 AND NOT (name='systemd' AND path='/usr/lib/systemd/systemd')
 AND NOT (name='systemstats' AND path='/usr/sbin/systemstats')
+AND NOT (path='/usr/bin/gnome-shell')
 AND NOT (name='terraform-ls' AND cmdline LIKE 'terraform-ls serve%')
 AND NOT (path LIKE '/home/%/Apps/PhpStorm%/jbr/bin/java')
 AND path NOT LIKE '/Applications/%.app/Contents/%'
