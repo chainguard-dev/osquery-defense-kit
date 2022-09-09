@@ -11,5 +11,6 @@ WHERE f.mode NOT LIKE '0%'
         '/usr/bin/fusermount',
         '/usr/bin/fusermount3',
         '/usr/bin/login',
-        '/usr/bin/sudo'
+        '/usr/bin/sudo',
+        '/usr/bin/doas'
     );

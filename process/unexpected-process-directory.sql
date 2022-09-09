@@ -36,7 +36,9 @@ WHERE directory NOT LIKE '/Applications/%.app/%'
     AND directory NOT LIKE '/usr/local/%/bin/%'
     AND directory NOT LIKE '/usr/local/%bin'
     AND directory NOT LIKE '/usr/local/%libexec'
-    AND directory NOT LIKE '/usr/lib/electron%'
+    and directory NOT LIKE '/usr/local/Cellar/%'
+    AND directory NOT LIKE '/usr/lib/%'
+    AND directory NOT LIKE '/usr/lib64/%'
     AND directory NOT IN (
         '/bin',
         '/Library/DropboxHelperTools/Dropbox_u501',
@@ -62,13 +64,18 @@ WHERE directory NOT LIKE '/Applications/%.app/%'
         '/usr/libexec/ApplicationFirewall',
         '/usr/libexec/rosetta',
         '/usr/sbin',
+        '/Library/Developer/CommandLineTools/usr/bin',
         '/usr/share/code'
     )
     AND f.path NOT IN (
         '/usr/libexec/AssetCache/AssetCache',
         '/Library/PrivilegedHelperTools/com.adobe.acc.installer.v2',
+        '/Library/PrivilegedHelperTools/com.adobe.ARMDC.Communicator',
+        '/Library/PrivilegedHelperTools/com.adobe.ARMDC.SMJobBlessHelper',
         '/Library/PrivilegedHelperTools/com.docker.vmnetd',
         '/Library/PrivilegedHelperTools/com.macpaw.CleanMyMac4.Agent',
-        '/Library/PrivilegedHelperTools/keybase.Helper'
+        '/Library/PrivilegedHelperTools/keybase.Helper',
+        '/usr/lib/firefox/firefox',
+        '/usr/lib64/firefox/firefox'
     )
     AND directory NOT LIKE '/Library/Application Support/Adobe/%';

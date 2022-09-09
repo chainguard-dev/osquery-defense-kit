@@ -43,7 +43,7 @@ WHERE port != 0
     AND NOT (p.name='registry' AND p.cwd='/' AND lp.port=5001 AND lp.protocol=6)
     AND NOT (p.name='sshd' AND p.cwd='/' AND lp.port=22 AND lp.protocol=6)
     AND NOT (p.name='tailscaled' AND lp.port=4161 AND lp.protocol=6)
-    AND NOT (p.name='tailscaled' lp.port>40000 AND lp.protocol IN (6,17))
+    AND NOT (p.name='tailscaled' AND lp.port>40000 AND lp.protocol IN (6,17))
     AND NOT (p.name='Sonos' AND p.cwd='/' AND lp.port=3400 AND lp.protocol=6)
     AND NOT (p.name='docker-proxy' AND lp.port>1024 AND lp.protocol=6)
     -- macOS --
@@ -73,6 +73,7 @@ WHERE port != 0
     AND NOT (p.name='RescueTime' AND p.cwd='/' AND lp.port=16587 AND lp.protocol=6)
     AND NOT (p.name='sharingd' AND p.cwd='/' AND lp.port IN (8770,8771) AND lp.protocol=6)
     AND NOT (p.name='syncthing' AND lp.port > 20000 AND lp.protocol IN (6,17))
+    AND NOT (p.name='steam' AND lp.port = 270366 AND lp.protocol IN (6,17))
     AND NOT (p.name='systemd-resolve' AND p.cwd='/' AND lp.port=5355 AND lp.protocol IN (6,17))
     AND NOT (p.name='vpnkit-bridge' AND p.cwd LIKE '/Users/%/Library/Containers/com.docker.docker/Data' AND lp.port>49000 AND lp.protocol=6)
     AND NOT (p.name='com.docker.vpnkit' AND lp.port>49000 AND lp.protocol=6)
