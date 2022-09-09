@@ -29,6 +29,7 @@ WHERE (
         '/.file',
         '/.vol/',
         '/.VolumeIcon.icns',
+        '/tmp/.dotnet/'
         '/tmp/._contentbarrier_installed',
         '/tmp/../',
         '/tmp/./',

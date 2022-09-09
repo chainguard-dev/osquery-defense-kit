@@ -12,5 +12,7 @@ WHERE f.mode NOT LIKE '0%'
         '/usr/bin/fusermount3',
         '/usr/bin/login',
         '/usr/bin/sudo',
-        '/usr/bin/doas'
+        '/usr/bin/doas',
+        '/bin/ps',
+        '/usr/bin/ssh-agent'
     );

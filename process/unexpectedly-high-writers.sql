@@ -14,6 +14,7 @@ WHERE bytes_per_second > 2000000
     AND path NOT IN (
         '/bin/bash',
         '/usr/bin/bash',
+        '/usr/bin/zsh',
         '/usr/bin/fish',
         '/usr/bin/gnome-shell',
         '/usr/lib/systemd/systemd-journald',
@@ -25,7 +26,8 @@ WHERE bytes_per_second > 2000000
         '/usr/libexec/rosetta/oahd',
         '/usr/libexec/secd',
         '/usr/bin/aptd',
-        '/usr/sbin/screencapture'
+        '/usr/sbin/screencapture',
+        '/usr/lib64/thunderbird/thunderbird'
     )
     AND NOT (name LIKE "jbd%/dm-%" AND on_disk = -1)
     AND NOT (name = 'bindfs' AND cmdline LIKE 'bindfs -f -o fsname=%')

@@ -16,7 +16,8 @@ WHERE p.euid < pp.euid
         '/usr/bin/fusermount3',
         '/usr/bin/login',
         '/usr/bin/sudo',
-        '/usr/bin/doas'
+        '/usr/bin/doas',
+        '/bin/ps'
     )
     AND p.path NOT LIKE "/nix/store/%/bin/sudo"
     AND p.path NOT LIKE "/nix/store/%/bin/dhcpcd"

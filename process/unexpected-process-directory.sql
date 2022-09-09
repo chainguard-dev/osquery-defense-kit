@@ -64,6 +64,7 @@ WHERE directory NOT LIKE '/Applications/%.app/%'
         '/usr/libexec/ApplicationFirewall',
         '/usr/libexec/rosetta',
         '/usr/sbin',
+        '/Library/Printers/DYMO/Utilities',
         '/Library/Developer/CommandLineTools/usr/bin',
         '/usr/share/code'
     )

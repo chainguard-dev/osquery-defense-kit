@@ -31,6 +31,7 @@ WHERE pof.path LIKE '/dev/%'
     )
 AND NOT pof.path LIKE '/dev/ttys%'
 AND NOT pof.path LIKE '/dev/pts/%'
+AND NOT pof.path LIKE '/dev/snd/pcm%'
 AND NOT pof.path LIKE '/dev/snd/control%'
 AND NOT pof.path LIKE '/dev/shm/.com.google.%'
 AND NOT pof.path LIKE '/dev/shm/.org.chromium.%'
@@ -48,6 +49,7 @@ AND NOT (program LIKE '/nix/store/%/lib/systemd/systemd-logind' AND device LIKE 
 AND NOT (program LIKE '/nix/store/%/lib/systemd/systemd' AND device='/dev/kmsg')
 AND NOT (program LIKE '/nix/store/%/lib/systemd/systemd-logind' AND device LIKE '/dev/tty%')
 AND NOT (p.name='chrome' AND device LIKE '/dev/video%')
+AND NOT (p.name='chrome' AND device LIKE '/dev/hidraw%')
 AND NOT (p.name='firefox' AND device LIKE '/dev/shm/.%')
 AND NOT (program='/sbin/launchd' AND device='/dev/console')
 AND NOT (program='/System/Library/Frameworks/GSS.framework/Helpers/GSSCred' AND device='/dev/auditsessions')

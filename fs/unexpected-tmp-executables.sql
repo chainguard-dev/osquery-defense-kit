@@ -1,4 +1,4 @@
-SELECT file.path, uid, gid, mode, strftime('%s', 'now') - ctime AS mtime_age, magic.*, hash.sha256
+SELECT file.path, uid, gid, mode, file.mtime, magic.data, hash.sha256
 FROM file
 JOIN magic ON file.path = magic.path
 JOIN hash on file.path = hash.path
@@ -20,4 +20,4 @@ AND file.path NOT LIKE "/tmp/com.apple.installer%"
 -- Nix
 AND NOT (file.directory LIKE "/tmp/tmp%" AND gid=0 AND uid> 300 AND uid< 350)
 -- Don't alert if it's only on disk for a moment
-AND NOT (file.directory LIKE "/tmp/%" AND mtime_age < 60)
+AND NOT (file.directory LIKE "/tmp/%" AND (strftime('%s', 'now') - ctime) < 60)
