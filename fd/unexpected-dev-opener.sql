@@ -51,6 +51,8 @@ AND NOT (program LIKE '/nix/store/%/lib/systemd/systemd-logind' AND device LIKE 
 AND NOT (p.name='chrome' AND device LIKE '/dev/video%')
 AND NOT (p.name='chrome' AND device LIKE '/dev/hidraw%')
 AND NOT (p.name='firefox' AND device LIKE '/dev/shm/.%')
+AND NOT (p.name='firefox' AND device LIKE '/dev/video%')
+AND NOT (p.name='obs' AND device LIKE '/dev/video%')
 AND NOT (program='/sbin/launchd' AND device='/dev/console')
 AND NOT (program='/System/Library/Frameworks/GSS.framework/Helpers/GSSCred' AND device='/dev/auditsessions')
 AND NOT (program='/System/Library/Frameworks/Security.framework/Versions/A/XPCServices/authd.xpc/Contents/MacOS/authd' AND device='/dev/auditsessions')

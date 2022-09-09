@@ -1,4 +1,4 @@
-SELECT lp.address, lp.port, lp.protocol, p.pid, p.name, p.path, p.cmdline
+SELECT lp.address, lp.port, lp.protocol, p.pid, p.name, p.path, p.cmdline, p.cwd
 FROM listening_ports lp
     JOIN processes p ON lp.pid = p.pid
 WHERE port != 0
@@ -40,7 +40,7 @@ WHERE port != 0
     AND NOT (p.name='nginx' AND p.cwd='/' AND lp.port=80 AND lp.protocol=6)
     AND NOT (p.name='plugin-container' AND lp.port>32000 AND lp.protocol IN (6,17))
     AND NOT (p.name='node' AND lp.port>5000 AND lp.protocol = 6)
-    AND NOT (p.name='registry' AND p.cwd='/' AND lp.port=5001 AND lp.protocol=6)
+    AND NOT (p.name='registry' AND lp.port>1024 AND lp.protocol = 6)
     AND NOT (p.name='sshd' AND p.cwd='/' AND lp.port=22 AND lp.protocol=6)
     AND NOT (p.name='tailscaled' AND lp.port=4161 AND lp.protocol=6)
     AND NOT (p.name='tailscaled' AND lp.port>40000 AND lp.protocol IN (6,17))
@@ -51,7 +51,7 @@ WHERE port != 0
     AND NOT (p.name='Arc Helper' AND p.cwd='/' AND lp.port>5000 AND lp.protocol=17)
     AND NOT (p.name='Arc' AND p.cwd='/' AND lp.port>5000 AND lp.protocol=17)
     AND NOT (p.name='Code Helper' AND lp.port > 5000 AND lp.protocol=6)
-    AND NOT (p.name='com.docker.backend' AND p.cwd LIKE '/Users/%/Library/Containers/com.docker.docker/Data' AND lp.port > 1024 AND lp.protocol=6)
+    AND NOT (p.name='com.docker.backend' AND p.cwd LIKE '/Users/%/Library/Containers/com.docker.docker/Data' AND lp.port > 79 AND lp.protocol=6)
     AND NOT (p.name='CommCenter' AND p.cwd='/' AND lp.port=5060 AND lp.protocol IN (6,17))
     AND NOT (p.name='configd' AND p.cwd='/' AND lp.port IN (68,546) AND lp.protocol=17)
     AND NOT (p.name='ControlCenter' AND p.cwd='/' AND lp.port IN (5000,7000) AND lp.protocol=6)

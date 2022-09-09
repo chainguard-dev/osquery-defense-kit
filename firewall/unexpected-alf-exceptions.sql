@@ -26,6 +26,7 @@ WHERE path NOT IN (
         '/System/Library/PrivateFrameworks/Admin.framework/Versions/A/Resources/readconfig',
         '/usr/libexec/discoveryd',
         '/usr/libexec/bootpd',
+        '/Applications/Sketch.app/Contents/XPCServices/SketchMirrorHelper.xpc/',
         '/usr/libexec/xartstorageremoted',
         '/System/Library/PrivateFrameworks/EmbeddedOSInstall.framework/Versions/A/XPCServices/EmbeddedOSInstallService.xpc/'
     )

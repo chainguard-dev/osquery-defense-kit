@@ -315,6 +315,7 @@ WHERE active_state != "inactive"
                 'proc-sys-fs-binfmt_misc.automount',
                 'qemu-pr-helper.service',
                 'qemu-pr-helper.socket',
+                'qemu-kvm.service',
                 'quotaon.service',
                 'raid-check.timer',
                 'rarpd@.service',

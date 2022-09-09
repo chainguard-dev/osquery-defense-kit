@@ -1,0 +1,1 @@
+SELECT safari_extensions.* FROM users join safari_extensions USING (uid);
