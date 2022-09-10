@@ -27,7 +27,8 @@ WHERE bytes_per_second > 2000000
         '/usr/libexec/secd',
         '/usr/bin/aptd',
         '/usr/sbin/screencapture',
-        '/usr/lib64/thunderbird/thunderbird'
+        '/usr/lib64/thunderbird/thunderbird',
+        '/usr/bin/yay'
     )
     AND NOT (name LIKE "jbd%/dm-%" AND on_disk = -1)
     AND NOT (name = 'bindfs' AND cmdline LIKE 'bindfs -f -o fsname=%')

@@ -48,5 +48,3 @@ p.cmdline LIKE "%xmr%" OR
 p.cmdline LIKE "%ransom%" OR
 p.cmdline LIKE "%malware%" OR
 p.cmdline LIKE "%plant%" OR
-(p.cmdline LIKE "%hack%" AND p.cmdline NOT LIKE "hack/%") OR
-(p.cmdline LIKE "%crypt%" AND p.path NOT LIKE "%CryptoTokenKit%" AND p.name NOT IN ('crashpad_handler'))

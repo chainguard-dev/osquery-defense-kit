@@ -29,82 +29,151 @@ WHERE pof.path LIKE '/dev/%'
         '/dev/vga_arbiter',
         '/dev/tty'
     )
-AND NOT pof.path LIKE '/dev/ttys%'
-AND NOT pof.path LIKE '/dev/pts/%'
-AND NOT pof.path LIKE '/dev/snd/pcm%'
-AND NOT pof.path LIKE '/dev/snd/control%'
-AND NOT pof.path LIKE '/dev/shm/.com.google.%'
-AND NOT pof.path LIKE '/dev/shm/.org.chromium.%'
-AND NOT pof.path LIKE '/dev/shm/wayland.mozilla.%'
-AND NOT (program LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd' AND device='/dev/auditpipe')
-AND NOT (program LIKE '/home/%/.local/share/Steam/%' AND device LIKE '/dev/shm/%')
-AND NOT (program LIKE '/nix/store/%/bin/.tailscaled-wrapped' AND device='/dev/net/tun')
-AND NOT (program LIKE '/nix/store/%/bin/agetty' AND device LIKE '/dev/tty%')
-AND NOT (program LIKE '/nix/store/%/bin/Xorg' AND device LIKE '/dev/input/event%')
-AND NOT (program LIKE '/nix/store/%/bin/Xorg' AND device LIKE '/dev/tty%')
-AND NOT (program LIKE '/nix/store/%/bin/zed' AND device='/dev/zfs')
-AND NOT (program LIKE '/nix/store/%/bin/zfs' AND device='/dev/zfs')
-AND NOT (program LIKE '/nix/store/%/lib/systemd/systemd-journald' AND device='/dev/kmsg')
-AND NOT (program LIKE '/nix/store/%/lib/systemd/systemd-logind' AND device LIKE '/dev/input/event%')
-AND NOT (program LIKE '/nix/store/%/lib/systemd/systemd' AND device='/dev/kmsg')
-AND NOT (program LIKE '/nix/store/%/lib/systemd/systemd-logind' AND device LIKE '/dev/tty%')
-AND NOT (p.name='chrome' AND device LIKE '/dev/video%')
-AND NOT (p.name='chrome' AND device LIKE '/dev/hidraw%')
-AND NOT (p.name='firefox' AND device LIKE '/dev/shm/.%')
-AND NOT (p.name='firefox' AND device LIKE '/dev/video%')
-AND NOT (p.name='obs' AND device LIKE '/dev/video%')
-AND NOT (program='/sbin/launchd' AND device='/dev/console')
-AND NOT (program='/System/Library/Frameworks/GSS.framework/Helpers/GSSCred' AND device='/dev/auditsessions')
-AND NOT (program='/System/Library/Frameworks/Security.framework/Versions/A/XPCServices/authd.xpc/Contents/MacOS/authd' AND device='/dev/auditsessions')
-AND NOT (program='/System/Library/PrivateFrameworks/GenerationalStorage.framework/Versions/A/Support/revisiond' AND device LIKE '/dev/afsc_type%')
-AND NOT (program='/usr/bin/apcupsd' AND device LIKE '/dev/usb/hiddev%')
-AND NOT (program='/usr/bin/bash' AND device LIKE '/dev/shm/%')
-AND NOT (program='/usr/bin/cat' AND device LIKE '/dev/shm/%')
-AND NOT (program='/usr/bin/ffmpeg' AND device='/dev/nvidia-uvm')
-AND NOT (program='/usr/bin/ffmpeg' AND device LIKE '/dev/video%')
-AND NOT (program='/usr/sbin/netbiosd' AND device LIKE '/dev/nsmb%')
-AND NOT (program='/usr/bin/gnome-calendar' AND device='/dev/nvidiactl')
-AND NOT (program='/usr/bin/gnome-shell' AND device LIKE '/dev/input/event%')
-AND NOT (program='/usr/bin/gphoto2' AND device LIKE '/dev/bus/usb/%')
-AND NOT (program='/usr/bin/kubelet' AND device='/dev/kmsg')
-AND NOT (program='/usr/bin/pipewire' AND device LIKE '/dev/snd/%')
-AND NOT (program='/usr/bin/tailscaled' AND device='/dev/net/tun')
-AND NOT (program='/usr/lib/gdm-x-session' AND device='/dev/tty2')
-AND NOT (program='/usr/lib/systemd/systemd-journald' AND device='/dev/kmsg')
-AND NOT (program='/usr/lib/systemd/systemd-logind' AND device LIKE '/dev/input/event%')
-AND NOT (program='/usr/lib/systemd/systemd-logind' AND device LIKE '/dev/tty%')
-AND NOT (program='/usr/lib/systemd/systemd' AND device LIKE '/dev/input/event%')
-AND NOT (program='/usr/lib/systemd/systemd' AND device='/dev/autofs')
-AND NOT (program='/usr/lib/systemd/systemd' AND device='/dev/kmsg')
-AND NOT (program='/usr/lib/upowerd' AND device LIKE '/dev/usb/hiddev%')
-AND NOT (program='/usr/lib/upowerd' AND device LIKE '/dev/input/event%')
-AND NOT (program='/usr/lib/Xorg' AND device LIKE '/dev/input/event%')
-AND NOT (program='/usr/lib/Xorg' AND device LIKE '/dev/tty%')
-AND NOT (program='/usr/lib/xorg/Xorg' AND device LIKE '/dev/input/event%')
-AND NOT (program='/usr/lib/xorg/Xorg' AND device LIKE '/dev/tty%')
-AND NOT (program='/usr/libexec/airportd' AND device LIKE '/dev/bpf%')
-AND NOT (program='/usr/libexec/airportd' AND device='/dev/io8logmt')
-AND NOT (program='/usr/libexec/automountd' AND device='/dev/autofs')
-AND NOT (program='/usr/libexec/gdm-wayland-session' AND device LIKE '/dev/tty%')
-AND NOT (program='/usr/libexec/gdm-x-session' AND device LIKE '/dev/tty%')
-AND NOT (program='/usr/libexec/kernelmanagerd' AND device='/dev/console')
-AND NOT (program='/usr/libexec/logd' AND device='/dev/oslog')
-AND NOT (program='/usr/libexec/PerfPowerServices' AND device='/dev/xcpm')
-AND NOT (program='/usr/libexec/thermald' AND device='/dev/xcpm')
-AND NOT (program='/usr/libexec/TouchBarServer' AND device='/dev/auditsessions')
-AND NOT (program='/usr/libexec/upowerd' AND device LIKE '/dev/input/event%')
-AND NOT (program='/usr/libexec/upowerd' AND device='/dev/input/event%')
-AND NOT (program='/usr/libexec/Xorg' AND device LIKE '/dev/input/event%')
-AND NOT (program='/usr/libexec/Xorg' AND device LIKE '/dev/tty%')
-AND NOT (program='/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd' AND device='/dev/auditpipe')
-AND NOT (program='/usr/sbin/acpid' AND device LIKE '/dev/input/event%')
-AND NOT (program='/usr/sbin/bluetoothd' AND device='/dev/cu.BLTH')
-AND NOT (program='/usr/sbin/mcelog' AND device='/dev/mcelog')
-AND NOT (program='/usr/sbin/pcscd' AND device LIKE '/dev/bus/usb/%')
-AND NOT (program='/usr/sbin/securityd' AND device='/dev/auditsessions')
-AND NOT (program='/usr/sbin/syslogd' AND device='/dev/klog')
-AND NOT (program='/usr/sbin/systemstats' AND device='/dev/xcpm')
-AND NOT (program='/usr/sbin/tailscaled' AND device='/dev/net/tun')
-AND NOT (program='/usr/sbin/thermald' AND device LIKE '/dev/input/event%')
-AND NOT (program='/usr/sbin/zed' AND device='/dev/zfs')
-AND NOT (cmdline LIKE "%/bin/streamdeck" AND device LIKE '/dev/bus/usb/%')
+    AND NOT pof.path LIKE '/dev/ttys%'
+    AND NOT pof.path LIKE '/dev/pts/%'
+    AND NOT pof.path LIKE '/dev/snd/pcm%'
+    AND NOT pof.path LIKE '/dev/snd/control%'
+    AND NOT pof.path LIKE '/dev/shm/.com.google.%'
+    AND NOT pof.path LIKE '/dev/shm/.org.chromium.%'
+    AND NOT pof.path LIKE '/dev/shm/wayland.mozilla.%'
+    AND NOT (device LIKE '/dev/hidraw%' AND p.name = 'chrome')
+    AND NOT (device LIKE '/dev/shm/.%' AND p.name = 'firefox')
+    AND NOT (device LIKE "/dev/video%" AND p.name IN ('chrome', 'firefox', 'obs', 'ffmpeg'))
+    AND NOT (
+        device LIKE '/dev/afsc_type%'
+        AND program = '/System/Library/PrivateFrameworks/GenerationalStorage.framework/Versions/A/Support/revisiond'
+    )
+    AND NOT (
+        device LIKE '/dev/bpf%'
+        AND program = '/usr/libexec/airportd'
+    )
+    AND NOT (
+        device LIKE '/dev/bus/usb/%'
+        AND (program IN ('/usr/bin/gphoto2', '/usr/sbin/pcscd'))
+        OR cmdline LIKE "%/bin/streamdeck"
+    )
+    AND NOT (
+        device LIKE '/dev/input/event%'
+        AND program LIKE '/nix/store/%/bin/Xorg'
+    )
+    AND NOT (
+        device LIKE '/dev/input/event%'
+        AND program LIKE '/nix/store/%/lib/systemd/systemd-logind'
+    )
+    AND NOT (
+        device LIKE '/dev/input/event%'
+        AND program IN (
+            '/usr/bin/gnome-shell',
+            '/usr/lib/systemd/systemd-logind',
+            '/usr/lib/systemd/systemd',
+            '/usr/lib/upowerd',
+            '/usr/lib/Xorg',
+            '/usr/lib/xorg/Xorg',
+            '/usr/libexec/upowerd',
+            '/usr/libexec/Xorg',
+            '/usr/sbin/acpid',
+            '/usr/sbin/thermald'
+        )
+    )
+    AND NOT (
+        device LIKE '/dev/nsmb%'
+        AND program = '/usr/sbin/netbiosd'
+    )
+    AND NOT (
+        device LIKE '/dev/shm/%'
+        AND program LIKE '/home/%/.local/share/Steam/%'
+    )
+    AND NOT (
+        device LIKE '/dev/snd/%'
+        AND program = '/usr/bin/pipewire'
+    )
+    AND NOT (
+        device LIKE '/dev/tty%'
+        AND p.name IN (
+            'systemd-logind',
+            'Xorg',
+            'gdm-wayland-session',
+            'gdm-x-session',
+            'X'
+        )
+    )
+    AND NOT (
+        device LIKE '/dev/usb/hiddev%'
+        AND program IN ('/usr/bin/apcupsd', '/usr/lib/upowerd')
+    )
+    AND NOT (
+        device = '/dev/auditpipe'
+        AND program LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+    )
+    AND NOT (
+        device = '/dev/auditpipe'
+        AND program = '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+    )
+    AND NOT (
+        device = '/dev/auditsessions'
+        AND program IN (
+            '/System/Library/Frameworks/GSS.framework/Helpers/GSSCred',
+            '/System/Library/Frameworks/Security.framework/Versions/A/XPCServices/authd.xpc/Contents/MacOS/authd',
+            '/usr/libexec/TouchBarServer',
+            '/usr/sbin/securityd'
+        )
+    )
+    AND NOT (
+        device = '/dev/autofs'
+        AND program IN (
+            '/usr/lib/systemd/systemd',
+            '/usr/libexec/automountd'
+        )
+    )
+    AND NOT (
+        device = '/dev/console'
+        AND program IN ('/sbin/launchd', '/usr/libexec/kernelmanagerd')
+    )
+    AND NOT (
+        device = '/dev/cu.BLTH'
+        AND program = '/usr/sbin/bluetoothd'
+    )
+    AND NOT (
+        device = '/dev/input/event%'
+        AND program = '/usr/libexec/upowerd'
+    )
+    AND NOT (
+        device = '/dev/io8logmt'
+        AND program = '/usr/libexec/airportd'
+    )
+    AND NOT (
+        device = '/dev/klog'
+        AND program = '/usr/sbin/syslogd'
+    )
+    AND NOT (
+        device = '/dev/kmsg'
+        AND p.name IN ('systemd-journald', 'systemd-journal', 'systemd', 'kubelet')
+    )
+    AND NOT (
+        device = '/dev/mcelog'
+        AND program = '/usr/sbin/mcelog'
+    )
+    AND NOT (
+        device = '/dev/net/tun'
+        AND p.name LIKE '%tailscaled%'
+    )
+    AND NOT (
+        device = '/dev/oslog'
+        AND program = '/usr/libexec/logd'
+    )
+    AND NOT (
+        device = '/dev/uinput'
+        AND program = '/usr/lib/bluetooth/bluetoothd'
+    )
+    AND NOT (
+        device = '/dev/xcpm'
+        AND program IN (
+            '/usr/libexec/PerfPowerServices',
+            '/usr/libexec/thermald',
+            '/usr/sbin/systemstats'
+        )
+    )
+    AND NOT (
+        device = '/dev/zfs'
+        AND p.name IN ('zed', 'zfs')
+    )

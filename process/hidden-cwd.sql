@@ -15,7 +15,8 @@ WHERE
 p.cwd LIKE "%/.%" AND NOT (
     p.cwd LIKE "%/.local/share%" OR
     p.cwd LIKE "%/.vscode/extensions%" OR
-    p.cwd LIKE "/Users/%/.%"
-    p.cwd LIKE "/home/%/.%"
-    p.name = 'bindfs'
+    p.cwd LIKE "/Users/%/.%" OR
+    p.cwd LIKE "/home/%/.%" OR
+    p.name = 'bindfs' OR
+    p.path="/usr/libexec/dirhelper"
 )

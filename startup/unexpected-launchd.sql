@@ -88,3 +88,5 @@ AND NOT (path = '/Library/LaunchAgents/com.epson.eventmanager.agent.plist' AND p
 AND NOT (path = '/Library/LaunchAgents/com.epson.scannermonitor.plist' AND program_arguments = '/Library/Application Support/EPSON/Scanner/ScannerMonitor/Epson Scanner Monitor.app/Contents/MacOS/Epson Scanner Monitor')
 AND NOT (path LIKE '/Users/%/Library/LaunchAgents/homebrew.mxcl.skhd.plist' AND program_arguments = '/opt/homebrew/opt/skhd/bin/skhd')
 AND NOT (path LIKE '/Users/%/Library/LaunchAgents/ProtonMail Bridge.plist' AND program_arguments = '/Applications/ProtonMail Bridge.app/Contents/MacOS/ProtonMail Bridge --no-window')
+AND NOT (path LIKE '/Users/%/Library/LaunchAgents/com.glouel.AerialUpdaterAgent.plist' AND program_arguments = '/usr/bin/open /Applications/Aerial Companion.app')
+AND NOT (path = '/Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist' AND program_arguments LIKE '/usr/local/mysql/bin/mysqld%')

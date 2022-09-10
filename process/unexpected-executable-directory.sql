@@ -39,6 +39,8 @@ WHERE directory NOT LIKE '/Applications/%.app/%'
     and directory NOT LIKE '/usr/local/Cellar/%'
     AND directory NOT LIKE '/usr/lib/%'
     AND directory NOT LIKE '/usr/lib64/%'
+    AND directory NOT LIKE '/private/var/folders/%/bin'
+    AND directory NOT LIKE '/tmp/%/bin'
     AND directory NOT IN (
         '/bin',
         '/Library/DropboxHelperTools/Dropbox_u501',
@@ -79,4 +81,6 @@ WHERE directory NOT LIKE '/Applications/%.app/%'
         '/usr/lib/firefox/firefox',
         '/usr/lib64/firefox/firefox'
     )
-    AND directory NOT LIKE '/Library/Application Support/Adobe/%';
+    AND directory NOT LIKE '/Library/Application Support/Adobe/%'
+    AND directory NOT LIKE '/Library/%/%.bundle/Contents/Helpers'
+    AND NOT (directory='' AND name LIKE "runc%")
