@@ -33,3 +33,4 @@ AND NAME NOT IN (
     "Slack Helper (Renderer)",
     "mysqld"
 )
+-- TODO: INCLUDE -1 (boopkit)

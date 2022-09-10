@@ -25,6 +25,7 @@ p.cmdline LIKE "%iptables -P OUTPUT ACCEPT%" OR
 p.cmdline LIKE "%iptables -P FORWARD ACCEPT%" OR
 p.cmdline LIKE "%iptables -F%" OR
 p.cmdline LIKE "%chattr -ia%" OR
+p.cmdline LIKE "%bpftool%" OR
 p.cmdline LIKE "%base64%" OR
 p.cmdline LIKE "%xxd%" OR
 p.cmdline LIKE "%touch%acmr%" OR
