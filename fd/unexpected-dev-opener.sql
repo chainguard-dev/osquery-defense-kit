@@ -36,7 +36,7 @@ WHERE pof.path LIKE '/dev/%'
     AND NOT pof.path LIKE '/dev/shm/.com.google.%'
     AND NOT pof.path LIKE '/dev/shm/.org.chromium.%'
     AND NOT pof.path LIKE '/dev/shm/wayland.mozilla.%'
-    AND NOT (device LIKE '/dev/hidraw%' AND p.name = 'chrome')
+    AND NOT (device LIKE '/dev/hidraw%' AND p.name IN ('chrome', 'depmod'))
     AND NOT (device LIKE '/dev/shm/.%' AND p.name = 'firefox')
     AND NOT (device LIKE "/dev/video%" AND p.name IN ('chrome', 'firefox', 'obs', 'ffmpeg'))
     AND NOT (
@@ -45,7 +45,7 @@ WHERE pof.path LIKE '/dev/%'
     )
     AND NOT (
         device LIKE '/dev/bpf%'
-        AND program = '/usr/libexec/airportd'
+        AND program IN ('/usr/libexec/airportd', '/usr/libexec/configd')
     )
     AND NOT (
         device LIKE '/dev/bus/usb/%'

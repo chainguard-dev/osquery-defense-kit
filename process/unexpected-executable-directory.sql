@@ -20,6 +20,7 @@ WHERE directory NOT LIKE '/Applications/%.app/%'
     AND directory NOT LIKE '/nix/store/%/lib/%'
     AND directory NOT LIKE '/nix/store/%/libexec'
     AND directory NOT LIKE '/nix/store/%/libexec/%'
+    AND directory NOT LIKE '/nix/store/%/share/%'
     AND directory NOT LIKE '/opt/%'
     AND directory NOT LIKE '/opt/homebrew/%'
     AND directory NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%.xpc/Contents/MacOS'
@@ -68,7 +69,8 @@ WHERE directory NOT LIKE '/Applications/%.app/%'
         '/usr/sbin',
         '/Library/Printers/DYMO/Utilities',
         '/Library/Developer/CommandLineTools/usr/bin',
-        '/usr/share/code'
+        '/usr/share/code',
+        '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateAgent.app/Contents/MacOS'
     )
     AND f.path NOT IN (
         '/usr/libexec/AssetCache/AssetCache',
