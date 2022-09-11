@@ -23,7 +23,8 @@ WHERE (
         '/run/systemd',
         '/var/db/cmiodalassistants',
         '/var/empty',
-        '/var/spool/cups/tmp'
+        '/var/spool/cups/tmp',
+        '/private/var/spool/cups/tmp'
     )
 ) OR (
     key = 'LD_PRELOAD'
@@ -32,4 +33,6 @@ WHERE (
     AND NOT pe.value LIKE ':/home/%/.local/share/Steam'
     AND NOT p.path LIKE '%/firefox'
     AND NOT value LIKE 'libmozsandbox.so%'
+) OR (
+    key = 'DYLD_INSERT_LIBRARIES' -- sort of obsolete, but may affect SIP abusers
 )

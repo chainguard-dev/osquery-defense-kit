@@ -17,12 +17,14 @@ AND NOT (p.name='X' AND filename='Xorg')
 AND NOT p.path LIKE '/nix/store/%/bin/bash'
 AND NOT p.path LIKE '/usr/bin/python3%'
 AND NOT filename IN (
+    'bash',
+    'chrome',
     'dash',
     'electron',
-    'bash',
-    'sh',
     'firefox',
+    'ruby',
+    'sh',
+    'slack',
     'systemd',
-    'thunderbird',
-    'ruby'
+    'thunderbird'
 )

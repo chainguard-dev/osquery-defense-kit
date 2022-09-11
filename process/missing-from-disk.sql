@@ -1,30 +1,28 @@
-SELECT * FROM processes
-WHERE on_disk = 0
-AND path NOT LIKE "/app/%"
-AND path NOT LIKE "/usr/libexec/evolution-%"
-AND path NOT LIKE "/opt/homebrew/Cellar/%"
-AND path NOT IN (
-    "/bin/registry",
-    "/usr/bin/flatpak-spawn",
-    "/usr/libexec/webkit2gtk%",
-    "/usr/bin/gnome-shell",
-    "/usr/libexec/gnome-shell-calendar-server",
-    "/usr/bin/python3.10",
-    "/usr/sbin/NetworkManager",
-    "/usr/bin/gnome-software",
-    "/usr/libexec/gnome-shell-calendar-server",
-    "/opt/google/chrome/chrome",
-    "/opt/google/chrome/chrome_crashpad_handler",
-    "/opt/google/chrome/nacl_helper",
-    "/usr/bin/containerd",
-    "/usr/bin/dbus-broker",
-    "/usr/bin/dbus-broker-launch",
-    "/usr/bin/gjs-console",
-    "/usr/bin/NetworkManager",
-    "/usr/bin/wireplumber"
+SELECT p.pid, p.on_disk, p.uid, p.gid, p.name, p.path, p.cmdline, p.parent, pp.on_disk AS parent_on_disk, pp.path AS parent_path, pp.cmdline AS parent_cmdline
+FROM processes p
+JOIN processes pp ON p.parent = pp.pid
+WHERE p.on_disk != 1
+AND p.parent != 2 -- kthreadd
+AND p.path NOT LIKE "/app/%"
+AND p.path NOT LIKE "/usr/libexec/evolution-%"
+AND p.path NOT LIKE "/opt/homebrew/Cellar/%"
+AND p.path NOT IN (
+    '',
+    '/opt/google/chrome/chrome_crashpad_handler',
+    '/opt/google/chrome/chrome',
+    '/opt/google/chrome/nacl_helper',
+    '/usr/bin/containerd',
+    '/usr/bin/dbus-broker-launch',
+    '/usr/bin/dbus-broker',
+    '/usr/bin/flatpak-spawn',
+    '/usr/bin/gjs-console',
+    '/usr/bin/gnome-shell',
+    '/usr/bin/wireplumber',
+    '/usr/libexec/gnome-shell-calendar-server',
+    '/usr/sbin/NetworkManager'
 )
-
-AND NAME NOT IN (
+AND parent_path NOT IN ('/usr/bin/containerd-shim-runc-v2')
+AND p.name NOT IN (
     "firewalld",
     "gopls",
     "Slack",
@@ -33,4 +31,3 @@ AND NAME NOT IN (
     "Slack Helper (Renderer)",
     "mysqld"
 )
--- TODO: INCLUDE -1 (boopkit)

@@ -38,7 +38,7 @@ WHERE pof.path LIKE '/dev/%'
     AND NOT pof.path LIKE '/dev/shm/wayland.mozilla.%'
     AND NOT (device LIKE '/dev/hidraw%' AND p.name IN ('chrome', 'depmod'))
     AND NOT (device LIKE '/dev/shm/.%' AND p.name = 'firefox')
-    AND NOT (device LIKE "/dev/video%" AND p.name IN ('chrome', 'firefox', 'obs', 'ffmpeg'))
+    AND NOT (device LIKE "/dev/video%" AND p.name IN ('chrome', 'firefox', 'obs', 'ffmpeg', 'obs-ffmpeg-mux', 'ffmpeg-mux', 'vlc'))
     AND NOT (
         device LIKE '/dev/afsc_type%'
         AND program = '/System/Library/PrivateFrameworks/GenerationalStorage.framework/Versions/A/Support/revisiond'

@@ -42,6 +42,7 @@ WHERE directory NOT LIKE '/Applications/%.app/%'
     AND directory NOT LIKE '/usr/lib64/%'
     AND directory NOT LIKE '/private/var/folders/%/bin'
     AND directory NOT LIKE '/tmp/%/bin'
+    AND directory NOT LIKE '/usr/local/go/pkg/tool/%'
     AND directory NOT IN (
         '/bin',
         '/Library/DropboxHelperTools/Dropbox_u501',
