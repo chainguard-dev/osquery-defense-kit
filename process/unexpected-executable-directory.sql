@@ -85,5 +85,6 @@ WHERE directory NOT LIKE '/Applications/%.app/%'
         '/usr/lib64/firefox/firefox'
     )
     AND directory NOT LIKE '/Library/Application Support/Adobe/%'
+    AND directory NOT LIKE '/Library/Developer/CommandLineTools/Library/%'
     AND directory NOT LIKE '/Library/%/%.bundle/Contents/Helpers'
     AND NOT (directory='' AND name LIKE "runc%")

@@ -29,6 +29,7 @@ WHERE pof.path LIKE '/dev/%'
         '/dev/vga_arbiter',
         '/dev/tty'
     )
+    AND NOT pof.path LIKE '/dev/hidraw%'
     AND NOT pof.path LIKE '/dev/ttys%'
     AND NOT pof.path LIKE '/dev/pts/%'
     AND NOT pof.path LIKE '/dev/snd/pcm%'
@@ -36,7 +37,6 @@ WHERE pof.path LIKE '/dev/%'
     AND NOT pof.path LIKE '/dev/shm/.com.google.%'
     AND NOT pof.path LIKE '/dev/shm/.org.chromium.%'
     AND NOT pof.path LIKE '/dev/shm/wayland.mozilla.%'
-    AND NOT (device LIKE '/dev/hidraw%' AND p.name IN ('chrome', 'depmod'))
     AND NOT (device LIKE '/dev/shm/.%' AND p.name = 'firefox')
     AND NOT (device LIKE "/dev/video%" AND p.name IN ('chrome', 'firefox', 'obs', 'ffmpeg', 'obs-ffmpeg-mux', 'ffmpeg-mux', 'vlc'))
     AND NOT (
@@ -115,6 +115,7 @@ WHERE pof.path LIKE '/dev/%'
             '/System/Library/Frameworks/GSS.framework/Helpers/GSSCred',
             '/System/Library/Frameworks/Security.framework/Versions/A/XPCServices/authd.xpc/Contents/MacOS/authd',
             '/usr/libexec/TouchBarServer',
+            '/System/Library/PrivateFrameworks/Heimdal.framework/Helpers/kcm',
             '/usr/sbin/securityd'
         )
     )

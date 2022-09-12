@@ -40,6 +40,8 @@ WHERE
     p.cmdline LIKE "%curl %:9%" OR
     p.cmdline LIKE "%curl %--user-agent%" OR
     p.cmdline LIKE "%curl -fsSL%" OR
+    p.cmdline LIKE "%curl -k%" OR
+    p.cmdline LIKE "%curl%--insecure%" OR
     p.cmdline LIKE "%wget %/.%" OR
     p.cmdline LIKE "%wget %.0%" OR
     p.cmdline LIKE "%wget %.1%" OR
@@ -55,3 +57,4 @@ WHERE
     p.cmdline LIKE "%wget %--no-check-certificate%"
 )
 AND parent_name NOT IN ('makepkg')
+AND parent_cmdline NOT LIKE "%brew.rb upgrade"

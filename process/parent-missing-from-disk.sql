@@ -17,3 +17,4 @@ FROM processes p
 WHERE pp.on_disk != 1
 AND p.pid > 2
 AND pp.pid != 2 -- kthreadd
+AND pp.path NOT IN ('/opt/google/chrome/chrome')

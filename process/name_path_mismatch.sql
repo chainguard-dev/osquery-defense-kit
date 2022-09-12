@@ -6,6 +6,7 @@ FROM processes p
     JOIN file f ON p.path = f.path
 WHERE SUBSTR(f.filename, 0, 8) != SUBSTR(p.name, 0, 8)
 AND NOT (p.name='gjs' AND filename='gjs-console')
+AND NOT (p.name='gnome-character' AND filename='gjs-console')
 AND NOT (p.name='mysqld' AND filename='mariadbd')
 AND NOT (p.name='tmux:client' AND filename='tmux')
 AND NOT (p.name='tmux:server' AND filename='tmux')
