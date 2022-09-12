@@ -222,8 +222,13 @@ AND NOT (mode LIKE '4%55' AND uid=0 AND gid=0 AND
         '/usr/lib64/xf86-video-intel-backlight-helper',
         '/usr/libexec/qemu-bridge-helper',
         '/usr/libexec/Xorg.wrap',
-        '/usr/libexec/polkit-agent-helper-1'
+        '/usr/libexec/polkit-agent-helper-1',
+        '/bin/newgidmap',
+        '/bin/newuidmap'
     )
+)
+AND NOT (mode ='4754' AND uid=0 AND gid=30 AND
+    file.path IN ('/usr/sbin/pppd', '/sbin/ppid')
 )
 
 AND NOT (mode ='6755' AND uid=0 AND gid=0 AND
@@ -244,4 +249,3 @@ AND NOT (mode ='6755' AND uid=0 AND gid=0 AND
         '/usr/lib64/xtest'
     )
 )
-

@@ -49,7 +49,7 @@ WHERE pof.path LIKE '/dev/%'
     )
     AND NOT (
         device LIKE '/dev/bus/usb/%'
-        AND (program IN ('/usr/bin/gphoto2', '/usr/sbin/pcscd'))
+        AND (program IN ('/usr/bin/gphoto2', '/usr/sbin/pcscd', '/usr/lib/gvfsd-mtp'))
         OR cmdline LIKE "%/bin/streamdeck"
     )
     AND NOT (
@@ -104,11 +104,7 @@ WHERE pof.path LIKE '/dev/%'
     )
     AND NOT (
         device = '/dev/auditpipe'
-        AND program LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
-    )
-    AND NOT (
-        device = '/dev/auditpipe'
-        AND program = '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+        AND program_name = 'osqueryd'
     )
     AND NOT (
         device = '/dev/auditsessions'

@@ -19,7 +19,10 @@ AND p.path NOT IN (
     '/usr/bin/gnome-shell',
     '/usr/bin/wireplumber',
     '/usr/libexec/gnome-shell-calendar-server',
-    '/usr/sbin/NetworkManager'
+    '/usr/sbin/NetworkManager',
+    '/usr/local/bin/containerd-shim-runc-v2',
+    '/usr/local/bin/containerd',
+    '/usr/bin/kubelet'
 )
 AND parent_path NOT IN (
     '/usr/bin/containerd-shim-runc-v2',

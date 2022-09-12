@@ -36,7 +36,7 @@ WHERE bytes_per_second > 2000000
     AND NOT (name = 'kernel_task' AND path = '' AND parent IN (0, 1) AND on_disk = -1)
     AND NOT (name = 'launchd' AND path = '/sbin/launchd' AND parent = 0)
     AND NOT (name = 'logd' AND cmdline = '/usr/libexec/logd' AND parent = 1)
-    AND NOT name IN ('firefox', 'gopls', 'containerd', 'slack', 'chrome','goland', 'esbuild', 'slack')
+    AND NOT name IN ('firefox', 'gopls', 'containerd', 'slack', 'chrome','goland', 'esbuild', 'slack', 'com.apple.MobileSoftwareUpdate.UpdateBrainService')
     AND path NOT LIKE '/Applications/%.app/Contents/%'
     AND path NOT LIKE '/System/Applications/%'
     AND path NOT LIKE '/System/Library/%'

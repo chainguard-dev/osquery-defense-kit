@@ -1,4 +1,4 @@
-SELECT path, mtime, ctime, size, type
+SELECT path, uid, gid, mode, mtime, ctime, type, size
 FROM file
 WHERE (
         path LIKE '/lib/.%'
@@ -43,7 +43,8 @@ WHERE (
         '/tmp/.X1-lock',
         '/tmp/.X11-unix/',
         '/tmp/.XIM-unix/',
-        '/var/.Parallels_swap/'
+        '/var/.Parallels_swap/',
+        '/dev/.mdadm/'
     )
     AND path NOT LIKE '/tmp/.#%'
     AND path NOT LIKE '/tmp/.com.google.Chrome.%'
@@ -58,7 +59,4 @@ WHERE (
     AND PATH NOT LIKE '/%bin/bootstrapping/.default_components'
     AND PATH NOT LIKE '%/google-cloud-sdk/.install/'
     AND PATH NOT LIKE '/tmp/.%.gcode'
-    AND (
-        type != 'regular'
-        OR size > 1
-    )
+    AND NOT (type == 'regular' AND (filename LIKE "%.swp" OR size < 1000))
