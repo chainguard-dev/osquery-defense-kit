@@ -2,7 +2,7 @@ SELECT *, (strftime('%s', 'now') - start_time) AS age, disk_bytes_read / (strfti
 FROM processes
 WHERE bytes_per_second > 1750000
 AND age > 180
-AND NOT (name IN ('slack', 'firefox', 'GoogleSoftwareUpdateAgent', 'zsh', 'bash', 'ykman-gui', 'nautilus'))
+AND NOT (name IN ('slack', 'firefox', 'GoogleSoftwareUpdateAgent', 'zsh', 'bash', 'ykman-gui', 'nautilus', 'fish'))
 AND NOT (name='aned' AND cmdline='/usr/libexec/aned' AND parent=1)
 AND NOT (name='bindfs' AND cmdline LIKE 'bindfs -f -o fsname=%')
 AND NOT (name='chrome' AND path='/opt/google/chrome/chrome')
