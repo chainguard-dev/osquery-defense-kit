@@ -24,6 +24,6 @@ AND NOT parent_path IN (
     '/opt/google/chrome/chrome',
     '/usr/bin/gnome-shell'
 )
-AND NOT parent_name IN ('lightdm')
+AND NOT parent_name IN ('lightdm', 'nvim', 'gnome-shell', 'slack')
 AND parent_path NOT LIKE '/app/extra/%'
 AND parent_path NOT LIKE '/opt/homebrew/Cellar/%'
