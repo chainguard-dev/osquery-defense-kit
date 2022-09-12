@@ -1,10 +1,14 @@
 SELECT p.pid,
     p.name,
     p.path,
+    p.euid,
+    p.gid,
     f.directory,
-    p.cmdline
+    p.cmdline,
+    hash.sha256
 FROM processes p
     JOIN file f ON p.path = f.path
+    JOIN hash ON hash.path = p.path
 WHERE directory NOT LIKE '/Applications/%.app/%'
     AND directory NOT LIKE '/home/%'
     AND directory NOT LIKE '/Library/Apple/System/Library%'
@@ -68,10 +72,12 @@ WHERE directory NOT LIKE '/Applications/%.app/%'
         '/usr/libexec/ApplicationFirewall',
         '/usr/libexec/rosetta',
         '/usr/sbin',
+        '/Library/PrivilegedHelperTools',
         '/Library/Printers/DYMO/Utilities',
         '/Library/Developer/CommandLineTools/usr/bin',
         '/usr/share/code',
-        '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateAgent.app/Contents/MacOS'
+        '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateAgent.app/Contents/MacOS',
+        '/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/Resources/Python.app/Contents/MacOS'
     )
     AND f.path NOT IN (
         '/usr/libexec/AssetCache/AssetCache',
@@ -84,7 +90,8 @@ WHERE directory NOT LIKE '/Applications/%.app/%'
         '/usr/lib/firefox/firefox',
         '/usr/lib64/firefox/firefox'
     )
+    AND directory NOT LIKE '/Library/%/%.bundle/Contents/Helpers'
+    AND directory NOT LIKE '/Library/%/Resources/%/Contents/MacOS'
     AND directory NOT LIKE '/Library/Application Support/Adobe/%'
     AND directory NOT LIKE '/Library/Developer/CommandLineTools/Library/%'
-    AND directory NOT LIKE '/Library/%/%.bundle/Contents/Helpers'
     AND NOT (directory='' AND name LIKE "runc%")

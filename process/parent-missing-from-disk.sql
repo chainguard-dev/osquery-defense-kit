@@ -1,20 +1,29 @@
 -- Parent PID is not on disk
 -- Reveals boopkit if a child is spawned
-SELECT p.name,
-    p.pid,
-    p.path AS path,
-    p.cmdline AS cmdline,
-    p.uid,
-    p.gid,
+SELECT p.name AS child_name,
+    p.pid AS child_pid,
+    p.path AS child_path,
+    p.cmdline AS child_cmd,
+    p.uid AS child_uid,
+    p.gid AS child_gid,
+    p.on_disk AS child_on_disk,
     pp.pid AS parent_pid,
     pp.name AS parent_name,
     pp.path AS parent_path,
-    pp.cmdline AS parent_cmdline,
-    pp.uid,
-    pp.gid
+    pp.cmdline AS cmd,
+    pp.on_disk AS parent_on_disk,
+    pp.uid AS parent_uid,
+    pp.gid AS parent_gid
 FROM processes p
     JOIN processes pp ON pp.pid = p.parent
-WHERE pp.on_disk != 1
-AND p.pid > 2
-AND pp.pid != 2 -- kthreadd
-AND pp.path NOT IN ('/opt/google/chrome/chrome')
+WHERE parent_on_disk != 1
+AND child_on_disk = 1
+AND NOT child_pid IN (1,2)
+AND NOT parent_pid IN (1,2) -- launchd, kthreadd
+AND NOT parent_path IN (
+    '/opt/google/chrome/chrome',
+    '/usr/bin/gnome-shell'
+)
+AND NOT parent_name IN ('lightdm')
+AND parent_path NOT LIKE '/app/extra/%'
+AND parent_path NOT LIKE '/opt/homebrew/Cellar/%'

@@ -9,5 +9,6 @@ WHERE family = 17 -- PF_PACKET
 AND name NOT IN (
     'wpa_supplicant',
     'NetworkManager',
-    'dhcpcd'
+    'dhcpcd',
+    'tcpdump'
 )

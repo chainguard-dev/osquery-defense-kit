@@ -8,6 +8,7 @@ WHERE port != 0
     AND lp.address NOT LIKE "fe80::%"
     AND lp.address NOT LIKE "::ffff:127.0.0.%"
     AND NOT (lp.port > 1024 AND lp.protocol = 17)
+    AND NOT (lp.port IN (8000,8080) AND lp.protocol=6)
     -- Linux --
     AND NOT (p.name IN ('spotify','Spotify') AND lp.port IN (1900,5353) AND lp.protocol=17)
     AND NOT (p.name IN ('spotify','Spotify') AND lp.port>32000 AND lp.protocol IN (6,17))
@@ -41,7 +42,7 @@ WHERE port != 0
     AND NOT (p.name='nginx' AND p.cwd='/' AND lp.port=80 AND lp.protocol=6)
     AND NOT (p.name='plugin-container' AND lp.port>32000 AND lp.protocol IN (6,17))
     AND NOT (p.name='node' AND lp.port>1024 AND lp.protocol = 6)
-    AND NOT (p.name='registry' AND lp.port>1024 AND lp.protocol = 6)
+    AND NOT (p.name IN ('registry', 'registry-redirect') AND lp.port>1024 AND lp.protocol = 6)
     AND NOT (p.name='sshd' AND p.cwd='/' AND lp.port=22 AND lp.protocol=6)
     AND NOT (p.name='tailscaled' AND lp.port=4161 AND lp.protocol=6)
     AND NOT (p.name='tailscaled' AND lp.port>40000 AND lp.protocol IN (6,17))

@@ -21,7 +21,10 @@ AND p.path NOT IN (
     '/usr/libexec/gnome-shell-calendar-server',
     '/usr/sbin/NetworkManager'
 )
-AND parent_path NOT IN ('/usr/bin/containerd-shim-runc-v2')
+AND parent_path NOT IN (
+    '/usr/bin/containerd-shim-runc-v2',
+    '/usr/local/bin/containerd-shim-runc-v2'
+)
 AND p.name NOT IN (
     "firewalld",
     "gopls",
@@ -29,5 +32,6 @@ AND p.name NOT IN (
     "Slack Helper (GPU)",
     "Slack Helper",
     "Slack Helper (Renderer)",
-    "mysqld"
+    "mysqld",
+    "containerd-shim"
 )

@@ -25,9 +25,9 @@ WHERE pof.path LIKE '/dev/%'
         '/dev/random',
         '/dev/rfkill',
         '/dev/snd/seq',
+        '/dev/tty',
         '/dev/urandom',
-        '/dev/vga_arbiter',
-        '/dev/tty'
+        '/dev/vga_arbiter'
     )
     AND NOT pof.path LIKE '/dev/hidraw%'
     AND NOT pof.path LIKE '/dev/ttys%'
@@ -93,6 +93,7 @@ WHERE pof.path LIKE '/dev/%'
             'systemd-logind',
             'Xorg',
             'gdm-wayland-session',
+            'gdm-wayland-ses',
             'gdm-x-session',
             'X'
         )

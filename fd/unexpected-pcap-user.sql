@@ -4,9 +4,11 @@ SELECT pmm.pid,
     p.path AS proc_path,
     p.name AS proc_name,
     p.cmdline AS proc_cmd,
-    pmm.path AS lib_path
+    pmm.path AS lib_path,
+    hash.sha25
 FROM process_memory_map pmm
     JOIN processes p ON pmm.pid = p.pid
+    JOIN hash h ON p.path = hash.path
 WHERE pmm.path LIKE "%libpcap%"
     AND euid = 0
     AND proc_path NOT LIKE "/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd"
@@ -14,10 +16,12 @@ WHERE pmm.path LIKE "%libpcap%"
     AND proc_path NOT LIKE "/nix/store/%-systemd-%/lib/systemd/systemd-logind"
     AND proc_path NOT LIKE "/nix/store/%-systemd-%/bin/udevadm"
     AND proc_path NOT LIKE "/System/Library/%"
+    AND proc_path NOT LIKE "/nix/store/%/bin/nix"
     AND proc_path NOT IN (
         '/usr/libexec/UserEventAgent',
         '/usr/sbin/systemstats',
-        '/usr/sbin/cupsd'
+        '/usr/sbin/cupsd',
+        '/usr/bin/tcpdump'
     )
     AND proc_cmd NOT IN (
         '/nix/var/nix/profiles/default/bin/nix-daemon',

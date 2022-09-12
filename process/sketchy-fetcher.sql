@@ -56,5 +56,7 @@ WHERE
     p.cmdline LIKE "%wget %--user-agent%" OR
     p.cmdline LIKE "%wget %--no-check-certificate%"
 )
+AND p.cmdline NOT LIKE "%If-None-Match%"
 AND parent_name NOT IN ('makepkg')
 AND parent_cmdline NOT LIKE "%brew.rb upgrade"
+AND parent_cmdline NOT LIKE "%brew.sh update"

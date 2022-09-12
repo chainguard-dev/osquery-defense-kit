@@ -27,6 +27,7 @@ WHERE
 AND type='regular'
 AND mode NOT LIKE "0%"
 AND mode NOT LIKE "1%"
+AND mode NOT LIKE "2%"
 AND NOT (mode LIKE '4%11' AND uid=0 AND gid=0 AND
     file.path IN (
         '/usr/sbin/wodim',
@@ -79,6 +80,8 @@ AND NOT (mode LIKE '4%11' AND uid=0 AND gid=0 AND
         '/bin/icedax',
         '/bin/cdrecord',
         '/bin/cdda2wav',
+        '/usr/bin/staprun',
+        '/bin/staprun',
         '/usr/libexec/security_authtrampoline'
     )
 )
@@ -241,48 +244,4 @@ AND NOT (mode ='6755' AND uid=0 AND gid=0 AND
         '/usr/lib64/xtest'
     )
 )
-AND NOT (file.path='/bin/chage' AND mode='2755' AND uid=0 AND gid=42)
-AND NOT (file.path='/bin/crontab' AND mode='2755' AND uid=0 AND gid=104)
-AND NOT (file.path='/bin/expiry' AND mode='2755' AND uid=0 AND gid=42)
-AND NOT (file.path='/bin/locate' AND mode='2755' AND uid=0 AND gid=21)
-AND NOT (file.path='/bin/locate' AND mode='2755' AND uid=0 AND gid=979)
-AND NOT (file.path='/bin/plocate' AND mode='2755' AND uid=0 AND gid=979)
-AND NOT (file.path='/bin/slocate' AND mode='2755' AND uid=0 AND gid=21)
-AND NOT (file.path='/bin/ssh-agent' AND mode='2755' AND uid=0 AND gid=118)
-AND NOT (file.path='/bin/staprun' AND mode='4110' AND uid=0 AND gid=156)
-AND NOT (file.path='/bin/wall' AND mode='2755' AND uid=0 AND gid=5)
-AND NOT (file.path='/bin/write.ul' AND mode='2755' AND uid=0 AND gid=5)
-AND NOT (file.path='/bin/write' AND mode='2755' AND uid=0 AND gid=5)
-AND NOT (file.path='/sbin/locate' AND mode='2755' AND uid=0 AND gid=21)
-AND NOT (file.path='/sbin/lockdev' AND mode='2711' AND uid=0 AND gid=54)
-AND NOT (file.path='/sbin/pam_extrausers_chkpwd' AND mode='2755' AND uid=0 AND gid=42)
-AND NOT (file.path='/sbin/pppd' AND mode='4754' AND uid=0 AND gid=30)
-AND NOT (file.path='/sbin/slocate' AND mode='2755' AND uid=0 AND gid=21)
-AND NOT (file.path='/sbin/unix_chkpwd' AND mode='2755' AND uid=0 AND gid=42)
-AND NOT (file.path='/sbin/wall' AND mode='2755' AND uid=0 AND gid=5)
-AND NOT (file.path='/sbin/write' AND mode='2755' AND uid=0 AND gid=5)
-AND NOT (file.path='/usr/bin/chage' AND mode='2755' AND uid=0 AND gid=42)
-AND NOT (file.path='/usr/bin/crontab' AND mode='2755' AND uid=0 AND gid=104)
-AND NOT (file.path='/usr/bin/expiry' AND mode='2755' AND uid=0 AND gid=42)
-AND NOT (file.path='/usr/bin/locate' AND mode='2755' AND uid=0 AND gid=21)
-AND NOT (file.path='/usr/bin/locate' AND mode='2755' AND uid=0 AND gid=979)
-AND NOT (file.path='/usr/bin/plocate' AND mode='2755' AND uid=0 AND gid=979)
-AND NOT (file.path='/usr/bin/slocate' AND mode='2755' AND uid=0 AND gid=21)
-AND NOT (file.path='/usr/bin/ssh-agent' AND mode='2755' AND uid=0 AND gid=118)
-AND NOT (file.path='/usr/bin/staprun' AND mode='4110' AND uid=0 AND gid=156)
-AND NOT (file.path='/usr/bin/wall' AND mode='2755' AND uid=0 AND gid=5)
-AND NOT (file.path='/usr/bin/write.ul' AND mode='2755' AND uid=0 AND gid=5)
-AND NOT (file.path='/usr/bin/write' AND mode='2555' AND uid=0 AND gid=4)
-AND NOT (file.path='/usr/bin/write' AND mode='2755' AND uid=0 AND gid=5)
-AND NOT (file.path='/usr/sbin/locate' AND mode='2755' AND uid=0 AND gid=21)
-AND NOT (file.path='/usr/sbin/lockdev' AND mode='2711' AND uid=0 AND gid=54)
-AND NOT (file.path='/usr/sbin/pam_extrausers_chkpwd' AND mode='2755' AND uid=0 AND gid=42)
-AND NOT (file.path='/usr/sbin/postdrop' AND mode='2755' AND uid=0 AND gid=28)
-AND NOT (file.path='/usr/sbin/postqueue' AND mode='2755' AND uid=0 AND gid=28)
-AND NOT (file.path='/usr/sbin/pppd' AND mode='4754' AND uid=0 AND gid=30)
-AND NOT (file.path='/usr/sbin/slocate' AND mode='2755' AND uid=0 AND gid=21)
-AND NOT (file.path='/usr/sbin/unix_chkpwd' AND mode='2755' AND uid=0 AND gid=42)
-AND NOT (file.path='/usr/sbin/wall' AND mode='2755' AND uid=0 AND gid=5)
-AND NOT (file.path='/usr/sbin/write' AND mode='2755' AND uid=0 AND gid=5)
-AND NOT (file.path='/usr/libexec/camel-lock-helper-1.2' AND mode='2755' AND uid=0 AND gid=8)
-AND NOT (file.path='/usr/libexec/abrt-action-install-debuginfo-to-abrt-cache' AND mode='2755' AND uid=173 AND gid=173)
+

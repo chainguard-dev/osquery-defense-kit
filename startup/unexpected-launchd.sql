@@ -1,4 +1,8 @@
-SELECT * FROM launchd WHERE run_at_load = 1
+SELECT label, name, path, program, program_arguments, signature.authority, signature.identifier, hash.sha256
+FROM launchd
+JOIN signature ON file.path = signature.path
+JOIN hash ON file.path = hash.path
+WHERE run_at_load = 1
 AND NOT (path LIKE "/System/Library/Launch%/com.apple.%.plist" AND (program_arguments LIKE "/System/Library/%" OR program LIKE "/System/Library/%"))
 AND NOT (path LIKE "/System/Library/Launch%/com.apple.%.plist" AND (program_arguments LIKE "/usr/sbin/%" OR program LIKE "/usr/sbin/%"))
 AND NOT (path LIKE "/System/Library/Launch%/com.apple.%.plist" AND (program_arguments LIKE "/sbin/%" OR program LIKE "/sbin/%"))
