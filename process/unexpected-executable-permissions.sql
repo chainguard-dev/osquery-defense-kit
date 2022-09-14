@@ -3,18 +3,22 @@ SELECT p.pid,
     p.path,
     f.mode,
     f.uid,
-    f.gid
+    f.gid,
+    hash.sha256
 FROM processes p
     JOIN file f ON p.path = f.path
+    LEFT JOIN hash ON p.path = hash.path
 WHERE f.mode NOT IN (
-    '0755',
-    '4555',
-    '0555',
-    '0775',
     '0500',
-    '4511',
     '0544',
+    '0555',
+    '0711',
+    '0755',
+    '0775',
+    '2755',
+    '4511',
+    '4555',
+    '4755'
 )
-AND NOT (f.path = '/opt/1Password/1Password-BrowserSupport' AND f.mode = '2755' AND uid>500)
-AND NOT (f.path = '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService' AND f.mode = '0777' AND uid>500)
+AND NOT (f.path = '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService' AND f.mode = '0777' AND f.uid>500)
 AND NOT (f.path = '/usr/bin/fusermount3' AND f.mode='4755')

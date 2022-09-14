@@ -35,18 +35,15 @@ WHERE (
         'Developer ID Application: Seiko Epson Corporation (TXAEAV5RN4)',
         'Developer ID Application: Sanford, L.P. (N3S6676K3E)', -- DYMO
         'Developer ID Application: Canva Pty Ltd (5HD2ARTBFS)',
-        'Software Signing',
+        'Software Signing', -- Apple
         'yabai-cert'
-
     )
     AND program_arguments NOT IN (
-        '/opt/homebrew/opt/skhd/bin/skhd',
-        '/opt/homebrew/opt/mariadb/bin/mysqld_safe --datadir=/opt/homebrew/var/mysql',
-        '/opt/homebrew/opt/mariadb/bin/mysqld_safe',
         '/Applications/Stream Deck.app/Contents/MacOS/Stream Deck --runinbk',
+        '/opt/homebrew/opt/mariadb/bin/mysqld_safe',
+        '/opt/homebrew/opt/skhd/bin/skhd',
         '/opt/homebrew/opt/yubikey-agent/bin/yubikey-agent -l /opt/homebrew/var/run/yubikey-agent.sock',
         '/usr/local/MacGPG2/libexec/fixGpgHome'
     )
     AND program_arguments NOT LIKE '/Users/%/Library/Application Support/com.grammarly.ProjectLlama/Scripts/post-uninstall.sh'
-    AND program_arguments NOT LIKE '/Users/%/homebrew/opt/mysql/bin/mysqld_safe --datadir=/Users/%/homebrew/var/mysql'
-
+    AND program_arguments NOT LIKE '%/mysqld_safe --datadir=%'

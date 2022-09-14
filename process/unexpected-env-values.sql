@@ -33,6 +33,9 @@ WHERE (
     AND NOT pe.value LIKE ':/home/%/.local/share/Steam'
     AND NOT p.path LIKE '%/firefox'
     AND NOT value LIKE 'libmozsandbox.so%'
+    AND NOT (cmdline LIKE "%makepkg%" AND value = "libfakeroot.so")
 ) OR (
     key = 'DYLD_INSERT_LIBRARIES' -- sort of obsolete, but may affect SIP abusers
+) OR (
+    key = 'DYLD_FRAMEWORK_PATH' -- sort of obsolete, but may affect SIP abusers
 )

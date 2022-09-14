@@ -31,11 +31,12 @@ AND NOT (p.name = 'avconferenced' AND remote_port = 1234)
 AND NOT (p.name IN ('chrome', 'Google Chrome Helper', 'Chromium Helper', 'Opera Helper') AND remote_port IN (8080,8000,8008,8443,8888) AND remote_address LIKE '192.168.%')
 AND NOT (p.name IN ('chrome', 'Google Chrome Helper','Brave Browser Helper', 'Chromium Helper', 'Opera Helper') AND remote_port IN (443,80,8009,8080,8888,8443,5228,32211,53,10001,3478,19305,19306,19307,19308,19309))
 AND NOT (p.name IN ('Mail', 'thunderbird', 'Spark', 'Notes') AND remote_port IN (443,587,465,585,993))
-AND NOT (p.name IN ('spotify', 'Spotify Helper', 'Spotify') AND remote_port IN (443,8009,4070,32211))
+AND NOT (p.name IN ('spotify', 'Spotify Helper', 'Spotify') AND remote_port IN (53,443,8009,4070,32211))
 AND NOT (p.name='cloud_sql_proxy' AND remote_port IN (443,3307))
 AND NOT (p.name='coredns' AND remote_port=53 AND protocol=17)
 AND NOT (p.name='java' AND remote_port IN (30031,25565) AND protocol=6)
 AND NOT (p.name='ssh' AND remote_port=22 AND protocol=6)
+AND NOT (p.name='crc' AND remote_port IN (53,443) AND protocol IN (6,17))
 AND NOT (p.name='systemd-resolve' AND remote_port=53 AND protocol=17)
 AND NOT (p.path = '/usr/bin/dnf' AND remote_port IN (80,443))
 AND NOT (p.path = '/usr/bin/gnome-software' AND remote_port = 443)
@@ -47,7 +48,6 @@ AND NOT (p.name IN ('chronyd', 'crc') AND remote_port = 123 AND protocol=17)
 AND NOT (p.path = '/usr/libexec/trustd' AND remote_port IN (80,443))
 AND NOT (p.path LIKE '/private/var/folders/%/Reflect 2.app/Contents/Frameworks/Reflect Helper.app/Contents/MacOS/Reflect Helper' AND p.cwd='/' AND remote_port=443 AND s.protocol IN (6,17))
 AND NOT (p.path LIKE '/private/var/folders/%/Reflect 2.app/Contents/MacOS/Reflect' AND p.cwd='/' AND remote_port=443 AND s.protocol IN (6,17))
-AND NOT (p.path LIKE '/private/var/folders/%/Visual Studio Code.app/Contents/%' AND p.cwd='/' AND remote_port=443 AND protocol IN (6,17))
 AND NOT (p.path LIKE '/Users/%/.cache/trunk/cli/%/trunk' AND remote_port=443 AND s.protocol=6)
 AND NOT (p.path LIKE '/Users/%/Library/Application Support/WebEx Folder/%/Meeting Center.app/Contents/MacOS/Meeting Center' AND p.cwd='/' AND remote_port=443 AND protocol=6)
 AND NOT (p.path LIKE '/Users/%/Library/Application Support/WebEx Folder/%/Meeting Center.app/Contents/MacOS/Meeting Center' AND p.cwd='/' AND remote_port=9000 AND protocol=17)
@@ -80,8 +80,8 @@ AND NOT (remote_port IN (53,443) AND protocol IN (6,17) AND p.name IN (
         'Adobe Desktop Service',
         'Brackets',
         'chainctl',
+        'Code Helper',
         'code',
-        'obs',
         'containerd',
         'controlplane',
         'electron',
@@ -103,9 +103,11 @@ AND NOT (remote_port IN (53,443) AND protocol IN (6,17) AND p.name IN (
         'Microsoft Update Assistant',
         'ngrok',
         'nix',
-        'obsidian',
+        'node',
         'obs-browser-page',
         'obs-ffmpeg-mux',
+        'obs',
+        'obsidian',
         'pacman',
         'pingsender',
         'signal-desktop',
@@ -119,8 +121,7 @@ AND NOT (remote_port IN (53,443) AND protocol IN (6,17) AND p.name IN (
         'tkn',
         'vcluster',
         'xmobar',
-        'zoom',
-        'node'
+        'zoom'
     )
 )
 AND NOT (remote_port=443 AND protocol=6 AND p.name LIKE 'terraform-provider-%')
