@@ -19,5 +19,6 @@ WHERE f.mode NOT LIKE '0%'
         '/usr/bin/login',
         '/usr/bin/ssh-agent',
         '/usr/bin/su',
-        '/usr/bin/sudo'
+        '/usr/bin/sudo',
+        '/usr/bin/top'
     );

@@ -8,9 +8,11 @@ SELECT p.pid,
     pp.path AS parent_path,
     pp.name AS parent_name,
     pp.cmdline AS parent_cmdline,
-    pp.euid AS parent_euid
+    pp.euid AS parent_euid,
+    hash.sha256 AS parent_sha256
 FROM processes p
-    JOIN processes pp ON p.parent = pp.pid
+    LEFT JOIN processes pp ON p.parent = pp.pid
+    LEFT JOIN hash ON pp.path = hash.path
 WHERE
 (
     p.cmdline LIKE "%.onion%" OR
@@ -57,6 +59,9 @@ WHERE
     p.cmdline LIKE "%wget %--no-check-certificate%"
 )
 AND p.cmdline NOT LIKE "%If-None-Match%"
+AND p.cmdline NOT LIKE "%ctlog%"
+AND p.cmdline NOT LIKE "%.well-known/openid-configuration%"
+AND p.cmdline NOT LIKE "--progress-bar"
 AND parent_name NOT IN ('makepkg')
-AND parent_cmdline NOT LIKE "%brew.rb upgrade"
-AND parent_cmdline NOT LIKE "%brew.sh update"
+AND parent_cmdline NOT LIKE "%brew.rb%"
+AND parent_cmdline NOT LIKE "%brew.sh%"

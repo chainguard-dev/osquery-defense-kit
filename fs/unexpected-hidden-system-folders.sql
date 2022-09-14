@@ -1,31 +1,35 @@
-SELECT path, uid, gid, mode, mtime, ctime, type, size
+SELECT file.path, uid, gid, mode, mtime, ctime, type, size, hash.sha256, magic.data
 FROM file
+LEFT JOIN hash ON file.path = hash.path
+LEFT JOIN magic ON file.path = magic.path
 WHERE (
-        path LIKE '/lib/.%'
-        OR path LIKE '/.%'
-        OR path LIKE '/bin/%/.%'
-        OR path LIKE '/lib/%/.%'
-        OR path LIKE '/libexec/.%'
-        OR path LIKE '/Library/.%'
-        OR path LIKE '/sbin/.%'
-        OR path LIKE '/sbin/%/.%'
-        OR path LIKE '/tmp/.%'
-        OR path LIKE '/usr/bin/.%'
-        OR path LIKE '/usr/lib/.%'
-        OR path LIKE '/usr/lib/%/.%'
-        OR path LIKE '/usr/libexec/.%'
-        OR path LIKE '/usr/local/bin/.%'
-        OR path LIKE '/usr/local/lib/.%'
-        OR path LIKE '/usr/local/lib/.%'
-        OR path LIKE '/usr/local/libexec/.%'
-        OR path LIKE '/usr/local/sbin/.%'
-        OR path LIKE '/usr/sbin/.%'
-        OR path LIKE '/var/.%'
-        OR path LIKE '/var/lib/.%'
-        OR path LIKE '/var/tmp/.%'
-        OR path LIKE '/dev/.%'
+        file.path LIKE '/lib/.%'
+        OR file.path LIKE '/.%'
+        OR file.path LIKE '/bin/%/.%'
+        OR file.path LIKE '/lib/%/.%'
+        OR file.path LIKE '/libexec/.%'
+        OR file.path LIKE '/Library/.%'
+        OR file.path LIKE '/sbin/.%'
+        OR file.path LIKE '/sbin/%/.%'
+        OR file.path LIKE '/tmp/.%'
+        OR file.path LIKE '/usr/bin/.%'
+        OR file.path LIKE '/usr/lib/.%'
+        OR file.path LIKE '/usr/lib/%/.%'
+        OR file.path LIKE '/usr/libexec/.%'
+        OR file.path LIKE '/usr/local/bin/.%'
+        OR file.path LIKE '/usr/local/lib/.%'
+        OR file.path LIKE '/usr/local/lib/.%'
+        OR file.path LIKE '/usr/local/libexec/.%'
+        OR file.path LIKE '/usr/local/sbin/.%'
+        OR file.path LIKE '/usr/sbin/.%'
+        OR file.path LIKE '/var/.%'
+        OR file.path LIKE '/var/lib/.%'
+        OR file.path LIKE '/var/tmp/.%'
+        OR file.path LIKE '/dev/.%'
     )
-    AND path NOT IN (
+    -- Avoid mentioning extremely temporary files
+    AND strftime('%s', 'now') - file.ctime > 20
+    AND file.path NOT IN (
         '/.autorelabel',
         '/.file',
         '/.vol/',
@@ -46,17 +50,17 @@ WHERE (
         '/var/.Parallels_swap/',
         '/dev/.mdadm/'
     )
-    AND path NOT LIKE '/tmp/.#%'
-    AND path NOT LIKE '/tmp/.com.google.Chrome.%'
-    AND path NOT LIKE '/tmp/.org.chromium.Chromium%'
-    AND path NOT LIKE '/tmp/.X1%-lock'
-    AND PATH NOT LIKE '/usr/local/%/.keepme'
-    AND PATH NOT LIKE '%/../'
-    AND PATH NOT LIKE '%/./'
-    AND PATH NOT LIKE '%/.build-id/'
-    AND PATH NOT LIKE '%/.dwz/'
-    AND PATH NOT LIKE '%/.updated'
-    AND PATH NOT LIKE '/%bin/bootstrapping/.default_components'
-    AND PATH NOT LIKE '%/google-cloud-sdk/.install/'
-    AND PATH NOT LIKE '/tmp/.%.gcode'
-    AND NOT (type == 'regular' AND (filename LIKE "%.swp" OR size < 1000))
+    AND file.path NOT LIKE '/tmp/.#%'
+    AND file.path NOT LIKE '/tmp/.com.google.Chrome.%'
+    AND file.path NOT LIKE '/tmp/.org.chromium.Chromium%'
+    AND file.path NOT LIKE '/tmp/.X1%-lock'
+    AND file.path NOT LIKE '/usr/local/%/.keepme'
+    AND file.path NOT LIKE '%/../'
+    AND file.path NOT LIKE '%/./'
+    AND file.path NOT LIKE '%/.build-id/'
+    AND file.path NOT LIKE '%/.dwz/'
+    AND file.path NOT LIKE '%/.updated'
+    AND file.path NOT LIKE '/%bin/bootstrapping/.default_components'
+    AND file.path NOT LIKE '%/google-cloud-sdk/.install/'
+    AND file.path NOT LIKE '/tmp/.%.gcode'
+    AND NOT (type == 'regular' AND (filename LIKE "%.swp" OR size < 2))

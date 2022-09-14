@@ -1,6 +1,7 @@
-SELECT lp.address, lp.port, lp.protocol, p.pid, p.name, p.path, p.cmdline, p.cwd
+SELECT lp.address, lp.port, lp.protocol, p.pid, p.name, p.path, p.cmdline, p.cwd, hash.sha256
 FROM listening_ports lp
     JOIN processes p ON lp.pid = p.pid
+    JOIN hash ON p.path = hash.path
 WHERE port != 0
     AND lp.address NOT IN ("224.0.0.251", "::1")
     AND lp.address NOT LIKE "127.0.0.%"
@@ -25,8 +26,8 @@ WHERE port != 0
     AND NOT (p.name='cri-dockerd' AND p.cwd='/' AND lp.port=39887 AND lp.protocol=6)
     AND NOT (p.name='cups-browsed' AND p.cwd='/' AND lp.port=631 AND lp.protocol=17)
     AND NOT (p.name='dashboard' AND p.cwd='/' AND lp.port=9090 AND lp.protocol=6)
-    AND NOT (p.name='dhcpcd' AND p.cwd='/var/empty' AND port IN (17,58) AND lp.protocol=255)
-    AND NOT (p.name='dhcpcd' AND p.cwd='/var/empty' AND port IN (546,68) AND lp.protocol=17)
+    AND NOT (p.name='dhcpcd' AND port IN (17,58) AND lp.protocol=255)
+    AND NOT (p.name='dhcpcd' AND port IN (546,68) AND lp.protocol=17)
     AND NOT (p.name='dleyna-renderer' AND lp.port>1024 AND lp.protocol IN (6,17))
     AND NOT (p.name='dockerd' AND p.cwd='/' AND lp.port=2376 AND lp.protocol=6)
     AND NOT (p.name='etcd' AND p.cwd='/' AND lp.port IN (2379,2380) AND lp.protocol=6)
@@ -81,3 +82,4 @@ WHERE port != 0
     AND NOT (p.name='vpnkit-bridge' AND p.cwd LIKE '/Users/%/Library/Containers/com.docker.docker/Data' AND lp.port>49000 AND lp.protocol=6)
     AND NOT (p.name='com.docker.vpnkit' AND lp.port>49000 AND lp.protocol=6)
     AND NOT (p.name='X11.bin' AND lp.port=6000 AND lp.protocol=6)
+    AND NOT (p.path LIKE "/ko-app/%" AND lp.port > 1024 and lp.protocol=6)

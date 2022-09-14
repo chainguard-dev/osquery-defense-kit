@@ -1,5 +1,8 @@
-SELECT *
+-- TODO: Include augeas k/v pairs?
+SELECT active_state, description, fragment_path, sub_state, hash.sha256, file.mtime, file.size
 FROM systemd_units
+LEFT JOIN hash ON systemd_units.fragment_path = hash.path
+LEFT JOIN file ON systemd_units.fragment_path = file.path
 WHERE active_state != "inactive"
     AND sub_state != "plugged"
     AND sub_state != "mounted"
@@ -17,36 +20,7 @@ WHERE active_state != "inactive"
             id IN (
                 'abrt-journal-core.service',
                 'abrt-oops.service',
-                'abrt-xorg.service',
-                'abrtd.service',
-                'accounts-daemon.service',
-                'acpid.path',
-                'acpid.service',
-                'acpid.socket',
-                'adsl.service',
-                'akmods-keygen.target',
-                'akmods-shutdown.service',
-                'akmods.service',
-                'alsa-restore.service',
-                'alsa-state.service',
-                'alsa-store.service',
-                'anacron.service',
-                'anacron.timer',
-                'apcupsd.service',
-                'apparmor.service',
-                'apport.service',
-                'apt-daily-upgrade.timer',
-                'apt-daily.timer',
-                'archlinux-keyring-wkd-sync.service',
-                'archlinux-keyring-wkd-sync.timer',
-                'audit.service',
-                'auditd.service',
-                'auth-rpcgss-module.service',
-                'autovt@.service',
-                'avahi-daemon.service',
-                'avahi-daemon.socket',
-                'avahi-dnsconfd.service',
-                'basic.target',
+
                 'blk-availability.service',
                 'blockdev@.target',
                 'blockdev@dev-mapper-cryptoswap.target',
