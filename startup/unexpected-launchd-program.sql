@@ -24,3 +24,6 @@ WHERE (
         'Developer ID Application: Valve Corporation (MXGJJ98X76)',
         'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)'
     )
+    AND program NOT IN (
+        '/usr/local/MacGPG2/libexec/shutdown-gpg-agent'
+    )

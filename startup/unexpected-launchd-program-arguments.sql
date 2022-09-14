@@ -22,6 +22,7 @@ WHERE (
     AND l.path NOT LIKE "/System/%"
     AND program_authority NOT IN (
         'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+        'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
         'Developer ID Application: Foxit Corporation (8GN47HTP75)',
         'Developer ID Application: Google LLC (EQHXZ8M8AV)',
         'Developer ID Application: Keybase, Inc. (99229SGT5K)',
@@ -31,10 +32,15 @@ WHERE (
         'Developer ID Application: Mersive Technologies (63B5A5WDNG)',
         'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
         'Developer ID Application: Proton Technologies AG (6UN54H93QT)',
+        'Developer ID Application: Seiko Epson Corporation (TXAEAV5RN4)',
         'Software Signing',
         'yabai-cert'
 
     )
-    AND program_arguments NOT IN ('/opt/homebrew/opt/skhd/bin/skhd')
+    AND program_arguments NOT IN (
+        '/opt/homebrew/opt/skhd/bin/skhd',
+        '/usr/local/MacGPG2/libexec/fixGpgHome'
+    )
     AND program_arguments NOT LIKE '/Users/%/Library/Application Support/com.grammarly.ProjectLlama/Scripts/post-uninstall.sh'
+    AND program_arguments NOT LIKE '/Users/%/homebrew/opt/mysql/bin/mysqld_safe --datadir=/Users/%/homebrew/var/mysql'
 
