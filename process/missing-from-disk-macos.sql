@@ -15,6 +15,7 @@ AND NOT (
         pp.path LIKE "/Applications/Docker.app/Contents/%"
         OR pp.path LIKE "/Users/%/Library/Application Support/Figma/FigmaAgent.app/Contents/MacOS/figma_agent"
         OR p.path LIKE "/opt/homebrew/Cellar/%"
+        OR p.path LIKE "/private/var/folders/%/Visual Studio Code.app/Contents/%"
         OR p.path LIKE "%.sandboxTrash/Slack.app%"
         OR p.cmdline LIKE "%/Applications/Visual Studio Code.app/Contents%"
     )

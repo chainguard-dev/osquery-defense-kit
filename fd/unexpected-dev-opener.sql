@@ -38,7 +38,7 @@ WHERE pof.path LIKE '/dev/%'
     AND NOT pof.path LIKE '/dev/shm/.org.chromium.%'
     AND NOT pof.path LIKE '/dev/shm/wayland.mozilla.%'
     AND NOT (device LIKE '/dev/shm/.%' AND p.name = 'firefox')
-    AND NOT (device LIKE "/dev/video%" AND p.name IN ('chrome', 'firefox', 'obs', 'ffmpeg', 'obs-ffmpeg-mux', 'ffmpeg-mux', 'vlc'))
+    AND NOT (device LIKE "/dev/video%" AND p.name IN ('chrome', 'firefox', 'obs', 'ffmpeg', 'obs-ffmpeg-mux', 'ffmpeg-mux', 'vlc', 'sh', 'pipewire'))
     AND NOT (
         device LIKE '/dev/afsc_type%'
         AND program = '/System/Library/PrivateFrameworks/GenerationalStorage.framework/Versions/A/Support/revisiond'
@@ -125,7 +125,7 @@ WHERE pof.path LIKE '/dev/%'
     )
     AND NOT (
         device = '/dev/console'
-        AND program IN ('/sbin/launchd', '/usr/libexec/kernelmanagerd')
+        AND program IN ('/sbin/launchd', '/usr/libexec/kernelmanagerd', '/usr/libexec/xpcproxy')
     )
     AND NOT (
         device = '/dev/cu.BLTH'

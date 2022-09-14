@@ -28,5 +28,6 @@ AND NOT filename IN (
     'sh',
     'slack',
     'systemd',
+    'busybox',
     'thunderbird'
 )

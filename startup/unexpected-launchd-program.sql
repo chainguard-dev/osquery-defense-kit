@@ -21,6 +21,8 @@ WHERE (
         'Developer ID Application: Docker Inc (9BNSXJN65R)',
         'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
         'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
+        'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
+        'Developer ID Application: Oracle America, Inc. (VB5E2TV963)',
         'Developer ID Application: Valve Corporation (MXGJJ98X76)',
         'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)'
     )

@@ -12,3 +12,6 @@ WHERE (
         OR mtime_age_days > 1000
     )
 AND p.path NOT LIKE "%/opt/brackets/Brackets%"
+AND h.sha256 NOT IN (
+    'f61dcfce6f0c04263780700e0e9a8ff2363edefc344c08bd792fd401ddaa160f' -- jp.co.canon.MSU.app.Installer
+)
