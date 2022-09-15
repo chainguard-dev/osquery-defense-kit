@@ -45,7 +45,7 @@ WHERE pof.path LIKE '/dev/%'
     )
     AND NOT (
         device LIKE '/dev/bpf%'
-        AND program IN ('/usr/libexec/airportd', '/usr/libexec/configd')
+        AND program IN ('/usr/libexec/airportd', '/usr/libexec/configd', '/usr/bin/tcpdump', '/usr/bin/wireshark')
     )
     AND NOT (
         device LIKE '/dev/bus/usb/%'

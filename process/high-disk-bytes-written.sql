@@ -13,6 +13,7 @@ WHERE bytes_per_second > 2000000
     AND age > 120
     AND path NOT IN (
         '/bin/bash',
+        '/usr/bin/curl',
         '/usr/bin/bash',
         '/usr/bin/zsh',
         '/usr/bin/fish',

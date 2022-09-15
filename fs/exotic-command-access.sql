@@ -5,7 +5,7 @@ SELECT path,
     mtime,
     (strftime('%s', 'now') - ctime) AS mtime_age,
     (strftime('%s', 'now') - atime) AS atime_age,
-    (atime_age - uptime.total_seconds) AS atime_after_boot
+    ((strftime('%s', 'now') - atime) - uptime.total_seconds) AS atime_after_boot
 FROM file,
     uptime
 WHERE path IN (
@@ -13,10 +13,10 @@ WHERE path IN (
         '/usr/bin/netcat',
         '/usr/bin/mkfifo',
         '/usr/bin/socat',
-        '/usr/bin/kmod',
+        '/usr/bin/kmod'
     )
-    AND atime_age < 300
-    AND mtime_age > 300
+    AND (strftime('%s', 'now') - atime) < 300
+    AND (strftime('%s', 'now') - ctime) > 300
     AND NOT (
         path = '/usr/bin/kmod'
         AND atime_after_boot < 15

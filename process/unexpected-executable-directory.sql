@@ -46,6 +46,7 @@ WHERE f.directory NOT LIKE '/Applications/%.app/%'
     AND f.directory NOT LIKE '/usr/lib/%'
     AND f.directory NOT LIKE '/usr/lib64/%'
     AND f.directory NOT LIKE '/private/var/folders/%/bin'
+    AND f.directory NOT LIKE '/private/var/folders/%/GoLand'
     AND f.directory NOT LIKE '/tmp/%/bin'
     AND f.directory NOT LIKE '/usr/local/go/pkg/tool/%'
     AND f.directory NOT IN (

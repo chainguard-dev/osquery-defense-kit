@@ -9,35 +9,49 @@ FROM processes p
     LEFT JOIN processes pp ON pp.pid = p.parent
     LEFT JOIN hash ON pp.path = hash.path
 WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
+    -- Editors & terminals mostly
     AND parent_name NOT IN (
         'alacritty',
         'bash',
+        'Code - Insiders Helper (Renderer)',
         'Code Helper (Renderer)',
+        'containerd-shim',
         'dash',
         'demoit',
         'fish',
         'go',
         'goland',
-        'monorail',
-        'containerd-shim',
-        'roxterm',
         'kubectl',
+        'monorail',
+        'nvim',
+        'perl',
+        'python',
+        'roxterm',
         'sdzoomplugin',
         'systemd',
         'terminator',
         'tmux:server',
+        'node',
         'tmux',
+        'test2json',
+        'vi',
+        'vim',
         'wezterm-gui',
         'xfce4-terminal',
         'zsh'
     )
     AND parent_path NOT IN (
+        '/bin/dash',
+        '/bin/sh',
         '/opt/X11/libexec/launchd_startx',
-        '/usr/bin/alacritty',
-        '/usr/bin/crond',
-        '/usr/libexec/gnome-terminal-server',
         '/sbin/launchd',
-        '/usr/bin/login'
+        '/usr/bin/alacritty',
+        '/usr/bin/bash',
+        '/usr/bin/crond',
+        '/usr/bin/login',
+        '/usr/bin/man',
+        '/usr/bin/zsh',
+        '/usr/libexec/gnome-terminal-server'
     )
 
     -- npm run server
@@ -46,6 +60,7 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
     )
 
     AND NOT parent_cmdline LIKE "/Applications/Warp.app/%"
+    AND NOT parent_name LIKE "terraform-provider-%"
     AND NOT parent_name LIKE "Emacs%"
     AND NOT parent_name LIKE "%term%"
     AND NOT parent_name LIKE "%Term%"
