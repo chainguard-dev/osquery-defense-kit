@@ -22,6 +22,8 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
         'go',
         'goland',
         'kubectl',
+        'java',
+        'make',
         'monorail',
         'nvim',
         'perl',
@@ -34,6 +36,7 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
         'node',
         'tmux',
         'test2json',
+        'watch',
         'vi',
         'vim',
         'wezterm-gui',
@@ -64,3 +67,6 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
     AND NOT parent_name LIKE "Emacs%"
     AND NOT parent_name LIKE "%term%"
     AND NOT parent_name LIKE "%Term%"
+
+    -- Oh, NixOS.
+    AND NOT parent_name LIKE "%/bin/bash"

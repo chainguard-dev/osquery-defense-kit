@@ -30,3 +30,13 @@ WHERE p.time > (strftime('%s', 'now') -300)
         p.path = '/usr/bin/kmod'
         AND uptime.total_seconds < 15
     )
+    -- Docker
+    AND NOT (
+        p.path = '/usr/bin/kmod'
+        AND parent_name IN ('dockerd')
+    )
+    AND NOT p.cmdline LIKE 'modprobe -va%'
+    AND NOT p.cmdline LIKE 'modprobe -ab%'
+    AND NOT p.cmdline IN (
+        'lsmod'
+    )

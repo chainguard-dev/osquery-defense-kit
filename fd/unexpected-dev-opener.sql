@@ -90,12 +90,13 @@ WHERE pof.path LIKE '/dev/%'
     AND NOT (
         device LIKE '/dev/tty%'
         AND p.name IN (
-            'systemd-logind',
-            'Xorg',
-            'gdm-wayland-session',
             'gdm-wayland-ses',
+            'gdm-wayland-session',
             'gdm-x-session',
-            'X'
+            'getty',
+            'systemd-logind',
+            'X',
+            'Xorg'
         )
     )
     AND NOT (

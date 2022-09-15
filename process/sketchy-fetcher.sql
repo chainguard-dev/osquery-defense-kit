@@ -68,6 +68,11 @@ WHERE
         p.euid > 500
         AND (
             p.cmdline LIKE "%--dump-header%"
+            OR p.cmdline LIKE "%/api/v%"
+            OR p.cmdline LIKE "%curl -X %"
+            OR p.cmdline LIKE "%go mod %"
+            OR p.cmdline LIKE "%application/json%"
+            OR p.cmdline LIKE "%grpcurl%"
             OR p.cmdline LIKE "%Homebrew%"
             OR p.cmdline LIKE "%If-None-Match%"
             OR p.cmdline LIKE "%ctlog%"
