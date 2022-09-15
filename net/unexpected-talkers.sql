@@ -21,6 +21,7 @@ AND s.remote_address NOT LIKE '10.%'
 AND s.remote_address NOT LIKE '::ffff:10.%'
 AND s.remote_address NOT LIKE 'fc00:%'
 AND s.state != 'LISTEN'
+AND NOT (remote_port=53 AND protocol=17) -- DNS
 AND NOT (p.cmdline LIKE '%.com.flexibits.fantastical2.mac.helper' AND remote_port = 443)
 AND NOT (p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%' AND remote_port = 443)
 AND NOT (p.name = 'launcher' AND p.cwd='/' AND remote_port=443 AND protocol=6)

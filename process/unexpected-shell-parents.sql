@@ -24,6 +24,7 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
         'kubectl',
         'java',
         'make',
+        'skhd',
         'monorail',
         'nvim',
         'perl',
@@ -53,6 +54,7 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
         '/usr/bin/crond',
         '/usr/bin/login',
         '/usr/bin/man',
+        '/usr/libexec/periodic-wrapper',
         '/usr/bin/zsh',
         '/usr/libexec/gnome-terminal-server'
     )
@@ -61,12 +63,12 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
     AND NOT p.cmdline IN (
         'sh -c -- exec-bin node_modules/.bin/hugo/hugo server'
     )
-
     AND NOT parent_cmdline LIKE "/Applications/Warp.app/%"
     AND NOT parent_name LIKE "terraform-provider-%"
     AND NOT parent_name LIKE "Emacs%"
     AND NOT parent_name LIKE "%term%"
     AND NOT parent_name LIKE "%Term%"
+    AND NOT (parent_name='sshd' AND p.cmdline LIKE "%askpass%")
 
     -- Oh, NixOS.
     AND NOT parent_name LIKE "%/bin/bash"
