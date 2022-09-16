@@ -28,3 +28,5 @@ AND NOT (
 AND NOT (file.directory LIKE "/tmp/tmp%" AND gid=0 AND uid> 300 AND uid< 350)
 -- Don't alert if it's only on disk for a moment
 AND NOT (file.directory LIKE "/tmp/%" AND (strftime('%s', 'now') - ctime) < 60)
+-- macOS updates
+AND NOT file.directory LIKE "/tmp/msu-target-%"

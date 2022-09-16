@@ -80,10 +80,12 @@ WHERE p.time > (strftime('%s', 'now') -300)
             OR p.cmdline LIKE "%ctlog%"
             OR p.cmdline LIKE "%.well-known/openid-configuration%"
             OR p.cmdline LIKE "%/openid/v1/jwks%"
-            OR p.cmdline LIKE "--progress-bar"
+            OR p.cmdline LIKE "%--progress-bar%"
             OR parent_cmdline LIKE "%brew.rb%"
             OR parent_cmdline LIKE "%brew.sh%"
             OR p.cmdline LIKE "git %"
             OR p.cmdline LIKE "%LICENSES/vendor/%"
+            OR p.cmdline LIKE "%localhost:%"
+            OR p.cmdline LIKE "%127.0.0.1:%"
         )
     )
