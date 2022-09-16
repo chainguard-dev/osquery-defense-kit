@@ -17,6 +17,7 @@ p.cwd LIKE "%/.%" AND NOT (
     p.cwd LIKE "%/.vscode/extensions%" OR
     p.cwd LIKE "/Users/%/.%" OR
     p.cwd LIKE "/home/%/.%" OR
+    p.cwd LIKE "/Library/Apple/System/Library/InstallerSandboxes/.PKInstallSandboxManager-SystemSoftware/%" OR
     p.name = 'bindfs' OR
     p.path="/usr/libexec/dirhelper"
 )

@@ -26,9 +26,16 @@ WHERE p.time > (strftime('%s', 'now') -300)
         '/usr/bin/kmod'
     )
     -- Things that could reasonably happen at boot.
+    AND NOT (p.path="/usr/bin/kmod" AND parent_path="/usr/lib/systemd/systemd" AND parent_cmdline="/sbin/init")
+
     AND NOT (
         p.path = '/usr/bin/kmod'
         AND uptime.total_seconds < 15
+    )
+    -- gpgtools
+    AND NOT (
+        p.path = '/usr/bin/mkfifo'
+        AND p.cmdline LIKE "%/org.gpgtools.log.%/fifo"
     )
     -- Docker
     AND NOT (
@@ -37,6 +44,8 @@ WHERE p.time > (strftime('%s', 'now') -300)
     )
     AND NOT p.cmdline LIKE 'modprobe -va%'
     AND NOT p.cmdline LIKE 'modprobe -ab%'
+    AND NOT p.cmdline LIKE '%modprobe overlay'
+    AND NOT p.cmdline LIKE '%modprobe aufs'
     AND NOT p.cmdline IN (
         'lsmod'
     )

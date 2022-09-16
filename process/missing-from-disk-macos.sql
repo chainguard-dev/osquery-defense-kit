@@ -1,6 +1,8 @@
-SELECT p.pid, p.path, p.parent, p.state, p.cwd, p.gid, p.uid, p.euid, p.cmdline, p.on_disk, p.state, pp.on_disk AS parent_on_disk, pp.path AS parent_path, pp.cmdline AS parent_cmdline, hash.sha256 AS parent_hash
+SELECT p.pid, p.path, p.parent, p.state, p.cwd, p.gid, p.uid, p.euid, p.cmdline, p.cwd,
+p.on_disk, p.state, pp.on_disk AS parent_on_disk, pp.path AS parent_path, pp.cmdline AS parent_cmdline,
+pp.cwd AS parent_cwd, hash.sha256 AS parent_sha256
 FROM processes p
-JOIN processes pp ON p.parent = pp.pid
+LEFT JOIN processes pp ON p.parent = pp.pid
 LEFT JOIN hash ON pp.path = hash.path
 WHERE p.on_disk != 1
 AND p.pid > 0
@@ -14,6 +16,7 @@ AND NOT (
     (
         pp.path LIKE "/Applications/Docker.app/Contents/%"
         OR pp.path LIKE "/Users/%/Library/Application Support/Figma/FigmaAgent.app/Contents/MacOS/figma_agent"
+        OR pp.path = '/Library/Apple/System/Library/CoreServices/XProtect.app/Contents/XPCServices/XProtectPluginService.xpc/Contents/MacOS/XProtectPluginService'
         OR p.path LIKE "/opt/homebrew/Cellar/%"
         OR p.path LIKE "/private/var/folders/%/Visual Studio Code.app/Contents/%"
         OR p.path LIKE "%.sandboxTrash/Slack.app%"

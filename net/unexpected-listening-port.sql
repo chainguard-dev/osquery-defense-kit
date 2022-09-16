@@ -1,7 +1,7 @@
 SELECT lp.address, lp.port, lp.protocol, p.pid, p.name, p.path, p.cmdline, p.cwd, hash.sha256
 FROM listening_ports lp
-    JOIN processes p ON lp.pid = p.pid
-    JOIN hash ON p.path = hash.path
+    LEFT JOIN processes p ON lp.pid = p.pid
+    LEFT JOIN hash ON p.path = hash.path
 WHERE port != 0
     AND lp.address NOT IN ("224.0.0.251", "::1")
     AND lp.address NOT LIKE "127.0.0.%"
@@ -40,7 +40,7 @@ WHERE port != 0
     AND NOT (p.name='kubectl' AND p.cmdline LIKE '%port-forward%' AND lp.port>1023 AND lp.protocol=6)
     AND NOT (p.name='metrics-sidecar' AND p.cwd='/' AND lp.port=8000 AND lp.protocol=6)
     AND NOT (p.name='NetworkManager' AND p.cwd='/' AND lp.port=58 AND lp.protocol=255)
-    AND NOT (p.name='nginx' AND p.cwd='/' AND lp.port=80 AND lp.protocol=6)
+    AND NOT (p.name IN ('nginx', 'crc') AND p.cwd='/' AND lp.port IN (80,443) AND lp.protocol=6)
     AND NOT (p.name='plugin-container' AND lp.port>32000 AND lp.protocol IN (6,17))
     AND NOT (p.name='node' AND lp.port>1024 AND lp.protocol = 6)
     AND NOT (p.name IN ('registry', 'registry-redirect') AND lp.port>1024 AND lp.protocol = 6)
@@ -65,21 +65,32 @@ WHERE port != 0
     AND NOT (p.name='hugo' AND lp.port>1024 AND lp.protocol=6)
     AND NOT (p.name='IPNExtension' AND p.cwd LIKE '/Users/%/Library/Containers/io.tailscale.ipn.macos.network-extension/Data' AND lp.port>32000 AND lp.protocol IN (6,17))
     AND NOT (p.name='launchd' AND p.cwd='/' AND lp.port=22 AND lp.protocol=6)
-    AND NOT (p.name IN ('LogiMgrDaemon', 'rapportd', 'AirPlayXPCHelper', 'Sketch', 'SketchMirrorHelper') AND p.cwd='/' AND lp.port>49000 AND lp.protocol IN (6,17))
+    AND NOT (p.name='GarageBand' AND lp.port=51100 AND lp.protocol=6)
+
     AND NOT (p.name='mariadbd' AND p.cwd='/opt/homebrew/var/mysql' AND lp.port=3306 AND lp.protocol=6)
     AND NOT (p.name='node' AND p.cwd LIKE '/Users/%/app' AND lp.port>5000 AND lp.protocol=6)
     AND NOT (p.name='mysqld' AND port IN (3306,33060) AND lp.protocol=6)
     AND NOT (p.name='apcupsd' AND p.cwd='/' AND lp.port=3551 AND lp.protocol=6)
     AND NOT (p.name='rapportd' AND p.cwd='/' AND lp.port=3722 AND lp.protocol=17)
-    AND NOT (p.name='1Password-BrowserSupport' AND lp.port >49000 AND lp.protocol=6)
-    AND NOT (p.name='remoted' AND p.cwd='/' AND lp.port>49000 AND lp.protocol IN (6,17))
     AND NOT (p.name='RescueTime' AND p.cwd='/' AND lp.port=16587 AND lp.protocol=6)
     AND NOT (p.name='kdenlive' AND lp.port=1337 AND lp.protocol=6)
     AND NOT (p.name='sharingd' AND p.cwd='/' AND lp.port IN (8770,8771) AND lp.protocol=6)
     AND NOT (p.name='syncthing' AND lp.port > 20000 AND lp.protocol IN (6,17))
-    AND NOT (p.name='steam' AND lp.port = 270366 AND lp.protocol IN (6,17))
+    AND NOT (p.name='steam' AND lp.port >20000 AND lp.protocol IN (6,17))
     AND NOT (p.name='systemd-resolve' AND p.cwd='/' AND lp.port=5355 AND lp.protocol IN (6,17))
-    AND NOT (p.name='vpnkit-bridge' AND p.cwd LIKE '/Users/%/Library/Containers/com.docker.docker/Data' AND lp.port>49000 AND lp.protocol=6)
-    AND NOT (p.name='com.docker.vpnkit' AND lp.port>49000 AND lp.protocol=6)
     AND NOT (p.name='X11.bin' AND lp.port=6000 AND lp.protocol=6)
     AND NOT (p.path LIKE "/ko-app/%" AND lp.port > 1024 and lp.protocol=6)
+
+    -- Ephemerals
+    AND NOT (p.name IN (
+        'LogiMgrDaemon',
+        'rapportd',
+        'vpnkit-bridge',
+        'com.docker.vpnkit',
+        '1Password-BrowserSupport',
+        'remoted',
+        'AirPlayXPCHelper',
+        'Sketch',
+        'SketchMirrorHelper'
+    ) AND lp.port>49000 AND lp.protocol IN (6,17))
+

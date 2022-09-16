@@ -68,7 +68,11 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
     AND NOT parent_name LIKE "Emacs%"
     AND NOT parent_name LIKE "%term%"
     AND NOT parent_name LIKE "%Term%"
+    AND NOT p.cmdline LIKE "%gcloud config config-helper%"
+    AND NOT p.cmdline LIKE "%/Library/Apple/System/Library/InstallerSandboxes%"
+    AND NOT parent_cmdline LIKE "%gcloud.py config config-helper%"
     AND NOT (parent_name='sshd' AND p.cmdline LIKE "%askpass%")
+    AND NOT parent_path LIKE "/Users/%/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateAgent.app/Contents/MacOS/GoogleSoftwareUpdateAgent"
 
     -- Oh, NixOS.
     AND NOT parent_name LIKE "%/bin/bash"

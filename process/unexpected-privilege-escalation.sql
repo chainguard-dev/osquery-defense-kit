@@ -17,7 +17,14 @@ WHERE p.euid < pp.euid
         '/usr/bin/login',
         '/usr/bin/sudo',
         '/usr/bin/doas',
-        '/bin/ps'
+        '/bin/ps',
+        '/usr/bin/top'
     )
     AND p.path NOT LIKE "/nix/store/%/bin/sudo"
     AND p.path NOT LIKE "/nix/store/%/bin/dhcpcd"
+    AND NOT (
+        p.name = 'polkit-agent-he' AND parent_path='/usr/bin/gnome-shell'
+    )
+    AND NOT (
+        p.name = 'fusermount3' AND parent_path='/usr/lib/xdg-document-portal'
+    )

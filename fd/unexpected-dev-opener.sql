@@ -96,6 +96,7 @@ WHERE pof.path LIKE '/dev/%'
             'getty',
             'systemd-logind',
             'X',
+            'agetty',
             'Xorg'
         )
     )
