@@ -225,10 +225,16 @@ AND NOT (mode LIKE '4%55' AND uid=0 AND gid=0 AND
         '/usr/libexec/polkit-agent-helper-1',
         '/bin/newgidmap',
         '/bin/newuidmap'
+        '/usr/bin/newgidmap',
+        '/usr/bin/newuidmap',
+        '/bin/ubuntu-core-launcher',
     )
 )
 AND NOT (mode ='4754' AND uid=0 AND gid=30 AND
-    file.path IN ('/usr/sbin/pppd', '/sbin/ppid')
+    file.path IN (
+        '/usr/sbin/pppd',
+        '/sbin/ppd'
+    )
 )
 
 AND NOT (mode ='6755' AND uid=0 AND gid=0 AND

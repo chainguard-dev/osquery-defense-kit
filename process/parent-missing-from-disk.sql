@@ -24,6 +24,14 @@ AND NOT parent_path IN (
     '/opt/google/chrome/chrome',
     '/usr/bin/gnome-shell'
 )
-AND NOT parent_name IN ('lightdm', 'nvim', 'gnome-shell', 'slack')
+-- long-running launchers
+AND NOT parent_name IN (
+    'lightdm',
+    'nvim',
+    'gnome-shell',
+    'slack'
+)
+-- These alerts were useless
+AND NOT (parent_path = "" AND uid > 500)
 AND parent_path NOT LIKE '/app/extra/%'
 AND parent_path NOT LIKE '/opt/homebrew/Cellar/%'

@@ -3,6 +3,8 @@
 SELECT p.pid,
     p.path,
     p.cmdline,
+    REGEX_MATCH(p.cmdline, '/(\d+\.\d+\.\d+\.\d+)[:/]', 1) AS remote_address,
+    REGEX_MATCH(p.cmdline, '/(:\d+\/)/', 1) AS remote_port,
     p.mode,
     p.cwd,
     p.euid,
@@ -17,50 +19,22 @@ FROM process_events p
     LEFT JOIN processes pp ON p.parent = pp.pid
     LEFT JOIN hash ON pp.path = hash.path
 WHERE p.time > (strftime('%s', 'now') -300)
+    -- NOTE: Sync remaining portion with sketchy-fetchers
     AND (
-        p.cmdline LIKE "%.onion%"
+        INSTR(p.cmdline, 'wget ') > 0
+        OR INSTR(p.cmdline, 'curl ') > 0
+    ) AND (
+        remote_address NOT IN ("", "127.0.0.1", "::1")
+        OR remote_port != ""
+        OR p.cmdline LIKE "%.onion%"
         OR p.cmdline LIKE "%tor2web%"
         OR p.cmdline LIKE "%aliyun%"
         OR p.cmdline LIKE "%pastebin%"
-        OR p.cmdline LIKE "%curl %/.%"
-        OR p.cmdline LIKE "%curl %.0%"
-        OR p.cmdline LIKE "%curl %.1%"
-        OR p.cmdline LIKE "%curl %.2%"
-        OR p.cmdline LIKE "%curl %.3%"
-        OR p.cmdline LIKE "%curl %.4%"
-        OR p.cmdline LIKE "%curl %.5%"
-        OR p.cmdline LIKE "%curl %.6%"
-        OR p.cmdline LIKE "%curl %.7%"
-        OR p.cmdline LIKE "%curl %.8%"
-        OR p.cmdline LIKE "%curl %.9%"
-        OR p.cmdline LIKE "%curl %:0%"
-        OR p.cmdline LIKE "%curl %:1%"
-        OR p.cmdline LIKE "%curl %:2%"
-        OR p.cmdline LIKE "%curl %:3%"
-        OR p.cmdline LIKE "%curl %:4%"
-        OR p.cmdline LIKE "%curl %:5%"
-        OR p.cmdline LIKE "%curl %:6%"
-        OR p.cmdline LIKE "%curl %:7%"
-        OR p.cmdline LIKE "%curl %:8%"
-        OR p.cmdline LIKE "%curl %:9%"
         OR p.cmdline LIKE "%curl %--user-agent%"
-        OR p.cmdline LIKE "%curl -fsSL%"
         OR p.cmdline LIKE "%curl -k%"
         OR p.cmdline LIKE "%curl%--insecure%"
-        OR p.cmdline LIKE "%wget %/.%"
-        OR p.cmdline LIKE "%wget %.0%"
-        OR p.cmdline LIKE "%wget %.1%"
-        OR p.cmdline LIKE "%wget %.2%"
-        OR p.cmdline LIKE "%wget %.3%"
-        OR p.cmdline LIKE "%wget %.4%"
-        OR p.cmdline LIKE "%wget %.5%"
-        OR p.cmdline LIKE "%wget %.6%"
-        OR p.cmdline LIKE "%wget %.7%"
-        OR p.cmdline LIKE "%wget %.8%"
-        OR p.cmdline LIKE "%wget %.9%"
         OR p.cmdline LIKE "%wget %--user-agent%"
         OR p.cmdline LIKE "%wget %--no-check-certificate%"
-        -- Any fetch as a privileged user should be considered sketchy
         OR (p.cmdline LIKE "%wget %" AND p.euid < 500)
         OR (p.cmdline LIKE "%curl %" AND p.euid < 500)
     )

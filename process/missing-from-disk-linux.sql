@@ -13,17 +13,23 @@ AND mnt_namespace IN (
         JOIN processes ON processes.pid = process_namespaces.pid
         WHERE processes.name IN ('osqueryi', 'osqueryd')
 )
+-- Persistent apps that are updated often
 AND p.path NOT IN (
+    "/opt/google/chrome/chrome_crashpad_handler",
     "/opt/google/chrome/chrome",
+    "/opt/google/chrome/nacl_helper",
     "/usr/bin/containerd",
     "/usr/bin/dbus-broker-launch",
     "/usr/bin/dbus-broker",
-    "/usr/bin/wireplumber",
-    "/usr/bin/gnome-shell",
-    "/usr/libexec/gnome-shell-calendar-server",
+    "/usr/bin/fusermount3",
     "/usr/bin/gjs-console",
-    "/opt/google/chrome/chrome_crashpad_handler",
-    "/opt/google/chrome/nacl_helper"
+    "/usr/bin/gnome-shell",
+    "/usr/bin/kded5",
+    "/usr/bin/pipewire-pulse",
+    "/usr/bin/tailscaled",
+    "/usr/bin/wireplumber",
+    "/usr/lib/electron19/electron",
+    "/usr/libexec/gnome-shell-calendar-server"
 )
 
 -- AppImage

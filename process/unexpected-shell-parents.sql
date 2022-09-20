@@ -17,12 +17,15 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
         'Code Helper (Renderer)',
         'containerd-shim',
         'dash',
+        'FinderSyncExtension',
+        'PK-Backend',
         'demoit',
         'fish',
         'go',
         'goland',
         'kubectl',
         'java',
+        'swift',
         'make',
         'skhd',
         'monorail',
@@ -54,6 +57,7 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
         '/usr/bin/crond',
         '/usr/bin/login',
         '/usr/bin/man',
+        '/usr/bin/sudo',
         '/usr/libexec/periodic-wrapper',
         '/usr/bin/zsh',
         '/usr/libexec/gnome-terminal-server'
@@ -64,6 +68,8 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
         'sh -c -- exec-bin node_modules/.bin/hugo/hugo server'
     )
     AND NOT parent_cmdline LIKE "/Applications/Warp.app/%"
+    AND NOT parent_cmdline LIKE "%Code Helper%"
+
     AND NOT parent_name LIKE "terraform-provider-%"
     AND NOT parent_name LIKE "Emacs%"
     AND NOT parent_name LIKE "%term%"
