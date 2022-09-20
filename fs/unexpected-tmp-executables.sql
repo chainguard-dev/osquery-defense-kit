@@ -1,6 +1,7 @@
-SELECT file.path, uid, gid, mode, file.mtime, file.size, hash.sha256
+SELECT file.path, uid, gid, mode, file.mtime, file.size, hash.sha256, magic.data
 FROM file
-JOIN hash on file.path = hash.path
+LEFT JOIN hash on file.path = hash.path
+LEFT JOIN magic ON file.path = magic.path
 WHERE (
     file.path LIKE "/tmp/%%"
     OR file.path LIKE "/var/tmp/%%"
