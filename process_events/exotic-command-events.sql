@@ -1,10 +1,10 @@
 -- Ported from exotic-commands
--- Designed for execution every minute (where the parent may still be around)
+-- Designed for execution every 15 seconds (where the parent may still be around)
 SELECT p.pid,
     p.path,
     REPLACE(p.path, RTRIM(p.path, REPLACE(p.path, '/', '')), '') AS basename,
     -- On macOS there is often a trailing space
-    TRIM(cmd) AS cmd,
+    TRIM(p.cmdline) AS cmd,
     p.mode,
     p.cwd,
     p.euid,
@@ -12,13 +12,13 @@ SELECT p.pid,
     p.syscall,
     pp.path AS parent_path,
     pp.name AS parent_name,
-    pcmd AS parent_cmdline,
+    p.cmdline AS parent_cmd,
     pp.euid AS parent_euid,
     hash.sha256 AS parent_sha256
 FROM uptime, process_events p
     LEFT JOIN processes pp ON p.parent = pp.pid
     LEFT JOIN hash ON pp.path = hash.path
-WHERE p.time > (strftime('%s', 'now') -60)
+WHERE p.time > (strftime('%s', 'now') -15)
     AND
     (
         basename IN (
@@ -83,7 +83,7 @@ WHERE p.time > (strftime('%s', 'now') -60)
     AND NOT (
         p.path IN ('/usr/bin/kmod', '/bin/kmod')
         AND parent_path='/usr/lib/systemd/systemd'
-        AND parent_cmdline='/sbin/init'
+        AND parent_cmd='/sbin/init'
     )
     AND NOT (
         p.path IN ('/usr/bin/kmod', '/bin/kmod')

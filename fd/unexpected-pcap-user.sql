@@ -1,29 +1,38 @@
 SELECT pmm.pid,
     p.uid,
     p.gid,
-    p.path AS proc_path,
-    p.name AS proc_name,
-    p.cmdline AS proc_cmd,
     pmm.path AS lib_path,
-    hash.sha25
+    p.path AS child_path,
+    p.name AS child_name,
+    p.cmdline AS child_cmd,
+    p.cwd AS child_cwd,
+    h.sha256 AS child_sha256,
+    pp.path AS parent_path,
+    pp.name AS parent_name,
+    pp.cmdline AS parent_cmd,
+    pp.cwd AS parent_cwd,
+    pp.euid AS parent_euid,
+    ph.sha256 AS parent_sha256
 FROM process_memory_map pmm
-    JOIN processes p ON pmm.pid = p.pid
-    JOIN hash h ON p.path = hash.path
+    LEFT JOIN processes p ON pmm.pid = p.pid
+    LEFT JOIN hash h ON p.path = h.path
+    LEFT JOIN processes pp ON p.parent = pp.pid
+    LEFT JOIN hash AS ph ON pp.path = ph.path
 WHERE pmm.path LIKE "%libpcap%"
-    AND euid = 0
-    AND proc_path NOT LIKE "/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd"
-    AND proc_path NOT LIKE "/nix/store/%-systemd-%/lib/systemd/systemd-journald"
-    AND proc_path NOT LIKE "/nix/store/%-systemd-%/lib/systemd/systemd-logind"
-    AND proc_path NOT LIKE "/nix/store/%-systemd-%/bin/udevadm"
-    AND proc_path NOT LIKE "/System/Library/%"
-    AND proc_path NOT LIKE "/nix/store/%/bin/nix"
-    AND proc_path NOT IN (
+    AND p.euid = 0
+    AND child_path NOT LIKE "/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd"
+    AND child_path NOT LIKE "/nix/store/%-systemd-%/lib/systemd/systemd-journald"
+    AND child_path NOT LIKE "/nix/store/%-systemd-%/lib/systemd/systemd-logind"
+    AND child_path NOT LIKE "/nix/store/%-systemd-%/bin/udevadm"
+    AND child_path NOT LIKE "/System/Library/%"
+    AND child_path NOT LIKE "/nix/store/%/bin/nix"
+    AND child_path NOT IN (
         '/usr/libexec/UserEventAgent',
         '/usr/sbin/systemstats',
         '/usr/sbin/cupsd',
         '/usr/bin/tcpdump'
     )
-    AND proc_cmd NOT IN (
+    AND child_cmd NOT IN (
         '/nix/var/nix/profiles/default/bin/nix-daemon',
         '/run/current-system/systemd/lib/systemd/systemd',
         '/usr/bin/python3 -s /usr/sbin/firewalld --nofork --nopid'

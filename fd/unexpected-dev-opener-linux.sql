@@ -39,6 +39,7 @@ WHERE pof.path LIKE '/dev/%'
     AND pof.path NOT LIKE "/dev/snd/%"
     AND pof.path NOT LIKE "/dev/tty%"
     AND pof.path NOT LIKE "/dev/hidraw%"
+    AND pof.path NOT LIKE "/dev/shm/.com.google.Chrome.%"
     AND NOT dir_exception IN (
         '/dev/bus/usb,pcscd',
         '/dev/bus/usb/001,pcscd',

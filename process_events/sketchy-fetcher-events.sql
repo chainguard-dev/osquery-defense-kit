@@ -1,5 +1,5 @@
 -- Events version of sketchy-fetchers
--- Designed for execution every 5 minutes (where the parent may still be around)
+-- Designed for execution every minute (where the parent may still be around)
 SELECT p.pid,
     p.path,
     p.cmdline,
@@ -18,7 +18,7 @@ SELECT p.pid,
 FROM process_events p
     LEFT JOIN processes pp ON p.parent = pp.pid
     LEFT JOIN hash ON pp.path = hash.path
-WHERE p.time > (strftime('%s', 'now') -300)
+WHERE p.time > (strftime('%s', 'now') -60)
     -- NOTE: Sync remaining portion with sketchy-fetchers
     AND (
         INSTR(p.cmdline, 'wget ') > 0

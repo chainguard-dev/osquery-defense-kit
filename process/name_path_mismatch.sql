@@ -1,30 +1,60 @@
 SELECT p.name,
-    SUBSTR(SPLIT(p.name, ":./-", 0), 0, 8) AS short_name,
-    SUBSTR(SPLIT(p.name, ":./-", 0), 0, 8) AS short_filename,
+    TRIM(SUBSTR(SPLIT(p.name, ":./ ", 0), 0, 15)) AS short_name,
+    TRIM(SUBSTR(SPLIT(f.filename, ":./ ", 0), 0, 15)) AS short_filename,
     f.filename,
     p.path,
-    p.cmdline
+    p.cwd,
+    p.cmdline AS cmd,
+    pp.path AS parent_path,
+    pp.name AS parent_name,
+    pp.cmdline AS parent_cmd,
+    pp.cwd AS parent_cwd,
+    pp.euid AS parent_euid,
+    hash.sha256 AS child_sha256,
+    phash.sha256 AS parent_sha256,
+    CONCAT(
+        'name=',
+        TRIM(SUBSTR(SPLIT(p.name, ":./ ", 0), 0, 15)),
+        ',file=',
+        TRIM(SUBSTR(SPLIT(f.filename, ":./ ", 0), 0, 15)),
+        ',',
+        MIN(p.uid,500)
+    ) AS exception_key
 FROM processes p
-    JOIN file f ON p.path = f.path
+    LEFT JOIN file f ON p.path = f.path
+    LEFT JOIN processes pp ON p.parent = pp.pid
+    LEFT JOIN hash ON p.path = hash.path
+    LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE short_filename != short_name
-AND NOT (p.name='gnome-character' AND filename='gjs-console')
-AND NOT (p.name='mysqld' AND filename='mariadbd')
-AND NOT (p.name='systemd-udevd' AND filename='udevadm')
-AND NOT (p.short_name = 'npm' AND filename='node')
-AND NOT (p.name='GUI Thread' AND filename='resolve')
-AND NOT (p.name='X' AND filename='Xorg')
-AND NOT p.path LIKE '/nix/store/%/bin/bash'
-AND NOT p.path LIKE '/usr/bin/python3%'
-AND NOT filename IN (
-    'bash',
-    'chrome',
-    'dash',
-    'electron',
-    'firefox',
-    'ruby',
-    'sh',
-    'slack',
-    'systemd',
-    'busybox',
-    'thunderbird'
+AND NOT cmd LIKE "/nix/store/%/bin/bash%"
+AND exception_key NOT IN (
+    'name=(sd-pam),file=systemd,500',
+    'name=chrome-gnome-s,file=python3,500',
+    'name=code-oss,file=electron,500',
+    'name=firefox-wrappe,file=firefox,500',
+    'name=firewalld,file=python3,0',
+    'name=gjs,file=gjs-console,500',
+    'name=gnome-tweak-to,file=python3,500',
+    'name=gsettings-hel,file=gsettings-help,500',
+    'name=Isolated,file=firefox,500',
+    'name=mysqld,file=mariadbd,500',
+    'name=networkd-dispa,file=python3,0',
+    'name=nix-daemon,file=nix,0',
+    'name=npm,file=node,500',
+    'name=osqueryi,file=osqueryd,500',
+    'name=phpstorm,file=dash,500',
+    'name=Privileged,file=firefox,500',
+    'name=RDD,file=firefox,500',
+    'name=sh,file=dash,0',
+    'name=sh,file=dash,500',
+    'name=Socket,file=firefox,500',
+    'name=streamdeck,file=python3,500',
+    'name=systemd-udevd,file=udevadm,0',
+    'name=terminator,file=python3,500',
+    'name=unattended-upg,file=python3,0',
+    'name=Utility,file=firefox,500',
+    'name=Web,file=firefox,500',
+    'name=WebExtensions,file=firefox,500',
+    'name=X,file=Xorg,0'
 )
+GROUP by short_name, short_filename

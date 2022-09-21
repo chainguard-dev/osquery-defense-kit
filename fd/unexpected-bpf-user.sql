@@ -17,7 +17,7 @@ FROM process_memory_map pmm
     LEFT JOIN processes p ON pmm.pid = p.pid
     LEFT JOIN processes pp ON p.parent = pp.pid
     LEFT JOIN hash ON p.path = hash.path
-    LEFT JOIN hash AS phash ON pp.path = hash.path
+    LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE (lib_path LIKE "%:bpf%" OR lib_path LIKE "%libbpf%")
 AND p.path != '/usr/lib/systemd/systemd'
 GROUP BY pmm.pid

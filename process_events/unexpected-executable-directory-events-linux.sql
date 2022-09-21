@@ -112,3 +112,5 @@ AND dirname NOT LIKE '/Applications/%.app/%'
     AND NOT (dirname LIKE "/private/var/%" AND basename LIKE "pulumi-go.%")
     -- Chrome executes patches from /tmp :(
     AND NOT (dirname LIKE "/private/tmp/%" AND basename="goobspatch")
+
+    

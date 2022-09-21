@@ -21,6 +21,6 @@ WHERE f.mode NOT IN (
     '4755'
 )
 AND NOT (f.path = '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService' AND f.mode = '0777' AND f.uid>500)
-AND NOT (f.path = '/usr/bin/fusermount3' AND f.mode='4755')
 AND NOT (f.path = '/opt/1Password/1Password-KeyringHelper' AND f.mode='6755')
-AND NOT (f.path = '/usr/libexec/cups/backend/ipp' AND f.mode='0700')
+AND NOT (f.path = '/usr/bin/fusermount3' AND f.mode='4755')
+AND NOT (f.path LIKE '/usr/libexec/cups/backend/%' AND f.mode='0700')
