@@ -20,6 +20,9 @@ WHERE active_state != "inactive"
         AND (
             exception_key IN (
                 "systemd-hostnamed.service,Hostname Service,uid=,,sz=1205,eb16153c65d8a65fe001071e6270ee76fecb4fc6c19b8a7c0590f6ce9a873a99",
+                "anacron.service,Run anacron jobs,uid=,,sz=776,87d260ea7cc447dd052c131106749df24f0bdfb746a1ea3b893e107517b629e6",
+                "NetworkManager-dispatcher.service,Network Manager Script Dispatcher Service,uid=,,sz=637,77f8c9e7b0c5d1cd097454d201cdceaefbcb9fdc2557fb9c1ddef0b4ff02f04e",
+                "geoclue.service,Location Lookup Service,uid=geoclue,,sz=464,d9e1a7eced6193866f048ce9de97809d5f2896e1e3f15d559710bb87d50a054a",
                 "fprintd.service,Fingerprint Authentication Daemon,uid=,,sz=896,a30798db998d8f2f9d9b583bb266e23bce083154214b7b78b19fdd33ee6b7e25",
                 "abrt-journal-core.service,Creates ABRT problems from coredumpctl messages,uid=,,sz=226,184d8a87f2d47ddece07cde34817c7534068f2afb7cd2d33815b9283d2fd878a",
                 "abrt-oops.service,ABRT kernel log watcher,uid=,,sz=233,998d6cfa2884de1d94da25b330b5f62dc21b8d77c88eca09299942c735c9f743",

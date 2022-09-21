@@ -22,22 +22,21 @@ WHERE port != 0
     AND NOT exception_key IN (
         "10011,6,0,launchd,Software Signing",
         "1313,6,500,hugo,",
+        "1338,6,500,registry,",
         "137,17,0,launchd,Software Signing",
         "137,17,222,netbiosd,Software Signing",
         "138,17,0,launchd,Software Signing",
-        "8770,6,500,sharingd,Software Signing",
-        "1338,6,500,registry,",
         "138,17,222,netbiosd,Software Signing",
         "16587,6,500,RescueTime,Developer ID Application: RescueTime, Inc (FSY4RB8H39)",
         "17500,6,500,Dropbox,Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)",
         "2112,6,500,fake,",
-        "22,6,0,launchd,Software Signing",
         "22000,6,500,syncthing,",
+        "22,6,0,launchd,Software Signing",
         "24678,6,500,node,",
         "2968,6,500,EEventManager,Developer ID Application: Seiko Epson Corporation (TXAEAV5RN4)",
+        "33060,6,74,mysqld,Developer ID Application: Oracle America, Inc. (VB5E2TV963)",
         "3306,6,500,mariadbd,",
         "3306,6,74,mysqld,Developer ID Application: Oracle America, Inc. (VB5E2TV963)",
-        "33060,6,74,mysqld,Developer ID Application: Oracle America, Inc. (VB5E2TV963)",
         "41949,6,500,IPNExtension,Apple Mac OS Application Signing",
         "43398,6,500,IPNExtension,Apple Mac OS Application Signing",
         "45972,6,500,IPNExtension,Apple Mac OS Application Signing",
@@ -60,6 +59,7 @@ WHERE port != 0
         "631,6,0,cupsd,Software Signing",
         "68,17,0,configd,Software Signing",
         "7000,6,500,ControlCenter,Software Signing",
+        "8770,6,500,sharingd,Software Signing",
         "8828,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)",
         "8829,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)",
         "8830,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)",
@@ -68,9 +68,10 @@ WHERE port != 0
         "8833,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)",
         "8834,6,0,nessusd,Developer ID Application: Tenable, Inc. (4B8J598M7U)",
         "8834,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)"
+
     )
     AND NOT (p.path LIKE ",ko-app,%" AND lp.port > 1024 and lp.protocol=6)
-    AND NOT (p.name IN ("hugo","node") AND lp.port > 1024 and lp.protocol=6)
+    AND NOT (p.name IN ("hugo","node","com.docker.backend") AND lp.port > 1024 and lp.protocol=6)
     AND NOT (p.path LIKE "/private/var/folders/%/go-build%/exe/%" AND lp.port > 1024 AND lp.protocol=6)
 GROUP BY exception_key
 

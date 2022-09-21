@@ -23,48 +23,109 @@ AND s.remote_address NOT LIKE '10.%'
 AND s.remote_address NOT LIKE '::ffff:10.%'
 AND s.remote_address NOT LIKE 'fc00:%'
 AND s.state != 'LISTEN'
-AND NOT (remote_port=53 AND protocol IN (6,17)) -- Like, everything uses DNS
 -- Ignore most common application paths
 AND p.path NOT LIKE '/Applications/%.app/Contents/%'
 AND p.path NOT LIKE '/Library/Apple/System/Library/%'
+AND p.path NOT LIKE '/Library/Application Support/%/Contents/%'
 AND p.path NOT LIKE '/System/Applications/%'
 AND p.path NOT LIKE '/System/Library/%'
 AND p.path NOT LIKE "/System/%"
 AND p.path NOT LIKE "/usr/libexec/%"
 AND p.path NOT LIKE "/usr/sbin/%"
+AND NOT (
+  remote_port=53 AND protocol IN (6,17) AND p.name IN (
+    '1password',
+    'ruby',
+    'python3.10',
+    'chainctl',
+    'cloud_sql_proxy',
+    'crc',
+    'curl',
+    'dig',
+    'gh',
+    'git-remote-http',
+    'gitsign',
+    'go',
+    'grafana-server',
+    'grype',
+    'host',
+    'htop',
+    'istioctl',
+    'k6',
+    'k9s',
+    'ko',
+    'launcher',
+    'ngrok',
+    'nix',
+    'node',
+    'obs-browser-page',
+    'obs-ffmpeg-mux',
+    'obs',
+    'obsidian',
+    'opera',
+    'ping',
+    'ssh',
+    'syncthing',
+    'tailscaled',
+    'terraform',
+    'tkn',
+    'traceroute',
+    'vcluster',
+    'wget',
+    'Evernote Helper',
+    'Reflect Helper',
+    'Code Helper',
+    'figma_agent',
+    'Acrobat Update Helper',
+    'Python',
+    'Reflect',
+    'Reflect Helper',
+    'chainctl',
+    'sample',
+    'steam_osx',
+    'com.apple.MobileSoftwareUpdate.UpdateBrainService',
+    'whois',
+    'zoom'
+  )
+)
+
 AND NOT exception_key IN (
   '22,6,500,ssh,com.apple.openssh,Software Signing',
-  '443,17,500,Evernote Helper,com.evernote.Evernote.helper,Apple Mac OS Application Signing',
   '443,17,500,Evernote Helper,com.evernote.Evernote.helper,Apple Mac OS Application Signing',
   '443,17,500,Reflect Helper,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
   '443,6,0,com.apple.MobileSoftwareUpdate.UpdateBrainService,com.apple.MobileSoftwareUpdate.UpdateBrainService,Software Signing',
   '443,6,0,launcher,launcher,Developer ID Application: Kolide Inc (YZ3EM74M78)',
+  '443,6,500,Acrobat Update Helper,com.adobe.ARMDCHelper,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
   '443,6,500,bash,bash,',
   '443,6,500,cloud_sql_proxy,a.out,',
   '443,6,500,Code Helper,com.microsoft.VSCode.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
-  '443,6,500,Evernote Helper,com.evernote.Evernote.helper,Apple Mac OS Application Signing',
+  '443,6,500,Electron,com.microsoft.VSCode,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
   '443,6,500,Evernote Helper,com.evernote.Evernote.helper,Apple Mac OS Application Signing',
   '443,6,500,figma_agent,com.figma.agent,Developer ID Application: Figma, Inc. (T8RA8NE3B7)',
   '443,6,500,gitsign,a.out,',
+  '443,6,500,go,a.out,',
   '443,6,500,go,org.golang.go,Developer ID Application: Google LLC (EQHXZ8M8AV)',
   '443,6,500,istioctl,a.out,',
   '443,6,500,ko,a.out,',
+  '443,6,500,chainctl,a.out,',
   '443,6,500,kubectl,a.out,',
   '443,6,500,Python,org.python.python,',
-  '443,6,500,Reflect Helper,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
+  '443,17,500,Code Helper,com.microsoft.VSCode.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
   '443,6,500,Reflect,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
+  '443,6,500,Reflect Helper,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
   '443,6,500,sample,com.apple.dt.SamplingTools.sample,Software Signing',
   '443,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
   '443,6,500,terraform,terraform,Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
   '443,6,500,vim,vim,',
   '443,6,500,zsh,com.apple.zsh,Software Signing',
   '80,6,0,com.apple.MobileSoftwareUpdate.UpdateBrainService,com.apple.MobileSoftwareUpdate.UpdateBrainService,Software Signing'
+
 )
 AND NOT (p.name = 'syncthing' AND (remote_port IN (53,80,88,110,443,587,993,3306,7451) OR remote_port > 8000))
-AND NOT (p.name IN ('chrome', 'Google Chrome Helper','Brave Browser Helper', 'Chromium Helper', 'Opera Helper') AND remote_port IN (443,80,8009,8080,8888,8443,5228,32211,53,10001,3478,19305,19306,19307,19308,19309))
-AND NOT (p.name IN ('Mail', 'thunderbird', 'Spark', 'Notes') AND remote_port IN (143,443,587,465,585,993))
-AND NOT (p.name IN ('spotify', 'Spotify Helper', 'Spotify') AND remote_port IN (53,443,8009,4070,32211))
-AND NOT (remote_port=443 AND protocol=6 AND p.name LIKE 'terraform-provider-%')
-AND NOT (remote_port=443 AND protocol=6 AND p.name LIKE 'kubectl.%')
-AND NOT (p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%' AND remote_port IN (80,43))
+AND NOT (p.name IN ('Google Chrome Helper','Brave Browser Helper', 'Chromium Helper', 'Opera Helper') AND remote_port IN (53,443,80,8009,8080,8888,8443,5228,32211,53,10001,3478,19305,19306,19307,19308,19309))
+AND NOT (p.name IN ('Mail', 'thunderbird', 'Spark', 'Notes') AND remote_port IN (53,143,443,587,465,585,993))
+AND NOT (p.name IN ('Spotify Helper', 'Spotify') AND remote_port IN (53,443,8009,4070,32211))
+AND NOT (remote_port IN (53,443) AND p.name LIKE 'terraform-provider-%')
+AND NOT (remote_port IN (53,443) AND p.name LIKE 'kubectl.%')
+AND NOT (p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%' AND remote_port IN (80,43,53))
 GROUP BY s.pid

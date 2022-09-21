@@ -28,6 +28,7 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
         'swift',
         'make',
         'skhd',
+        'ko',
         'monorail',
         'nvim',
         'perl',

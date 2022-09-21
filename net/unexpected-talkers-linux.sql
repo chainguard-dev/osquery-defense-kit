@@ -22,22 +22,93 @@ AND s.remote_address NOT LIKE '10.%'
 AND s.remote_address NOT LIKE '::ffff:10.%'
 AND s.remote_address NOT LIKE 'fc00:%'
 AND s.state != 'LISTEN'
-AND NOT (remote_port=53 AND protocol IN (6,17)) -- Like, everything uses DNS
+AND NOT (
+  remote_port=53 AND protocol IN (6,17) AND p.name IN (
+    '.firefox-wrappe',
+    '.tailscaled-wra',
+    '1password',
+    'apt-get',
+    'apt',
+    'chainctl',
+    'chrome',
+    'chrome',
+    'chronyd',
+    'cloud_sql_proxy',
+    'code',
+    'containerd',
+    'controlplane',
+    'crc',
+    'curl',
+    'dig',
+    'dnf',
+    'electron',
+    'firefox',
+    'gh',
+    'git-remote-http',
+    'gitsign',
+    'gnome-software',
+    'go',
+    'grafana-server',
+    'grype',
+    'host',
+    'htop',
+    'istioctl',
+    'k6',
+    'k9s',
+    'ko',
+    'kolide-pipeline',
+    'launcher',
+    'NetworkManager',
+    'ngrok',
+    'nix',
+    'node',
+    'obs-browser-page',
+    'obs-ffmpeg-mux',
+    'obs',
+    'obsidian',
+    'opera',
+    'pacman',
+    'ping',
+    'signal-desktop',
+    'slack',
+    'snap-store',
+    'spotify',
+    'spotify',
+    'ssh',
+    'steam',
+    'steamwebhelper',
+    'syncthing',
+    'nscd',
+    'tailscaled',
+    'terraform-provi',
+    'terraform',
+    'tkn',
+    'traceroute',
+    'vcluster',
+    'wget',
+    'whois',
+    'xmobar',
+    'yay',
+    'zoom'
+  )
+)
 AND NOT exception_key IN (
-      '22067,6,500,syncthing',
-  '22,6,500,ssh',
+    '123,17,500,chronyd',
     '22,6,,', -- shortlived SSH (git push)
+    '22,6,500,ssh',
+    '22067,6,500,syncthing',
     '27024,6,500,steam',
     '3307,6,500,cloud_sql_proxy',
     '4070,6,500,spotify',
     '443,17,500,chrome',
     '443,17,500,spotify',
+    '443,6,0,.tailscaled-wra',
     '443,6,0,dnf',
     '443,6,0,launcher',
     '443,6,0,pacman',
     '443,6,0,tailscaled',
-    '443,6,0,.tailscaled-wra',
     '443,6,472,grafana-server',
+    '443,6,500,.firefox-wrappe',
     '443,6,500,1password',
     '443,6,500,chainctl',
     '443,6,500,chrome',
@@ -48,7 +119,6 @@ AND NOT exception_key IN (
     '443,6,500,crc',
     '443,6,500,electron',
     '443,6,500,firefox',
-    '443,6,500,.firefox-wrappe',
     '443,6,500,gh',
     '443,6,500,git-remote-http',
     '443,6,500,gitsign',
@@ -64,37 +134,38 @@ AND NOT exception_key IN (
     '443,6,500,ngrok',
     '443,6,500,nix',
     '443,6,500,node',
-    '443,6,500,obs',
     '443,6,500,obs-browser-page',
     '443,6,500,obs-ffmpeg-mux',
+    '443,6,500,obs',
     '443,6,500,obsidian',
     '443,6,500,signal-desktop',
     '443,6,500,slack',
     '443,6,500,snap-store',
     '443,6,500,spotify',
     '443,6,500,steamwebhelper',
-    '443,6,500,terraform',
     '443,6,500,terraform-provi',
+    '443,6,500,terraform',
     '443,6,500,tkn',
-    '123,17,500,chronyd',
     '443,6,500,vcluster',
     '443,6,500,xmobar',
     '443,6,500,yay',
     '443,6,500,zoom',
     '5228,6,500,chrome',
+    '80,6,0,.tailscaled-wra',
+    '80,6,0,tailscaled',
     '80,6,0,dnf',
     '80,6,0,NetworkManager',
-    '80,6,0,.tailscaled-wra',
     '80,6,500,firefox',
     '80,6,500,steam',
+    '80,6,500,steamwebhelper',
     '80,6,500,syncthing'
-
 )
+
 AND NOT (p.name = 'syncthing' AND (remote_port IN (53,80,88,110,443,587,993,3306,7451) OR remote_port > 8000))
-AND NOT (p.name IN ('chrome', 'Google Chrome Helper','Brave Browser Helper', 'Chromium Helper', 'Opera Helper') AND remote_port IN (443,80,8009,8080,8888,8443,5228,32211,53,10001,3478,19305,19306,19307,19308,19309))
-AND NOT (p.name IN ('Mail', 'thunderbird', 'Spark', 'Notes') AND remote_port IN (143,443,587,465,585,993))
+AND NOT (p.name IN ('chrome', 'Google Chrome Helper','Brave Browser Helper', 'Chromium Helper', 'Opera Helper') AND remote_port IN (53,443,80,8009,8080,8888,8443,5228,32211,53,10001,3478,19305,19306,19307,19308,19309))
+AND NOT (p.name IN ('Mail', 'thunderbird', 'Spark', 'Notes') AND remote_port IN (53,143,443,587,465,585,993))
 AND NOT (p.name IN ('spotify', 'Spotify Helper', 'Spotify') AND remote_port IN (53,443,8009,4070,32211))
-AND NOT (remote_port=443 AND protocol=6 AND p.name LIKE 'terraform-provider-%')
-AND NOT (remote_port=443 AND protocol=6 AND p.name LIKE 'kubectl.%')
-AND NOT (p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%' AND remote_port IN (80,443))
+AND NOT (remote_port IN (443,53) AND p.name LIKE 'terraform-provider-%')
+AND NOT (remote_port iN (443,53) AND p.name LIKE 'kubectl.%')
+AND NOT (p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%' AND remote_port IN (80,53,443))
 GROUP BY s.pid

@@ -19,6 +19,7 @@ AND file.path NOT LIKE '/dev/shm/.com.google.%'
 AND file.path NOT LIKE '/dev/shm/.org.chromium.%'
 AND file.path NOT LIKE '/dev/shm/wayland.mozilla.%'
 AND file.path NOT LIKE "/dev/shm/jack_db%"
+AND file.path NOT LIKE "/dev/shm/flatpak-%"
 AND file.path NOT LIKE "%/../%"
 AND file.path NOT LIKE "%/./%"
 AND filename NOT IN ('..')

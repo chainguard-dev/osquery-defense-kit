@@ -1,5 +1,4 @@
--- Launchd entries that specify command-lines
--- WARNING: I think this might some how be filtering out entries like Grammarly for unknown reasons
+-- Unexpected launchd scripts that use the "program_arguments" field
 SELECT l.label,
     l.name,
     l.path,
@@ -43,6 +42,7 @@ WHERE (
         '/Applications/Stream Deck.app/Contents/MacOS/Stream Deck --runinbk',
         '/opt/homebrew/opt/mariadb/bin/mysqld_safe',
         '/opt/homebrew/opt/skhd/bin/skhd',
+        '/opt/homebrew/opt/jenkins/bin/jenkins --httpListenAddress=127.0.0.1 --httpPort=8080',
         '/opt/homebrew/opt/yubikey-agent/bin/yubikey-agent -l /opt/homebrew/var/run/yubikey-agent.sock',
         '/usr/local/MacGPG2/libexec/fixGpgHome'
     )

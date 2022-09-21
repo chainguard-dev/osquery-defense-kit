@@ -1,3 +1,4 @@
+-- Unexpected launchd scripts that use the "program" field
 SELECT l.label,
     l.name,
     l.path,

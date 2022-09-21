@@ -31,6 +31,7 @@ WHERE (
     AND NOT pe.value LIKE ':/snap/%'
     AND NOT pe.value LIKE '/app/bin/%'
     AND NOT pe.value LIKE ':/home/%/.local/share/Steam'
+    AND NOT pe.value LIKE ':/home/%/.var/app/com.valvesoftware.Steam/%'
     AND NOT p.path LIKE '%/firefox'
     AND NOT value LIKE 'libmozsandbox.so%'
     AND NOT (cmdline LIKE "%makepkg%" AND value = "libfakeroot.so")

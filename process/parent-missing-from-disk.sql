@@ -31,7 +31,7 @@ AND NOT parent_name IN (
     'gnome-shell',
     'slack'
 )
--- These alerts were useless
-AND NOT (parent_path = "" AND uid > 500)
+-- These alerts were unfortunately useless - lots of spam on macOS
+AND NOT (parent_path = "" AND p.uid > 500)
 AND parent_path NOT LIKE '/app/extra/%'
 AND parent_path NOT LIKE '/opt/homebrew/Cellar/%'
