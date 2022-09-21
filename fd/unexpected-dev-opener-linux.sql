@@ -32,12 +32,12 @@ WHERE pof.path LIKE '/dev/%'
         '/dev/random',
         '/dev/rfkill',
         '/dev/snd/seq',
-        '/dev/tty',
         '/dev/urandom',
         '/dev/vga_arbiter'
     )
     AND pof.path NOT LIKE "/dev/pts/%"
     AND pof.path NOT LIKE "/dev/snd/%"
+    AND pof.path NOT LIKE "/dev/tty%"
     AND pof.path NOT LIKE "/dev/hidraw%"
     AND NOT dir_exception IN (
         '/dev/bus/usb,pcscd',
