@@ -25,6 +25,7 @@ WHERE port != 0
         "137,17,0,launchd,Software Signing",
         "137,17,222,netbiosd,Software Signing",
         "138,17,0,launchd,Software Signing",
+        "8770,6,500,sharingd,Software Signing",
         "1338,6,500,registry,",
         "138,17,222,netbiosd,Software Signing",
         "16587,6,500,RescueTime,Developer ID Application: RescueTime, Inc (FSY4RB8H39)",

@@ -5,7 +5,7 @@ SELECT
   CONCAT(MIN(s.remote_port, 32768), ",", protocol, ",", MIN(p.uid, 500), ",", p.name) AS exception_key
 FROM process_open_sockets s
 LEFT JOIN processes p ON s.pid = p.pid
-LEFT JOIN processes pp ON pp.pid = p.parent
+LEFT JOIN processes pp ON p.parent = pp.pid
 LEFT JOIN hash ON p.path = hash.path
 WHERE protocol > 0
 AND s.remote_port > 0
@@ -24,33 +24,34 @@ AND s.remote_address NOT LIKE 'fc00:%'
 AND s.state != 'LISTEN'
 AND NOT (remote_port=53 AND protocol IN (6,17)) -- Like, everything uses DNS
 AND NOT exception_key IN (
-    '22,6,500,ssh',
-    '22067,6,500,syncthing',
+      '22067,6,500,syncthing',
+  '22,6,500,ssh',
+    '22,6,,', -- shortlived SSH (git push)
+    '27024,6,500,steam',
     '3307,6,500,cloud_sql_proxy',
     '4070,6,500,spotify',
     '443,17,500,chrome',
     '443,17,500,spotify',
-    '443,6,0,.tailscaled-wra',
+    '443,6,0,dnf',
     '443,6,0,launcher',
     '443,6,0,pacman',
-    '443,6,500,.firefox-wrappe',
+    '443,6,0,tailscaled',
+    '443,6,0,.tailscaled-wra',
+    '443,6,472,grafana-server',
+    '443,6,500,1password',
     '443,6,500,chainctl',
     '443,6,500,chrome',
     '443,6,500,cloud_sql_proxy',
     '443,6,500,code',
-    '80,6,0,dnf',
-    '443,6,0,dnf',
-    '443,6,472,grafana-server',
     '443,6,500,containerd',
+    '443,6,500,controlplane',
     '443,6,500,crc',
     '443,6,500,electron',
     '443,6,500,firefox',
-    '80,6,0,NetworkManager',
+    '443,6,500,.firefox-wrappe',
     '443,6,500,gh',
     '443,6,500,git-remote-http',
     '443,6,500,gitsign',
-    '443,6,500,gnome-software',
-    '443,6,500,controlplane',
     '443,6,500,gnome-software',
     '443,6,500,go',
     '443,6,500,grype',
@@ -63,24 +64,31 @@ AND NOT exception_key IN (
     '443,6,500,ngrok',
     '443,6,500,nix',
     '443,6,500,node',
+    '443,6,500,obs',
     '443,6,500,obs-browser-page',
     '443,6,500,obs-ffmpeg-mux',
-    '443,6,500,obs',
     '443,6,500,obsidian',
+    '443,6,500,signal-desktop',
     '443,6,500,slack',
     '443,6,500,snap-store',
     '443,6,500,spotify',
-    '443,6,500,terraform-provi',
+    '443,6,500,steamwebhelper',
     '443,6,500,terraform',
+    '443,6,500,terraform-provi',
     '443,6,500,tkn',
+    '123,17,500,chronyd',
     '443,6,500,vcluster',
     '443,6,500,xmobar',
     '443,6,500,yay',
     '443,6,500,zoom',
     '5228,6,500,chrome',
+    '80,6,0,dnf',
+    '80,6,0,NetworkManager',
     '80,6,0,.tailscaled-wra',
     '80,6,500,firefox',
+    '80,6,500,steam',
     '80,6,500,syncthing'
+
 )
 AND NOT (p.name = 'syncthing' AND (remote_port IN (53,80,88,110,443,587,993,3306,7451) OR remote_port > 8000))
 AND NOT (p.name IN ('chrome', 'Google Chrome Helper','Brave Browser Helper', 'Chromium Helper', 'Opera Helper') AND remote_port IN (443,80,8009,8080,8888,8443,5228,32211,53,10001,3478,19305,19306,19307,19308,19309))

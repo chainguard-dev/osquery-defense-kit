@@ -19,10 +19,11 @@ AND NOT (
         file.path LIKE "%/pdf-tools/%" OR
         file.path LIKE "/tmp/terraformer/%" OR
         file.path LIKE "/tmp/checkout/%" OR
+        file.path LIKE "/tmp/go.%.sum" OR
+        file.path LIKE "/tmp/tmp.%" OR
         file.path LIKE "/tmp/guile-%/guile-%" OR
         file.path LIKE "/tmp/com.apple.installer%" OR
-        (file.size < 4000 AND file.path LIKE "/tmp/%.sh") OR
-        (file.size < 4000 AND file.path LIKE "/tmp/tmp.%")
+        (file.size < 4000 AND file.path LIKE "/tmp/%.sh")
     )
 )
 -- Nix

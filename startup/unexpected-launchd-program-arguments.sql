@@ -35,6 +35,7 @@ WHERE (
         'Developer ID Application: Seiko Epson Corporation (TXAEAV5RN4)',
         'Developer ID Application: Sanford, L.P. (N3S6676K3E)', -- DYMO
         'Developer ID Application: Canva Pty Ltd (5HD2ARTBFS)',
+        'Developer ID Application: Private Internet Access, Inc. (5357M5NW9W)',
         'Software Signing', -- Apple
         'yabai-cert'
     )
