@@ -24,6 +24,7 @@ AND p.path NOT IN (
     "/usr/bin/fusermount3",
     "/usr/bin/gjs-console",
     "/usr/bin/gnome-shell",
+    '/usr/lib/gnome-shell-calendar-server',
     "/usr/bin/kded5",
     "/usr/bin/pipewire-pulse",
     "/usr/bin/tailscaled",

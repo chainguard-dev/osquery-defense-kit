@@ -12,7 +12,7 @@ SELECT p.pid,
     p.syscall,
     pp.path AS parent_path,
     pp.name AS parent_name,
-    p.cmdline AS parent_cmd,
+    TRIM(p.cmdline) AS parent_cmd,
     pp.euid AS parent_euid,
     hash.sha256 AS parent_sha256
 FROM uptime, process_events p
@@ -39,7 +39,7 @@ WHERE p.time > (strftime('%s', 'now') -15)
 
         -- Known attack scripts
         OR basename LIKE '%pwn%'
-        OR cmd LIKE '%attack%'
+        OR basename LIKE '%attack%'
         -- Unusual behaviors
         OR cmd LIKE '%ufw disable%'
         OR cmd LIKE '%iptables -P % ACCEPT%'
@@ -87,32 +87,18 @@ WHERE p.time > (strftime('%s', 'now') -15)
     )
     AND NOT (
         p.path IN ('/usr/bin/kmod', '/bin/kmod')
-        AND parent_name IN ('firewalld')
+        AND parent_name IN ('firewalld','mkinitramfs')
     )
     AND NOT (
         p.path IN ('/usr/bin/kmod', '/bin/kmod')
         AND uptime.total_seconds < 15
     )
-    -- gpgtools
-    AND NOT (
-        p.path = '/usr/bin/mkfifo'
-        AND cmd LIKE '%/org.gpgtools.log.%/fifo'
-    )
-    -- Dropbox
-    AND NOT (
-        parent_name = 'Dropbox'
-        AND cmd LIKE 'csrutil status'
-    )
-
-    -- Docker, kube-proxy
-    AND NOT (
-        p.path IN ('/usr/bin/kmod', '/bin/kmod')
-        AND parent_name IN ('dockerd', 'kube-proxy')
-    )
+    AND NOT (p.path = '/usr/bin/mkfifo' AND cmd LIKE '%/org.gpgtools.log.%/fifo')
+    AND NOT (cmd LIKE '%csrutil status' AND parent_name IN ('Dropbox'))
+    AND NOT (cmd='/usr/bin/csrutil status' AND p.parent=-1)
+    AND NOT (p.path IN ('/usr/bin/kmod', '/bin/kmod') AND parent_name IN ('dockerd', 'kube-proxy'))
     AND NOT cmd LIKE 'modprobe -va%'
     AND NOT cmd LIKE 'modprobe -ab%'
     AND NOT cmd LIKE '%modprobe overlay'
     AND NOT cmd LIKE '%modprobe aufs'
-    AND NOT cmd IN (
-        'lsmod'
-    )
+    AND NOT cmd IN ('lsmod')

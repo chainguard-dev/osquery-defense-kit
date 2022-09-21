@@ -32,6 +32,7 @@ WHERE p.start_time > 0
       '/usr/sbin/tailscaled'
    )
    AND NOT p.path LIKE "/Applications/%.app/%"
+   AND NOT p.path LIKE "/private/var/folders/%/bin/istioctl"
    AND NOT p.path LIKE "/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd"
    AND NOT p.path LIKE "/private/var/folders/%/go-build%/exe/%"
    AND NOT p.path LIKE "/nix/store/%/bin/%"

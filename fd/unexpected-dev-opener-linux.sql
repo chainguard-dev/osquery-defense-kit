@@ -33,13 +33,15 @@ WHERE pof.path LIKE '/dev/%'
         '/dev/rfkill',
         '/dev/snd/seq',
         '/dev/urandom',
-        '/dev/vga_arbiter'
+        '/dev/vga_arbiter',
+        '/dev/video10' -- workaround for poor regex management (ffmpeg)
     )
     AND pof.path NOT LIKE "/dev/pts/%"
     AND pof.path NOT LIKE "/dev/snd/%"
     AND pof.path NOT LIKE "/dev/tty%"
     AND pof.path NOT LIKE "/dev/hidraw%"
     AND pof.path NOT LIKE "/dev/shm/.com.google.Chrome.%"
+    AND pof.path NOT LIKE "/dev/shm/.org.chromium.Chromium.%"
     AND NOT dir_exception IN (
         '/dev/bus/usb,pcscd',
         '/dev/bus/usb/001,pcscd',
@@ -56,6 +58,7 @@ WHERE pof.path LIKE '/dev/%'
         '/dev/shm,chrome',
         '/dev/shm,code',
         '/dev/shm,electron',
+        '/dev/shm,Brackets',
         '/dev/shm,firefox',
         '/dev/shm,gopls',
         '/dev/shm,java',
@@ -83,7 +86,9 @@ WHERE pof.path LIKE '/dev/%'
         '/dev/tty,agetty',
         '/dev/tty,gdm-wayland-session',
         '/dev/tty,gdm-x-session',
+        '/dev/usb/hiddev,apcupsd',
         '/dev/tty,systemd-logind',
+        '/dev/usb/hiddev,upowerd',
         '/dev/tty,Xorg',
         '/dev/uinput,bluetoothd',
         '/dev/video,chrome',
@@ -93,8 +98,8 @@ WHERE pof.path LIKE '/dev/%'
         '/dev/video,obs',
         '/dev/video,vlc',
         '/dev/zfs,zed',
-        "/dev/zfs,zfs"
+        '/dev/zfs,zfs'
     )
     -- shows up as python
-    AND NOT (program_name IN ('streamdeck') AND device LIKE "/dev/bus/usb/%")
+    AND NOT (device LIKE "/dev/bus/usb/%" AND program_name IN ('streamdeck', 'gphoto2'))
 GROUP BY pof.pid
