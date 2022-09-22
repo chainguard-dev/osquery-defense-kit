@@ -42,6 +42,7 @@ WHERE pof.path LIKE '/dev/%'
     AND pof.path NOT LIKE "/dev/hidraw%"
     AND pof.path NOT LIKE "/dev/shm/.com.google.Chrome.%"
     AND pof.path NOT LIKE "/dev/shm/.org.chromium.Chromium.%"
+    AND pof.path NOT LIKE "/dev/shm/authentik_%"
     AND NOT dir_exception IN (
         '/dev/bus/usb,pcscd',
         '/dev/bus/usb/001,pcscd',
@@ -97,6 +98,7 @@ WHERE pof.path LIKE '/dev/%'
         '/dev/video,obs-ffmpeg-mux',
         '/dev/video,obs',
         '/dev/video,vlc',
+        '/dev/net/tun,slirp4netns',
         '/dev/zfs,zed',
         '/dev/zfs,zfs'
     )

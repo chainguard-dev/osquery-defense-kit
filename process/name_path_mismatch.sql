@@ -18,7 +18,7 @@ SELECT p.name,
         ',file=',
         TRIM(SUBSTR(SPLIT(f.filename, ":./ ", 0), 0, 15)),
         ',',
-        MIN(p.uid,500)
+        MIN(p.uid, 500)
     ) AS exception_key
 FROM processes p
     LEFT JOIN file f ON p.path = f.path
@@ -26,49 +26,48 @@ FROM processes p
     LEFT JOIN hash ON p.path = hash.path
     LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE short_filename != short_name
-AND NOT cmd LIKE "/nix/store/%/bin/bash%"
-
--- Serial masqueraders
-AND NOT short_filename IN (
-    'bash',
-    'ruby',
-    'python',
-    'python3'
-)
-
-AND exception_key NOT IN (
-    'name=(sd-pam),file=systemd,500',
-    'name=chrome-gnome-s,file=python3,500',
-    'name=code-oss,file=electron,500',
-    'name=firefox-wrappe,file=firefox,500',
-    'name=blueman-tray,file=python3,500',
-    'name=firewalld,file=python3,0',
-    'name=gjs,file=gjs-console,500',
-    'name=gnome-tweak-to,file=python3,500',
-    'name=gsettings-hel,file=gsettings-help,500',
-    'name=Isolated,file=firefox,500',
-    'name=sd_espeak-ng-m,file=sd_espeak-ng,500',
-    'name=mysqld,file=mariadbd,500',
-    'name=networkd-dispa,file=python3,0',
-    'name=nix-daemon,file=nix,0',
-    'name=npm,file=node,500',
-    'name=osqueryi,file=osqueryd,500',
-    'name=blueman-applet,file=python3,500',
-    'name=phpstorm,file=dash,500',
-    'name=Privileged,file=firefox,500',
-    'name=RDD,file=firefox,500',
-    'name=sh,file=dash,0',
-    'name=zoom,file=ZoomLauncher,500',
-    'name=sh,file=dash,500',
-    'name=Socket,file=firefox,500',
-    'name=streamdeck,file=python3,500',
-    'name=systemd-udevd,file=udevadm,0',
-    'name=terminator,file=python3,500',
-    'name=unattended-upg,file=python3,0',
-    'name=Utility,file=firefox,500',
-    'name=zfs-auto-snaps,file=ruby,0',
-    'name=Web,file=firefox,500',
-    'name=WebExtensions,file=firefox,500',
-    'name=X,file=Xorg,0'
-)
-GROUP by short_name, short_filename
+    AND NOT cmd LIKE "/nix/store/%/bin/bash%" -- Serial masqueraders
+    AND NOT short_filename IN (
+        'bash',
+        'ruby',
+        'python',
+        'python3'
+    )
+    AND exception_key NOT IN (
+        'name=(sd-pam),file=systemd,500',
+        'name=chrome-gnome-s,file=python3,500',
+        'name=code-oss,file=electron,500',
+        'name=firefox-wrappe,file=firefox,500',
+        'name=blueman-tray,file=python3,500',
+        'name=firewalld,file=python3,0',
+        'name=gjs,file=gjs-console,500',
+        'name=gnome-tweak-to,file=python3,500',
+        'name=gsettings-hel,file=gsettings-help,500',
+        'name=Isolated,file=firefox,500',
+        'name=sd_espeak-ng-m,file=sd_espeak-ng,500',
+        'name=mysqld,file=mariadbd,500',
+        'name=networkd-dispa,file=python3,0',
+        'name=MainThread,file=plugin-contain,500',
+        'name=nix-daemon,file=nix,0',
+        'name=npm,file=node,500',
+        'name=osqueryi,file=osqueryd,500',
+        'name=blueman-applet,file=python3,500',
+        'name=phpstorm,file=dash,500',
+        'name=Privileged,file=firefox,500',
+        'name=RDD,file=firefox,500',
+        'name=sh,file=dash,0',
+        'name=zoom,file=ZoomLauncher,500',
+        'name=sh,file=dash,500',
+        'name=Socket,file=firefox,500',
+        'name=streamdeck,file=python3,500',
+        'name=systemd-udevd,file=udevadm,0',
+        'name=terminator,file=python3,500',
+        'name=unattended-upg,file=python3,0',
+        'name=Utility,file=firefox,500',
+        'name=zfs-auto-snaps,file=ruby,0',
+        'name=Web,file=firefox,500',
+        'name=WebExtensions,file=firefox,500',
+        'name=X,file=Xorg,0'
+    )
+GROUP by short_name,
+    short_filename

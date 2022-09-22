@@ -24,5 +24,8 @@ AND NOT (
 
         -- Sometimes cmd is empty also :(
         OR parent_cmd LIKE "/Applications/Google Chrome.app/%"
+
+        -- The system has no idea who this is.
+        OR (p.parent=1 AND p.path='')
     )
 )

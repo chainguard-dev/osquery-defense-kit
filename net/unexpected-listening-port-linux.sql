@@ -22,27 +22,28 @@ WHERE port != 0
         "10256,6,0,kube-proxy",
         "17,255,500,dhcpcd",
         "1716,6,500,kdeconnectd",
-        "3551,6,0,apcupsd",
         "22,6,0,sshd",
         "22000,6,500,syncthing",
-        "3000,6,0,docker-proxy",
         "3000,6,472,grafana-server",
+        "3000,6,500,grafana-server",
         "32768,6,0,.tailscaled-wra",
         "32768,6,0,tailscaled",
         "32768,6,0,tailscaled",
         "32768,6,500,com.docker.backend",
         "32768,6,500,spotify",
+        "3551,6,0,apcupsd",
         "5000,6,500,ControlCenter",
         "5001,6,0,registry",
         "53,17,0,coredns",
-        "8123,6,500,Brackets-node",
         "53,6,0,coredns",
         "53,6,500,dnsmasq",
         "5355,6,193,systemd-resolve",
+        "5432,6,70,postgres"
         "546,17,500,dhcpcd",
         "58,255,0,NetworkManager",
         "58,255,500,dhcpcd",
         "631,17,0,cups-browsed",
+        "6379,6,500,redis-server",
         "6443,6,0,kube-apiserver",
         "67,17,500,dnsmasq",
         "68,17,500,dhcpcd",
@@ -50,15 +51,18 @@ WHERE port != 0
         "80,6,60,nginx",
         "8008,6,500,controlplane",
         "8080,6,0,coredns",
-        "8086,6,0,docker-proxy",
         "8086,6,0,influxd",
+        "8123,6,500,Brackets-node",
         "8181,6,0,coredns",
         "8443,6,0,kube-apiserver",
         "8443,6,500,controlplane",
+        "9000,6,500,authentik-proxy",
         "9090,6,500,controlplane",
         "9153,6,0,coredns"
+        "9300,6,500,authentik-proxy",
     )
     AND NOT (p.path LIKE ",ko-app,%" AND lp.port > 1024 and lp.protocol=6)
-    AND NOT (p.name IN ("hugo") AND lp.port > 1024 and lp.protocol=6)
+    AND NOT (p.name IN ("hugo", "docker-proxy") AND lp.port > 1024 and lp.protocol=6)
+
 GROUP BY exception_key
 

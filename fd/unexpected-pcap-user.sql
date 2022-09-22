@@ -29,8 +29,7 @@ WHERE pmm.path LIKE "%libpcap%"
     AND child_path NOT IN (
         '/usr/libexec/UserEventAgent',
         '/usr/sbin/systemstats',
-        '/usr/sbin/cupsd',
-        '/usr/bin/tcpdump'
+        '/usr/sbin/cupsd'
     )
     AND child_cmd NOT IN (
         '/nix/var/nix/profiles/default/bin/nix-daemon',
