@@ -1,4 +1,4 @@
-SELECT s.family,
+SELECT
   protocol,
   s.local_port,
   s.remote_port,
@@ -9,9 +9,7 @@ SELECT s.family,
   p.cmdline AS child_cmd,
   p.cwd,
   s.pid,
-  s.net_namespace,
   p.parent AS parent_pid,
-  pp.name AS parent_name,
   pp.path AS parent_path,
   pp.cmdline AS parent_cmd,
   hash.sha256,
@@ -131,7 +129,6 @@ WHERE protocol > 0
     '443,6,500,Acrobat Update Helper,com.adobe.ARMDCHelper,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,500,bash,bash,',
     '443,6,500,chainctl,,',
-    '443,6,500,,,',
     '443,6,500,chainctl,a.out,',
     '443,6,500,cloud_sql_proxy,a.out,',
     '443,6,500,Code Helper (Renderer),com.github.Electron.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
@@ -246,5 +243,10 @@ WHERE protocol > 0
   AND NOT (
     p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%'
     AND remote_port IN (80, 43, 53)
+  )
+  -- Slack update?
+  AND NOT (
+    p.path=""
+    AND pp.cmdline LIKE "%/Slack"
   )
 GROUP BY s.pid
