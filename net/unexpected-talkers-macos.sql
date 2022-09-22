@@ -118,6 +118,7 @@ WHERE protocol > 0
   )
   AND NOT exception_key IN (
     '22,6,500,ssh,,',
+    '22,6,500,ssh,ssh,',
     '22,6,500,ssh,com.apple.openssh,Software Signing',
     '22,6,500,ssh,ssh-55554944fbf65684ab9b37c2bad3a27ef78b23f4,',
     '43,6,500,DropboxMacUpdate,com.dropbox.DropboxMacUpdate,Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
@@ -130,6 +131,7 @@ WHERE protocol > 0
     '443,6,500,Acrobat Update Helper,com.adobe.ARMDCHelper,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,500,bash,bash,',
     '443,6,500,chainctl,,',
+    '443,6,500,,,',
     '443,6,500,chainctl,a.out,',
     '443,6,500,cloud_sql_proxy,a.out,',
     '443,6,500,Code Helper (Renderer),com.github.Electron.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',

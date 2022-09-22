@@ -59,4 +59,5 @@ WHERE bytes_per_second > 2000000
     AND p.path NOT LIKE '/System/Library/%'
     AND p.path NOT LIKE '/home/%/.local/share/Steam'
     AND p.path NOT LIKE '/nix/store/%/bin/%sh'
+    AND p.path NOT LIKE '/nix/store/%/bin/nix'
     AND p.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'

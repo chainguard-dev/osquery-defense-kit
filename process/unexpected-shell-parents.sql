@@ -23,6 +23,7 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
         'FinderSyncExtension',
         'fish',
         'xargs',
+        'xcrun',
         'go',
         'goland',
         'java',
@@ -82,6 +83,7 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
     AND NOT parent_name LIKE "terraform-provider-%"
     AND NOT parent_name LIKE "Emacs%"
     AND NOT parent_name LIKE "%term%"
+    AND NOT parent_name LIKE "%brew.rb%"
     AND NOT parent_name LIKE "%Term%"
     AND NOT p.cmdline LIKE "%gcloud config config-helper%"
     AND NOT p.cmdline LIKE "%/Library/Apple/System/Library/InstallerSandboxes%"

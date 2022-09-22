@@ -28,9 +28,7 @@ SELECT s.family,
     ',',
     remote_address,
     ',',
-    remote_port,
-    ',',
-    protocol
+    remote_port
   ) AS exception_key
 FROM process_open_sockets s
   LEFT JOIN processes p ON s.pid = p.pid
@@ -59,11 +57,18 @@ WHERE remote_port IN (53, 5353)
   -- Local DNS servers and custom clients go here
   AND p.path NOT IN ('/usr/lib/systemd/systemd-resolved')
 
+  -- Some applications hard-code a safe DNS resolver, or allow the user to configure one
+  AND s.remote_address NOT IN (
+    '1.1.1.1', -- Cloudflare
+    '8.8.8.8',  -- Google
+    '208.67.222.222', -- OpenDNS
+    '75.75.75.75' -- Comcast
+  )
+
   -- Other exceptions
   AND exception_key NOT IN (
-    'Slack Helper,8.8.8.8,53,17',
-    'Slack Helper,1.1.1.1,53,17',
-    'Google Chrome Helper,8.8.8.8,53,17'
+    'nessusd,50.16.123.71,53',
+    'syncthing,46.162.192.181,53'
   )
 
 -- Workaround for the GROUP_CONCAT subselect adding a blank ent

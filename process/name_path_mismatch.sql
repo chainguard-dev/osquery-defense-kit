@@ -51,6 +51,7 @@ WHERE short_filename != short_name
         'name=MainThread,file=plugin-contain,500',
         'name=nix-daemon,file=nix,0',
         'name=npm,file=node,500',
+        'name=slic3r_main,file=prusa-slicer,500',
         'name=osqueryi,file=osqueryd,500',
         'name=blueman-applet,file=python3,500',
         'name=phpstorm,file=dash,500',

@@ -1,3 +1,5 @@
+-- Find running processes which link against libbpf
+-- WARNING: This check consumes an unusual amount of system memory (up to 225MB)
 SELECT pmm.pid,
     pmm.path AS lib_path,
     p.path,

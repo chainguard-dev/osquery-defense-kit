@@ -21,6 +21,7 @@ AND name NOT IN (
     'bash',
     'firefox',
     'fish',
+    'gopls',
     'GoogleSoftwareUpdateAgent',
     'nautilus',
     'qemu-system-x86-64',

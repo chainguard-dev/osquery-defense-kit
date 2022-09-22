@@ -369,6 +369,7 @@ WHERE active_state != "inactive"
                 "zfs-snapshot-frequent.service,ZFS auto-snapshotting every 15 mins,uid=,,sz=1092,3bd9d524baabe999335378c3dc8d4823c5ace79d172eeb9d3d584d8ba521e7a6",
                 "zfs-snapshot-frequent.timer,zfs-snapshot-frequent.timer,uid=,,sz=56,b9ab99d4fc4e3da81f163c6bc720d68ba2faa70cabb2c94c1e65347166551520",
                 "zfs-snapshot-hourly.timer,zfs-snapshot-hourly.timer,uid=,,sz=50,3d876dbf234e09d8ff1525a20f0af9e40014f2828776fab3f8b946eee138cfc0",
+                "zfs-snapshot-hourly.service,ZFS auto-snapshotting every hour,uid=,,sz=1088,6404e0a9c0d0c13a5c2636851ac61fe581cff111277c499f9cd1455ca1f245dc",
                 "zfs-snapshot-monthly.timer,zfs-snapshot-monthly.timer,uid=,,sz=51,77519e4ae82c232a84437a5e226f65d1bc3fba1b3e5ebf05df33c8eee2d198b0",
                 "zfs-snapshot-weekly.timer,zfs-snapshot-weekly.timer,uid=,,sz=50,f940747ee60b6003820edacb893bc8595463ddaa47b28de75882e8881388f842",
                 "zfs.target,ZFS startup target,uid=,,sz=76,04bc085198b464b7a77374472374e099593241f59d7ed2676905e58b62c8d301",

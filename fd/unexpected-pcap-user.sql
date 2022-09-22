@@ -1,3 +1,5 @@
+-- Find root-run processes which link against libpcap
+-- WARNING: This check consumes an unusual amount of system memory (up to 225MB)
 SELECT pmm.pid,
     p.uid,
     p.gid,

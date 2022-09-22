@@ -52,6 +52,8 @@ WHERE port != 0
         "8008,6,500,controlplane",
         "8080,6,0,coredns",
         "8086,6,0,influxd",
+        "8086,6,500,influxd",
+        "53,17,500,dnsmasq",
         "8123,6,500,Brackets-node",
         "8181,6,0,coredns",
         "8443,6,0,kube-apiserver",
@@ -62,7 +64,7 @@ WHERE port != 0
         "9300,6,500,authentik-proxy",
     )
     AND NOT (p.path LIKE ",ko-app,%" AND lp.port > 1024 and lp.protocol=6)
-    AND NOT (p.name IN ("hugo", "docker-proxy") AND lp.port > 1024 and lp.protocol=6)
+    AND NOT (p.name IN ("hugo", "docker-proxy","rootlessport") AND lp.port > 1024 and lp.protocol=6)
 
 GROUP BY exception_key
 

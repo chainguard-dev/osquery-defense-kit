@@ -103,5 +103,5 @@ WHERE pof.path LIKE '/dev/%'
         '/dev/zfs,zfs'
     )
     -- shows up as python
-    AND NOT (device LIKE "/dev/bus/usb/%" AND program_name IN ('streamdeck', 'gphoto2'))
+    AND NOT (device LIKE "/dev/bus/usb/%" AND program_name IN ('streamdeck', 'gphoto2', 'fwupd'))
 GROUP BY pof.pid
