@@ -64,9 +64,14 @@ WHERE s.time > (strftime('%s', 'now') -120)
 
   -- Other exceptions
   AND exception_key NOT IN (
+    'Brave Browser Helper,8.8.8.8,53,',
+    'chrome,8.8.8.8,53,0',
+    'Google Chrome Helper,208.67.222.222,53,', -- OpenDNS FamilyShield
+    'Google Chrome Helper,8.8.8.8,53,',
+    'nessusd,50.16.123.71,53,',
     'Slack Helper,1.1.1.1,53,',
     'Slack Helper,8.8.8.8,53,',
-    'Google Chrome Helper,8.8.8.8,53,'
+    'plugin-container,8.8.8.8,53,'
   )
 
 -- Workaround for the GROUP_CONCAT subselect adding a blank ent

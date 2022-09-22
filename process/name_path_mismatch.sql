@@ -35,6 +35,7 @@ WHERE short_filename != short_name
     )
     AND exception_key NOT IN (
         'name=(sd-pam),file=systemd,500',
+        'name=(sd-pam),file=systemd,127',
         'name=chrome-gnome-s,file=python3,500',
         'name=code-oss,file=electron,500',
         'name=firefox-wrappe,file=firefox,500',

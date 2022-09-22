@@ -22,6 +22,7 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
         'demoit',
         'FinderSyncExtension',
         'fish',
+        'xargs',
         'go',
         'goland',
         'java',
@@ -39,6 +40,7 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
         'skhd',
         'swift',
         'systemd',
+        'direnv',
         'terminator',
         'test2json',
         'tmux:server',
@@ -61,6 +63,8 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
         '/usr/bin/login',
         '/Applications/Docker.app/Contents/MacOS/Docker',
         '/usr/bin/man',
+        '/usr/bin/xargs',
+        '/usr/bin/apt-get',
         '/usr/bin/bwrap',
         '/usr/bin/sudo',
         '/usr/libexec/periodic-wrapper',
@@ -87,3 +91,5 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
 
     -- Oh, NixOS.
     AND NOT parent_name LIKE "%/bin/bash"
+    AND NOT parent_name LIKE "%/bin/direnv"
+    AND NOT parent_path LIKE "/nix/store/%sh"

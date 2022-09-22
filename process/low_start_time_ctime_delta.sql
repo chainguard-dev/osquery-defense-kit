@@ -31,6 +31,7 @@ WHERE p.start_time > 0
       '/usr/libexec/fwupd/fwupd',
       '/usr/libexec/sssd/sssd_kcm',
       '/usr/sbin/cupsd',
+      '/usr/lib/fwupd/fwupd',
       '/usr/sbin/tailscaled'
    )
    AND NOT p.path LIKE "/Applications/%.app/%"

@@ -14,21 +14,30 @@ SELECT p.pid,
     p.euid,
     p.parent,
     p.syscall,
+    hash.sha256,
     pp.path AS parent_path,
     pp.name AS parent_name,
     TRIM(p.cmdline) AS parent_cmd,
     pp.euid AS parent_euid,
-    hash.sha256 AS parent_sha256
+    phash.sha256 AS parent_sha256
 FROM uptime,
     process_events p
     LEFT JOIN processes pp ON p.parent = pp.pid
-    LEFT JOIN hash ON pp.path = hash.path
+    LEFT JOIN hash ON p.path = hash.path
+    LEFT JOIN hash AS phash ON pp.path = hash.path
 WHERE p.time > (strftime('%s', 'now') -15)
     AND (
         basename IN (
             'bitspin',
             'bpftool',
             'csrutil',
+            'heyoka',
+            'nstx',
+            'dnscat2',
+            'tuns',
+            'iodine',
+            'rshell',
+            'rsh',
             'incbit',
             'insmod',
             'kmod',
@@ -40,7 +49,7 @@ WHERE p.time > (strftime('%s', 'now') -15)
         )
         -- Chrome Stealer
         OR cmd LIKE '%set visible of front window to false%'
-        OR cmd LIKE '%chrome%--load-extension%'
+        OR cmd LIKE '%chrome%-load-extension%'
         -- Known attack scripts
         OR basename LIKE '%pwn%'
         OR basename LIKE '%attack%'
@@ -53,6 +62,11 @@ WHERE p.time > (strftime('%s', 'now') -15)
         OR cmd LIKE '%ld.so.preload%'
         OR cmd LIKE '%urllib.urlopen%'
         OR cmd LIKE '%nohup%tmp%'
+        OR cmd LIKE "%killall Terminal%"
+        OR cmd LIKE "%nohup /bin/bash%"
+        OR cmd LIKE "%echo%|%base64 --decode %|%sh%"
+        OR cmd LIKE "%echo%|%base64 --decode %|%python%"
+        OR cmd LIKE "%launchctl list%"
         -- Crypto miners
         OR cmd LIKE '%c3pool%'
         OR cmd LIKE '%cryptonight%'
@@ -88,7 +102,7 @@ WHERE p.time > (strftime('%s', 'now') -15)
     )
     AND NOT (
         p.path IN ('/usr/bin/kmod', '/bin/kmod')
-        AND parent_name IN ('firewalld', 'mkinitramfs')
+        AND parent_name IN ('firewalld', 'mkinitramfs', 'systemd')
     )
     AND NOT (
         p.path IN ('/usr/bin/kmod', '/bin/kmod')
@@ -114,7 +128,7 @@ WHERE p.time > (strftime('%s', 'now') -15)
         p.path IN ('/usr/bin/kmod', '/bin/kmod')
         AND parent_name IN ('dockerd', 'kube-proxy')
     )
-    AND NOT cmd LIKE 'modprobe -va%'
+    AND NOT cmd LIKE '%modprobe -va%'
     AND NOT cmd LIKE 'modprobe -ab%'
     AND NOT cmd LIKE '%modprobe overlay'
     AND NOT cmd LIKE '%modprobe aufs'

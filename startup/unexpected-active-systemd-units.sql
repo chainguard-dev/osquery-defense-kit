@@ -264,6 +264,7 @@ WHERE active_state != "inactive"
                 "systemd-journald.socket,Journal Socket,uid=,,sz=906,c17504f4c86653882070215fc089a610f69d8149e1860b92e439b008cce3f1d1",
                 "systemd-journal-flush.service,Flush Journal to Persistent Storage,uid=,,sz=819,153bf7052c1ab54f38762102dfae171b801add553364336020a5034102d91149",
                 "systemd-localed.service,Locale Service,uid=,,sz=1209,c15244cfb7f6a967b002653d169b4e63ad332675f16b3a1cabc9cf58fc3b21ee",
+                "systemd-localed.service,Locale Service,uid=,,sz=1213,a183e1239a582c373e77cd5d32db2778d0e2972d56fc8debcd53674f77037dcb",
                 "systemd-logind.service,User Login Management,uid=,,sz=2002,32fe4938115583aae1dc7029109dea05baa217e765da49c47d46c953abdd3968",
                 "systemd-logind.service,User Login Management,uid=,,sz=2018,c4f403fc9d9e047065725650aa460365afc632f6f56a9814f57f412dd0112d02",
                 "systemd-logind.service,User Login Management,uid=,,sz=2071,d581e6b8a24585e5d4fbb21bd8464abadf9ca473c9d9b3ab0820d182ba1a3e47",

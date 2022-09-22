@@ -24,17 +24,26 @@ WHERE p.time > (strftime('%s', 'now') -60)
         INSTR(p.cmdline, 'wget ') > 0
         OR INSTR(p.cmdline, 'curl ') > 0
     ) AND (
+        -- If it's an IP or port, it's suspicious
         remote_address NOT IN ("", "127.0.0.1", "::1")
         OR remote_port != ""
+
+        -- Or if it matches weird keywords we've seen
         OR p.cmdline LIKE "%.onion%"
         OR p.cmdline LIKE "%tor2web%"
         OR p.cmdline LIKE "%aliyun%"
         OR p.cmdline LIKE "%pastebin%"
+        OR p.cmdline LIKE "%curl.*—write-out%"
+        OR p.cmdline LIKE "%curl.*—write-out%"
         OR p.cmdline LIKE "%curl %--user-agent%"
         OR p.cmdline LIKE "%curl -k%"
+        OR p.cmdline LIKE "%curl%--output /dev/null%"
+        OR p.cmdline LIKE "%curl%--O /dev/null%"
         OR p.cmdline LIKE "%curl%--insecure%"
         OR p.cmdline LIKE "%wget %--user-agent%"
         OR p.cmdline LIKE "%wget %--no-check-certificate%"
+
+        -- Or anything launched by a system user
         OR (p.cmdline LIKE "%wget %" AND p.euid < 500)
         OR (p.cmdline LIKE "%curl %" AND p.euid < 500)
     )
