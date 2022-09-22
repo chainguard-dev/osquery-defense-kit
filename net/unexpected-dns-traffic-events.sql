@@ -1,5 +1,7 @@
 -- Catch DNS traffic going to machines other than the host-configured DNS server
 -- NOTE: This only supports IPv4 traffic due to an osquery bug with 'dns_resolvers'
+
+-- The non-event version is unexpected-dns-traffic.sql
 SELECT s.family,
   protocol,
   s.local_port,
@@ -16,10 +18,10 @@ SELECT s.family,
   hash.sha256,
   GROUP_CONCAT(
     (
-      SELECT DISTINCT address
+      SELECT address
       FROM dns_resolvers
-      WHERE type = 'nameserver'
-        AND address != ''
+      WHERE type = 'nameserver' AND address != ''
+      GROUP BY address
     ),
     ","
   ) AS sys_resolvers,
@@ -32,11 +34,12 @@ SELECT s.family,
     ',',
     protocol
   ) AS exception_key
-FROM process_open_sockets s
+FROM socket_events s
   LEFT JOIN processes p ON s.pid = p.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
-WHERE remote_port IN (53, 5353)
+WHERE s.time > (strftime('%s', 'now') -120)
+  AND remote_port IN (53, 5353)
   AND remote_address NOT LIKE "%:%"
   AND s.remote_address NOT LIKE '172.1%'
   AND s.remote_address NOT LIKE '172.2%'
@@ -54,16 +57,16 @@ WHERE remote_port IN (53, 5353)
 
   -- systemd-resolve sometimes shows up this way
   -- If we could narrow this down using "sys_resolvers" I would, but it is misuse of GROUP_CONCAT
-  AND NOT (s.pid = -1 AND s.remote_port=53 and s.protocol=17 and p.parent='')
+  AND NOT (s.pid = -1 AND s.remote_port=53 and p.parent='')
 
   -- Local DNS servers and custom clients go here
   AND p.path NOT IN ('/usr/lib/systemd/systemd-resolved')
 
   -- Other exceptions
   AND exception_key NOT IN (
-    'Slack Helper,8.8.8.8,53,17',
-    'Slack Helper,1.1.1.1,53,17',
-    'Google Chrome Helper,8.8.8.8,53,17'
+    'Slack Helper,1.1.1.1,53,',
+    'Slack Helper,8.8.8.8,53,',
+    'Google Chrome Helper,8.8.8.8,53,'
   )
 
 -- Workaround for the GROUP_CONCAT subselect adding a blank ent
