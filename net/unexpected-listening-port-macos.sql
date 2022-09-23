@@ -22,7 +22,8 @@ WHERE port != 0
     AND NOT exception_key IN (
         "10011,6,0,launchd,Software Signing",
         "1313,6,500,hugo,",
-        '49152,6,500,GarageBand,Apple Mac OS Application Signing',
+        "3400,6,500,Sonos,Developer ID Application: Sonos, Inc. (2G4LW83Q3E)",
+        "49152,6,500,GarageBand,Apple Mac OS Application Signing",
         "1338,6,500,registry,",
         "137,17,0,launchd,Software Signing",
         "137,17,222,netbiosd,Software Signing",

@@ -35,7 +35,8 @@ WHERE p.start_time > 0
       '/usr/sbin/tailscaled'
    )
    AND NOT p.path LIKE "/Applications/%.app/%"
-   AND NOT p.path LIKE "/home/%/bin"
+   AND NOT p.path LIKE "/home/%/bin/%"
+   AND NOT p.path LIKE "/home/%/src/%"
    AND NOT p.path LIKE "/home/%/terraform-provider-%"
    AND NOT p.path LIKE "/Library/Apple/System/%"
    AND NOT p.path LIKE "/Library/Apple/System/Library/%"
@@ -43,7 +44,10 @@ WHERE p.start_time > 0
    AND NOT p.path LIKE "/private/var/db/com.apple.xpc.roleaccountd.staging/%"
    AND NOT p.path LIKE "/private/var/folders/%/bin/istioctl"
    AND NOT p.path LIKE "/private/var/folders/%/go-build%/exe/%"
-   AND NOT p.path LIKE "/Users/%/bin"
+   AND NOT p.path LIKE "/private/tmp/nix-build-%"
+   AND NOT p.path LIKE "/Users/%/bin/%"
+   AND NOT p.path LIKE "/Users/%/src/%"
+   AND NOT p.path LIKE "/Users/%/git%"
    AND NOT p.path LIKE "/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd"
    AND NOT p.path LIKE "%-go-build%"
    AND NOT p.path LIKE "%/.vscode/extensions/%"

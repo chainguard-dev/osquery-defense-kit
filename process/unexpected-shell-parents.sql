@@ -1,19 +1,23 @@
 SELECT p.name,
     p.path AS path,
-    p.cmdline AS cmdline,
+    p.cmdline AS cmd,
     pp.name AS parent_name,
     pp.path AS parent_path,
-    pp.cmdline AS parent_cmdline,
+    pp.cmdline AS parent_cmd,
     hash.sha256 AS parent_sha256
 FROM processes p
     LEFT JOIN processes pp ON pp.pid = p.parent
     LEFT JOIN hash ON pp.path = hash.path
 WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
     -- Editors & terminals mostly
-    AND parent_name NOT IN (
+    AND pp.name NOT IN (
         'abrt-handle-eve',
         'alacritty',
         'bash',
+        'nix',
+        'clang-11',
+        'build-script-build',
+        'collect2',
         'Code - Insiders Helper (Renderer)',
         'Code Helper (Renderer)',
         'conmon',
@@ -77,21 +81,20 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
     AND NOT p.cmdline IN (
         'sh -c -- exec-bin node_modules/.bin/hugo/hugo server'
     )
-    AND NOT parent_cmdline LIKE "/Applications/Warp.app/%"
-    AND NOT parent_cmdline LIKE "%Code Helper%"
-
-    AND NOT parent_name LIKE "terraform-provider-%"
-    AND NOT parent_name LIKE "Emacs%"
-    AND NOT parent_name LIKE "%term%"
-    AND NOT parent_name LIKE "%brew.rb%"
-    AND NOT parent_name LIKE "%Term%"
-    AND NOT p.cmdline LIKE "%gcloud config config-helper%"
+    AND NOT (pp.name='sshd' AND p.cmdline LIKE "%askpass%")
     AND NOT p.cmdline LIKE "%/Library/Apple/System/Library/InstallerSandboxes%"
-    AND NOT parent_cmdline LIKE "%gcloud.py config config-helper%"
-    AND NOT (parent_name='sshd' AND p.cmdline LIKE "%askpass%")
-    AND NOT parent_path LIKE "/Users/%/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateAgent.app/Contents/MacOS/GoogleSoftwareUpdateAgent"
+    AND NOT p.cmdline LIKE "%gcloud config config-helper%"
+    AND NOT pp.cmdline LIKE "/Applications/Warp.app/%"
+    AND NOT pp.cmdline LIKE "%brew.rb%"
+    AND NOT pp.cmdline LIKE "%Code Helper%"
+    AND NOT pp.cmdline LIKE "%gcloud.py config config-helper%"
+    AND NOT pp.name LIKE "%term%"
+    AND NOT pp.name LIKE "%Term%"
+    AND NOT pp.name LIKE "Emacs%"
+    AND NOT pp.name LIKE "terraform-provider-%"
+    AND NOT pp.path LIKE "/Users/%/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateAgent.app/Contents/MacOS/GoogleSoftwareUpdateAgent"
 
     -- Oh, NixOS.
-    AND NOT parent_name LIKE "%/bin/bash"
-    AND NOT parent_name LIKE "%/bin/direnv"
+    AND NOT pp.name LIKE "%/bin/bash"
+    AND NOT pp.name LIKE "%/bin/direnv"
     AND NOT parent_path LIKE "/nix/store/%sh"
