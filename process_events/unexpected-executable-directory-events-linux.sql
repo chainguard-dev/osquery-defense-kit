@@ -1,10 +1,9 @@
 -- Events version of unexpected-executable-directory
 -- Designed for execution every minute (where the parent may still be around)
 SELECT p.pid,
-    p.path AS fullpath,
-    REPLACE(p.path, RTRIM(p.path, REPLACE(p.path, "/", "")), "") AS basename,
-    REPLACE(p.path, CONCAT("/", REPLACE(p.path, RTRIM(p.path, REPLACE(p.path, "/", "")), "")) , "") AS dirname,
-    p.cmdline,
+    p.path,
+    REGEX_MATCH(p.path, "(.*)/", 1) AS dirname,
+    REGEX_MATCH(RTRIM(p.path, "/"), ".*/(.*?)$", 1) AS basename,
     p.mode,
     p.cwd,
     p.euid,
@@ -64,7 +63,10 @@ AND dirname NOT LIKE "/home/%"
         "/usr/sbin",
         "/usr/share/code"
     )
+
+    -- Containers
     AND NOT (dirname="" AND name LIKE "runc%")
+    AND NOT (dirname="" AND parent_name IN ("dockerd"))
 
 -- Don't spam alerts with repeated invocations of the same command-line
 GROUP BY p.cmdline
