@@ -40,6 +40,9 @@ WHERE (
    AND enabled = 1
    AND exception_key NOT IN (
       "false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,,background",
+      "true,,Event Merge for Google Calendar™,idehaflielbgpaokehlhidbjlehlfcep,https://www.google.com/calendar/*, https://calendar.google.com/*, storage",
+      "true,,Superhuman,dcgcnpooblobhncpnddnhoendgbnglpn,background, gcm, notifications, storage, system.cpu, system.display, system.memory, tabs, unlimitedStorage, <all_urls>",
+      "true,Wappalyzer,Wappalyzer - Technology profiler,gppongmhjkpfnbhagpmjfkannfbllamg,cookies, storage, tabs, webRequest, webNavigation, http://*/*, https://*/*",
       "true,,Adblock for Youtube™,cmedhionkhpnakcndndgjdbohmhepckk,storage, unlimitedStorage, webRequest, webRequestBlocking, <all_urls>",
       "true,,Add to Amazon Wish List,ciagpekplgpbepdgggflgmahnjgiaced,tabs, http://*/*, https://*/*",
       "true,,DuckDuckGo Privacy Essentials,bkdgflcldnnnapblkhphbgpggdiikppg,contextMenus, webRequest, webRequestBlocking, *://*/*, webNavigation, activeTab, tabs, storage, <all_urls>, alarms",
@@ -129,3 +132,5 @@ WHERE (
       "true,Reddit Enhancement Suite contributors,Reddit Enhancement Suite,kbmfpngjjgdllneeigpgjifpgocmfgmb,https://*.reddit.com/*, tabs, history, storage, unlimitedStorage, webRequest",
       "true,Tulio Ornelas <ornelas.tulio@gmail.com>,JSON Viewer,gbmdgpbipfallnflgajpaliibnhdgobh,*://*/*, <all_urls>"
    )
+
+GROUP BY exception_key

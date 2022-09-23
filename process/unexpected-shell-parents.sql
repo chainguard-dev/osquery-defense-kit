@@ -69,6 +69,7 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
         '/usr/bin/login',
         '/Applications/Docker.app/Contents/MacOS/Docker',
         '/usr/bin/man',
+        '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateDaemon',
         '/usr/bin/xargs',
         '/usr/bin/apt-get',
         '/usr/bin/bwrap',

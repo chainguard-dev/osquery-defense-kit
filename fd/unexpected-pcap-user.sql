@@ -29,13 +29,14 @@ WHERE pmm.path LIKE "%libpcap%"
     AND child_path NOT LIKE "/System/Library/%"
     AND child_path NOT LIKE "/nix/store/%/bin/nix"
     AND child_path NOT IN (
-        '/usr/libexec/UserEventAgent',
-        '/usr/sbin/systemstats',
-        '/usr/sbin/cupsd'
+        "/usr/libexec/UserEventAgent",
+        "/usr/sbin/systemstats",
+        "/usr/bin/libvirtd",
+        "/usr/sbin/cupsd"
     )
     AND child_cmd NOT IN (
-        '/nix/var/nix/profiles/default/bin/nix-daemon',
-        '/run/current-system/systemd/lib/systemd/systemd',
-        '/usr/bin/python3 -s /usr/sbin/firewalld --nofork --nopid'
+        "/nix/var/nix/profiles/default/bin/nix-daemon",
+        "/run/current-system/systemd/lib/systemd/systemd",
+        "/usr/bin/python3 -s /usr/sbin/firewalld --nofork --nopid"
     )
 GROUP BY pmm.pid

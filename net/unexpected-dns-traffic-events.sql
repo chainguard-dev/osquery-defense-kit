@@ -57,7 +57,8 @@ WHERE s.time > (strftime("%s", "now") -120)
 
   -- Exceptions that specifically talk to one server
   AND exception_key NOT IN (
-    "nessusd,50.16.123.71,53"
+    "nessusd,50.16.123.71,53",
+    "coredns,0.0.0.0,53"
   )
 
   -- Local DNS servers and custom clients go here

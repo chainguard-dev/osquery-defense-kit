@@ -37,7 +37,6 @@ WHERE (
             -- Enable later once we know this query works well
             --             'pkg',
             'scpt',
-            'zip',
             'dmg',
             'iso',
             'gz',

@@ -1,24 +1,25 @@
 -- Events version of unexpected-executable-directory
 -- Designed for execution every minute (where the parent may still be around)
-SELECT p.pid,
-    p.path,
-    REGEX_MATCH(p.path, "(.*)/", 1) AS dirname,
-    REGEX_MATCH(RTRIM(p.path, "/"), ".*/(.*?)$", 1) AS basename,
-    p.mode,
-    p.cwd,
-    p.euid,
-    p.parent,
-    p.syscall,
+SELECT pe.pid,
+    pe.path,
+    REGEX_MATCH(pe.path, "(.*)/", 1) AS dirname,
+    pe.mode,
+    pe.cwd,
+    pe.euid,
+    pe.parent,
     pp.path AS parent_path,
     pp.name AS parent_name,
-    pp.cmdline AS parent_cmdline,
+    pp.cmdline AS parent_cmd,
     pp.euid AS parent_euid,
-    hash.sha256 AS parent_sha256
-FROM process_events p
-    LEFT JOIN processes pp ON p.parent = pp.pid
-    LEFT JOIN hash ON pp.path = hash.path
-WHERE p.time > (strftime("%s", "now") -60)
-AND dirname NOT LIKE "/home/%"
+    phash.sha256 AS parent_sha256,
+    hash.sha256 AS sha256
+FROM process_events pe
+    LEFT JOIN processes p ON pe.pid = pe.pid
+    LEFT JOIN processes pp ON pe.parent = p.pid
+    LEFT JOIN hash ON pe.path = hash.path
+    LEFT JOIN hash phash ON pp.path = hash.path
+WHERE pe.time > (strftime("%s", "now") -15)
+    AND dirname NOT LIKE "/home/%"
     AND dirname NOT LIKE "/nix/store/%/bin"
     AND dirname NOT LIKE "/nix/store/%/lib/%"
     AND dirname NOT LIKE "/nix/store/%/libexec"
@@ -38,6 +39,7 @@ AND dirname NOT LIKE "/home/%"
     AND dirname NOT LIKE "/usr/local/go/pkg/tool/%"
     AND dirname NOT IN (
         "/bin",
+        "/ko-app",
         "/sbin",
         "/usr/bin",
         "/usr/lib",
@@ -61,12 +63,20 @@ AND dirname NOT LIKE "/home/%"
         "/usr/libexec/ApplicationFirewall",
         "/usr/libexec/rosetta",
         "/usr/sbin",
+        "/",
+        "/app",
         "/usr/share/code"
     )
-
-    -- Containers
-    AND NOT (dirname="" AND name LIKE "runc%")
-    AND NOT (dirname="" AND parent_name IN ("dockerd"))
-
--- Don't spam alerts with repeated invocations of the same command-line
-GROUP BY p.cmdline
+    AND NOT pe.path IN (
+        "/usr/lib32/ld-linux.so.2"
+    )
+    AND NOT (
+        dirname = ""
+        AND p.name LIKE "runc%"
+    )
+    AND NOT (
+        dirname = ""
+        AND parent_name IN ("dockerd")
+    )
+    AND NOT (pe.euid = 65532)
+GROUP BY pe.pid

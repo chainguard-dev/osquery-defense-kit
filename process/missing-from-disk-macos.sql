@@ -19,6 +19,7 @@ AND NOT (
         OR cmd LIKE "/Library/Application Support/Logitech.localized/%"
         OR cmd LIKE "/Library/Developer/CommandLineTools/%"
         OR cmd LIKE "/opt/homebrew/Cellar/%"
+        OR cmd LIKE "/opt/homebrew/opt/%"
         OR cmd LIKE "/private/var/folders/%/Visual Studio Code.app/Contents/%"
         OR cmd LIKE "/Users/%/homebrew/opt/mysql/bin/%"
 

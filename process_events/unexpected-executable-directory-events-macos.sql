@@ -24,6 +24,7 @@ WHERE p.time > (strftime("%s", "now") -60)
         "/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateAgent.app/Contents/MacOS",
         "/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers.app/Contents/MacOS",
         "/Library/Printers/DYMO/Utilities",
+        "/Library/Application Support/Logitech.localized/Logitech Options.localized/LogiMgrUpdater.app/Contents/Resources",
         "/usr/lib/system",
         "/Library/PrivilegedHelperTools",
         "/sbin",

@@ -21,6 +21,9 @@ FROM process_memory_map pmm
     LEFT JOIN hash ON p.path = hash.path
     LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE (lib_path LIKE "%:bpf%" OR lib_path LIKE "%libbpf%")
-AND p.path != "/usr/lib/systemd/systemd"
+AND p.path NOT IN (
+    "/usr/bin/qemu-system-x86_64",
+    "/usr/lib/systemd/systemd"
+)
 AND p.path NOT LIKE "/nix/store/%/lib/systemd/systemd"
 GROUP BY pmm.pid

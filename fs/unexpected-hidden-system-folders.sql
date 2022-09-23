@@ -34,6 +34,7 @@ WHERE (
         '/.file',
         '/.vol/',
         '/.VolumeIcon.icns',
+        '/dev/.mdadm/',
         '/tmp/._contentbarrier_installed',
         '/tmp/../',
         '/tmp/./',
@@ -47,8 +48,9 @@ WHERE (
         '/tmp/.X1-lock',
         '/tmp/.X11-unix/',
         '/tmp/.XIM-unix/',
+        '/var/.ntw_cache',
         '/var/.Parallels_swap/',
-        '/dev/.mdadm/'
+        '/var/.pwd_cache'
     )
     AND file.path NOT LIKE '/tmp/.#%'
     AND file.path NOT LIKE '/tmp/.com.google.Chrome.%'

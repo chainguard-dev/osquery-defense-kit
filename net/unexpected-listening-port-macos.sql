@@ -46,6 +46,7 @@ WHERE port != 0
         "45972,6,500,IPNExtension,Apple Mac OS Application Signing",
         "49152,6,0,AirPlayXPCHelper,Software Signing",
         "49152,6,0,launchd,Software Signing",
+        "2112,6,500,rekor-server,",
         "49152,6,0,remoted,Software Signing",
         "49152,6,0,remotepairingdeviced,Software Signing",
         "49152,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)",

@@ -38,10 +38,11 @@ WHERE port != 0
         "53,6,0,coredns",
         "53,6,500,dnsmasq",
         "5355,6,193,systemd-resolve",
-        "5432,6,70,postgres"
+        "5432,6,70,postgres",
         "546,17,500,dhcpcd",
         "58,255,0,NetworkManager",
         "58,255,500,dhcpcd",
+        "53,17,500,dnsmasq",
         "631,17,0,cups-browsed",
         "6379,6,500,redis-server",
         "6443,6,0,kube-apiserver",
@@ -60,8 +61,8 @@ WHERE port != 0
         "8443,6,500,controlplane",
         "9000,6,500,authentik-proxy",
         "9090,6,500,controlplane",
-        "9153,6,0,coredns"
-        "9300,6,500,authentik-proxy",
+        "9153,6,0,coredns",
+        "9300,6,500,authentik-proxy"
     )
     AND NOT (p.path LIKE ",ko-app,%" AND lp.port > 1024 and lp.protocol=6)
     AND NOT (p.name IN ("hugo", "docker-proxy","rootlessport") AND lp.port > 1024 and lp.protocol=6)

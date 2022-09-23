@@ -29,206 +29,208 @@ FROM process_open_sockets s
   LEFT JOIN hash ON p.path = hash.path
 WHERE protocol > 0
   AND s.remote_port > 0
-  AND s.remote_address NOT IN ('127.0.0.1', '::ffff:127.0.0.1', '::1')
-  AND s.remote_address NOT LIKE 'fe80:%'
-  AND s.remote_address NOT LIKE '127.%'
-  AND s.remote_address NOT LIKE '192.168.%'
-  AND s.remote_address NOT LIKE '172.1%'
-  AND s.remote_address NOT LIKE '172.2%'
-  AND s.remote_address NOT LIKE '172.30.%'
-  AND s.remote_address NOT LIKE '172.31.%'
-  AND s.remote_address NOT LIKE '::ffff:172.%'
-  AND s.remote_address NOT LIKE '10.%'
-  AND s.remote_address NOT LIKE '::ffff:10.%'
-  AND s.remote_address NOT LIKE 'fc00:%'
-  AND s.state != 'LISTEN'
+  AND s.remote_address NOT IN ("127.0.0.1", "::ffff:127.0.0.1", "::1")
+  AND s.remote_address NOT LIKE "fe80:%"
+  AND s.remote_address NOT LIKE "127.%"
+  AND s.remote_address NOT LIKE "192.168.%"
+  AND s.remote_address NOT LIKE "172.1%"
+  AND s.remote_address NOT LIKE "172.2%"
+  AND s.remote_address NOT LIKE "172.30.%"
+  AND s.remote_address NOT LIKE "172.31.%"
+  AND s.remote_address NOT LIKE "::ffff:172.%"
+  AND s.remote_address NOT LIKE "10.%"
+  AND s.remote_address NOT LIKE "::ffff:10.%"
+  AND s.remote_address NOT LIKE "fc00:%"
+  AND s.state != "LISTEN"
   -- DNS clients
   AND NOT (
     remote_port = 53
     AND protocol IN (6, 17)
     AND p.name IN (
-      '1password',
-      'apt',
-      'apt-get',
-      'Brackets',
-      'chainctl',
-      'chrome',
-      'chronyd',
-      'cloud_sql_proxy',
-      'code',
-      'containerd',
-      'controlplane',
-      'crc',
-      'curl',
-      'dig',
-      'dnf',
-      'electron',
-      'firefox',
-      '.firefox-wrappe',
-      'flameshot',
-      'gh',
-      'git-remote-http',
-      'gitsign',
-      'gnome-software',
-      'go',
-      'grafana-server',
-      'grype',
-      'host',
-      'htop',
-      'istioctl',
-      'jcef_helper',
-      'k6',
-      'k9s',
-      'ko',
-      'kolide-pipeline',
-      'launcher',
-      'NetworkManager',
-      'ngrok',
-      'nix',
-      'node',
-      'nscd',
-      'obs',
-      'obs-browser-page',
-      'obs-ffmpeg-mux',
-      'obsidian',
-      'opera',
-      'pacman',
-      'ping',
-      'podman',
-      'prometheus',
-      'rootlessport',
-      'signal-desktop',
-      'slack',
-      'slirp4netns',
-      'snapd',
-      'snap-store',
-      'Socket Process',
-      'spotify',
-      'ssh',
-      'steam',
-      'steamwebhelper',
-      'syncthing',
-      'systemd-resolve',
-      'tailscaled',
-      '.tailscaled-wra',
-      'terraform',
-      'terraform-provi',
-      'tkn',
-      'traceroute',
-      'vcluster',
-      'wget',
-      'whois',
-      'xmobar',
-      'yay',
-      'zoom'
+      "1password",
+      "apt",
+      "apt-get",
+      "Brackets",
+      "chainctl",
+      "chrome",
+      "chronyd",
+      "cloud_sql_proxy",
+      "code",
+      "containerd",
+      "controlplane",
+      "crc",
+      "curl",
+      "dig",
+      "dnf",
+      "electron",
+      "firefox",
+      ".firefox-wrappe",
+      "flameshot",
+      "gh",
+      "git-remote-http",
+      "gitsign",
+      "gnome-software",
+      "go",
+      "grafana-server",
+      "grype",
+      "host",
+      "htop",
+      "istioctl",
+      "jcef_helper",
+      "k6",
+      "k9s",
+      "ko",
+      "kolide-pipeline",
+      "launcher",
+      "NetworkManager",
+      "ngrok",
+      "nix",
+      "node",
+      "nscd",
+      "obs",
+      "obs-browser-page",
+      "obs-ffmpeg-mux",
+      "obsidian",
+      "opera",
+      "pacman",
+      "ping",
+      "podman",
+      "prometheus",
+      "rootlessport",
+      "signal-desktop",
+      "slack",
+      "slirp4netns",
+      "snapd",
+      "snap-store",
+      "Socket Process",
+      "spotify",
+      "ssh",
+      "steam",
+      "steamwebhelper",
+      "syncthing",
+      "systemd-resolve",
+      "tailscaled",
+      ".tailscaled-wra",
+      "terraform",
+      "terraform-provi",
+      "tkn",
+      "traceroute",
+      "vcluster",
+      "wget",
+      "whois",
+      "xmobar",
+      "yay",
+      "zoom"
     )
   )
 
   -- General exceptions
   AND NOT exception_key IN (
-    '123,17,500,chronyd',
-    '22,6,,',      -- shortlived SSH (git push)
-    '123,17,,',
-    '22,6,500,ssh',
-    '22067,6,500,syncthing',
-    '27024,6,500,steam',
-    '3100,6,500,firefox',
-    '3100,6,500,k6',
-    '3307,6,500,cloud_sql_proxy',
-    '4070,6,500,spotify',
-    '443,17,500,chrome',
-    '443,17,500,electron',
-    '443,17,500,jcef_helper',
-    '443,17,500,slack',
-    '443,17,500,spotify',
-    '443,6,0,.tailscaled-wra',
-    '443,6,0,dnf',
-    '443,6,0,dockerd',
-    '443,6,500,influxd',
-    '443,6,0,influxd',
-    '443,6,0,launcher',
-    '443,6,0,pacman',
-    '443,6,0,snapd',
-    '443,6,0,tailscaled',
-    '443,6,472,grafana-server',
-    '443,6,500,.firefox-wrappe',
-    '443,6,500,1password',
-    '443,6,500,authentik-proxy',
+    "123,17,500,chronyd",
+    "22,6,,",      -- shortlived SSH (git push)
+    "123,17,,",
+    "22,6,500,ssh",
+    "22067,6,500,syncthing",
+    "27024,6,500,steam",
+    "3100,6,500,firefox",
+    "3100,6,500,k6",
+    "3307,6,500,cloud_sql_proxy",
+    "4070,6,500,spotify",
+    "443,17,500,chrome",
+    "443,17,500,electron",
+    "443,17,500,jcef_helper",
+    "443,17,500,slack",
+    "443,17,500,spotify",
+    "443,6,0,.tailscaled-wra",
+    "443,6,0,dnf",
+    "443,6,0,dockerd",
+    "443,6,500,influxd",
+    "443,6,0,influxd",
+    "443,6,0,launcher",
+    "443,6,0,pacman",
+    "443,6,0,snapd",
+    "443,6,0,tailscaled",
+    "443,6,500,java",
+    "443,6,472,grafana-server",
+    "443,6,500,.firefox-wrappe",
+    "443,6,500,1password",
+    "443,6,500,authentik-proxy",
     "443,6,500,WebKitNetworkPr",
-    '443,6,500,Brackets',
-    '443,6,500,celery',
-    '443,6,500,chainctl',
-    '443,6,500,chrome',
-    '443,6,500,cloud_sql_proxy',
-    '443,6,500,code',
-    '443,6,500,containerd',
-    '443,6,500,controlplane',
-    '443,6,500,cosign',
-    '443,6,500,crane',
-    '443,6,500,crc',
-    '443,6,500,curl',
-    '443,6,500,Discord',
-    '443,6,500,electron',
-    '443,6,500,firefox',
-    '443,6,500,flameshot',
-    '443,6,500,gh',
-    '443,6,500,git-remote-http',
-    '443,6,500,gitsign',
-    '443,6,500,gnome-shell',
-    '443,6,500,gnome-software',
-    '443,6,500,go',
-    '443,6,500,grafana-server',
-    '443,6,500,grype',
-    '443,6,500,gunicorn',
-    '443,6,500,htop',
-    '443,6,500,istioctl',
-    '443,6,500,k6',
-    '443,6,500,k9s',
-    '443,6,500,ko',
-    '443,6,500,kolide-pipeline',
-    '443,6,500,kubectl',
-    '443,6,500,ngrok',
-    '443,6,500,nix',
-    '443,6,500,node',
-    '443,6,500,obs-browser-page',
-    '443,6,500,obs-ffmpeg-mux',
-    '443,6,500,obs',
-    '443,6,500,obsidian',
-    '443,6,500,podman',
-    '443,6,500,signal-desktop',
-    '443,6,500,slack',
-    '443,6,500,slirp4netns',
-    '443,6,500,snap-store',
-    '443,6,500,Socket Process',
-    '443,6,500,spotify',
-    '443,6,500,steamwebhelper',
-    '443,6,500,terraform-provi',
-    '443,6,500,terraform',
-    '443,6,500,tkn',
-    '443,6,500,vcluster',
-    '443,6,500,wget',
-    '443,6,500,xmobar',
-    '443,6,500,yay',
-    '443,6,500,zoom',
-    '5228,6,500,chrome',
-    '6000,6,500,ssh',
-    '80,6,0,.tailscaled-wra',
-    '80,6,0,dnf',
-    '80,6,0,NetworkManager',
-    '80,6,0,pacman',
-    '80,6,0,tailscaled',
-    '80,6,500,.firefox-wrappe',
-    '80,6,500,curl',
-    '80,6,500,firefox',
-    '80,6,500,steam',
-    '80,6,500,steamwebhelper',
-    '80,6,500,syncthing',
-    '8006,6,500,chrome',
-    '8801,17,500,zoom',
-    '9090,6,500,firefox',
-    '9090,6,500,k6',
-    '9090,6,500,prometheus',
-    '9090,6,500,rootlessport'
+    "443,6,500,Brackets",
+    "443,6,500,celery",
+    "443,6,500,chainctl",
+    "443,6,500,chrome",
+    "443,6,500,cloud_sql_proxy",
+    "443,6,500,code",
+    "443,6,500,containerd",
+    "443,6,500,controlplane",
+    "443,6,500,cosign",
+    "443,6,500,crane",
+    "443,6,500,crc",
+    "443,6,500,curl",
+    "443,6,500,Discord",
+    "443,6,500,electron",
+    "443,6,500,firefox",
+    "443,6,500,flameshot",
+    "443,6,500,gh",
+    "443,6,500,git-remote-http",
+    "443,6,500,gitsign",
+    "443,6,500,gnome-shell",
+    "443,6,500,gnome-software",
+    "443,6,500,go",
+    "443,6,500,grafana-server",
+    "443,6,500,grype",
+    "443,6,500,gunicorn",
+    "443,6,500,WebKitNetworkPr",
+    "443,6,500,htop",
+    "443,6,500,istioctl",
+    "443,6,500,k6",
+    "443,6,500,k9s",
+    "443,6,500,ko",
+    "443,6,500,kolide-pipeline",
+    "443,6,500,kubectl",
+    "443,6,500,ngrok",
+    "443,6,500,nix",
+    "443,6,500,node",
+    "443,6,500,obs-browser-page",
+    "443,6,500,obs-ffmpeg-mux",
+    "443,6,500,obs",
+    "443,6,500,obsidian",
+    "443,6,500,podman",
+    "443,6,500,signal-desktop",
+    "443,6,500,slack",
+    "443,6,500,slirp4netns",
+    "443,6,500,snap-store",
+    "443,6,500,Socket Process",
+    "443,6,500,spotify",
+    "443,6,500,steamwebhelper",
+    "443,6,500,terraform-provi",
+    "443,6,500,terraform",
+    "443,6,500,tkn",
+    "443,6,500,vcluster",
+    "443,6,500,wget",
+    "443,6,500,xmobar",
+    "443,6,500,yay",
+    "443,6,500,zoom",
+    "5228,6,500,chrome",
+    "6000,6,500,ssh",
+    "80,6,0,.tailscaled-wra",
+    "80,6,0,dnf",
+    "80,6,0,NetworkManager",
+    "80,6,0,pacman",
+    "80,6,0,tailscaled",
+    "80,6,500,.firefox-wrappe",
+    "80,6,500,curl",
+    "80,6,500,firefox",
+    "80,6,500,steam",
+    "80,6,500,steamwebhelper",
+    "80,6,500,syncthing",
+    "8006,6,500,chrome",
+    "8801,17,500,zoom",
+    "9090,6,500,firefox",
+    "9090,6,500,k6",
+    "9090,6,500,prometheus",
+    "9090,6,500,rootlessport"
   )
 
     -- These programs would normally never make an outgoing connection, but thanks to Nix, it can happen.
@@ -245,11 +247,11 @@ WHERE protocol > 0
 
   -- Other more complicated situations
   AND NOT (
-    p.name = 'rootlessport'
+    p.name = "rootlessport"
     AND remote_port > 1024
   )
   AND NOT (
-    p.name = 'syncthing'
+    p.name = "syncthing"
     AND (
       remote_port IN (53, 80, 88, 110, 443, 587, 993, 3306, 7451)
       OR remote_port > 8000
@@ -257,11 +259,11 @@ WHERE protocol > 0
   )
   AND NOT (
     p.name IN (
-      'chrome',
-      'Google Chrome Helper',
-      'Brave Browser Helper',
-      'Chromium Helper',
-      'Opera Helper'
+      "chrome",
+      "Google Chrome Helper",
+      "Brave Browser Helper",
+      "Chromium Helper",
+      "Opera Helper"
     )
     AND remote_port IN (
       53,
@@ -289,23 +291,23 @@ WHERE protocol > 0
   )
 
   AND NOT (
-    p.name IN ('thunderbird')
+    p.name IN ("thunderbird")
     AND remote_port IN (53, 143, 443, 587, 465, 585, 993)
   )
   AND NOT (
-    p.name IN ('spotify', 'Spotify Helper', 'Spotify')
+    p.name IN ("spotify", "Spotify Helper", "Spotify")
     AND remote_port IN (53, 443, 8009, 4070, 32211)
   )
   AND NOT (
     remote_port IN (443, 53)
-    AND p.name LIKE 'terraform-provider-%'
+    AND p.name LIKE "terraform-provider-%"
   )
   AND NOT (
     remote_port iN (443, 53)
-    AND p.name LIKE 'kubectl.%'
+    AND p.name LIKE "kubectl.%"
   )
   AND NOT (
-    p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%'
+    p.cmdline LIKE "%google-cloud-sdk/lib/gcloud.py%"
     AND remote_port IN (80, 53, 443)
   )
-GROUP BY s.pid
+GROUP BY p.cmdline

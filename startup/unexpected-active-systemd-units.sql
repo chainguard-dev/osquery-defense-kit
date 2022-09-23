@@ -22,8 +22,8 @@ WHERE active_state != "inactive"
     AND NOT (
         (
             -- Only allow fragment paths in known good directories
-            fragment_path LIKE '/lib/systemd/system/%'
-            OR fragment_path LIKE '/usr/lib/systemd/system/%'
+            fragment_path LIKE "/lib/systemd/system/%"
+            OR fragment_path LIKE "/usr/lib/systemd/system/%"
             OR fragment_path LIKE "/etc/systemd/system/%"
             OR fragment_path LIKE "/run/systemd/generator/%"
             OR fragment_path LIKE "/run/systemd/generator.late/%.service"
@@ -339,25 +339,26 @@ WHERE active_state != "inactive"
                 "znapzend.service,ZnapZend - ZFS Backup System,root,1700",
                 "zpool-trim.timer,zpool-trim.timer,,0"
             )
-            OR id LIKE 'blockdev@dev-mapper-luks%.target'
-            OR id LIKE 'blockdev@dev-mapper-nvme%.target'
-            OR id LIKE 'dbus-:%-org.freedesktop.problems@0.service'
-            OR id LIKE 'dev-disk-by%.swap'
-            OR id LIKE 'dev-mapper-%.swap'
-            OR id LIKE 'dev-zram%.swap'
-            OR id LIKE 'docker-%.scope'
-            OR id LIKE 'getty@tty%.service'
-            OR id LIKE 'home-manager-%.service'
-            OR id LIKE 'lvm2-pvscan@%.service'
-            OR id LIKE 'session-%.scope'
-            OR id LIKE 'system-systemd%cryptsetup.slice'
-            OR id LIKE 'systemd-backlight@%.service'
-            OR id LIKE 'systemd-cryptsetup@luks%.service'
-            OR id LIKE 'systemd-cryptsetup@nvme%.service'
-            OR id LIKE 'systemd-fsck@dev-disk-by%service'
-            OR id LIKE 'systemd-zram-setup@zram%.service'
-            OR id LIKE 'user-runtime-dir@%.service'
-            OR id LIKE 'user@%.service'
-            OR id LIKE 'akmods@%64.service'
+            OR exception_key LIKE "machine-qemu%,Virtual Machine qemu%,,300"
+            OR id LIKE "blockdev@dev-mapper-luks%.target"
+            OR id LIKE "blockdev@dev-mapper-nvme%.target"
+            OR id LIKE "dbus-:%-org.freedesktop.problems@0.service"
+            OR id LIKE "dev-disk-by%.swap"
+            OR id LIKE "dev-mapper-%.swap"
+            OR id LIKE "dev-zram%.swap"
+            OR id LIKE "docker-%.scope"
+            OR id LIKE "getty@tty%.service"
+            OR id LIKE "home-manager-%.service"
+            OR id LIKE "lvm2-pvscan@%.service"
+            OR id LIKE "session-%.scope"
+            OR id LIKE "system-systemd%cryptsetup.slice"
+            OR id LIKE "systemd-backlight@%.service"
+            OR id LIKE "systemd-cryptsetup@luks%.service"
+            OR id LIKE "systemd-cryptsetup@nvme%.service"
+            OR id LIKE "systemd-fsck@dev-disk-by%service"
+            OR id LIKE "systemd-zram-setup@zram%.service"
+            OR id LIKE "user-runtime-dir@%.service"
+            OR id LIKE "user@%.service"
+            OR id LIKE "akmods@%64.service"
         )
     )

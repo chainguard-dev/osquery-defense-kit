@@ -135,6 +135,7 @@ WHERE protocol > 0
     "443,6,500,chainctl,,",
     "443,6,500,node,node,Developer ID Application: Node.js Foundation (HX7739G8FX)",
     "443,6,500,chainctl,a.out,",
+    "443,6,500,chainctl_Darwin_arm64,a.out,",
     "443,6,500,cloud_sql_proxy,a.out,",
     "443,6,500,Code Helper (Renderer),com.github.Electron.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)",
     "443,6,500,Code Helper,com.microsoft.VSCode.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)",
