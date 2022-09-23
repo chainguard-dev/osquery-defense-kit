@@ -209,6 +209,7 @@ WHERE protocol > 0
     "443,6,500,Socket Process",
     "443,6,500,spotify",
     "443,6,500,steamwebhelper",
+    "443,6,0,dirmngr",
     "443,6,500,terraform-provi",
     "443,6,500,terraform",
     "443,6,500,tkn",

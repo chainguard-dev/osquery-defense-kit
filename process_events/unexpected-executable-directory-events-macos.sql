@@ -87,6 +87,8 @@ WHERE p.time > (strftime("%s", "now") -60)
         "/Library/PrivilegedHelperTools/com.macpaw.CleanMyMac4.Agent",
         "/Library/PrivilegedHelperTools/keybase.Helper"
     )
+    -- Nix
+    AND parent_path NOT LIKE "/nix/store/%"
     -- Pulumi executables are often executed from $TMPDIR
     AND NOT (
         dirname LIKE "/private/var/%"
