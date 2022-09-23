@@ -53,6 +53,7 @@ WHERE port != 0
         "8008,6,500,controlplane",
         "8080,6,0,coredns",
         "8086,6,0,influxd",
+        "4443,6,500,metrics-server",
         "8086,6,500,influxd",
         "53,17,500,dnsmasq",
         "8123,6,500,Brackets-node",

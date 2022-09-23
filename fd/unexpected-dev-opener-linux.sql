@@ -72,6 +72,7 @@ WHERE pof.path LIKE "/dev/%"
         "/dev/shm,winedevice.exe",
         "/dev/snd,.pulseaudio-wrapped",
         "/dev/snd,alsactl",
+        "/dev/net/tun,qemu-system-x86_64",
         "/dev/snd,pipewire",
         "/dev/snd,pulseaudio",
         "/dev/snd,wireplumber"

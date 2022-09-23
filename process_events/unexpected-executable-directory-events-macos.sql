@@ -28,10 +28,13 @@ WHERE p.time > (strftime("%s", "now") -60)
         "/usr/lib/system",
         "/Library/PrivilegedHelperTools",
         "/sbin",
+        "/nix/store",
         "/usr/bin",
         "/usr/lib",
+        "/Library/TeX/texbin",
         "/usr/lib/bluetooth",
         "/usr/lib/cups/notifier",
+        "/Library/Frameworks/Python.framework/Versions/3.10/bin",
         "/usr/libexec",
         "/usr/libexec/ApplicationFirewall",
         "/usr/libexec/rosetta",
@@ -71,6 +74,8 @@ WHERE p.time > (strftime("%s", "now") -60)
     AND dirname NOT LIKE "/Library/Developer/CommandLineTools/Library/%"
     AND dirname NOT LIKE "/usr/local/%"
     AND dirname NOT LIKE "/usr/libexec/%"
+    -- Unexplained data issue
+    AND dirname NOT LIKE "../%"
     AND p.path NOT IN (
         "/Applications/Stats.app/Contents/MacOS/Stats",
         "/usr/libexec/AssetCache/AssetCache",

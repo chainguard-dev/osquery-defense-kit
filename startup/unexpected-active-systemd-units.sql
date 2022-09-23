@@ -144,6 +144,7 @@ WHERE active_state != "inactive"
                 "machine.slice,Virtual Machine and Container Slice,,400",
                 "machines.target,Containers,,400",
                 "man-db.timer,Daily man-db regeneration,,100",
+                "man-db.service,Daily man-db regeneration,root,700",
                 "ModemManager.service,Modem Manager,root,400",
                 "ModemManager.service,Modem Manager,root,500",
                 "modprobe@efi_pstore.service,Load Kernel Module efi_pstore,,500",
