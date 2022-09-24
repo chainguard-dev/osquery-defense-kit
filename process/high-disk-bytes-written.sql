@@ -15,26 +15,26 @@ WHERE bytes_per_second > 2000000
     AND age > 120
     AND p.path NOT IN (
         '/bin/bash',
-        '/usr/bin/curl',
+        '/usr/bin/aptd',
         '/usr/bin/bash',
-        '/usr/bin/zsh',
+        '/usr/bin/bwrap',
+        '/usr/bin/curl',
         '/usr/bin/fish',
         '/usr/bin/gnome-shell',
+        '/usr/bin/qemu-system-x86_64',
+        '/usr/bin/yay',
+        '/usr/bin/zsh',
+        '/usr/lib/flatpak-system-helper',
         '/usr/lib/systemd/systemd-journald',
-        '/usr/libexec/sharingd',
         '/usr/lib/systemd/systemd',
+        '/usr/lib64/thunderbird/thunderbird',
         '/usr/libexec/coreduetd',
         '/usr/libexec/coreduetd',
         '/usr/libexec/packagekitd',
-        '/usr/lib/flatpak-system-helper',
         '/usr/libexec/rosetta/oahd',
         '/usr/libexec/secd',
-        '/usr/bin/aptd',
-        '/usr/bin/qemu-system-x86_64',
-        '/usr/bin/bwrap',
-        '/usr/sbin/screencapture',
-        '/usr/lib64/thunderbird/thunderbird',
-        '/usr/bin/yay'
+        '/usr/libexec/sharingd',
+        '/usr/sbin/screencapture'
     )
     AND NOT (name LIKE "jbd%/dm-%" AND on_disk = -1)
     AND NOT (name = 'bindfs' AND cmdline LIKE 'bindfs -f -o fsname=%')
@@ -43,21 +43,22 @@ WHERE bytes_per_second > 2000000
     AND NOT (name = 'launchd' AND p.path = '/sbin/launchd' AND parent = 0)
     AND NOT (name = 'logd' AND cmdline = '/usr/libexec/logd' AND parent = 1)
     AND NOT name IN (
-        'firefox',
-        'gopls',
-        'containerd',
-        'slack',
         'chrome',
-        'goland',
+        'com.apple.MobileSoftwareUpdate.UpdateBrainService',
+        'containerd',
         'esbuild',
+        'firefox',
+        'goland',
+        'gopls',
+        'jetbrains-toolb',
         'slack',
-        'wineserver',
-        'com.apple.MobileSoftwareUpdate.UpdateBrainService'
+        'slack',
+        'wineserver'
     )
     AND p.path NOT LIKE '/Applications/%.app/Contents/%'
-    AND p.path NOT LIKE '/System/Applications/%'
-    AND p.path NOT LIKE '/System/Library/%'
     AND p.path NOT LIKE '/home/%/.local/share/Steam'
     AND p.path NOT LIKE '/nix/store/%/bin/%sh'
     AND p.path NOT LIKE '/nix/store/%/bin/nix'
+    AND p.path NOT LIKE '/System/Applications/%'
+    AND p.path NOT LIKE '/System/Library/%'
     AND p.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'

@@ -59,24 +59,25 @@ WHERE p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
         'zsh'
     )
     AND parent_path NOT IN (
+        '/Applications/Docker.app/Contents/MacOS/Docker',
         '/bin/dash',
         '/bin/sh',
+        '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateDaemon',
         '/opt/X11/libexec/launchd_startx',
         '/sbin/launchd',
         '/usr/bin/alacritty',
+        '/usr/bin/apt-get',
         '/usr/bin/bash',
+        '/usr/bin/bwrap',
         '/usr/bin/crond',
         '/usr/bin/login',
-        '/Applications/Docker.app/Contents/MacOS/Docker',
         '/usr/bin/man',
-        '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateDaemon',
-        '/usr/bin/xargs',
-        '/usr/bin/apt-get',
-        '/usr/bin/bwrap',
         '/usr/bin/sudo',
-        '/usr/libexec/periodic-wrapper',
+        '/usr/bin/xargs',
         '/usr/bin/zsh',
-        '/usr/libexec/gnome-terminal-server'
+        '/usr/libexec/gnome-terminal-server',
+        '/usr/libexec/periodic-wrapper',
+        "/usr/bin/su"
     )
 
     -- npm run server

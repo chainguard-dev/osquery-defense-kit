@@ -119,6 +119,7 @@ WHERE protocol > 0
     "443,6,500,nix,nix,",
     "22,6,500,ssh,ssh,",
     "443,6,500,scorecard-darwin-amd64,,",
+    "443,6,500,Slack Helper,,",
     "22,6,500,ssh,com.apple.openssh,Software Signing",
     "22,6,500,ssh,ssh-55554944fbf65684ab9b37c2bad3a27ef78b23f4,",
     "43,6,500,DropboxMacUpdate,com.dropbox.DropboxMacUpdate,Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)",
@@ -256,5 +257,11 @@ WHERE protocol > 0
   AND NOT (
     p.path=""
     AND pp.cmdline LIKE "%/Slack"
+  )
+  -- Process name is sometimes empty here?
+  AND NOT (
+    p.cmdline = "/Applications/Craft.app/Contents/MacOS/Craft"
+    AND remote_port = 443
+    AND protocol = 6
   )
 GROUP BY s.pid
