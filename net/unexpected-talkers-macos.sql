@@ -12,7 +12,7 @@ SELECT
   pp.path AS parent_path,
   pp.cmdline AS parent_cmd,
   hash.sha256,
-  CONCAT(
+  CONCAT (
     MIN(s.remote_port, 32768),
     ",",
     protocol,
@@ -25,12 +25,14 @@ SELECT
     ",",
     signature.authority
   ) AS exception_key
-FROM process_open_sockets s
+FROM
+  process_open_sockets s
   LEFT JOIN processes p ON s.pid = p.pid
   LEFT JOIN processes pp ON pp.pid = p.parent
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN signature ON p.path = signature.path
-WHERE protocol > 0
+WHERE
+  protocol > 0
   AND s.remote_port > 0
   AND s.remote_address NOT IN ("127.0.0.1", "::ffff:127.0.0.1", "::1")
   AND s.remote_address NOT LIKE "fe80:%"
@@ -177,17 +179,15 @@ WHERE protocol > 0
     "6000,6,500,ssh,ssh-55554944fbf65684ab9b37c2bad3a27ef78b23f4,",
     "80,6,0,com.apple.MobileSoftwareUpdate.UpdateBrainService,com.apple.MobileSoftwareUpdate.UpdateBrainService,Software Signing"
   )
-
   -- nix-shell infects children with open connections
   AND NOT (
     parent_cmd LIKE "%/tmp/nix-shell%"
     AND remote_port = 443
     AND protocol = 6
   )
-
   -- These programs would normally never make an outgoing connection, but thanks to Nix, it can happen.
   AND NOT (
-    remote_address LIKE ("151.101.%")
+    remote_address LIKE("151.101.%")
     AND remote_port = 443
     AND protocol = 6
     AND (
@@ -195,7 +195,6 @@ WHERE protocol > 0
       OR parent_path LIKE "%/zsh"
     )
   )
-
   -- More complicated patterns go here
   AND NOT (
     p.name = "syncthing"
@@ -255,7 +254,7 @@ WHERE protocol > 0
   )
   -- Slack update?
   AND NOT (
-    p.path=""
+    p.path = ""
     AND pp.cmdline LIKE "%/Slack"
   )
   -- Process name is sometimes empty here?
@@ -264,4 +263,5 @@ WHERE protocol > 0
     AND remote_port = 443
     AND protocol = 6
   )
-GROUP BY s.pid
+GROUP BY
+  s.pid

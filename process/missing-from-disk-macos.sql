@@ -23,7 +23,7 @@ FROM
   LEFT JOIN hash ON pp.path = hash.path
 WHERE
   p.on_disk != 1
--- false positives from recently spawned processes
+  -- false positives from recently spawned processes
   AND (strftime("%s", "now") - p.start_time) > 15
   AND p.pid > 0
   AND p.parent != 2

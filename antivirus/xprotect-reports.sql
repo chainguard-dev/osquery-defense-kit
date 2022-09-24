@@ -1,1 +1,4 @@
-SELECT * FROM xprotect_reports;
+SELECT
+  *
+FROM
+  xprotect_reports;

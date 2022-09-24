@@ -1,4 +1,5 @@
-SELECT s.family,
+SELECT
+  s.family,
   protocol,
   s.local_port,
   s.remote_port,
@@ -14,7 +15,7 @@ SELECT s.family,
   p.parent AS parent_pid,
   pp.cmdline AS parent_cmd,
   hash.sha256,
-  CONCAT(
+  CONCAT (
     MIN(s.remote_port, 32768),
     ",",
     protocol,
@@ -23,11 +24,13 @@ SELECT s.family,
     ",",
     p.name
   ) AS exception_key
-FROM process_open_sockets s
+FROM
+  process_open_sockets s
   LEFT JOIN processes p ON s.pid = p.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
-WHERE protocol > 0
+WHERE
+  protocol > 0
   AND s.remote_port > 0
   AND s.remote_address NOT IN ("127.0.0.1", "::ffff:127.0.0.1", "::1")
   AND s.remote_address NOT LIKE "fe80:%"
@@ -123,11 +126,10 @@ WHERE protocol > 0
       "zoom"
     )
   )
-
   -- General exceptions
   AND NOT exception_key IN (
     "123,17,500,chronyd",
-    "22,6,,",      -- shortlived SSH (git push)
+    "22,6,,", -- shortlived SSH (git push)
     "123,17,,",
     "22,6,500,ssh",
     "22067,6,500,syncthing",
@@ -240,10 +242,9 @@ WHERE protocol > 0
     "9090,6,500,prometheus",
     "9090,6,500,rootlessport"
   )
-
-    -- These programs would normally never make an outgoing connection, but thanks to Nix, it can happen.
+  -- These programs would normally never make an outgoing connection, but thanks to Nix, it can happen.
   AND NOT (
-    remote_address LIKE ("151.101.%")
+    remote_address LIKE("151.101.%")
     AND remote_port = 443
     AND protocol = 6
     AND (
@@ -252,7 +253,6 @@ WHERE protocol > 0
       OR p.path LIKE "/nix/store/%/bash"
     )
   )
-
   -- Other more complicated situations
   AND NOT (
     p.name = "rootlessport"
@@ -297,7 +297,6 @@ WHERE protocol > 0
       19309
     )
   )
-
   AND NOT (
     p.name IN ("thunderbird")
     AND remote_port IN (53, 143, 443, 587, 465, 585, 993)
@@ -318,4 +317,5 @@ WHERE protocol > 0
     p.cmdline LIKE "%google-cloud-sdk/lib/gcloud.py%"
     AND remote_port IN (80, 53, 443)
   )
-GROUP BY p.cmdline
+GROUP BY
+  p.cmdline
