@@ -67,6 +67,7 @@ WHERE
   AND dirname NOT LIKE '/private/var/folders/%/bin'
   AND dirname NOT LIKE '/private/var/folders/%/Contents/%'
   AND dirname NOT LIKE '/private/var/folders/%/go-build%'
+  AND dirname NOT LIKE '/private/tmp/go-build%/exe'
   AND dirname NOT LIKE '/private/var/folders/%/GoLand'
   AND dirname NOT LIKE '/snap/%'
   AND dirname NOT LIKE '/System/%'
