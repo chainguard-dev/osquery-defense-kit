@@ -310,6 +310,10 @@ WHERE
     AND p.name LIKE "terraform-provider-%"
   )
   AND NOT (
+    remote_port IN (443, 53)
+    AND p.name LIKE "npm exec %"
+  )
+  AND NOT (
     remote_port iN (443, 53)
     AND p.name LIKE "kubectl.%"
   )

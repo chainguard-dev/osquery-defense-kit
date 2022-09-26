@@ -48,6 +48,7 @@ WHERE
   AND NOT p.path LIKE "/private/var/db/com.apple.xpc.roleaccountd.staging/%"
   AND NOT p.path LIKE "/private/var/folders/%/bin/istioctl"
   AND NOT p.path LIKE "/private/var/folders/%/go-build%/exe/%"
+  AND NOT p.path LIKE "/private/var/folders/%/GoLand/%.test"
   AND NOT p.path LIKE "/Users/%/bin/%"
   AND NOT p.path LIKE "/Users/%/git%"
   AND NOT p.path LIKE "/Users/%/Library/Mobile Documents/%/Contents/Frameworks%"

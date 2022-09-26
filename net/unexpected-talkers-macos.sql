@@ -121,6 +121,7 @@ WHERE
     "443,6,500,nix,nix,",
     "22,6,500,ssh,ssh,",
     "443,6,500,scorecard-darwin-amd64,,",
+    "443,6,500,vegeta,a.out,",
     "443,6,500,Slack Helper,,",
     "22,6,500,ssh,com.apple.openssh,Software Signing",
     "22,6,500,ssh,ssh-55554944fbf65684ab9b37c2bad3a27ef78b23f4,",
