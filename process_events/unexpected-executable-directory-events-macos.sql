@@ -41,42 +41,45 @@ WHERE
     "/usr/libexec",
     "/usr/libexec/ApplicationFirewall",
     "/usr/libexec/rosetta",
+    "/node_modules/.bin",
     "/nix/var/nix/profiles/default/bin",
     "/run/current-system/sw/bin",
     "/usr/libexec/firmwarecheckers/eficheck",
     "/usr/sbin",
     "/usr/share/code"
   )
+  AND dirname NOT LIKE "./%"
   AND dirname NOT LIKE "/Applications/%.app/%"
+  AND dirname NOT LIKE "/etc/profiles/per-user/%/bin"
   AND dirname NOT LIKE "/home/%"
+  AND dirname NOT LIKE "/Library/%/%.bundle/Contents/Helpers"
+  AND dirname NOT LIKE "/Library/%/Resources/%/Contents/MacOS"
+  AND dirname NOT LIKE "/Library/%/sbin" -- Nessus
   AND dirname NOT LIKE "/Library/Apple/System/%"
   AND dirname NOT LIKE "/Library/Application Support/%/Contents/MacOS"
+  AND dirname NOT LIKE "/Library/Application Support/Adobe/%"
   AND dirname NOT LIKE "/Library/Audio/Plug-Ins/%/Contents/MacOS"
   AND dirname NOT LIKE "/Library/CoreMediaIO/Plug-Ins/%"
   AND dirname NOT LIKE "/Library/Developer/%"
+  AND dirname NOT LIKE "/Library/Developer/CommandLineTools/Library/%"
   AND dirname NOT LIKE "/Library/Internet Plug-Ins/%/Contents/MacOS"
   AND dirname NOT LIKE "/Library/Java/JavaVirtualMachines/%"
   AND dirname NOT LIKE "/Library/SystemExtensions/%"
   AND dirname NOT LIKE "/nix/store/%"
-  AND dirname NOT LIKE "/store/%/bin"
   AND dirname NOT LIKE "/opt/%"
+  AND dirname NOT LIKE "/private/tmp/go-build%/exe"
   AND dirname NOT LIKE "/private/tmp/nix-build-%"
-  AND dirname NOT LIKE "/etc/profiles/per-user/%/bin"
   AND dirname NOT LIKE "/private/var/db/com.apple.xpc.roleaccountd.staging/%.xpc/Contents/MacOS"
   AND dirname NOT LIKE "/private/var/folders/%/bin"
   AND dirname NOT LIKE "/private/var/folders/%/Contents/%"
   AND dirname NOT LIKE "/private/var/folders/%/go-build%"
   AND dirname NOT LIKE "/private/var/folders/%/GoLand"
   AND dirname NOT LIKE "/snap/%"
+  AND dirname NOT LIKE "/store/%/bin"
   AND dirname NOT LIKE "/System/%"
   AND dirname NOT LIKE "/Users/%"
-  AND dirname NOT LIKE "/Library/%/%.bundle/Contents/Helpers"
-  AND dirname NOT LIKE "/Library/%/sbin" -- Nessus
-  AND dirname NOT LIKE "/Library/%/Resources/%/Contents/MacOS"
-  AND dirname NOT LIKE "/Library/Application Support/Adobe/%"
-  AND dirname NOT LIKE "/Library/Developer/CommandLineTools/Library/%"
-  AND dirname NOT LIKE "/usr/local/%"
   AND dirname NOT LIKE "/usr/libexec/%"
+  AND dirname NOT LIKE "/usr/local/%"
   -- Unexplained data issue
   AND dirname NOT LIKE "../%"
   AND p.path NOT IN (
@@ -84,6 +87,7 @@ WHERE
     "/usr/libexec/AssetCache/AssetCache",
     "_build/krew/bin/git",
     "/Library/PrivilegedHelperTools/com.adobe.acc.installer.v2",
+    "/Library/DropboxHelperTools/DropboxHelperInstaller",
     "/Library/PrivilegedHelperTools/com.adobe.ARMDC.Communicator",
     "/Library/PrivilegedHelperTools/com.adobe.ARMDC.SMJobBlessHelper",
     "/Library/PrivilegedHelperTools/com.docker.vmnetd",
