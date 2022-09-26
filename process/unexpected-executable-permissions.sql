@@ -35,3 +35,16 @@ WHERE
     AND f.mode = '0777'
     AND f.uid > 500
   )
+
+  AND NOT (
+    f.path = '/Applications/Camera Settings.app/Contents/MacOS/LogitechCamera'
+    AND f.mode = '0777'
+    AND f.uid > 500
+  )
+
+
+  AND NOT (
+    f.path = '/usr/bin/sudo'
+    AND f.mode = '0411'
+    AND f.uid = 0
+  )

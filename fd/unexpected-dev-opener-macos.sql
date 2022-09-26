@@ -28,7 +28,7 @@ FROM
   process_open_files pof
   LEFT JOIN processes p ON pof.pid = p.pid
   LEFT JOIN hash ON hash.path = p.path
-  LEFT JOIN signature s ON s.path = p.path
+  LEFT JOIN signature s ON p.path = s.path
 WHERE
   pof.path LIKE "/dev/%"
   AND pof.path NOT IN (

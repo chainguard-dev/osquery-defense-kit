@@ -121,9 +121,12 @@ WHERE
     "/dev/net/tun,slirp4netns",
     "/dev/tty,agetty",
     "/dev/tty,gdm-wayland-session",
+    "/dev/input/event,thermald",
     "/dev/tty,gdm-x-session",
     "/dev/tty,systemd-logind",
+    "/dev/mcelog,mcelog",
     "/dev/tty,Xorg",
+    "/dev/zfs,zpool",
     "/dev/uinput,bluetoothd",
     "/dev/usb/hiddev,apcupsd",
     "/dev/usb/hiddev,upowerd",
@@ -139,7 +142,7 @@ WHERE
   -- shows up as python
   AND NOT (
     device LIKE "/dev/bus/usb/%"
-    AND program_name IN ("streamdeck", "gphoto2", "fwupd")
+    AND program_name IN ("streamdeck", "gphoto2", "fwupd", "pcscd")
   )
 GROUP BY
   pof.pid

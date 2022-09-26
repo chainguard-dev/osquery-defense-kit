@@ -65,7 +65,9 @@ WHERE
   -- Some applications hard-code a safe DNS resolver, or allow the user to configure one
   AND s.remote_address NOT IN (
     '1.1.1.1', -- Cloudflare
+    "1.1.1.2", -- Cloudflare
     '8.8.8.8', -- Google
+    '8.8.8.4', -- Google
     '208.67.222.222', -- OpenDNS
     '75.75.75.75' -- Comcast
   )

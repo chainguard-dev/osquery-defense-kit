@@ -45,6 +45,7 @@ WHERE
       'gz',
       'sh',
       'sql'
+
     )
     OR file.symlink != 0
     OR basename LIKE ".%"
@@ -61,17 +62,20 @@ WHERE
     OR basename LIKE "cg%"
   ) -- exceptions go here
   AND basename NOT IN (
-    '.',
     '..',
-    '.vol',
-    '.VolumeIcon.icns',
+    '.',
     '.background',
-    '.file',
-    '.Trashes',
-    '.TemporaryItems',
+    '.disk_label_2x',
+    '.disk_label',
+    '.DS_Store',
     '.file-revisions-by-id',
+    '.file',
+    '.metadata_never_index_unless_rootfs',
     '.shortcut-targets-by-id',
-    '.DS_Store'
+    '.TemporaryItems',
+    '.Trashes',
+    '.vol',
+    '.VolumeIcon.icns'
   )
   AND authority NOT IN (
     'Developer ID Application: Google LLC (EQHXZ8M8AV)'

@@ -49,13 +49,17 @@ WHERE
   -- Some applications hard-code a safe DNS resolver, or allow the user to configure one
   AND s.remote_address NOT IN (
     "1.1.1.1", -- Cloudflare
+    "1.1.1.2", -- Cloudflare
     "8.8.8.8", -- Google
     "8.8.4.4", -- Google (backup)
     "208.67.222.222", -- OpenDNS
     "75.75.75.75" -- Comcast
   )
   -- Exceptions that specifically talk to one server
-  AND exception_key NOT IN ("nessusd,50.16.123.71,53", "coredns,0.0.0.0,53")
+  AND exception_key NOT IN (
+    "nessusd,50.16.123.71,53",
+    "coredns,0.0.0.0,53"
+  )
   -- Local DNS servers and custom clients go here
   AND p.path NOT IN ("/usr/lib/systemd/systemd-resolved")
   AND p.path NOT LIKE "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/%/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"

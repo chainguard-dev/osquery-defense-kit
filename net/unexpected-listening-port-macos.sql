@@ -55,6 +55,7 @@ WHERE
     "49152,6,500,GarageBand,Apple Mac OS Application Signing",
     "1338,6,500,registry,",
     "137,17,0,launchd,Software Signing",
+    "49152,6,500,telepresence,",
     "137,17,222,netbiosd,Software Signing",
     "138,17,0,launchd,Software Signing",
     "138,17,222,netbiosd,Software Signing",
