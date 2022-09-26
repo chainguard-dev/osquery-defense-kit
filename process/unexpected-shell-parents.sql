@@ -37,6 +37,7 @@ WHERE
     'kubectl',
     'make',
     'monorail',
+    'nix-daemon',
     'nix',
     'node',
     'nvim',
@@ -59,6 +60,7 @@ WHERE
     'xargs',
     'xcrun',
     'xfce4-terminal',
+    'yum',
     'zsh'
   )
   AND parent_path NOT IN (
@@ -84,7 +86,8 @@ WHERE
   )
   -- npm run server
   AND NOT p.cmdline IN (
-    'sh -c -- exec-bin node_modules/.bin/hugo/hugo server'
+    'sh -c -- exec-bin node_modules/.bin/hugo/hugo server',
+    'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null'
   )
   AND NOT (
     pp.name = 'sshd'
