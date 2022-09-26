@@ -78,5 +78,6 @@ WHERE
       OR p.cmdline LIKE "%LICENSES/vendor/%"
       OR p.cmdline LIKE "%localhost:%"
       OR p.cmdline LIKE "%127.0.0.1:%"
+      OR p.cmdline LIKE "%/chainctl_%"
     )
   )
