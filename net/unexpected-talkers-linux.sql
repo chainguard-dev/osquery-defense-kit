@@ -184,6 +184,8 @@ WHERE
     "443,6,500,gnome-shell",
     "443,6,500,gnome-software",
     "443,6,500,go",
+    "443,6,500,pingsender",
+    "443,6,0,depmod",
     "443,6,500,grafana-server",
     "443,6,500,grype",
     "443,6,500,gunicorn",
@@ -191,6 +193,9 @@ WHERE
     "443,6,500,htop",
     "443,6,500,istioctl",
     "443,6,500,k6",
+    "443,6,0,yum",
+    "80,6,0,yum",
+    "443,6,500,aws",
     "443,6,500,k9s",
     "443,6,500,ko",
     "443,6,500,kolide-pipeline",
@@ -204,6 +209,7 @@ WHERE
     "443,6,500,obs-ffmpeg-mux",
     "443,6,500,obs",
     "443,6,500,obsidian",
+    "443,6,0,nix-daemon",
     "443,6,500,podman",
     "443,6,500,jetbrains-toolb",
     "443,6,500,signal-desktop",
@@ -216,15 +222,18 @@ WHERE
     "443,6,0,dirmngr",
     "443,6,500,terraform-provi",
     "443,6,500,terraform",
+    "7903,6,500,syncthing",
     "443,6,500,tkn",
     "443,6,500,vcluster",
     "443,6,500,wget",
     "443,6,500,xmobar",
+    "443,6,500,geoclue",
     "443,6,500,yay",
     "443,6,500,zoom",
     "5228,6,500,chrome",
     "6000,6,500,ssh",
     "80,6,0,.tailscaled-wra",
+    "443,6,0,packagekitd",
     "80,6,0,dnf",
     "80,6,0,NetworkManager",
     "80,6,0,pacman",
@@ -262,7 +271,7 @@ WHERE
     p.name = "syncthing"
     AND (
       remote_port IN (53, 80, 88, 110, 443, 587, 993, 3306, 7451)
-      OR remote_port > 8000
+      OR remote_port > 1024
     )
   )
   AND NOT (
