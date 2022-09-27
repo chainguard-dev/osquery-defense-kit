@@ -73,6 +73,7 @@ WHERE
     'containerd',
     'esbuild',
     'firefox',
+    'go',
     'goland',
     'gopls',
     'jetbrains-toolb',

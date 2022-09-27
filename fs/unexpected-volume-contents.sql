@@ -68,6 +68,7 @@ WHERE
     '.disk_label_2x',
     '.disk_label',
     '.DS_Store',
+    '.iotest',
     '.file-revisions-by-id',
     '.file',
     '.metadata_never_index_unless_rootfs',

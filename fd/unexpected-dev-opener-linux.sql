@@ -7,9 +7,10 @@ SELECT
   hash.sha256,
   CONCAT (
     IIF(
-      REGEX_MATCH (pof.path, "(/dev/.*)\d+$", 1) != "",
-      REGEX_MATCH (pof.path, "(/dev/.*)\d+$", 1),
-      pof.path
+      -- (REPLACE(pof.path, " (deleted)", "")
+      REGEX_MATCH(REPLACE(pof.path, " (deleted)", ""), "(/dev/.*)[\d ]+$", 1) != "",
+      REGEX_MATCH(REPLACE(pof.path, " (deleted)", ""), "(/dev/.*)[\d ]+$", 1),
+      REPLACE(pof.path, " (deleted)", "")
     ),
     ",",
     REPLACE(
@@ -113,31 +114,36 @@ WHERE
   AND NOT path_exception IN (
     "/dev/autofs,systemd",
     "/dev/hidraw,chrome",
+    "/dev/input/event,thermald",
     "/dev/input/event,Xorg",
     "/dev/kmsg,kubelet",
-    "/dev/kmsg,systemd-journald",
     "/dev/kmsg,systemd",
+    "/dev/kmsg,systemd-journald",
     "/dev/kvm,qemu-system-x86_64",
+    "/dev/mapper/control,dockerd",
+    "/dev/mcelog,mcelog",
+    "/dev/media,pipewire",
+    "/dev/media,wireplumber",
     "/dev/net/tun,slirp4netns",
     "/dev/tty,agetty",
     "/dev/tty,gdm-wayland-session",
-    "/dev/input/event,thermald",
     "/dev/tty,gdm-x-session",
     "/dev/tty,systemd-logind",
-    "/dev/mcelog,mcelog",
     "/dev/tty,Xorg",
-    "/dev/zfs,zpool",
     "/dev/uinput,bluetoothd",
     "/dev/usb/hiddev,apcupsd",
     "/dev/usb/hiddev,upowerd",
     "/dev/video,chrome",
     "/dev/video,ffmpeg",
     "/dev/video,firefox",
-    "/dev/video,obs-ffmpeg-mux",
     "/dev/video,obs",
+    "/dev/video,pipewire",
+    "/dev/video,obs-ffmpeg-mux",
     "/dev/video,vlc",
+    "/dev/video,wireplumber",
     "/dev/zfs,zed",
-    "/dev/zfs,zfs"
+    "/dev/zfs,zfs",
+    "/dev/zfs,zpool"
   )
   -- shows up as python
   AND NOT (

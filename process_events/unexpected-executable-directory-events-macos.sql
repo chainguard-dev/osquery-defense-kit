@@ -48,7 +48,7 @@ WHERE
     "/usr/sbin",
     "/usr/share/code"
   )
-  AND dirname NOT LIKE "./%"
+  AND dirname NOT LIKE ".%"
   AND dirname NOT LIKE "/Applications/%.app/%"
   AND dirname NOT LIKE "/etc/profiles/per-user/%/bin"
   AND dirname NOT LIKE "/home/%"

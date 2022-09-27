@@ -52,6 +52,8 @@ WHERE
     '/tmp/./',
     '/tmp/.%.lock',
     '/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
+    '/tmp/.dracula-tmux-weather.lock',
+    '/tmp/.dracula-tmux-data',
     '/tmp/.dotnet/',
     '/tmp/.font-unix/',
     '/tmp/.ICE-unix/',
@@ -84,3 +86,6 @@ WHERE
       OR size < 2
     )
   )
+  -- A curious addition seen on a NixOS machine
+  AND NOT (file.path = "/.cache/" AND uid=0 AND gid=0 AND mode="0755" AND size=3 AND type="directory")
+  AND NOT (file.path = "/.config/" AND uid=0 AND gid=0 AND mode="0755" AND size=4 AND type="directory")

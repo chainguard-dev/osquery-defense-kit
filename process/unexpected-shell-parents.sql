@@ -27,6 +27,7 @@ WHERE
     'dash',
     'demoit',
     'direnv',
+    'chezmoi',
     'find',
     'FinderSyncExtension',
     'fish',
@@ -49,6 +50,7 @@ WHERE
     'skhd',
     'swift',
     'systemd',
+    'helm',
     'terminator',
     'test2json',
     'tmux:server',
@@ -93,6 +95,11 @@ WHERE
     pp.name = 'sshd'
     AND p.cmdline LIKE "%askpass%"
   )
+  AND NOT (
+    pp.name = 'bash'
+    AND p.cmdline LIKE "sh -s _hostname %"
+  )
+
   AND NOT p.cmdline LIKE "%/Library/Apple/System/Library/InstallerSandboxes%"
   AND NOT p.cmdline LIKE "%gcloud config config-helper%"
   AND NOT pp.cmdline LIKE "/Applications/Warp.app/%"
@@ -108,3 +115,4 @@ WHERE
   AND NOT pp.name LIKE "%/bin/bash"
   AND NOT pp.name LIKE "%/bin/direnv"
   AND NOT parent_path LIKE "/nix/store/%sh"
+  AND NOT parent_path LIKE "/opt/homebrew/%"

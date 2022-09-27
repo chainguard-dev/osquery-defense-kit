@@ -40,9 +40,11 @@ WHERE
     "name=code-oss,file=electron,500",
     "name=exe,file=rootlessport,500",
     "name=file,file=firefox,500",
+    "name=cat,file=coreutils,500",
     "name=firefox-wrappe,file=firefox,500",
     "name=firewalld,file=python3,0",
     "name=gjs,file=gjs-console,500",
+    "name=gnome-characte,file=gjs-console,500",
     "name=gnome-character,file=gjs-console,500",
     "name=gnome-tweak-to,file=python3,500",
     "name=gsettings-hel,file=gsettings-help,500",
@@ -81,6 +83,9 @@ WHERE
   AND NOT (
     short_filename LIKE "emacs%"
     AND short_name = "emacs"
+  )
+  AND NOT (
+    f.filename LIKE "/nix/store/%/bin/coreutils"
   )
 GROUP by
   short_name,

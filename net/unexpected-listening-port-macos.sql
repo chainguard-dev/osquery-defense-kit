@@ -57,6 +57,7 @@ WHERE
     "137,17,0,launchd,Software Signing",
     "49152,6,500,telepresence,",
     "137,17,222,netbiosd,Software Signing",
+    "9101,6,500,github_actions_exporter,",
     "138,17,0,launchd,Software Signing",
     "138,17,222,netbiosd,Software Signing",
     "16587,6,500,RescueTime,Developer ID Application: RescueTime, Inc (FSY4RB8H39)",
@@ -117,6 +118,12 @@ WHERE
   )
   AND NOT (
     p.path LIKE "/private/var/folders/%/go-build%/exe/%"
+    AND lp.port > 1024
+    AND lp.protocol = 6
+  )
+  AND NOT (
+    p.cwd LIKE "/Users/%/src/%"
+    AND p.cmdline LIKE "./%"
     AND lp.port > 1024
     AND lp.protocol = 6
   )
