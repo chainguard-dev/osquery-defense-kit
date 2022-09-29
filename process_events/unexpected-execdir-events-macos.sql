@@ -17,12 +17,14 @@ SELECT
 FROM
   process_events p
   LEFT JOIN processes ON p.pid = processes.pid
+  LEFT JOIN file ON p.path = file.path
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON pp.path = hash.path
 WHERE
   p.time > (strftime("%s", "now") -60)
   -- The process_events table on macOS ends up with relative directories for some reason?
   AND dirname LIKE "/%"
+  AND file.size > 0
   AND dirname NOT IN (
     "/bin",
     "/Library/DropboxHelperTools/Dropbox_u501",

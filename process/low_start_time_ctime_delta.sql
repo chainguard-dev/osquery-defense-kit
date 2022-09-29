@@ -39,6 +39,8 @@ WHERE
     "/usr/libexec/fwupd/fwupd",
     "/usr/libexec/sssd/sssd_kcm",
     "/usr/sbin/cupsd",
+    "/usr/bin/dockerd",
+    "/usr/lib/slack/chrome_crashpad_handler",
     "/usr/sbin/tailscaled"
   )
   AND NOT p.path LIKE "/Applications/%.app/%"
@@ -72,6 +74,8 @@ WHERE
   AND NOT p.path LIKE "%-go-build%"
   AND NOT p.path LIKE "%/.vscode/extensions/%"
   AND NOT p.path LIKE "%/Library/Application Support/com.elgato.StreamDeck%"
+  AND NOT p.path LIKE "/home/%$/%.test"
+  AND NOT p.path LIKE "/Users/%$/%.test"
   AND NOT pp.path IN (
     "/usr/bin/gnome-shell",
     "/Library/PrivilegedHelperTools/com.adobe.acc.installer.v2",

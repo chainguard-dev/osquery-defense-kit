@@ -1,5 +1,4 @@
-SELECT
-  pof.pid,
+SELECT pof.pid,
   pof.path AS device,
   p.path AS program,
   p.name AS program_name,
@@ -8,8 +7,16 @@ SELECT
   CONCAT (
     IIF(
       -- (REPLACE(pof.path, " (deleted)", "")
-      REGEX_MATCH(REPLACE(pof.path, " (deleted)", ""), "(/dev/.*)[\d ]+$", 1) != "",
-      REGEX_MATCH(REPLACE(pof.path, " (deleted)", ""), "(/dev/.*)[\d ]+$", 1),
+      REGEX_MATCH(
+        REPLACE(pof.path, " (deleted)", ""),
+        "(/dev/.*)[\d ]+$",
+        1
+      ) != "",
+      REGEX_MATCH(
+        REPLACE(pof.path, " (deleted)", ""),
+        "(/dev/.*)[\d ]+$",
+        1
+      ),
       REPLACE(pof.path, " (deleted)", "")
     ),
     ",",
@@ -41,12 +48,10 @@ SELECT
       ""
     )
   ) AS dir_exception
-FROM
-  process_open_files pof
+FROM process_open_files pof
   LEFT JOIN processes p ON pof.pid = p.pid
   LEFT JOIN hash ON hash.path = p.path
-WHERE
-  pof.path LIKE "/dev/%"
+WHERE pof.path LIKE "/dev/%"
   AND pof.path NOT IN (
     "/dev/dri/card0",
     "/dev/dri/card1",
@@ -145,10 +150,15 @@ WHERE
     "/dev/zfs,zfs",
     "/dev/zfs,zpool"
   )
-  -- shows up as python
   AND NOT (
     device LIKE "/dev/bus/usb/%"
-    AND program_name IN ("streamdeck", "gphoto2", "fwupd", "pcscd")
+    AND program_name IN (
+      "streamdeck",
+      "gphoto2",
+      "fwupd",
+      "pcscd",
+      "gvfs-gphoto2-vo",
+      "gvfs-gphoto2-volume-monitor"
+    )
   )
-GROUP BY
-  pof.pid
+GROUP BY pof.pid

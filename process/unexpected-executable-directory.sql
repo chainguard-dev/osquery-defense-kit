@@ -46,7 +46,6 @@ WHERE
     "/usr/lib/udisks2",
     "/usr/lib/xorg",
     "/usr/lib64/firefox",
-
     "/usr/libexec",
     "/usr/libexec/ApplicationFirewall",
     "/usr/libexec/rosetta",

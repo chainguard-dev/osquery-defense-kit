@@ -1,5 +1,6 @@
 SELECT
   p.pid,
+  p.uid,
   p.cmdline,
   p.path,
   mnt_namespace,
@@ -27,13 +28,16 @@ WHERE
       process_namespaces
       JOIN processes ON processes.pid = process_namespaces.pid
     WHERE
-      processes.name IN ('osqueryi', 'osqueryd')
+      processes.name IN ("osqueryi", "osqueryd")
   )
   -- Persistent apps that are updated often
   AND p.path NOT IN (
-    '/usr/lib/gnome-shell-calendar-server',
+    "/usr/lib/gnome-shell-calendar-server",
+    "/usr/libexec/evolution-source-registry",
+    "/usr/libexec/evolution-calendar-factory",
     "/opt/google/chrome/chrome_crashpad_handler",
     "/opt/google/chrome/chrome",
+    "/usr/libexec/evolution-addressbook-factory",
     "/opt/google/chrome/nacl_helper",
     "/usr/bin/containerd",
     "/usr/bin/dbus-broker-launch",
@@ -50,6 +54,9 @@ WHERE
     "/usr/bin/wireplumber",
     "/usr/lib/electron19/electron",
     "/usr/libexec/gnome-shell-calendar-server"
+  )
+  AND NOT pp.path IN (
+    "/usr/libexec/gnome-session-binary"
   )
   -- AppImage
   AND p.path NOT LIKE "/tmp/.mount_%/%"

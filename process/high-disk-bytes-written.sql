@@ -1,6 +1,7 @@
 SELECT
   p.name,
   p.path,
+  p.pid,
   p.cmdline,
   p.on_disk,
   p.parent,
@@ -66,6 +67,10 @@ WHERE
     name = 'logd'
     AND cmdline = '/usr/libexec/logd'
     AND parent = 1
+  )
+    AND NOT (
+    name = 'aptd'
+    AND cmdline = '/usr/bin/python3 /usr/sbin/aptd'
   )
   AND NOT name IN (
     'chrome',

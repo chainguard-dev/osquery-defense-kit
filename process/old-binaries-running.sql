@@ -16,8 +16,8 @@ FROM
   JOIN hash h ON p.path = h.path
 WHERE
   (
-    ctime_age_days > 1000
-    OR mtime_age_days > 1000
+    ctime_age_days > 1050
+    OR mtime_age_days > 1050
   )
   AND p.path NOT LIKE "%/opt/brackets/Brackets%"
   AND h.sha256 NOT IN (

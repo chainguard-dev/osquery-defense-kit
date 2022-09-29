@@ -69,6 +69,8 @@ WHERE
     "true,,Event Merge for Google Calendar™,idehaflielbgpaokehlhidbjlehlfcep,https://www.google.com/calendar/*, https://calendar.google.com/*, storage",
     "true,,Facebook Pixel Helper,fdgfkebogiimcoedlicjlajpkdmockpc,tabs, webNavigation, webRequest, webRequestBlocking, storage, identity, *://*/*, clipboardWrite",
     "true,,Google Analytics Parameter Stripper,jbgedkkfkohoehhkknnmlodlobbhafge,webNavigation, <all_urls>",
+    "true,,WiseStamp email signature,pbcgnkmbeodkmiijjfnliicelkjfcldg,*://*.wisestamp.com/*, http://local.wisestamp.com:9081/*, https://local.wisestamp.com:8080/*, cookies",
+    "true,,Loom – Free Screen Recorder & Screen Capture,liecbddmkiiihnedobmlmillhodjkdmb,tabCapture, webNavigation, activeTab, contextMenus, storage, tabs, desktopCapture, notifications, cookies, *://*.useloom.com/, *://*.loom.com/, http://localhost/*",
     "true,,Google Docs Offline,ghbmnnjooekpmoecnnnilnnbdlolhkhi,alarms, storage, unlimitedStorage, https://docs.google.com/*, https://drive.google.com/*",
     "true,,Google Drive,apdfllckaahabafndbhieahigkjlhalf,clipboardRead, clipboardWrite, notifications",
     "true,,Google Hangouts,nckgahadagoaajjgafhacjanaoiihapd,alarms, background, cookies, idle, notifications, storage, system.display, tabs, *://*.google.com/*",

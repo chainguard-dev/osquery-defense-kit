@@ -20,5 +20,7 @@ WHERE
   gap.path NOT LIKE "/Users/%/bin/%"
   AND gap.path NOT LIKE "/Users/%/rekor-cli"
   AND gap.path NOT LIKE "/Users/%/scorecard-darwin-amd64"
+  AND gap.path NOT LIKE "/Users/%/scorecard-darwin-amd64"
+  AND gap.path NOT LIKE "/Users/%/configure"
 GROUP BY
   gap.requirement
