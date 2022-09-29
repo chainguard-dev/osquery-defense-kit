@@ -66,6 +66,12 @@ WHERE
     OR cmd LIKE '%urllib.urlopen%'
     OR cmd LIKE '%nohup%tmp%'
     OR cmd LIKE "%killall Terminal%"
+    OR cmd LIKE "%iptables stop"
+    OR cmd LIKE "%systemctl stop firewalld%"
+    OR cmd LIKE "%systemctl disable firewalld%"
+    OR cmd LIKE "%pkill -f%"
+    OR cmd LIKE "%rm -rf /boot%"
+    OR cmd LIKE "%xargs kill -9%"
     OR cmd LIKE "%nohup /bin/bash%"
     OR cmd LIKE "%echo%|%base64 --decode %|%sh%"
     OR cmd LIKE "%echo%|%base64 --decode %|%python%"
