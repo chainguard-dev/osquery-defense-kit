@@ -31,10 +31,7 @@ WHERE
   AND p.state != "Z"
   -- The kernel no longer has enough tracking information for this alert to be useful
   AND NOT (
-    p.parent = 1
-    AND p.path = ""
-    AND p.cwd = ""
-    AND p.name = ""
+    p.parent = 1 AND p.path = ""
   )
   AND NOT (
     p.gid = 20
