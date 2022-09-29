@@ -27,7 +27,6 @@ WHERE
   AND (p.start_time - f.ctime) > 0
   AND NOT p.path IN (
     "",
-    "/Library/Application Support/Logitech.localized/Logitech Presentation.localized/Onboarding.app/Contents/MacOS/Onboarding",
     "/opt/google/chrome/chrome",
     "/usr/bin/containerd",
     "/usr/bin/obs",
@@ -36,6 +35,7 @@ WHERE
     "/usr/lib/slack/slack",
     "/usr/lib/fwupd/fwupd",
     "/usr/lib/x86_64-linux-gnu/obs-plugins/obs-browser-page",
+    "/Library/DropboxHelperTools/Dropbox_u501/dbkextd",
     "/usr/libexec/fwupd/fwupd",
     "/usr/libexec/sssd/sssd_kcm",
     "/usr/sbin/cupsd",
@@ -47,6 +47,7 @@ WHERE
   AND NOT p.path LIKE "/home/%/terraform-provider-%"
   AND NOT p.path LIKE "/Library/Apple/System/%"
   AND NOT p.path LIKE "/Library/Apple/System/Library/%"
+  AND NOT p.path LIKE "/Library/Application Support/Logitech.localized/%"
   AND NOT p.path LIKE "/nix/store/%/bin/%"
   AND NOT p.path LIKE "/opt/homebrew/bin/%"
   AND NOT p.path LIKE "/opt/homebrew/Cellar/%"
