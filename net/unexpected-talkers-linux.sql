@@ -238,6 +238,7 @@ WHERE
     "8006,6,500,chrome",
     "80,6,0,dnf",
     "80,6,0,NetworkManager",
+    "443,6,500,x11-ssh-askpass",
     "80,6,0,pacman",
     "80,6,0,tailscaled",
     "80,6,0,.tailscaled-wra",
