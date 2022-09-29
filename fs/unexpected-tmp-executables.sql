@@ -70,3 +70,5 @@ WHERE
   AND NOT file.directory LIKE "/tmp/msu-target-%"
   -- I don't know man. I don't work here.
   AND NOT (file.path LIKE ("/tmp/%compressed") AND size < 4000 AND uid>500)
+  -- Executables too small to even hold "#!/bin/sh\nuid"
+  AND NOT (file.type = "regular" AND size < 10)
