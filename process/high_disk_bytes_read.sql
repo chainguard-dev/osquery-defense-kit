@@ -32,6 +32,7 @@ WHERE
     'qemu-system-x86',
     'slack',
     'wineserver',
+    'nix',
     'ykman-gui',
     'osqueryd',
     'zsh'
