@@ -1,3 +1,5 @@
+-- Gatekeeper exceptions are exceptions for downloaded binaries
+
 -- https://posts.specterops.io/hunting-for-bad-apples-part-2-6f2d01b1f7d3
 -- Most of these hits end up running out of the Downloads directory
 SELECT

@@ -86,6 +86,7 @@ WHERE
     "49152,6,500,node,",
     "49152,6,500,rapportd,Software Signing",
     "49152,6,500,Sketch,Developer ID Application: Bohemian Coding (WUGMZZ5K46)",
+    "49152,6,500,WorkflowAppControl,Developer ID Application: Brother Industries, LTD. (5HCL85FLGW)",
     "49152,6,500,SketchMirrorHelper,Developer ID Application: Bohemian Coding (WUGMZZ5K46)",
     "49152,6,500,Spotify,Developer ID Application: Spotify (2FNC3A47ZF)",
     "49152,6,500,vpnkit-bridge,Developer ID Application: Docker Inc (9BNSXJN65R)",

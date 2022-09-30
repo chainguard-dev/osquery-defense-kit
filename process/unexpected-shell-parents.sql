@@ -44,6 +44,7 @@ WHERE
     "monorail",
     "nix-daemon",
     "nix",
+    "package_script_service",
     "node",
     "nvim",
     "perl",

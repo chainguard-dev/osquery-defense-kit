@@ -240,8 +240,10 @@ WHERE
     "80,6,0,NetworkManager",
     "443,6,500,x11-ssh-askpass",
     "80,6,0,pacman",
+    "443,6,500,emacs",
     "80,6,0,tailscaled",
     "80,6,0,.tailscaled-wra",
+    "443,6,500,pip",
     "80,6,0,yum",
     "80,6,105,http", -- /usr/lib/apt/methods/http
     "80,6,500,curl",
@@ -265,8 +267,9 @@ WHERE
     AND remote_port = 443
     AND protocol = 6
     AND (
-      parent_path LIKE "%/bash"
-      OR parent_path LIKE "%/zsh"
+      parent_path LIKE "%/bin/bash"
+      OR parent_path LIKE "%/bin/zsh"
+      OR parent_path LIKE "%/bin/nix"
       OR p.path LIKE "/nix/store/%/bash"
     )
   )

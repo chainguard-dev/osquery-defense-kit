@@ -1,3 +1,4 @@
+-- Find processes running that are tied to binaries with unsual permissions. Namely, 0777.
 SELECT
   p.pid,
   p.name,
@@ -30,14 +31,17 @@ WHERE
     '4555',
     '4755'
   )
+  -- Vendors who are very relaxed about permissions
   AND NOT (
-    f.path = '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService'
+    f.path IN (
+      '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService',
+      '/Applications/Camera Settings.app/Contents/MacOS/LogitechCamera'
+    )
     AND f.mode = '0777'
     AND f.uid > 500
   )
-
   AND NOT (
-    f.path = '/Applications/Camera Settings.app/Contents/MacOS/LogitechCamera'
+    f.path LIKE "/Users/%/Library/Application Support/Code/User/globalStorage/grafana.vscode-jsonnet/bin/jsonnet-language-server"
     AND f.mode = '0777'
     AND f.uid > 500
   )

@@ -1,5 +1,4 @@
-SELECT
-  protocol,
+SELECT protocol,
   s.local_port,
   s.remote_port,
   s.remote_address,
@@ -25,14 +24,12 @@ SELECT
     ",",
     signature.authority
   ) AS exception_key
-FROM
-  process_open_sockets s
+FROM process_open_sockets s
   LEFT JOIN processes p ON s.pid = p.pid
   LEFT JOIN processes pp ON pp.pid = p.parent
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN signature ON p.path = signature.path
-WHERE
-  protocol > 0
+WHERE protocol > 0
   AND s.remote_port > 0
   AND s.remote_address NOT IN ("127.0.0.1", "::ffff:127.0.0.1", "::1")
   AND s.remote_address NOT LIKE "fe80:%"
@@ -171,8 +168,10 @@ WHERE
     "443,6,500,istioctl,a.out,",
     "443,6,500,ko,a.out,",
     "443,6,500,kubectl,,",
+    "443,6,500,civo,a.out,",
     "443,6,500,kubectl,a.out,",
-    "443,6,500,,,", -- No process, but at least it's a reasonable protocol
+    "443,6,500,,,",
+    -- No process, but at least it's a reasonable protocol
     "443,6,500,gh,a.out,",
     "443,6,500,main,a.out,",
     "80,6,500,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV)",
@@ -197,22 +196,22 @@ WHERE
     "443,6,500,terraform,terraform,Developer ID Application: Hashicorp, Inc. (D38WU7D763)",
     "443,6,500,vegeta,a.out,",
     "443,6,500,vim,vim,",
+    "443,6,0,OneDrivePkgTelemetry,com.microsoft.OneDrivePkgTelemetry,Developer ID Application: Microsoft Corporation (UBF8T346G9)",
     "443,6,500,zoom.us,us.zoom.xos,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)",
     "443,6,500,zsh,com.apple.zsh,Software Signing",
     "53,17,500,docker-credential-gcr,a.out,",
     "6000,6,500,ssh,,",
+    "443,6,0,Install,com.adobe.Install,Developer ID Application: Adobe Inc. (JQ525L2MZD)",
     "6000,6,500,ssh,com.apple.openssh,Software Signing",
     "6000,6,500,ssh,ssh-55554944fbf65684ab9b37c2bad3a27ef78b23f4,",
     "80,6,0,com.apple.MobileSoftwareUpdate.UpdateBrainService,com.apple.MobileSoftwareUpdate.UpdateBrainService,Software Signing",
     "80,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)"
-  )
-  -- nix-shell infects children with open connections
+  ) -- nix-shell infects children with open connections
   AND NOT (
     parent_cmd LIKE "%/tmp/nix-shell%"
     AND remote_port = 443
     AND protocol = 6
-  )
-  -- These programs would normally never make an outgoing connection, but thanks to Nix, it can happen.
+  ) -- These programs would normally never make an outgoing connection, but thanks to Nix, it can happen.
   AND NOT (
     remote_address LIKE("151.101.%")
     AND remote_port = 443
@@ -221,8 +220,7 @@ WHERE
       parent_path LIKE "%/bash"
       OR parent_path LIKE "%/zsh"
     )
-  )
-  -- More complicated patterns go here
+  ) -- More complicated patterns go here
   AND NOT (
     p.name = "syncthing"
     AND (
@@ -278,17 +276,14 @@ WHERE
   AND NOT (
     p.cmdline LIKE "%google-cloud-sdk/lib/gcloud.py%"
     AND remote_port IN (80, 43, 53)
-  )
-  -- Slack update?
+  ) -- Slack update?
   AND NOT (
     p.path = ""
     AND pp.cmdline LIKE "%/Slack"
-  )
-  -- Process name is sometimes empty here?
+  ) -- Process name is sometimes empty here?
   AND NOT (
     p.cmdline = "/Applications/Craft.app/Contents/MacOS/Craft"
     AND remote_port = 443
     AND protocol = 6
   )
-GROUP BY
-  s.pid
+GROUP BY s.pid
