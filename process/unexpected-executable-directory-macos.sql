@@ -43,6 +43,7 @@ WHERE
     "/usr/libexec/ApplicationFirewall",
     "/usr/libexec/rosetta",
     "/usr/sbin",
+    "/opt/usr/bin",
     "/usr/share/code",
     "/usr/share/teams/resources/app.asar.unpacked/node_modules/slimcore/bin"
   )
