@@ -35,7 +35,8 @@ WHERE
     "/usr/libexec/UserEventAgent",
     "/usr/sbin/systemstats",
     "/usr/bin/libvirtd",
-    "/usr/sbin/cupsd"
+    "/usr/sbin/cupsd",
+    "/run/current-system/systemd/lib/systemd/systemd"
   )
   AND child_cmd NOT IN (
     "/nix/var/nix/profiles/default/bin/nix-daemon",
