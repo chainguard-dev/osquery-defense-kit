@@ -63,6 +63,7 @@ WHERE
       OR p.cmdline LIKE "%--progress-bar%"
       OR parent_cmdline LIKE "%brew.rb%"
       OR parent_cmdline LIKE "%brew.sh%"
+      OR parent_cmdline LIKE "/nix/store/%-builder.sh"
       OR p.cmdline LIKE "git %"
       OR p.cmdline LIKE "%LICENSES/vendor/%"
       OR p.cmdline LIKE "%localhost:%"
