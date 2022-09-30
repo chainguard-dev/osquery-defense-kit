@@ -228,7 +228,7 @@ WHERE
     "443,6,500,tkn",
     "443,6,500,trivy",
     "443,6,500,vcluster",
-    "443,6,500,vim"
+    "443,6,500,vim",
     "443,6,500,WebKitNetworkPr",
     "443,6,500,wget",
     "443,6,500,wineserver",
@@ -241,6 +241,7 @@ WHERE
     "7903,6,500,syncthing",
     "80,6,0,.tailscaled-wra",
     "80,6,0,dnf",
+    "443,6,500,.tox-wrapped",
     "80,6,0,NetworkManager",
     "80,6,0,pacman",
     "80,6,0,tailscaled",
@@ -271,7 +272,7 @@ WHERE
       parent_path LIKE "%/bin/bash"
       OR parent_path LIKE "%/bin/zsh"
       OR parent_path LIKE "%/bin/nix"
-      OR p.path LIKE "/nix/store/%/bash"
+      OR p.path LIKE "/nix/store/%"
     )
   )
   AND NOT p.cmdline LIKE "bash --rcfile /tmp/nix-shell.%"
