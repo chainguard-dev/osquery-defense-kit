@@ -1,5 +1,4 @@
-SELECT
-  p.name,
+SELECT p.name,
   TRIM(SUBSTR(SPLIT (p.name, ":./ ", 0), 0, 15)) AS short_name,
   TRIM(SUBSTR(SPLIT (f.filename, ":./ ", 0), 0, 15)) AS short_filename,
   f.filename,
@@ -22,25 +21,23 @@ SELECT
     ",",
     MIN(p.uid, 500)
   ) AS exception_key
-FROM
-  processes p
+FROM processes p
   LEFT JOIN file f ON p.path = f.path
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN hash AS phash ON pp.path = phash.path
-WHERE
-  short_filename != short_name
+WHERE short_filename != short_name
   AND NOT cmd LIKE "/nix/store/%/bin/bash%" -- Serial masqueraders
   AND NOT short_filename IN ("bash", "ruby", "python", "python3")
   AND exception_key NOT IN (
     "name=blueman-applet,file=python3,500",
     "name=blueman-tray,file=python3,500",
+    "name=cat,file=coreutils,500",
     "name=chrome-gnome-s,file=python3,500",
     "name=Chroot,file=firefox,500",
     "name=code-oss,file=electron,500",
     "name=exe,file=rootlessport,500",
     "name=file,file=firefox,500",
-    "name=cat,file=coreutils,500",
     "name=firefox-wrappe,file=firefox,500",
     "name=firewalld,file=python3,0",
     "name=gjs,file=gjs-console,500",
@@ -56,7 +53,6 @@ WHERE
     "name=npm,file=node,500",
     "name=osqueryi,file=osqueryd,0",
     "name=osqueryi,file=osqueryd,500",
-    "name=osqueryi,file=osqueryd,500",
     "name=phpstorm,file=dash,500",
     "name=Privileged,file=firefox,500",
     "name=RDD,file=firefox,500",
@@ -70,11 +66,14 @@ WHERE
     "name=terminator,file=python3,500",
     "name=unattended-upg,file=python3,0",
     "name=Utility,file=firefox,500",
-    "name=Web,file=firefox,500",
+    "name=vi,file=nvim,500",
+    "name=vi,file=vim,500",
     "name=WebExtensions,file=firefox,500",
+    "name=Web,file=firefox,500",
     "name=X,file=Xorg,0",
     "name=zfs-auto-snaps,file=ruby,0",
     "name=zoom,file=ZoomLauncher,500"
+
   )
   AND NOT (
     short_filename = "systemd"
@@ -84,9 +83,6 @@ WHERE
     short_filename LIKE "emacs%"
     AND short_name = "emacs"
   )
-  AND NOT (
-    f.filename LIKE "/nix/store/%/bin/coreutils"
-  )
-GROUP by
-  short_name,
+  AND NOT (p.path LIKE "/nix/store/%/bin/coreutils")
+GROUP by short_name,
   short_filename
