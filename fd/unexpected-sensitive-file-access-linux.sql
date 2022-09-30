@@ -55,14 +55,14 @@ WHERE f.uid != ""
     AND NOT (
         file_uid == process_uid
         AND exception_key IN (
-            "chrome,chrome,~/.config/google-chrome",
             "chrome_crashpad_handler,chrome_crashpad,",
             "chrome_crashpad_handler,chrome_crashpad,~/.config/google-chrome",
+            "chrome,chrome,~/.config/google-chrome",
+            "firefox,.firefox-wrappe,~/.cache/mozilla",
+            "firefox,.firefox-wrappe,~/.mozilla/firefox",
             "firefox,firefox,~/.cache/mozilla",
             "firefox,firefox,~/.mozilla/firefox",
             "firefox,firefox,~/snap/firefox",
-            "firefox,.firefox-wrappe,~/.cache/mozilla",
-            "firefox,.firefox-wrappe,~/.mozilla/firefox",
             "firefox,Isolated Servic,~/.cache/mozilla",
             "firefox,Isolated Servic,~/snap/firefox",
             "firefox,Isolated Web Co,~/.cache/mozilla",
@@ -76,6 +76,7 @@ WHERE f.uid != ""
             "firefox,WebExtensions,~/.cache/mozilla",
             "firefox,WebExtensions,~/.mozilla/firefox",
             "firefox,WebExtensions,~/snap/firefox",
+            "plugin-container,MainThread,~/.mozilla/firefox",
             "slack,slack,~/.config/Slack",
             "slack,slack,~/snap/slack"
         )

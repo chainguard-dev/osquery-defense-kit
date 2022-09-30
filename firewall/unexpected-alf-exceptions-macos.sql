@@ -5,6 +5,7 @@ SELECT ae.path,
   file.mtime,
   file.ctime,
   file.uid,
+  file.directory,
   file.size,
   file.type,
   hash.sha256,
@@ -77,10 +78,6 @@ WHERE -- NOTE:We intentionally want to preserve missing files
     AND ae.path LIKE "/Users/%/homebrew/Cellar/netcat/%/bin/netcat"
   )
   AND NOT (
-    signature.identifier LIKE "%-%"
-    AND ae.path LIKE "/opt/homebrew/Cellar/%/bin/%"
-  )
-  AND NOT (
     signature.identifier = "syncthing"
     AND ae.path LIKE "/nix/store/%-syncthing-%/bin/syncthing"
   )
@@ -88,7 +85,10 @@ WHERE -- NOTE:We intentionally want to preserve missing files
     ae.path LIKE "/Users/%/Library/Application%20Support/Steam/Steam.AppBundle/Steam/"
   )
   AND NOT (
-    signature.identifier = "a.out"
+    (
+      signature.identifier = "a.out"
+      OR signature.identifier LIKE "%-%"
+    )
     AND file.uid > 500
     AND (
       file.directory LIKE "/opt/homebrew/Cellar/%/bin"

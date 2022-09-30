@@ -66,6 +66,7 @@ WHERE
   AND dirname NOT LIKE "/nix/store/%"
   AND dirname NOT LIKE "/opt/homebrew/Cellar/%/bin"
   AND dirname NOT LIKE "/opt/homebrew/Cellar/%/libexec"
+  AND dirname NOT LIKE "/opt/homebrew/Cellar/%/libexec/%"
   AND dirname NOT LIKE "/opt/homebrew/Cellar/%/Contents/MacOS"
   AND dirname NOT LIKE "/private/tmp/%.app/Contents/MacOS"
   AND dirname NOT LIKE "/private/tmp/go-build%/exe"

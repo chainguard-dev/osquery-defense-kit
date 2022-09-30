@@ -14,10 +14,40 @@ FROM
   LEFT JOIN magic ON file.path = magic.path
 WHERE
   (
-    file.path LIKE "/tmp/%%"
-    OR file.path LIKE "/var/tmp/%%"
+    -- Recursive queries don't seem to work well with hidden directories :(
+    file.path LIKE '/tmp/%%'
+    OR file.path LIKE '/tmp/.%/%%'
+    OR file.path LIKE '/tmp/%/%%'
+    OR file.path LIKE '/tmp/%/%/.%'
+    OR file.path LIKE '/tmp/%/.%/%%'
+
+    OR file.path LIKE '/var/tmp/%%'
+    OR file.path LIKE '/var/tmp/.%/%%'
+    OR file.path LIKE '/var/tmp/%/%%'
+    OR file.path LIKE '/var/tmp/%/%/.%'
+    OR file.path LIKE '/var/tmp/%/.%/%%'
+
+    OR file.path LIKE '/var/spool/%%'
+    OR file.path LIKE '/var/spool/.%/%%'
+    OR file.path LIKE '/var/spool/%/%%'
+    OR file.path LIKE '/var/spool/%/%/.%'
+    OR file.path LIKE '/var/spool/%/.%/%%'
+
+    OR file.path LIKE '/dev/mqueue/%%'
+    OR file.path LIKE '/dev/mqueue/.%/%%'
+    OR file.path LIKE '/dev/mqueue/%/%%'
+    OR file.path LIKE '/dev/mqueue/%/%/.%'
+    OR file.path LIKE '/dev/mqueue/%/.%/%%'
+
+    OR file.path LIKE '/dev/shm/%%'
+    OR file.path LIKE '/dev/shm/.%/%%'
+    OR file.path LIKE '/dev/shm/%/%%'
+    OR file.path LIKE '/dev/shm/%/%/.%'
+    OR file.path LIKE '/dev/shm/%/.%/%%'
   )
   AND file.type = "regular"
+  AND file.path NOT LIKE "%/../%"
+  AND file.path NOT LIKE "%/./%"
   AND (
     file.mode LIKE "%7%"
     or file.mode LIKE "%5%"
@@ -26,11 +56,10 @@ WHERE
   AND NOT (
     uid > 500
     AND (
-      file.path LIKE "%go-build%"
+      file.path LIKE "%/go-build%"
       OR file.path LIKE "/tmp/checkout/%"
       OR file.path LIKE "/tmp/com.apple.installer%"
       OR file.path LIKE "/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%"
-      OR file.path LIKE "/tmp/go-build%/exe/chainctl"
       OR file.path LIKE "/tmp/go.%.sum"
       OR file.path LIKE "/tmp/guile-%/guile-%"
       OR file.path LIKE "/tmp/terraformer/%"

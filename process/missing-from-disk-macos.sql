@@ -50,3 +50,7 @@ WHERE
       OR parent_cmd LIKE "/Applications/Google Chrome.app/%"
     )
   )
+  AND NOT (
+    p.name = ""
+    AND parent_cmd = "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox -foreground"
+  )
