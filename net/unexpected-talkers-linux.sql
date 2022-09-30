@@ -1,5 +1,4 @@
-SELECT
-  s.family,
+SELECT s.family,
   protocol,
   s.local_port,
   s.remote_port,
@@ -24,13 +23,11 @@ SELECT
     ",",
     p.name
   ) AS exception_key
-FROM
-  process_open_sockets s
+FROM process_open_sockets s
   LEFT JOIN processes p ON s.pid = p.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
-WHERE
-  protocol > 0
+WHERE protocol > 0
   AND s.remote_port > 0
   AND s.remote_address NOT IN ("127.0.0.1", "::ffff:127.0.0.1", "::1")
   AND s.remote_address NOT LIKE "fe80:%"
@@ -44,8 +41,7 @@ WHERE
   AND s.remote_address NOT LIKE "10.%"
   AND s.remote_address NOT LIKE "::ffff:10.%"
   AND s.remote_address NOT LIKE "fc00:%"
-  AND s.state != "LISTEN"
-  -- DNS clients
+  AND s.state != "LISTEN" -- DNS clients
   AND NOT (
     remote_port = 53
     AND protocol IN (6, 17)
@@ -125,12 +121,12 @@ WHERE
       "yay",
       "zoom"
     )
-  )
-  -- General exceptions
+  ) -- General exceptions
   AND NOT exception_key IN (
     "123,17,,",
     "123,17,500,chronyd",
-    "22,6,,", -- shortlived SSH (git push)
+    "22,6,,",
+    -- shortlived SSH (git push)
     "22,6,500,ssh",
     "22067,6,500,syncthing",
     "27024,6,500,steam",
@@ -157,7 +153,8 @@ WHERE
     "443,6,0,snapd",
     "443,6,0,tailscaled",
     "443,6,0,yum",
-    "443,6,105,https", -- /usr/lib/apt/methods/https
+    "443,6,105,https",
+    -- /usr/lib/apt/methods/https
     "443,6,472,grafana-server",
     "443,6,500,___go_build_github_com_anchore_grype,a.out,",
     "443,6,500,.firefox-wrappe",
@@ -246,7 +243,8 @@ WHERE
     "80,6,0,pacman",
     "80,6,0,tailscaled",
     "80,6,0,yum",
-    "80,6,105,http", -- /usr/lib/apt/methods/http
+    "80,6,105,http",
+    -- /usr/lib/apt/methods/http
     "80,6,500,.firefox-wrappe",
     "80,6,500,curl",
     "80,6,500,firefox",
@@ -259,25 +257,25 @@ WHERE
     "8801,17,500,zoom",
     "9090,6,500,firefox",
     "9090,6,500,k6",
+    "443,6,0,nix",
     "9090,6,500,prometheus",
     "9090,6,500,rootlessport"
-
-  )
-  -- These programs would normally never make an outgoing connection, but thanks to Nix, it can happen.
+  ) -- These programs would normally never make an outgoing connection, but thanks to Nix, it can happen.
   AND NOT (
-    remote_address LIKE("151.101.%")
+    (
+      remote_address LIKE "151.101.%"
+      OR remote_address LIKE "140.82.%"
+    )
     AND remote_port = 443
     AND protocol = 6
     AND (
-      parent_path LIKE "%/bin/bash"
-      OR parent_path LIKE "%/bin/zsh"
+      parent_path LIKE "/nix/%/bin/bash"
+      OR parent_path LIKE "/nix/%/bin/zsh"
       OR parent_path LIKE "%/bin/nix"
       OR p.path LIKE "/nix/store/%"
     )
   )
-  AND NOT p.cmdline LIKE "bash --rcfile /tmp/nix-shell.%"
-
-  -- Other more complicated situations
+  AND NOT p.cmdline LIKE "bash --rcfile /tmp/nix-shell.%" -- Other more complicated situations
   AND NOT (
     p.name = "rootlessport"
     AND remote_port > 1024
@@ -345,5 +343,4 @@ WHERE
     p.cmdline LIKE "%google-cloud-sdk/lib/gcloud.py%"
     AND remote_port IN (80, 53, 443)
   )
-GROUP BY
-  p.cmdline
+GROUP BY p.cmdline

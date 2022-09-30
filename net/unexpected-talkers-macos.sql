@@ -288,4 +288,8 @@ WHERE protocol > 0
     AND remote_port = 443
     AND protocol = 6
   )
+  AND NOT (
+    remote_port IN (53, 443)
+    AND p.path LIKE "/private/var/folders/%/T/GoLand/%.test"
+  )
 GROUP BY s.pid

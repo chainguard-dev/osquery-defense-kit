@@ -22,6 +22,7 @@ WHERE
   AND p.path NOT LIKE '/Library/Apple/System/Library/%'
   AND name NOT IN (
     'bash',
+    'emacs',
     'firefox',
     'fish',
     'gopls',
