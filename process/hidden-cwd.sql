@@ -1,5 +1,4 @@
-SELECT
-  p.pid,
+SELECT p.pid,
   p.path,
   p.name,
   p.cmdline,
@@ -11,15 +10,11 @@ SELECT
   pp.cmdline AS parent_cmdline,
   pp.cwd AS parent_cwd,
   pp.euid AS parent_euid,
-  hash.sha256 AS child_sha256,
-  phash.sha256 AS parent_sha256
-FROM
-  processes p
-  JOIN processes pp ON p.parent = pp.pid
+  hash.sha256
+FROM processes p
+  LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
-  LEFT JOIN hash AS phash ON pp.path = hash.path
-WHERE
-  p.cwd LIKE "%/.%"
+WHERE p.cwd LIKE "%/.%"
   AND NOT (
     p.cwd LIKE "%/.local/share%"
     OR p.cwd LIKE "%/.vscode/extensions%"
