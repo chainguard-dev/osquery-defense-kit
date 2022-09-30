@@ -3,7 +3,6 @@
 -- It's unfortunately of limited use, as the query is slow (250ms)
 -- and it requires catching a program at the exact moment it has
 -- the file open.
-
 SELECT pof.pid,
     pof.fd,
     pof.path,
@@ -39,9 +38,9 @@ FROM process_open_files pof
     LEFT JOIN file pf ON p.path = pf.path
     LEFT JOIN users u ON p.uid = u.uid
     LEFT JOIN hash ON hash.path = p.path
-WHERE
-    f.uid != "" AND
-    (
+WHERE f.uid != ""
+    AND pf.filename != ""
+    AND (
         pof.path LIKE "/home/%/.ssh/%"
         OR pof.path LIKE "/home/%/.mozilla/firefox/%"
         OR pof.path LIKE "/home/%/.config/google-chrome/%"
@@ -62,6 +61,7 @@ WHERE
             "firefox,firefox,~/.cache/mozilla",
             "firefox,firefox,~/.mozilla/firefox",
             "firefox,firefox,~/snap/firefox",
+            "firefox,.firefox-wrappe,~/.cache/mozilla",
             "firefox,.firefox-wrappe,~/.mozilla/firefox",
             "firefox,Isolated Servic,~/.cache/mozilla",
             "firefox,Isolated Servic,~/snap/firefox",
