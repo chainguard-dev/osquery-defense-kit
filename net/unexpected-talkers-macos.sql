@@ -226,8 +226,8 @@ WHERE protocol > 0
   AND NOT (
     p.name = "syncthing"
     AND (
-      remote_port IN (53, 80, 88, 110, 443, 587, 993, 3306, 7451)
-      OR remote_port > 8000
+      remote_port IN (53, 80, 88, 110, 443, 587, 993)
+      OR remote_port > 1024
     )
   )
   AND NOT (
@@ -277,7 +277,7 @@ WHERE protocol > 0
   )
   AND NOT (
     p.cmdline LIKE "%google-cloud-sdk/lib/gcloud.py%"
-    AND remote_port IN (80, 43, 53)
+    AND remote_port IN (80, 443, 53)
   ) -- Slack update?
   AND NOT (
     p.path = ""
