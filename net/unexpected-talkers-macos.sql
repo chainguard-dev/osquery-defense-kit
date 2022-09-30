@@ -160,6 +160,8 @@ WHERE protocol > 0
     "443,6,500,git-remote-http,git-remote-http-55554944e5dca79a2b44332e941af547708b0c68,",
     "443,6,500,git,com.apple.git,Software Signing",
     "443,6,500,gitsign,,",
+    "443,6,500,gitsign,gitsign,",
+    "443,6,500,git,git,",
     "80,6,500,curl,com.apple.curl,Software Signing",
     "443,6,500,gitsign,a.out,",
     "443,6,500,go,a.out,",
@@ -213,13 +215,13 @@ WHERE protocol > 0
     AND protocol = 6
   ) -- These programs would normally never make an outgoing connection, but thanks to Nix, it can happen.
   AND NOT (
-    remote_address LIKE("151.101.%")
+    (
+      remote_address LIKE "151.101.%"
+      OR remote_address LIKE "140.82.%"
+    )
     AND remote_port = 443
     AND protocol = 6
-    AND (
-      parent_path LIKE "%/bash"
-      OR parent_path LIKE "%/zsh"
-    )
+    AND parent_path LIKE "/nix/%/bash"
   ) -- More complicated patterns go here
   AND NOT (
     p.name = "syncthing"
