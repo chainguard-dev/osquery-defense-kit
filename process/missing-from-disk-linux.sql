@@ -7,6 +7,7 @@ SELECT
   p.cwd,
   p.on_disk,
   p.state,
+  file.inode,
   pp.on_disk AS parent_on_disk,
   pp.path AS parent_path,
   pp.cmdline AS parent_cmdline,
@@ -14,6 +15,7 @@ SELECT
   ph.sha256 AS parent_sha256
 FROM
   processes p
+  LEFT JOIN file ON p.path = file.path
   LEFT JOIN process_namespaces ON p.pid = process_namespaces.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ph ON pp.path = ph.path
@@ -30,35 +32,5 @@ WHERE
     WHERE
       processes.name IN ("osqueryi", "osqueryd")
   )
-  -- Persistent apps that are updated often
-  AND p.path NOT IN (
-    "/usr/lib/gnome-shell-calendar-server",
-    "/usr/libexec/evolution-source-registry",
-    "/usr/libexec/evolution-calendar-factory",
-    "/opt/google/chrome/chrome_crashpad_handler",
-    "/opt/google/chrome/chrome",
-    "/usr/libexec/evolution-addressbook-factory",
-    "/opt/google/chrome/nacl_helper",
-    "/usr/bin/containerd",
-    "/usr/bin/dbus-broker-launch",
-    "/usr/bin/dbus-broker",
-    "/usr/bin/fusermount3",
-    "/usr/bin/gjs-console",
-    "/usr/bin/dbus-daemon",
-    "/usr/bin/gnome-software",
-    "/usr/bin/python3.10",
-    "/usr/bin/gnome-shell",
-    "/usr/bin/kded5",
-    "/usr/bin/pipewire",
-    "/usr/bin/pipewire-pulse",
-    "/usr/bin/tailscaled",
-    "/usr/bin/wireplumber",
-    "/usr/lib/electron19/electron",
-    "/usr/libexec/gnome-shell-calendar-server"
-  )
-  AND NOT pp.path IN (
-    "/usr/libexec/gnome-session-binary"
-  )
-  -- AppImage
-  AND p.path NOT LIKE "/tmp/.mount_%/%"
-  AND p.path NOT LIKE "/Users/%/%/%.test"
+  -- This is truly a missing program, not just one that has been updated with a new binary.
+  AND file.inode IS NULL;
