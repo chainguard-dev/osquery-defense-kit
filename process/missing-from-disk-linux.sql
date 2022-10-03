@@ -44,6 +44,7 @@ WHERE
     "/usr/bin/dbus-broker",
     "/usr/bin/fusermount3",
     "/usr/bin/gjs-console",
+    "/usr/bin/dbus-daemon",
     "/usr/bin/gnome-software",
     "/usr/bin/python3.10",
     "/usr/bin/gnome-shell",

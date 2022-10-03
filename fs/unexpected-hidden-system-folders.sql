@@ -55,6 +55,7 @@ WHERE
     "/tmp/.dracula-tmux-weather.lock",
     "/tmp/.dracula-tmux-data",
     "/tmp/.dotnet/",
+    "/tmp/.vbox-t-ipc/",
     "/tmp/.font-unix/",
     "/tmp/.ICE-unix/",
     "/tmp/.Test-unix/",

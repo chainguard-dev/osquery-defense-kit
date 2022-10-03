@@ -31,6 +31,7 @@ WHERE
     'qemu-system-x86-64',
     'qemu-system-x86',
     'slack',
+    'java',
     'wineserver',
     'nix',
     'ykman-gui',

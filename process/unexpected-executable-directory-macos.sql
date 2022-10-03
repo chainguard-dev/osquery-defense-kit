@@ -82,6 +82,7 @@ WHERE
   AND dirname NOT LIKE "/Users/%"
   AND dirname NOT LIKE "/usr/libexec/%"
   AND dirname NOT LIKE "/usr/local/%"
+  AND dirname NOT LIKE "/Volumes/com.getdropbox.dropbox-%"
  AND NOT (
     dirname LIKE "/private/var/%"
     AND p.name LIKE "pulumi-go.%"

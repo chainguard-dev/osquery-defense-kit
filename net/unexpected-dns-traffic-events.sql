@@ -54,6 +54,7 @@ WHERE
     "8.8.4.4", -- Google (backup)
     "208.67.222.222", -- OpenDNS
     "75.75.75.75", -- Comcast
+    "75.75.76.76", -- Comcast
     "68.105.28.13" -- Cox
   )
   -- Exceptions that specifically talk to one server

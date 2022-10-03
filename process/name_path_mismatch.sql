@@ -40,6 +40,7 @@ WHERE short_filename != short_name
     "name=file,file=firefox,500",
     "name=firefox-wrappe,file=firefox,500",
     "name=firewalld,file=python3,0",
+    "name=gjs,file=gjs-console,120",
     "name=gjs,file=gjs-console,500",
     "name=gnome-characte,file=gjs-console,500",
     "name=gnome-character,file=gjs-console,500",
@@ -64,6 +65,7 @@ WHERE short_filename != short_name
     "name=streamdeck,file=python3,500",
     "name=systemd-udevd,file=udevadm,0",
     "name=terminator,file=python3,500",
+    "name=Thunar,file=thunar,500",
     "name=unattended-upg,file=python3,0",
     "name=Utility,file=firefox,500",
     "name=vi,file=nvim,500",
@@ -73,7 +75,6 @@ WHERE short_filename != short_name
     "name=X,file=Xorg,0",
     "name=zfs-auto-snaps,file=ruby,0",
     "name=zoom,file=ZoomLauncher,500"
-
   )
   AND NOT (
     short_filename = "systemd"

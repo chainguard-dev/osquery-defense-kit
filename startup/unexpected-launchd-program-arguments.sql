@@ -27,6 +27,7 @@ WHERE
     "Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)",
     "Developer ID Application: Foxit Corporation (8GN47HTP75)",
     "Developer ID Application: Google LLC (EQHXZ8M8AV)",
+    "Developer ID Application: Google, Inc. (EQHXZ8M8AV)",
     "Developer ID Application: Keybase, Inc. (99229SGT5K)",
     "Developer ID Application: Kolide Inc (YZ3EM74M78)",
     "Developer ID Application: Logitech Inc. (QED4VVPZWA)",

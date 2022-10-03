@@ -56,6 +56,7 @@ WHERE
       OR p.cmdline LIKE "%application/json%"
       OR p.cmdline LIKE "%grpcurl%"
       OR p.cmdline LIKE "%Homebrew%"
+      OR p.cmdline LIKE "%Nixpkgs/%"
       OR p.cmdline LIKE "%If-None-Match%"
       OR p.cmdline LIKE "%ctlog%"
       OR p.cmdline LIKE "%.well-known/openid-configuration%"

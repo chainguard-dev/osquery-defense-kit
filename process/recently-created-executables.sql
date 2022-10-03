@@ -1,3 +1,7 @@
+-- Programs who were recently written to disk, based on btime (macOS) or ctime (Linux)
+--
+-- NOTE: ctime
+
 SELECT p.pid,
   p.path,
   p.name,
@@ -7,6 +11,7 @@ SELECT p.pid,
   p.parent,
   f.directory,
   f.ctime,
+  f.btime,
   f.mtime,
   p.start_time,
   pp.path AS parent_path,
@@ -23,13 +28,14 @@ FROM processes p
   LEFT JOIN hash AS ph ON pp.path = ph.path
 WHERE p.start_time > 0
   AND f.ctime > 0 -- Only process programs that had an inode modification within the last 3 minutes
-  AND (p.start_time - f.ctime) < 180
-  AND p.start_time >= f.ctime
+  AND (p.start_time - MAX(f.ctime, f.btime)) < 180
+  AND p.start_time >= MAX(f.ctime, f.ctime)
   AND NOT f.directory IN (
     "/Applications/Firefox.app/Contents/MacOS/plugin-container.app/Contents/MacOS",
     "/Applications/Grammarly Desktop.app/Contents/MacOS",
     "/Applications/Opal.app/Contents/Library/LaunchServices",
     "/Applications/Opal.app/Contents/MacOS",
+    "/usr/local/kolide-k2/bin",
     "/Applications/Opal.app/Contents/XPCServices/OpalCameraDeviceService.xpc/Contents/MacOS",
     "/Applications/Signal.app/Contents/Frameworks/Signal Helper (GPU).app/Contents/MacOS",
     "/Applications/Signal.app/Contents/Frameworks/Signal Helper (Renderer).app/Contents/MacOS",
@@ -45,6 +51,7 @@ WHERE p.start_time > 0
     "/Applications/Spotify.app/Contents/MacOS",
     "/Applications/Stream Deck.app/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/Helpers/QtWebEngineProcess.app/Contents/MacOS",
     "/Applications/Stream Deck.app/Contents/MacOS",
+    "/Library/Developer/CommandLineTools/usr/bin",
     "/Applications/Tailscale.app/Contents/MacOS",
     "/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/Contents/MacOS",
     "/Applications/Todoist.app/Contents/Frameworks/Todoist Helper (GPU).app/Contents/MacOS",
@@ -70,6 +77,7 @@ WHERE p.start_time > 0
     "/usr/bin/containerd",
     "/usr/bin/dockerd",
     "/usr/bin/obs",
+    "/Library/PrivilegedHelperTools/com.docker.vmnetd",
     "/usr/lib/at-spi-bus-launcher",
     "/usr/lib/at-spi2-registryd",
     "/usr/lib/fwupd/fwupd",
@@ -77,14 +85,15 @@ WHERE p.start_time > 0
     "/usr/lib/slack/slack",
     "/usr/lib/x86_64-linux-gnu/obs-plugins/obs-browser-page",
     "/usr/libexec/fwupd/fwupd",
+    "/usr/lib/xf86-video-intel-backlight-helper",
     "/usr/libexec/sssd/sssd_kcm",
     "/usr/sbin/cupsd",
     "/usr/sbin/tailscaled"
   )
   AND NOT p.path LIKE "/Applications/%.app/%"
+  AND NOT p.path LIKE "/home/%/%.test"
   AND NOT p.path LIKE "/home/%/bin/%"
   AND NOT p.path LIKE "/home/%/terraform-provider-%"
-  AND NOT p.path LIKE "/home/%$/%.test"
   AND NOT p.path LIKE "/Library/Apple/System/%"
   AND NOT p.path LIKE "/Library/Application Support/Adobe/Adobe Desktop Common/%"
   AND NOT p.path LIKE "/Library/Application Support/Logitech.localized/%"
@@ -98,15 +107,17 @@ WHERE p.start_time > 0
   AND NOT p.path LIKE "/private/var/folders/%/bin/%"
   AND NOT p.path LIKE "/private/var/folders/%/go-build%"
   AND NOT p.path LIKE "/private/var/folders/%/GoLand/%"
+  AND NOT p.path LIKE "/Users/%/%.test"
   AND NOT p.path LIKE "/Users/%/bin/%"
   AND NOT p.path LIKE "/Users/%/code/%"
   AND NOT p.path LIKE "/Users/%/Library/Application Support/%/Contents/MacOS/%"
   AND NOT p.path LIKE "/Users/%/Library/Application Support/iTerm2/iTermServer-%"
-  AND NOT p.path LIKE "/Users/%/Library/Caches/company.thebrowser.Browser/org.sparkle-project.Sparkle/Launcher/%/Updater.app/Contents/MacOS/Updater"
+  AND NOT p.path LIKE "/Users/%/Library/Caches/%/Contents/MacOS/%"
+  AND NOT p.path LIKE "/Users/%/Library/Google/%.bundle/Contents/Helpers/%"
   AND NOT p.path LIKE "/Users/%/Library/Mobile Documents/%/Contents/Frameworks%"
   AND NOT p.path LIKE "/Users/%/terraform-provider-%"
-  AND NOT p.path LIKE "/Users/%$/%.test"
   AND NOT p.path LIKE "/usr/local/bin/%"
+  AND NOT p.path LIKE "/usr/local/Cellar/%"
   AND NOT p.path LIKE "/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd"
   AND NOT p.path LIKE "%-go-build%"
   AND NOT p.path LIKE "%/.vscode/extensions/%"

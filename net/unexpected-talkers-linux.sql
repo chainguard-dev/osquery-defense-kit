@@ -224,6 +224,7 @@ WHERE protocol > 0
     "443,6,500,terraform",
     "443,6,500,tkn",
     "443,6,500,trivy",
+    "443,6,0,systemctl",
     "443,6,500,vcluster",
     "443,6,500,vim",
     "443,6,500,WebKitNetworkPr",

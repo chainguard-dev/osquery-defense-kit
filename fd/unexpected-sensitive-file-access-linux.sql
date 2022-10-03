@@ -60,6 +60,7 @@ WHERE f.uid != ""
             "chrome,chrome,~/.config/google-chrome",
             "firefox,.firefox-wrappe,~/.cache/mozilla",
             "firefox,.firefox-wrappe,~/.mozilla/firefox",
+            "firefox,file:// Content,~/.mozilla/firefox",
             "firefox,firefox,~/.cache/mozilla",
             "firefox,firefox,~/.mozilla/firefox",
             "firefox,firefox,~/snap/firefox",

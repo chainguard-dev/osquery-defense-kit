@@ -83,6 +83,7 @@ WHERE
   AND dirname NOT LIKE "/Users/%"
   AND dirname NOT LIKE "/usr/libexec/%"
   AND dirname NOT LIKE "/usr/local/%"
+  AND dirname NOT LIKE "/Volumes/com.getdropbox.dropbox-%"
   -- Unexplained data issue
   AND dirname NOT LIKE "../%"
   AND p.path NOT IN (
@@ -99,6 +100,8 @@ WHERE
   )
   -- Nix
   AND parent_path NOT LIKE "/nix/store/%"
+  -- Homebrew and other compilations
+  AND parent_cmd NOT LIKE "%./configure%"
   -- Pulumi executables are often executed from $TMPDIR
   AND NOT (
     dirname LIKE "/private/var/%"

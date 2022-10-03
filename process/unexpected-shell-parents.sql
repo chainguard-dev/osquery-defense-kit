@@ -44,6 +44,7 @@ WHERE
     "monorail",
     "nix-daemon",
     "nix",
+    "nix-build",
     "package_script_service",
     "node",
     "nvim",
@@ -64,6 +65,7 @@ WHERE
     "vim",
     "watch",
     "wezterm-gui",
+    "sshd",
     "xargs",
     "xcrun",
     "xfce4-terminal",
@@ -104,6 +106,10 @@ WHERE
   AND NOT (
     pp.name = "bash"
     AND p.cmdline LIKE "sh -s _hostname %"
+  )
+  AND NOT (
+    pp.cmdline LIKE "perl%/help2man%"
+    AND p.cmdline LIKE "sh -c man/%"
   )
 
   AND NOT p.cmdline LIKE "%/Library/Apple/System/Library/InstallerSandboxes%"

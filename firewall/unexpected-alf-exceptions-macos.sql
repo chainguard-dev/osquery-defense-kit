@@ -36,6 +36,8 @@ WHERE -- NOTE:We intentionally want to preserve missing files
     ",,/System/Library/PrivateFrameworks/Admin.framework/Versions/A/Resources/readconfig,",
     ",,/usr/bin/nmblookup,",
     ",,/usr/libexec/discoveryd,",
+    ",iodined-55554944d1ffcb236a84363d9b667be6a1742a17,/usr/local/sbin/iodined,501", -- thanks Jed!
+    ",java,/opt/homebrew/Cellar/openjdk/19/libexec/openjdk.jdk/Contents/Home/bin/java,501",
     "Apple Mac OS Application Signing,com.apple.garageband10,/Applications/GarageBand.app/,0",
     "Apple Mac OS Application Signing,com.utmapp.QEMULauncher,/Applications/UTM.app/Contents/XPCServices/QEMUHelper.xpc/Contents/MacOS/QEMULauncher.app/,0",
     "Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0",

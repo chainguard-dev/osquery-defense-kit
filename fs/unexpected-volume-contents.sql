@@ -34,17 +34,17 @@ WHERE
   AND file.path NOT LIKE "/Volumes/%/.com.apple.timemachine%"
   AND (
     extension IN (
-      'command',
-      'lnk',
-      'mpkg',
+      "command",
+      "lnk",
+      "mpkg",
       -- Enable later once we know this query works well
-      --             'pkg',
-      'scpt',
-      'dmg',
-      'iso',
-      'gz',
-      'sh',
-      'sql'
+      --             "pkg",
+      "scpt",
+      "dmg",
+      "iso",
+      "gz",
+      "sh",
+      "sql"
 
     )
     OR file.symlink != 0
@@ -62,27 +62,31 @@ WHERE
     OR basename LIKE "cg%"
   ) -- exceptions go here
   AND basename NOT IN (
-    '..',
-    '.',
-    '.background',
-    '.disk_label_2x',
-    '.disk_label',
-    '.DS_Store',
-    '.iotest',
-    '.file-revisions-by-id',
-    '.file',
-    '.metadata_never_index_unless_rootfs',
-    '.shortcut-targets-by-id',
-    '.TemporaryItems',
-    '.Trashes',
-    '.vol',
-    '.VolumeIcon.icns'
+    "..",
+    ".",
+    ".background",
+    ".disk_label_2x",
+    ".disk_label",
+    ".DS_Store",
+    ".iotest",
+    ".file-revisions-by-id",
+    ".file",
+    ".metadata_never_index_unless_rootfs",
+    ".shortcut-targets-by-id",
+    ".TemporaryItems",
+    ".Trashes",
+    ".vol",
+    ".apdisk",
+    "._.Trashes",
+    "._.TemporaryItems",
+    "._.apdisk",
+    ".VolumeIcon.icns"
   )
   AND authority NOT IN (
-    'Developer ID Application: Google LLC (EQHXZ8M8AV)'
+    "Developer ID Application: Google LLC (EQHXZ8M8AV)"
   ) -- Unsigned programs here
   AND trimpath NOT IN (
-    '/Volumes/Google Chrome/.keystone_install',
-    '/Volumes/Google Chrome Canary/.keystone_install',
-    '/Volumes/Jabra Direct Setup/JabraDirectSetup.pkg'
+    "/Volumes/Google Chrome/.keystone_install",
+    "/Volumes/Google Chrome Canary/.keystone_install",
+    "/Volumes/Jabra Direct Setup/JabraDirectSetup.pkg"
   )
