@@ -83,6 +83,7 @@ WHERE
     "/usr/bin/apt-get",
     "/usr/bin/bash",
     "/usr/bin/bwrap",
+    "/usr/bin/sysdiagnose",
     "/usr/bin/crond",
     "/usr/bin/login",
     "/Applications/Docker.app/Contents/Resources/bin/com.docker.cli",

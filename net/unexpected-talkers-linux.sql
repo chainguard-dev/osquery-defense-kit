@@ -252,6 +252,7 @@ WHERE protocol > 0
     "80,6,500,slack",
     "80,6,500,spotify",
     "80,6,500,steam",
+    "80,6,0,gdk-pixbuf-quer",
     "80,6,500,steamwebhelper",
     "80,6,500,syncthing",
     "8006,6,500,chrome",

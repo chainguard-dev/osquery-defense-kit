@@ -27,4 +27,5 @@ FROM
 WHERE
   name IN ('sh', 'bash', 'perl', 'python')
   AND process_open_files.pid IS NULL
-  AND process_open_sockets.remote_port > 0;
+  AND process_open_sockets.remote_port > 0
+  AND NOT (path="/usr/bin/bash" AND parent_cmdline LIKE "pacman -S%")
