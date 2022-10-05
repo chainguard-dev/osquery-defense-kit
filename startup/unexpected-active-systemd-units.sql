@@ -272,6 +272,7 @@ WHERE
         "systemd-network-generator.service,Generate network units from Kernel command line,,600",
         "systemd-oomd.service,Userspace Out-Of-Memory (OOM) Killer,systemd-oom,1600",
         "systemd-oomd.socket,Userspace Out-Of-Memory (OOM) Killer Socket,,600",
+        "systemd-oomd.service,Userspace Out-Of-Memory (OOM) Killer,systemd-oom,1700",
         "systemd-random-seed.service,Load/Save Random Seed,,1100",
         "systemd-random-seed.service,Load/Save Random Seed,,1200",
         "systemd-remount-fs.service,Remount Root and Kernel File Systems,,700",

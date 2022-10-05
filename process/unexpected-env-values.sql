@@ -31,7 +31,7 @@ WHERE
     AND NOT pe.value LIKE 'libmozsandbox.so%'
   )
   OR (
-    key = 'DYLD_INSERT_LIBRARIES' -- sort of obsolete, but may affect SIP abusers
+    key = 'DYLD_INSERT_LIBRARIES' -- actively exploited on programs which disable library security
   )
   OR (
     key = 'DYLD_FRAMEWORK_PATH' -- sort of obsolete, but may affect SIP abusers

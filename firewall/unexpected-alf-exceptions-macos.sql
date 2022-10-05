@@ -100,6 +100,7 @@ WHERE -- NOTE:We intentionally want to preserve missing files
       OR file.directory LIKE "/Users/%/node_modules/.bin/%"
       OR file.directory LIKE "/Users/%/git/%"
       OR file.directory LIKE "/Users/%/%-cli"
+      OR file.directory LIKE "/private/var/folders/%/T/go-build%/exe"
     )
   )
 GROUP BY exception_key

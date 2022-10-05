@@ -1,5 +1,5 @@
 -- Detect unusual calls to osascript
--- Designed for execution every 15 seconds (where the parent may still be around)
+-- Designed for execution every 60 seconds (where the parent may still be around)
 SELECT p.pid,
   p.path,
   TRIM(p.cmdline) AS cmd,
@@ -20,4 +20,4 @@ FROM uptime,
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN hash AS phash ON pp.path = hash.path
 WHERE p.path = "/usr/bin/osascript"
-  AND p.time > (strftime('%s', 'now') -1800)
+  AND p.time > (strftime('%s', 'now') -60)

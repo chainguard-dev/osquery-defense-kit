@@ -43,6 +43,7 @@ WHERE
       'rsh',
       'incbit',
       'insmod',
+      'osascript',
       'kmod',
       'lushput',
       'mkfifo',

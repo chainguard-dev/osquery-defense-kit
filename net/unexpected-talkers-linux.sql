@@ -251,6 +251,7 @@ WHERE protocol > 0
     "80,6,500,firefox",
     "80,6,500,slack",
     "80,6,500,spotify",
+    "67,17,0,NetworkManager",
     "80,6,500,steam",
     "80,6,0,gdk-pixbuf-quer",
     "80,6,500,steamwebhelper",

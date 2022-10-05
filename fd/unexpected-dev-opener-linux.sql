@@ -143,6 +143,7 @@ WHERE pof.path LIKE "/dev/%"
     "/dev/video,firefox",
     "/dev/video,obs",
     "/dev/video,pipewire",
+    "/dev/video,zoom",
     "/dev/video,obs-ffmpeg-mux",
     "/dev/video,vlc",
     "/dev/video,wireplumber",

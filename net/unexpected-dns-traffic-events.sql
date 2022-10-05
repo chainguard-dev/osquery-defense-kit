@@ -60,13 +60,13 @@ WHERE
   -- Exceptions that specifically talk to one server
   AND exception_key NOT IN (
     "coredns,0.0.0.0,53",
-    "nessusd,50.16.123.71,53",
-    "nessusd,52.44.207.89,53",
     "syncthing,46.162.192.181,53"
   )
+  AND p.name != "nessusd"
   -- Local DNS servers and custom clients go here
   AND p.path NOT IN (
     "/usr/lib/systemd/systemd-resolved",
+    "/Library/Nessus/run/sbin/nessusd",
     "/Applications/Slack.app/Contents/Frameworks/Slack Helper.app/Contents/MacOS/Slack Helper",
     "/Applications/Spotify.app/Contents/Frameworks/Spotify Helper.app/Contents/MacOS/Spotify Helper"
   )

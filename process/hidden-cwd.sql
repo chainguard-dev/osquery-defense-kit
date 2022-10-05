@@ -33,9 +33,16 @@ FROM processes p
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN users u ON p.uid = u.uid
   LEFT JOIN hash ON p.path = hash.path
-WHERE p.cwd LIKE "%/.%"
-  AND NOT exception_key IN ("bash,~/go/src", "mysqld,~/.local/share")
-  OR program_name IN ("bindfs")
-  OR dir LIKE "~/go/src/%"
-  OR dir LIKE "~/src/%"
-  OR dir LIKE "~/%/.github%"
+WHERE dir LIKE "%/.%"
+  AND NOT (
+    exception_key IN (
+      "bash,~/go/src",
+      "mysqld,~/.local/share",
+      "Electron,~/.vscode/extensions",
+      "vim,~/go/src",
+    )
+    OR p.name IN ("bindfs")
+    OR dir LIKE "~/go/src/%"
+    OR dir LIKE "~/src/%"
+    OR dir LIKE "~/%/.github%"
+  )

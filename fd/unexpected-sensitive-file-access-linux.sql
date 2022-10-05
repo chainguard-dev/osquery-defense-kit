@@ -7,9 +7,15 @@ SELECT pof.pid,
     pof.fd,
     pof.path,
     f.uid AS file_uid,
+    p.cwd AS cwd,
+    p.euid,
     p.uid AS process_uid,
     p.name AS program_name,
     p.cmdline AS cmdline,
+    pp.name AS parent_name,
+    pp.cwd AS parent_cwd,
+    pp.path AS parent_path,
+    hp.sha256 AS parent_sha256,
     pf.filename AS program_base,
     hash.sha256,
     REPLACE(f.directory, u.directory, "~") AS dir,
@@ -34,10 +40,12 @@ SELECT pof.pid,
     ) AS exception_key
 FROM process_open_files pof
     LEFT JOIN processes p ON pof.pid = p.pid
+    LEFT JOIN processes pp ON p.parent = pp.pid
     LEFT JOIN file f ON pof.path = f.path
     LEFT JOIN file pf ON p.path = pf.path
     LEFT JOIN users u ON p.uid = u.uid
-    LEFT JOIN hash ON hash.path = p.path
+    LEFT JOIN hash ON p.path = hash.path
+    LEFT JOIN hash hp ON pp.path = hp.path
 WHERE f.uid != ""
     AND pf.filename != ""
     AND (
@@ -51,10 +59,12 @@ WHERE f.uid != ""
         OR pof.path LIKE "/home/%/.bash_history"
         OR pof.path LIKE "/home/%/.cache/mozilla/firefox%"
         OR pof.path LIKE "/home/%/.config/mozilla/firefox%"
+        OR pof.path LIKE "/home/%/.aws%"
     )
     AND NOT (
         file_uid == process_uid
         AND exception_key IN (
+            "aws,aws,~/.aws",
             "chrome_crashpad_handler,chrome_crashpad,",
             "chrome_crashpad_handler,chrome_crashpad,~/.config/google-chrome",
             "chrome,chrome,~/.config/google-chrome",
