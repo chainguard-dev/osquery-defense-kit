@@ -1,5 +1,4 @@
-SELECT
-  p.pid,
+SELECT p.pid,
   p.path,
   p.name,
   p.parent,
@@ -17,21 +16,17 @@ SELECT
   pp.cmdline AS parent_cmd,
   pp.cwd AS parent_cwd,
   hash.sha256 AS parent_sha256
-FROM
-  processes p
+FROM processes p
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON pp.path = hash.path
-WHERE
-  p.on_disk != 1
-  -- false positives from recently spawned processes
+WHERE p.on_disk != 1 -- false positives from recently spawned processes
   AND (strftime("%s", "now") - p.start_time) > 15
   AND p.pid > 0
-  AND p.parent != 2
-  -- kthreadd
-  AND p.state != "Z"
-  -- The kernel no longer has enough tracking information for this alert to be useful
+  AND p.parent != 2 -- kthreadd
+  AND p.state != "Z" -- The kernel no longer has enough tracking information for this alert to be useful
   AND NOT (
-    p.parent = 1 AND p.path = ""
+    p.parent = 1
+    AND p.path = ""
   )
   AND NOT (
     p.gid = 20
@@ -42,12 +37,14 @@ WHERE
       OR cmd LIKE "/Library/Apple/System/%"
       OR cmd LIKE "/Library/Application Support/Logitech.localized/%"
       OR cmd LIKE "/Library/Developer/CommandLineTools/%"
+      OR p.path IN (
+        "/Applications/Slack.app/Contents/Frameworks/Slack Helper.app/Contents/MacOS/Slack Helper"
+      )
       OR cmd LIKE "/opt/homebrew/Cellar/%"
-      OR p.path LIKE "/opt/homebrew/Cellar/%"
+      OR p.path LIKE "/opt/homebrew/Cellar/%/bin/%"
       OR cmd LIKE "/opt/homebrew/opt/%"
       OR cmd LIKE "/private/var/folders/%/Visual Studio Code.app/Contents/%"
-      OR cmd LIKE "/Users/%/homebrew/opt/mysql/bin/%"
-      -- Sometimes cmd is empty also :(
+      OR cmd LIKE "/Users/%/homebrew/opt/mysql/bin/%" -- Sometimes cmd is empty also :(
       OR parent_cmd LIKE "/Applications/Google Chrome.app/%"
     )
   )

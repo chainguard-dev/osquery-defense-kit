@@ -31,6 +31,8 @@ WHERE p.uid = 0
         "/usr/bin/abrt-dump-journal-core",
         "/usr/bin/abrt-dump-journal-oops",
         "/usr/bin/abrt-dump-journal-xorg",
+        "/usr/bin/pacman",
+        "/usr/bin/fish",
         "/usr/bin/anacron",
         "/usr/bin/apcupsd",
         "/usr/bin/containerd-shim-runc-v2",

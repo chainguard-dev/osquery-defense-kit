@@ -54,21 +54,21 @@ WHERE dirname NOT IN (
   AND signature.authority NOT IN (
     "Apple Mac OS Application Signing",
     "Developer ID Application: Adobe Inc. (JQ525L2MZD)",
-    "Developer ID Application: Hashicorp, Inc. (D38WU7D763)",
     "Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)",
-    "Developer ID Application: Figma, Inc. (T8RA8NE3B7)",
     "Developer ID Application: Docker Inc (9BNSXJN65R)",
+    "Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)",
+    "Developer ID Application: Figma, Inc. (T8RA8NE3B7)",
     "Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)",
+    "Developer ID Application: Hashicorp, Inc. (D38WU7D763)",
     "Developer ID Application: Logitech Inc. (QED4VVPZWA)",
-    "Developer ID Application: Objective-See, LLC (VBG97UB4TA)",
     "Developer ID Application: Microsoft Corporation (UBF8T346G9)",
     "Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)",
-    "Developer ID Application: Oracle America, Inc. (VB5E2TV963)",
-    "Developer ID Application: Oracle America, Inc. (VB5E2TV963)",
-    "Developer ID Application: Valve Corporation (MXGJJ98X76)",
-    "Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)",
+    "Developer ID Application: Objective-See, LLC (VBG97UB4TA)",
     "Developer ID Application: Opal Camera Inc (97Z3HJWCRT)",
+    "Developer ID Application: Oracle America, Inc. (VB5E2TV963)",
+    "Developer ID Application: Oracle America, Inc. (VB5E2TV963)",
     "Developer ID Application: Tenable, Inc. (4B8J598M7U)",
+    "Developer ID Application: Valve Corporation (MXGJJ98X76)",
     "Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)",
     "Software Signing"
   )
@@ -93,6 +93,7 @@ WHERE dirname NOT IN (
   AND dirname NOT LIKE "/opt/homebrew/Cellar/%/libexec"
   AND dirname NOT LIKE "/opt/homebrew/Cellar/%/libexec/%"
   AND dirname NOT LIKE "/opt/homebrew/Cellar/%/Contents/MacOS"
+  AND dirname NOT LIKE "/opt/homebrew/Caskroom/%/bin"
   AND dirname NOT LIKE "/private/tmp/%.app/Contents/MacOS"
   AND dirname NOT LIKE "/private/tmp/go-build%/exe"
   AND dirname NOT LIKE "/private/tmp/nix-build-%"

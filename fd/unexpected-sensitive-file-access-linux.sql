@@ -73,6 +73,7 @@ WHERE f.uid != ""
             "firefox,file:// Content,~/.mozilla/firefox",
             "firefox,firefox,~/.cache/mozilla",
             "firefox,firefox,~/.mozilla/firefox",
+            "firefox,file:// Content,~/.cache/mozilla",
             "firefox,firefox,~/snap/firefox",
             "firefox,Isolated Servic,~/.cache/mozilla",
             "firefox,Isolated Servic,~/snap/firefox",

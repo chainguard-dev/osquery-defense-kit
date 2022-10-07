@@ -34,6 +34,7 @@ WHERE pmm.path LIKE "%libpcap%"
   AND child_path NOT LIKE "/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd"
   AND NOT s.authority IN (
     "Software Signing",
-    "Apple Mac OS Application Signing"
+    "Apple Mac OS Application Signing",
+    "Developer ID Application: Kolide Inc (YZ3EM74M78)"
   )
 GROUP BY pmm.pid

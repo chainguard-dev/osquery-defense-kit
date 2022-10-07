@@ -40,6 +40,7 @@ WHERE
     OR p.cmdline LIKE "%curl.*—write-out%"
     OR p.cmdline LIKE "%curl %--user-agent%"
     OR p.cmdline LIKE "%curl -k%"
+    OR p.cmdline LIKE "%curl -sL%"
     OR p.cmdline LIKE "%curl%--connect-timeout%"
     OR p.cmdline LIKE "%curl%--output /dev/null%"
     OR p.cmdline LIKE "%curl%--O /dev/null%"
@@ -59,7 +60,7 @@ WHERE
     )
   )
   -- Exceptions for all calls
-  AND pp.name NOT IN ('makepkg') -- Exceptions for non-privileged calls
+  AND pp.name NOT IN ('makepkg', 'apko') -- Exceptions for non-privileged calls
   AND NOT (
     p.euid > 500
     AND (

@@ -36,13 +36,20 @@ FROM processes p
 WHERE dir LIKE "%/.%"
   AND NOT (
     exception_key IN (
+      "bash,~/.local/share",
       "bash,~/go/src",
-      "mysqld,~/.local/share",
-      "Electron,~/.vscode/extensions"
+      "Electron,~/.vscode/extensions",
+      "fish,~/.local/share",
+      "git,~/.local/share",
+      "mysqld,~/.local/share"
     )
-    OR dir IN ("~/.vim", "~/.config/nvim")
+    OR dir IN ("~/.vim", "~/.config/nvim", "~/.cache/yay")
     OR p.name IN ("bindfs", "vim", "nvim", "code")
     OR dir LIKE "~/go/src/%"
+    OR dir LIKE "~/.local/share/nvim/%"
+    OR dir LIKE "~/.local/share/fish/%"
+    OR dir LIKE "/Library/Apple/System/Library/InstallerSandboxes/.PKInstallSandboxManager-SystemSoftware/%"
     OR dir LIKE "~/src/%"
     OR dir LIKE "~/%/.github%"
+    OR dir LIKE "~/code/%"
   )

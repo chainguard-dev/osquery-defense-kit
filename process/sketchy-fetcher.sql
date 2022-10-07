@@ -32,6 +32,7 @@ WHERE
     OR p.cmdline LIKE "%pastebin%"
     OR p.cmdline LIKE "%curl %--user-agent%"
     OR p.cmdline LIKE "%curl -k%"
+    OR p.cmdline LIKE "%curl -sL%"
     OR p.cmdline LIKE "%curl%--insecure%"
     OR p.cmdline LIKE "%wget %--user-agent%"
     OR p.cmdline LIKE "%wget %--no-check-certificate%"
@@ -72,5 +73,6 @@ WHERE
       OR p.cmdline LIKE "%LICENSES/vendor/%"
       OR p.cmdline LIKE "%localhost:%"
       OR p.cmdline LIKE "%127.0.0.1:%"
+      OR p.name IN ("apko")
     )
   )
