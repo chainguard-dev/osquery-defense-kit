@@ -1,4 +1,6 @@
 -- Programs which appear to have been touched on macOS
+-- This check is probably not very useful as there are plenty of legit reasons why
+-- the dates (in particular, "btime"), gets doctored.
 SELECT p.path,
   p.name,
   p.cmdline,
@@ -24,7 +26,7 @@ FROM processes p
 WHERE f.btime == f.mtime
   AND (
     btime_ctime_days_diff > 0 -- change time is older than birth time
-    OR btime_ctime_days_diff < -120 -- change time is older than birth time
+    OR (btime_ctime_days_diff < -365 && btime_ctime_days_diff < -1000) -- change time is older than birth time, but not 1970
     OR start_atime_days_diff > 90 -- access time is older than start time
     OR start_atime_days_diff < -10 -- access time is newer than start time
   )
@@ -33,6 +35,7 @@ WHERE f.btime == f.mtime
   -- Typically they have a ctime way earlier than btime (>90 days)
   AND NOT signature.authority IN (
     "Apple Mac OS Application Signing",
+    "Developer ID Application: Adobe Inc. (JQ525L2MZD)",
     "Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)",
     "Developer ID Application: Brother Industries, LTD. (5HCL85FLGW)",
     "Developer ID Application: Bryan Jones (49EYHPJ4Q3)",

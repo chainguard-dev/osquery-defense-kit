@@ -1,3 +1,9 @@
+-- Find processes that run with a lower effective UID than their parent
+--
+-- Example Malware Threats detected:
+--   * Shikitega
+-- Related:
+--   * unexpected-privilege-escalation-events.sql
 SELECT
   p.pid AS child_pid,
   p.path AS child_path,

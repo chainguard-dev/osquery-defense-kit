@@ -17,7 +17,7 @@ FROM processes p
     LEFT JOIN processes pp ON p.parent = pp.pid
     LEFT JOIN signature ON p.path = signature.path
 WHERE p.uid = 0
-    AND (strftime('%s', 'now') - p.start_time) > 120
+    AND (strftime('%s', 'now') - p.start_time) > 15
     AND p.path NOT IN (
         "/Applications/Foxit PDF Reader.app/Contents/MacOS/FoxitPDFReaderUpdateService.app/Contents/MacOS/FoxitPDFReaderUpdateService",
         "/Applications/OneDrive.app/Contents/StandaloneUpdaterDaemon.xpc/Contents/MacOS/StandaloneUpdaterDaemon",

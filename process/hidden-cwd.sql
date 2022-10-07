@@ -38,10 +38,10 @@ WHERE dir LIKE "%/.%"
     exception_key IN (
       "bash,~/go/src",
       "mysqld,~/.local/share",
-      "Electron,~/.vscode/extensions",
-      "vim,~/go/src",
+      "Electron,~/.vscode/extensions"
     )
-    OR p.name IN ("bindfs")
+    OR dir IN ("~/.vim", "~/.config/nvim")
+    OR p.name IN ("bindfs", "vim", "nvim", "code")
     OR dir LIKE "~/go/src/%"
     OR dir LIKE "~/src/%"
     OR dir LIKE "~/%/.github%"

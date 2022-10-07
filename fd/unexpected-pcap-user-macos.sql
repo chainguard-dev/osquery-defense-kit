@@ -1,7 +1,6 @@
 -- Find root-run processes which link against libpcap
 -- WARNING: This check consumes an unusual amount of system memory (up to 225MB)
-SELECT
-  pmm.pid,
+SELECT pmm.pid,
   p.uid,
   p.gid,
   pmm.path AS lib_path,
@@ -18,33 +17,23 @@ SELECT
   ph.sha256 AS parent_sha256,
   s.authority,
   s.identifier
-FROM
-  process_memory_map pmm
+FROM process_memory_map pmm
   LEFT JOIN processes p ON pmm.pid = p.pid
   LEFT JOIN hash h ON p.path = h.path
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash AS ph ON pp.path = ph.path
   LEFT JOIN signature s ON p.path = s.path
-WHERE
-  pmm.path LIKE "%libpcap%"
-  AND p.euid = 0
-  AND child_path NOT LIKE "/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd"
-  AND child_path NOT LIKE "/nix/store/%-systemd-%/lib/systemd/systemd-journald"
-  AND child_path NOT LIKE "/nix/store/%-systemd-%/lib/systemd/systemd-logind"
-  AND child_path NOT LIKE "/nix/store/%-systemd-%/bin/udevadm"
-  AND child_path NOT LIKE "/opt/homebrew/Cellar/telepresence%"
-  AND child_path NOT LIKE "/System/Library/%"
+WHERE pmm.path LIKE "%libpcap%"
+  AND p.euid = 0 -- These are all protected directories
+  AND child_path NOT LIKE "/System/%"
+  AND child_path NOT LIKE "/usr/libexec/%"
+  AND child_path NOT LIKE "/usr/sbin/%"
+  AND child_path NOT LIKE "/usr/bin/%"
   AND child_path NOT LIKE "/nix/store/%/bin/nix"
-  AND child_path NOT IN (
-    "/usr/libexec/UserEventAgent",
-    "/usr/sbin/systemstats",
-    "/usr/bin/libvirtd",
-    "/usr/sbin/cupsd"
+  AND child_path NOT LIKE "/opt/homebrew/Cellar/vim/%/bin/vim"
+  AND child_path NOT LIKE "/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd"
+  AND NOT s.authority IN (
+    "Software Signing",
+    "Apple Mac OS Application Signing"
   )
-  AND child_cmd NOT IN (
-    "/nix/var/nix/profiles/default/bin/nix-daemon",
-    "/run/current-system/systemd/lib/systemd/systemd",
-    "/usr/bin/python3 -s /usr/sbin/firewalld --nofork --nopid"
-  )
-GROUP BY
-  pmm.pid
+GROUP BY pmm.pid

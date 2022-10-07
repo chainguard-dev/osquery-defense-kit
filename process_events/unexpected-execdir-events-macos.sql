@@ -4,6 +4,7 @@ SELECT
   p.pid,
   p.path,
   REGEX_MATCH (p.path, "(.*)/", 1) AS dirname,
+  REPLACE(f.directory, u.directory, "~") AS homedir,
   p.cmdline,
   p.mode,
   p.cwd,
@@ -11,13 +12,14 @@ SELECT
   p.parent,
   pp.path AS parent_path,
   pp.name AS parent_name,
-  pp.cmdline AS parent_cmdline,
+  pp.cmdline AS parent_cmd,
   pp.euid AS parent_euid,
   hash.sha256 AS parent_sha256
 FROM
   process_events p
   LEFT JOIN processes ON p.pid = processes.pid
   LEFT JOIN file ON p.path = file.path
+  LEFT JOIN users u ON p.uid = u.uid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON pp.path = hash.path
 WHERE

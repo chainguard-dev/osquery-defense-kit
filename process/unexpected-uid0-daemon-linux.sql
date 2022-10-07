@@ -16,7 +16,7 @@ FROM processes p
     LEFT JOIN hash ON p.path = hash.path
     LEFT JOIN processes pp ON p.parent = pp.pid
 WHERE p.uid = 0
-    AND (strftime('%s', 'now') - p.start_time) > 120 -- use osquery as the reference mount namespace
+    AND (strftime('%s', 'now') - p.start_time) > 15 -- use osquery as the reference mount namespace
     AND mnt_namespace IN (
         SELECT DISTINCT (mnt_namespace)
         FROM process_namespaces

@@ -35,6 +35,7 @@ WHERE
   OR cmd LIKE "%iptables -P % ACCEPT%"
   OR cmd LIKE "%iptables -F%"
   OR cmd LIKE "%chattr -ia%"
+  OR cmd LIKE '%chmod 777 %'
   OR cmd LIKE "%bpftool%"
   OR cmd LIKE "%touch%acmr%"
   OR cmd LIKE "%ld.so.preload%"

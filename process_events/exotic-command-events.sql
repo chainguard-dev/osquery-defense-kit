@@ -62,6 +62,7 @@ WHERE
     OR cmd LIKE '%iptables -P % ACCEPT%'
     OR cmd LIKE '%iptables -F%'
     OR cmd LIKE '%chattr -ia%'
+    OR cmd LIKE '%chmod 777 %'
     OR cmd LIKE '%touch%acmr%'
     OR cmd LIKE '%ld.so.preload%'
     OR cmd LIKE '%urllib.urlopen%'
@@ -71,7 +72,9 @@ WHERE
     OR cmd LIKE "%systemctl stop firewalld%"
     OR cmd LIKE "%systemctl disable firewalld%"
     OR cmd LIKE "%pkill -f%"
+    OR cmd LIKE "%rm -f /var/tmp%"
     OR cmd LIKE "%rm -rf /boot%"
+    OR cmd LIKE "%rm -f /tmp%"
     OR cmd LIKE "%xargs kill -9%"
     OR cmd LIKE "%nohup /bin/bash%"
     OR cmd LIKE "%echo%|%base64 --decode %|%sh%"

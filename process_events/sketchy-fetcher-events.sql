@@ -40,11 +40,14 @@ WHERE
     OR p.cmdline LIKE "%curl.*—write-out%"
     OR p.cmdline LIKE "%curl %--user-agent%"
     OR p.cmdline LIKE "%curl -k%"
+    OR p.cmdline LIKE "%curl%--connect-timeout%"
     OR p.cmdline LIKE "%curl%--output /dev/null%"
     OR p.cmdline LIKE "%curl%--O /dev/null%"
     OR p.cmdline LIKE "%curl%--insecure%"
     OR p.cmdline LIKE "%wget %--user-agent%"
     OR p.cmdline LIKE "%wget %--no-check-certificate%"
+    OR p.cmdline LIKE "%wget -nc%"
+    OR p.cmdline LIKE "%wget -t%"
     -- Or anything launched by a system user
     OR (
       p.cmdline LIKE "%wget %"

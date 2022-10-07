@@ -35,6 +35,9 @@ WHERE
     OR p.cmdline LIKE "%curl%--insecure%"
     OR p.cmdline LIKE "%wget %--user-agent%"
     OR p.cmdline LIKE "%wget %--no-check-certificate%"
+    OR p.cmdline LIKE "%curl%--connect-timeout%"
+    OR p.cmdline LIKE "%wget -nc%"
+    OR p.cmdline LIKE "%wget -t%"
     OR (
       p.cmdline LIKE "%wget %"
       AND p.euid < 500
