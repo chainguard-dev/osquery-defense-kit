@@ -35,6 +35,7 @@ WHERE pmm.path LIKE "%libpcap%"
   AND NOT s.authority IN (
     "Software Signing",
     "Apple Mac OS Application Signing",
-    "Developer ID Application: Kolide Inc (YZ3EM74M78)"
+    "Developer ID Application: Kolide Inc (YZ3EM74M78)",
+    "Developer ID Application: Docker Inc (9BNSXJN65R)"
   )
 GROUP BY pmm.pid

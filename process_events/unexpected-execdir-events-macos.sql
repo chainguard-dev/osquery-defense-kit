@@ -4,7 +4,7 @@ SELECT
   p.pid,
   p.path,
   REGEX_MATCH (p.path, "(.*)/", 1) AS dirname,
-  REPLACE(f.directory, u.directory, "~") AS homedir,
+  REPLACE(file.directory, u.directory, "~") AS homedir,
   p.cmdline,
   p.mode,
   p.cwd,
