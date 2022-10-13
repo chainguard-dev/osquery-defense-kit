@@ -6,8 +6,7 @@
 --   * https://attack.mitre.org/techniques/T1205/001/ (Traffic Signaling: Port Knocking)
 --
 -- platform: darwin
--- interval: 1200
-SELECT
+-- tags: periodic sniffer
 SELECT
   pmm.pid,
   pmm.path AS lib_path,
@@ -32,13 +31,13 @@ FROM
   LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE
   (
-    lib_path LIKE "%:bpf%"
-    OR lib_path LIKE "%libbpf%"
+    lib_path LIKE '%:bpf%'
+    OR lib_path LIKE '%libbpf%'
   )
   AND p.path NOT IN (
-    "/usr/bin/qemu-system-x86_64",
-    "/usr/lib/systemd/systemd"
+    '/usr/bin/qemu-system-x86_64',
+    '/usr/lib/systemd/systemd'
   )
-  AND p.path NOT LIKE "/nix/store/%/lib/systemd/systemd"
+  AND p.path NOT LIKE '/nix/store/%/lib/systemd/systemd'
 GROUP BY
   pmm.pid

@@ -5,5 +5,5 @@ SELECT
 FROM
   mounts
 WHERE
-  device = "/dev/disk0s1"
-  AND type = "msdos";
+  device = '/dev/disk0s1'
+  AND type = 'msdos';

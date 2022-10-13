@@ -6,8 +6,7 @@
 --   * https://attack.mitre.org/techniques/T1205/001/ (Traffic Signaling: Port Knocking)
 --
 -- platform: darwin
--- interval: 1200
-SELECT
+-- tags: periodic sniffer
 SELECT
   pmm.pid,
   p.uid,
@@ -34,20 +33,20 @@ FROM
   LEFT JOIN hash AS ph ON pp.path = ph.path
   LEFT JOIN signature s ON p.path = s.path
 WHERE
-  pmm.path LIKE "%libpcap%"
+  pmm.path LIKE '%libpcap%'
   AND p.euid = 0 -- These are all protected directories
-  AND child_path NOT LIKE "/System/%"
-  AND child_path NOT LIKE "/usr/libexec/%"
-  AND child_path NOT LIKE "/usr/sbin/%"
-  AND child_path NOT LIKE "/usr/bin/%"
-  AND child_path NOT LIKE "/nix/store/%/bin/nix"
-  AND child_path NOT LIKE "/opt/homebrew/Cellar/vim/%/bin/vim"
-  AND child_path NOT LIKE "/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd"
+  AND child_path NOT LIKE '/System/%'
+  AND child_path NOT LIKE '/usr/libexec/%'
+  AND child_path NOT LIKE '/usr/sbin/%'
+  AND child_path NOT LIKE '/usr/bin/%'
+  AND child_path NOT LIKE '/nix/store/%/bin/nix'
+  AND child_path NOT LIKE '/opt/homebrew/Cellar/vim/%/bin/vim'
+  AND child_path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND NOT s.authority IN (
-    "Software Signing",
-    "Apple Mac OS Application Signing",
-    "Developer ID Application: Kolide Inc (YZ3EM74M78)",
-    "Developer ID Application: Docker Inc (9BNSXJN65R)"
+    'Software Signing',
+    'Apple Mac OS Application Signing',
+    'Developer ID Application: Kolide Inc (YZ3EM74M78)',
+    'Developer ID Application: Docker Inc (9BNSXJN65R)'
   )
 GROUP BY
   pmm.pid

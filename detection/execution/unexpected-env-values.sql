@@ -23,7 +23,7 @@ WHERE
   OR (
     key = 'LD_PRELOAD'
     AND NOT p.path LIKE '%/firefox'
-    AND NOT pe.value = "libfakeroot.so"
+    AND NOT pe.value = 'libfakeroot.so'
     AND NOT pe.value LIKE ':/home/%/.local/share/Steam'
     AND NOT pe.value LIKE ':/home/%/.var/app/com.valvesoftware.Steam/%'
     AND NOT pe.value LIKE ':/snap/%'

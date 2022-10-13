@@ -16,12 +16,12 @@ FROM
   -- For some reason /dev/%% is not recursive?
 WHERE
   (
-    file.path LIKE "/dev/%%"
-    OR file.path LIKE "/dev/%%/%%"
+    file.path LIKE '/dev/%%'
+    OR file.path LIKE '/dev/%%/%%'
   )
-  AND file.type = "regular"
+  AND file.type = 'regular'
   AND (
-    file.mode LIKE "%7%"
-    or file.mode LIKE "%5%"
-    or file.mode LIKE "%1%"
+    file.mode LIKE '%7%'
+    or file.mode LIKE '%5%'
+    or file.mode LIKE '%1%'
   )

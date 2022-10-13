@@ -41,7 +41,7 @@ WHERE
     AND f.uid > 500
   )
   AND NOT (
-    f.path LIKE "/Users/%/Library/Application Support/Code/User/globalStorage/grafana.vscode-jsonnet/bin/jsonnet-language-server"
+    f.path LIKE '/Users/%/Library/Application Support/Code/User/globalStorage/grafana.vscode-jsonnet/bin/jsonnet-language-server'
     AND f.mode = '0777'
     AND f.uid > 500
   )
@@ -51,7 +51,7 @@ WHERE
     AND f.uid = 0
   )
   AND NOT (
-    f.path LIKE "/home/%/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox"
+    f.path LIKE '/home/%/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox'
     AND f.mode = '0744'
     AND f.uid = 0
   )

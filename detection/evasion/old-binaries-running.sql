@@ -1,5 +1,6 @@
--- Detect poorly done timestamping
--- Alert on programs running that are unusually old
+-- Alert on programs running that are unusually old (poor timestomping)
+
+-- tags: periodic daemon
 SELECT
   p.path,
   p.cmdline,
@@ -19,7 +20,7 @@ WHERE
     ctime_age_days > 1050
     OR mtime_age_days > 1050
   )
-  AND p.path NOT LIKE "%/opt/brackets/Brackets%"
+  AND p.path NOT LIKE '%/opt/brackets/Brackets%'
   AND h.sha256 NOT IN (
     'f61dcfce6f0c04263780700e0e9a8ff2363edefc344c08bd792fd401ddaa160f' -- jp.co.canon.MSU.app.Installer
   )

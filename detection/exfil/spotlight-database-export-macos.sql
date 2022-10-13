@@ -2,7 +2,7 @@
 SELECT
   f.path,
   f.size,
-  datetime(f.btime, "unixepoch") AS file_created,
+  datetime(f.btime, 'unixepoch') AS file_created,
   magic.data
 FROM
   file f
@@ -11,15 +11,15 @@ FROM
 WHERE
   (
     (
-      mdfind.query = "kMDItemFSName == '*enforce*' && kMDItemTextContent == 'CREATE TABLE'"
+      mdfind.query = 'kMDItemFSName == ''*enforce*'' && kMDItemTextContent == ''CREATE TABLE'''
     )
     OR (
-      mdfind.query = "kMDItemFSName == '*iam*' && kMDItemTextContent == 'CREATE TABLE'"
+      mdfind.query = 'kMDItemFSName == ''*iam*'' && kMDItemTextContent == ''CREATE TABLE'''
     )
     OR (
-      mdfind.query = "kMDItemFSName == '*tenant*' && kMDItemTextContent == 'CREATE TABLE'"
+      mdfind.query = 'kMDItemFSName == ''*tenant*'' && kMDItemTextContent == ''CREATE TABLE'''
     )
   )
-  AND f.path NOT LIKE "%.json"
-  AND f.path NOT LIKE "%.log"
+  AND f.path NOT LIKE '%.json'
+  AND f.path NOT LIKE '%.log'
   AND f.size > 32768

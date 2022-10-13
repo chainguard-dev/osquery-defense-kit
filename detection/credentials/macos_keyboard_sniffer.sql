@@ -4,6 +4,7 @@
 --   * https://attack.mitre.org/techniques/T1056/001/ (Input Capture: Keylogging)
 --
 -- platform: darwin
+-- tags: periodic sniffer
 SELECT
   et.enabled,
   et.process_being_tapped,
@@ -18,9 +19,9 @@ SELECT
       RTRIM(p.path, REPLACE(p.path, '/', '')),
       ''
     ),
-    ",",
+    ',',
     identifier,
-    ",",
+    ',',
     authority
   ) AS exception_key
 FROM
@@ -30,12 +31,12 @@ FROM
   LEFT JOIN hash h ON h.path = p.path
 WHERE
   event_tapped IN ('EventKeyDown', 'EventKeyUp')
-  AND authority != "Software Signing"
+  AND authority != 'Software Signing'
   AND NOT exception_key IN (
     'iTerm2,com.googlecode.iterm2,Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
     'lghub_agent,com.logi.ghub.agent,Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'logioptionsplus_agent,com.logi.cp-dev-mgr,Developer ID Application: Logitech Inc. (QED4VVPZWA)',
-    "MonitorControl,me.guillaumeb.MonitorControl,Developer ID Application: Joni Van Roost (CYC8C8R4K9)",
+    'MonitorControl,me.guillaumeb.MonitorControl,Developer ID Application: Joni Van Roost (CYC8C8R4K9)',
     'skhd,skhd,'
   )
 GROUP BY

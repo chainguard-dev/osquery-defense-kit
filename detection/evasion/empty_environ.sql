@@ -1,5 +1,7 @@
 -- Inspired by BPFdoor
 -- https://www.sandflysecurity.com/blog/bpfdoor-an-evasive-linux-backdoor-technical-analysis/
+
+-- tags: periodic daemon
 SELECT
   COUNT(*) AS count,
   p.pid,

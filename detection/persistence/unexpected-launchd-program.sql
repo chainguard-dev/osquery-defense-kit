@@ -1,4 +1,4 @@
--- Unexpected launchd scripts that use the "program" field
+-- Unexpected launchd scripts that use the 'program' field
 --
 -- platform: darwin
 SELECT
@@ -20,7 +20,7 @@ WHERE
     run_at_load = 1
     OR keep_alive = 1
   )
-  AND l.path NOT LIKE "/System/%"
+  AND l.path NOT LIKE '/System/%'
   AND program IS NOT NULL
   AND program_authority NOT IN (
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',

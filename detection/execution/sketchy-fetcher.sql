@@ -32,27 +32,27 @@ WHERE
     OR INSTR(p.cmdline, 'curl ') > 0
   )
   AND (
-    remote_address NOT IN ("", "127.0.0.1", "::1")
-    OR remote_port != ""
-    OR p.cmdline LIKE "%.onion%"
-    OR p.cmdline LIKE "%tor2web%"
-    OR p.cmdline LIKE "%aliyun%"
-    OR p.cmdline LIKE "%pastebin%"
-    OR p.cmdline LIKE "%curl %--user-agent%"
-    OR p.cmdline LIKE "%curl -k%"
-    OR p.cmdline LIKE "%curl -sL%"
-    OR p.cmdline LIKE "%curl%--insecure%"
-    OR p.cmdline LIKE "%wget %--user-agent%"
-    OR p.cmdline LIKE "%wget %--no-check-certificate%"
-    OR p.cmdline LIKE "%curl%--connect-timeout%"
-    OR p.cmdline LIKE "%wget -nc%"
-    OR p.cmdline LIKE "%wget -t%"
+    remote_address NOT IN ('', '127.0.0.1', '::1')
+    OR remote_port != ''
+    OR p.cmdline LIKE '%.onion%'
+    OR p.cmdline LIKE '%tor2web%'
+    OR p.cmdline LIKE '%aliyun%'
+    OR p.cmdline LIKE '%pastebin%'
+    OR p.cmdline LIKE '%curl %--user-agent%'
+    OR p.cmdline LIKE '%curl -k%'
+    OR p.cmdline LIKE '%curl -sL%'
+    OR p.cmdline LIKE '%curl%--insecure%'
+    OR p.cmdline LIKE '%wget %--user-agent%'
+    OR p.cmdline LIKE '%wget %--no-check-certificate%'
+    OR p.cmdline LIKE '%curl%--connect-timeout%'
+    OR p.cmdline LIKE '%wget -nc%'
+    OR p.cmdline LIKE '%wget -t%'
     OR (
-      p.cmdline LIKE "%wget %"
+      p.cmdline LIKE '%wget %'
       AND p.euid < 500
     )
     OR (
-      p.cmdline LIKE "%curl %"
+      p.cmdline LIKE '%curl %'
       AND p.euid < 500
     )
   )
@@ -61,26 +61,26 @@ WHERE
   AND NOT (
     p.euid > 500
     AND (
-      p.cmdline LIKE "%--dump-header%"
-      OR p.cmdline LIKE "%/api/v%"
-      OR p.cmdline LIKE "%curl -X %"
-      OR p.cmdline LIKE "%go mod %"
-      OR p.cmdline LIKE "%application/json%"
-      OR p.cmdline LIKE "%grpcurl%"
-      OR p.cmdline LIKE "%Homebrew%"
-      OR p.cmdline LIKE "%Nixpkgs/%"
-      OR p.cmdline LIKE "%If-None-Match%"
-      OR p.cmdline LIKE "%ctlog%"
-      OR p.cmdline LIKE "%.well-known/openid-configuration%"
-      OR p.cmdline LIKE "%/openid/v1/jwks%"
-      OR p.cmdline LIKE "%--progress-bar%"
-      OR parent_cmdline LIKE "%brew.rb%"
-      OR parent_cmdline LIKE "%brew.sh%"
-      OR parent_cmdline LIKE "/nix/store/%-builder.sh"
-      OR p.cmdline LIKE "git %"
-      OR p.cmdline LIKE "%LICENSES/vendor/%"
-      OR p.cmdline LIKE "%localhost:%"
-      OR p.cmdline LIKE "%127.0.0.1:%"
-      OR p.name IN ("apko")
+      p.cmdline LIKE '%--dump-header%'
+      OR p.cmdline LIKE '%/api/v%'
+      OR p.cmdline LIKE '%curl -X %'
+      OR p.cmdline LIKE '%go mod %'
+      OR p.cmdline LIKE '%application/json%'
+      OR p.cmdline LIKE '%grpcurl%'
+      OR p.cmdline LIKE '%Homebrew%'
+      OR p.cmdline LIKE '%Nixpkgs/%'
+      OR p.cmdline LIKE '%If-None-Match%'
+      OR p.cmdline LIKE '%ctlog%'
+      OR p.cmdline LIKE '%.well-known/openid-configuration%'
+      OR p.cmdline LIKE '%/openid/v1/jwks%'
+      OR p.cmdline LIKE '%--progress-bar%'
+      OR parent_cmdline LIKE '%brew.rb%'
+      OR parent_cmdline LIKE '%brew.sh%'
+      OR parent_cmdline LIKE '/nix/store/%-builder.sh'
+      OR p.cmdline LIKE 'git %'
+      OR p.cmdline LIKE '%LICENSES/vendor/%'
+      OR p.cmdline LIKE '%localhost:%'
+      OR p.cmdline LIKE '%127.0.0.1:%'
+      OR p.name IN ('apko')
     )
   )

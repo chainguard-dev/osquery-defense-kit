@@ -1,4 +1,6 @@
 -- Works well for revealing boopkit, so long as boopkit has a child process.
+--
+-- tags: periodic daemon
 SELECT
   pp.*
 FROM

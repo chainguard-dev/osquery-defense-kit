@@ -2,7 +2,7 @@
 SELECT
   p.pid AS child_pid,
   p.path AS child_path,
-  REGEX_MATCH (RTRIM(file.path, "/"), ".*/(.*?)$", 1) AS child_name,
+  REGEX_MATCH (RTRIM(file.path, '/'), '.*/(.*?)$', 1) AS child_name,
   p.cmdline AS child_cmdline,
   p.euid AS child_euid,
   file.mode AS child_mode,
@@ -33,8 +33,8 @@ WHERE
     '/bin/ps',
     '/usr/bin/top'
   )
-  AND p.path NOT LIKE "/nix/store/%/bin/sudo"
-  AND p.path NOT LIKE "/nix/store/%/bin/dhcpcd"
+  AND p.path NOT LIKE '/nix/store/%/bin/sudo'
+  AND p.path NOT LIKE '/nix/store/%/bin/dhcpcd'
   AND NOT (
     child_name = 'polkit-agent-helper-1'
     AND parent_path = '/usr/bin/gnome-shell'

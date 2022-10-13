@@ -1,3 +1,6 @@
+-- Processes that do not exist on disk
+--
+-- tags: periodic daemon
 SELECT
   p.pid,
   p.uid,
@@ -21,7 +24,7 @@ FROM
   LEFT JOIN hash ph ON pp.path = ph.path
 WHERE
   p.on_disk != 1
-  AND p.path != ""
+  AND p.path != ''
   -- use osquery as the reference mount namespace
   AND mnt_namespace IN (
     SELECT DISTINCT
@@ -30,9 +33,9 @@ WHERE
       process_namespaces
       JOIN processes ON processes.pid = process_namespaces.pid
     WHERE
-      processes.name IN ("osqueryi", "osqueryd")
+      processes.name IN ('osqueryi', 'osqueryd')
   )
   -- This is truly a missing program, not just one that has been updated with a new binary.
   AND file.inode IS NULL
   -- Snap packages?
-  AND p.path NOT LIKE "/tmp/.mount_%"
+  AND p.path NOT LIKE '/tmp/.mount_%'

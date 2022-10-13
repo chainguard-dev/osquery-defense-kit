@@ -5,7 +5,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1205/001/ (Traffic Signaling: Port Knocking)
 -- platform: linux
--- interval: 1200
+-- tags: periodic sniffer critical
 SELECT
   pmm.pid,
   p.uid,
@@ -29,24 +29,24 @@ FROM
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash AS ph ON pp.path = ph.path
 WHERE
-  pmm.path LIKE "%libpcap%"
+  pmm.path LIKE '%libpcap%'
   AND p.euid = 0
-  AND child_path NOT LIKE "/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd"
-  AND child_path NOT LIKE "/nix/store/%-systemd-%/lib/systemd/systemd%"
-  AND child_path NOT LIKE "/nix/store/%-systemd-%/bin/udevadm"
-  AND child_path NOT LIKE "/System/Library/%"
-  AND child_path NOT LIKE "/nix/store/%/bin/nix"
+  AND child_path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+  AND child_path NOT LIKE '/nix/store/%-systemd-%/lib/systemd/systemd%'
+  AND child_path NOT LIKE '/nix/store/%-systemd-%/bin/udevadm'
+  AND child_path NOT LIKE '/System/Library/%'
+  AND child_path NOT LIKE '/nix/store/%/bin/nix'
   AND child_path NOT IN (
-    "/usr/libexec/UserEventAgent",
-    "/usr/sbin/systemstats",
-    "/usr/bin/libvirtd",
-    "/usr/sbin/cupsd",
-    "/run/current-system/systemd/lib/systemd/systemd"
+    '/usr/libexec/UserEventAgent',
+    '/usr/sbin/systemstats',
+    '/usr/bin/libvirtd',
+    '/usr/sbin/cupsd',
+    '/run/current-system/systemd/lib/systemd/systemd'
   )
   AND child_cmd NOT IN (
-    "/nix/var/nix/profiles/default/bin/nix-daemon",
-    "/run/current-system/systemd/lib/systemd/systemd",
-    "/usr/bin/python3 -s /usr/sbin/firewalld --nofork --nopid"
+    '/nix/var/nix/profiles/default/bin/nix-daemon',
+    '/run/current-system/systemd/lib/systemd/systemd',
+    '/usr/bin/python3 -s /usr/sbin/firewalld --nofork --nopid'
   )
 GROUP BY
   pmm.pid

@@ -1,6 +1,8 @@
 -- Parent PID is not on disk
 -- Reveals boopkit if a child is spawned
 -- TODO: Make mount namespace aware
+
+-- tags: periodic daemon
 SELECT
   p.name AS child_name,
   p.pid AS child_pid,
@@ -27,24 +29,24 @@ WHERE
   AND NOT child_pid IN (1, 2)
   AND NOT parent_pid IN (1, 2) -- launchd, kthreadd
   AND NOT parent_path IN (
-    "/opt/google/chrome/chrome",
-    "/usr/bin/gnome-shell"
+    '/opt/google/chrome/chrome',
+    '/usr/bin/gnome-shell'
   ) -- long-running launchers
   AND NOT parent_name IN (
-    "lightdm",
-    "nvim",
-    "gnome-shell",
-    "slack",
-    "kube-proxy",
-    "kubelet"
+    'lightdm',
+    'nvim',
+    'gnome-shell',
+    'slack',
+    'kube-proxy',
+    'kubelet'
   ) -- These alerts were unfortunately useless - lots of spam on macOS
   AND NOT (
-    parent_path = ""
+    parent_path = ''
     AND p.uid > 500
   )
-  AND parent_path NOT LIKE "/app/extra/%"
-  AND parent_path NOT LIKE "/opt/homebrew/Cellar/%"
+  AND parent_path NOT LIKE '/app/extra/%'
+  AND parent_path NOT LIKE '/opt/homebrew/Cellar/%'
   AND NOT (
-    parent_name LIKE "kworker/%+events_unbound"
-    AND child_name IN ("modprobe")
+    parent_name LIKE 'kworker/%+events_unbound'
+    AND child_name IN ('modprobe')
   )

@@ -22,5 +22,5 @@ FROM
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN hash AS phash ON pp.path = hash.path
 WHERE
-  p.path = "/usr/bin/osascript"
+  p.path = '/usr/bin/osascript'
   AND p.time > (strftime('%s', 'now') -60)

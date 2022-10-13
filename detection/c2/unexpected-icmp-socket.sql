@@ -1,3 +1,9 @@
+-- Unexpected programs speaking over ICMP (state-based)
+--
+-- references:
+--   *https://attack.mitre.org/techniques/T1095/ (C2: Non-Application Layer Protocol)
+--
+-- tags: ephemeral state net critical
 SELECT
   pop.pid,
   p.path,

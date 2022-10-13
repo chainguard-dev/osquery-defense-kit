@@ -1,4 +1,5 @@
 -- Programs which claim to be from the future, based on (btime,ctime,mtime)
+-- tags: periodic daemon
 SELECT
   p.pid,
   p.path,
@@ -11,9 +12,9 @@ SELECT
   f.btime,
   f.mtime,
   p.start_time,
-  f.mtime > strftime("%s", "now") AS mtime_newer,
-  f.ctime > strftime("%s", "now") AS ctime_newer,
-  f.btime > strftime("%s", "now") AS btime_newer,
+  f.mtime > strftime('%s', 'now') AS mtime_newer,
+  f.ctime > strftime('%s', 'now') AS ctime_newer,
+  f.btime > strftime('%s', 'now') AS btime_newer,
   hash.sha256 AS child_hash256,
   pp.path AS parent_path,
   pp.cmdline AS parent_cmd,

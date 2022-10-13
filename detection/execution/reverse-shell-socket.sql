@@ -25,6 +25,6 @@ WHERE
   AND pof.pid IS NULL
   AND pos.remote_port > 0
   AND NOT (
-    p.path = "/usr/bin/bash"
-    AND pp.cmdline LIKE "pacman -S%"
+    p.path = '/usr/bin/bash'
+    AND pp.cmdline LIKE 'pacman -S%'
   )

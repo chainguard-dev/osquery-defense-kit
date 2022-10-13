@@ -3,7 +3,7 @@
 SELECT
   pe.pid,
   pe.path,
-  REGEX_MATCH (pe.path, "(.*)/", 1) AS dirname,
+  REGEX_MATCH (pe.path, '(.*)/', 1) AS dirname,
   pe.mode,
   pe.cwd,
   pe.euid,
@@ -21,64 +21,64 @@ FROM
   LEFT JOIN hash ON pe.path = hash.path
   LEFT JOIN hash phash ON pp.path = hash.path
 WHERE
-  pe.time > (strftime("%s", "now") -15)
-  AND dirname NOT LIKE "/home/%"
-  AND dirname NOT LIKE "/nix/store/%/bin"
-  AND dirname NOT LIKE "/nix/store/%/lib/%"
-  AND dirname NOT LIKE "/nix/store/%/libexec"
-  AND dirname NOT LIKE "/nix/store/%/libexec/%"
-  AND dirname NOT LIKE "/nix/store/%/share/%"
-  AND dirname NOT LIKE "/opt/%"
-  AND dirname NOT LIKE "/tmp/go-build%"
-  AND dirname NOT LIKE "/snap/%"
-  AND dirname NOT LIKE "/usr/libexec/%"
-  AND dirname NOT LIKE "/usr/local/%/bin/%"
-  AND dirname NOT LIKE "/usr/local/%bin"
-  AND dirname NOT LIKE "/usr/local/%libexec"
-  and dirname NOT LIKE "/usr/local/Cellar/%"
-  AND dirname NOT LIKE "/usr/lib/%"
-  AND dirname NOT LIKE "/usr/lib64/%"
-  AND dirname NOT LIKE "/tmp/%/bin"
-  AND dirname NOT LIKE "/usr/local/go/pkg/tool/%"
+  pe.time > (strftime('%s', 'now') -15)
+  AND dirname NOT LIKE '/home/%'
+  AND dirname NOT LIKE '/nix/store/%/bin'
+  AND dirname NOT LIKE '/nix/store/%/lib/%'
+  AND dirname NOT LIKE '/nix/store/%/libexec'
+  AND dirname NOT LIKE '/nix/store/%/libexec/%'
+  AND dirname NOT LIKE '/nix/store/%/share/%'
+  AND dirname NOT LIKE '/opt/%'
+  AND dirname NOT LIKE '/tmp/go-build%'
+  AND dirname NOT LIKE '/snap/%'
+  AND dirname NOT LIKE '/usr/libexec/%'
+  AND dirname NOT LIKE '/usr/local/%/bin/%'
+  AND dirname NOT LIKE '/usr/local/%bin'
+  AND dirname NOT LIKE '/usr/local/%libexec'
+  and dirname NOT LIKE '/usr/local/Cellar/%'
+  AND dirname NOT LIKE '/usr/lib/%'
+  AND dirname NOT LIKE '/usr/lib64/%'
+  AND dirname NOT LIKE '/tmp/%/bin'
+  AND dirname NOT LIKE '/usr/local/go/pkg/tool/%'
   AND dirname NOT IN (
-    "/",
-    "/app",
-    "/bin",
-    "/ko-app",
-    "/sbin",
-    "/usr/bin",
-    "/usr/lib",
-    "/usr/lib64/firefox",
-    "/usr/lib/bluetooth",
-    "/usr/lib/cups/notifier",
-    "/usr/lib/evolution-data-server",
-    "/usr/libexec",
-    "/usr/libexec/ApplicationFirewall",
-    "/usr/libexec/rosetta",
-    "/usr/lib/firefox",
-    "/usr/lib/fwupd",
-    "/usr/lib/ibus",
-    "/usr/lib/libreoffice/program",
-    "/usr/lib/polkit-1",
-    "/usr/lib/slack",
-    "/usr/lib/snapd",
-    "/usr/lib/systemd",
-    "/usr/lib/telepathy",
-    "/usr/lib/udisks2",
-    "/usr/lib/xorg",
-    "/usr/sbin",
-    "/usr/share/code",
-    "/usr/share/teams",
-    "/usr/share/teams/resources/app.asar.unpacked/node_modules/slimcore/bin"
+    '/',
+    '/app',
+    '/bin',
+    '/ko-app',
+    '/sbin',
+    '/usr/bin',
+    '/usr/lib',
+    '/usr/lib64/firefox',
+    '/usr/lib/bluetooth',
+    '/usr/lib/cups/notifier',
+    '/usr/lib/evolution-data-server',
+    '/usr/libexec',
+    '/usr/libexec/ApplicationFirewall',
+    '/usr/libexec/rosetta',
+    '/usr/lib/firefox',
+    '/usr/lib/fwupd',
+    '/usr/lib/ibus',
+    '/usr/lib/libreoffice/program',
+    '/usr/lib/polkit-1',
+    '/usr/lib/slack',
+    '/usr/lib/snapd',
+    '/usr/lib/systemd',
+    '/usr/lib/telepathy',
+    '/usr/lib/udisks2',
+    '/usr/lib/xorg',
+    '/usr/sbin',
+    '/usr/share/code',
+    '/usr/share/teams',
+    '/usr/share/teams/resources/app.asar.unpacked/node_modules/slimcore/bin'
   )
-  AND NOT pe.path IN ("/usr/lib32/ld-linux.so.2")
+  AND NOT pe.path IN ('/usr/lib32/ld-linux.so.2')
   AND NOT (
-    dirname = ""
-    AND p.name LIKE "runc%"
+    dirname = ''
+    AND p.name LIKE 'runc%'
   )
   AND NOT (
-    dirname = ""
-    AND parent_name IN ("dockerd")
+    dirname = ''
+    AND parent_name IN ('dockerd')
   )
   AND NOT (pe.euid = 65532)
 GROUP BY

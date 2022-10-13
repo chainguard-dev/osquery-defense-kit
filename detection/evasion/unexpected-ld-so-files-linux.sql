@@ -15,8 +15,8 @@ FROM
 WHERE
   (
     file.path IN ('/etc/ld.so.conf', '/etc/ld.so.preload')
-    OR file.path LIKE "/etc/ld.so.conf.d/%"
-    OR file.path LIKE "/etc/ld.so.conf.d/.%"
+    OR file.path LIKE '/etc/ld.so.conf.d/%'
+    OR file.path LIKE '/etc/ld.so.conf.d/.%'
   )
   AND file.filename NOT IN ('.', '..')
   AND exception_key NOT IN (

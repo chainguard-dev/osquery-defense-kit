@@ -4,6 +4,8 @@
 --   * Shikitega
 -- Related:
 --   * unexpected-privilege-escalation-events.sql
+--
+-- interval: 30
 SELECT
   p.pid AS child_pid,
   p.path AS child_path,
@@ -38,8 +40,8 @@ WHERE
     '/bin/ps',
     '/usr/bin/top'
   )
-  AND p.path NOT LIKE "/nix/store/%/bin/sudo"
-  AND p.path NOT LIKE "/nix/store/%/bin/dhcpcd"
+  AND p.path NOT LIKE '/nix/store/%/bin/sudo'
+  AND p.path NOT LIKE '/nix/store/%/bin/dhcpcd'
   AND NOT (
     p.name = 'polkit-agent-he'
     AND parent_path = '/usr/bin/gnome-shell'
