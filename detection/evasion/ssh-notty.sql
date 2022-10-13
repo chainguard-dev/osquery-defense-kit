@@ -9,5 +9,5 @@ SELECT * FROM (
 WHERE INSTR(cmdline, '@notty') > 0
 OR
 (
-    open_files != "/dev/null" AND INSTR(open_files, '/dev/ptmx') = 0
+    open_files != '/dev/null' AND INSTR(open_files, '/dev/ptmx') = 0
 )
