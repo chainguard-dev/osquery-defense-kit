@@ -56,6 +56,7 @@ WHERE
       OR file.path LIKE '/tmp/checkout/%'
       OR file.path LIKE '/tmp/com.apple.installer%'
       OR file.path LIKE '/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%'
+      OR file.path LIKE '/tmp/%/site-packages/markupsafe/_speedups.cpython-%'
       OR file.path LIKE '/tmp/go.%.sum'
       OR file.path LIKE '/tmp/guile-%/guile-%'
       OR file.path LIKE '/tmp/terraformer/%'
