@@ -1,5 +1,7 @@
 -- Ported from exotic-commands
 -- Designed for execution every 15 seconds (where the parent may still be around)
+
+-- interval: 15
 SELECT
   p.pid,
   p.path,
@@ -42,7 +44,6 @@ WHERE
       'rshell',
       'rsh',
       'incbit',
-      'insmod',
       'osascript',
       'kmod',
       'lushput',
@@ -58,9 +59,6 @@ WHERE
     OR basename LIKE '%pwn%'
     OR basename LIKE '%attack%'
     -- Unusual behaviors
-    OR cmd LIKE '%ufw disable%'
-    OR cmd LIKE '%iptables -P % ACCEPT%'
-    OR cmd LIKE '%iptables -F%'
     OR cmd LIKE '%chattr -ia%'
     OR cmd LIKE '%chmod 777 %'
     OR cmd LIKE '%touch%acmr%'
@@ -69,16 +67,13 @@ WHERE
     OR cmd LIKE '%nohup%tmp%'
     OR cmd LIKE '%killall Terminal%'
     OR cmd LIKE '%iptables stop'
-    OR cmd LIKE '%systemctl stop firewalld%'
-    OR cmd LIKE '%systemctl disable firewalld%'
     OR cmd LIKE '%pkill -f%'
     OR cmd LIKE '%rm -f /var/tmp%'
     OR cmd LIKE '%rm -rf /boot%'
     OR cmd LIKE '%rm -f /tmp%'
     OR cmd LIKE '%xargs kill -9%'
     OR cmd LIKE '%nohup /bin/bash%'
-    OR cmd LIKE '%echo%|%base64 --decode %|%sh%'
-    OR cmd LIKE '%echo%|%base64 --decode %|%python%'
+    OR cmd LIKE '%echo%|%base64 --decode %|%'
     OR cmd LIKE '%launchctl list%'
     -- Crypto miners
     OR cmd LIKE '%c3pool%'
@@ -96,31 +91,14 @@ WHERE
     -- Random keywords
     OR cmd LIKE '%ransom%'
     -- Reverse shells
-    OR cmd LIKE '%/dev/tcp/%'
-    OR cmd LIKE '%/dev/udp/%'
     OR cmd LIKE '%fsockopen%'
     OR cmd LIKE '%openssl%quiet%'
     OR cmd LIKE '%pty.spawn%'
     OR cmd LIKE '%sh -i'
     OR cmd LIKE '%socat%'
     OR cmd LIKE '%SOCK_STREAM%'
-    OR cmd LIKE '%Socket.fork%'
-    OR cmd LIKE '%Socket.new%'
-    OR cmd LIKE '%socket.socket%'
+    OR cmd LIKE '%Socket.%'
   ) -- Things that could reasonably happen at boot.
-  AND NOT (
-    p.path IN ('/usr/bin/kmod', '/bin/kmod')
-    AND parent_path = '/usr/lib/systemd/systemd'
-    AND parent_cmd = '/sbin/init'
-  )
-  AND NOT (
-    p.path IN ('/usr/bin/kmod', '/bin/kmod')
-    AND parent_name IN ('firewalld', 'mkinitramfs', 'systemd')
-  )
-  AND NOT (
-    p.path IN ('/usr/bin/kmod', '/bin/kmod')
-    AND uptime.total_seconds < 15
-  )
   AND NOT (
     p.path = '/usr/bin/mkfifo'
     AND cmd LIKE '%/org.gpgtools.log.%/fifo'
@@ -137,12 +115,3 @@ WHERE
     )
     AND p.parent = -1
   )
-  AND NOT (
-    p.path IN ('/usr/bin/kmod', '/bin/kmod')
-    AND parent_name IN ('dockerd', 'kube-proxy')
-  )
-  AND NOT cmd LIKE '%modprobe -va%'
-  AND NOT cmd LIKE 'modprobe -ab%'
-  AND NOT cmd LIKE '%modprobe overlay'
-  AND NOT cmd LIKE '%modprobe aufs'
-  AND NOT cmd IN ('lsmod')
