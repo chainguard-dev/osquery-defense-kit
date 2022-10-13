@@ -6,12 +6,14 @@ WHERE
   hostnames NOT IN (
     'localhost',
     'localhost ip6-localhost ip6-loopback',
+    'localhost localhost.localdomain localhost4 localhost4.localdomain4',
     'ip6-allnodes',
     'ip6-allrouters',
     'kubernetes'
   )
   AND address NOT IN (
     '127.0.1.1',
+    '127.0.0.1',
     '::1',
     'ff02::1',
     'ff02::2',
