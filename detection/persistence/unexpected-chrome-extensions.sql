@@ -1,7 +1,7 @@
 SELECT
   name,
   profile,
-  chrome_extensions.description AS "descr",
+  chrome_extensions.description AS 'descr',
   persistent AS persists,
   author,
   chrome_extensions.path,
@@ -9,7 +9,7 @@ SELECT
   file.ctime,
   from_webstore AS in_store,
   CAST(permissions AS text) AS perms,
-  state AS "enabled",
+  state AS 'enabled',
   CONCAT (
     from_webstore,
     ',',

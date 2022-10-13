@@ -1,5 +1,5 @@
 SELECT
-  description AS "desc",
+  description AS 'desc',
   fragment_path AS path,
   hash.sha256,
   file.ctime,
