@@ -65,6 +65,7 @@ WHERE
     '1716,6,500,kdeconnectd',
     '17,255,0,dhcpcd',
     '17,255,500,dhcpcd',
+    '17,255,0,tailscaled',
     '22000,6,500,syncthing',
     '22,6,0,sshd',
     '3000,6,472,grafana-server',
