@@ -6,17 +6,17 @@ Real-world queries for using osquery as part of your detection & response pipeli
 
 ## Organization
 
-* `detection/` - Threat detection queries suitable for alerting.
-* `response/` - Data collection to assist in responding to possible threats. Designed to collect data for future analysis or in response to an event.
-* `policy/` - Policy issues that are suitable for alerting.
+* `detection/` - Threat detection queries tuned for alert generation.
+* `response/` - Data collection to assist in responding to possible threats. Tuned for periodic evidence collection.
+* `policy/` - Security policy queries tuned for alert generation.
 
-Where suitable, these are further divided up by [MITRE ATT&CK](https://attack.mitre.org/) tactics categories.
+Where suitable, queries are further divided up by [MITRE ATT&CK](https://attack.mitre.org/) tactics categories. Queries are periodically released in [osquery query pack](https://osquery.readthedocs.io/en/stable/deployment/configuration/#query-packs) format. See `Local Pack Generation` for more information.
 
 ## Linux Case Study: Shikitega (September 2022)
 
 <https://cybersecurity.att.com/blogs/labs-research/shikitega-new-stealthy-malware-targeting-linux>
 
-Here is a partial list of what stages would have been detected by particular queries:
+Here is a partial list of what queries would have fired an alert based on these queries:
 
 * *Initial Dropper Execution*, detected by:
   * `execution/tiny-executable-events.sql`
@@ -69,6 +69,32 @@ Here is a partial list of what stages would have been detected by particular que
   * `c2/unexpected-talkers-macos.sql`
   * `execution/exotic-command-events.sql`
   * `execution/unexpected-executable-directory-macos.sql`
+
+## False Positive Policy
+
+We endeavor to exclude real-world false positives from our `detection` queries.
+
+Managing false positives is easier said than done - pull requests are welcome!
+
+## Tags Policy
+
+Value:
+
+* critical: queries are run 3x as often
+* high: queries are run twice as often
+* medium: queries are run at a regular pace (default)
+* low: queries are run half as often
+* very-low: queries are run 1/3rd as often
+
+Interval Type:
+
+* ephemeral: 60s (1 minute) base
+* periodic: 1200s (20 minute) base (default)
+* postmortem: 14400s (4 hour) base
+
+Status:
+
+* experimental: Run only half as often as normal
 
 ## Local pack generation
 
