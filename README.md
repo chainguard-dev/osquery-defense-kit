@@ -2,6 +2,8 @@
 
 Real-world queries for using osquery as part of your detection & response pipeline.
 
+![osquery-defense-kit](images/logo-small.png?raw=true "osquery-defense-kit logo")
+
 ## Organization
 
 * `detection/` - Threat detection queries suitable for alerting.
@@ -67,3 +69,7 @@ Here is a partial list of what stages would have been detected by particular que
   * `c2/unexpected-talkers-macos.sql`
   * `execution/exotic-command-events.sql`
   * `execution/unexpected-executable-directory-macos.sql`
+
+## Local pack generation
+
+Run `make packs`

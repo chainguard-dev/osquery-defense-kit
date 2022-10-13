@@ -3,7 +3,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1056/001/ (Input Capture: Keylogging)
 --
--- platform: linux
+-- platform: darwin
 SELECT
   pof.pid,
   pof.path AS device,
