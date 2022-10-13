@@ -22,6 +22,7 @@ WHERE
   AND hostnames NOT LIKE 'localhost.%'
   AND hostnames NOT LIKE '%.svc'
   AND hostnames NOT LIKE '%.%-%.%.dev'
+  AND hostnames NOT LIKE '%.wtf'
   AND hostnames NOT LIKE '%.test'
   AND hostnames NOT LIKE '%.internal'
   AND hostnames NOT LIKE '%.local'
