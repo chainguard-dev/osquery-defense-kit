@@ -1,5 +1,4 @@
-SELECT
-  name,
+SELECT name,
   profile,
   chrome_extensions.description AS 'descr',
   persistent AS persists,
@@ -8,7 +7,7 @@ SELECT
   referenced AS in_config,
   file.ctime,
   from_webstore AS in_store,
-  CAST(permissions AS text) AS perms,
+  TRIM(CAST(permissions AS text)) AS perms,
   state AS 'enabled',
   CONCAT (
     from_webstore,
@@ -19,16 +18,14 @@ SELECT
     ',',
     identifier,
     ',',
-    CAST(permissions AS text)
+    TRIM(CAST(permissions AS text))
   ) AS exception_key,
   hash.sha256
-FROM
-  users
+FROM users
   CROSS JOIN chrome_extensions USING (uid)
   LEFT JOIN file ON chrome_extensions.path = file.path
   LEFT JOIN hash ON chrome_extensions.path = hash.path
-WHERE
-  (
+WHERE (
     from_webstore != 'true'
     OR perms LIKE '%google.com%'
     OR perms LIKE '%chainguard%'
@@ -47,8 +44,8 @@ WHERE
     'true,,Adobe Acrobat: PDF edit, convert, sign tools,efaidnbmnnnibpcajpcglclefindmkaj,contextMenus, <all_urls>, tabs, downloads, nativeMessaging, webRequest, webRequestBlocking',
     'true,,BrowserStack Local,mfiddfehmfdojjfdpfngagldgaaafcfo,https://*.bsstag.com/*, https://*.browserstack.com/*, , clipboardWrite, app.window, storage',
     'true,,Capital One Shopping: Add to Chrome for Free,nenlahapcbofgnanklpelkaejcehkggg,tabs, contextMenus, storage, cookies, webRequest, webRequestBlocking, <all_urls>',
-    'true,,Caret,fljalecfjciodhpcledpamjachpmelml,clipboardRead, clipboardWrite, contextMenus, storage, notifications, syncFileSystem, app.window.fullscreen.overrideEsc, ',
-    'true,,Chrome RDP for Google Cloud Platform,mpbbnannobiobpnfblimoapbephgifkm,clipboardRead, clipboardWrite, unlimitedStorage, storage, notifications, overrideEscFullscreen, ',
+    'true,,Caret,fljalecfjciodhpcledpamjachpmelml,clipboardRead, clipboardWrite, contextMenus, storage, notifications, syncFileSystem, app.window.fullscreen.overrideEsc,',
+    'true,,Chrome RDP for Google Cloud Platform,mpbbnannobiobpnfblimoapbephgifkm,clipboardRead, clipboardWrite, unlimitedStorage, storage, notifications, overrideEscFullscreen,',
     'true,,Chrome Remote Desktop,inomeogfingihgjfjlpeplalcfajhgai,clipboardRead, clipboardWrite, nativeMessaging, downloads, downloads.open',
     'true,,Chrome Web Store Payments,nmmhkkegccagdldgiimedpiccmgmieda,identity, webview, https://www.google.com/, https://www.googleapis.com/*, https://payments.google.com/payments/v4/js/integrator.js, https://sandbox.google.com/payments/v4/js/integrator.js',
     'true,,Clear Cache,cppjkneekbjaeellbfkmgnhonkkjfpdn,browsingData, cookies, <all_urls>',
@@ -57,6 +54,7 @@ WHERE
     'true,,Clockify Time Tracker,pmjeegjhjdlccodhacdgbgfagbpmccpe,background, contextMenus, storage, tabs, activeTab, identity, idle, notifications, scripting, alarms',
     'true,,Cloud Vision,nblmokgbialjjgfhfofbgfcghhbkejac,clipboardWrite, contextMenus, notifications, file://*, <all_urls>',
     'true,,Cloud9,nbdmccoknlfggadpfkmcpnamfnbkmkcp,clipboardRead, clipboardWrite',
+    'true,,coLaboratory Notebook,pianggobfjcgeihlmfhfgkfalopndooo,identity, , webview, , unlimitedStorage, storage, clipboardRead, clipboardWrite,',
     'true,,ColorPick Eyedropper,ohcpnigalekghcmgcdcenkpelffpdolg,activeTab, tabs, <all_urls>, storage, alarms',
     'true,,Copper CRM for Gmail,hpfmedbkgaakgagknibnonpkimkibkla,https://app.copper.com/, webRequest, webRequestBlocking, *://mail.google.com/*, tabs, storage, notifications, *://calendar.google.com/*',
     'true,,CSS Scan,gieabiemggnpnminflinemaickipbebg,storage, activeTab, <all_urls>, contextMenus, clipboardWrite',
@@ -86,7 +84,8 @@ WHERE
     'true,,HTTPS Everywhere,gcbommkclmclpchllfjekcdonpmejbdp,webNavigation, webRequest, webRequestBlocking, tabs, cookies, storage, *://*/*, ftp://*/*',
     'true,,Jitsi Meetings,kglhbbefdnlheedjiejgomgmfplipfeb,https://calendar.google.com/*',
     'true,,JSON Formatter,bcjindcccaagfpapjjmafapmmgkkhgoa,*://*/*, <all_urls>',
-    'true,,Lolli: Earn Bitcoin When You Shop,fleenceagaplaefnklabikkmocalkcpo,<all_urls>, tabs, webNavigation, webRequest', -- SUS
+    'true,,Lolli: Earn Bitcoin When You Shop,fleenceagaplaefnklabikkmocalkcpo,<all_urls>, tabs, webNavigation, webRequest',
+    -- SUS
     'true,,Loom – Free Screen Recorder & Screen Capture,liecbddmkiiihnedobmlmillhodjkdmb,<all_urls>, tabCapture, webNavigation, activeTab, contextMenus, storage, tabs, desktopCapture, notifications, cookies, *://*.useloom.com/, *://*.loom.com/, http://localhost/*',
     'true,,Lucidchart Diagrams,apboafhkiegglekeafbckfjldecefkhn,unlimitedStorage, notifications, clipboardRead, clipboardWrite',
     'true,,Markdown Preview Plus,febilkbfcbhebfnokafefeacimjdckgl,storage, clipboardWrite, <all_urls>',
@@ -96,7 +95,7 @@ WHERE
     'true,,Page Analytics (by Google),fnbdnhhicmebfgdgglcdacdapkcihcoh,storage, https://www.googleapis.com/, tabs, *://*/*, background, cookies, *://*.google.com/*, webNavigation, webRequest, *://*.google-analytics.com/*, *://stats.g.doubleclick.net/*',
     'true,,Password Alert,noondiphcddnnabmjcihcjfbhfklnnep,identity, identity.email, notifications, storage, tabs, <all_urls>',
     'true,,Picture-in-Picture Extension (by Google),hkgfoiooedgoejojocmhlaklaeopbecg,<all_urls>, storage',
-    'true,,Postman,fhbjgbiflinjbdggehcddcbncdddomop,webview, system.display, http://*/*, https://*/*, contextMenus, unlimitedStorage, storage, fileSystem, fileSystem.write, notifications, identity, ',
+    'true,,Postman,fhbjgbiflinjbdggehcddcbncdddomop,webview, system.display, http://*/*, https://*/*, contextMenus, unlimitedStorage, storage, fileSystem, fileSystem.write, notifications, identity,',
     'true,,Privacy Badger,pkehgijcmpdhfbdbbnkijodmdjhbjlgp,tabs, http://*/*, https://*/*, webNavigation, webRequest, webRequestBlocking, storage, privacy',
     'true,,Private Internet Access,jplnlifepflhkbkgonidnobkakhmpnmh,activeTab, storage, unlimitedStorage, cookies, webRequest, webRequestBlocking, proxy, privacy, contentSettings, alarms, background, downloads, <all_urls>',
     'true,,QuillBot for Chrome,iidnbdjijdkbmajdffnidomddglmieko,alarms, cookies, storage, activeTab, contextMenus, notifications, scripting',
@@ -116,7 +115,7 @@ WHERE
     'true,,Tabli,igeehkedfibbnhbfponhjjplpkeomghi,storage, tabs, bookmarks, chrome://favicon/*',
     'true,,Tag Assistant Legacy (by Google),kejbdjndbnbjgmefkgdddjlbokphdefk,identity, storage, tabs, webNavigation, webRequestBlocking, webRequest, http://*/, https://*/',
     'true,,Todoist for Chrome,jldhpllghnbhlbpcmnajkpdmadaolakh,storage, tabs, contextMenus, webRequest, webRequestBlocking, http://*.todoist.com/*, https://*.todoist.com/*, background, declarativeNetRequestWithHostAccess',
-    'true,,Ubiquiti Device Discovery Tool,hmpigflbjeapnknladcfphgkemopofig,system.network, clipboardRead, clipboardWrite, notifications, storage, unlimitedStorage, ',
+    'true,,Ubiquiti Device Discovery Tool,hmpigflbjeapnknladcfphgkemopofig,system.network, clipboardRead, clipboardWrite, notifications, storage, unlimitedStorage,',
     'true,,UET Tag Helper (by Microsoft Advertising),naijndjklgmffmpembnkfbcjbognokbf,activeTab, downloads, tabs, webNavigation, webRequest, http://*/, https://*/',
     'true,,Utime,kpcibgnngaaabebmcabmkocdokepdaki,clipboardWrite, contextMenus, notifications',
     'true,,Vimium,dbepggeogbaibhgnhhndojpepiihcmeb,tabs, bookmarks, history, clipboardRead, storage, sessions, notifications, webNavigation, <all_urls>',
@@ -139,11 +138,10 @@ WHERE
     'true,LastPass,LastPass: Free Password Manager,hdokiejnpimakedhajhdlcegeplioahd,tabs, idle, notifications, contextMenus, unlimitedStorage, webRequest, webNavigation, webRequestBlocking, http://*/*, https://*/*, chrome://favicon/*',
     'true,NortonLifeLock Inc,Norton Safe Web,fnpbeacklnhmkkilekogeiekaglbmmka,tabs, background, webNavigation, storage, <all_urls>, webRequest, webRequestBlocking, downloads, notifications',
     'true,Opera Software AS,Rich Hints Agent,enegjkbbakeegngfapepobipndnebkdk,boosterPrivate, cashbackPrivate, browserSidebarPrivate, downloads, history, limitersPrivate, management, operaBrowserPrivate, powerSavePrivate, richHintsAgentPrivate, settingsPrivate, speeddialPrivate, storage, tabs, uiTrackerPrivate, windows, http://*/, https://*/',
-    'true,Pawel Psztyc,Advanced REST client,hgmloofddffdnphfgcellkdfbfbjeloo,<all_urls>, storage, unlimitedStorage, identity, syncFileSystem, ',
+    'true,Pawel Psztyc,Advanced REST client,hgmloofddffdnphfgcellkdfbfbjeloo,<all_urls>, storage, unlimitedStorage, identity, syncFileSystem,',
     'true,Raymond Hill & contributors,uBlock Origin,cjpalhdlnbpafiamejdnhcphjbkeiagm,contextMenus, privacy, storage, tabs, unlimitedStorage, webNavigation, webRequest, webRequestBlocking, <all_urls>',
     'true,Reddit Enhancement Suite contributors,Reddit Enhancement Suite,kbmfpngjjgdllneeigpgjifpgocmfgmb,https://*.reddit.com/*, tabs, history, storage, unlimitedStorage, webRequest',
     'true,Tulio Ornelas <ornelas.tulio@gmail.com>,JSON Viewer,gbmdgpbipfallnflgajpaliibnhdgobh,*://*/*, <all_urls>',
     'true,Wappalyzer,Wappalyzer - Technology profiler,gppongmhjkpfnbhagpmjfkannfbllamg,cookies, storage, tabs, webRequest, webNavigation, http://*/*, https://*/*'
   )
-GROUP BY
-  exception_key
+GROUP BY exception_key
