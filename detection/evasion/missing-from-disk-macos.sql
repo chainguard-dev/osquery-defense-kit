@@ -4,7 +4,7 @@
 --   * Self-updating programs that remain running
 --
 -- platform: darwin
--- tags: process state
+-- tags: persistent process state
 SELECT
   p.pid,
   p.path,

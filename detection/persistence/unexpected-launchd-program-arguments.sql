@@ -6,7 +6,7 @@
 -- false positives:
 --   * Software by new vendors which have not yet been added to the allow list
 --
--- tags: filesystem state
+-- tags: persistent filesystem state
 -- platform: darwin
 SELECT
   l.label,

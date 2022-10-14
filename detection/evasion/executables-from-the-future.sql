@@ -6,7 +6,7 @@
 -- false positives:
 --   * None observed
 --
--- tags: state process
+-- tags: persistent state process
 SELECT
   p.pid,
   p.path,

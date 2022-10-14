@@ -7,7 +7,7 @@
 -- false positives:
 --   * rules installed by 3rd party software
 --
--- tags: filesystem state
+-- tags: persistent filesystem state
 -- platform: linux
 
 SELECT

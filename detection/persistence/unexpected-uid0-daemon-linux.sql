@@ -3,7 +3,7 @@
 -- false positives:
 --   * new software requiring escalated privileges
 --
--- tags: process state
+-- tags: persistent process state
 -- platform: linux
 SELECT
   p.pid,

@@ -5,7 +5,7 @@
 -- Related:
 --   * unexpected-privilege-escalation-events.sql
 --
--- tags: transient continuous state process escalation
+-- tags: transient often state process escalation
 SELECT
   p.pid AS child_pid,
   p.path AS child_path,

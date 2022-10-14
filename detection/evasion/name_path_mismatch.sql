@@ -3,7 +3,7 @@
 -- false positives:
 --   * new software, particularly those using interpreted languages
 --
--- tags: daemon high
+-- tags: persistent daemon high
 SELECT
   p.name,
   TRIM(SUBSTR(SPLIT (p.name, ':./ ', 0), 0, 15)) AS short_name,

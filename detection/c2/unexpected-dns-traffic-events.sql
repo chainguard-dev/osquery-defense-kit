@@ -4,7 +4,7 @@
 --   * https://attack.mitre.org/techniques/T1071/004/ (C2: Application Layer Protocol: DNS)
 --
 -- interval: 120
--- tags: events net
+-- tags: persistent events net
 --
 -- NOTE: The interval above must match WHERE clause to avoid missing events
 --

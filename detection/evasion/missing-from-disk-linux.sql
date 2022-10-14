@@ -3,7 +3,7 @@
 -- false positives:
 --   * none observed
 --
--- tags: process state
+-- tags: persistent process state
 -- platform: linux
 SELECT
   p.pid,

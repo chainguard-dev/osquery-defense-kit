@@ -6,7 +6,7 @@
 --   * https://attack.mitre.org/techniques/T1205/001/ (Traffic Signaling: Port Knocking)
 --
 -- platform: darwin
--- tags: state process sniffer
+-- tags: persistent state process sniffer
 SELECT
   pmm.pid,
   p.uid,

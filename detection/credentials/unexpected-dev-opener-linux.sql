@@ -7,7 +7,7 @@
 --   * any program which needs access to device drivers
 --
 -- platform: linux
--- tags: state sniffer
+-- tags: persistent state sniffer
 SELECT
   pof.pid,
   pof.path AS device,

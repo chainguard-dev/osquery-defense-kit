@@ -4,7 +4,7 @@
 --   * https://attack.mitre.org/techniques/T1056/001/ (Input Capture: Keylogging)
 --
 -- platform: darwin
--- tags: state sniffer
+-- tags: persistent state sniffer
 SELECT
   pof.pid,
   pof.path AS device,

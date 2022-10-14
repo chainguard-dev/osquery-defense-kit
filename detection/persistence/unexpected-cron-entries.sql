@@ -6,7 +6,7 @@
 -- false positives:
 --   * crontab entries added by the user
 --
--- tags: filesystem state
+-- tags: persistent filesystem state
 -- platform: posix
 SELECT
   *

@@ -6,7 +6,7 @@
 -- false positives:
 --   * None observed
 --
--- tags: daemon
+-- tags: persistent daemon
 SELECT
   pp.*
 FROM

@@ -3,7 +3,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1571/
 --
--- tags: state net
+-- tags: persistent state net
 
 SELECT
   lp.address,
