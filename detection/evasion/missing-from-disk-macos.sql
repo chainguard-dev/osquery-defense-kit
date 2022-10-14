@@ -1,6 +1,10 @@
 -- Processes that do not exist on disk
 --
--- tags: periodic daemon
+-- false positives:
+--   * Self-updating programs that remain running
+--
+-- platform: darwin
+-- tags: process state
 SELECT
   p.pid,
   p.path,

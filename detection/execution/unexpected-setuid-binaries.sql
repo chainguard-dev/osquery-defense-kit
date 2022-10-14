@@ -1,3 +1,10 @@
+-- Find unexpected setuid binaries on disk
+--
+-- false positives:
+--   * new software
+--
+-- tags: persistent seldom
+-- platform: posix
 SELECT
   file.path,
   gid,

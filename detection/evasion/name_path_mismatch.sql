@@ -1,6 +1,9 @@
--- Processes that do not exist on disk
+-- Processes that have an unrelated name in the process tree than the program on disk.
 --
--- tags: periodic daemon high
+-- false positives:
+--   * new software, particularly those using interpreted languages
+--
+-- tags: daemon high
 SELECT
   p.name,
   TRIM(SUBSTR(SPLIT (p.name, ':./ ', 0), 0, 15)) AS short_name,

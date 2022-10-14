@@ -1,4 +1,12 @@
+-- Find unexpected ld.so.conf files
+--
 -- If you have Augeas available, you may want to use that in conjunction with this more limited check.
+--
+-- false positives:
+--   * none known
+--
+-- tags: persistent seldom
+-- platform: linux
 SELECT
   file.path,
   uid,

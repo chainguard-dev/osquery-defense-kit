@@ -1,6 +1,10 @@
--- Discover tiny dropper binaries, such as Shikitega:
--- https://cybersecurity.att.com/blogs/labs-research/shikitega-new-stealthy-malware-targeting-linux
--- Designed for execution every 30 seconds (where the parent may still be around)
+-- Unusually small programs (events-based)
+--
+-- references:
+--   * https://cybersecurity.att.com/blogs/labs-research/shikitega-new-stealthy-malware-targeting-linux
+--
+-- interval: 30
+-- tags: transient process events
 SELECT
   p.pid,
   p.path,

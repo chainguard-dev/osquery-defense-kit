@@ -1,3 +1,10 @@
+-- Unexpected /etc/hosts entries
+--
+-- false positives:
+--   * developers adding entries for their own use
+--
+-- tags: persistent seldom filesystem net
+
 SELECT
   *
 FROM

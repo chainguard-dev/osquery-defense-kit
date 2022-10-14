@@ -1,4 +1,14 @@
--- An alternate way to discover reverse shells, inspired by the osxattack pack
+-- Uncover reverse-shell processes
+--
+-- refs:
+--   * https://www.invicti.com/blog/web-security/understanding-reverse-shells/
+--   * https://attack.mitre.org/techniques/T1059/ (Command & Scripting Interpreter)
+--
+-- false-positives:
+--   * none known
+--
+-- tags: transient process state often
+-- platform: posix
 SELECT DISTINCT
   (p.pid),
   p.parent,

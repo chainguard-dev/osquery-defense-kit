@@ -1,5 +1,15 @@
--- Inspired by Operation Earth Berberoka
--- https://documents.trendmicro.com/assets/white_papers/wp-operation-earth-berberoka.pdf
+-- Unexpected small udev rule entries
+--
+-- Typically vendor-provided udev rules are more verbose.
+--
+-- references:
+--   * https://documents.trendmicro.com/assets/white_papers/wp-operation-earth-berberoka.pdf
+-- false positives:
+--   * rules installed by 3rd party software
+--
+-- tags: filesystem state
+-- platform: linux
+
 SELECT
   file.path,
   uid,

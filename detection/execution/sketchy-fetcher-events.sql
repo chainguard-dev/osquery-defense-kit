@@ -1,5 +1,12 @@
--- Events version of sketchy-fetchers
--- Designed for execution every minute (where the parent may still be around)
+-- Suspicious URL requests by built-in fetching tools (event-based)
+--
+-- refs:
+--   * https://attack.mitre.org/techniques/T1105/ (Ingress Tool Transfer)
+--   * https://attack.mitre.org/techniques/T1571/ (Non-Standard Port)
+--
+-- interval: 60
+-- tags: transient process events
+-- platform: posix
 SELECT
   p.pid,
   p.path,

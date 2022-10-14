@@ -1,4 +1,6 @@
 -- Designed for execution every 30 seconds (where the parent may still be around)
+--
+-- interval: 30
 SELECT
   p.pid AS child_pid,
   p.path AS child_path,

@@ -1,3 +1,10 @@
+-- Find unexpected hidden directories in operating-system folders
+--
+-- false positives:
+--   * unusual installers
+--
+-- platform: linux
+-- tags: persistent filesystem state
 SELECT
   file.path,
   uid,

@@ -4,7 +4,7 @@
 -- and it requires catching a program at the exact moment it has
 -- the file open.
 
--- tags: ephemeral critical access
+-- tags: transient often state file access
 SELECT
   pof.pid,
   pof.fd,

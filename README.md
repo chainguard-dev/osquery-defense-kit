@@ -76,25 +76,19 @@ We endeavor to exclude real-world false positives from our `detection` queries.
 
 Managing false positives is easier said than done - pull requests are welcome!
 
-## Tags Policy
+## Tag Intervals Mapping
 
-Value:
+Our base interval is 1 hour (3600s), but this interval is modified by the tags in place:
 
-* critical: queries are run 3x as often
-* high: queries are run twice as often
-* medium: queries are run at a regular pace (default)
-* low: queries are run half as often
-* very-low: queries are run 1/3rd as often
+* continuous: 15 seconds
+* transient: 5 minutes
+* persistent: 1 hour (default)
+* postmortem: 6 hours
 
-Interval Type:
+In addition, we'll also use the following modifier tags:
 
-* ephemeral: 60s (1 minute) base
-* periodic: 1200s (20 minute) base (default)
-* postmortem: 14400s (4 hour) base
-
-Status:
-
-* experimental: Run only half as often as normal
+* Often: 4X as often (~1m for transient, 15 minutes for persistent)
+* Seldom: 2X as seldomly (10 minutes for transient, 2 hours for persistent)
 
 ## Local pack generation
 

@@ -2,7 +2,7 @@
 -- Reveals boopkit if a child is spawned
 -- TODO: Make mount namespace aware
 
--- tags: periodic daemon
+-- tags: daemon
 SELECT
   p.name AS child_name,
   p.pid AS child_pid,

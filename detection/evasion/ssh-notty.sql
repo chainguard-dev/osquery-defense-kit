@@ -1,4 +1,7 @@
 -- Find ssh sessions that are hiding from 'w'/'who'
+--
+-- tags: transient process state
+-- platform: posix
 SELECT * FROM (
     SELECT p.pid,p.name,p.cmdline,GROUP_CONCAT(DISTINCT pof.path) AS open_files
     FROM processes p

@@ -1,5 +1,12 @@
--- Inspired by BPFdoor
--- https://www.sandflysecurity.com/blog/bpfdoor-an-evasive-linux-backdoor-technical-analysis/
+-- Find unexpected files in /dev
+--
+-- references:
+--   * https://www.sandflysecurity.com/blog/bpfdoor-an-evasive-linux-backdoor-technical-analysis/
+--
+-- false positives:
+--   * programs which have legimate uses for /dev/shm
+--
+-- tags: persistent state filesystem
 SELECT
   file.path,
   file.type,

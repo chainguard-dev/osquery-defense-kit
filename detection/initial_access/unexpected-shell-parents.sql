@@ -1,3 +1,11 @@
+-- Unexpected process that spawns shell processes
+--
+-- false positives:
+--   * IDE's
+--
+-- tags: transient process state
+-- platform: posix
+
 SELECT
   p.name,
   p.path AS path,

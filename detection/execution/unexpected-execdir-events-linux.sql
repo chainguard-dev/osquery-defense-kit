@@ -1,5 +1,14 @@
--- Events version of unexpected-executable-directory
--- Designed for execution every minute (where the parent may still be around)
+-- Catch applications running from unusual directories, such as /tmp
+--
+-- references:
+--   * https://attack.mitre.org/techniques/T1074/
+--
+-- false positives:
+--   * programs running in alternative namespaces (Docker)
+--
+-- interval: 15
+-- platform: linux
+-- tags: filesystem events
 SELECT
   pe.pid,
   pe.path,

@@ -1,4 +1,9 @@
 -- Find unexpected executables in /dev
+--
+-- references:
+--   * https://www.sandflysecurity.com/blog/bpfdoor-an-evasive-linux-backdoor-technical-analysis/
+--
+-- tags: persistent state filesystem
 SELECT
   file.path,
   file.directory,

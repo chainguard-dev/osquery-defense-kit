@@ -1,6 +1,9 @@
 -- Alert on programs running that are unusually old (poor timestomping)
-
--- tags: periodic daemon
+--
+-- references:
+--   * https://attack.mitre.org/techniques/T1070/006/
+--
+-- tags: transient process state
 SELECT
   p.path,
   p.cmdline,

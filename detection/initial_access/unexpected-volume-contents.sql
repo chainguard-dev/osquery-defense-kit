@@ -1,7 +1,12 @@
 -- Scan removable volumes for sketchy files
 --
--- Inspired by ChromeLoader: https://www.crowdstrike.com/blog/how-crowdstrike-uncovered-a-new-macos-browser-hijacking-campaign/
+-- false positives:
+--   * Installer packages with hidden files
 --
+-- references:
+--   * https://www.crowdstrike.com/blog/how-crowdstrike-uncovered-a-new-macos-browser-hijacking-campaign/
+--
+-- tags: transient volume filesystem
 -- platform: darwin
 SELECT
   RTRIM(file.path, '/') AS trimpath,

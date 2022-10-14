@@ -1,6 +1,9 @@
--- Processes that do not exist on disk
+-- Processes that do not exist on disk, running in osquery's namespace
 --
--- tags: periodic daemon
+-- false positives:
+--   * none observed
+--
+-- tags: process state
 -- platform: linux
 SELECT
   p.pid,

@@ -1,6 +1,10 @@
 -- Programs who were recently written to disk, based on btime (macOS) or ctime (Linux)
 --
--- NOTE: ctime
+-- false-positives:
+--   * many
+--
+-- tags: transient process state often
+-- platform: posix
 SELECT
   p.pid,
   p.path,

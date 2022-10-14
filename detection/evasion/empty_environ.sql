@@ -1,7 +1,9 @@
--- Inspired by BPFdoor
--- https://www.sandflysecurity.com/blog/bpfdoor-an-evasive-linux-backdoor-technical-analysis/
-
--- tags: periodic daemon
+-- Find programs which have cleared their environment
+--
+-- references:
+--   * https://www.sandflysecurity.com/blog/bpfdoor-an-evasive-linux-backdoor-technical-analysis/
+--
+-- tags: persistent state daemon process
 SELECT
   COUNT(*) AS count,
   p.pid,

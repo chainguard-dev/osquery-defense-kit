@@ -5,8 +5,8 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1205/001/ (Traffic Signaling: Port Knocking)
 --
--- platform: darwin
--- tags: periodic sniffer
+-- platform: posix
+-- tags: persistent state process sniffer often
 SELECT
   pmm.pid,
   pmm.path AS lib_path,

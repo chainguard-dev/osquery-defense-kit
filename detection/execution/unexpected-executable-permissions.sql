@@ -1,4 +1,14 @@
 -- Find processes running that are tied to binaries with unsual permissions. Namely, 0777.
+--
+-- references:
+--   * https://attack.mitre.org/techniques/T1222/
+--
+-- false positives:
+--   * poorly written software
+--
+-- platform: posix
+-- tags: persistent filesystem state
+
 SELECT
   p.pid,
   p.name,

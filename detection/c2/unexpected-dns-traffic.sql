@@ -3,7 +3,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1071/004/ (C2: Application Layer Protocol: DNS)
 --
--- tags: ephemeral state net
+-- tags: transient state net often dns
 --
 -- NOTE: This only supports IPv4 traffic due to an osquery bug with 'dns_resolvers'
 SELECT

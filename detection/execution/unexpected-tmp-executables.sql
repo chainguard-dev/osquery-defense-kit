@@ -1,4 +1,10 @@
--- Find unexpected executables in temp directories
+-- Find unexpected executables in temp directories, often used by malware droppers
+--
+-- false positives:
+--   * developers building code out of /tmp
+--
+-- tags: persistent
+-- platform: posix
 SELECT
   file.path,
   uid,

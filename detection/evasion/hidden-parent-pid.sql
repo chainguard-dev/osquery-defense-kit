@@ -1,6 +1,12 @@
 -- Works well for revealing boopkit, so long as boopkit has a child process.
 --
--- tags: periodic daemon
+-- references:
+--   * https://github.com/krisnova/boopkit
+--
+-- false positives:
+--   * None observed
+--
+-- tags: daemon
 SELECT
   pp.*
 FROM

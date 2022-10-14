@@ -1,4 +1,10 @@
 -- Find unexpected executables in /var
+--
+-- false positives:
+--   * none known
+--
+-- tags: persistent seldom
+-- platform: posix
 SELECT
   file.path,
   file.directory,

@@ -1,6 +1,6 @@
 -- Returns a list of malware matches from macOS XProtect
 --
--- interval: 1200
+-- tags: persistent often malware xprotect
 -- platform: darwin
 SELECT
   *

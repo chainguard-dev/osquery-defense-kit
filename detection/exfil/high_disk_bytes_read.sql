@@ -1,3 +1,12 @@
+-- Programs which are reading an unusually large amount of data
+--
+-- Can be used to detect exfiltration
+--
+-- false positives:
+--   * Virtual Machine managers
+--   * Backup software
+--
+-- tags: transient process
 SELECT
   p.name,
   p.path,

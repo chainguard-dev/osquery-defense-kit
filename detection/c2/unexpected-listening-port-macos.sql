@@ -3,7 +3,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1571/
 --
--- tags: ephemeral state net low
+-- tags: state net low
 -- platform: darwin
 
 SELECT
@@ -55,7 +55,7 @@ WHERE
   -- Filter out unmapped raw sockets
   AND NOT (p.pid == '')
   -- Exceptions: the uid is capped at 500 to represent regular users versus system users
-  -- port is capped at 49152 to represent ephemeral ports
+  -- port is capped at 49152 to represent transient ports
   AND NOT exception_key IN (
     '10011,6,0,launchd,Software Signing',
     '1313,6,500,hugo,',

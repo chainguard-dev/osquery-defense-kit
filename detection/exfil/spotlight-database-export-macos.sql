@@ -1,4 +1,10 @@
 -- Find database exports. Will need tuning based on your table names.
+--
+-- false positives:
+--   * none observed
+--
+-- platform: darwin
+-- tags: persistent filesystem spotlight
 SELECT
   f.path,
   f.size,

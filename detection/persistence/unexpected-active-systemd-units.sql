@@ -1,3 +1,12 @@
+-- Unexpected systemd units, may be evidence of persistence
+--
+-- references:
+--   * https://attack.mitre.org/techniques/T1543/002/
+--
+-- false positives:
+--   * System updates
+--
+-- tags: persistent seldom filesystem systemd
 SELECT description AS 'desc',
   fragment_path AS path,
   hash.sha256,

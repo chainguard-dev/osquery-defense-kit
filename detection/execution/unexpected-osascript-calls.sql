@@ -1,5 +1,11 @@
 -- Detect unusual calls to osascript
--- Designed for execution every 60 seconds (where the parent may still be around)
+--
+-- false positives:
+--   * none observed, but they are expected
+--
+-- interval: 60
+-- platform: darwin
+-- tags: process events
 SELECT
   p.pid,
   p.path,

@@ -1,3 +1,12 @@
+-- Programs which are writing an unusually large amount of data
+--
+-- Can be used to detect ransomware
+--
+-- false positives:
+--   * Package managers
+--   * Backup software
+--
+-- tags: transient process
 SELECT
   p.name,
   p.path,

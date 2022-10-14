@@ -1,3 +1,10 @@
+-- Find unexpected use of raw sockets in executables, sometimes used for C&C communications
+--
+-- false positives:
+--   * operating-system network managers
+--
+-- tags: transient process state
+-- platform: posix
 SELECT
   pop.pid,
   p.path,

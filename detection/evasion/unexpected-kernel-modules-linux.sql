@@ -1,4 +1,8 @@
 -- Find kernel modules that are not part of the expected list
+--
+-- false positives:
+--   * operating-system updates
+--
 -- platform: linux
 -- tags: latent seldom kernel
 SELECT *

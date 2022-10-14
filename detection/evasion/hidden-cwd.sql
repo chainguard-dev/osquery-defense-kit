@@ -1,6 +1,9 @@
 -- Programs running with a hidden current working directory
-
--- tags: ephemeral high
+--
+-- False positives:
+--   * Users rummaging through their configuration files
+--
+-- tags: transient often
 SELECT
   p.pid,
   p.path,

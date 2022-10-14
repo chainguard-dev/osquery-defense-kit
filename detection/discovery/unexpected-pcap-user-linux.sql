@@ -4,8 +4,9 @@
 --
 -- references:
 --   * https://attack.mitre.org/techniques/T1205/001/ (Traffic Signaling: Port Knocking)
+--
 -- platform: linux
--- tags: periodic sniffer critical
+-- tags: persistent state process sniffer often
 SELECT
   pmm.pid,
   p.uid,

@@ -1,8 +1,13 @@
 -- Find launchd entries which purport to be by Apple, but are not signed by Apple.
 --
--- Inspired by https://posts.specterops.io/hunting-for-bad-apples-part-1-22ef2b44c0aa
+-- references:
+--   * https://posts.specterops.io/hunting-for-bad-apples-part-1-22ef2b44c0aa
+--
+-- false positives:
+--   * none have been observed
 --
 -- platform: darwin
+-- tags: persistent launchd state
 select
   *
 FROM

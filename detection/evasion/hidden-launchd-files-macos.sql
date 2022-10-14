@@ -2,7 +2,7 @@
 -- See https://github.com/osquery/osquery/issues/7703
 --
 -- platform: darwin
--- tags: periodic daemon
+-- tags: daemon
 
 SELECT file.path,
     file.type,

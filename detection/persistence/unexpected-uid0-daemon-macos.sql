@@ -1,3 +1,10 @@
+-- Unexpected long-running processes running as root
+--
+-- false positives:
+--   * new software requiring escalated privileges
+--
+-- tags: process state
+-- platform: darwin
 SELECT
   p.pid,
   p.name,

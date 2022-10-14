@@ -1,5 +1,10 @@
--- Ported from exotic-commands
--- Designed for execution every 15 seconds (where the parent may still be around)
+-- Pick out exotic processes based on their command-line (events-based)
+--
+-- false positives:
+--   * possible, but none known
+--
+-- tags: transient process events
+-- platform: linux
 -- interval: 15
 SELECT
   p.pid,

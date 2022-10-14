@@ -1,10 +1,10 @@
--- Suspicious URL requests by built-in fetching tools
+-- Suspicious URL requests by built-in fetching tools (state-based)
 --
 -- refs:
 --   * https://attack.mitre.org/techniques/T1105/ (Ingress Tool Transfer)
 --   * https://attack.mitre.org/techniques/T1571/ (Non-Standard Port)
 --
--- interval: 60
+-- tags: transient process state
 -- platform: posix
 SELECT
   p.pid,

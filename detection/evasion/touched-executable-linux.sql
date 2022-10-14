@@ -1,6 +1,11 @@
 -- Programs which were spawned by an executable containing a matching ctime & mtime, which
 -- on Linux only generally occurs occurs if you run 'touch <bin>'
--- NOTE: This is not suitable as a detection method on macOS, where this condition is extremely common
+--
+-- references:
+--   * https://attack.mitre.org/techniques/T1070/006/
+--
+-- tags: transient process state
+-- platform: linux
 SELECT
   p.pid,
   p.path,

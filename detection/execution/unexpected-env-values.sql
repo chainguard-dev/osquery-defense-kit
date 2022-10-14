@@ -1,5 +1,10 @@
+-- Applications setting environment variables to bypass security protections
+--
 -- Inpsired by BPFdoor and other intrusions
 -- https://www.sandflysecurity.com/blog/compromised-linux-cheat-sheet/
+--
+-- tags: transient state continous
+-- platform: posix
 SELECT
   key,
   value,
@@ -7,13 +12,11 @@ SELECT
   p.path,
   p.cmdline,
   p.parent AS parent_pid,
-  pp.cmdline AS parent_cmd,
-  hash.sha256
+  pp.cmdline AS parent_cmd
 FROM
   process_envs pe
   LEFT JOIN processes p ON pe.pid = p.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
-  LEFT JOIN hash ON p.path = hash.path
 WHERE
   (
     key = 'HISTFILE'

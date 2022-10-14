@@ -3,7 +3,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1571/
 --
--- tags: ephemeral state net low
+-- tags: state net
 
 SELECT
   lp.address,
@@ -50,7 +50,7 @@ WHERE
   -- Filter out unmapped raw sockets
   AND NOT (p.pid == '')
   -- Exceptions: the uid is capped at 500 to represent regular users versus system users
-  -- port is capped at 32768 to represent ephemeral ports
+  -- port is capped at 32768 to represent transient ports
   AND NOT CONCAT (
     MIN(lp.port, 32768),
     ',',

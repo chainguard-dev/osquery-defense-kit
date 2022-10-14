@@ -1,4 +1,6 @@
 -- Processes running that originate from setuid/setgid programs
+--
+-- tags: state process escalation
 SELECT
   p.pid,
   p.name,

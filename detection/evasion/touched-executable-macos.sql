@@ -1,6 +1,13 @@
 -- Programs which appear to have been touched on macOS
+--
 -- This check is probably not very useful as there are plenty of legit reasons why
 -- the dates (in particular, 'btime'), gets doctored.
+--
+-- false positives:
+--   * Programs which are packaged weirdly and don't follow the typical Apple app layout
+--
+-- tags: transient seldom filesystem state
+-- platform: darwin
 SELECT
   p.path,
   p.name,

@@ -1,5 +1,12 @@
 -- Programs which claim to be from the future, based on (btime,ctime,mtime)
--- tags: periodic daemon
+--
+-- references:
+--   * https://attack.mitre.org/techniques/T1070/006/
+--
+-- false positives:
+--   * None observed
+--
+-- tags: state process
 SELECT
   p.pid,
   p.path,

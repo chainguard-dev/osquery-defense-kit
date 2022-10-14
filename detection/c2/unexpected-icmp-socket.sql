@@ -3,7 +3,7 @@
 -- references:
 --   *https://attack.mitre.org/techniques/T1095/ (C2: Non-Application Layer Protocol)
 --
--- tags: ephemeral state net critical
+-- tags: transient state net often
 SELECT
   pop.pid,
   p.path,

@@ -1,6 +1,9 @@
--- Discover tiny dropper binaries, such as Shikitega:
--- https://cybersecurity.att.com/blogs/labs-research/shikitega-new-stealthy-malware-targeting-linux
--- Duration: 0.063s
+-- Unusually small programs (state-based)
+--
+-- references:
+--   * https://cybersecurity.att.com/blogs/labs-research/shikitega-new-stealthy-malware-targeting-linux
+--
+-- tags: transient process state
 SELECT
   p.pid,
   p.path,

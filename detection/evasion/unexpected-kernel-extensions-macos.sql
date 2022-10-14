@@ -1,5 +1,10 @@
--- Display a list of non-Apple kernel extensions, which are exceedingly rare.
+-- Find unexpected 3rd-party kernel extensions
+--
+-- false positives:
+--   * none known
+--
 -- platform: darwin
+-- tags: persistent seldom kernel
 SELECT
   *
 FROM

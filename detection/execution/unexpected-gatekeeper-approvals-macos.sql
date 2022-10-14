@@ -1,6 +1,14 @@
 -- Gatekeeper exceptions are exceptions for downloaded binaries
--- https://posts.specterops.io/hunting-for-bad-apples-part-2-6f2d01b1f7d3
--- Most of these hits end up running out of the Downloads directory
+--
+-- references:
+--   * https://posts.specterops.io/hunting-for-bad-apples-part-2-6f2d01b1f7d3
+--
+-- false positives:
+--   * developers downloading binaries from Github
+--
+-- platform: macos
+-- tags: persistent filesystem state gatekeeper
+
 SELECT
   gap.ctime,
   gap.mtime,

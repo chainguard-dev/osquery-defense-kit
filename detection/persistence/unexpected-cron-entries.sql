@@ -1,3 +1,13 @@
+-- Unexpected crontab entries
+--
+-- references:
+--   * https://attack.mitre.org/techniques/T1053/003/
+--
+-- false positives:
+--   * crontab entries added by the user
+--
+-- tags: filesystem state
+-- platform: posix
 SELECT
   *
 FROM

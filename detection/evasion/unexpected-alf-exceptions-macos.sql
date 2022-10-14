@@ -1,5 +1,9 @@
 -- macOS application layer firewall (ALF) service exceptions.
 --
+-- false positives:
+--   * locally built software
+--
+-- tags: persistent state filesystem
 SELECT
   ae.path,
   ae.state,

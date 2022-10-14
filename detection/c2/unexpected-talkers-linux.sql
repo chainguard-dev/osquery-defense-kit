@@ -3,7 +3,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1071/
 --
--- tags: ephemeral state net high
+-- tags: transient state net often
 -- platform: linux
 SELECT
   s.family,

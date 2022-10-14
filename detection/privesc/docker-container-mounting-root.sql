@@ -8,7 +8,7 @@
 -- dependent on the polling time.
 --
 -- platform: linux
--- tags: ephemeral often
+-- tags: transient often container escalation
 SELECT
   command, image_id, path, security_options, started_at, image
 FROM

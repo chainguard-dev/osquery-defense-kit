@@ -1,5 +1,12 @@
 -- Unexpected launchd scripts that use the 'program_arguments' field
+----
+-- references:
+--   * https://attack.mitre.org/techniques/T1543/004/
 --
+-- false positives:
+--   * Software by new vendors which have not yet been added to the allow list
+--
+-- tags: filesystem state
 -- platform: darwin
 SELECT
   l.label,
