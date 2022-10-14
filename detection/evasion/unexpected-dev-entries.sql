@@ -7,6 +7,7 @@
 --   * programs which have legimate uses for /dev/shm
 --
 -- tags: persistent state filesystem
+-- platform: linux
 SELECT
   file.path,
   file.type,

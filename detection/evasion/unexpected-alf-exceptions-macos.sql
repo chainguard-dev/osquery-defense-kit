@@ -4,6 +4,7 @@
 --   * locally built software
 --
 -- tags: persistent state filesystem
+-- platform: darwin
 SELECT
   ae.path,
   ae.state,

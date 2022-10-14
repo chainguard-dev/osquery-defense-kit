@@ -18,13 +18,25 @@ FROM
   file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-  -- For some reason /dev/%% is not recursive?
 WHERE
   (
+    -- This list is the result of multiple queries combined and can likely be minimized
     file.path LIKE '/dev/%%'
     OR file.path LIKE '/dev/%%/%%'
+    OR file.path LIKE '/dev/mqueue/%%'
+    OR file.path LIKE '/dev/mqueue/.%/%%'
+    OR file.path LIKE '/dev/mqueue/%/%%'
+    OR file.path LIKE '/dev/mqueue/%/%/.%'
+    OR file.path LIKE '/dev/mqueue/%/.%/%%'
+    OR file.path LIKE '/dev/shm/%%'
+    OR file.path LIKE '/dev/shm/.%/%%'
+    OR file.path LIKE '/dev/shm/%/%%'
+    OR file.path LIKE '/dev/shm/%/%/.%'
+    OR file.path LIKE '/dev/shm/%/.%/%%'
   )
   AND file.type = 'regular'
+  AND file.path NOT LIKE '%/../%'
+  AND file.path NOT LIKE '%/./%'
   AND (
     file.mode LIKE '%7%'
     or file.mode LIKE '%5%'

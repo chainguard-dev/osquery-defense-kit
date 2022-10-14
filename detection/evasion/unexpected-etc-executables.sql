@@ -5,8 +5,7 @@
 --
 -- tags: persistent
 -- platform: posix
-SELECT
-  file.path,
+SELECT file.path,
   file.directory,
   uid,
   gid,
@@ -15,12 +14,10 @@ SELECT
   file.size,
   hash.sha256,
   magic.data
-FROM
-  file
+FROM file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE
-  (file.path LIKE '/etc/%%')
+WHERE (file.path LIKE '/etc/%%')
   AND file.type = 'regular'
   AND (
     file.mode LIKE '%7%'
@@ -116,7 +113,7 @@ WHERE
     '/etc/ssl/trust-source',
     '/etc/systemd/system',
     '/etc/systemd/system/graphical.target.wants',
-    '/etc/systemd/system-shutdown'
+    '/etc/systemd/system-shutdown',
     '/etc/update-motd.d',
     '/etc/vmware-tools',
     '/etc/vpnc',
@@ -127,8 +124,7 @@ WHERE
     '/etc/xdg/Xwayland-session.d',
     '/etc/zfs-fuse',
     '/etc/zfs/zed.d',
-    '/etc/zfs/zpool.d',
-
+    '/etc/zfs/zpool.d'
   )
   AND file.path NOT IN (
     '/etc/nftables.conf',
