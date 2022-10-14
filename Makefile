@@ -3,13 +3,13 @@ out/osqtool:
 	GOBIN=$(CURDIR)/out go install github.com/chainguard-dev/osqtool/cmd/osqtool@latest
 
 out/odk-detection.sql: out/osqtool
-	./out/osqtool pack detection/ > out/odk-detection.conf
+	./out/osqtool --verify pack detection/ > out/odk-detection.conf
 
 out/odk-policy.sql: out/osqtool
-	./out/osqtool pack policy/ > out/odk-policy.conf
+	./out/osqtool --verify pack policy/ > out/odk-policy.conf
 
 out/odk-incident_response.sql: out/osqtool
-	./out/osqtool pack incident_response/ > out/odk-incident_response.conf
+	./out/osqtool --verify pack incident_response/ > out/odk-incident_response.conf
 
 packs: out/odk-detection.sql out/odk-policy.sql out/odk-incident_response.sql
 
