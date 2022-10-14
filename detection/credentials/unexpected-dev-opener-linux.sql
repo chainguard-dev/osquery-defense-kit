@@ -3,6 +3,9 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1056/001/ (Input Capture: Keylogging)
 --
+-- false positives:
+--   * any program which needs access to device drivers
+--
 -- platform: linux
 -- tags: periodic sniffer
 SELECT
@@ -15,16 +18,16 @@ SELECT
   CONCAT (
     IIF(
       REGEX_MATCH (
-        REPLACE(pof.path, ' (deleted)', ''),
+        TRIM(REPLACE(pof.path, ' (deleted)', '')),
         '(/dev/.*)[\d ]+$',
         1
       ) != '',
       REGEX_MATCH (
-        REPLACE(pof.path, ' (deleted)', ''),
+        TRIM(REPLACE(pof.path, ' (deleted)', '')),
         '(/dev/.*)[\d ]+$',
         1
       ),
-      REPLACE(pof.path, ' (deleted)', '')
+      TRIM(REPLACE(pof.path, ' (deleted)', ''))
     ),
     ',',
     REPLACE(
@@ -93,22 +96,22 @@ WHERE
   AND pof.path NOT LIKE '/dev/shm/authentik_%'
   AND NOT dir_exception IN (
     '/dev/bus/usb,pcscd',
-    '/dev/bus/usb/001,pcscd',
-    '/dev/bus/usb/005,python3.10',
     '/dev/input,acpid',
-    '/dev/kmsg,systemd-coredump',
     '/dev/input,gnome-shell',
-    '/dev/input,systemd-logind',
     '/dev/input,systemd',
+    '/dev/input,systemd-logind',
+    '/dev/input,thermald',
     '/dev/input,upowerd',
     '/dev/input,Xorg',
-    '/dev/net,.tailscaled-wrapped',
+    '/dev/kmsg,systemd-coredump',
     '/dev/net,tailscaled',
+    '/dev/net,.tailscaled-wrapped',
+    '/dev/net/tun,qemu-system-x86_64',
     '/dev/shm,1password',
+    '/dev/shm,Brackets',
     '/dev/shm,chrome',
     '/dev/shm,code',
     '/dev/shm,electron',
-    '/dev/shm,Brackets',
     '/dev/shm,firefox',
     '/dev/shm,gopls',
     '/dev/shm,java',
@@ -119,11 +122,10 @@ WHERE
     '/dev/shm,steamwebhelper',
     '/dev/shm,wine64-preloader',
     '/dev/shm,winedevice.exe',
-    '/dev/snd,.pulseaudio-wrapped',
     '/dev/snd,alsactl',
-    '/dev/net/tun,qemu-system-x86_64',
     '/dev/snd,pipewire',
     '/dev/snd,pulseaudio',
+    '/dev/snd,.pulseaudio-wrapped',
     '/dev/snd,wireplumber'
   )
   AND NOT path_exception IN (
@@ -148,6 +150,7 @@ WHERE
     '/dev/uinput,bluetoothd',
     '/dev/usb/hiddev,apcupsd',
     '/dev/usb/hiddev,upowerd',
+    '/dev/video0,chrome',
     '/dev/video,chrome',
     '/dev/video,ffmpeg',
     '/dev/video,firefox',

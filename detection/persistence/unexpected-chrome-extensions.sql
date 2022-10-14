@@ -1,3 +1,9 @@
+-- Highlight chrome extensions with wide-ranging permissions that are not part of your whitelist
+--
+-- false positives:
+--   * anything that isn't on your whitelist
+--
+-- tags: persistent seldom
 SELECT name,
   profile,
   chrome_extensions.description AS 'descr',
@@ -38,7 +44,11 @@ WHERE (
   )
   AND enabled = 1
   AND exception_key NOT IN (
-    'false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,,background',
+    'false,,Google Chat,mdpkiolbdkhdjpekfbkbmhigcaggjagi,', -- Deprecated Google Extension
+    'false,,Google Cloud,gmdcbpephenfeelhagpbceidhdbobfpk,', -- Deprecated Google Extension
+    'false,,Google Drive,aghbiahbpaijignceidepookljebhfak,', -- Deprecated Google Extension
+    'false,,Google Photos,ncmjhecbjeaamljdfahankockkkdmedg,', -- Deprecated Google Extension
+    'false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,,background', -- TODO: Move to local exceptions list once osqtool supports them
     'true,,Adblock for Youtube™,cmedhionkhpnakcndndgjdbohmhepckk,storage, unlimitedStorage, webRequest, webRequestBlocking, <all_urls>',
     'true,,Add to Amazon Wish List,ciagpekplgpbepdgggflgmahnjgiaced,tabs, http://*/*, https://*/*',
     'true,,Adobe Acrobat: PDF edit, convert, sign tools,efaidnbmnnnibpcajpcglclefindmkaj,contextMenus, <all_urls>, tabs, downloads, nativeMessaging, webRequest, webRequestBlocking',

@@ -1,5 +1,4 @@
-SELECT
-  description AS 'desc',
+SELECT description AS 'desc',
   fragment_path AS path,
   hash.sha256,
   file.ctime,
@@ -13,12 +12,10 @@ SELECT
     ',',
     (file.size / 100) * 100
   ) AS exception_key
-FROM
-  systemd_units
+FROM systemd_units
   LEFT JOIN hash ON systemd_units.fragment_path = hash.path
   LEFT JOIN file ON systemd_units.fragment_path = file.path
-WHERE
-  active_state != 'inactive'
+WHERE active_state != 'inactive'
   AND sub_state != 'plugged'
   AND sub_state != 'mounted'
   AND fragment_path != ''
@@ -70,9 +67,7 @@ WHERE
         'bluetooth.service,Bluetooth service,,700',
         'bluetooth.target,Bluetooth Support,,400',
         'bolt.service,Thunderbolt system service,,600',
-        'systemd-vconsole-setup.service,Setup Virtual Console,,700',
         'chronyd.service,NTP client/server,,1500',
-        'plocate-updatedb.service,Update the plocate database,,200',
         'colord.service,Manage, Install and Generate Color Profiles,colord,200',
         'console-setup.service,Set console font and keymap,,300',
         'containerd.service,containerd container runtime,,1200',
@@ -101,6 +96,7 @@ WHERE
         'docker.socket,Docker Socket for the API,,100',
         'docker.socket,Docker Socket for the API,,200',
         'dpkg-db-backup.timer,Daily dpkg database backup timer,,100',
+        'dracut-shutdown.service,Restore /run/initramfs on shutdown,,400',
         'dracut-shutdown.service,Restore /run/initramfs on shutdown,,500',
         'e2scrub_all.timer,Periodic ext4 Online Metadata Check for All Filesystems,,200',
         'firewalld.service,firewalld - dynamic firewall daemon,,600',
@@ -197,6 +193,7 @@ WHERE
         'pcscd.service,PC/SC Smart Card Daemon,,200',
         'pcscd.socket,PC/SC Smart Card Daemon Activation Socket,,100',
         'phpsessionclean.timer,Clean PHP session files every 30 mins,,100',
+        'plocate-updatedb.service,Update the plocate database,,200',
         'plocate-updatedb.timer,Update the plocate database daily,,100',
         'plymouth-quit-wait.service,Hold until boot process finishes up,,200',
         'plymouth-read-write.service,Tell Plymouth To Write Out Runtime Data,,200',
@@ -272,8 +269,8 @@ WHERE
         'systemd-modules-load.service,Load Kernel Modules,,1000',
         'systemd-network-generator.service,Generate network units from Kernel command line,,600',
         'systemd-oomd.service,Userspace Out-Of-Memory (OOM) Killer,systemd-oom,1600',
-        'systemd-oomd.socket,Userspace Out-Of-Memory (OOM) Killer Socket,,600',
         'systemd-oomd.service,Userspace Out-Of-Memory (OOM) Killer,systemd-oom,1700',
+        'systemd-oomd.socket,Userspace Out-Of-Memory (OOM) Killer Socket,,600',
         'systemd-random-seed.service,Load/Save Random Seed,,1100',
         'systemd-random-seed.service,Load/Save Random Seed,,1200',
         'systemd-remount-fs.service,Remount Root and Kernel File Systems,,700',
@@ -311,6 +308,7 @@ WHERE
         'system.slice,System Slice,,0',
         'tailscaled.service,Tailscale node agent,,600',
         'tailscaled.service,Tailscale node agent,,700',
+        'thermald.service,Thermal Daemon Service,,300',
         'timers.target,Timer Units,,400',
         'time-set.target,System Time Set,,400',
         'tlp.service,TLP system startup/shutdown,,500',
@@ -358,15 +356,15 @@ WHERE
         'zfs-snapshot-frequent.timer,zfs-snapshot-frequent.timer,,0',
         'zfs-snapshot-hourly.service,ZFS auto-snapshotting every hour,,1000',
         'zfs-snapshot-hourly.timer,zfs-snapshot-hourly.timer,,0',
-        'zfs-snapshot-weekly.service,ZFS auto-snapshotting every week,,1000',
-        'zpool-trim.service,ZFS pools trim,,1200',
         'zfs-snapshot-monthly.timer,zfs-snapshot-monthly.timer,,0',
+        'zfs-snapshot-weekly.service,ZFS auto-snapshotting every week,,1000',
         'zfs-snapshot-weekly.timer,zfs-snapshot-weekly.timer,,0',
         'zfs.target,ZFS startup target,,0',
         'zfs-volumes.target,ZFS volumes are ready,,100',
         'zfs-volume-wait.service,Wait for ZFS Volume (zvol) links in /dev,,200',
         'zfs-zed.service,ZFS Event Daemon (zed),,200',
         'znapzend.service,ZnapZend - ZFS Backup System,root,1700',
+        'zpool-trim.service,ZFS pools trim,,1200',
         'zpool-trim.timer,zpool-trim.timer,,0'
       )
       OR exception_key LIKE 'machine-qemu%,Virtual Machine qemu%,,300'

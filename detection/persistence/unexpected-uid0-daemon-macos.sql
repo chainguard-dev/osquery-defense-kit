@@ -212,6 +212,7 @@ WHERE
     '/usr/sbin/systemsoundserverd',
     '/usr/sbin/systemstats',
     '/usr/sbin/WirelessRadioManagerd'
+
   )
   AND signature.identifier IN (
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
