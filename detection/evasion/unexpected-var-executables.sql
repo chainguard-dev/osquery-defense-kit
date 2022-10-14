@@ -34,5 +34,6 @@ WHERE
     '/var/ossec/wodles',
     '/var/run/booted-system',
     '/var/run/current-system',
+    '/var/run/current-system/sw/bin',
     '/var/vm'
   )
