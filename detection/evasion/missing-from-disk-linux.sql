@@ -1,9 +1,10 @@
 -- Processes that do not exist on disk
 --
 -- tags: periodic daemon
+-- platform: linux
 SELECT
   p.pid,
-  p.uid,
+  p.euid,
   p.cmdline,
   p.path,
   mnt_namespace,

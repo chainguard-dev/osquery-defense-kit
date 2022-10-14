@@ -8,7 +8,7 @@ SELECT
   p.pid AS child_pid,
   p.path AS child_path,
   p.cmdline AS child_cmd,
-  p.uid AS child_uid,
+  p.euid AS child_euid,
   p.gid AS child_gid,
   hash.path,
   p.on_disk AS child_on_disk,
