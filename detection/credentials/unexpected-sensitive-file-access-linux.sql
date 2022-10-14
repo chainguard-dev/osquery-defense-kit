@@ -54,7 +54,8 @@ WHERE
   f.uid != ''
   AND pf.filename != ''
   AND (
-    pof.path LIKE '/home/%/.ssh/%'
+    pof.path IN ('/var/run/docker.sock')
+    OR pof.path LIKE '/home/%/.ssh/%'
     OR pof.path LIKE '/home/%/.mozilla/firefox/%'
     OR pof.path LIKE '/home/%/.config/google-chrome/%'
     OR pof.path LIKE '/root/.ssh/%'
