@@ -4,12 +4,12 @@
 --   * https://attack.mitre.org/techniques/T1611/
 --
 -- This query works on macOS as well, but is only an in-the-wild security problem on Linux,
--- where the kernel namespaces can be shared.
+-- where the kernel namespaces can be shared. These kind of attacks tend to be
 --
 -- platform: linux
--- tags: ephemeral often
+-- tags: ephemeral
 SELECT
-  *
+  command, image_id, path, security_options, started_at, image
 FROM
   docker_containers
 WHERE
