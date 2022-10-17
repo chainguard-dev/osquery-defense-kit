@@ -5,7 +5,7 @@
 --
 -- tags: transient process events
 -- platform: darwin
--- interval: 15
+-- interval: 60
 SELECT
   p.pid,
   p.path,
@@ -34,7 +34,7 @@ FROM
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN hash AS phash ON pp.path = hash.path
 WHERE
-  p.time > (strftime('%s', 'now') -15)
+  p.time > (strftime('%s', 'now') -60)
   AND (
     basename IN (
       'bitspin',
