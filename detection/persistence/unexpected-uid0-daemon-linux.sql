@@ -96,7 +96,6 @@ WHERE
     '/usr/sbin/wpa_supplicant',
     '/usr/sbin/zed'
   )
-
   -- Because I don't want to whitelist all of Python3
   AND p.cmdline NOT IN (
     '/usr/bin/python3 -s /usr/sbin/firewalld --nofork --nopid',

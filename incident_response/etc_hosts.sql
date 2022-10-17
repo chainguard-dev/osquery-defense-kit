@@ -4,5 +4,7 @@
 -- platform: posix
 -- value: Identify network communications that are being redirected. Example: identify if security logging has been disabled
 -- version: 1.4.5
-
-select * from etc_hosts;
+select
+  *
+from
+  etc_hosts;

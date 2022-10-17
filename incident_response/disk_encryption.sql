@@ -4,5 +4,7 @@
 -- platform: posix
 -- value: Identifies a system potentially vulnerable to disk cloning.
 -- version: 1.4.5
-
-select * from disk_encryption;
+select
+  *
+from
+  disk_encryption;

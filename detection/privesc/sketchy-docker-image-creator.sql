@@ -10,8 +10,11 @@
 --
 -- platform: linux
 -- tags: transient often
-
-SELECT * FROM docker_image_history
-WHERE created > (strftime('%s', 'now') -86400)
--- This signature is used by Traitor: https://github.com/liamg/traitor/
-AND created_by LIKE '%/bin/sh%/lol%';
+SELECT
+  *
+FROM
+  docker_image_history
+WHERE
+  created > (strftime('%s', 'now') -86400)
+  -- This signature is used by Traitor: https://github.com/liamg/traitor/
+  AND created_by LIKE '%/bin/sh%/lol%';

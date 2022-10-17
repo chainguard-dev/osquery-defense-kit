@@ -8,7 +8,6 @@
 --
 -- platform: posix
 -- tags: persistent filesystem state
-
 SELECT
   p.pid,
   p.name,

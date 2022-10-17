@@ -9,7 +9,6 @@
 --
 -- tags: persistent filesystem state
 -- platform: linux
-
 SELECT
   file.path,
   uid,

@@ -7,7 +7,8 @@
 --   * anything that isn't on your whitelist
 --
 -- tags: persistent seldom browser
-SELECT name,
+SELECT
+  name,
   profile,
   chrome_extensions.description AS 'descr',
   persistent AS persists,
@@ -30,11 +31,13 @@ SELECT name,
     TRIM(CAST(permissions AS text))
   ) AS exception_key,
   hash.sha256
-FROM users
+FROM
+  users
   CROSS JOIN chrome_extensions USING (uid)
   LEFT JOIN file ON chrome_extensions.path = file.path
   LEFT JOIN hash ON chrome_extensions.path = hash.path
-WHERE (
+WHERE
+  (
     from_webstore != 'true'
     OR perms LIKE '%google.com%'
     OR perms LIKE '%chainguard%'
@@ -158,4 +161,5 @@ WHERE (
     'true,Wappalyzer,Wappalyzer - Technology profiler,gppongmhjkpfnbhagpmjfkannfbllamg,cookies, storage, tabs, webRequest, webNavigation, http://*/*, https://*/*',
     'true,Wappalyzer,Wappalyzer - Technology profiler,gppongmhjkpfnbhagpmjfkannfbllamg,cookies, storage, tabs, webNavigation, webRequest'
   )
-GROUP BY exception_key
+GROUP BY
+  exception_key

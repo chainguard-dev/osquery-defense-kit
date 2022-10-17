@@ -4,5 +4,7 @@
 -- platform: darwin
 -- value: Identify malware that uses this persistence mechanism to launch at system boot
 -- version: 1.4.5
-
-select * from launchd;
+select
+  *
+from
+  launchd;

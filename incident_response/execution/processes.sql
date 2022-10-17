@@ -2,5 +2,7 @@
 --
 -- tags: postmortem
 -- platform: posix
-
-SELECT * FROM processes
+SELECT
+  *
+FROM
+  processes

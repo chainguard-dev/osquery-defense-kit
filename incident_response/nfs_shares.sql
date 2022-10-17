@@ -4,5 +4,7 @@
 -- platform: darwin
 -- value: Scope for lateral movement. Potential exfiltration locations. Potential dormant backdoors.
 -- version: 1.4.5
-
-select * from nfs_shares;
+select
+  *
+from
+  nfs_shares;

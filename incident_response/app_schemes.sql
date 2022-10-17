@@ -4,5 +4,7 @@
 -- platform: darwin
 -- value: Post-priori hijack detection, detect potential sensitive information leakage.
 -- version: 1.4.7
-
-select * from app_schemes;
+select
+  *
+from
+  app_schemes;

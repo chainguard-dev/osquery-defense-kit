@@ -4,5 +4,7 @@
 -- platform: darwin
 -- value: Identify malware that uses this persistence mechanism to launch at a given interval
 -- version: 1.4.5
-
-select * from startup_items;
+select
+  *
+from
+  startup_items;

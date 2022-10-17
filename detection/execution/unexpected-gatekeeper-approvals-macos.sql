@@ -8,7 +8,6 @@
 --
 -- platform: macos
 -- tags: persistent filesystem state gatekeeper
-
 SELECT
   gap.ctime,
   gap.mtime,

@@ -4,7 +4,6 @@
 --   * https://attack.mitre.org/techniques/T1571/
 --
 -- tags: persistent state net
-
 SELECT
   lp.address,
   lp.port,

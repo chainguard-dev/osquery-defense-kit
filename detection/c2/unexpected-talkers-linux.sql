@@ -149,6 +149,7 @@ WHERE
     '443,17,500,jcef_helper',
     '443,17,500,slack',
     '443,17,500,spotify',
+    '80,6,500,chrome',
     '443,6,0,apk',
     '443,6,0,containerd',
     '443,6,0,depmod',

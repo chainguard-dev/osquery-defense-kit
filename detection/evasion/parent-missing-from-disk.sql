@@ -1,7 +1,6 @@
 -- Parent PID is not on disk
 -- Reveals boopkit if a child is spawned
 -- TODO: Make mount namespace aware
-
 -- tags: persistent daemon
 SELECT
   p.name AS child_name,

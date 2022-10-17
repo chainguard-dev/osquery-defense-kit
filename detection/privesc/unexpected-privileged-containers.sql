@@ -9,7 +9,12 @@
 -- platform: linux
 -- tags: transient state container escalation
 SELECT
-  command, image_id, path, security_options, started_at, image
+  command,
+  image_id,
+  path,
+  security_options,
+  started_at,
+  image
 FROM
   docker_containers
 WHERE

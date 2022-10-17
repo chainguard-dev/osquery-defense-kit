@@ -112,7 +112,13 @@ WHERE
   )
   AND NOT (
     p.path IN ('/usr/bin/kmod', '/bin/kmod')
-    AND parent_name IN ('firewalld', 'mkinitramfs', 'systemd', 'dockerd', 'kube-proxy')
+    AND parent_name IN (
+      'firewalld',
+      'mkinitramfs',
+      'systemd',
+      'dockerd',
+      'kube-proxy'
+    )
   )
   AND NOT (
     p.path IN ('/usr/bin/kmod', '/bin/kmod')

@@ -3,7 +3,6 @@
 -- It's unfortunately of limited use, as the query is slow (250ms)
 -- and it requires catching a program at the exact moment it has
 -- the file open.
-
 -- tags: transient often state file access
 SELECT
   pof.pid,

@@ -4,5 +4,11 @@
 -- platform: darwin
 -- value: Identify malware that uses this persistence mechanism to launch at system boot
 -- version: 1.4.5
-
-select key, subkey, value from plist where path = '/Library/Preferences/loginwindow.plist';
+select
+  key,
+  subkey,
+  value
+from
+  plist
+where
+  path = '/Library/Preferences/loginwindow.plist';

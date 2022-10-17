@@ -1,4 +1,7 @@
 -- macOS launchd entries
 --
 -- platform: darwin
-SELECT * FROM launchd;
+SELECT
+  *
+FROM
+  launchd;

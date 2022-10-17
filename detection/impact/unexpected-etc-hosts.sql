@@ -4,7 +4,6 @@
 --   * developers adding entries for their own use
 --
 -- tags: persistent seldom filesystem net
-
 SELECT
   *
 FROM

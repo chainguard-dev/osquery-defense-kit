@@ -4,5 +4,7 @@
 -- platform: linux
 -- value: Ability to compare with known good. Identify mapped regions corresponding with or containing injected code.
 -- version: 1.4.5
-
-select * from process_memory_map;
+select
+  *
+from
+  process_memory_map;

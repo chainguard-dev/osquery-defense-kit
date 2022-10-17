@@ -7,7 +7,8 @@
 --   * System updates
 --
 -- tags: persistent seldom filesystem systemd
-SELECT description AS 'desc',
+SELECT
+  description AS 'desc',
   fragment_path AS path,
   hash.sha256,
   file.ctime,
@@ -21,10 +22,12 @@ SELECT description AS 'desc',
     ',',
     (file.size / 100) * 100
   ) AS exception_key
-FROM systemd_units
+FROM
+  systemd_units
   LEFT JOIN hash ON systemd_units.fragment_path = hash.path
   LEFT JOIN file ON systemd_units.fragment_path = file.path
-WHERE active_state != 'inactive'
+WHERE
+  active_state != 'inactive'
   AND sub_state != 'plugged'
   AND sub_state != 'mounted'
   AND fragment_path != ''

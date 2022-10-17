@@ -5,7 +5,6 @@
 --
 -- tags: persistent state net low
 -- platform: darwin
-
 SELECT
   lp.address,
   lp.port,

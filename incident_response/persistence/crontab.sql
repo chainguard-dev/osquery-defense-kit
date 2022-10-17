@@ -2,4 +2,7 @@
 --
 -- interval: 3600
 -- platform: posix
-SELECT * FROM crontab
+SELECT
+  *
+FROM
+  crontab

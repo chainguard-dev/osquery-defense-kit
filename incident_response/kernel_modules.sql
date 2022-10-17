@@ -4,5 +4,7 @@
 -- platform: linux
 -- value: Identify malware that has a kernel module component.
 -- version: 1.4.5
-
-select * from kernel_modules;
+select
+  *
+from
+  kernel_modules;

@@ -5,7 +5,8 @@
 --
 -- tags: persistent
 -- platform: posix
-SELECT file.path,
+SELECT
+  file.path,
   file.directory,
   uid,
   gid,
@@ -14,10 +15,12 @@ SELECT file.path,
   file.size,
   hash.sha256,
   magic.data
-FROM file
+FROM
+  file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE (file.path LIKE '/etc/%%')
+WHERE
+  (file.path LIKE '/etc/%%')
   AND file.type = 'regular'
   AND (
     file.mode LIKE '%7%'

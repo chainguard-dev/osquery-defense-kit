@@ -4,5 +4,7 @@
 -- platform: darwin
 -- value: Identify malware that has a kernel extension component.
 -- version: 1.4.5
-
-select * from kernel_extensions;
+select
+  *
+from
+  kernel_extensions;

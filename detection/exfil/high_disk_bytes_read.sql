@@ -7,7 +7,8 @@
 --   * Backup software
 --
 -- tags: transient process
-SELECT p.name,
+SELECT
+  p.name,
   p.path,
   p.cmdline,
   p.on_disk,
@@ -18,9 +19,11 @@ SELECT p.name,
   p.cwd,
   (strftime('%s', 'now') - start_time) AS age,
   disk_bytes_read / (strftime('%s', 'now') - start_time) AS bytes_per_second
-FROM processes p
+FROM
+  processes p
   LEFT JOIN hash ON p.path = hash.path
-WHERE bytes_per_second > 2000000
+WHERE
+  bytes_per_second > 2000000
   AND age > 180
   AND p.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p.path NOT LIKE '/System/Library/%'
@@ -100,6 +103,4 @@ WHERE bytes_per_second > 2000000
     name = 'terraform-ls'
     AND cmdline LIKE 'terraform-ls serve%'
   )
-  AND NOT (
-    p.path LIKE '/home/%/Apps/PhpStorm%/jbr/bin/java'
-  )
+  AND NOT (p.path LIKE '/home/%/Apps/PhpStorm%/jbr/bin/java')

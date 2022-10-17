@@ -5,9 +5,12 @@
 --
 -- platform: linux
 -- tags: latent seldom kernel
-SELECT *
-FROM kernel_modules
-WHERE name NOT IN (
+SELECT
+  *
+FROM
+  kernel_modules
+WHERE
+  name NOT IN (
     'jc42',
     'nct6775_core',
     'hwmon_vid',
