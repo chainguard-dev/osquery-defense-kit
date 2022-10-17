@@ -3,7 +3,7 @@
 -- Inpsired by BPFdoor and other intrusions
 -- https://www.sandflysecurity.com/blog/compromised-linux-cheat-sheet/
 --
--- tags: transient state continous
+-- tags: transient state rapid
 -- platform: posix
 SELECT
   key,

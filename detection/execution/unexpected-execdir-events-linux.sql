@@ -1,4 +1,4 @@
--- Catch applications running from unusual directories, such as /tmp
+-- Catch applications running from unusual directories, such as /tmp (event-based)
 --
 -- references:
 --   * https://attack.mitre.org/techniques/T1074/
@@ -8,7 +8,7 @@
 --
 -- interval: 15
 -- platform: linux
--- tags: filesystem events
+-- tags: process events
 SELECT
   pe.pid,
   pe.path,

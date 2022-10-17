@@ -3,7 +3,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1071/
 --
--- tags: transient state net often
+-- tags: transient state net rapid
 -- platform: linux
 SELECT
   s.family,

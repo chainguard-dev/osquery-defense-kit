@@ -1,9 +1,9 @@
--- Programs running out of unexpected directories, such as /tmp
+-- Programs running out of unexpected directories, such as /tmp (state-based)
 --
 -- references:
 --   * https://blog.talosintelligence.com/2022/10/alchimist-offensive-framework.html
 --
--- tags: transient often
+-- tags: transient process rapid state
 -- platform: linux
 SELECT
   p.pid,
