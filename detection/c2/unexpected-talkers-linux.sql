@@ -195,6 +195,7 @@ WHERE
     '443,6,500,gh',
     '443,6,500,git-remote-http',
     '443,6,500,gitsign',
+    '443,6,0,trivy',
     '443,6,500,gnome-shell',
     '443,6,500,gnome-software',
     '443,6,500,go',

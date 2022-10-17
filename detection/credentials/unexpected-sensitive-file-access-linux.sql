@@ -71,6 +71,7 @@ WHERE
     file_uid == process_uid
     AND exception_key IN (
       'aws,aws,~/.aws',
+      'python3,python3,~/.config/gcloud',
       'chrome_crashpad_handler,chrome_crashpad,',
       'chrome_crashpad_handler,chrome_crashpad,~/.config/google-chrome',
       'chrome,chrome,~/.config/google-chrome',

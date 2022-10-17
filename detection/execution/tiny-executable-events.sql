@@ -29,3 +29,5 @@ WHERE
   p.time > (strftime('%s', 'now') -30)
   AND file.size > 0
   AND file.size < 10000
+  -- Removes a false-positive we've seen on Linux, generated through 'runc init'
+  AND NOT (p.path = "/" AND file.size = 4096)
