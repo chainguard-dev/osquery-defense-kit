@@ -149,6 +149,7 @@ WHERE
     '443,6,500,bash,bash,',
     '443,6,500,chainctl,,',
     '443,6,500,chainctl,a.out,',
+    '443,6,500,java,net.java.openjdk.java,Developer ID Application: Eclipse Foundation, Inc. (JCDTMS22B4)',
     '443,6,500,chainctl_Darwin_arm64,a.out,',
     '443,6,500,civo,a.out,',
     '443,6,500,cloud_sql_proxy,a.out,',
