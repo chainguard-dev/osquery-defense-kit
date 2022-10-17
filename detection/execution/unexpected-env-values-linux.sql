@@ -3,8 +3,10 @@
 -- Inpsired by BPFdoor and other intrusions
 -- https://www.sandflysecurity.com/blog/compromised-linux-cheat-sheet/
 --
--- tags: transient state rapid
--- platform: posix
+-- WARNING: This query is known to require a higher than average wall time.
+--
+-- tags: transient state often
+-- platform: linux
 SELECT
   key,
   value,
@@ -20,7 +22,6 @@ FROM
 WHERE
   (
     key = 'HISTFILE'
-    AND NOT VALUE LIKE '/Users/%/.%_history'
     AND NOT VALUE LIKE '/home/%/.%_history'
   )
   OR (
@@ -32,10 +33,4 @@ WHERE
     AND NOT pe.value LIKE ':/snap/%'
     AND NOT pe.value LIKE '/app/bin/%'
     AND NOT pe.value LIKE 'libmozsandbox.so%'
-  )
-  OR (
-    key = 'DYLD_INSERT_LIBRARIES' -- actively exploited on programs which disable library security
-  )
-  OR (
-    key = 'DYLD_FRAMEWORK_PATH' -- sort of obsolete, but may affect SIP abusers
   )
