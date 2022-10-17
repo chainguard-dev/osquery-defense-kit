@@ -126,7 +126,9 @@ WHERE
     '/dev/snd,pipewire',
     '/dev/snd,pulseaudio',
     '/dev/snd,.pulseaudio-wrapped',
-    '/dev/snd,wireplumber'
+    '/dev/snd,wireplumber',
+    '/dev/usb,apcupsd',
+    '/dev/usb,upowerd'
   )
   AND NOT path_exception IN (
     '/dev/autofs,systemd',
@@ -167,12 +169,14 @@ WHERE
   AND NOT (
     device LIKE '/dev/bus/usb/%'
     AND program_name IN (
-      'streamdeck',
-      'gphoto2',
       'fwupd',
-      'pcscd',
+      'gphoto2',
       'gvfs-gphoto2-vo',
-      'gvfs-gphoto2-volume-monitor'
+      'gvfs-gphoto2-volume-monitor',
+      'gvfsd-gphoto2',
+      'pcscd',
+      'streamdeck',
+      'usbmuxd'
     )
   )
 GROUP BY

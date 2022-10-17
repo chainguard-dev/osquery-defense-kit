@@ -29,6 +29,7 @@ WHERE
     AND NOT p.path LIKE '%/firefox'
     AND NOT pe.value = 'libfakeroot.so'
     AND NOT pe.value LIKE 'libmozsandbox.so%'
+    AND NOT pe.value LIKE ':/snap/%' -- Yes, on macOS (emote)
   )
   OR (
     key = 'DYLD_INSERT_LIBRARIES' -- actively exploited on programs which disable library security

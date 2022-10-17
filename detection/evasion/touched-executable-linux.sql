@@ -31,9 +31,6 @@ WHERE
   f.ctime = f.mtime
   AND f.path NOT LIKE '/usr/local/kolide-k2/bin/%-updates/%'
   AND f.path NOT LIKE '/snap/%'
-  AND f.path NOT LIKE '/home/%/go/bin/%'
-  AND f.path NOT LIKE '/home/%/.rustup/%'
-  AND f.path NOT LIKE '/home/eddiezane/.local/share/JetBrains/Toolbox/bin/%'
-  AND f.path NOT LIKE '/home/%/.cache/cloud-code/bin/%'
+  AND f.path NOT LIKE '/home/%'
 GROUP by
   p.pid

@@ -330,6 +330,7 @@ WHERE active_state != 'inactive'
         'update-notifier-download.timer,Download data for packages that failed at package install time,,200',
         'update-notifier-motd.timer,Check to see whether there is a new version of Ubuntu available,,300',
         'upower.service,Daemon for power management,,900',
+        'usbmuxd.service,Socket daemon for the usbmux protocol used by Apple devices,,200',
         'uresourced.service,User resource assignment daemon,,300',
         'user.slice,User and Session Slice,,400',
         'uuidd.socket,UUID daemon activation socket,,100',

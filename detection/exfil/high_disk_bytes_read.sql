@@ -40,6 +40,7 @@ WHERE bytes_per_second > 2000000
     'nautilus',
     'nix',
     'osqueryd',
+    'nessusd',
     'qemu-system-x86',
     'qemu-system-x86-64',
     'slack',
@@ -48,6 +49,7 @@ WHERE bytes_per_second > 2000000
     'zsh'
   )
   AND NOT p.path IN (
+    '/usr/bin/dockerd',
     '/usr/bin/gnome-shell',
     '/usr/bin/udevadm',
     '/usr/libexec/aned',

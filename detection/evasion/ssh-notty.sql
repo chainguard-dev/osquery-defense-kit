@@ -31,3 +31,4 @@ WHERE (
     )
     -- Filter out zfs snapshot reception (false positive)
     AND child_name != 'zfs'
+    -- I wanted to filter out grandchild_name as well, but for some reason that filtered everything out (joins?)

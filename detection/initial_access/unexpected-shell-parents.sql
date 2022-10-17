@@ -24,7 +24,8 @@ WHERE
   p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash', 'osascript')
   -- Ignore partial table joins
   AND parent_path != ''
-  -- Editors & terminals mostly
+  -- Editors & terminals mostly.
+  -- I know it's tempting to list "electron" here but please find a more specific exclusion.
   AND pp.name NOT IN (
     'abrt-handle-eve',
     'alacritty',
@@ -41,7 +42,6 @@ WHERE
     'demoit',
     'direnv',
     'doas',
-    'electron',
     'find',
     'FinderSyncExtension',
     'fish',
@@ -132,6 +132,7 @@ WHERE
   AND NOT pp.cmdline LIKE '%/Homebrew/build.rb%'
   AND NOT pp.cmdline LIKE '%Code Helper%'
   AND NOT pp.cmdline LIKE '%gcloud.py config config-helper%'
+  AND NOT pp.cmdline LIKE '/usr/lib/electron19/electron /usr/lib/code/out/bootstrap-fork --type=ptyHost --logsPath /home/%/.config/Code - OSS/logs/%'
   AND NOT pp.name LIKE '%term%'
   AND NOT pp.name LIKE '%Term%'
   AND NOT pp.name LIKE 'Emacs%'

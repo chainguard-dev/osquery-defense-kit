@@ -31,6 +31,7 @@ WHERE
     '/bin/bash',
     '/usr/bin/aptd',
     '/usr/bin/bash',
+    '/usr/bin/dockerd',
     '/usr/bin/bwrap',
     '/usr/bin/curl',
     '/usr/bin/fish',
