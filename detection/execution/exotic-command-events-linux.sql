@@ -1,5 +1,8 @@
 -- Pick out exotic processes based on their command-line (events-based)
 --
+-- references:
+--   * https://themittenmac.com/what-does-apt-activity-look-like-on-macos/
+--
 -- false positives:
 --   * possible, but none known
 --
@@ -79,6 +82,7 @@ WHERE
     OR cmd LIKE '%xargs kill -9%'
     OR cmd LIKE '%nohup /bin/bash%'
     OR cmd LIKE '%echo%|%base64 --decode %|%'
+    OR cmd LIKE '%UserKnownHostsFile=/dev/null%'
     -- Crypto miners
     OR cmd LIKE '%c3pool%'
     OR cmd LIKE '%cryptonight%'

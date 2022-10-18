@@ -1,9 +1,12 @@
 -- Find unexpected hidden directories in operating-system folders
 --
+-- references:
+--   * https://themittenmac.com/what-does-apt-activity-look-like-on-macos/
+--
 -- false positives:
 --   * unusual installers
 --
--- platform: linux
+-- platform: posix
 -- tags: persistent filesystem state
 SELECT
   file.path,
@@ -29,6 +32,8 @@ WHERE
     OR file.path LIKE '/libexec/.%'
     OR file.path LIKE '/Library/.%'
     OR file.path LIKE '/sbin/.%'
+    OR file.path LIKE '/etc/.%'
+    OR file.path LIKE '/etc/%/.%'
     OR file.path LIKE '/sbin/%/.%'
     OR file.path LIKE '/tmp/.%'
     OR file.path LIKE '/usr/bin/.%'
