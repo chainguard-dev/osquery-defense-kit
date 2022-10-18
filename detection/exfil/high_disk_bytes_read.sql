@@ -46,6 +46,7 @@ WHERE
     'nessusd',
     'qemu-system-x86',
     'qemu-system-x86-64',
+    'qemu-system-aarch64',
     'slack',
     'wineserver',
     'ykman-gui',
@@ -67,7 +68,7 @@ WHERE
   )
   AND NOT (
     name = 'bindfs'
-    AND cmdline LIKE 'bindfs -f -o fsname=%'
+    AND cmdline LIKE 'bindfs%-o fsname=%'
   )
   AND NOT (
     name = 'jetbrains-toolb'

@@ -13,6 +13,8 @@ WHERE
   name NOT IN (
     'jc42',
     'nct6775_core',
+    'nct6775',
+    'netlink_diag',
     'hwmon_vid',
     '8021q',
     'ac97_bus',
@@ -37,6 +39,8 @@ WHERE
     'authenc',
     'autofs4',
     'backlight',
+    'nfnetlink_log',
+    'nfnetlink_queue',
     'battery',
     'binfmt_misc',
     'bluetooth',

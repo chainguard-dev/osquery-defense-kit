@@ -71,6 +71,7 @@ WHERE
     '/Library/Printers/Brother/Utilities/Server/LOGINserver.app/Contents/MacOS',
     '/Library/Printers/Brother/Utilities/Server/NETserver.app/Contents/MacOS',
     '/Library/Printers/Brother/Utilities/Server/USBAppControl.app/Contents/MacOS',
+    '/Library/Application Support/Adobe/Reader/Frameworks/Python3.framework/Versions/3.8/Resources/Python.app/Contents/MacOS/Python',
     '/Library/Printers/Brother/Utilities/Server/USBserver.app/Contents/MacOS',
     '/Library/Printers/Brother/Utilities/Server/WorkflowAppControl.app/Contents/MacOS',
     '/usr/local/kolide-k2/bin'
@@ -101,6 +102,9 @@ WHERE
     '/usr/lib/x86_64-linux-gnu/obs-plugins/obs-browser-page',
     '/usr/lib/xf86-video-intel-backlight-helper',
     '/usr/sbin/cupsd',
+    '/usr/lib/systemd/systemd-logind',
+    '/usr/lib/systemd/systemd',
+    '/usr/bin/tailscaled',
     '/usr/sbin/tailscaled'
   )
   AND NOT p.path LIKE '/Applications/%.app/%'
@@ -108,6 +112,8 @@ WHERE
   AND NOT p.path LIKE '/home/%/bin/%'
   AND NOT p.path LIKE '/home/%/terraform-provider-%'
   AND NOT p.path LIKE '/home/%/%.test'
+  AND NOT p.path LIKE '/home/%/Projects/%'
+  AND NOT p.path LIKE '/home/%/node_modules/.bin/exec-bin/%'
   AND NOT p.path LIKE '/Library/Apple/System/%'
   AND NOT p.path LIKE '/Library/Application Support/Adobe/Adobe Desktop Common/%'
   AND NOT p.path LIKE '%/Library/Application Support/com.elgato.StreamDeck%' -- Known parent processes, typically GUI shells and updaters
@@ -121,6 +127,7 @@ WHERE
   AND NOT p.path LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%'
   AND NOT p.path LIKE '/private/var/folders/%/bin/%'
   AND NOT p.path LIKE '/private/var/folders/%/go-build%'
+  AND NOT p.path LIKE '/private/var/folders/%/T/download/ARMDCHammer
   AND NOT p.path LIKE '/private/var/folders/%/GoLand/%'
   AND NOT p.path LIKE '/private/var/folders/%/T/pulumi-go.%'
   AND NOT p.path LIKE '/Users/%/bin/%'

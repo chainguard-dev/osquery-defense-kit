@@ -4,7 +4,7 @@
 --   * https://www.sandflysecurity.com/blog/bpfdoor-an-evasive-linux-backdoor-technical-analysis/
 --
 -- false positives:
---   * programs which have legimate uses for /dev/shm
+--   * programs which have legimate uses for /dev/shm (Chrome, etc)
 --
 -- tags: persistent state filesystem
 -- platform: linux

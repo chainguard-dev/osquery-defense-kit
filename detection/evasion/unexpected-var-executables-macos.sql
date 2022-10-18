@@ -4,7 +4,7 @@
 --   * none known
 --
 -- tags: persistent
--- platform: macos
+-- platform: darwin
 SELECT
   file.path,
   file.directory,
@@ -41,6 +41,7 @@ WHERE
   AND file.path NOT LIKE '/var/db/oah/%'
   AND file.path NOT LIKE '/var/tmp/IN_PROGRESS_sysdiagnose_%.tmp/mddiagnose.mdsdiagnostic/diagnostic.log'
   AND file.path NOT LIKE '/var/tmp/epdfinfo%'
+  AND file.path NOT LIKE '/var/folders%/T/sp_relauncher'
   AND (
     file.mode LIKE '%7%'
     or file.mode LIKE '%5%'
@@ -69,5 +70,6 @@ WHERE
   )
   AND file.size > 10
   AND hash.sha256 NOT IN (
-    'fd53abe096b3617c32d46db34fad58770f697a3bf4aef3d8861f37d8471f6c98' -- sp_relauncher (Spotify)
+    'fd53abe096b3617c32d46db34fad58770f697a3bf4aef3d8861f37d8471f6c98', -- sp_relauncher (Spotify)
+    '65afd3fad04973e83d3cd3be56a310d11ed2c096319f1e2b20c4d153446f1b9f' -- sp_relauncher (Spotify)
   )

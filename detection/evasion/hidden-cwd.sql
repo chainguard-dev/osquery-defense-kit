@@ -79,6 +79,7 @@ WHERE
     )
     OR dir LIKE '~/.dotfiles/%'
     OR dir LIKE '~/.gradle/%'
+    OR dir LIKE "~/%/.terraform%"
     OR dir LIKE '~/.local/share/kotlin/%'
     OR dir LIKE '~/go/src/%'
     OR dir LIKE '~/.local/share/nvim/%'
@@ -89,6 +90,7 @@ WHERE
     OR dir LIKE '~/src/%'
     OR dir LIKE '~/%/.github%'
     OR dir LIKE '~/.cargo/%'
+
     OR dir LIKE '~/.local/share/JetBrains/%'
     OR dir LIKE '~/code/%'
   )

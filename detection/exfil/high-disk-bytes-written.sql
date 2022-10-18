@@ -37,6 +37,7 @@ WHERE
     '/usr/bin/fish',
     '/usr/bin/gnome-shell',
     '/usr/bin/qemu-system-x86_64',
+    '/opt/homebrew/bin/qemu-system-aarch64',
     '/usr/bin/yay',
     '/usr/bin/zsh',
     '/usr/lib/flatpak-system-helper',

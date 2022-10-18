@@ -42,6 +42,7 @@ WHERE
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: MacPaw Inc. (S8EX82NJP6)',
     'Developer ID Application: Mersive Technologies (63B5A5WDNG)',
+    'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Proton Technologies AG (6UN54H93QT)',
     'Developer ID Application: Seiko Epson Corporation (TXAEAV5RN4)',

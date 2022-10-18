@@ -125,6 +125,7 @@ WHERE
   AND NOT exception_key IN (
     '22,6,500,Cyberduck,ch.sudo.cyberduck,Developer ID Application: David Kocher (G69SCX94XU)',
     '22,6,500,ssh,,',
+    '443,6,500,grype,grype,Developer ID Application: ANCHORE, INC. (9MJHKYX5AT)',
     '22,6,500,ssh,com.apple.openssh,Software Signing',
     '22,6,500,ssh,ssh,',
     '22,6,500,ssh,ssh-55554944fbf65684ab9b37c2bad3a27ef78b23f4,',
@@ -132,6 +133,7 @@ WHERE
     '30011,6,500,java,net.java.openjdk.java,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '32768,6,500,java,net.java.openjdk.java,Developer ID Application: Oracle America, Inc. (VB5E2TV963)',
     '3307,6,500,cloud_sql_proxy,a.out,',
+    '443,6,500,sublime_text,com.sublimetext.4,Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
     '43,6,500,DropboxMacUpdate,com.dropbox.DropboxMacUpdate,Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     '443,17,500,Code Helper,com.microsoft.VSCode.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,17,500,Evernote Helper,com.evernote.Evernote.helper,Apple Mac OS Application Signing',

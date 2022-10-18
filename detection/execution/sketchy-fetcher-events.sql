@@ -91,5 +91,6 @@ WHERE
       OR p.cmdline LIKE '%127.0.0.1:%'
       OR p.cmdline LIKE '%/192.168.%:%'
       OR p.cmdline LIKE '%/chainctl_%'
+      OR p.cmdline LIKE '%https://api.github.com/%'
     )
   )

@@ -128,7 +128,7 @@ WHERE
     and lp.protocol = 6
   )
   AND NOT (
-    p.name IN ('hugo', 'node', 'com.docker.backend')
+    p.name IN ('hugo', 'node', 'com.docker.backend', 'kubectl')
     AND lp.port > 1024
     and lp.protocol = 6
   )
