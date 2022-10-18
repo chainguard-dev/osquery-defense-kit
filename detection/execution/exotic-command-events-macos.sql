@@ -69,6 +69,7 @@ WHERE
     OR cmd LIKE '%chattr -ia%'
     OR cmd LIKE '%chmod 777 %'
     OR cmd LIKE '%touch%acmr%'
+    OR cmd LIKE '%touch -r%'
     OR cmd LIKE '%ld.so.preload%'
     OR cmd LIKE '%urllib.urlopen%'
     OR cmd LIKE '%nohup%tmp%'
@@ -83,19 +84,6 @@ WHERE
     OR cmd LIKE '%echo%|%base64 --decode %|%'
     OR cmd LIKE '%launchctl list%'
     OR cmd LIKE '%UserKnownHostsFile=/dev/null%'
-    -- Crypto miners
-    OR cmd LIKE '%c3pool%'
-    OR cmd LIKE '%cryptonight%'
-    OR cmd LIKE '%f2pool%'
-    OR cmd LIKE '%hashrate%'
-    OR cmd LIKE '%hashvault%'
-    OR cmd LIKE '%minerd%'
-    OR cmd LIKE '%monero%'
-    OR cmd LIKE '%nanopool%'
-    OR cmd LIKE '%nicehash%'
-    OR cmd LIKE '%stratum%'
-    OR basename LIKE '%xig%'
-    OR basename LIKE '%xmr%'
     -- Random keywords
     OR cmd LIKE '%ransom%'
     -- Reverse shells

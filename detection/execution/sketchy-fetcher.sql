@@ -54,6 +54,7 @@ WHERE
     OR (
       p.cmdline LIKE '%curl %'
       AND p.euid < 500
+      AND p.cmdline NOT LIKE "%./configure %--with-curl%"
     )
   )
   -- Exceptions for all calls

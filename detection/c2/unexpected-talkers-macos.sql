@@ -185,6 +185,7 @@ WHERE
     '443,6,500,go,org.golang.go,Developer ID Application: Google LLC (EQHXZ8M8AV)',
     '443,6,500,helm,a.out,',
     '443,6,500,istioctl,a.out,',
+    '443,6,500,darkfiles,a.out,',
     '443,6,500,java,net.java.openjdk.java,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,6,500,java,net.java.openjdk.java,Developer ID Application: Oracle America, Inc. (VB5E2TV963)',
     '443,6,500,ko,a.out,',

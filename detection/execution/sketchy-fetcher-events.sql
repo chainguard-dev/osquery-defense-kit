@@ -44,7 +44,6 @@ WHERE
     OR p.cmdline LIKE '%aliyun%'
     OR p.cmdline LIKE '%pastebin%'
     OR p.cmdline LIKE '%curl.*—write-out%'
-    OR p.cmdline LIKE '%curl.*—write-out%'
     OR p.cmdline LIKE '%curl %--user-agent%'
     OR p.cmdline LIKE '%curl -k%'
     OR p.cmdline LIKE '%curl -sL%'
@@ -58,12 +57,13 @@ WHERE
     OR p.cmdline LIKE '%wget -t%'
     -- Or anything launched by a system user
     OR (
-      p.cmdline LIKE '%wget %'
+      p.cmdline LIKE '%wget -%'
       AND p.euid < 500
     )
     OR (
       p.cmdline LIKE '%curl %'
       AND p.euid < 500
+      AND p.cmdline NOT LIKE "%./configure %--with-curl%"
     )
   )
   -- Exceptions for all calls
