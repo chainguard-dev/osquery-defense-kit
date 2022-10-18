@@ -22,6 +22,7 @@ WHERE (
         OR file.path LIKE "/usr/%%"
     )
     -- This timestamp is in UTC
+    AND file.mtime > (strftime('%s', 'now') - (86400*720))
     AND file.mtime%3600 = 0
     -- Narrow down to specific offsets in the users local timezone (there should be a better way!)
     AND (

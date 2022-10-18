@@ -86,6 +86,8 @@ WHERE
     '/usr/bin/containerd',
     '/usr/bin/dockerd',
     '/usr/bin/obs',
+    '/usr/lib/gdm-session-worker',
+    '/usr/lib/gdm-x-session',
     '/usr/bin/udevadm',
     '/usr/bin/pipewire',
     '/usr/lib/at-spi2-registryd',

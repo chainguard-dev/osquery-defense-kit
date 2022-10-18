@@ -8,8 +8,8 @@
 --
 -- platform: posix
 -- tags: persistent filesystem state
-SELECT
-  file.path,
+SELECT file.path,
+  file.directory,
   uid,
   gid,
   mode,
@@ -19,21 +19,20 @@ SELECT
   size,
   hash.sha256,
   magic.data
-FROM
-  file
+FROM file
   LEFT JOIN hash ON file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE
-  (
+WHERE (
     file.path LIKE '/lib/.%'
     OR file.path LIKE '/.%'
     OR file.path LIKE '/bin/%/.%'
+    OR file.path LIKE '/dev/.%'
+    OR file.path LIKE '/etc/.%'
+    OR file.path LIKE '/etc/%/.%'
     OR file.path LIKE '/lib/%/.%'
     OR file.path LIKE '/libexec/.%'
     OR file.path LIKE '/Library/.%'
     OR file.path LIKE '/sbin/.%'
-    OR file.path LIKE '/etc/.%'
-    OR file.path LIKE '/etc/%/.%'
     OR file.path LIKE '/sbin/%/.%'
     OR file.path LIKE '/tmp/.%'
     OR file.path LIKE '/usr/bin/.%'
@@ -49,37 +48,40 @@ WHERE
     OR file.path LIKE '/var/.%'
     OR file.path LIKE '/var/lib/.%'
     OR file.path LIKE '/var/tmp/.%'
-    OR file.path LIKE '/dev/.%'
-  )
-  -- Avoid mentioning extremely temporary files
+  ) -- Avoid mentioning extremely temporary files
   AND strftime('%s', 'now') - file.ctime > 20
   AND file.path NOT IN (
     '/.autorelabel',
-    '/.file',
-    '/.vol/',
-    '/.VolumeIcon.icns',
     '/dev/.mdadm/',
-    '/tmp/._contentbarrier_installed',
+    '/etc/.clean',
+    '/.file',
     '/tmp/../',
     '/tmp/./',
-    '/tmp/.%.lock',
     '/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
-    '/tmp/.dracula-tmux-weather.lock',
-    '/tmp/.dracula-tmux-data',
+    '/tmp/._contentbarrier_installed',
     '/tmp/.dotnet/',
-    '/tmp/.vbox-t-ipc/',
+    '/tmp/.dracula-tmux-data',
+    '/tmp/.dracula-tmux-weather.lock',
     '/tmp/.font-unix/',
+    '/etc/selinux/.config_backup',
     '/tmp/.ICE-unix/',
+    '/tmp/.%.lock',
     '/tmp/.Test-unix/',
+    '/tmp/.vbox-t-ipc/',
     '/tmp/.X0-lock',
-    '/tmp/.X1-lock',
     '/tmp/.X11-unix/',
+    '/tmp/.X1-lock',
     '/tmp/.XIM-unix/',
     '/var/.ntw_cache',
     '/var/.Parallels_swap/',
-    '/var/.pwd_cache'
+    '/var/.pwd_cache',
+    '/.vol/',
+    '/.VolumeIcon.icns'
   )
+  AND file.directory NOT IN ('/etc/skel', '/etc/skel/.config')
+  AND file.path NOT LIKE '/%bin/bootstrapping/.default_components'
   AND file.path NOT LIKE '/tmp/.#%'
+  AND file.path NOT LIKE '/tmp/.%.gcode'
   AND file.path NOT LIKE '/tmp/.com.google.Chrome.%'
   AND file.path NOT LIKE '/tmp/.org.chromium.Chromium%'
   AND file.path NOT LIKE '/tmp/.X1%-lock'
@@ -89,9 +91,7 @@ WHERE
   AND file.path NOT LIKE '%/.build-id/'
   AND file.path NOT LIKE '%/.dwz/'
   AND file.path NOT LIKE '%/.updated'
-  AND file.path NOT LIKE '/%bin/bootstrapping/.default_components'
   AND file.path NOT LIKE '%/google-cloud-sdk/.install/'
-  AND file.path NOT LIKE '/tmp/.%.gcode'
   AND NOT (
     type = 'regular'
     AND (
@@ -99,7 +99,10 @@ WHERE
       OR size < 2
     )
   )
-  -- A curious addition seen on a NixOS machine
+  AND NOT (
+    type = 'regular'
+    AND filename = '.placeholder'
+  ) -- A curious addition seen on a NixOS machine
   AND NOT (
     file.path = '/.cache/'
     AND file.uid = 0
