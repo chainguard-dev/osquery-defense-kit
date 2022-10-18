@@ -90,6 +90,7 @@ WHERE
     OR dir LIKE '~/src/%'
     OR dir LIKE '~/%/.github%'
     OR dir LIKE '~/.cargo/%'
+    OR dir LIKE '~/.provisio%'
     OR dir LIKE '~/.local/share/JetBrains/%'
     OR dir LIKE '~/code/%'
   )
