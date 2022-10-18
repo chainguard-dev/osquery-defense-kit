@@ -146,6 +146,7 @@ WHERE
     '443,6,0,nix,nix,',
     '443,6,0,OneDrivePkgTelemetry,com.microsoft.OneDrivePkgTelemetry,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,6,0,Setup,com.adobe.acc.Setup,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+    '443,6,500,provisio,,',
     '443,6,500,,,',
     '443,6,500,Acrobat Update Helper,com.adobe.ARMDCHelper,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,500,bash,bash,',
@@ -210,7 +211,6 @@ WHERE
     '443,6,500,Reflect Helper,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     '443,6,500,sample,com.apple.dt.SamplingTools.sample,Software Signing',
     '443,6,500,scorecard-darwin-amd64,,',
-    -- Why so many Slack signatures? We may never know.
     '443,6,500,Slack Helper,,',
     '443,6,500,Slack Helper,com.tinyspeck.slackmacgap.helper,Apple Mac OS Application Signing',
     '443,6,500,Slack Helper,com.tinyspeck.slackmacgap.helper,Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
