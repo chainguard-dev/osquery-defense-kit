@@ -1,7 +1,7 @@
 -- Programs which claim to be from the future, based on (btime,ctime,mtime)
 --
 -- references:
---   * https://attack.mitre.org/techniques/T1070/006/
+--   * https://attack.mitre.org/techniques/T1070/006/ (Indicator Removal on Host: Timestomp)
 --
 -- false positives:
 --   * None observed

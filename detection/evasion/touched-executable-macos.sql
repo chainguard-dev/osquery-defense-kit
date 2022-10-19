@@ -6,6 +6,9 @@
 -- false positives:
 --   * Programs which are packaged weirdly and don't follow the typical Apple app layout
 --
+-- references:
+--   * https://attack.mitre.org/techniques/T1070/006/ (Timestomping)
+--
 -- tags: transient seldom filesystem state
 -- platform: darwin
 SELECT

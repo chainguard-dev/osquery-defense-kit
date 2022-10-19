@@ -1,11 +1,14 @@
--- Find processes that run with a lower effective UID than their parent
+-- Find processes that run with a lower effective UID than their parent (state-based)
 --
--- Example Malware Threats detected:
---   * Shikitega
--- Related:
+-- references:
+--   * https://attack.mitre.org/techniques/T1548/001/ (Setuid and Setgid)
+--   * https://cybersecurity.att.com/blogs/labs-research/shikitega-new-stealthy-malware-targeting-linux
+--
+-- related:
 --   * unexpected-privilege-escalation-events.sql
 --
 -- tags: transient rapid state process escalation
+-- platform: posix
 SELECT
   p.pid AS child_pid,
   p.path AS child_path,

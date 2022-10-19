@@ -1,7 +1,10 @@
 -- Programs running with a hidden current working directory
 --
--- False positives:
+-- false positives:
 --   * Users rummaging through their configuration files
+--
+-- references:
+--   * https://attack.mitre.org/techniques/T1564/001/ (Hide Artifacts: Hidden Files and Directories)
 --
 -- tags: transient often
 SELECT

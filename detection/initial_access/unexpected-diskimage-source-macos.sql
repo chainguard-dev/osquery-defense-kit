@@ -1,6 +1,8 @@
 -- Surface ISO/DMG disk images that were downloaded from unexpected places
 --
 -- references:
+--   * https://attack.mitre.org/techniques/T1566/001/ (Phishing: Spearphishing Attachment)
+--   * https://attack.mitre.org/techniques/T1204/002/ (User Execution: Malicious File)
 --   * https://unit42.paloaltonetworks.com/chromeloader-malware/
 --
 -- false positives:

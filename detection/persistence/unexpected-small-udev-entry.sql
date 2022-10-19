@@ -4,6 +4,8 @@
 --
 -- references:
 --   * https://documents.trendmicro.com/assets/white_papers/wp-operation-earth-berberoka.pdf
+--   * https://attack.mitre.org/techniques/T1547/ (Boot or Logon Autostart Execution)
+--
 -- false positives:
 --   * rules installed by 3rd party software
 --

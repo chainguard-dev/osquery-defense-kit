@@ -3,6 +3,9 @@
 -- false positives:
 --   * none observed
 --
+-- references:
+--   * https://attack.mitre.org/techniques/T1070/004/ (Indicator Removal on Host: File Deletion)
+--
 -- tags: persistent process state
 -- platform: linux
 SELECT

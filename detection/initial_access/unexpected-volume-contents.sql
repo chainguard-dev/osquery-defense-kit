@@ -4,6 +4,8 @@
 --   * Installer packages with hidden files
 --
 -- references:
+--   * https://attack.mitre.org/techniques/T1566/001/ (Phishing: Spearphishing Attachment)
+--   * https://attack.mitre.org/techniques/T1204/002/ (User Execution: Malicious File)
 --   * https://www.crowdstrike.com/blog/how-crowdstrike-uncovered-a-new-macos-browser-hijacking-campaign/
 --
 -- tags: transient volume filesystem

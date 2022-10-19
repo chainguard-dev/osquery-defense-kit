@@ -2,6 +2,7 @@
 --
 -- references:
 --   * https://github.com/krisnova/boopkit
+--   * https://attack.mitre.org/techniques/T1014/ (Rootkit)
 --
 -- false positives:
 --   * None observed

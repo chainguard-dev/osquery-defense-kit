@@ -3,6 +3,10 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1611/
 --
+-- false-positives:
+--   * Nested Kubernetes Environments
+--   * Containerized builds
+--
 -- This query works on macOS as well, but is only an in-the-wild security problem on Linux,
 -- where the kernel namespaces can be shared. These kind of attacks tend to be
 --

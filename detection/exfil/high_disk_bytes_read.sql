@@ -6,6 +6,9 @@
 --   * Virtual Machine managers
 --   * Backup software
 --
+-- references:
+--   * https://attack.mitre.org/tactics/TA0010/ (Exfiltration)
+--
 -- tags: transient process
 SELECT
   p.name,

@@ -3,6 +3,9 @@
 -- false positives:
 --   * Self-updating programs that remain running
 --
+-- references:
+--   * https://attack.mitre.org/techniques/T1070/004/ (Indicator Removal on Host: File Deletion)
+--
 -- platform: darwin
 -- tags: persistent process state
 SELECT

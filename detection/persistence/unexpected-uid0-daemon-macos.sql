@@ -3,6 +3,9 @@
 -- false positives:
 --   * new software requiring escalated privileges
 --
+-- references:
+--   * https://attack.mitre.org/techniques/T1543/
+--
 -- tags: persistent process state
 -- platform: darwin
 SELECT

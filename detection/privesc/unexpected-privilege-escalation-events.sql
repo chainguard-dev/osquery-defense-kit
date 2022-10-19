@@ -1,5 +1,14 @@
--- Designed for execution every 30 seconds (where the parent may still be around)
+-- Find processes that run with a lower effective UID than their parent (event-based)
 --
+-- references:
+--   * https://attack.mitre.org/techniques/T1548/001/ (Setuid and Setgid)
+--   * https://cybersecurity.att.com/blogs/labs-research/shikitega-new-stealthy-malware-targeting-linux
+--
+-- related:
+--   * unexpected-privilege-escalation.sql
+--
+-- tags: events process escalation
+-- platform: posix
 -- interval: 30
 SELECT
   p.pid AS child_pid,

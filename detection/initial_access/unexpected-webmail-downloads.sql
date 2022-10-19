@@ -3,6 +3,9 @@
 -- false positives:
 --   * Files without an extension or extensions not explicitly added to the allow list
 --
+-- references:
+--   * https://attack.mitre.org/techniques/T1566/001/ (Phishing: Spearphishing Attachment)
+--
 -- platform: darwin
 -- tags: persistent filesystem spotlight
 SELECT

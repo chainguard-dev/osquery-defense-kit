@@ -2,7 +2,7 @@
 -- on Linux only generally occurs occurs if you run 'touch <bin>'
 --
 -- references:
---   * https://attack.mitre.org/techniques/T1070/006/
+--   * https://attack.mitre.org/techniques/T1070/006/ (Timestomping)
 --
 -- tags: transient process state
 -- platform: linux

@@ -1,6 +1,17 @@
--- Parent PID is not on disk
+-- A program where the parent PID is not on disk
+--
 -- Reveals boopkit if a child is spawned
 -- TODO: Make mount namespace aware
+--
+-- false positives:
+--   * none observed
+--
+-- references:
+--   * https://attack.mitre.org/techniques/T1070/004/ (Indicator Removal on Host: File Deletion)
+--
+-- false positives:
+--   * none observed
+--
 -- tags: persistent daemon
 SELECT
   p.name AS child_name,

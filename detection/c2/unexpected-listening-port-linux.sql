@@ -1,7 +1,7 @@
 -- Unexpected programs listening on a TCP port (state-based).
 --
 -- references:
---   * https://attack.mitre.org/techniques/T1571/
+--   * https://attack.mitre.org/techniques/T1571/ (Non-Standard Port)
 --
 -- tags: persistent state net
 SELECT

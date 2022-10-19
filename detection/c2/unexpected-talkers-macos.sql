@@ -1,7 +1,7 @@
 -- Programs communicating over the network in unexpected ways (state-based)
 --
 -- references:
---   * https://attack.mitre.org/techniques/T1071/
+--   * https://attack.mitre.org/techniques/T1071/ (C&C, Application Layer Protocol)
 --
 -- tags: transient state net often
 -- platform: macos

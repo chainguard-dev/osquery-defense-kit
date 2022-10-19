@@ -3,6 +3,10 @@
 -- false positives:
 --   * IDE's
 --
+-- references:
+--   * https://attack.mitre.org/techniques/T1059/ (Command and Scripting Interpreter)
+--   * https://attack.mitre.org/techniques/T1204/002/ (User Execution: Malicious File)
+--
 -- tags: transient process state
 -- platform: posix
 SELECT

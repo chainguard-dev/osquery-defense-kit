@@ -3,6 +3,10 @@
 -- false positives:
 --   * ssh-driven automation which disables the terminal, such as Znapzend
 --
+-- references:
+--   * https://attack.mitre.org/techniques/T1021/004/ (Remote Services: SSH)
+--   * https://attack.mitre.org/techniques/T1564/ (Hide Artifacts)
+--
 -- tags: transient process state
 -- platform: posix
 SELECT

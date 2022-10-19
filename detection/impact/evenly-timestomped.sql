@@ -3,6 +3,9 @@
 -- false positives:
 --   * 1 in 43200 chance per binary
 --
+-- references:
+--   * https://attack.mitre.org/techniques/T1070/006/ (Indicator Removal on Host: Timestomp)
+--
 -- tags: persistent seldom filesystem
 -- platform: linux
 SELECT

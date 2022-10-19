@@ -1,7 +1,7 @@
 -- Unexpected crontab entries
 --
 -- references:
---   * https://attack.mitre.org/techniques/T1053/003/
+--   * https://attack.mitre.org/techniques/T1053/003/ (Scheduled Task/Job: Cron)
 --
 -- false positives:
 --   * crontab entries added by the user

@@ -1,6 +1,13 @@
 -- Processes running that originate from setuid/setgid programs
 --
+-- false-positives:
+--   * an unlisted setuid binary
+--
+-- references:
+--   * https://attack.mitre.org/techniques/T1548/001/ (Setuid and Setgid)
+--
 -- tags: persistent state process escalation
+-- platform: posix
 SELECT
   p.pid,
   p.name,

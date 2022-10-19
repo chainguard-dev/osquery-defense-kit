@@ -1,5 +1,11 @@
--- osquery can't see hidden launch agents/daemons
+-- Reveal launchd services which are located in a hidden directory.
+--
+-- This query was written because osquery can't see these entries currently.
 -- See https://github.com/osquery/osquery/issues/7703
+--
+-- references:
+--   * https://attack.mitre.org/techniques/T1543/004/ (Create or Modify System Process: Launch Daemon)
+--   * https://attack.mitre.org/techniques/T1564/001/ (Hide Artifacts: Hidden Files and Directories)
 --
 -- platform: darwin
 -- tags: persistent daemon

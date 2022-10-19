@@ -1,10 +1,10 @@
 -- Highlight chrome extensions with wide-ranging permissions that are not part of your whitelist
 --
 -- references:
---   * https://attack.mitre.org/techniques/T1176/
+--   * https://attack.mitre.org/techniques/T1176/ (Browser Extensions)
 --
 -- false positives:
---   * anything that isn't on your whitelist
+--   * Almost unlimited: any extension that isn't on your whitelist
 --
 -- tags: persistent seldom browser
 SELECT

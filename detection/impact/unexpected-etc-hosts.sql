@@ -3,6 +3,9 @@
 -- false positives:
 --   * developers adding entries for their own use
 --
+-- references:
+--   * https://attack.mitre.org/techniques/T1565/001/ (Data Manipulation: Stored Data Manipulation)
+--
 -- tags: persistent seldom filesystem net
 SELECT
   *

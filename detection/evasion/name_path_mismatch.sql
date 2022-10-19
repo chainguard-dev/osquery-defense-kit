@@ -3,6 +3,9 @@
 -- false positives:
 --   * new software, particularly those using interpreted languages
 --
+-- references:
+--   * https://attack.mitre.org/techniques/T1036/004/ (Masquerade Task or Service)
+--
 -- tags: persistent daemon high
 SELECT
   p.name,

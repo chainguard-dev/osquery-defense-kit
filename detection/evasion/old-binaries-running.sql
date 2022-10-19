@@ -1,7 +1,10 @@
 -- Alert on programs running that are unusually old (poor timestomping)
 --
+-- false positive:
+--   * legimitely ancient programs. For instance, printer drivers.
+--
 -- references:
---   * https://attack.mitre.org/techniques/T1070/006/
+--   * https://attack.mitre.org/techniques/T1070/006/ (Indicator Removal on Host: Timestomp)
 --
 -- tags: transient process state
 SELECT

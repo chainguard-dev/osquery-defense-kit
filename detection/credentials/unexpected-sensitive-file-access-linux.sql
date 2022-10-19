@@ -1,8 +1,12 @@
--- This query looks for exotic open file/process combinations
+-- Unexpected programs accessing sensitive data stores (state-based)
 --
--- It's unfortunately of limited use, as the query is slow (250ms)
+-- This query is unfortunately of limited use, as the query is slow (250ms)
 -- and it requires catching a program at the exact moment it has
--- the file open.
+-- the file open. An event-based version is advised.
+--
+-- references:
+--   * https://attack.mitre.org/techniques/T1555/ (Credentials from Password Stores)
+--
 -- tags: transient often state file access
 SELECT
   pof.pid,

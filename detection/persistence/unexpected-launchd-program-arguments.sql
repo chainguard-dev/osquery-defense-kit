@@ -1,7 +1,7 @@
 -- Unexpected launchd scripts that use the 'program_arguments' field
-----
+--
 -- references:
---   * https://attack.mitre.org/techniques/T1543/004/
+--   * https://attack.mitre.org/techniques/T1543/004/ (Create or Modify System Process: Launch Daemon)
 --
 -- false positives:
 --   * Software by new vendors which have not yet been added to the allow list

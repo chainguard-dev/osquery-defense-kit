@@ -1,7 +1,7 @@
 -- Unexpected systemd units, may be evidence of persistence
 --
 -- references:
---   * https://attack.mitre.org/techniques/T1543/002/
+--   * https://attack.mitre.org/techniques/T1543/002/ (Create or Modify System Process: Systemd Service)
 --
 -- false positives:
 --   * System updates
