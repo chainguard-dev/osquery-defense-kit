@@ -1,8 +1,12 @@
 # osquery-defense-kit
 
-Real-world queries for using osquery as part of your detection & response pipeline.
+Real-world queries for using osquery as part of a detection & response pipeline.
 
 ![osquery-defense-kit](images/logo-small.png?raw=true "osquery-defense-kit logo")
+
+Primarily focused on threat detection on POSIX platforms (Linux, macOS), the osquery-defense-kit (ODK) differs from
+existing published query sets in that they are designed to be used in an alert pipeline. Most queries (particularly those in `detection` and `policy`) should return 0 results
+unless an exceptional behavior is detected.
 
 ## Organization
 
@@ -10,9 +14,11 @@ Real-world queries for using osquery as part of your detection & response pipeli
 * `response/` - Data collection to assist in responding to possible threats. Tuned for periodic evidence collection.
 * `policy/` - Security policy queries tuned for alert generation.
 
-Where suitable, queries are further divided up by [MITRE ATT&CK](https://attack.mitre.org/) tactics categories. Queries are periodically released in [osquery query pack](https://osquery.readthedocs.io/en/stable/deployment/configuration/#query-packs) format. See `Local Pack Generation` for more information.
+The detection queries are further divided up by [MITRE ATT&CK](https://attack.mitre.org/) tactics categories.
 
-## Linux Case Study: Shikitega (September 2022)
+Periodically, queries published in [osquery query pack](https://osquery.readthedocs.io/en/stable/deployment/configuration/#query-packs) format. See `Local Pack Generation` for information on how to generate your own.
+
+## Detection on Linux Case Study: Shikitega (September 2022)
 
 <https://cybersecurity.att.com/blogs/labs-research/shikitega-new-stealthy-malware-targeting-linux>
 
@@ -48,7 +54,7 @@ Here is a partial list of what queries would have fired an alert based on these 
   * `persistence/unexpected-cron-entries.sql`
   * `execution/unexpected-executable-directory-linux.sql`
 
-## macOS Case Study: CloudMensis (April 2022)
+## Detection on macOS Case Study: CloudMensis (April 2022)
 
 <https://www.welivesecurity.com/2022/07/19/i-see-what-you-did-there-look-cloudmensis-macos-spyware/>
 
@@ -70,26 +76,34 @@ Here is a partial list of what stages would have been detected by particular que
   * `execution/exotic-command-events.sql`
   * `execution/unexpected-executable-directory-macos.sql`
 
-## False Positive Policy
+## Local pack generation
+
+Run `make packs`
+
+For more control, you can invoke [osqtool](https://github.com/chainguard-dev/osqtool) directly, to override default intervals or exclude checks.
+
+## Policies
+
+### Contributions
+
+Help is wanted! We support any new queries so long as they can be easily updated to address false positives.
+
+Users may submit false positive exceptions for popular well-known software packages, so long as evidence is provided for the behavior.
+
+### Platform Support
+
+While originally focused on Linux and macOS, we support the addition of queries on any platform supported by osquery.
+
+### False Positives
 
 We endeavor to exclude real-world false positives from our `detection` queries.
 
 Managing false positives is easier said than done - pull requests are welcome!
 
-## Tag Intervals Mapping
+### CPU Overhead
 
-Our base interval is 1 hour (3600s), but this interval is modified by the tags in place:
+In aggregate, queries should not consume more than 2% of the wall clock time across a day on a deployed system.
 
-* continuous: 15 seconds
-* transient: 5 minutes
-* persistent: 1 hour (default)
-* postmortem: 6 hours
+### Intervals
 
-In addition, we'll also use the following modifier tags:
-
-* Often: 4X as often (~1m for transient, 15 minutes for persistent)
-* Seldom: 2X as seldomly (10 minutes for transient, 2 hours for persistent)
-
-## Local pack generation
-
-Run `make packs`
+Deployed intervals are automatically determined based on the tags supported by the [osqtool](https://github.com/chainguard-dev/osqtool), which we use for pack assembly.
