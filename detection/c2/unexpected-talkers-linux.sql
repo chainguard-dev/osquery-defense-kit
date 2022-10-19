@@ -5,8 +5,7 @@
 --
 -- tags: transient state net rapid
 -- platform: linux
-SELECT
-  s.family,
+SELECT s.family,
   protocol,
   s.local_port,
   s.remote_port,
@@ -31,13 +30,11 @@ SELECT
     ',',
     p.name
   ) AS exception_key
-FROM
-  process_open_sockets s
+FROM process_open_sockets s
   LEFT JOIN processes p ON s.pid = p.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
-WHERE
-  protocol > 0
+WHERE protocol > 0
   AND s.remote_port > 0
   AND s.remote_address NOT IN ('127.0.0.1', '::ffff:127.0.0.1', '::1')
   AND s.remote_address NOT LIKE 'fe80:%'
@@ -52,6 +49,91 @@ WHERE
   AND s.remote_address NOT LIKE '::ffff:10.%'
   AND s.remote_address NOT LIKE 'fc00:%'
   AND s.state != 'LISTEN' -- DNS clients
+  AND NOT (
+    (
+      remote_address LIKE '151.101.%'
+      OR remote_address LIKE '140.82.%'
+    )
+    AND remote_port = 443
+    AND protocol = 6
+    AND (
+      parent_path LIKE '/nix/%/bin/bash'
+      OR parent_path LIKE '/nix/%/bin/zsh'
+      OR parent_path LIKE '%/bin/nix'
+      OR p.path LIKE '/nix/store/%'
+    )
+  )
+  AND NOT p.cmdline LIKE 'bash --rcfile /tmp/nix-shell.%' -- Other more complicated situations
+  AND NOT (
+    p.name = 'rootlessport'
+    AND remote_port > 1024
+  )
+  AND NOT (
+    p.name = 'syncthing'
+    AND (
+      remote_port IN (53, 80, 88, 110, 443, 587, 993, 3306, 7451)
+      OR remote_port > 1024
+    )
+  )
+  AND NOT (
+    p.name IN (
+      'chrome',
+      'Google Chrome Helper',
+      'Brave Browser Helper',
+      'Chromium Helper',
+      'Opera Helper'
+    )
+    AND remote_port IN (
+      53,
+      3100,
+      443,
+      80,
+      8006,
+      9000,
+      5004,
+      8009,
+      8080,
+      8888,
+      8443,
+      5228,
+      32211,
+      53,
+      10001,
+      3478,
+      19305,
+      19306,
+      19307,
+      19308,
+      19309
+    )
+  )
+  AND NOT (
+    p.name IN ('thunderbird')
+    AND remote_port IN (53, 143, 443, 587, 465, 585, 993)
+  )
+  AND NOT (
+    p.name IN ('spotify', 'Spotify Helper', 'Spotify')
+    AND remote_port IN (53, 443, 8009, 4070, 32211)
+  )
+  AND NOT (
+    remote_port IN (443, 53)
+    AND p.name LIKE 'terraform-provider-%'
+  )
+  AND NOT (
+    remote_port IN (443, 53)
+    AND p.name LIKE 'npm exec %'
+  )
+  AND NOT (
+    remote_port iN (443, 53)
+    AND p.name LIKE 'kubectl.%'
+  )
+  AND NOT (
+    (
+      p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%'
+      OR p.cmdline LIKE "google-cloud-sdk/lib/googlecloudsdk/core/metrics_reporter.py"
+    )
+    AND remote_port IN (80, 53, 443)
+  )
   AND NOT (
     remote_port = 53
     AND protocol IN (6, 17)
@@ -297,87 +379,4 @@ WHERE
     '9090,6,500,prometheus',
     '9090,6,500,rootlessport'
   )
-  AND NOT (
-    (
-      remote_address LIKE '151.101.%'
-      OR remote_address LIKE '140.82.%'
-    )
-    AND remote_port = 443
-    AND protocol = 6
-    AND (
-      parent_path LIKE '/nix/%/bin/bash'
-      OR parent_path LIKE '/nix/%/bin/zsh'
-      OR parent_path LIKE '%/bin/nix'
-      OR p.path LIKE '/nix/store/%'
-    )
-  )
-  AND NOT p.cmdline LIKE 'bash --rcfile /tmp/nix-shell.%' -- Other more complicated situations
-  AND NOT (
-    p.name = 'rootlessport'
-    AND remote_port > 1024
-  )
-  AND NOT (
-    p.name = 'syncthing'
-    AND (
-      remote_port IN (53, 80, 88, 110, 443, 587, 993, 3306, 7451)
-      OR remote_port > 1024
-    )
-  )
-  AND NOT (
-    p.name IN (
-      'chrome',
-      'Google Chrome Helper',
-      'Brave Browser Helper',
-      'Chromium Helper',
-      'Opera Helper'
-    )
-    AND remote_port IN (
-      53,
-      3100,
-      443,
-      80,
-      8006,
-      9000,
-      5004,
-      8009,
-      8080,
-      8888,
-      8443,
-      5228,
-      32211,
-      53,
-      10001,
-      3478,
-      19305,
-      19306,
-      19307,
-      19308,
-      19309
-    )
-  )
-  AND NOT (
-    p.name IN ('thunderbird')
-    AND remote_port IN (53, 143, 443, 587, 465, 585, 993)
-  )
-  AND NOT (
-    p.name IN ('spotify', 'Spotify Helper', 'Spotify')
-    AND remote_port IN (53, 443, 8009, 4070, 32211)
-  )
-  AND NOT (
-    remote_port IN (443, 53)
-    AND p.name LIKE 'terraform-provider-%'
-  )
-  AND NOT (
-    remote_port IN (443, 53)
-    AND p.name LIKE 'npm exec %'
-  )
-  AND NOT (
-    remote_port iN (443, 53)
-    AND p.name LIKE 'kubectl.%'
-  )
-  AND NOT (
-    p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%'
-    AND remote_port IN (80, 53, 443)
-  )
-GROUP BY
-  p.cmdline
+GROUP BY p.cmdline

@@ -7,6 +7,7 @@
 --   * https://attack.mitre.org/techniques/T1564/001/ (Hide Artifacts: Hidden Files and Directories)
 --
 -- tags: transient often
+-- platform: posix
 SELECT
   p.pid,
   p.path,
@@ -64,6 +65,7 @@ WHERE
       'as,~/.cache/yay',
       'c++,~/.cache/yay',
       'cc1plus,~/.cache/yay',
+      'npm install,~/.npm/_cacache',
       'mysqld,~/.local/share'
     )
     OR dir IN (
