@@ -1,10 +1,8 @@
 -- Retrieves all the information for the current kernel modules in the target Linux system.
 --
--- interval: 3600
+-- tags: postmortem
 -- platform: linux
--- value: Identify malware that has a kernel module component.
--- version: 1.4.5
-select
+SELECT
   *
-from
+FROM
   kernel_modules;

@@ -1,15 +1,16 @@
 -- Retrieves all the open files per process in the target system.
 --
--- interval: 86400
+-- tags: postmortem
 -- platform: posix
--- value: Identify processes accessing sensitive files they shouldn't
--- version: 1.4.5
-select distinct
-  pid,
-  path
-from
-  process_open_files
-where
-  path not like '/private/var/folders%'
-  and path not like '/System/Library/%'
-  and path not in ('/dev/null', '/dev/urandom', '/dev/random');
+SELECT DISTINCT
+  pof.pid,
+  pof.path,
+  p.name,
+  p.cmdline
+FROM
+  process_open_files pof
+  LEFT JOIN processes p ON pof.pid = p.pid
+WHERE
+  pof.path NOT LIKE '/private/var/folders%'
+  AND pof.path NOT LIKE '/System/Library/%'
+  AND pof.path NOT IN ('/dev/null', '/dev/urandom', '/dev/random');

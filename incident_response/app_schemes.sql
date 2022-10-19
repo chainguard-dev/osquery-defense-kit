@@ -1,10 +1,8 @@
 -- Retrieves the list of application scheme/protocol-based IPC handlers.
 --
--- interval: 86400
+-- tags: postmortem
 -- platform: darwin
--- value: Post-priori hijack detection, detect potential sensitive information leakage.
--- version: 1.4.7
-select
+SELECT
   *
-from
+FROM
   app_schemes;

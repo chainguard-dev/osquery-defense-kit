@@ -1,8 +1,8 @@
--- Crontab entries
+-- Returns a list of users
 --
 -- tags: postmortem
 -- platform: posix
 SELECT
   *
 FROM
-  crontab
+  users

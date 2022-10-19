@@ -1,17 +1,15 @@
 -- Retrieves the list of all the currently logged in users in the target system.
 --
--- interval: 3600
+-- tags: postmortem
 -- platform: posix
--- value: Useful for intrusion detection and incident response. Verify assumptions of what accounts should be accessing what systems and identify machines accessed during a compromise.
--- version: 1.4.5
-select
+SELECT
   liu.*,
   p.name,
   p.cmdline,
   p.cwd,
   p.root
-from
+FROM
   logged_in_users liu,
   processes p
-where
+WHERE
   liu.pid = p.pid;

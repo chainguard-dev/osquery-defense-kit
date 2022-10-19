@@ -5,7 +5,8 @@
 --
 -- tags: transient process state often
 -- platform: linux
-SELECT p.pid,
+SELECT
+  p.pid,
   p.path,
   p.name,
   p.cmdline,
@@ -24,19 +25,18 @@ SELECT p.pid,
   pp.euid AS parent_euid,
   ch.sha256 AS child_sha256,
   ph.sha256 AS parent_sha256
-FROM processes p
+FROM
+  processes p
   LEFT JOIN file f ON p.path = f.path
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash AS ch ON p.path = ch.path
   LEFT JOIN hash AS ph ON pp.path = ph.path
-WHERE p.start_time > 0
+WHERE
+  p.start_time > 0
   AND f.ctime > 0 -- Only process programs that had an inode modification within the last 3 minutes
   AND (p.start_time - MAX(f.ctime, f.btime)) < 180
   AND p.start_time >= MAX(f.ctime, f.ctime)
-  AND NOT f.directory IN (
-    '/usr/lib/firefox',
-    '/usr/local/kolide-k2/bin'
-  ) -- Typically daemons or long-running desktop apps
+  AND NOT f.directory IN ('/usr/lib/firefox', '/usr/local/kolide-k2/bin') -- Typically daemons or long-running desktop apps
   AND NOT p.path IN (
     '',
     '/opt/google/chrome/chrome',
@@ -87,4 +87,5 @@ WHERE p.start_time > 0
     AND f.uid = p.uid
     AND p.cmdline LIKE './%'
   )
-GROUP BY p.pid
+GROUP BY
+  p.pid

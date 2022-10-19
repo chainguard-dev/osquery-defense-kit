@@ -1,10 +1,5 @@
 -- Retrieves all the remembered wireless network that the target machine has connected to.
---
--- interval: 3600
--- platform: darwin
--- value: Identifies connections to rogue access points.
--- version: 1.6.0
-select
+SELECT
   ssid,
   network_name,
   security_type,
@@ -13,5 +8,5 @@ select
   possibly_hidden,
   roaming,
   roaming_profile
-from
+FROM
   wifi_networks;

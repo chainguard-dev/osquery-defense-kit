@@ -1,10 +1,8 @@
 -- Retrieves all the listening ports in the target system.
 --
--- interval: 3600
+-- tags: postmortem
 -- platform: posix
--- value: Detect if a listening port iis not mapped to a known process. Find backdoors.
--- version: 1.4.5
-select
+SELECT
   *
-from
+FROM
   listening_ports;

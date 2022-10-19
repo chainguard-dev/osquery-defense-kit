@@ -1,10 +1,8 @@
 -- Retrieves the current disk encryption status for the target system.
 --
--- interval: 86400
+-- tags: postmortem
 -- platform: posix
--- value: Identifies a system potentially vulnerable to disk cloning.
--- version: 1.4.5
-select
+SELECT
   *
-from
+FROM
   disk_encryption;

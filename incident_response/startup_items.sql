@@ -1,10 +1,7 @@
--- Retrieve all the items that will load when the target OSX system starts.
+-- Retrieve most programs that are part of a systems startup (multi-platform)
 --
--- interval: 86400
--- platform: darwin
--- value: Identify malware that uses this persistence mechanism to launch at a given interval
--- version: 1.4.5
-select
+-- tags: postmortem
+SELECT
   *
-from
+FROM
   startup_items;

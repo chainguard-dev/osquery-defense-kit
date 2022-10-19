@@ -1,11 +1,9 @@
 -- Retrieves the command history, per user, by parsing the shell history files.
 --
--- interval: 86400
+-- tags: postmortem
 -- platform: posix
--- value: Identify actions taken. Useful for compromised hosts.
--- version: 1.4.5
-select
+SELECT
   *
-from
+FROM
   users
-  join shell_history using (uid);
+  JOIN shell_history USING (uid);

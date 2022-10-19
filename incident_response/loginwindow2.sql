@@ -1,9 +1,8 @@
 -- Retrieves all the values for the loginwindow process in the target OSX system.
 --
--- interval: 86400
+--
+-- tags: postmortem
 -- platform: darwin
--- value: Identify malware that uses this persistence mechanism to launch at system boot
--- version: 1.4.5
 select
   key,
   subkey,

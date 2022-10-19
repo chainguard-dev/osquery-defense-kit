@@ -1,10 +1,8 @@
 -- Retrieves all the open sockets per process in the target system.
 --
--- interval: 86400
+-- tags: postmortem
 -- platform: posix
--- value: Identify malware via connections to known bad IP addresses as well as odd local or remote port bindings
--- version: 1.4.5
-select distinct
+SELECT DISTINCT
   pid,
   family,
   protocol,
@@ -13,8 +11,8 @@ select distinct
   remote_address,
   remote_port,
   path
-from
+FROM
   process_open_sockets
-where
+WHERE
   path <> ''
   or remote_address <> '';

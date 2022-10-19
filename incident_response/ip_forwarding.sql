@@ -1,19 +1,17 @@
 -- Retrieves the current status of IP/IPv6 forwarding.
 --
--- interval: 3600
+-- tags: postmortem
 -- platform: posix
--- value: Identify if a machine is being used as relay.
--- version: 1.4.5
-select
+SELECT
   *
-from
+FROM
   system_controls
-where
+WHERE
   oid = '4.30.41.1'
-union
-select
+UNION
+SELECT
   *
-from
+FROM
   system_controls
-where
+WHERE
   oid = '4.2.0.1';

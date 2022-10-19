@@ -1,9 +1,8 @@
--- Retrieves all the files in the target system that are setuid enabled.
+-- Retrieves setuid-enabled executables in well-known paths
 --
 -- platform: posix
--- value: Detect backdoor binaries (attacker may drop a copy of /bin/sh). Find potential elevation points / vulnerabilities in the standard build.
--- version: 1.4.5
-select
+-- tags: postmortem
+SELECT
   *
-from
+FROM
   suid_bin;

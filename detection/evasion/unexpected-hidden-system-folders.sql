@@ -8,7 +8,8 @@
 --
 -- platform: posix
 -- tags: persistent filesystem state
-SELECT file.path,
+SELECT
+  file.path,
   file.directory,
   uid,
   gid,
@@ -19,10 +20,12 @@ SELECT file.path,
   size,
   hash.sha256,
   magic.data
-FROM file
+FROM
+  file
   LEFT JOIN hash ON file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE (
+WHERE
+  (
     file.path LIKE '/lib/.%'
     OR file.path LIKE '/.%'
     OR file.path LIKE '/bin/%/.%'
