@@ -24,32 +24,33 @@ FROM
   processes p
   LEFT JOIN hash ON p.path = hash.path
 WHERE
-  bytes_per_second > 2000000
+  bytes_per_second > 2500000
   AND age > 120
   AND pid > 2
   AND p.path NOT IN (
     '/bin/bash',
+    '/opt/homebrew/bin/qemu-system-aarch64',
     '/usr/bin/aptd',
     '/usr/bin/bash',
-    '/usr/bin/dockerd',
     '/usr/bin/bwrap',
     '/usr/bin/curl',
+    '/usr/bin/dockerd',
     '/usr/bin/fish',
     '/usr/bin/gnome-shell',
+    '/usr/bin/make',
+    '/usr/bin/melange',
     '/usr/bin/qemu-system-x86_64',
-    '/opt/homebrew/bin/qemu-system-aarch64',
     '/usr/bin/yay',
     '/usr/bin/zsh',
-    '/usr/lib/flatpak-system-helper',
-    '/usr/lib/systemd/systemd-journald',
-    '/usr/lib/systemd/systemd',
     '/usr/lib64/thunderbird/thunderbird',
-    '/usr/libexec/coreduetd',
     '/usr/libexec/coreduetd',
     '/usr/libexec/packagekitd',
     '/usr/libexec/rosetta/oahd',
     '/usr/libexec/secd',
     '/usr/libexec/sharingd',
+    '/usr/lib/flatpak-system-helper',
+    '/usr/lib/systemd/systemd',
+    '/usr/lib/systemd/systemd-journald',
     '/usr/sbin/screencapture'
   )
   AND NOT (

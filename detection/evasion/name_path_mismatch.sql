@@ -51,6 +51,8 @@ WHERE
     'name=firewalld,file=python3,0',
     'name=gjs,file=gjs-console,120',
     'name=gjs,file=gjs-console,500',
+    'name=sh,file=busybox,0',
+    'name=cc,file=gcc,0',
     'name=gnome-characte,file=gjs-console,500',
     'name=gnome-character,file=gjs-console,500',
     'name=gnome-tweak-to,file=python3,500',

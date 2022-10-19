@@ -54,6 +54,9 @@ WHERE (
     '/.autorelabel',
     '/dev/.mdadm/',
     '/etc/.clean',
+    '/etc/.java/',
+    '/etc/selinux/.config_backup',
+    '/etc/skel/.mozilla/',
     '/.file',
     '/tmp/../',
     '/tmp/./',
@@ -63,7 +66,6 @@ WHERE (
     '/tmp/.dracula-tmux-data',
     '/tmp/.dracula-tmux-weather.lock',
     '/tmp/.font-unix/',
-    '/etc/selinux/.config_backup',
     '/tmp/.ICE-unix/',
     '/tmp/.%.lock',
     '/tmp/.Test-unix/',
@@ -82,6 +84,7 @@ WHERE (
   AND file.path NOT LIKE '/%bin/bootstrapping/.default_components'
   AND file.path NOT LIKE '/tmp/.#%'
   AND file.path NOT LIKE '/tmp/.%.gcode'
+  AND file.path NOT LIKE '/tmp/.vbox-%-ipc/'
   AND file.path NOT LIKE '/tmp/.com.google.Chrome.%'
   AND file.path NOT LIKE '/tmp/.org.chromium.Chromium%'
   AND file.path NOT LIKE '/tmp/.X1%-lock'

@@ -160,6 +160,7 @@ WHERE
     '443,6,500,Code Helper (Renderer),com.github.Electron.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,6,500,cosign,,',
     '443,6,500,cosign,a.out,',
+    '443,6,500,cosign,cosign,',
     '443,6,500,crane,,',
     '443,6,500,crane,a.out,',
     '443,6,500,ctclient,a.out,',

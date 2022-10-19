@@ -291,6 +291,7 @@ WHERE
     '80,6,500,thunderbird',
     '8443,6,500,chrome',
     '8801,17,500,zoom',
+    '8801,17,500,zoom.real',
     '9090,6,500,firefox',
     '9090,6,500,k6',
     '9090,6,500,prometheus',

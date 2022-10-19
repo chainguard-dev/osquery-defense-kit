@@ -29,6 +29,7 @@ FROM
   LEFT JOIN hash ON p.path = hash.path
 WHERE
   f.ctime = f.mtime
+  AND p.path != '/'
   AND f.path NOT LIKE '/usr/local/kolide-k2/bin/%-updates/%'
   AND f.path NOT LIKE '/snap/%'
   AND f.path NOT LIKE '/home/%'

@@ -31,6 +31,7 @@ WHERE
   AND p.path NOT LIKE '/Library/Apple/System/Library/%'
   AND name NOT IN (
     'bash',
+    'bwrap',
     'chrome',
     'emacs',
     'firefox',
@@ -41,12 +42,12 @@ WHERE
     'launcher',
     'LogiFacecamService',
     'nautilus',
+    'nessusd',
     'nix',
     'osqueryd',
-    'nessusd',
+    'qemu-system-aarch64',
     'qemu-system-x86',
     'qemu-system-x86-64',
-    'qemu-system-aarch64',
     'slack',
     'wineserver',
     'ykman-gui',
