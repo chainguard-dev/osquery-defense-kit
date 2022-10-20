@@ -47,6 +47,7 @@ WHERE
     '/usr/bin/zsh',
     '/usr/lib64/thunderbird/thunderbird',
     '/usr/libexec/coreduetd',
+    '/usr/libexec/flatpak-system-helper',
     '/usr/libexec/packagekitd',
     '/usr/libexec/rosetta/oahd',
     '/usr/libexec/secd',
