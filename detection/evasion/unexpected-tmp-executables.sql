@@ -5,8 +5,7 @@
 --
 -- tags: persistent
 -- platform: posix
-SELECT
-  file.path,
+SELECT file.path,
   uid,
   gid,
   mode,
@@ -14,12 +13,10 @@ SELECT
   file.size,
   hash.sha256,
   magic.data
-FROM
-  file
+FROM file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE
-  (
+WHERE (
     -- Recursive queries don't seem to work well with hidden directories :(
     file.path LIKE '/tmp/%%'
     OR file.path LIKE '/tmp/.%/%%'
@@ -53,8 +50,7 @@ WHERE
       OR file.path LIKE '%/ko/%'
       OR file.path LIKE '%/pdf-tools/%'
       OR file.path LIKE '%/tmp/epdf%'
-      OR
-      -- These regular expressions can be narrowed down
+      OR -- These regular expressions can be narrowed down
       (
         file.size < 4000
         AND file.path LIKE '/tmp/%.sh'
@@ -64,29 +60,37 @@ WHERE
         AND file.path LIKE '/tmp/%.py'
       )
     )
-  )
-  -- Nix
+  ) -- Nix
   AND NOT (
     file.directory LIKE '/tmp/tmp%'
     AND gid = 0
     AND uid > 300
     AND uid < 350
-  )
-  AND NOT magic.data LIKE '%nix-shell script%'
-  -- Don't alert if the file is only on disk for a moment
+  ) -- Babel
+  AND NOT (
+    file.directory LIKE '/tmp/babel-%/sh-script-%'
+    AND gid > 900
+    AND uid = 1000
+    AND size < 1024
+  ) -- Random Testdata
+  AND NOT (
+    gid > 900
+    AND uid = 1000
+    AND (
+      file.directory LIKE '/tmp/%/test'
+      OR file.directory LIKE '/tmp/%/testdata'
+    )
+  ) -- Don't alert if the file is only on disk for a moment
   AND NOT (
     file.directory LIKE '/tmp/%'
-    AND (strftime('%s', 'now') - ctime) < 60
-  )
-  -- macOS updates
-  AND NOT file.directory LIKE '/tmp/msu-target-%'
-  -- I don't know man. I don't work here.
+    AND (strftime('%s', 'now') - ctime) < 30
+  ) -- macOS updates
+  AND NOT file.directory LIKE '/tmp/msu-target-%' -- I don't know man. I don't work here.
   AND NOT (
     file.path LIKE('/tmp/%compressed')
     AND size < 4000
     AND uid > 500
-  )
-  -- Executables too small to even hold '#!/bin/sh\nuid'
+  ) -- Executables too small to even hold '#!/bin/sh\nuid'
   AND NOT (
     file.type = 'regular'
     AND size < 10
