@@ -60,9 +60,16 @@ WHERE
   AND s.remote_address NOT LIKE 'fc00:%'
   AND p.path != ''
   AND NOT exception_key IN (
+    '0,/usr/flatpak-system-helper,0u,0g,flatpak-system-', -- fedoraproject.org
     '0,/usr/launcher,0u,0g,launcher',
+    '0,/usr/dockerd,0u,0g,dockerd',
+    '0,/usr/packagekitd,0u,0g,packagekitd',
+    '0,/usr/packagekitd,0u,0g,packagekitd',  -- Google
+    '0,/usr/tailscaled,0u,0g,tailscaled',
     '0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra',
     '500,/app/slack,u,g,slack',
+    '500,/home/chainctl,500u,500g,chainctl',
+    '500,/ko-app/chainctl,u,g,chainctl',
     '500,/ko-app/controlplane,u,g,controlplane',
     '500,/opt/chrome,0u,0g,chrome',
     '500,/opt/spotify,0u,0g,spotify',
@@ -70,10 +77,14 @@ WHERE
     '500,/usr/code,0u,0g,code',
     '500,/usr/firefox,0u,0g,firefox',
     '500,/usr/firefox,0u,0g,.firefox-wrappe',
+    '500,/usr/flatpak-oci-authenticator,0u,0g,flatpak-oci-aut', -- fedoraproject.org
     '500,/usr/geoclue,0u,0g,geoclue',
     '500,/usr/gnome-software,0u,0g,gnome-software',
+    '500,/usr/kubectl,500u,500g,kubectl',
     '500,/usr/slack,0u,0g,slack',
+    '500,/app/zoom.real,u,g,zoom.real',
     '500,/usr/syncthing,0u,0g,syncthing'
+
   )
 GROUP BY
   p.cmdline
