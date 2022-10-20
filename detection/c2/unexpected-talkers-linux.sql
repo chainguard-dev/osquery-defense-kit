@@ -81,16 +81,16 @@ WHERE protocol > 0
     '22000,6,500,/usr/syncthing,0u,0g,syncthing',
     '4070,6,500,/opt/spotify,0u,0g,spotify',
     '5228,6,500,/opt/chrome,0u,0g,chrome',
-    '80,6,0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra'
-    '80,6,0,/usr/tailscaled,0u,0g,tailscaled',
-    '80,6,500,/opt/chrome,0u,0g,chrome',
-    '80,6,500,/usr/firefox,0u,0g,firefox',
     '8000,6,500,/opt/chrome,0u,0g,chrome',
     '8000,6,500,/usr/firefox,0u,0g,firefox',
+    '80,6,0,/usr/tailscaled,0u,0g,tailscaled',
+    '80,6,0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra',
+    '80,6,500,/opt/chrome,0u,0g,chrome',
+    '80,6,500,/usr/firefox,0u,0g,firefox',
     '8080,6,500,/opt/chrome,0u,0g,chrome',
     '8080,6,500,/usr/firefox,0u,0g,firefox',
     '8443,6,500,/opt/chrome,0u,0g,chrome',
-    '8443,6,500,/usr/firefox,0u,0g,firefox',
+    '8443,6,500,/usr/firefox,0u,0g,firefox'
   )
   AND NOT (
     p.name = 'syncthing'
