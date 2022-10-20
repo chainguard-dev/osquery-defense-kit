@@ -73,6 +73,8 @@ WHERE
     '500,/ko-app/controlplane,u,g,controlplane',
     '500,/opt/chrome,0u,0g,chrome',
     '500,/opt/spotify,0u,0g,spotify',
+    '500,/snap/firefox,0u,0g,firefox',
+    '500,/usr/curl,0u,0g,curl',
     '500,/usr/chrome,0u,0g,chrome',
     '500,/usr/code,0u,0g,code',
     '500,/usr/firefox,0u,0g,firefox',
