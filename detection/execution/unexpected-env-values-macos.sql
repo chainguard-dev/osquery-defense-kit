@@ -6,7 +6,7 @@
 -- WARNING: This query is known to require a higher than average wall time.
 --
 -- tags: transient state rapid
--- platform: macos
+-- platform: darwin
 SELECT
   key,
   value,
