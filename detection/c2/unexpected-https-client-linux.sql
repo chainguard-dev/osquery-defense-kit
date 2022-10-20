@@ -75,6 +75,7 @@ WHERE
     '500,/opt/chrome,0u,0g,chrome',
     '500,/opt/spotify,0u,0g,spotify',
     '500,/snap/firefox,0u,0g,firefox',
+    '500,/snap/slack,0u,0g,slack',
     '500,/usr/chrome,0u,0g,chrome',
     '500,/usr/code,0u,0g,code',
     '500,/usr/curl,0u,0g,curl',
@@ -88,5 +89,8 @@ WHERE
     '500,/usr/slack,0u,0g,slack',
     '500,/usr/syncthing,0u,0g,syncthing'
   )
+  -- stay weird, NixOS (Fastly nix mirror)
+  AND NOT child_cmd = '/run/current-system/sw/bin/bash'
+
 GROUP BY
   p.cmdline
