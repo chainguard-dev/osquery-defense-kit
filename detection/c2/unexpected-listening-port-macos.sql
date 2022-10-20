@@ -123,6 +123,14 @@ WHERE
     '9101,6,500,github_actions_exporter,'
   )
   AND NOT (
+    signature.authority = 'Developer ID Application: Linear Orbit, Inc. (7VZ2S3V9RV)'
+    AND lp.port > 1024
+  )
+  AND NOT (
+    signature.authority = 'Developer ID Application: Microsoft Corporation (UBF8T346G9)'
+    AND lp.port > 5000
+  )
+  AND NOT (
     p.path LIKE ',ko-app,%'
     AND lp.port > 1024
     and lp.protocol = 6
