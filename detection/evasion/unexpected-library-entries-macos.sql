@@ -46,6 +46,7 @@ WHERE
     '/Library/ColorSync/',
     '/Library/Components/',
     '/Library/Compositions/',
+    '/Library/DropboxHelperTools/',
     '/Library/Compositions/.localized',
     '/Library/Contextual Menu Items/',
     '/Library/CoreAnalytics/',
