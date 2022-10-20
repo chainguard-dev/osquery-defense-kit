@@ -7,7 +7,7 @@
 --   * programs which have legimate uses for /dev/shm (Chrome, etc)
 --
 -- tags: persistent state filesystem
--- platform: linux
+-- platform: posix
 SELECT
   file.path,
   file.type,
@@ -49,5 +49,4 @@ WHERE
   AND file.path NOT LIKE '/dev/shm/libpod_rootless_lock_%'
   AND file.path NOT LIKE '%/../%'
   AND file.path NOT LIKE '%/./%'
-  AND filename NOT IN ('..')
   AND file.path NOT IN ('/dev/.mdadm/')
