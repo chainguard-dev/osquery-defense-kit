@@ -82,6 +82,7 @@ WHERE
   AND NOT exception_key IN (
     '123,17,500,/usr/chronyd,0u,0g,chronyd',
     '22000,6,500,/usr/syncthing,0u,0g,syncthing',
+    '22,6,500,/usr/ssh,0u,0g,ssh',
     '4070,6,500,/opt/spotify,0u,0g,spotify',
     '5228,6,500,/opt/chrome,0u,0g,chrome',
     '5228,6,500,/usr/chrome,0u,0g,chrome', -- Android Market/GCM
