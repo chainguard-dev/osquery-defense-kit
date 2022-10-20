@@ -81,6 +81,7 @@ WHERE protocol > 0
     '5228,6,500,/opt/chrome,0u,0g,chrome',
     '4070,6,500,/opt/spotify,0u,0g,spotify',
     '22000,6,500,/usr/syncthing,0u,0g,syncthing',
+    '123,17,500,/usr/chronyd,0u,0g,chronyd',
     '80,6,0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra'
   )
   AND NOT (
