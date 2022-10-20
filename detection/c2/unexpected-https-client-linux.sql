@@ -94,5 +94,6 @@ WHERE
     '500,/usr/syncthing,0u,0g,syncthing'
   ) -- stay weird, NixOS (Fastly nix mirror)
   AND NOT child_cmd = '/run/current-system/sw/bin/bash'
+  AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm exec %'
 GROUP BY
   p.cmdline
