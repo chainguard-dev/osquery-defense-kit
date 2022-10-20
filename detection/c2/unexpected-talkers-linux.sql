@@ -106,5 +106,12 @@ WHERE
     AND s.protocol = 6
     AND p.euid > 500
   )
+  AND NOT (
+    p.name = 'chrome'
+    AND f.filename = 'chrome'
+    AND s.remote_port > 5000
+    AND s.protocol = 6
+    AND p.euid > 500
+  )
 GROUP BY
   p.cmdline
