@@ -177,6 +177,7 @@ WHERE
     '443,6,500,gh,gh,',
     '443,6,500,git,com.apple.git,Software Signing',
     '443,6,500,git,git,',
+    '443,6,500,git-remote-http,,',
     '443,6,500,git-remote-http,com.apple.git-remote-http,Software Signing',
     '443,6,500,git-remote-http,git-remote-http-5555494493930c47f9d9385e94cdee8b19968153,',
     '443,6,500,git-remote-http,git-remote-http-55554944ce011d0e889a3cf58e5ac97ac15728f3,',
