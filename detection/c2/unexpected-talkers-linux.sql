@@ -91,7 +91,7 @@ WHERE
     '80,6,0,/usr/tailscaled,0u,0g,tailscaled',
     '80,6,0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra',
     '80,6,500,/opt/chrome,0u,0g,chrome',
-    '80,6,500,/snap/firefox,0u,0g,firefox',,
+    '80,6,500,/snap/firefox,0u,0g,firefox',
     '80,6,500,/usr/curl,0u,0g,curl',
     '80,6,500,/usr/firefox,0u,0g,firefox',
     '8080,6,500,/opt/chrome,0u,0g,chrome',
