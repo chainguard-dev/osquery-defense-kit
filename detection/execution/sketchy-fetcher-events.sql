@@ -46,7 +46,7 @@ WHERE
     OR p.cmdline LIKE '%curl.*—write-out%'
     OR p.cmdline LIKE '%curl %--user-agent%'
     OR p.cmdline LIKE '%curl -k%'
-    OR p.cmdline LIKE '%curl -sL%'
+    OR p.cmdline LIKE '%curl -sL %'
     OR p.cmdline LIKE '%curl%--connect-timeout%'
     OR p.cmdline LIKE '%curl%--output /dev/null%'
     OR p.cmdline LIKE '%curl%--O /dev/null%'

@@ -40,7 +40,7 @@ WHERE
     OR p.cmdline LIKE '%pastebin%'
     OR p.cmdline LIKE '%curl %--user-agent%'
     OR p.cmdline LIKE '%curl -k%'
-    OR p.cmdline LIKE '%curl -sL%'
+    OR p.cmdline LIKE '%curl -sL %'
     OR p.cmdline LIKE '%curl%--insecure%'
     OR p.cmdline LIKE '%wget %--user-agent%'
     OR p.cmdline LIKE '%wget %--no-check-certificate%'
