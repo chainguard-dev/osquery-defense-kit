@@ -5,7 +5,7 @@
 --
 -- WARNING: This query is known to require a higher than average wall time.
 --
--- tags: transient state often
+-- tags: transient state
 -- platform: linux
 SELECT
   key,
