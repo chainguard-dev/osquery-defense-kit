@@ -8,7 +8,8 @@
 --
 -- tags: transient state net rapid
 -- platform: linux
-SELECT s.remote_address,
+SELECT
+  s.remote_address,
   p.name,
   p.path,
   p.cmdline AS child_cmd,
@@ -27,12 +28,12 @@ SELECT s.remote_address,
     MIN(p.euid, 500),
     ',',
     REPLACE(
-      REGEX_MATCH(p.path, '(/.*?)/', 1),
+      REGEX_MATCH (p.path, '(/.*?)/', 1),
       '/nix',
       '/usr'
     ),
     '/',
-    REGEX_MATCH(p.path, '.*/(.*?)$', 1),
+    REGEX_MATCH (p.path, '.*/(.*?)$', 1),
     ',',
     MIN(f.uid, 500),
     'u,',
@@ -40,12 +41,14 @@ SELECT s.remote_address,
     'g,',
     p.name
   ) AS exception_key
-FROM process_open_sockets s
+FROM
+  process_open_sockets s
   LEFT JOIN processes p ON s.pid = p.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN file f ON p.path = f.path
   LEFT JOIN hash ON p.path = hash.path
-WHERE protocol > 0
+WHERE
+  protocol > 0
   AND s.remote_port > 0
   -- See unexpected-https-client
   AND NOT (
@@ -99,4 +102,5 @@ WHERE protocol > 0
     AND s.protocol = 6
     AND p.euid > 500
   )
-GROUP BY p.cmdline
+GROUP BY
+  p.cmdline

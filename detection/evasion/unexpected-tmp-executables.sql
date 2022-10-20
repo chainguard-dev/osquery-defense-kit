@@ -5,7 +5,8 @@
 --
 -- tags: persistent
 -- platform: posix
-SELECT file.path,
+SELECT
+  file.path,
   uid,
   gid,
   mode,
@@ -13,10 +14,12 @@ SELECT file.path,
   file.size,
   hash.sha256,
   magic.data
-FROM file
+FROM
+  file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE (
+WHERE
+  (
     -- Recursive queries don't seem to work well with hidden directories :(
     file.path LIKE '/tmp/%%'
     OR file.path LIKE '/tmp/.%/%%'
