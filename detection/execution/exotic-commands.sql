@@ -23,7 +23,7 @@ FROM
   processes p
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
-  LEFT JOIN hash AS phash ON pp.path = hash.path
+  LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE
   -- Known attack scripts
   p.name IN ('nc', 'mkfifo')
@@ -35,9 +35,8 @@ WHERE
   OR cmd LIKE '%incbit%'
   OR cmd LIKE '%traitor%'
   OR cmd LIKE '%msfvenom%'
-  OR
   -- Unusual behaviors
-  cmd LIKE '%ufw disable%'
+  OR cmd LIKE '%ufw disable%'
   OR cmd LIKE '%iptables -P % ACCEPT%'
   OR cmd LIKE '%iptables -F%'
   OR cmd LIKE '%chattr -ia%'
@@ -49,9 +48,9 @@ WHERE
   OR cmd LIKE '%nohup%tmp%'
   OR cmd LIKE '%set visible of front window to false%'
   OR cmd LIKE '%chrome%--load-extension%'
-  OR
+  OR cmd LIKE '%UserKnownHostsFile=/dev/null%'
   -- Crypto miners
-  cmd LIKE '%c3pool%'
+  OR cmd LIKE '%c3pool%'
   OR cmd LIKE '%cryptonight%'
   OR cmd LIKE '%f2pool%'
   OR cmd LIKE '%hashrate%'
@@ -61,14 +60,12 @@ WHERE
   OR cmd LIKE '%nanopool%'
   OR cmd LIKE '%nicehash%'
   OR cmd LIKE '%stratum%'
-  OR
   -- Random keywords
-  cmd LIKE '%ransom%'
+  OR cmd LIKE '%ransom%'
   OR cmd LIKE '%malware%'
   OR cmd LIKE '%plant%'
-  OR
   -- Reverse shells
-  cmd LIKE '%/dev/tcp/%'
+  OR cmd LIKE '%/dev/tcp/%'
   OR cmd LIKE '%/dev/udp/%'
   OR cmd LIKE '%fsockopen%'
   OR cmd LIKE '%openssl%quiet%'
