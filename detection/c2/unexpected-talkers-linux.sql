@@ -8,8 +8,7 @@
 --
 -- tags: transient state net rapid
 -- platform: linux
-SELECT
-  s.remote_address,
+SELECT s.remote_address,
   p.name,
   p.path,
   p.cmdline AS child_cmd,
@@ -28,11 +27,14 @@ SELECT
     MIN(p.euid, 500),
     ',',
     REPLACE(
-      REGEX_MATCH (p.path, '(/.*?)/', 1),
-      '/nix',
-      '/usr'
-    ),
-    '/',
+      REPLACE(
+        REGEX_MATCH (p.path, '(/.*?)/', 1),
+        '/nix',
+        '/usr'
+      ),
+      '/snap',
+      '/opt'
+    ) '/',
     REGEX_MATCH (p.path, '.*/(.*?)$', 1),
     ',',
     MIN(f.uid, 500),
@@ -41,21 +43,17 @@ SELECT
     'g,',
     p.name
   ) AS exception_key
-FROM
-  process_open_sockets s
+FROM process_open_sockets s
   LEFT JOIN processes p ON s.pid = p.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN file f ON p.path = f.path
   LEFT JOIN hash ON p.path = hash.path
-WHERE
-  protocol > 0
-  AND s.remote_port > 0
-  -- See unexpected-https-client
+WHERE protocol > 0
+  AND s.remote_port > 0 -- See unexpected-https-client
   AND NOT (
     s.remote_port = 443
     AND protocol IN (6, 17)
-  )
-  -- See unexpected-dns-traffic
+  ) -- See unexpected-dns-traffic
   AND NOT (
     s.remote_port = 53
     AND protocol IN (6, 17)
@@ -85,14 +83,14 @@ WHERE
     '22,6,500,/usr/ssh,0u,0g,ssh',
     '4070,6,500,/opt/spotify,0u,0g,spotify',
     '5228,6,500,/opt/chrome,0u,0g,chrome',
-    '5228,6,500,/usr/chrome,0u,0g,chrome', -- Android Market/GCM
+    '5228,6,500,/usr/chrome,0u,0g,chrome',
     '8000,6,500,/opt/chrome,0u,0g,chrome',
     '8000,6,500,/usr/firefox,0u,0g,firefox',
-    '80,6,0,/usr/NetworkManager,0u,0g,NetworkManager', -- fedoraproject.org
+    '80,6,0,/usr/NetworkManager,0u,0g,NetworkManager',
     '80,6,0,/usr/tailscaled,0u,0g,tailscaled',
     '80,6,0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra',
     '80,6,500,/opt/chrome,0u,0g,chrome',
-    '80,6,500,/snap/firefox,0u,0g,firefox',
+    '80,6,500,/opt/firefox,0u,0g,firefox',
     '80,6,500,/usr/curl,0u,0g,curl',
     '80,6,500,/usr/firefox,0u,0g,firefox',
     '8080,6,500,/opt/chrome,0u,0g,chrome',
@@ -107,5 +105,4 @@ WHERE
     AND s.protocol = 6
     AND p.euid > 500
   )
-GROUP BY
-  p.cmdline
+GROUP BY p.cmdline
