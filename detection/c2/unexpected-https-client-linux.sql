@@ -78,6 +78,7 @@ WHERE protocol IN (6, 17)
     '500,/usr/chrome,0u,0g,chrome',
     '500,/usr/code,0u,0g,code',
     '500,/usr/curl,0u,0g,curl',
+    '500,/usr/electron,0u,0g,electron',
     '500,/usr/firefox,0u,0g,firefox',
     '500,/usr/firefox,0u,0g,.firefox-wrappe',
     '500,/usr/flatpak-oci-authenticator,0u,0g,flatpak-oci-aut',
