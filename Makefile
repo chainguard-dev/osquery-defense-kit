@@ -16,4 +16,8 @@ packs: out/odk-detection.sql out/odk-policy.sql out/odk-incident_response.sql
 out/odk-packs.zip: packs
 	cd out && zip odk-packs.zip *.conf
 
+.PHONY: reformat
+reformat:
+	find . -type f -name "*.sql" | perl -ne 'chomp; system("cp $$_ /tmp/fix.sql && npx sql-formatter -l sqlite /tmp/fix.sql > $$_");'
+
 all: out/odk-packs.zip
