@@ -8,7 +8,8 @@
 --
 -- tags: transient state net rapid
 -- platform: linux
-SELECT s.remote_address,
+SELECT
+  s.remote_address,
   p.name,
   p.path,
   p.cmdline AS child_cmd,
@@ -30,7 +31,8 @@ SELECT s.remote_address,
       ),
       '/snap',
       '/opt'
-    ) '/',
+    ),
+    '/',
     REGEX_MATCH (p.path, '.*/(.*?)$', 1),
     ',',
     MIN(f.uid, 500),
@@ -39,12 +41,14 @@ SELECT s.remote_address,
     'g,',
     p.name
   ) AS exception_key
-FROM process_open_sockets s
+FROM
+  process_open_sockets s
   LEFT JOIN processes p ON s.pid = p.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN file f ON p.path = f.path
   LEFT JOIN hash ON p.path = hash.path
-WHERE protocol IN (6, 17)
+WHERE
+  protocol IN (6, 17)
   AND s.remote_port = 443
   AND s.remote_address NOT IN ('127.0.0.1', '::ffff:127.0.0.1', '::1')
   AND s.remote_address NOT LIKE 'fe80:%'
@@ -90,4 +94,5 @@ WHERE protocol IN (6, 17)
     '500,/usr/syncthing,0u,0g,syncthing'
   ) -- stay weird, NixOS (Fastly nix mirror)
   AND NOT child_cmd = '/run/current-system/sw/bin/bash'
-GROUP BY p.cmdline
+GROUP BY
+  p.cmdline
