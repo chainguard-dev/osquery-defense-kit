@@ -94,6 +94,7 @@ WHERE
     '/Library/Preferences/.GlobalPreferences.plist',
     '/Library/Printers/',
     '/Library/PrivilegedHelperTools/',
+    '/Library/Python/',
     '/Library/QuickLook/',
     '/Library/Receipts/',
     '/Library/Ruby/',
@@ -123,4 +124,4 @@ WHERE
     '/Library/WebServer/Documents/index.html.en',
     '/Library/WebServer/share/'
   )
-  AND NOT file.path LIKE '/Library/Caches/.00%'
+  AND NOT file.path LIKE '/Library/Caches/.0%'
