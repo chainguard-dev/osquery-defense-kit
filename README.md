@@ -1,22 +1,22 @@
 # osquery-defense-kit
 
-Real-world queries for using osquery as part of a detection & response pipeline.
+Production-ready detection & response queries for osquery
 
 ![osquery-defense-kit](images/logo-small.png?raw=true "osquery-defense-kit logo")
 
-Primarily focused on threat detection on POSIX platforms (Linux, macOS), the osquery-defense-kit (ODK) differs from
-existing published query sets in that they are designed to be used in an alert pipeline. Most queries (particularly those in `detection` and `policy`) should return 0 results
-unless an exceptional behavior is detected.
+ODK (osquery-defense-kit) is unique in that the queries are designed to be used as part of a production detection & response pipeline. The detection queries are formulated to return zero rows during normal expected behavior, so that they may be configured to generate alerts when rows are returned.
+
+At the moment, these queries are predominantly designed for execution on POSIX platforms (Linux & macOS). Pull requests to improve support on other platforms are fully welcome.
 
 ## Organization
 
 * `detection/` - Threat detection queries tuned for alert generation.
-* `response/` - Data collection to assist in responding to possible threats. Tuned for periodic evidence collection.
 * `policy/` - Security policy queries tuned for alert generation.
+* `response/` - Data collection to assist in responding to possible threats. Tuned for periodic evidence collection.
 
 The detection queries are further divided up by [MITRE ATT&CK](https://attack.mitre.org/) tactics categories.
 
-Periodically, queries published in [osquery query pack](https://osquery.readthedocs.io/en/stable/deployment/configuration/#query-packs) format. See `Local Pack Generation` for information on how to generate your own.
+At release time, the queries are packed up in [osquery query pack](https://osquery.readthedocs.io/en/stable/deployment/configuration/#query-packs) format. See `Local Pack Generation` for information on how to generate your own packs at any time.
 
 ## Detection on Linux Case Study: Shikitega (September 2022)
 
