@@ -80,6 +80,7 @@ WHERE
     '500,/home/go,500u,500g,go',
     '500,/ko-app/chainctl,u,g,chainctl',
     '500,/ko-app/controlplane,u,g,controlplane',
+    '500,/opt/1password,0u,0g,1password',
     '500,/opt/chrome,0u,0g,chrome',
     '500,/opt/firefox,0u,0g,firefox',
     '500,/opt/kubectl,0u,0g,kubectl',
@@ -104,6 +105,7 @@ WHERE
     '500,/usr/terraform,0u,0g,terraform',
     '500,/usr/WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '500,/usr/xmobar,0u,0g,xmobar'
+
   )
   -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm exec %'
