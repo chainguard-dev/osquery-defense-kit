@@ -35,7 +35,7 @@ FROM
   process_events p
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
-  LEFT JOIN hash AS phash ON pp.path = hash.path
+  LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE
   p.time > (strftime('%s', 'now') -60)
   AND (
