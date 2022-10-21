@@ -30,8 +30,8 @@ FROM
   JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN file ON p.path = file.path
   LEFT JOIN hash ON p.path = hash.path
-  LEFT JOIN file AS pfile ON pp.path = file.path
-  LEFT JOIN hash AS phash ON pp.path = hash.path
+  LEFT JOIN file AS pfile ON pp.path = pfile.path
+  LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE
   p.euid < pp.euid
   AND p.path NOT IN (

@@ -6,7 +6,7 @@
 -- false positives:
 --   * developers downloading binaries from Github
 --
--- platform: macos
+-- platform: darwin
 -- tags: persistent filesystem state gatekeeper
 SELECT
   gap.ctime,
