@@ -70,7 +70,7 @@ WHERE
   OR cmd LIKE '%fsockopen%'
   OR cmd LIKE '%openssl%quiet%'
   OR cmd LIKE '%pty.spawn%'
-  OR cmd LIKE '%sh -i'
+  OR (cmd LIKE '%sh -i' AND NOT parent_name='sh')
   OR cmd LIKE '%socat%'
   OR cmd LIKE '%SOCK_STREAM%'
   OR cmd LIKE '%Socket.fork%'
