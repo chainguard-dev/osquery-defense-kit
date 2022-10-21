@@ -51,21 +51,17 @@ WHERE
       'rshell',
       'rsh',
       'incbit',
-      'osascript',
       'kmod',
       'lushput',
       'mkfifo',
       'msfvenom',
       'nc',
       'socat'
-    )
-    -- Chrome Stealer
+    ) -- Chrome Stealer
     OR cmd LIKE '%set visible of front window to false%'
-    OR cmd LIKE '%chrome%-load-extension%'
-    -- Known attack scripts
+    OR cmd LIKE '%chrome%-load-extension%' -- Known attack scripts
     OR basename LIKE '%pwn%'
-    OR basename LIKE '%attack%'
-    -- Unusual behaviors
+    OR basename LIKE '%attack%' -- Unusual behaviors
     OR cmd LIKE '%chattr -ia%'
     OR cmd LIKE '%chmod 777 %'
     OR cmd LIKE '%touch%acmr%'
@@ -83,17 +79,25 @@ WHERE
     OR cmd LIKE '%nohup /bin/bash%'
     OR cmd LIKE '%echo%|%base64 --decode %|%'
     OR cmd LIKE '%launchctl list%'
-    OR (cmd LIKE '%UserKnownHostsFile=/dev/null%' AND NOT parent_name='limactl')
-    -- Random keywords
-    OR cmd LIKE '%ransom%'
-    -- Reverse shells
+    OR (
+      cmd LIKE '%UserKnownHostsFile=/dev/null%'
+      AND NOT parent_name = 'limactl'
+    ) -- Random keywords
+    OR cmd LIKE '%ransom%' -- Reverse shells
     OR cmd LIKE '%fsockopen%'
     OR cmd LIKE '%openssl%quiet%'
     OR cmd LIKE '%pty.spawn%'
-    OR (cmd LIKE '%sh -i' AND NOT parent_name='sh')
+    OR (
+      cmd LIKE '%sh -i'
+      AND NOT parent_name = 'sh'
+    )
     OR cmd LIKE '%socat%'
     OR cmd LIKE '%SOCK_STREAM%'
-    OR (cmd LIKE '%Socket.%' AND NOT basename='compile')
+    OR (
+      cmd LIKE '%Socket.%'
+      AND NOT basename IN ('compile', 'sed', 'mv')
+      AND NOT cmd LIKE "%sys/socket.h%"
+    )
   ) -- Things that could reasonably happen at boot.
   AND NOT (
     p.path = '/usr/bin/mkfifo'
@@ -102,8 +106,7 @@ WHERE
   AND NOT (
     cmd LIKE '%csrutil status'
     AND parent_name IN ('Dropbox')
-  )
-  -- The source of these commands is still a mystery to me.
+  ) -- The source of these commands is still a mystery to me.
   AND NOT (
     cmd IN (
       '/usr/bin/csrutil status',
@@ -111,9 +114,4 @@ WHERE
     )
     AND p.parent = -1
   )
-  AND NOT cmd LIKE 'osascript -e set zoomStatus%'
   AND NOT cmd LIKE '/bin/rm -f /tmp/periodic.%'
-  AND NOT cmd IN (
-    'osascript -e user locale of (get system info)',
-    'osascript'
-  )
