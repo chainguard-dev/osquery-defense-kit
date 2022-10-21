@@ -145,6 +145,7 @@ WHERE
     '/dev/media0,wireplumber',
     '/dev/media,pipewire',
     '/dev/media,wireplumber',
+    '/dev/uhid,bluetoothd',
     '/dev/net/tun,slirp4netns',
     '/dev/tty,agetty',
     '/dev/tty,gdm-wayland-session',
