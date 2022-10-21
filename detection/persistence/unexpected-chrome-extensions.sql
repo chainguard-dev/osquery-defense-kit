@@ -51,11 +51,12 @@ WHERE
   AND enabled = 1
   AND exception_key NOT IN (
     'false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,,background', -- TODO: Move to local exceptions list once osqtool supports them
+    'false,,Google Chat,chfbpgnooceecdoohagngmjnndbbaeip,', -- Deprecated Google Extension
     'false,,Google Chat,mdpkiolbdkhdjpekfbkbmhigcaggjagi,', -- Deprecated Google Extension
     'false,,Google Cloud,gmdcbpephenfeelhagpbceidhdbobfpk,', -- Deprecated Google Extension
     'false,,Google Drive,aghbiahbpaijignceidepookljebhfak,', -- Deprecated Google Extension
     'false,,Google Photos,ncmjhecbjeaamljdfahankockkkdmedg,', -- Deprecated Google Extension
-    -- SUS
+    'false,,YouTube,agimnkijcaahngcdmfeangaknmldooml,', -- Deprecated Google Extension
     'true,Adaware,Safe Torrent Scanner,aegnopegbbhjeeiganiajffnalhlkkjb,storage, tabs',
     'true,,Adblock for Youtube™,cmedhionkhpnakcndndgjdbohmhepckk,storage, unlimitedStorage, webRequest, webRequestBlocking, <all_urls>',
     'true,,Add to Amazon Wish List,ciagpekplgpbepdgggflgmahnjgiaced,tabs, http://*/*, https://*/*',
@@ -64,6 +65,7 @@ WHERE
     'true,AgileBits,1Password – Password Manager,aeblfdkhhhdcdjpifhhbdiojplfjncoa,<all_urls>, contextMenus, downloads, idle, management, nativeMessaging, notifications, privacy, tabs, webNavigation, webRequest, webRequestBlocking',
     'true,Alexander Shutau,Dark Reader,eimadpbcbfnmbkopoojfekhnkhdbieeh,alarms, fontSettings, storage, tabs, <all_urls>',
     'true,All uBlock contributors,uBlock - free ad blocker,epcnnfbjfcgphgdmggkamkmgojdagdnn,contextMenus, storage, tabs, unlimitedStorage, webNavigation, webRequest, webRequestBlocking, <all_urls>',
+    'true,,Bardeen - automate workflows with one click,ihhkmalpkhkoedlmcnilbbhhbhnicjga,<all_urls>, webNavigation, unlimitedStorage, notifications, activeTab, tabs, storage, *://*/*, history, bookmarks, contextMenus',
     'true,BetaFish,AdBlock — best ad blocker,gighmmpiobklfepjocnamgkkbiglidom,tabs, <all_urls>, contextMenus, webRequest, webRequestBlocking, webNavigation, storage, unlimitedStorage, notifications, idle, alarms',
     'true,Bitwarden Inc.,Bitwarden - Free Password Manager,nngceckbapebfimnlniiiahkandclblb,tabs, contextMenus, storage, unlimitedStorage, clipboardRead, clipboardWrite, idle, http://*/*, https://*/*, webRequest, webRequestBlocking',
     'true,,BrowserStack Local,mfiddfehmfdojjfdpfngagldgaaafcfo,https://*.bsstag.com/*, https://*.browserstack.com/*, , clipboardWrite, app.window, storage',
@@ -116,6 +118,7 @@ WHERE
     'true,Kas Elvirov,GitHub Gloc,kaodcnpebhdbpaeeemkiobcokcnegdki,storage, *://*.github.com/*',
     'true,Keepa GmbH,Keepa - Amazon Price Tracker,neebplgakaahbhdphmkckjjcegoiijjo,storage, cookies, contextMenus, *://*.keepa.com/*, *://*.amazon.com/*, *://*.amzn.com/*, *://*.amazon.co.uk/*, *://*.amazon.de/*, *://*.amazon.fr/*, *://*.amazon.it/*, *://*.amazon.ca/*, *://*.amazon.com.mx/*, *://*.amazon.es/*, *://*.amazon.co.jp/*, *://*.amazon.in/*, *://*.amazon.com.br/*, *://*.amazon.nl/*, *://*.amazon.com.au/*',
     'true,LastPass,LastPass: Free Password Manager,hdokiejnpimakedhajhdlcegeplioahd,tabs, idle, notifications, contextMenus, unlimitedStorage, webRequest, webNavigation, webRequestBlocking, http://*/*, https://*/*, chrome://favicon/*',
+    'true,Leadjet,Leadjet - Make your CRM work on LinkedIn,kojhcdejfimplnokhhhekhiapceggamn,storage, tabs, cookies',
     'true,,Lolli: Earn Bitcoin When You Shop,fleenceagaplaefnklabikkmocalkcpo,<all_urls>, tabs, webNavigation, webRequest',
     'true,,Loom – Free Screen Recorder & Screen Capture,liecbddmkiiihnedobmlmillhodjkdmb,<all_urls>, tabCapture, webNavigation, activeTab, contextMenus, storage, tabs, desktopCapture, notifications, cookies, *://*.useloom.com/, *://*.loom.com/, http://localhost/*',
     'true,,Loom – Free Screen Recorder & Screen Capture,liecbddmkiiihnedobmlmillhodjkdmb,tabCapture, webNavigation, activeTab, contextMenus, storage, tabs, desktopCapture, notifications, cookies, *://*.useloom.com/, *://*.loom.com/, http://localhost/*',
@@ -156,6 +159,7 @@ WHERE
     'true,,Todoist for Chrome,jldhpllghnbhlbpcmnajkpdmadaolakh,storage, tabs, contextMenus, webRequest, webRequestBlocking, http://*.todoist.com/*, https://*.todoist.com/*, background, declarativeNetRequestWithHostAccess',
     'true,Tulio Ornelas <ornelas.tulio@gmail.com>,JSON Viewer,gbmdgpbipfallnflgajpaliibnhdgobh,*://*/*, <all_urls>',
     'true,,Ubiquiti Device Discovery Tool,hmpigflbjeapnknladcfphgkemopofig,system.network, clipboardRead, clipboardWrite, notifications, storage, unlimitedStorage,',
+    'true,,uBlock,epcnnfbjfcgphgdmggkamkmgojdagdnn,tabs, <all_urls>, webRequest, webRequestBlocking, webNavigation, storage, unlimitedStorage',
     'true,,UET Tag Helper (by Microsoft Advertising),naijndjklgmffmpembnkfbcjbognokbf,activeTab, downloads, tabs, webNavigation, webRequest, http://*/, https://*/',
     'true,,Utime,kpcibgnngaaabebmcabmkocdokepdaki,clipboardWrite, contextMenus, notifications',
     'true,,Vimium,dbepggeogbaibhgnhhndojpepiihcmeb,tabs, bookmarks, history, clipboardRead, storage, sessions, notifications, webNavigation, <all_urls>',
