@@ -8,7 +8,7 @@
 --
 -- tags: transient process events
 -- platform: darwin
--- interval: 60
+-- interval: 45
 SELECT
   p.pid,
   p.path,
@@ -35,9 +35,9 @@ FROM
   process_events p
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
-  LEFT JOIN hash AS phash ON pp.path = hash.path
+  LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE
-  p.time > (strftime('%s', 'now') -60)
+  p.time > (strftime('%s', 'now') -45)
   AND (
     basename IN (
       'bitspin',
@@ -83,17 +83,17 @@ WHERE
     OR cmd LIKE '%nohup /bin/bash%'
     OR cmd LIKE '%echo%|%base64 --decode %|%'
     OR cmd LIKE '%launchctl list%'
-    OR cmd LIKE '%UserKnownHostsFile=/dev/null%'
+    OR (cmd LIKE '%UserKnownHostsFile=/dev/null%' AND NOT parent_name='limactl')
     -- Random keywords
     OR cmd LIKE '%ransom%'
     -- Reverse shells
     OR cmd LIKE '%fsockopen%'
     OR cmd LIKE '%openssl%quiet%'
     OR cmd LIKE '%pty.spawn%'
-    OR cmd LIKE '%sh -i'
+    OR (cmd LIKE '%sh -i' AND NOT parent_name='sh')
     OR cmd LIKE '%socat%'
     OR cmd LIKE '%SOCK_STREAM%'
-    OR cmd LIKE '%Socket.%'
+    OR (cmd LIKE '%Socket.%' AND NOT basename='compile')
   ) -- Things that could reasonably happen at boot.
   AND NOT (
     p.path = '/usr/bin/mkfifo'
@@ -110,4 +110,10 @@ WHERE
       '/usr/bin/csrutil report'
     )
     AND p.parent = -1
+  )
+  AND NOT cmd LIKE 'osascript -e set zoomStatus%'
+  AND NOT cmd LIKE '/bin/rm -f /tmp/periodic.%'
+  AND NOT cmd IN (
+    'osascript -e user locale of (get system info)',
+    'osascript'
   )
