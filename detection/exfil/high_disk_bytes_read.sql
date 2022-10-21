@@ -26,7 +26,7 @@ FROM
   processes p
   LEFT JOIN hash ON p.path = hash.path
 WHERE
-  bytes_per_second > 2000000
+  bytes_per_second > 2500000
   AND age > 180
   AND p.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p.path NOT LIKE '/System/Library/%'
@@ -45,6 +45,7 @@ WHERE
     'launcher',
     'LogiFacecamService',
     'nautilus',
+    'systemd',
     'nessusd',
     'nix',
     'osqueryd',
