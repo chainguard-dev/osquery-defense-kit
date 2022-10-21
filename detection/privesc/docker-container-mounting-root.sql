@@ -8,16 +8,18 @@
 -- dependent on the polling time.
 --
 -- platform: linux
--- tags: transient often container escalation
+-- tags: transient rapid container escalation
 SELECT
   command,
   image_id,
   path,
+  source,
+  destination,
   security_options,
   started_at,
   image
 FROM
-  docker_containers
+  docker_container_mounts AS dcm
+  LEFT JOIN docker_containers dc ON dcm.id = dc.id
 WHERE
-  privileged = 1
-  AND image NOT LIKE 'kindest/node:%';
+  dcm.source="/"
