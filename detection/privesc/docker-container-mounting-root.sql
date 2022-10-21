@@ -22,4 +22,4 @@ FROM
   docker_container_mounts AS dcm
   LEFT JOIN docker_containers dc ON dcm.id = dc.id
 WHERE
-  dcm.source="/"
+  dcm.source = "/"
