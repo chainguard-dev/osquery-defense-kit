@@ -26,7 +26,13 @@ FROM
   process_events p
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
-  LEFT JOIN hash AS phash ON pp.path = hash.path
+  LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE
   p.path = '/usr/bin/osascript'
   AND p.time > (strftime('%s', 'now') -60)
+  AND NOT cmd LIKE 'osascript -e set zoomStatus%'
+  AND NOT cmd LIKE 'osascript openChrome.applescript http://127.0.0.1:%'
+  AND NOT cmd IN (
+    'osascript -e user locale of (get system info)',
+    'osascript'
+  )
