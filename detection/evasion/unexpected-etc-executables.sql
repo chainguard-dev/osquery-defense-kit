@@ -31,10 +31,13 @@ WHERE
     '/etc/acpi',
     '/etc/alternatives',
     '/etc/apcupsd',
+    '/etc/kde/shutdown',
     '/etc/apm/resume.d',
     '/etc/apm/scripts.d',
+    '/etc/nix/result',
     '/etc/apm/suspend.d',
     '/etc/avahi',
+    '/etc/nix/result/sw/bin',
     '/etc/bash_completion.d',
     '/etc/brltty/Contraction',
     '/etc/chromium/native-messaging-hosts',
@@ -132,7 +135,11 @@ WHERE
   AND file.path NOT IN (
     '/etc/nftables.conf',
     '/etc/rmt',
+    '/etc/paths.d/100-rvictl',
+    '/etc/profile',
     '/etc/qemu-ifdown',
     '/etc/qemu-ifup',
     '/etc/opt/chrome/native-messaging-hosts/com.google.endpoint_verification.api_helper.json'
   )
+  -- Nix (on macOS) -- actually a symbolic link
+  AND file.path NOT LIKE '/etc/profiles/per-user/%/bin/%'

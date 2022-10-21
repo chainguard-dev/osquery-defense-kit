@@ -94,6 +94,7 @@ WHERE
     '58,255,500,dhcpcd',
     '58,255,500,mtr-packet',
     '631,17,0,cups-browsed',
+    '5000,6,0,registry',
     '6379,6,500,redis-server',
     '6443,6,0,kube-apiserver',
     '67,17,500,dnsmasq',

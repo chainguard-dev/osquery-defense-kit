@@ -83,6 +83,7 @@ WHERE
   AND p.path != ''
   AND NOT exception_key IN (
     '123,17,500,/usr/chronyd,0u,0g,chronyd',
+    '143,6,500,/app/thunderbird,u,g,thunderbird',
     '22000,6,500,/usr/syncthing,0u,0g,syncthing',
     '22,6,500,/usr/ssh,0u,0g,ssh',
     '4070,6,500,/opt/spotify,0u,0g,spotify',
@@ -93,14 +94,17 @@ WHERE
     '80,6,0,/usr/NetworkManager,0u,0g,NetworkManager',
     '80,6,0,/usr/tailscaled,0u,0g,tailscaled',
     '80,6,0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra',
+    '80,6,500,/app/thunderbird,u,g,thunderbird',
     '80,6,500,/opt/chrome,0u,0g,chrome',
     '80,6,500,/opt/firefox,0u,0g,firefox',
+    '80,6,500,/usr/chrome,0u,0g,chrome',
     '80,6,500,/usr/curl,0u,0g,curl',
     '80,6,500,/usr/firefox,0u,0g,firefox',
     '8080,6,500,/opt/chrome,0u,0g,chrome',
     '8080,6,500,/usr/firefox,0u,0g,firefox',
     '8443,6,500,/opt/chrome,0u,0g,chrome',
-    '8443,6,500,/usr/firefox,0u,0g,firefox'
+    '8443,6,500,/usr/firefox,0u,0g,firefox',
+    '993,6,500,/app/thunderbird,u,g,thunderbird'
   )
   AND NOT (
     p.name = 'syncthing'

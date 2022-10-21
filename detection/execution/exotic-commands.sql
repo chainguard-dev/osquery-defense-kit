@@ -6,22 +6,22 @@
 -- tags: transient process state
 -- platform: posix
 SELECT
-  p.pid,
   p.path,
   p.name,
   p.cmdline AS cmd,
   p.cwd,
   p.euid,
   p.parent,
-  pp.path AS parent_path,
   pp.name AS parent_name,
   pp.cmdline AS parent_cmd,
-  pp.euid AS parent_euid,
+  cp.name AS child_name,
+  cp.cmdline AS child_cmd,
   hash.sha256 AS child_sha256,
   phash.sha256 AS parent_sha256
 FROM
   processes p
   LEFT JOIN processes pp ON p.parent = pp.pid
+  LEFT JOIN processes cp ON p.pid = cp.parent
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE
@@ -48,7 +48,7 @@ WHERE
   OR cmd LIKE '%nohup%tmp%'
   OR cmd LIKE '%set visible of front window to false%'
   OR cmd LIKE '%chrome%--load-extension%'
-  OR cmd LIKE '%UserKnownHostsFile=/dev/null%'
+  OR (cmd LIKE '%UserKnownHostsFile=/dev/null%' AND NOT parent_name='limactl')
   -- Crypto miners
   OR cmd LIKE '%c3pool%'
   OR cmd LIKE '%cryptonight%'

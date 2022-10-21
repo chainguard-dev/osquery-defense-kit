@@ -67,33 +67,55 @@ WHERE
     '0,/usr/dockerd,0u,0g,dockerd',
     '0,/usr/flatpak-system-helper,0u,0g,flatpak-system-',
     '0,/usr/launcher,0u,0g,launcher',
+    '0,/usr/nix,0u,0g,nix',
     '0,/usr/packagekitd,0u,0g,packagekitd',
+    '0,/usr/pacman,0u,0g,pacman',
     '0,/usr/tailscaled,0u,0g,tailscaled',
     '0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra',
     '500,/app/slack,u,g,slack',
+    '500,/app/thunderbird,u,g,thunderbird',
     '500,/app/zoom.real,u,g,zoom.real',
     '500,/home/chainctl,500u,500g,chainctl',
+    '500,/home/gitsign,500u,500g,gitsign',
+    '500,/home/go,500u,500g,go',
     '500,/ko-app/chainctl,u,g,chainctl',
     '500,/ko-app/controlplane,u,g,controlplane',
+    '500,/opt/1password,0u,0g,1password',
     '500,/opt/chrome,0u,0g,chrome',
     '500,/opt/firefox,0u,0g,firefox',
+    '500,/opt/kubectl,0u,0g,kubectl',
     '500,/opt/slack,0u,0g,slack',
     '500,/opt/spotify,0u,0g,spotify',
+    '500,/usr/chainctl,0u,0g,chainctl',
     '500,/usr/chrome,0u,0g,chrome',
     '500,/usr/code,0u,0g,code',
     '500,/usr/curl,0u,0g,curl',
     '500,/usr/electron,0u,0g,electron',
     '500,/usr/firefox,0u,0g,firefox',
     '500,/usr/firefox,0u,0g,.firefox-wrappe',
+    '500,/usr/firefox,0u,0g,Socket Process',
     '500,/usr/flatpak-oci-authenticator,0u,0g,flatpak-oci-aut',
     '500,/usr/geoclue,0u,0g,geoclue',
     '500,/usr/gitsign,0u,0g,gitsign',
     '500,/usr/gnome-software,0u,0g,gnome-software',
+    '500,/usr/go,500u,500g,go',
     '500,/usr/kubectl,500u,500g,kubectl',
     '500,/usr/slack,0u,0g,slack',
-    '500,/usr/syncthing,0u,0g,syncthing'
-  ) -- stay weird, NixOS (Fastly nix mirror)
-  AND NOT child_cmd = '/run/current-system/sw/bin/bash'
+    '500,/usr/syncthing,0u,0g,syncthing',
+    '500,/usr/terraform,0u,0g,terraform',
+    '500,/usr/WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
+    '500,/usr/xmobar,0u,0g,xmobar'
+
+  )
+  -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm exec %'
+  AND NOT exception_key LIKE '500,%/terraform-provider-aws_%,500u,500g,terraform-provi'
+  -- stay weird, NixOS (Fastly nix mirror)
+  AND NOT (
+    pp.cmdline = '/run/current-system/sw/bin/bash'
+    AND p.path LIKE '/nix/store/%'
+    AND s.remote_address LIKE '151.101.%'
+    AND s.state = 'ESTABLISHED'
+  )
 GROUP BY
   p.cmdline
