@@ -40,6 +40,7 @@ WHERE
     'icloud',
     'jpeg',
     'jpg',
+    'mov',
     'mp3',
     'mp4',
     'mpeg',

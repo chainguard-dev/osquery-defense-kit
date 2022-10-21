@@ -96,6 +96,7 @@ WHERE
     'esbuild',
     'firefox',
     'go',
+    'grype',
     'goland',
     'java',
     'launcher',

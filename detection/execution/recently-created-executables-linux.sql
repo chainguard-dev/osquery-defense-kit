@@ -42,6 +42,7 @@ WHERE
     '/opt/google/chrome/chrome',
     '/usr/bin/containerd',
     '/usr/bin/dockerd',
+    '/usr/bin/gedit',
     '/usr/bin/obs',
     '/usr/bin/pipewire',
     '/usr/bin/tailscaled',
