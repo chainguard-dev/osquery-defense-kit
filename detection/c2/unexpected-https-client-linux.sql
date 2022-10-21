@@ -75,6 +75,7 @@ WHERE
     '500,/app/slack,u,g,slack',
     '500,/app/thunderbird,u,g,thunderbird',
     '500,/app/zoom.real,u,g,zoom.real',
+    '0,/usr/python3.10,0u,0g,dnf',
     '500,/home/chainctl,500u,500g,chainctl',
     '500,/home/gitsign,500u,500g,gitsign',
     '500,/home/go,500u,500g,go',
@@ -86,6 +87,7 @@ WHERE
     '500,/opt/kubectl,0u,0g,kubectl',
     '500,/opt/slack,0u,0g,slack',
     '500,/opt/spotify,0u,0g,spotify',
+    '500,/usr/abrt-action-generate-core-backtrace,0u,0g,abrt-action-gen',
     '500,/usr/chainctl,0u,0g,chainctl',
     '500,/usr/chrome,0u,0g,chrome',
     '500,/usr/code,0u,0g,code',
@@ -105,7 +107,6 @@ WHERE
     '500,/usr/terraform,0u,0g,terraform',
     '500,/usr/WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '500,/usr/xmobar,0u,0g,xmobar'
-
   )
   -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm exec %'
