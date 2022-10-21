@@ -21,8 +21,6 @@ WHERE
     'kubernetes'
   )
   AND address NOT IN (
-    '127.0.1.1',
-    '127.0.0.1',
     '::1',
     'ff02::1',
     'ff02::2',
@@ -30,6 +28,7 @@ WHERE
     'fe00::0',
     'ff00::0'
   )
+  AND address NOT LIKE '127.%'
   AND hostnames NOT LIKE 'localhost.%'
   AND hostnames NOT LIKE '%.svc'
   AND hostnames NOT LIKE '%.%-%.%.dev'
