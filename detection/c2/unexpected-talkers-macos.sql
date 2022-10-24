@@ -135,6 +135,7 @@ WHERE
     '43,6,500,DropboxMacUpdate,com.dropbox.DropboxMacUpdate,Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     '443,17,500,Code Helper,com.microsoft.VSCode.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,17,500,Evernote Helper,com.evernote.Evernote.helper,Apple Mac OS Application Signing',
+    '443,17,500,GitKraken Boards,com.axosoft.glo,Apple iPhone OS Application Signing',
     '443,17,500,Reflect Helper,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     '443,17,500,Slack Helper,,',
     '443,6,0,com.apple.MobileSoftwareUpdate.UpdateBrainService,com.apple.MobileSoftwareUpdate.UpdateBrainService,Software Signing',
