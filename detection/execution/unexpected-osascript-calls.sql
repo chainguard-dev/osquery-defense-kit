@@ -47,10 +47,10 @@ FROM
 WHERE
   p.path = '/usr/bin/osascript'
   AND p.time > (strftime('%s', 'now') -60)
-  AND cmd NOT IN ('osascript -e user locale of (get system info)')
   AND exception_key NOT IN (
     'com.vng.zalo,Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),osascript -ss'
   )
+  AND cmd NOT IN ('osascript -e user locale of (get system info)')
   AND cmd NOT LIKE '/usr/bin/osascript /Users/%/Library/Caches/com.runningwithcrayons.Alfred/Workflow Scripts/%'
   -- We don't want to allow all of Python as an exception
   AND NOT (
