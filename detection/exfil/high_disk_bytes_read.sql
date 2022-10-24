@@ -60,6 +60,7 @@ WHERE
   AND NOT p.path IN (
     '/usr/bin/dockerd',
     '/usr/bin/gnome-shell',
+    '/usr/libexec/coreduetd',
     '/usr/bin/udevadm',
     '/usr/libexec/aned',
     '/usr/libexec/logd',
