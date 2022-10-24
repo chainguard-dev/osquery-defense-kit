@@ -95,6 +95,7 @@ WHERE
     '80,6,0,/usr/applydeltarpm,0u,0g,applydeltarpm',
     '8000,6,500,/usr/firefox,0u,0g,firefox',
     '80,6,0,/usr/NetworkManager,0u,0g,NetworkManager',
+    '80,6,500,/usr/firefox,0u,0g,.firefox-wrappe',
     '80,6,0,/usr/tailscaled,0u,0g,tailscaled',
     '80,6,0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra',
     '80,6,500,/app/thunderbird,u,g,thunderbird',
