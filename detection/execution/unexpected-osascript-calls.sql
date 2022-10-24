@@ -27,7 +27,7 @@ FROM
   uptime,
   process_events p
   LEFT JOIN processes pp ON p.parent = pp.pid
-  LEFT JOIN hash  ON pp.path = hash.path
+  LEFT JOIN hash ON pp.path = hash.path
   LEFT JOIN signature ON pp.path = signature.path
 WHERE
   p.path = '/usr/bin/osascript'

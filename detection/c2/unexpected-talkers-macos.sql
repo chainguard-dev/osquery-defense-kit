@@ -4,8 +4,9 @@
 --   * https://attack.mitre.org/techniques/T1071/ (C&C, Application Layer Protocol)
 --
 -- tags: transient state net often
--- platform: macos
-SELECT protocol,
+-- platform: darwin
+SELECT
+  protocol,
   s.local_port,
   s.remote_port,
   s.remote_address,
@@ -31,12 +32,14 @@ SELECT protocol,
     ',',
     signature.authority
   ) AS exception_key
-FROM process_open_sockets s
+FROM
+  process_open_sockets s
   LEFT JOIN processes p ON s.pid = p.pid
   LEFT JOIN processes pp ON pp.pid = p.parent
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN signature ON p.path = signature.path
-WHERE protocol > 0
+WHERE
+  protocol > 0
   AND s.remote_port > 0
   AND s.remote_address NOT IN ('127.0.0.1', '::ffff:127.0.0.1', '::1')
   AND s.remote_address NOT LIKE 'fe80:%'
@@ -239,7 +242,6 @@ WHERE protocol > 0
     '80,6,500,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV)',
     '80,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '80,6,500,webhook.test,a.out,'
-
   ) -- nix-shell infects children with open connections
   AND NOT (
     parent_cmd LIKE '%/tmp/nix-shell%'
@@ -332,4 +334,5 @@ WHERE protocol > 0
     remote_port IN (53, 443)
     AND p.path LIKE '/private/var/folders/%/T/GoLand/%'
   )
-GROUP BY s.pid
+GROUP BY
+  s.pid
