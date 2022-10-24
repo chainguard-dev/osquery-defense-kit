@@ -32,7 +32,10 @@ FROM
 WHERE
   p.path = '/usr/bin/osascript'
   AND p.time > (strftime('%s', 'now') -60)
-  AND exception_key != 'com.vng.zalo,Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),osascript -ss'
+  AND exception_key NOT IN (
+    'com.vng.zalo,Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),osascript -ss',
+     ',,osascript -e set zoomStatus to "closed"\x0Aset muteStatu'
+  )
   AND cmd != 'osascript -e user locale of (get system info)'
   AND NOT (
     exception_key='org.python.python,,osascript' AND parent_cmd LIKE '% /opt/homebrew/bin/jupyter-notebook'
