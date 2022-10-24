@@ -40,6 +40,8 @@ WHERE
   AND NOT p.path IN (
     '',
     '/opt/google/chrome/chrome',
+    '/opt/google/chrome/chrome_crashpad_handler',
+    '/opt/google/chrome/nacl_helper',
     '/usr/bin/containerd',
     '/usr/bin/dockerd',
     '/usr/bin/gedit',
@@ -49,6 +51,7 @@ WHERE
     '/usr/bin/udevadm',
     '/usr/lib/at-spi2-registryd',
     '/usr/lib/at-spi-bus-launcher',
+    '/usr/libexec/docker/docker-proxy',
     '/usr/libexec/fwupd/fwupd',
     '/usr/libexec/sssd/sssd_kcm',
     '/usr/lib/fwupd/fwupd',
