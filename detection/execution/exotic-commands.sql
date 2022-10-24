@@ -48,7 +48,10 @@ WHERE
   OR cmd LIKE '%nohup%tmp%'
   OR cmd LIKE '%set visible of front window to false%'
   OR cmd LIKE '%chrome%--load-extension%'
-  OR (cmd LIKE '%UserKnownHostsFile=/dev/null%' AND NOT parent_name='limactl')
+  OR (
+    cmd LIKE '%UserKnownHostsFile=/dev/null%'
+    AND NOT parent_name = 'limactl'
+  )
   -- Crypto miners
   OR cmd LIKE '%c3pool%'
   OR cmd LIKE '%cryptonight%'
@@ -70,7 +73,10 @@ WHERE
   OR cmd LIKE '%fsockopen%'
   OR cmd LIKE '%openssl%quiet%'
   OR cmd LIKE '%pty.spawn%'
-  OR (cmd LIKE '%sh -i' AND NOT parent_name='sh')
+  OR (
+    cmd LIKE '%sh -i'
+    AND NOT parent_name = 'sh'
+  )
   OR cmd LIKE '%socat%'
   OR cmd LIKE '%SOCK_STREAM%'
   OR cmd LIKE '%Socket.fork%'
