@@ -15,24 +15,25 @@ SELECT
   p.euid,
   p.parent,
   p.syscall,
-  hash.sha256,
   pp.path AS parent_path,
   pp.name AS parent_name,
-  TRIM(p.cmdline) AS parent_cmd,
+  TRIM(pp.cmdline) AS parent_cmd,
   pp.euid AS parent_euid,
-  phash.sha256 AS parent_sha256
+  hash.sha256 AS parent_sha256,
+  signature.identifier AS parent_identifier,
+  signature.authority AS parent_auth,
+  CONCAT(signature.identifier, ",", signature.authority, ",", SUBSTR(TRIM(p.cmdline), 0, 54)) AS exception_key
 FROM
   uptime,
   process_events p
   LEFT JOIN processes pp ON p.parent = pp.pid
-  LEFT JOIN hash ON p.path = hash.path
-  LEFT JOIN hash AS phash ON pp.path = phash.path
+  LEFT JOIN hash ON pp.path = hash.path
+  LEFT JOIN signature ON pp.path = signature.path
 WHERE
   p.path = '/usr/bin/osascript'
   AND p.time > (strftime('%s', 'now') -60)
-  AND NOT cmd LIKE 'osascript -e set zoomStatus%'
-  AND NOT cmd LIKE 'osascript openChrome.applescript http://127.0.0.1:%'
-  AND NOT cmd IN (
-    'osascript -e user locale of (get system info)',
-    'osascript'
+  AND exception_key != 'com.vng.zalo,Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),osascript -ss'
+  AND cmd != 'osascript -e user locale of (get system info)'
+  AND NOT (
+    exception_key='org.python.python,,osascript' AND parent_cmd LIKE '% /opt/homebrew/bin/jupyter-notebook'
   )
