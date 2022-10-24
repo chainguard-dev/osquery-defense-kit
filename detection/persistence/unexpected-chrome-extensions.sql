@@ -65,6 +65,7 @@ WHERE
     'true,AgileBits,1Password – Password Manager,aeblfdkhhhdcdjpifhhbdiojplfjncoa,<all_urls>, contextMenus, downloads, idle, management, nativeMessaging, notifications, privacy, tabs, webNavigation, webRequest, webRequestBlocking',
     'true,Alexander Shutau,Dark Reader,eimadpbcbfnmbkopoojfekhnkhdbieeh,alarms, fontSettings, storage, tabs, <all_urls>',
     'true,All uBlock contributors,uBlock - free ad blocker,epcnnfbjfcgphgdmggkamkmgojdagdnn,contextMenus, storage, tabs, unlimitedStorage, webNavigation, webRequest, webRequestBlocking, <all_urls>',
+    'true,,User-Agent Switcher for Chrome,djflhoibgkdhkhhcedjiklpkjnoahfmg,storage, unlimitedStorage, tabs, webRequest, webRequestBlocking, http://spoofer-extension.appspot.com/, https://spoofer-extension.appspot.com/, <all_urls>',
     'true,,Bardeen - automate workflows with one click,ihhkmalpkhkoedlmcnilbbhhbhnicjga,<all_urls>, webNavigation, unlimitedStorage, notifications, activeTab, tabs, storage, *://*/*, history, bookmarks, contextMenus',
     'true,BetaFish,AdBlock — best ad blocker,gighmmpiobklfepjocnamgkkbiglidom,tabs, <all_urls>, contextMenus, webRequest, webRequestBlocking, webNavigation, storage, unlimitedStorage, notifications, idle, alarms',
     'true,Bitwarden Inc.,Bitwarden - Free Password Manager,nngceckbapebfimnlniiiahkandclblb,tabs, contextMenus, storage, unlimitedStorage, clipboardRead, clipboardWrite, idle, http://*/*, https://*/*, webRequest, webRequestBlocking',

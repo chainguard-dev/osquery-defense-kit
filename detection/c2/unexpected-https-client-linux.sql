@@ -102,12 +102,14 @@ WHERE
     '500,/usr/gitsign,0u,0g,gitsign',
     '500,/usr/gnome-software,0u,0g,gnome-software',
     '500,/usr/go,500u,500g,go',
+    '500,/usr/java,0u,0g,java',
     '500,/usr/kubectl,500u,500g,kubectl',
     '500,/usr/slack,0u,0g,slack',
     '500,/usr/syncthing,0u,0g,syncthing',
     '500,/usr/terraform,0u,0g,terraform',
     '500,/usr/WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
-    '500,/usr/xmobar,0u,0g,xmobar'
+    '500,/usr/xmobar,0u,0g,xmobar',
+    '500,/usr/yay,0u,0g,yay'
   )
   -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm exec %'
