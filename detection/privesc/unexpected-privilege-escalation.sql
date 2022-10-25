@@ -53,3 +53,7 @@ WHERE
     p.name = 'fusermount3'
     AND parent_path = '/usr/lib/xdg-document-portal'
   )
+  AND NOT (
+    p.name = 'pkexec'
+    AND parent_path = '/usr/bin/update-notifier'
+  )
