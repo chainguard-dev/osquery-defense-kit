@@ -54,6 +54,10 @@ WHERE
     AND parent_path = '/usr/lib/xdg-document-portal'
   )
   AND NOT (
-    p.name = 'pkexec'
+    p.path = '/usr/bin/pkexec'
     AND parent_path = '/usr/bin/update-notifier'
+  )
+  AND NOT (
+    p.path = '/usr/libexec/xdg-permission-store'
+    AND parent_path = '/usr/lib/systemd/systemd'
   )

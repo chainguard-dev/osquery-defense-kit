@@ -58,11 +58,12 @@ WHERE
     'zsh'
   )
   AND NOT p.path IN (
+    '/usr/bin/darktable',
     '/usr/bin/dockerd',
     '/usr/bin/gnome-shell',
-    '/usr/libexec/coreduetd',
     '/usr/bin/udevadm',
     '/usr/libexec/aned',
+    '/usr/libexec/coreduetd',
     '/usr/libexec/logd',
     '/usr/libexec/packagekitd',
     '/usr/libexec/PerfPowerServices',

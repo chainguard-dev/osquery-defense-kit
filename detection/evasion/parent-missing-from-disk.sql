@@ -41,6 +41,7 @@ WHERE
   AND NOT parent_path IN (
     '/opt/google/chrome/chrome',
     '/usr/lib/systemd/systemd',
+    '/usr/bin/dockerd',
     '/usr/bin/gnome-shell'
   ) -- long-running launchers
   AND NOT parent_name IN (

@@ -64,6 +64,8 @@ WHERE
   AND s.remote_address NOT LIKE 'fc00:%'
   AND p.path != ''
   AND NOT exception_key IN (
+    '0,/opt/snapd,0u,0g,snapd',
+    '0,/usr/bash,0u,0g,mkinitcpio',
     '0,/usr/dockerd,0u,0g,dockerd',
     '0,/usr/flatpak-system-helper,0u,0g,flatpak-system-',
     '0,/usr/launcher,0u,0g,launcher',
@@ -78,13 +80,16 @@ WHERE
     '500,/app/zoom.real,u,g,zoom.real',
     '500,/home/chainctl,500u,100g,chainctl',
     '500,/home/chainctl,500u,500g,chainctl',
+    '500,/usr/gnome-recipes,0u,0g,gnome-recipes',
     '500,/home/gitsign,500u,500g,gitsign',
     '500,/home/go,500u,500g,go',
+    '500,/home/jcef_helper,500u,500g,jcef_helper',
     '500,/ko-app/chainctl,u,g,chainctl',
     '500,/ko-app/controlplane,u,g,controlplane',
     '500,/opt/1password,0u,0g,1password',
     '500,/opt/chrome,0u,0g,chrome',
     '500,/opt/firefox,0u,0g,firefox',
+    '500,/opt/firefox,0u,0g,Socket Process',
     '500,/opt/kubectl,0u,0g,kubectl',
     '500,/opt/slack,0u,0g,slack',
     '500,/opt/spotify,0u,0g,spotify',
@@ -102,6 +107,7 @@ WHERE
     '500,/usr/gitsign,0u,0g,gitsign',
     '500,/usr/gnome-software,0u,0g,gnome-software',
     '500,/usr/go,500u,500g,go',
+    '500,/usr/gvfsd-http,0u,0g,gvfsd-http',
     '500,/usr/java,0u,0g,java',
     '500,/usr/kubectl,500u,500g,kubectl',
     '500,/usr/slack,0u,0g,slack',

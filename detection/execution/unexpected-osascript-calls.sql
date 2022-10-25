@@ -22,7 +22,13 @@ SELECT
   hash.sha256 AS parent_sha256,
   signature.identifier AS parent_identifier,
   signature.authority AS parent_auth,
-  CONCAT(signature.identifier, ",", signature.authority, ",", SUBSTR(TRIM(p.cmdline), 0, 54)) AS exception_key
+  CONCAT (
+    signature.identifier,
+    ",",
+    signature.authority,
+    ",",
+    SUBSTR(TRIM(p.cmdline), 0, 54)
+  ) AS exception_key
 FROM
   uptime,
   process_events p
@@ -34,9 +40,10 @@ WHERE
   AND p.time > (strftime('%s', 'now') -60)
   AND exception_key NOT IN (
     'com.vng.zalo,Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),osascript -ss',
-     ',,osascript -e set zoomStatus to "closed"\x0Aset muteStatu'
+    ',,osascript -e set zoomStatus to "closed"\x0Aset muteStatu'
   )
   AND cmd != 'osascript -e user locale of (get system info)'
   AND NOT (
-    exception_key='org.python.python,,osascript' AND parent_cmd LIKE '% /opt/homebrew/bin/jupyter-notebook'
+    exception_key = 'org.python.python,,osascript'
+    AND parent_cmd LIKE '% /opt/homebrew/bin/jupyter-notebook'
   )

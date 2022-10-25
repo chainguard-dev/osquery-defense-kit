@@ -133,3 +133,5 @@ WHERE
   AND NOT cmd LIKE '%modprobe overlay'
   AND NOT cmd LIKE '%modprobe aufs'
   AND NOT cmd IN ('lsmod')
+  -- Seen on Ubuntu
+  AND NOT cmd LIKE 'rm -f /tmp/apt-key-gpghome.%/pubring.gpg'
