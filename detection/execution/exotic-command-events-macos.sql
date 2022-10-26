@@ -115,3 +115,4 @@ WHERE
     AND p.parent = -1
   )
   AND NOT cmd LIKE '/bin/rm -f /tmp/periodic.%'
+  AND NOT cmd LIKE 'touch -r /tmp/KSInstallAction.%'

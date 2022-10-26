@@ -117,6 +117,7 @@ WHERE
     'encrypted_keys',
     'essiv',
     'evdev',
+    'exfat',
     'ext4',
     'fat',
     'fb_sys_fops',

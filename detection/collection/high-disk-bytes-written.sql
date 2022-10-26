@@ -37,6 +37,7 @@ WHERE
     '/usr/bin/bash',
     '/usr/bin/bwrap',
     '/usr/bin/curl',
+    '/usr/bin/darktable',
     '/usr/bin/dockerd',
     '/usr/bin/fish',
     '/usr/bin/gnome-shell',

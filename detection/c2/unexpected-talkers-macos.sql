@@ -126,6 +126,7 @@ WHERE
     '22,6,500,Cyberduck,ch.sudo.cyberduck,Developer ID Application: David Kocher (G69SCX94XU)',
     '22,6,500,ssh,,',
     '22,6,500,ssh,com.apple.openssh,Software Signing',
+    '22,6,500,ssh,com.apple.ssh,Software Signing',
     '22,6,500,ssh,ssh,',
     '22,6,500,ssh,ssh-55554944fbf65684ab9b37c2bad3a27ef78b23f4,',
     '30004,6,500,java,net.java.openjdk.java,Developer ID Application: Microsoft Corporation (UBF8T346G9)',

@@ -57,10 +57,6 @@ WHERE
     exception_key = 'org.python.python,,osascript'
     AND parent_cmd LIKE '% /opt/homebrew/bin/jupyter-notebook'
   )
-  AND NOT (
-    p.parent = -1
-    -- NOTE: cmd may contain newlines
-    AND cmd LIKE 'osascript -e set zoomStatus to "closed"%set muteStatus to%'
-  )
+  AND NOT cmd LIKE 'osascript -e set zoomStatus to "closed"%'
 GROUP BY
   p.pid
