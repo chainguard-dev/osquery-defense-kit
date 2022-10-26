@@ -43,6 +43,7 @@ WHERE
     ',,osascript -e set zoomStatus to "closed"\x0Aset muteStatu'
   )
   AND cmd != 'osascript -e user locale of (get system info)'
+  AND cmd NOT LIKE 'osascript -e set zoomStatus to "closed"%'
   AND NOT (
     exception_key = 'org.python.python,,osascript'
     AND parent_cmd LIKE '% /opt/homebrew/bin/jupyter-notebook'
