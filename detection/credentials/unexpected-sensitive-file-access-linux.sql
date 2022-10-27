@@ -79,6 +79,7 @@ WHERE
       'chrome_crashpad_handler,chrome_crashpad,~/.config/google-chrome',
       'chrome,chrome,~/.config/google-chrome',
       'firefox,.firefox-wrappe,~/.cache/mozilla',
+      'firefox,Web Content,~/.mozilla/firefox',
       'firefox,.firefox-wrappe,~/.mozilla/firefox',
       'firefox,file:// Content,~/.mozilla/firefox',
       'firefox,firefox,~/.cache/mozilla',

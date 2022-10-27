@@ -36,20 +36,19 @@ WHERE
   p.time > (strftime('%s', 'now') -30)
   AND p.euid < pp.euid
   AND p.path NOT IN (
+    '/bin/ps',
+    '/usr/bin/doas',
     '/usr/bin/fusermount',
     '/usr/bin/fusermount3',
     '/usr/bin/login',
     '/usr/bin/sudo',
-    '/usr/bin/doas',
-    '/bin/ps',
-    '/usr/bin/top'
+    '/usr/bin/top',
+    '/usr/lib/snapd/snap-confine',
+    '/usr/lib/snapd/snap-update-ns'
   )
   AND p.path NOT LIKE '/nix/store/%/bin/sudo'
   AND p.path NOT LIKE '/nix/store/%/bin/dhcpcd'
-  AND NOT (
-    p.path LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
-    AND parent_path = '/usr/lib/systemd/systemd'
-  )
+  AND p.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
   AND NOT (
     child_name = 'polkit-agent-helper-1'
     AND parent_path = '/usr/bin/gnome-shell'
@@ -57,4 +56,8 @@ WHERE
   AND NOT (
     child_name = 'fusermount3'
     AND parent_path = '/usr/lib/xdg-document-portal'
+  )
+  AND NOT (
+    child_name IN ('dash', 'pkexec')
+    AND parent_path = '/usr/bin/update-notifier'
   )

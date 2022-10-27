@@ -37,6 +37,7 @@ WHERE
   AND (p.start_time - MAX(f.ctime, f.btime)) < 180
   AND p.start_time >= MAX(f.ctime, f.ctime)
   AND NOT f.directory IN ('/usr/lib/firefox', '/usr/local/kolide-k2/bin') -- Typically daemons or long-running desktop apps
+  -- These are binaries that get installed/updated often enough that we should just mask them
   AND NOT p.path IN (
     '',
     '/opt/google/chrome/chrome',
@@ -46,6 +47,9 @@ WHERE
     '/usr/bin/dockerd',
     '/usr/bin/gedit',
     '/usr/bin/obs',
+    '/usr/bin/docker-proxy',
+    '/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3',
+    '/usr/lib/snapd/snapd',
     '/usr/bin/pipewire',
     '/usr/bin/tailscaled',
     '/usr/bin/udevadm',
@@ -68,6 +72,7 @@ WHERE
     '/usr/lib/systemd/systemd-timesyncd',
     '/usr/lib/x86_64-linux-gnu/obs-plugins/obs-browser-page',
     '/usr/lib/xf86-video-intel-backlight-helper',
+    '/usr/bin/containerd-shim-runc-v2',
     '/usr/sbin/chronyd',
     '/usr/sbin/cupsd',
     '/usr/sbin/tailscaled'

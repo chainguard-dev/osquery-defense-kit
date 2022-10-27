@@ -10,6 +10,8 @@
 SELECT
   description AS 'desc',
   fragment_path AS path,
+  MAX(user, "root") AS effective_user,
+  following,
   hash.sha256,
   file.ctime,
   file.size,
@@ -381,9 +383,10 @@ WHERE
         'zpool-trim.timer,zpool-trim.timer,,0'
       )
       OR exception_key LIKE 'machine-qemu%,Virtual Machine qemu%,,300'
+      OR exception_key LIKE 'dbus-:1.%-org.freedesktop.problems@%.service,dbus-:%.%-org.freedesktop.problems@%.service,0,200'
       OR id LIKE 'blockdev@dev-mapper-luks%.target'
       OR id LIKE 'blockdev@dev-mapper-nvme%.target'
-      OR id LIKE 'dbus-:%-org.freedesktop.problems@0.service'
+      OR id LIKE ''
       OR id LIKE 'dev-disk-by%.swap'
       OR id LIKE 'dev-mapper-%.swap'
       OR id LIKE 'dev-zram%.swap'

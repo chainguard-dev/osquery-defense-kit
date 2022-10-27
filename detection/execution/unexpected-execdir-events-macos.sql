@@ -96,6 +96,7 @@ WHERE
   AND dirname NOT LIKE '/usr/libexec/%'
   AND dirname NOT LIKE '/usr/local/%'
   AND dirname NOT LIKE '/Volumes/com.getdropbox.dropbox-%'
+  AND dirname NOT LIKE '/private/tmp/KSInstallAction.%/Install Google Software Update.app/Contents/Helpers'
   -- Unexplained data issue
   AND dirname NOT LIKE '../%'
   AND p.path NOT IN (
