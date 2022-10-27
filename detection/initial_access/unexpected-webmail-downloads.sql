@@ -27,17 +27,16 @@ WHERE
   AND file.btime > (strftime('%s', 'now') -86400)
   -- Extensions that would not normally raise suspicion if sent by e-mail (excludes dmg, iso, lnk, exe)
   AND extension NOT IN (
-    'bz2',
     'cer',
     'csv',
     'doc',
     'docx',
     'eml',
     'gif',
-    'gz',
     'htm',
     'html',
     'icloud',
+    'jfif',
     'jpeg',
     'jpg',
     'mov',
@@ -54,7 +53,6 @@ WHERE
     'ppt',
     'pptx',
     'pub',
-    'tar',
     'tif',
     'tiff',
     'txt',
@@ -62,6 +60,5 @@ WHERE
     'xls',
     'xlsm',
     'xlsx',
-    'zip',
-    'zstd'
+    'zip'
   )
