@@ -14,11 +14,14 @@ SELECT
   file.mtime,
   file.size,
   hash.sha256,
-  magic.data
+  magic.data,
+  signature.authority,
+  signature.identifier
 FROM
   file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
+  LEFT JOIN signature ON file.path = signature.path
 WHERE
   (
     -- This list is the result of multiple queries combined and can likely be minimized
@@ -42,6 +45,7 @@ WHERE
   AND file.path NOT LIKE '/var/tmp/IN_PROGRESS_sysdiagnose_%.tmp/mddiagnose.mdsdiagnostic/diagnostic.log'
   AND file.path NOT LIKE '/var/tmp/epdfinfo%'
   AND file.path NOT LIKE '/var/folders%/T/sp_relauncher'
+  AND file.path NOT LIKE '/var/folders/pv/%/C/com.apple.FontRegistry/annex_aux'
   AND (
     file.mode LIKE '%7%'
     or file.mode LIKE '%5%'

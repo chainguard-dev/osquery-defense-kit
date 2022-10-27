@@ -1,4 +1,4 @@
--- Programs running with a hidden current working directory
+-- Programs running with a hidden current working directory (state-based)
 --
 -- false positives:
 --   * Users rummaging through their configuration files
@@ -68,9 +68,11 @@ WHERE
       'npm install,~/.npm/_cacache',
       'mysqld,~/.local/share'
     )
+    OR exception_key LIKE '%sh,~/.Trash/%'
     OR dir IN (
       '~/.config',
       '~/.vim',
+      '~/.terraform.d',
       '~/.cache/yay',
       '~/.local/share/chezmoi',
       '~/.local/share/nvim',
@@ -104,4 +106,7 @@ WHERE
     OR dir LIKE '~/%/.terraform%'
     OR dir LIKE '~/.vscode/extensions/%'
     OR dir LIKE '~/.zsh/%'
+    OR dir LIKE '~/%/.git'
+    -- For sudo calls to other things
+    OR (dir LIKE '/home/.terraform.d/%' AND p.euid = 0)
   )

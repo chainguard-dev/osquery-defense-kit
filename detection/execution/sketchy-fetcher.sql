@@ -80,6 +80,7 @@ WHERE
       OR parent_cmdline LIKE '/nix/store/%-builder.sh'
       OR p.cmdline LIKE 'git %'
       OR p.cmdline LIKE '%LICENSES/vendor/%'
+      OR p.cmdline LIKE 'curl -sL wttr.in%'
       OR p.cmdline LIKE '%localhost:%'
       OR p.cmdline LIKE '%127.0.0.1:%'
       OR p.name IN ('apko')

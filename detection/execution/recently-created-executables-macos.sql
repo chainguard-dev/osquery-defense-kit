@@ -52,6 +52,7 @@ WHERE
     'Developer ID Application: Galvanix (5BRAQAFB8B)',
     'Developer ID Application: General Arcade (Pte. Ltd.) (S8JLSG5ES7)',
     'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
+    'Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     'Developer ID Application: GitHub (VEKTX9H2N7)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
@@ -83,6 +84,7 @@ WHERE
   AND NOT p.path LIKE '/private/var/folders/%/T/pulumi-go.%'
   AND NOT p.path LIKE '/Users/%/bin/%'
   AND NOT p.path LIKE '/Users/%/code/%'
+  AND NOT p.path LIKE '/Users/%/src/%'
   AND NOT p.path LIKE '/Users/%/Library/Application Support/%/Contents/MacOS/%'
   AND NOT p.path LIKE '/Users/%/Library/Application Support/iTerm2/iTermServer-%'
   AND NOT p.path LIKE '/Users/%/Library/Caches/%/Contents/MacOS/%'
@@ -94,6 +96,7 @@ WHERE
   AND NOT p.path LIKE '/usr/local/Cellar/%'
   AND NOT p.path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND NOT p.path LIKE '%/.vscode/extensions/%'
+  AND NOT p.path LIKE '/Users/%/Library/Caches/snyk/%/snyk-macos'
   AND NOT (
     p.path LIKE '/Users/%'
     AND p.uid > 499

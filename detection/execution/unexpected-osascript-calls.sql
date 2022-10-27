@@ -48,6 +48,7 @@ WHERE
   p.path = '/usr/bin/osascript'
   AND p.time > (strftime('%s', 'now') -60)
   AND exception_key NOT IN (
+    ',,osascript',
     'com.vng.zalo,Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),osascript -ss'
   )
   AND cmd NOT IN ('osascript -e user locale of (get system info)')
