@@ -69,7 +69,8 @@ WHERE
   -- Exceptions that specifically talk to one server
   AND exception_key NOT IN (
     'coredns,0.0.0.0,53',
-    'syncthing,46.162.192.181,53'
+    'syncthing,46.162.192.181,53',
+    'Jabra Direct Helper,208.67.222.123,53'
   )
   AND p.name != 'nessusd'
   -- Local DNS servers and custom clients go here

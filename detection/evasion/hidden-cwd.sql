@@ -71,6 +71,7 @@ WHERE
     OR exception_key LIKE '%sh,~/.Trash/%'
     OR dir IN (
       '~/.config',
+      '~/.local/bin',
       '~/.vim',
       '~/.terraform.d',
       '~/.cache/yay',
