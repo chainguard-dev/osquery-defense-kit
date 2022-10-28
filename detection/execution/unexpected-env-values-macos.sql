@@ -5,7 +5,7 @@
 --
 -- WARNING: This query is known to require a higher than average wall time.
 --
--- tags: transient state rapid
+-- interval: 20
 -- platform: darwin
 SELECT
   key,
@@ -15,12 +15,14 @@ SELECT
   p.cmdline,
   p.parent AS parent_pid,
   pp.cmdline AS parent_cmd
-FROM
-  process_envs pe
-  LEFT JOIN processes p ON pe.pid = p.pid
+-- Querying processes first and filtering by time gives a massive 20X speed improvement
+-- over querying process_envs first and JOIN'ing against processes
+FROM processes p
+  LEFT JOIN process_envs pe ON p.pid = pe.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
-WHERE
-  (
+WHERE -- This time should match the interval
+  p.start_time > (strftime('%s', 'now') - 20)
+  AND (
     key = 'HISTFILE'
     AND NOT VALUE LIKE '/Users/%/.%_history'
   )

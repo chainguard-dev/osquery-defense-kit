@@ -49,6 +49,7 @@ WHERE
   AND p.time > (strftime('%s', 'now') -60)
   AND exception_key NOT IN (
     ',,osascript',
+    ',,osascript openChrome.applescript https://localhost.ch',
     'com.vng.zalo,Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),osascript -ss'
   )
   AND cmd NOT IN ('osascript -e user locale of (get system info)')
@@ -58,6 +59,11 @@ WHERE
     exception_key = 'org.python.python,,osascript'
     AND parent_cmd LIKE '% /opt/homebrew/bin/jupyter-notebook'
   )
+  AND NOT (
+    exception_key = 'org.python.python,Software Signing,osascript'
+    AND parent_cmd LIKE '%/Contents/MacOS/Python -S %/google-cloud-sdk/lib/gcloud.py auth login'
+  )
   AND NOT cmd LIKE 'osascript -e set zoomStatus to "closed"%'
+  AND NOT cmd LIKE 'osascript openChrome.applescript http://127.0.0.1:%'
 GROUP BY
   p.pid

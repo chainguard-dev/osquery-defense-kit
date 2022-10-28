@@ -44,7 +44,9 @@ WHERE
     '/usr/bin/sudo',
     '/usr/bin/top',
     '/usr/lib/snapd/snap-confine',
-    '/usr/lib/snapd/snap-update-ns'
+    '/usr/lib/snapd/snap-update-ns',
+    '/usr/lib/systemd/systemd',
+    '/usr/lib/Xorg.wrap'
   )
   AND p.path NOT LIKE '/nix/store/%/bin/sudo'
   AND p.path NOT LIKE '/nix/store/%/bin/dhcpcd'

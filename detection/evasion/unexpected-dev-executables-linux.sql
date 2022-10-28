@@ -42,3 +42,11 @@ WHERE
     or file.mode LIKE '%5%'
     or file.mode LIKE '%1%'
   )
+  -- Seen on Ubuntu
+  AND NOT (
+    file.uid = 1000
+    AND file.gid = 1000
+    AND file.mode = 0700
+    AND file.path LIKE '/dev/shm/pulse-shm-%'
+    AND file.size > 60000000
+  )

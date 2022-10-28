@@ -54,6 +54,7 @@ WHERE
     '/usr/bin/pipewire',
     '/usr/bin/tailscaled',
     '/usr/bin/udevadm',
+    '/usr/bin/cargo',
     '/usr/lib/at-spi2-registryd',
     '/usr/lib/at-spi-bus-launcher',
     '/usr/libexec/docker/docker-proxy',

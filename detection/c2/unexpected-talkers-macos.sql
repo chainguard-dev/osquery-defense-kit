@@ -157,6 +157,7 @@ WHERE
     '443,6,500,cloud_sql_proxy,a.out,',
     '443,6,500,Code Helper,com.microsoft.VSCode.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,6,500,Code Helper (Renderer),com.github.Electron.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
+    '443,6,500,com.docker.backend,com.docker,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '443,6,500,cosign,,',
     '443,6,500,cosign,a.out,',
     '443,6,500,cosign,cosign,',

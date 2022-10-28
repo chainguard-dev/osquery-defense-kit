@@ -47,6 +47,7 @@ WHERE
     '/usr/bin/abrt-dump-journal-xorg',
     '/usr/bin/anacron',
     '/usr/bin/apcupsd',
+    '/usr/bin/clamscan',
     '/usr/bin/containerd',
     '/usr/bin/containerd-shim-runc-v2',
     '/usr/bin/crond',
@@ -106,6 +107,8 @@ WHERE
   )
   -- Because I don't want to whitelist all of Python3
   AND p.cmdline NOT IN (
+    'xargs logger -s',
+    '/usr/bin/xargs',
     '/usr/bin/python3 -s /usr/sbin/firewalld --nofork --nopid',
     '/usr/bin/python /usr/bin/firewalld --nofork --nopid',
     '/usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal',

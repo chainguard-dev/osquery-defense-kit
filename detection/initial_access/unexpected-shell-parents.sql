@@ -54,6 +54,7 @@ WHERE
     'java',
     'ko',
     'kubectl',
+    'lightdm',
     'make',
     'monorail',
     'nix',
