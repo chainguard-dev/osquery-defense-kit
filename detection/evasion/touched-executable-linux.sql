@@ -33,5 +33,6 @@ WHERE
   AND f.path NOT LIKE '/usr/local/kolide-k2/bin/%-updates/%'
   AND f.path NOT LIKE '/snap/%'
   AND f.path NOT LIKE '/home/%'
+  AND f.path != '/usr/local/bin/chainctl'
 GROUP by
   p.pid

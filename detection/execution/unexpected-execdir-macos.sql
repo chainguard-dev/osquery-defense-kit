@@ -36,6 +36,7 @@ WHERE
   dirname NOT IN (
     '/bin',
     '/Library/DropboxHelperTools/Dropbox_u501',
+    '/Library/Filesystems/kbfuse.fs/Contents/Resources',
     '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateAgent.app/Contents/MacOS',
     '/Library/Printers/DYMO/Utilities',
     '/Library/PrivilegedHelperTools',

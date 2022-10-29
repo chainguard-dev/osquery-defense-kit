@@ -22,9 +22,12 @@ FROM processes p
   LEFT JOIN process_envs pe ON p.pid = pe.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
 WHERE -- This time should match the interval
-  p.start_time > (strftime('%s', 'now') - 600)
+  p.start_time > (strftime('%s', 'now') - 605)
+  -- Filter out transient processes that may not have an envs entry by the time we poll for it
+  AND p.start_time < (strftime('%s', 'now') - 5)
   -- This pattern is common with kthreadd processes
   AND p.parent != 2
+  AND p.path != '/usr/bin/gpg-agent'
 GROUP BY
   p.pid
 HAVING
