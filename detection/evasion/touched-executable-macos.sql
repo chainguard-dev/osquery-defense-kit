@@ -86,6 +86,7 @@ WHERE
       OR p.path LIKE '/opt/homebrew/Cellar/%/bin/%'
       OR p.path LIKE '/opt/homebrew/Caskroom/%/bin/%'
       OR p.path LIKE '/Users/%/google-cloud-sdk/bin/kubectl'
+      OR p.path LIKE '/Users/%/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin/%'
     )
   )
   AND NOT (
