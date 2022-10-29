@@ -44,6 +44,7 @@ WHERE
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW)',
+    'Developer ID Application: GPGTools GmbH (PKV8ZPD836)',
     'Developer ID Application: Bryan Jones (49EYHPJ4Q3)',
     'Developer ID Application: CodeWeavers Inc. (9C6B7X7Z8E)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
