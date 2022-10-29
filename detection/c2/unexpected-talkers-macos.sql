@@ -233,6 +233,7 @@ WHERE
     '443,6,500,sublime_text,com.sublimetext.4,Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
     '443,6,500,syft,syft,Developer ID Application: ANCHORE, INC. (9MJHKYX5AT)',
     '443,6,500,terraform-ls,terraform-ls,Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
+    '443,17,500,Evernote Helper,,',
     '443,6,500,terraform,terraform,Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
     '443,6,500,trivy,a.out,',
     '443,6,500,vegeta,a.out,',
