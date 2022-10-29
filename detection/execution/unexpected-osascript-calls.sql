@@ -45,7 +45,7 @@ FROM
   LEFT JOIN signature ON pp.path = signature.path
   LEFT JOIN signature esignature ON ppe.path = esignature.path
 WHERE
-  p.path = '/usr/bin/osascript'
+  p.path IN ('/usr/bin/osascript', '/usr/bin/osacompile')
   AND p.time > (strftime('%s', 'now') -60)
   AND exception_key NOT IN (
     ',,osascript',
@@ -65,5 +65,6 @@ WHERE
   )
   AND NOT cmd LIKE 'osascript -e set zoomStatus to "closed"%'
   AND NOT cmd LIKE 'osascript openChrome.applescript http://127.0.0.1:%'
+  AND NOT cmd LIKE '/usr/bin/osascript /Users/%/osx-trash/trashfile.AppleScript %'
 GROUP BY
   p.pid
