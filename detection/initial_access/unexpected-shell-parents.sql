@@ -85,6 +85,7 @@ WHERE
     'xcrun',
     'xfce4-terminal',
     'yum',
+    'zellij',
     'zsh'
   )
   AND parent_path NOT IN (
