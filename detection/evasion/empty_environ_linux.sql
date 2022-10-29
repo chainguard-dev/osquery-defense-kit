@@ -27,7 +27,10 @@ WHERE -- This time should match the interval
   AND p.start_time < (strftime('%s', 'now') - 5)
   -- This pattern is common with kthreadd processes
   AND p.parent != 2
-  AND p.path != '/usr/bin/gpg-agent'
+  AND p.path NOT IN (
+    '/usr/bin/gpg-agent',
+    '/usr/bin/bwrap'
+  )
 GROUP BY
   p.pid
 HAVING
