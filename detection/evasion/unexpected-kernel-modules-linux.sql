@@ -124,6 +124,7 @@ WHERE
     'fb_sys_fops',
     'firmware_attributes_class',
     'fuse',
+    'garmin_gps',
     'gf128mul',
     'ghash_clmulni_intel',
     'gigabyte_wmi',
