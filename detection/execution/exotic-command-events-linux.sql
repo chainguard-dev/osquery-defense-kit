@@ -136,3 +136,4 @@ WHERE
   -- Seen on Ubuntu
   AND NOT cmd LIKE 'rm -f /tmp/apt-key-gpghome.%/pubring.gpg'
   AND NOT cmd LIKE 'rm -f /var/tmp/mkinitramfs_%'
+  AND NOT cmd LIKE 'rm -f -- /tmp/%'

@@ -85,3 +85,10 @@ WHERE
     AND file.size < 3000
     AND file.mode = 0755
   )
+  -- JetBrains (Delve)
+  AND NOT (
+    file.path LIKE '/var/folders/%/T/dlvLauncher.sh'
+    AND magic.data LIKE 'Bourne-Again shell script%'
+    AND file.size < 1024
+    AND file.mode = 0744
+  )
