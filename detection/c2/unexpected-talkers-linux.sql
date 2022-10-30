@@ -103,6 +103,7 @@ WHERE
     '80,6,0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra',
     '80,6,105,/usr/http,0u,0g,http',
     '80,6,500,/app/thunderbird,u,g,thunderbird',
+    '80,6,500,/home/steam,500u,100g,steam',
     '80,6,500,/opt/chrome,0u,0g,chrome',
     '80,6,500,/opt/firefox,0u,0g,firefox',
     '80,6,500,/usr/chrome,0u,0g,chrome',

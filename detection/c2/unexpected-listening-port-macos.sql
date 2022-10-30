@@ -87,6 +87,7 @@ WHERE
     '49152,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '49152,6,500,GarageBand,Apple Mac OS Application Signing',
     '49152,6,500,IPNExtension,Apple Mac OS Application Signing',
+    '49152,6,500,java,Developer ID Application: Eclipse Foundation, Inc. (JCDTMS22B4)',
     '49152,6,500,java,Developer ID Application: Oracle America, Inc. (VB5E2TV963)',
     '49152,6,500,jetbrains-toolbox,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     '49152,6,500,LogiMgrDaemon,Developer ID Application: Logitech Inc. (QED4VVPZWA)',
