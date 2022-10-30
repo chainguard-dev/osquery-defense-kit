@@ -136,5 +136,9 @@ WHERE
     AND s.remote_address LIKE '151.101.%'
     AND s.state = 'ESTABLISHED'
   )
+  AND NOT (
+    exception_key = '500,/tmp/main,500u,500g,main'
+    AND p.path LIKE '/tmp/go-build%/exe/main'
+  )
 GROUP BY
   p.cmdline

@@ -34,5 +34,6 @@ WHERE
   AND f.path NOT LIKE '/snap/%'
   AND f.path NOT LIKE '/home/%'
   AND f.path != '/usr/local/bin/chainctl'
+  AND f.path NOT LIKE '/tmp/go-build%/exe/main'
 GROUP by
   p.pid
