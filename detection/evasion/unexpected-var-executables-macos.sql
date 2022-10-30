@@ -46,6 +46,7 @@ WHERE
   AND file.path NOT LIKE '/var/folders/%/T/go.%.%.sum'
   AND file.path NOT LIKE '/var/folders%/T/sp_relauncher'
   AND file.path NOT LIKE '/var/tmp/epdfinfo%'
+  AND file.path NOT LIKE '/var/folders/%/T/jansi-%-libjansi.jnilib'
   AND file.path NOT LIKE '/var/tmp/IN_PROGRESS_sysdiagnose_%.tmp/mddiagnose.mdsdiagnostic/diagnostic.log'
   AND (
     file.mode LIKE '%7%'

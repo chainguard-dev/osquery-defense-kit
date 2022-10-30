@@ -32,6 +32,7 @@ WHERE
   AND p.path NOT LIKE '/System/Library/%'
   AND p.path NOT LIKE '/System/Applications/%'
   AND p.path NOT LIKE '/Library/Apple/System/Library/%'
+  AND p.path NOT LIKE '/home/%/.local/share/Steam/steamapps/%'
   AND name NOT IN (
     'bash',
     'bwrap',
@@ -54,6 +55,7 @@ WHERE
     'qemu-system-x86',
     'qemu-system-x86-64',
     'slack',
+    'steam',
     'systemd',
     'wineserver',
     'ykman-gui',

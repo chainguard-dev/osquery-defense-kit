@@ -108,6 +108,7 @@ WHERE
     'jetbrains-toolb',
     'launcher',
     'slack',
+    'steam',
     'wineserver'
   )
   AND p.path NOT LIKE '/Applications/%.app/Contents/%'
