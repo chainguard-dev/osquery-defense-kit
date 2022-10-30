@@ -80,6 +80,7 @@ WHERE
     '/dev/nvidiactl',
     '/dev/ptmx',
     '/dev/pts/ptmx',
+    '/dev/shm/u1000-ValveIPCSharedObj-Steam',
     '/dev/random',
     '/dev/rfkill',
     '/dev/snd/seq',
@@ -97,6 +98,7 @@ WHERE
   AND NOT dir_exception IN (
     '/dev/bus/usb,pcscd',
     '/dev/input,acpid',
+    '/dev/shm,gameoverlayui',
     '/dev/input,gnome-shell',
     '/dev/input,systemd',
     '/dev/input,systemd-logind',
