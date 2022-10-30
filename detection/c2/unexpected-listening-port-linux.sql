@@ -68,6 +68,7 @@ WHERE
     '17,255,500,mtr-packet',
     '22000,6,500,syncthing',
     '22,6,0,sshd',
+    '27036,6,500,steam',
     '3000,6,472,grafana-server',
     '3000,6,500,grafana-server',
     '32768,6,0,tailscaled',
@@ -80,6 +81,7 @@ WHERE
     '4191,6,500,linkerd2-proxy',
     '443,6,500,jcef_helper',
     '4443,6,500,metrics-server',
+    '5000,6,0,registry',
     '5000,6,500,ControlCenter',
     '5001,6,0,registry',
     '53,17,0,coredns',
@@ -94,7 +96,6 @@ WHERE
     '58,255,500,dhcpcd',
     '58,255,500,mtr-packet',
     '631,17,0,cups-browsed',
-    '5000,6,0,registry',
     '6379,6,500,redis-server',
     '6443,6,0,kube-apiserver',
     '67,17,500,dnsmasq',
@@ -119,7 +120,7 @@ WHERE
     '9090,6,500,controlplane',
     '9153,6,0,coredns',
     '9300,6,500,authentik-proxy'
-  )
+ )
   AND NOT (
     p.path LIKE ',ko-app,%'
     AND lp.port > 1024

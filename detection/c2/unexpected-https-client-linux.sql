@@ -86,6 +86,7 @@ WHERE
     '500,/home/go,500u,500g,go',
     '500,/home/grype,500u,500g,grype',
     '500,/home/jcef_helper,500u,500g,jcef_helper',
+    '500,/home/steamwebhelper,500u,100g,steamwebhelper',
     '500,/ko-app/chainctl,u,g,chainctl',
     '500,/ko-app/controlplane,u,g,controlplane',
     '500,/opt/1password,0u,0g,1password',

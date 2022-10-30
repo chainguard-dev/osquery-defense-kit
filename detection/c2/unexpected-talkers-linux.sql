@@ -105,6 +105,7 @@ WHERE
     '80,6,500,/app/thunderbird,u,g,thunderbird',
     '80,6,500,/home/steam,500u,100g,steam',
     '80,6,500,/opt/chrome,0u,0g,chrome',
+    '27035,6,500,/home/steam,500u,100g,steam',
     '80,6,500,/opt/firefox,0u,0g,firefox',
     '80,6,500,/usr/chrome,0u,0g,chrome',
     '80,6,500,/usr/curl,0u,0g,curl',

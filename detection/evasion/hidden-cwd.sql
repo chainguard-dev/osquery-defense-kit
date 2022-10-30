@@ -102,6 +102,7 @@ WHERE
     OR dir LIKE '~/.local/share/JetBrains/%'
     OR dir LIKE '~/.local/share/kotlin/%'
     OR dir LIKE '~/.local/share/nvim/%'
+    OR dir LIKE '~/.local/share/Steam/%'
     OR dir LIKE '~/.provisio%'
     OR dir LIKE '~/src/%'
     OR dir LIKE '~/%/.terraform%'

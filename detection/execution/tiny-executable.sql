@@ -29,3 +29,5 @@ WHERE
   AND file.size < 10000
   AND NOT file.path LIKE '/Users/%/.zsh/completion'
   AND NOT file.path LIKE '/home/%/.zsh/completion'
+  AND NOT file.path LIKE '/home/%/.local/share/Steam/ubuntu%'
+  AND NOT file.path LIKE '/home/%/.local/share/Steam/steamapps/%'
