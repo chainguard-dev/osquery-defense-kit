@@ -68,6 +68,12 @@ WHERE
   AND p.path NOT LIKE '/usr/libexec/%'
   AND p.path NOT LIKE '/usr/sbin/%'
   AND p.path NOT LIKE '/private/var/folders/%/go-build%/%'
+  -- Apple programs running from weird places, like the UpdateBrainService
+  AND NOT (
+    signature.identifier LIKE 'com.apple.%' AND signature.authority = 'Software Signing'
+    AND remote_port IN (53,443,80)
+    AND remote_protocol IN (6, 17)
+  )
   AND NOT (
     remote_port = 53
     AND protocol IN (6, 17)
@@ -138,11 +144,13 @@ WHERE
     '3307,6,500,cloud_sql_proxy,a.out,',
     '43,6,500,DropboxMacUpdate,com.dropbox.DropboxMacUpdate,Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     '443,17,500,Code Helper,com.microsoft.VSCode.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
+    '443,17,500,Evernote Helper,,',
     '443,17,500,Evernote Helper,com.evernote.Evernote.helper,Apple Mac OS Application Signing',
     '443,17,500,GitKraken Boards,com.axosoft.glo,Apple iPhone OS Application Signing',
     '443,17,500,Reflect Helper,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     '443,17,500,Slack Helper,,',
     '443,6,0,com.apple.MobileSoftwareUpdate.UpdateBrainService,com.apple.MobileSoftwareUpdate.UpdateBrainService,Software Signing',
+    '443,6,0,com.apple.NRD.UpdateBrainService,com.apple.NRD.UpdateBrainService,Software Signing',
     '443,6,0,Install,com.adobe.Install,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,0,launcher,launcher,Developer ID Application: Kolide Inc (YZ3EM74M78)',
     '443,6,0,nessusd,nessusd,Developer ID Application: Tenable, Inc. (4B8J598M7U)',
@@ -233,7 +241,6 @@ WHERE
     '443,6,500,sublime_text,com.sublimetext.4,Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
     '443,6,500,syft,syft,Developer ID Application: ANCHORE, INC. (9MJHKYX5AT)',
     '443,6,500,terraform-ls,terraform-ls,Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
-    '443,17,500,Evernote Helper,,',
     '443,6,500,terraform,terraform,Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
     '443,6,500,trivy,a.out,',
     '443,6,500,vegeta,a.out,',
@@ -243,6 +250,7 @@ WHERE
     '53,17,500,docker-credential-gcr,a.out,',
     '53,17,500,trivy,,',
     '6000,6,500,ssh,,',
+    '443,17,500,old,dev.warp.Warp-Stable,Developer ID Application: Denver Technologies, Inc (2BBY89MBSN)',
     '6000,6,500,ssh,com.apple.openssh,Software Signing',
     '6000,6,500,ssh,ssh-55554944fbf65684ab9b37c2bad3a27ef78b23f4,',
     '80,6,0,com.apple.MobileSoftwareUpdate.UpdateBrainService,com.apple.MobileSoftwareUpdate.UpdateBrainService,Software Signing',
@@ -329,8 +337,9 @@ WHERE
     remote_port IN (53, 443)
     AND p.name LIKE 'kubectl.%'
   )
+  -- Python programs
   AND NOT (
-    p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%'
+    (p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%' OR p.cmdline LIKE '%/opt/homebrew/bin/aws%')
     AND remote_port IN (80, 443, 53)
   ) -- Slack update?
   AND NOT (

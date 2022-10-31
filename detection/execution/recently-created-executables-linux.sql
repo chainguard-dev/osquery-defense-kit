@@ -53,6 +53,7 @@ WHERE
     '/usr/lib/snapd/snapd',
     '/usr/bin/pipewire',
     '/usr/bin/tailscaled',
+    '/usr/bin/rpi-imager',
     '/usr/bin/udevadm',
     '/usr/bin/cargo',
     '/usr/lib/at-spi2-registryd',

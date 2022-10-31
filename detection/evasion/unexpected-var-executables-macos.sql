@@ -70,14 +70,25 @@ WHERE
     '/var/select/X11/lib',
     '/var/select/X11/libexec'
   )
+  -- It's pretty rare, but some vendors install updates into /var. Spotify, I'm looking at you!
+  AND NOT signature.authority IN (
+    'Developer ID Application: Spotify (2FNC3A47ZF)',
+    'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+    'Developer ID Application: Docker Inc (9BNSXJN65R)',
+    'Developer ID Application: GitHub (VEKTX9H2N7)',
+    'Developer ID Application: Google LLC (EQHXZ8M8AV)',
+    'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
+    'Developer ID Application: Mozilla Corporation (43AQ936H96)'
+  )
   AND file.path NOT IN (
     '/var/log/acroUpdaterTools.log',
     '/var/vm/sleepimage'
   )
   AND file.size > 10
-  AND hash.sha256 NOT IN (
-    'fd53abe096b3617c32d46db34fad58770f697a3bf4aef3d8861f37d8471f6c98', -- sp_relauncher (Spotify)
-    '65afd3fad04973e83d3cd3be56a310d11ed2c096319f1e2b20c4d153446f1b9f' -- sp_relauncher (Spotify)
+  AND NOT (
+    file.path LIKE '/var/folders/%/T/sp_update/%'
+    AND file.gid = 20
+    AND file.uid = 501
   )
   AND NOT (
     file.path LIKE '/var/db/timezone/zoneinfo/%/%'

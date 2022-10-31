@@ -112,6 +112,7 @@ WHERE
       '/usr/bin/csrutil status',
       '/usr/bin/csrutil report',
       '/bin/launchctl list',
+      '/bin/launchctl list homebrew.mxcl.yabai',
       '/bin/launchctl asuser 0 /bin/launchctl list'
     )
     AND p.parent = -1

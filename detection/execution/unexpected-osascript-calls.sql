@@ -61,10 +61,14 @@ WHERE
   )
   AND NOT (
     exception_key = 'org.python.python,Software Signing,osascript'
-    AND parent_cmd LIKE '%/Contents/MacOS/Python -S %/google-cloud-sdk/lib/gcloud.py auth login'
+    AND (
+      parent_cmd LIKE '%/Contents/MacOS/Python -S %/google-cloud-sdk/lib/gcloud.py auth login'
+      OR parent_cmd LIKE '%/bin/gcloud auth login'
+    )
   )
   AND NOT cmd LIKE 'osascript -e set zoomStatus to "closed"%'
   AND NOT cmd LIKE 'osascript openChrome.applescript http://127.0.0.1:%'
   AND NOT cmd LIKE '/usr/bin/osascript /Users/%/osx-trash/trashfile.AppleScript %'
+  AND NOT cmd LIKE 'osascript -e%tell application "System Preferences"%reveal anchor "shortcutsTab"%"com.apple.preference.keyboard"'
 GROUP BY
   p.pid

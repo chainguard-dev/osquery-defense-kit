@@ -105,6 +105,7 @@ WHERE
     'gopls',
     'grype',
     'java',
+    'nessusd',
     'jetbrains-toolb',
     'launcher',
     'slack',

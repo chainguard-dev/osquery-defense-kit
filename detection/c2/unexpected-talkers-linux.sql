@@ -86,6 +86,7 @@ WHERE
     '143,6,500,/app/thunderbird,u,g,thunderbird',
     '22000,6,500,/usr/syncthing,0u,0g,syncthing',
     '22,6,500,/usr/ssh,0u,0g,ssh',
+    '27035,6,500,/home/steam,500u,100g,steam',
     '3478,6,500,/opt/chrome,0u,0g,chrome',
     '4070,6,500,/opt/spotify,0u,0g,spotify',
     '43,6,500,/usr/whois,0u,0g,whois',
@@ -105,7 +106,7 @@ WHERE
     '80,6,500,/app/thunderbird,u,g,thunderbird',
     '80,6,500,/home/steam,500u,100g,steam',
     '80,6,500,/opt/chrome,0u,0g,chrome',
-    '27035,6,500,/home/steam,500u,100g,steam',
+    '27034,6,500,/home/steam,500u,100g,steam',
     '80,6,500,/opt/firefox,0u,0g,firefox',
     '80,6,500,/usr/chrome,0u,0g,chrome',
     '80,6,500,/usr/curl,0u,0g,curl',
@@ -113,11 +114,13 @@ WHERE
     '80,6,500,/usr/firefox,0u,0g,.firefox-wrappe',
     '80,6,500,/usr/pacman,0u,0g,pacman',
     '80,6,500,/usr/python3.10,0u,0g,yum',
+    '80,6,500,/usr/rpi-imager,0u,0g,rpi-imager',
     '8080,6,500,/opt/chrome,0u,0g,chrome',
     '8080,6,500,/usr/firefox,0u,0g,firefox',
     '8443,6,500,/opt/chrome,0u,0g,chrome',
     '8443,6,500,/usr/firefox,0u,0g,firefox',
     '993,6,500,/app/thunderbird,u,g,thunderbird'
+
   )
   AND NOT (
     p.name = 'syncthing'

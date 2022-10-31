@@ -44,18 +44,31 @@ WHERE -- This time should match the interval
     signature.identifier LIKE 'com.apple.%'
     AND signature.authority = 'Software Signing'
   )
+  AND signature_authority NOT IN (
+    'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+    'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)',
+    'Developer ID Application: Docker Inc (9BNSXJN65R)',
+    'Developer ID Application: GitHub (VEKTX9H2N7)',
+    'Developer ID Application: Google LLC (EQHXZ8M8AV)',
+    'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
+    'Developer ID Application: Keybase, Inc. (99229SGT5K)',
+    'Developer ID Application: Kolide Inc (YZ3EM74M78)',
+    'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
+    'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
+    'Developer ID Application: Mozilla Corporation (43AQ936H96)',
+    'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
+    'Developer ID Application: Opal Camera Inc (97Z3HJWCRT)',
+    'Developer ID Application: Parallels International GmbH (4C6364ACXT)',
+    'Developer ID Application: Yubico Limited (LQA3CS5MM7)'
+  )
   AND NOT exception_key IN (
-    '500,chrome_crashpad_handler,chrome_crashpad_handler,Developer ID Application: Google LLC (EQHXZ8M8AV)',
-    '500,com.docker.cli,com.docker,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '500,CraftWidgetExtension,com.lukilabs.lukiapp.CraftWidget,Apple Mac OS Application Signing',
     '500,Obsidian Helper (Renderer),md.obsidian.helper.Renderer,Developer ID Application: Dynalist Inc. (6JSW4SJWN9)',
     '500,Pages,com.apple.iWork.Pages,Apple Mac OS Application Signing',
     '500,SafariLaunchAgent,SafariLaunchAgent-55554944882a849c6a6839b4b0e7c551bbc81898,Software Signing',
+    '500,gsleep,sleep,',
     '500,TwitterNotificationServiceExtension,maccatalyst.com.atebits.Tweetie2.NotificationServiceExtension,Apple Mac OS Application Signing'
   )
-  AND NOT exception_key LIKE '500,Google Chrome%,Developer ID Application: Google LLC (EQHXZ8M8AV)'
-  AND NOT exception_key LIKE '500,Brave Browser %,com.brave.Browser.%,Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)'
-
   -- Electron apps
   AND NOT (
     p.path LIKE '/Applications/%Helper%'
