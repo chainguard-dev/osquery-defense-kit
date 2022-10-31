@@ -57,6 +57,7 @@ WHERE
     '/usr/bin/docker-proxy',
     '/usr/bin/fish',
     '/usr/bin/gdm',
+    '/usr/bin/vim',
     '/usr/bin/gpg-agent',
     '/usr/bin/journalctl',
     '/usr/bin/lightdm',

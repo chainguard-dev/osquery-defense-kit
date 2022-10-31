@@ -26,7 +26,7 @@ FROM
   processes p
   LEFT JOIN hash ON p.path = hash.path
 WHERE
-  bytes_per_second > 2500000
+  bytes_per_second > 3000000
   AND age > 180
   AND p.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p.path NOT LIKE '/System/Library/%'
@@ -44,6 +44,7 @@ WHERE
     'fsdaemon',
     'GoogleSoftwareUpdateAgent',
     'gopls',
+    'grype',
     'java',
     'launcher',
     'LogiFacecamService',
@@ -56,6 +57,7 @@ WHERE
     'qemu-system-x86-64',
     'slack',
     'steam',
+    'thunderbird',
     'systemd',
     'wineserver',
     'ykman-gui',

@@ -41,6 +41,7 @@ WHERE -- This time should match the interval
   -- setuid
   OR (
     LENGTH(value) > 1024
+    AND key != 'LS_COLORS'
     AND f.mode IS NOT NULL
     AND f.mode NOT LIKE '0%'
   )

@@ -10,6 +10,7 @@ SELECT
   COUNT(key) AS count,
   p.pid,
   p.path,
+  p.name,
   p.on_disk,
   hash.sha256,
   p.parent,
@@ -26,11 +27,16 @@ WHERE -- This time should match the interval
   -- Filter out transient processes that may not have an envs entry by the time we poll for it
   AND p.start_time < (strftime('%s', 'now') - 5)
   -- This pattern is common with kthreadd processes
-  AND p.parent != 2
+  AND p.parent NOT IN (0,2)
+  AND p.name NOT IN ('gpg-agent', 'bwrap', 'spotify', 'chrome')
   AND p.path NOT IN (
     '/usr/bin/gpg-agent',
-    '/usr/bin/bwrap'
+    '/usr/bin/bwrap',
+    '/usr/sbin/nginx',
+    '/opt/google/chrome/chrome',
+    '/opt/spotify/spotify'
   )
+  AND NOT pp.name IN ('yum')
 GROUP BY
   p.pid
 HAVING

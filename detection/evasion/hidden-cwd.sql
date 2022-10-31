@@ -76,8 +76,10 @@ WHERE
       '~/.terraform.d',
       '~/.cache/yay',
       '~/.local/share/chezmoi',
+      '~/.local/share/Steam',
       '~/.local/share/nvim',
       '~/.gmailctl',
+      '~/.oh-my-zsh',
       '~/.zsh'
     )
     OR p.name IN (

@@ -398,6 +398,7 @@ WHERE
     'snd_soc_dmic',
     'snd_soc_hdac_hda',
     'snd_soc_hdac_hdmi',
+    'snd_soc_hda_codec',
     'snd_soc_intel_hda_dsp_common',
     'snd_soc_skl',
     'snd_soc_skl_hda_dsp',

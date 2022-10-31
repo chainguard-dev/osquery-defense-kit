@@ -5,8 +5,7 @@
 --
 -- tags: persistent
 -- platform: linux
-SELECT
-  file.path,
+SELECT file.path,
   file.directory,
   uid,
   gid,
@@ -15,12 +14,10 @@ SELECT
   file.size,
   hash.sha256,
   magic.data
-FROM
-  file
+FROM file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE
-  (
+WHERE (
     -- This list is the result of multiple queries combined and can likely be minimized
     file.path LIKE '/var/%%'
     OR file.path LIKE '/var/tmp/%%'
@@ -39,8 +36,8 @@ WHERE
   AND file.path NOT LIKE '%/./%'
   AND (
     file.mode LIKE '%7%'
-    or file.mode LIKE '%5%'
-    or file.mode LIKE '%1%'
+    OR file.mode LIKE '%5%'
+    OR file.mode LIKE '%1%'
   )
   AND file.directory NOT IN (
     '/var/lib/colord',
