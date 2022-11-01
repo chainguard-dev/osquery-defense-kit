@@ -27,7 +27,7 @@ FROM
   processes p
   LEFT JOIN hash ON p.path = hash.path
 WHERE
-  bytes_per_second > 2500000
+  bytes_per_second > 3000000
   AND age > 120
   AND pid > 2
   AND p.path NOT IN (
@@ -98,6 +98,7 @@ WHERE
     'com.apple.MobileSoftwareUpdate.UpdateBrainService',
     'containerd',
     'esbuild',
+    'darkfiles',
     'firefox',
     'fsdaemon',
     'go',
