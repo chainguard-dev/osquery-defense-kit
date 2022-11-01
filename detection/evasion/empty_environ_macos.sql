@@ -44,7 +44,7 @@ WHERE -- This time should match the interval
     signature.identifier LIKE 'com.apple.%'
     AND signature.authority = 'Software Signing'
   )
-  AND signature_authority NOT IN (
+  AND signature.authority NOT IN (
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
