@@ -72,7 +72,7 @@ WHERE
   AND NOT (
     signature.identifier LIKE 'com.apple.%' AND signature.authority = 'Software Signing'
     AND remote_port IN (53,443,80)
-    AND remote_protocol IN (6, 17)
+    AND protocol IN (6, 17)
   )
   AND NOT (
     remote_port = 53
