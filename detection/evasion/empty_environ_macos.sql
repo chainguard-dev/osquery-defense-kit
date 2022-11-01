@@ -63,10 +63,10 @@ WHERE -- This time should match the interval
   )
   AND NOT exception_key IN (
     '500,CraftWidgetExtension,com.lukilabs.lukiapp.CraftWidget,Apple Mac OS Application Signing',
+    '500,gsleep,sleep,',
     '500,Obsidian Helper (Renderer),md.obsidian.helper.Renderer,Developer ID Application: Dynalist Inc. (6JSW4SJWN9)',
     '500,Pages,com.apple.iWork.Pages,Apple Mac OS Application Signing',
     '500,SafariLaunchAgent,SafariLaunchAgent-55554944882a849c6a6839b4b0e7c551bbc81898,Software Signing',
-    '500,gsleep,sleep,',
     '500,TwitterNotificationServiceExtension,maccatalyst.com.atebits.Tweetie2.NotificationServiceExtension,Apple Mac OS Application Signing'
   )
   -- Electron apps

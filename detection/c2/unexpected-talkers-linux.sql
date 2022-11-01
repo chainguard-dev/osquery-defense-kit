@@ -107,6 +107,7 @@ WHERE
     '80,6,500,/home/steam,500u,100g,steam',
     '80,6,500,/opt/chrome,0u,0g,chrome',
     '27034,6,500,/home/steam,500u,100g,steam',
+    '32768,6,0,/usr/tailscaled,0u,0g,tailscaled',
     '80,6,500,/opt/firefox,0u,0g,firefox',
     '80,6,500,/usr/chrome,0u,0g,chrome',
     '80,6,500,/usr/curl,0u,0g,curl',

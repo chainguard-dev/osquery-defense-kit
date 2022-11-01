@@ -68,6 +68,7 @@ WHERE
   )
   AND NOT cmd LIKE 'osascript -e set zoomStatus to "closed"%'
   AND NOT cmd LIKE 'osascript openChrome.applescript http://127.0.0.1:%'
+  AND NOT cmd LIKE 'osascript openChrome.applescript http%://localhost%'
   AND NOT cmd LIKE '/usr/bin/osascript /Users/%/osx-trash/trashfile.AppleScript %'
   AND NOT cmd LIKE 'osascript -e%tell application "System Preferences"%reveal anchor "shortcutsTab"%"com.apple.preference.keyboard"'
 GROUP BY
