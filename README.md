@@ -92,7 +92,9 @@ Users may submit false positive exceptions for popular well-known software packa
 
 ### Platform Support
 
-While originally focused on Linux and macOS, we support the addition of queries on any platform supported by osquery.
+While originally focused on Linux and macOS, we support the addition of queries on any platform supported by osquery. 
+
+In particular, we've been asked about Windows support: Chainguard doesn't have any Windows machines, but if you have Windows queries that you think would be useful and match our philosophy, we're more than willing to accept them! 
 
 ### False Positives
 
