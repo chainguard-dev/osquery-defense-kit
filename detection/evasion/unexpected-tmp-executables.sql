@@ -91,11 +91,13 @@ WHERE
     AND (strftime('%s', 'now') - ctime) < 30
   ) -- macOS updates
   AND NOT file.directory LIKE '/tmp/msu-target-%' -- I don't know man. I don't work here.
+  AND NOT file.directory LIKE '/tmp/UpdateBrain-%/AssetData/com.apple.MobileSoftwareUpdate.UpdateBrainService.xpc/Contents/MacOS/'
   AND NOT (
     file.path LIKE('/tmp/%compressed')
     AND size < 4000
     AND uid > 500
-  ) -- Executables too small to even hold '#!/bin/sh\nuid'
+  )
+  -- Executables too small to even hold '#!/bin/sh\nuid'
   AND NOT (
     file.type = 'regular'
     AND size < 10

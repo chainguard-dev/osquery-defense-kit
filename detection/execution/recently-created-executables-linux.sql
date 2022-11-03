@@ -38,6 +38,8 @@ WHERE
   AND p.start_time >= MAX(f.ctime, f.ctime)
   AND NOT f.directory IN ('/usr/lib/firefox', '/usr/local/kolide-k2/bin') -- Typically daemons or long-running desktop apps
   -- These are binaries that are known to get updated and subsequently executed
+  --
+  -- What I would give for osquery to support binary signature verification on Linux
   AND NOT p.path IN (
     '',
     '/opt/google/chrome/chrome',
@@ -61,6 +63,7 @@ WHERE
     '/usr/libexec/docker/docker-proxy',
     '/usr/libexec/fwupd/fwupd',
     '/usr/libexec/sssd/sssd_kcm',
+    '/usr/bin/gnome-keyring-daemon',
     '/usr/lib/fwupd/fwupd',
     '/usr/lib/gdm',
     '/usr/lib/gdm-session-worker',
@@ -70,6 +73,7 @@ WHERE
     '/usr/lib/systemd/systemd',
     '/usr/lib/systemd/systemd-journald',
     '/usr/lib/systemd/systemd-logind',
+    '/usr/lib/polkit-1/polkitd',
     '/usr/lib/systemd/systemd-oomd',
     '/usr/lib/systemd/systemd-resolved',
     '/usr/lib/systemd/systemd-timesyncd',

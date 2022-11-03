@@ -85,8 +85,11 @@ WHERE
     '123,17,500,/usr/chronyd,0u,0g,chronyd',
     '143,6,500,/app/thunderbird,u,g,thunderbird',
     '22000,6,500,/usr/syncthing,0u,0g,syncthing',
+    '22,6,500,/usr/cargo,0u,0g,cargo',
     '22,6,500,/usr/ssh,0u,0g,ssh',
+    '27034,6,500,/home/steam,500u,100g,steam',
     '27035,6,500,/home/steam,500u,100g,steam',
+    '32768,6,0,/usr/tailscaled,0u,0g,tailscaled',
     '3478,6,500,/opt/chrome,0u,0g,chrome',
     '4070,6,500,/opt/spotify,0u,0g,spotify',
     '43,6,500,/usr/whois,0u,0g,whois',
@@ -106,13 +109,12 @@ WHERE
     '80,6,500,/app/thunderbird,u,g,thunderbird',
     '80,6,500,/home/steam,500u,100g,steam',
     '80,6,500,/opt/chrome,0u,0g,chrome',
-    '27034,6,500,/home/steam,500u,100g,steam',
-    '32768,6,0,/usr/tailscaled,0u,0g,tailscaled',
     '80,6,500,/opt/firefox,0u,0g,firefox',
     '80,6,500,/usr/chrome,0u,0g,chrome',
     '80,6,500,/usr/curl,0u,0g,curl',
     '80,6,500,/usr/firefox,0u,0g,firefox',
     '80,6,500,/usr/firefox,0u,0g,.firefox-wrappe',
+    '80,6,500,/usr/gnome-software,0u,0g,gnome-software',
     '80,6,500,/usr/pacman,0u,0g,pacman',
     '80,6,500,/usr/python3.10,0u,0g,yum',
     '80,6,500,/usr/rpi-imager,0u,0g,rpi-imager',
@@ -120,8 +122,8 @@ WHERE
     '8080,6,500,/usr/firefox,0u,0g,firefox',
     '8443,6,500,/opt/chrome,0u,0g,chrome',
     '8443,6,500,/usr/firefox,0u,0g,firefox',
+    '8801,17,500,/app/zoom.real,u,g,zoom.real',
     '993,6,500,/app/thunderbird,u,g,thunderbird'
-
   )
   AND NOT (
     p.name = 'syncthing'
@@ -139,9 +141,9 @@ WHERE
   )
   -- TODO: Move this to a custom override overlay, as it is extremely obscure (small ISP)
   AND NOT (
-     exception_key = '32768,6,500,/usr/ssh,0u,0g,ssh'
-     AND s.remote_port = 40022
-     AND s.remote_address = '104.131.84.33' -- gatekeeper.uservers.net
+    exception_key = '32768,6,500,/usr/ssh,0u,0g,ssh'
+    AND s.remote_port = 40022
+    AND s.remote_address = '104.131.84.33' -- gatekeeper.uservers.net
   )
 GROUP BY
   p.cmdline

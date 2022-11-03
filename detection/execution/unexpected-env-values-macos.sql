@@ -15,9 +15,10 @@ SELECT
   p.cmdline,
   p.parent AS parent_pid,
   pp.cmdline AS parent_cmd
--- Querying processes first and filtering by time gives a massive 20X speed improvement
--- over querying process_envs first and JOIN'ing against processes
-FROM processes p
+  -- Querying processes first and filtering by time gives a massive 20X speed improvement
+  -- over querying process_envs first and JOIN'ing against processes
+FROM
+  processes p
   LEFT JOIN process_envs pe ON p.pid = pe.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
 WHERE -- This time should match the interval

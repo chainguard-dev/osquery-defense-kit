@@ -97,6 +97,7 @@ WHERE
     'chrome',
     'com.apple.MobileSoftwareUpdate.UpdateBrainService',
     'containerd',
+    'cargo',
     'esbuild',
     'darkfiles',
     'firefox',

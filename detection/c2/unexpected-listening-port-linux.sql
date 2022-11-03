@@ -120,7 +120,7 @@ WHERE
     '9090,6,500,controlplane',
     '9153,6,0,coredns',
     '9300,6,500,authentik-proxy'
- )
+  )
   AND NOT (
     p.path LIKE ',ko-app,%'
     AND lp.port > 1024

@@ -167,6 +167,7 @@ WHERE
     '/dev/video,vlc',
     '/dev/video,wireplumber',
     '/dev/video,zoom',
+    '/dev/video,zoom.real',
     '/dev/zfs,zed',
     '/dev/zfs,zfs',
     '/dev/zfs,zpool'

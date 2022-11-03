@@ -49,6 +49,7 @@ WHERE
   ) -- Vendors that create software packages that look like a touched file.
   AND NOT signature.authority IN (
     'Apple Mac OS Application Signing',
+    'Developer ID Application: Fumihiko Takayama (G43BCU2T37)', -- Karibiner
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW)',
