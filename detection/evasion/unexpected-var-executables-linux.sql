@@ -50,4 +50,5 @@ WHERE
     '/var/run/booted-system',
     '/var/run/current-system'
   )
+  AND magic.data NOT IN ('JSON data')
   AND file.size > 10
