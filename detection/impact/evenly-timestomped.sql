@@ -41,6 +41,6 @@ WHERE
     '/usr/share/doc/strace/NEWS',
     '/bin/strace-log-merge',
     '/usr/bin/strace-log-merge'
-    )
+  )
   AND file.path NOT LIKE '%/lynis%'
   AND file.path NOT LIKE '%/yelp-xsl%'

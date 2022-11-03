@@ -16,29 +16,42 @@ SELECT
   p.parent,
   p.cmdline,
   pp.name AS parent_name,
-  pp.cmdline AS parent_cmd
--- Processes is 20X faster to scan than process_envs
-FROM processes p
+  pp.cmdline AS parent_cmd -- Processes is 20X faster to scan than process_envs
+FROM
+  processes p
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN process_envs pe ON p.pid = pe.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
 WHERE -- This time should match the interval
-  p.start_time > (strftime('%s', 'now') - 605)
-  -- Filter out transient processes that may not have an envs entry by the time we poll for it
-  AND p.start_time < (strftime('%s', 'now') - 5)
-  -- This pattern is common with kthreadd processes
-  AND p.parent NOT IN (0,2)
-  AND p.name NOT IN ('gpg-agent', 'bwrap', 'spotify', 'chrome')
+  p.start_time > (strftime('%s', 'now') - 605) -- Filter out transient processes that may not have an envs entry by the time we poll for it
+  AND p.start_time < (strftime('%s', 'now') - 5) -- This pattern is common with kthreadd processes
+  AND p.parent NOT IN (0, 2)
+  AND NOT p.path IS NULL
+  AND p.name NOT IN (
+    'gpg-agent',
+    'bwrap',
+    'spotify',
+    'chrome',
+    'jcef_helper',
+    'slack',
+    'sshd',
+    'zoom.real',
+    'zypak-sandbox'
+  )
   AND p.path NOT IN (
     '/usr/bin/gpg-agent',
     '/usr/bin/bwrap',
+    '/usr/lib/slack/slack',
     '/usr/sbin/nginx',
     '/opt/google/chrome/chrome',
     '/opt/spotify/spotify'
   )
-  AND NOT pp.name IN ('yum')
+  AND NOT pp.name IN ('yum', 'chrome', 'zoom.real', 'ZoomLauncher')
+  AND NOT pp.cmdline LIKE 'bwrap %'
+  AND NOT p.cmdline LIKE '%--type=zygote%'
+  AND NOT p.cmdline LIKE '%--disable-seccomp-filter-sandbox%'
+  AND NOT p.cmdline LIKE '%--enable-crashpad%'
 GROUP BY
   p.pid
 HAVING
   count == 0;
-

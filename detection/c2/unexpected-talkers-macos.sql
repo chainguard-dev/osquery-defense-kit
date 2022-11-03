@@ -70,8 +70,9 @@ WHERE
   AND p.path NOT LIKE '/private/var/folders/%/go-build%/%'
   -- Apple programs running from weird places, like the UpdateBrainService
   AND NOT (
-    signature.identifier LIKE 'com.apple.%' AND signature.authority = 'Software Signing'
-    AND remote_port IN (53,443,80)
+    signature.identifier LIKE 'com.apple.%'
+    AND signature.authority = 'Software Signing'
+    AND remote_port IN (53, 443, 80)
     AND protocol IN (6, 17)
   )
   AND NOT (
@@ -259,7 +260,6 @@ WHERE
     '80,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '80,6,500,webhook.test,a.out,'
   )
-
   -- There are many signing hashes for git
   AND NOT exception_key LIKE '443,6,500,git-remote-http,git-remote-http-%'
   -- nix-shell infects children with open connections
@@ -339,7 +339,10 @@ WHERE
   )
   -- Python programs
   AND NOT (
-    (p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%' OR p.cmdline LIKE '%/opt/homebrew/bin/aws%')
+    (
+      p.cmdline LIKE '%google-cloud-sdk/lib/gcloud.py%'
+      OR p.cmdline LIKE '%/opt/homebrew/bin/aws%'
+    )
     AND remote_port IN (80, 443, 53)
   ) -- Slack update?
   AND NOT (

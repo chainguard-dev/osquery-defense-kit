@@ -4,7 +4,8 @@
 --   * https://www.sandflysecurity.com/blog/bpfdoor-an-evasive-linux-backdoor-technical-analysis/
 --
 -- tags: persistent state filesystem
-SELECT file.path,
+SELECT
+  file.path,
   file.directory,
   uid,
   gid,
@@ -13,10 +14,12 @@ SELECT file.path,
   file.size,
   hash.sha256,
   magic.data
-FROM file
+FROM
+  file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE (
+WHERE
+  (
     -- This list is the result of multiple queries combined and can likely be minimized
     file.path LIKE '/dev/%%'
     OR file.path LIKE '/dev/%%/%%'

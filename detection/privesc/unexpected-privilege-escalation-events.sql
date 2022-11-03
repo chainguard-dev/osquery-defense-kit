@@ -45,6 +45,7 @@ WHERE
     '/usr/bin/top',
     '/usr/lib/snapd/snap-confine',
     '/usr/lib/snapd/snap-update-ns',
+    '/opt/1Password/1Password-KeyringHelper',
     '/usr/lib/systemd/systemd',
     '/usr/lib/Xorg.wrap',
     '/usr/lib/xorg/Xorg.wrap'

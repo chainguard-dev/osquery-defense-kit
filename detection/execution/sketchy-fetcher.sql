@@ -50,6 +50,12 @@ WHERE
     OR (
       p.cmdline LIKE '%wget %'
       AND p.euid < 500
+      -- TODO: Update this query to understand containers
+      AND pp.path NOT IN (
+        "/usr/bin/bwrap",
+        "/bin/busybox",
+        "/usr/bin/melange"
+      )
     )
     OR (
       p.cmdline LIKE '%curl %'

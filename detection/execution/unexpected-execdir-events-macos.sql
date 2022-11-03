@@ -101,15 +101,16 @@ WHERE
   AND dirname NOT LIKE '../%'
   AND p.path NOT IN (
     '/Applications/Stats.app/Contents/MacOS/Stats',
-    '/usr/libexec/AssetCache/AssetCache',
     '_build/krew/bin/git',
-    '/Library/PrivilegedHelperTools/com.adobe.acc.installer.v2',
     '/Library/DropboxHelperTools/DropboxHelperInstaller',
+    '/Library/Filesystems/kbfuse.fs/Contents/Resources/load_kbfuse',
+    '/Library/PrivilegedHelperTools/com.adobe.acc.installer.v2',
     '/Library/PrivilegedHelperTools/com.adobe.ARMDC.Communicator',
     '/Library/PrivilegedHelperTools/com.adobe.ARMDC.SMJobBlessHelper',
     '/Library/PrivilegedHelperTools/com.docker.vmnetd',
     '/Library/PrivilegedHelperTools/com.macpaw.CleanMyMac4.Agent',
-    '/Library/PrivilegedHelperTools/keybase.Helper'
+    '/Library/PrivilegedHelperTools/keybase.Helper',
+    '/usr/libexec/AssetCache/AssetCache'
   )
   -- Nix
   AND parent_path NOT LIKE '/nix/store/%'

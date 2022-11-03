@@ -140,4 +140,4 @@ WHERE
   AND NOT (
     homedir = '~'
     AND p.name = 'cloud_sql_proxy'
-  )
+  );

@@ -112,6 +112,9 @@ WHERE
       '/usr/bin/csrutil status',
       '/usr/bin/csrutil report',
       '/bin/launchctl list',
+      'launchctl list com.parallels.desktop.launchdaemon',
+      'launchctl list us.zoom.ZoomDaemon',
+      'sudo launchctl list us.zoom.ZoomDaemon',
       '/bin/launchctl list homebrew.mxcl.yabai',
       '/bin/launchctl asuser 0 /bin/launchctl list'
     )
@@ -120,4 +123,5 @@ WHERE
   AND NOT cmd LIKE '/bin/rm -f /tmp/periodic.%'
   AND NOT cmd LIKE 'rm -f /tmp/locate%/_updatedb%'
   AND NOT cmd LIKE 'rm -f /tmp/locate%/mklocate%/_mklocatedb%'
+  AND NOT cmd LIKE 'rm -f /tmp/insttmp_%'
   AND NOT cmd LIKE 'touch -r /tmp/KSInstallAction.%'

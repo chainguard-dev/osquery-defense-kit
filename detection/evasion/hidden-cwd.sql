@@ -23,6 +23,11 @@ SELECT
   pp.euid AS parent_euid,
   hash.sha256,
   REPLACE(p.cwd, u.directory, '~') AS dir,
+  REGEX_MATCH (
+    REPLACE(p.cwd, u.directory, '~'),
+    '([/~].*?/.*?)/',
+    1
+  ) AS top_dir,
   CONCAT (
     p.name,
     ',',
@@ -56,6 +61,7 @@ WHERE
       'git,~/.local/share',
       'makepkg,~/.cache/yay',
       'zsh,~/.Trash',
+      'cgo,~/.gimme/versions',
       'bash,~/.Trash',
       'fish,~/.Trash',
       'make,~/.cache/yay',
@@ -80,6 +86,7 @@ WHERE
       '~/.local/share/nvim',
       '~/.gmailctl',
       '~/.oh-my-zsh',
+      '~/.hunter/_Base',
       '~/.zsh'
     )
     OR p.name IN (
@@ -96,6 +103,8 @@ WHERE
     OR dir LIKE '~/.cargo/%'
     OR dir LIKE '~/code/%'
     OR dir LIKE '~/.dotfiles/%'
+    OR dir LIKE '~/%/.git'
+    OR dir LIKE '~/.gimme%'
     OR dir LIKE '~/%/.github%'
     OR dir LIKE '~/go/src/%'
     OR dir LIKE '~/.gradle/%'
@@ -108,9 +117,13 @@ WHERE
     OR dir LIKE '~/.provisio%'
     OR dir LIKE '~/src/%'
     OR dir LIKE '~/%/.terraform%'
+    OR dir LIKE '~/.vim%'
     OR dir LIKE '~/.vscode/extensions/%'
     OR dir LIKE '~/.zsh/%'
-    OR dir LIKE '~/%/.git'
+    OR dir LIKE '/tmp/.mount_%'
     -- For sudo calls to other things
-    OR (dir LIKE '/home/.terraform.d/%' AND p.euid = 0)
+    OR (
+      dir LIKE '/home/.terraform.d/%'
+      AND p.euid = 0
+    )
   )

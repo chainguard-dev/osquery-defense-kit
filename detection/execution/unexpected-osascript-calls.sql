@@ -23,6 +23,8 @@ SELECT
   pp.name AS parent_name,
   -- not available in process_events
   MAX(pp.path, ppe.path) AS parent_path,
+  pp.path AS running_parent_path,
+  ppe.path AS old_running_path,
   TRIM(MAX(pp.cmdline, ppe.cmdline)) AS parent_cmd,
   MAX(pp.euid, ppe.euid) AS parent_euid,
   MAX(hash.sha256, ehash.sha256) AS parent_sha256,
@@ -66,10 +68,16 @@ WHERE
       OR parent_cmd LIKE '%/bin/gcloud auth login'
     )
   )
+  AND NOT (
+    exception_key = ',,osascript -s se -l JavaScript'
+    AND parent_name = 'yubikey-agent'
+  )
   AND NOT cmd LIKE 'osascript -e set zoomStatus to "closed"%'
   AND NOT cmd LIKE 'osascript openChrome.applescript http://127.0.0.1:%'
+  AND NOT cmd LIKE 'osascript -e tell application "zoom.us"%'
   AND NOT cmd LIKE 'osascript openChrome.applescript http%://localhost%'
   AND NOT cmd LIKE '/usr/bin/osascript /Users/%/osx-trash/trashfile.AppleScript %'
   AND NOT cmd LIKE 'osascript -e%tell application "System Preferences"%reveal anchor "shortcutsTab"%"com.apple.preference.keyboard"'
+  AND NOT cmd LIKE '%"CFBundleName" of property list file (app_path & ":Contents:Info.plist")'
 GROUP BY
   p.pid

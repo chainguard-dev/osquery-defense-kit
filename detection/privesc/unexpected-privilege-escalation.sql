@@ -35,12 +35,13 @@ FROM
 WHERE
   p.euid < pp.euid
   AND p.path NOT IN (
+    '/bin/ps',
+    '/usr/bin/doas',
     '/usr/bin/fusermount',
     '/usr/bin/fusermount3',
     '/usr/bin/login',
+    '/usr/bin/su',
     '/usr/bin/sudo',
-    '/usr/bin/doas',
-    '/bin/ps',
     '/usr/bin/top'
   )
   AND p.path NOT LIKE '/nix/store/%/bin/sudo'

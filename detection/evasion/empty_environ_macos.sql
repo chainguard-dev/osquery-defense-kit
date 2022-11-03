@@ -6,9 +6,12 @@
 -- tags: persistent state daemon process
 -- platform: darwin
 -- interval: 600
-SELECT COUNT(key) AS count,
+SELECT
+  COUNT(key) AS count,
   p.pid,
   p.path,
+  p.name,
+  p.euid,
   p.on_disk,
   p.parent,
   p.cmdline,
@@ -17,7 +20,7 @@ SELECT COUNT(key) AS count,
   signature.identifier,
   signature.authority,
   hash.sha256,
-  CONCAT(
+  CONCAT (
     MIN(p.euid, 500),
     ',',
     p.name,
@@ -26,7 +29,8 @@ SELECT COUNT(key) AS count,
     ',',
     signature.authority
   ) AS exception_key -- Processes is 20X faster to scan than process_envs
-FROM processes p
+FROM
+  processes p
   LEFT JOIN process_envs pe ON p.pid = pe.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
@@ -45,6 +49,7 @@ WHERE -- This time should match the interval
     AND signature.authority = 'Software Signing'
   )
   AND signature.authority NOT IN (
+    'Apple Mac OS Application Signing',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
@@ -77,5 +82,8 @@ WHERE -- This time should match the interval
       OR exception_key LIKE '500,%Helper%,helper,Developer ID Application: % (%)'
     )
   )
-GROUP BY p.pid
-HAVING count == 0;
+  AND NOT p.path LIKE '/opt/homebrew/Cellar/%'
+GROUP BY
+  p.pid
+HAVING
+  count == 0;
