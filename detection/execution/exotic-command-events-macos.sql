@@ -27,15 +27,20 @@ SELECT
   hash.sha256,
   pp.path AS parent_path,
   pp.name AS parent_name,
+  ppp.path AS gparent_path,
+  ppp.name AS gparent_name,
   TRIM(p.cmdline) AS parent_cmd,
   pp.euid AS parent_euid,
-  phash.sha256 AS parent_sha256
+  phash.sha256 AS parent_sha256,
+  gphash.sha256 AS gparent_sha256
 FROM
   uptime,
   process_events p
   LEFT JOIN processes pp ON p.parent = pp.pid
+  LEFT JOIN processes ppp ON pp.parent = ppp.pid
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN hash AS phash ON pp.path = phash.path
+  LEFT JOIN hash AS gphash ON ppp.path = gphash.path
 WHERE
   p.time > (strftime('%s', 'now') -45)
   AND (
@@ -125,3 +130,4 @@ WHERE
   AND NOT cmd LIKE 'rm -f /tmp/locate%/mklocate%/_mklocatedb%'
   AND NOT cmd LIKE 'rm -f /tmp/insttmp_%'
   AND NOT cmd LIKE 'touch -r /tmp/KSInstallAction.%'
+  AND NOT cmd LIKE '%find /Applications/LogiTuneInstaller.app -type d -exec chmod 777 {}%'

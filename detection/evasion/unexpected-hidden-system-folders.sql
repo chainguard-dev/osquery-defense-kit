@@ -63,6 +63,7 @@ WHERE
     '/.file',
     '/tmp/../',
     '/tmp/./',
+    '/tmp/.DS_Store',
     '/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
     '/tmp/._contentbarrier_installed',
     '/tmp/.dotnet/',
