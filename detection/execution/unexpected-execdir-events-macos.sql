@@ -13,7 +13,7 @@
 SELECT
   p.pid,
   p.path,
-  REGEX_MATCH (p.path, '(.*)/', 1) AS dirname,
+  REGEX_MATCH (p.path, '(.*)/', 1) AS dir,
   REPLACE(file.directory, u.directory, '~') AS homedir,
   p.cmdline,
   p.mode,
@@ -24,7 +24,9 @@ SELECT
   pp.name AS parent_name,
   pp.cmdline AS parent_cmd,
   pp.euid AS parent_euid,
-  hash.sha256 AS parent_sha256
+  hash.sha256 AS parent_sha256,
+  signature.identifier,
+  signature.authority
 FROM
   process_events p
   LEFT JOIN processes ON p.pid = processes.pid
@@ -32,102 +34,133 @@ FROM
   LEFT JOIN users u ON p.uid = u.uid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON pp.path = hash.path
+  LEFT JOIN signature ON p.path = signature.path
 WHERE
-  p.time > (strftime('%s', 'now') -60)
+  p.time > (strftime('%s', 'now') -7200)
   -- The process_events table on macOS ends up with relative directories for some reason?
-  AND dirname LIKE '/%'
+  AND dir LIKE '/%'
   AND file.size > 0
-  AND dirname NOT IN (
+  AND dir NOT IN (
     '/bin',
-    '/Library/DropboxHelperTools/Dropbox_u501',
-    '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateAgent.app/Contents/MacOS',
-    '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers.app/Contents/MacOS',
-    '/Library/Printers/DYMO/Utilities',
     '/Library/Application Support/Logitech.localized/Logitech Options.localized/LogiMgrUpdater.app/Contents/Resources',
-    '/usr/lib/system',
+    '/Library/DropboxHelperTools/Dropbox_u501',
+    '/Library/Filesystems/kbfuse.fs/Contents/Resources',
+    '/Library/Frameworks/Python.framework/Versions/3.10/bin',
+    '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers.app/Contents/MacOS',
+    '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateAgent.app/Contents/MacOS',
+    '/Library/Printers/DYMO/Utilities',
     '/Library/PrivilegedHelperTools',
-    '/sbin',
+    '/Library/TeX/texbin',
     '/nix/store',
+    '/nix/var/nix/profiles/default/bin',
+    '/node_modules/.bin',
+    '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/gke-gcloud-auth-plugin',
+    '/opt/usr/bin',
+    '/opt/X11/bin',
+    '/opt/X11/libexec',
+    '/run/current-system/sw/bin',
+    '/sbin',
     '/usr/bin',
     '/usr/lib',
-    '/Library/TeX/texbin',
     '/usr/lib/bluetooth',
     '/usr/lib/cups/notifier',
-    '/Library/Frameworks/Python.framework/Versions/3.10/bin',
     '/usr/libexec',
     '/usr/libexec/ApplicationFirewall',
-    '/usr/libexec/rosetta',
-    '/node_modules/.bin',
-    '/nix/var/nix/profiles/default/bin',
-    '/run/current-system/sw/bin',
+    '/usr/libexec/AssetCache',
     '/usr/libexec/firmwarecheckers/eficheck',
-    '/usr/sbin',
-    '/usr/share/code'
+    '/usr/libexec/rosetta',
+    '/usr/lib/fwupd',
+    '/usr/lib/ibus',
+    '/usr/lib/system',
+    '/usr/sbin'
   )
-  AND dirname NOT LIKE '/Applications/%.app/%'
-  AND dirname NOT LIKE '/etc/profiles/per-user/%/bin'
-  AND dirname NOT LIKE '/home/%'
-  AND dirname NOT LIKE '/Library/%/%.bundle/Contents/Helpers'
-  AND dirname NOT LIKE '/Library/%/Resources/%/Contents/MacOS'
-  AND dirname NOT LIKE '/Library/%/sbin' -- Nessus
-  AND dirname NOT LIKE '/Library/Apple/System/%'
-  AND dirname NOT LIKE '/Library/Application Support/%/Contents/MacOS'
-  AND dirname NOT LIKE '/Library/Application Support/Adobe/%'
-  AND dirname NOT LIKE '/Library/Audio/Plug-Ins/%/Contents/MacOS'
-  AND dirname NOT LIKE '/Library/CoreMediaIO/Plug-Ins/%'
-  AND dirname NOT LIKE '/Library/Developer/%'
-  AND dirname NOT LIKE '/Library/Developer/CommandLineTools/Library/%'
-  AND dirname NOT LIKE '/Library/Internet Plug-Ins/%/Contents/MacOS'
-  AND dirname NOT LIKE '/Library/Java/JavaVirtualMachines/%'
-  AND dirname NOT LIKE '/Library/SystemExtensions/%'
-  AND dirname NOT LIKE '/nix/store/%'
-  AND dirname NOT LIKE '/opt/%'
-  AND dirname NOT LIKE '/private/tmp/go-build%/exe'
-  AND dirname NOT LIKE '/private/tmp/nix-build-%'
-  AND dirname NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%.xpc/Contents/MacOS'
-  AND dirname NOT LIKE '/private/var/folders/%/bin'
-  AND dirname NOT LIKE '/private/var/folders/%/Contents/%'
-  AND dirname NOT LIKE '/private/var/folders/%/go-build%'
-  AND dirname NOT LIKE '/private/var/folders/%/GoLand'
-  AND dirname NOT LIKE '/snap/%'
-  AND dirname NOT LIKE '/store/%/bin'
-  AND dirname NOT LIKE '/System/%'
-  AND dirname NOT LIKE '/Users/%'
-  AND dirname NOT LIKE '/usr/libexec/%'
-  AND dirname NOT LIKE '/usr/local/%'
-  AND dirname NOT LIKE '/Volumes/com.getdropbox.dropbox-%'
-  AND dirname NOT LIKE '/private/tmp/KSInstallAction.%/Install Google Software Update.app/Contents/Helpers'
-  -- Unexplained data issue
-  AND dirname NOT LIKE '../%'
-  AND p.path NOT IN (
-    '/Applications/Stats.app/Contents/MacOS/Stats',
-    '_build/krew/bin/git',
-    '/Library/DropboxHelperTools/DropboxHelperInstaller',
-    '/Library/Filesystems/kbfuse.fs/Contents/Resources/load_kbfuse',
-    '/Library/PrivilegedHelperTools/com.adobe.acc.installer.v2',
-    '/Library/PrivilegedHelperTools/com.adobe.ARMDC.Communicator',
-    '/Library/PrivilegedHelperTools/com.adobe.ARMDC.SMJobBlessHelper',
-    '/Library/PrivilegedHelperTools/com.docker.vmnetd',
-    '/Library/PrivilegedHelperTools/com.macpaw.CleanMyMac4.Agent',
-    '/Library/PrivilegedHelperTools/keybase.Helper',
-    '/usr/libexec/AssetCache/AssetCache'
+  AND homedir NOT IN (
+    '~/bin',
+    '~/code/bin',
+    '~/go/bin',
+    '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
+    '~/Library/Application Support/Code/User/globalStorage/grafana.vscode-jsonnet/bin',
+    '~/Library/Application Support/com.elgato.StreamDeck/Plugins/com.lostdomain.zoom.sdPlugin',
+    '~/Library/Application Support/dev.warp.Warp-Stable',
+    '~/Library/Printers/Brother MFC-J5330DW.app/Contents/MacOS',
+    '~/.local/bin',
+    '~/.local/share/nvim/mason/packages/tflint',
+    '~/.local/share/nvim.old/mason/packages/tflint',
+    '~/projects/go/bin'
   )
-  -- Nix
-  AND parent_path NOT LIKE '/nix/store/%'
-  -- Homebrew and other compilations
-  AND parent_cmd NOT LIKE '%./configure%'
-  -- Pulumi executables are often executed from $TMPDIR
-  AND NOT (
-    dirname LIKE '/private/var/%'
-    AND processes.name LIKE 'pulumi-go.%'
+  AND signature.authority NOT IN (
+    'Apple iPhone OS Application Signing',
+    'Apple Mac OS Application Signing',
+    'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+    'Developer ID Application: Cisco (DE8Y96K9QP)',
+    'Developer ID Application: CodeWeavers Inc. (9C6B7X7Z8E)',
+    'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
+    'Developer ID Application: Docker Inc (9BNSXJN65R)',
+    'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
+    'Developer ID Application: Figma, Inc. (T8RA8NE3B7)',
+    'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
+    'Developer ID Application: Google LLC (EQHXZ8M8AV)',
+    'Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
+    'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
+    'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
+    'Developer ID Application: Node.js Foundation (HX7739G8FX)',
+    'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
+    'Developer ID Application: Objective-See, LLC (VBG97UB4TA)',
+    'Developer ID Application: Opal Camera Inc (97Z3HJWCRT)',
+    'Developer ID Application: Oracle America, Inc. (VB5E2TV963)',
+    'Developer ID Application: TablePlus Inc (3X57WP8E8V)',
+    'Developer ID Application: Tenable, Inc. (4B8J598M7U)',
+    'Developer ID Application: Valve Corporation (MXGJJ98X76)',
+    'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)',
+    'Software Signing'
   )
-  -- Chrome executes patches from /tmp :(
-  AND NOT (
-    dirname LIKE '/private/tmp/%'
-    AND processes.name = 'goobspatch'
-  )
+  AND dir NOT LIKE '../%' -- data issue
+
+  AND dir NOT LIKE '/Applications/%.app/%'
+  AND dir NOT LIKE '/Applications/Utilities/Adobe Creative Cloud/%'
+  AND dir NOT LIKE '/etc/profiles/per-user/%/bin'
+  AND dir NOT LIKE '/home/%'
+  AND dir NOT LIKE '/Library/Apple/System/%'
+  AND dir NOT LIKE '/Library/Application Support/Adobe/%'
+  AND dir NOT LIKE '/Library/Application Support/%/Contents/MacOS'
+  AND dir NOT LIKE '/Library/Audio/Plug-Ins/%/Contents/MacOS'
+  AND dir NOT LIKE '/Library/%/%.bundle/Contents/Helpers'
+  AND dir NOT LIKE '/Library/CoreMediaIO/Plug-Ins/%'
+  AND dir NOT LIKE '/Library/Developer/%'
+  AND dir NOT LIKE '/Library/Internet Plug-Ins/%/Contents/MacOS'
+  AND dir NOT LIKE '/Library/Java/JavaVirtualMachines/%'
+  AND dir NOT LIKE '/Library/Printers/%.app/Contents/MacOS'
+  AND dir NOT LIKE '/Library/PrivilegedHelperTools/com.%'
+  AND dir NOT LIKE '/Library/%/Resources/%/Contents/MacOS'
+  AND dir NOT LIKE '/Library/%/sbin' -- Nessus
+  AND dir NOT LIKE '/Library/SystemExtensions/%'
+  AND dir NOT LIKE '/nix/store/%'
+  AND dir NOT LIKE '/opt/homebrew/Caskroom/%'
+  AND dir NOT LIKE '/opt/homebrew/Cellar/%'
+  AND dir NOT LIKE '/private/tmp/%.app/Contents/MacOS'
+  AND dir NOT LIKE '/private/tmp/go-build%/exe'
+  AND dir NOT LIKE '/private/tmp/KSInstallAction.%/Install Google Software Update.app/Contents/Helpers'
+  AND dir NOT LIKE '/private/tmp/nix-build-%'
+  AND dir NOT LIKE '/private/tmp/PKInstallSandbox.%/Scripts/com.microsoft.OneDrive.%'
+  AND dir NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%.xpc/Contents/MacOS'
+  AND dir NOT LIKE '/private/var/folders/%/bin'
+  AND dir NOT LIKE '/private/var/folders/%/Contents/%'
+  AND dir NOT LIKE '/private/var/folders/%/d/Wrapper/%.app'
+  AND dir NOT LIKE '/private/var/folders/%/go-build%'
+  AND dir NOT LIKE '/private/var/folders/%/GoLand'
+  AND dir NOT LIKE '/snap/%'
+  AND dir NOT LIKE '/store/%/bin'
+  AND dir NOT LIKE '/System/%'
+  AND dir NOT LIKE '/usr/libexec/%'
+  AND dir NOT LIKE '/usr/local/%'
+  AND dir NOT LIKE '/Volumes/com.getdropbox.dropbox-%'
+  AND homedir NOT LIKE '~/homebrew/Cellar/%'
+  AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
+  AND homedir NOT LIKE '~/.local/share/%'
+  AND homedir NOT LIKE '~/%/node_modules/.pnpm/esbuild-%/node_modules/esbuild-darwin-arm64/bin'
+  AND homedir NOT LIKE '~/.tflint.d/plugins/%'
   -- Don't spam alerts with repeated invocations of the same command-line
 GROUP BY
   p.cmdline,
   p.cwd,
-  p.euid
+  p.euid;
