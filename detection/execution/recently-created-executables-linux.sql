@@ -54,7 +54,7 @@ WHERE
     '/usr/bin/gedit',
     '/usr/bin/gnome-keyring-daemon',
     '/usr/bin/obs',
-    '/usr/bin/pavucontrol'
+    '/usr/bin/pavucontrol',
     '/usr/bin/pipewire',
     '/usr/bin/rpi-imager',
     '/usr/bin/tailscaled',
