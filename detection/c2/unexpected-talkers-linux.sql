@@ -90,6 +90,7 @@ WHERE
     '27034,6,500,/home/steam,500u,100g,steam',
     '27035,6,500,/home/steam,500u,100g,steam',
     '32768,6,0,/usr/tailscaled,0u,0g,tailscaled',
+    '3443,6,500,/opt/chrome,0u,0g,chrome',
     '3478,6,500,/opt/chrome,0u,0g,chrome',
     '4070,6,500,/opt/spotify,0u,0g,spotify',
     '43,6,500,/usr/whois,0u,0g,whois',
