@@ -40,6 +40,7 @@ WHERE
     '/usr/lib/firefox',
     '/usr/lib/fwupd',
     '/usr/lib/ibus',
+    '/usr/share/spotify-client',
     '/usr/lib/libreoffice/program',
     '/usr/lib/polkit-1',
     '/usr/lib/slack',
