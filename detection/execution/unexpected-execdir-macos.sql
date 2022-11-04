@@ -126,6 +126,7 @@ WHERE
   AND dir NOT LIKE '/Library/%/sbin' -- Nessus
   AND dir NOT LIKE '/Library/SystemExtensions/%'
   AND dir NOT LIKE '/nix/store/%'
+  AND dir NOT LIKE '/opt/%/bin'
   AND dir NOT LIKE '/opt/homebrew/Caskroom/%'
   AND dir NOT LIKE '/opt/homebrew/Cellar/%'
   AND dir NOT LIKE '/private/tmp/%.app/Contents/MacOS'

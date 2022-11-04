@@ -41,6 +41,7 @@ WHERE
   AND p.start_time >= MAX(f.ctime, f.ctime)
   AND signature.authority NOT IN (
     'Apple Mac OS Application Signing',
+    'Developer ID Application: SUSE LLC (2Q6FHJR3H3)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW)',
