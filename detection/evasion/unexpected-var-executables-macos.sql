@@ -91,7 +91,7 @@ WHERE
     AND file.uid = 501
   )
   AND NOT (
-    file.path LIKE '/var/db/timezone/zoneinfo/%/%'
+    file.path LIKE '/var/db/timezone/zoneinfo/%'
     AND magic.data LIKE 'timezone%'
     AND file.size < 3000
     AND file.mode = 0755

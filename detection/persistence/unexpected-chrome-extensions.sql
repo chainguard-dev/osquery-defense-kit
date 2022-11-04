@@ -58,6 +58,7 @@ WHERE
     'false,,Google Photos,ncmjhecbjeaamljdfahankockkkdmedg,', -- Deprecated Google Extension
     'false,,YouTube,agimnkijcaahngcdmfeangaknmldooml,', -- Deprecated Google Extension
     'true,Adaware,Safe Torrent Scanner,aegnopegbbhjeeiganiajffnalhlkkjb,storage, tabs',
+    'true,,PlayTo for Chromecast™,jngkenaoceimiimeokpdbmejeonaaami,storage, webRequest, <all_urls>, tabs, webRequestBlocking',
     'true,,Adblock for Youtube™,cmedhionkhpnakcndndgjdbohmhepckk,storage, unlimitedStorage, webRequest, webRequestBlocking, <all_urls>',
     'true,,Add to Amazon Wish List,ciagpekplgpbepdgggflgmahnjgiaced,tabs, http://*/*, https://*/*',
     'true,,Adobe Acrobat: PDF edit, convert, sign tools,efaidnbmnnnibpcajpcglclefindmkaj,contextMenus, <all_urls>, tabs, downloads, nativeMessaging, webRequest, webRequestBlocking',

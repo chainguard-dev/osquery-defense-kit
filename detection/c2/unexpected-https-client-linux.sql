@@ -89,6 +89,7 @@ WHERE
     '500,/home/chainctl,500u,500g,chainctl',
     '500,/home/code,500u,500g,code',
     '500,/home/gitsign,500u,500g,gitsign',
+    '500,/home/ko,500u,500g,ko',
     '500,/home/go,500u,500g,go',
     '500,/home/grype,500u,500g,grype',
     '500,/home/java,500u,500g,java',

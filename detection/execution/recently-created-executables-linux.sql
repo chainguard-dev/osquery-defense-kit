@@ -59,6 +59,8 @@ WHERE
     '/usr/bin/rpi-imager',
     '/usr/bin/tailscaled',
     '/usr/bin/udevadm',
+    '/usr/libexec/snapd/snapd',
+    '/usr/share/spotify-client/spotify',
     '/usr/lib/at-spi2-registryd',
     '/usr/lib/at-spi-bus-launcher',
     '/usr/libexec/docker/docker-proxy',
