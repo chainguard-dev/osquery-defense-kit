@@ -50,6 +50,7 @@ WHERE
     '/usr/bin/zsh',
     '/usr/lib64/thunderbird/thunderbird',
     '/usr/libexec/coreduetd',
+    '/usr/share/spotify-client/spotify',
     '/usr/libexec/flatpak-system-helper',
     '/usr/libexec/logd_helper',
     '/usr/libexec/packagekitd',
