@@ -24,7 +24,8 @@ SELECT
   pp.name AS parent_name,
   pp.cmdline AS parent_cmd,
   pp.euid AS parent_euid,
-  hash.sha256 AS parent_sha256,
+  hash.sha256 AS child_sha256,
+  phash.sha256 AS parent_sha256,
   signature.identifier,
   signature.authority
 FROM
@@ -33,10 +34,11 @@ FROM
   LEFT JOIN file ON p.path = file.path
   LEFT JOIN users u ON p.uid = u.uid
   LEFT JOIN processes pp ON p.parent = pp.pid
-  LEFT JOIN hash ON pp.path = hash.path
+  LEFT JOIN hash ON p.path = hash.path
+  LEFT JOIN hash phash ON pp.path = phash.path
   LEFT JOIN signature ON p.path = signature.path
 WHERE
-  p.time > (strftime('%s', 'now') -7200)
+  p.time > (strftime('%s', 'now') -60)
   -- The process_events table on macOS ends up with relative directories for some reason?
   AND dir LIKE '/%'
   AND file.size > 0
@@ -86,6 +88,7 @@ WHERE
     '~/.local/bin',
     '~/.local/share/nvim/mason/packages/tflint',
     '~/.local/share/nvim.old/mason/packages/tflint',
+    '~/.vs-kubernetes/tools/kubectl',
     '~/projects/go/bin'
   )
   AND signature.authority NOT IN (
