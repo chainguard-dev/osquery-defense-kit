@@ -51,6 +51,7 @@ WHERE
     '/usr/lib/udev/rules.d/90-daxctl-device.rules',
     '/usr/lib/udev/rules.d/91-drm-modeset.rules',
     '/usr/lib/udev/rules.d/96-e2scrub.rules',
+    '/usr/lib/udev/rules.d/90-wireshark-usbmon.rules',
     '/usr/lib/udev/rules.d/99-BlackmagicDevices.rules',
     '/usr/lib/udev/rules.d/99-DavinciPanel.rules',
     '/usr/lib/udev/rules.d/99-fuse3.rules',
