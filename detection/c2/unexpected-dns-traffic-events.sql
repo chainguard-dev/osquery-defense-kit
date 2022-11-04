@@ -57,6 +57,7 @@ WHERE
   )
   -- Some applications hard-code a safe DNS resolver, or allow the user to configure one
   AND s.remote_address NOT IN (
+    '100.100.100.100', -- Tailscale Magic DNS
     '1.1.1.1', -- Cloudflare
     '1.1.1.2', -- Cloudflare
     '8.8.8.8', -- Google
