@@ -81,6 +81,7 @@ WHERE
       '~/.vim',
       '~/.terraform.d',
       '~/.cache/yay',
+      '~/.emacs.d',
       '~/.local/share/chezmoi',
       '~/.local/share/Steam',
       '~/.local/share/nvim',

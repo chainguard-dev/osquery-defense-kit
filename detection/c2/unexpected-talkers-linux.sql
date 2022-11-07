@@ -93,6 +93,7 @@ WHERE
     '3443,6,500,/opt/chrome,0u,0g,chrome',
     '3478,6,500,/opt/chrome,0u,0g,chrome',
     '4070,6,500,/opt/spotify,0u,0g,spotify',
+    '3478,6,500,/usr/firefox,0u,0g,firefox',
     '43,6,500,/usr/whois,0u,0g,whois',
     '5228,6,500,/opt/chrome,0u,0g,chrome',
     '5228,6,500,/usr/chrome,0u,0g,chrome',

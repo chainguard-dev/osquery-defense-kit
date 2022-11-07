@@ -43,6 +43,7 @@ WHERE -- This time should match the interval
     '/usr/bin/bwrap',
     '/usr/lib/slack/slack',
     '/usr/sbin/nginx',
+    '/usr/lib/systemd/systemd-userdbd',
     '/opt/google/chrome/chrome',
     '/opt/spotify/spotify'
   )

@@ -118,6 +118,7 @@ WHERE
     '/usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers'
   )
   AND NOT p.cmdline LIKE '/usr/bin/python3 /usr/bin/dnf %'
+  AND NOT p.cmdline LIKE '/usr/bin/python3 /usr/bin/yum %'
   AND p.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND p.path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/launcher'
   AND p.path NOT LIKE '/nix/store/%/bin/%'

@@ -10,7 +10,9 @@ SELECT
 FROM
   kernel_modules
 WHERE
-  name NOT IN (
+  -- Filter out kernel modules that are required by another kernel module to reduce false-positives
+  used_by != NULL
+  AND name NOT IN (
     '8021q',
     'ac97_bus',
     'acpi_cpufreq',
@@ -55,6 +57,7 @@ WHERE
     'ccm',
     'ccp',
     'cdc_ether',
+    'cdrom',
     'cec',
     'cfg80211',
     'cmac',
