@@ -102,6 +102,7 @@ WHERE
         'dkms.service,Builds and install new kernel modules through DKMS,,200',
         'dm-event.socket,Device-mapper event daemon FIFOs,,200',
         'dnf-automatic-install.timer,dnf-automatic-install timer,,200',
+        'dnf-automatic-install.service,dnf automatic install updates,,300',
         'dnf-makecache.service,dnf makecache,,400',
         'dnf-makecache.timer,dnf makecache --timer,,300',
         'docker.service,Docker Application Container Engine,,1100',

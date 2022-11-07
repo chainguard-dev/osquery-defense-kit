@@ -14,7 +14,9 @@ SELECT
   p.pid,
   p.path,
   REGEX_MATCH (p.path, '(.*)/', 1) AS dir,
+  REGEX_MATCH (p.path, '(/.*?/.*?/.*?)/', 1) AS top_dir, -- 3 levels deep
   REPLACE(file.directory, u.directory, '~') AS homedir,
+  REGEX_MATCH (REPLACE(file.directory, u.directory, '~'), '(~/.*?/.*?/)', 1) AS top_homedir, -- 2 levels deep
   p.cmdline,
   p.mode,
   p.cwd,
@@ -69,28 +71,79 @@ WHERE
     '/usr/libexec',
     '/usr/libexec/ApplicationFirewall',
     '/usr/libexec/AssetCache',
+    '/usr/libexec/firmwarecheckers',
     '/usr/libexec/firmwarecheckers/eficheck',
     '/usr/libexec/rosetta',
     '/usr/lib/fwupd',
     '/usr/lib/ibus',
     '/usr/lib/system',
+    '/usr/local/bin',
     '/usr/sbin'
+  )
+  AND top_dir NOT IN (
+    '/Applications/Firefox.app/Contents',
+    '/Applications/Google Chrome.app/Contents',
+    '/Library/Apple/System',
+    '/Library/Application Support/Adobe',
+    '/Library/Application Support/GPGTools',
+    '/Library/Google/GoogleSoftwareUpdate',
+    '/System/Applications/Mail.app',
+    '/System/Applications/Music.app',
+    '/System/Applications/News.app',
+    '/System/Applications/TV.app',
+    '/System/Applications/Weather.app',
+    '/System/Library/CoreServices',
+    '/System/Library/Filesystems',
+    '/System/Library/Frameworks',
+    '/System/Library/PrivateFrameworks',
+    '/System/Library/SystemConfiguration',
+    '/System/Library/SystemProfiler',
+    '/System/Volumes/Preboot',
+    '/usr/local/kolide-k2'
   )
   AND homedir NOT IN (
     '~/bin',
     '~/code/bin',
+    '~/.magefile',
     '~/go/bin',
-    '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
-    '~/Library/Application Support/Code/User/globalStorage/grafana.vscode-jsonnet/bin',
-    '~/Library/Application Support/com.elgato.StreamDeck/Plugins/com.lostdomain.zoom.sdPlugin',
-    '~/Library/Application Support/dev.warp.Warp-Stable',
-    '~/Library/Printers/Brother MFC-J5330DW.app/Contents/MacOS',
     '~/.local/bin',
-    '~/.local/share/nvim/mason/packages/tflint',
-    '~/.local/share/nvim.old/mason/packages/tflint',
-    '~/.vs-kubernetes/tools/kubectl',
     '~/projects/go/bin'
   )
+  AND top_homedir NOT IN (
+    '~/Applications/Chrome Apps.localized/',
+    '~/.config/nvm/',
+    '~/homebrew/Cellar/',
+    '~/Library/Application Support/',
+    '~/Library/Printers',
+    '~/.local/share',
+    '~/projects/go',
+    '~/code/src',
+    '~/.tflint.d/plugins',
+    '~/.vscode/extensions',
+    '~/.vs-kubernetes/tools'
+  )
+  -- Locally built executables
+  AND NOT (
+    signature.identifier = "a.out"
+    AND homedir LIKE '~/%'
+    AND pp.name LIKE '%sh'
+  )
+  AND dir NOT LIKE '../%' -- data issue
+  AND dir NOT LIKE '/Applications/%'
+  AND dir NOT LIKE '/private/tmp/%.app/Contents/MacOS'
+  AND dir NOT LIKE '/private/tmp/go-build%/exe'
+  AND dir NOT LIKE '/private/tmp/KSInstallAction.%/Install Google Software Update.app/Contents/Helpers'
+  AND dir NOT LIKE '/private/tmp/nix-build-%'
+  AND dir NOT LIKE '/private/tmp/PKInstallSandbox.%/Scripts/com.microsoft.OneDrive.%'
+  AND dir NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%.xpc/Contents/MacOS'
+  AND dir NOT LIKE '/private/var/folders/%/bin'
+  AND dir NOT LIKE '/private/var/folders/%/Contents/%'
+  AND dir NOT LIKE '/private/var/folders/%/d/Wrapper/%.app'
+  AND dir NOT LIKE '/private/var/folders/%/go-build%'
+  AND dir NOT LIKE '/private/var/folders/%/GoLand'
+  AND dir NOT LIKE '/Volumes/com.getdropbox.dropbox-%'
+  AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
+  AND homedir NOT LIKE '~/%/node_modules/.pnpm/esbuild-%/node_modules/esbuild-darwin-arm64/bin'
   AND signature.authority NOT IN (
     'Apple iPhone OS Application Signing',
     'Apple Mac OS Application Signing',
@@ -118,51 +171,6 @@ WHERE
     'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)',
     'Software Signing'
   )
-  AND dir NOT LIKE '../%' -- data issue
-
-  AND dir NOT LIKE '/Applications/%.app/%'
-  AND dir NOT LIKE '/Applications/Utilities/Adobe Creative Cloud/%'
-  AND dir NOT LIKE '/etc/profiles/per-user/%/bin'
-  AND dir NOT LIKE '/home/%'
-  AND dir NOT LIKE '/Library/Apple/System/%'
-  AND dir NOT LIKE '/Library/Application Support/Adobe/%'
-  AND dir NOT LIKE '/Library/Application Support/%/Contents/MacOS'
-  AND dir NOT LIKE '/Library/Audio/Plug-Ins/%/Contents/MacOS'
-  AND dir NOT LIKE '/Library/%/%.bundle/Contents/Helpers'
-  AND dir NOT LIKE '/Library/CoreMediaIO/Plug-Ins/%'
-  AND dir NOT LIKE '/Library/Developer/%'
-  AND dir NOT LIKE '/Library/Internet Plug-Ins/%/Contents/MacOS'
-  AND dir NOT LIKE '/Library/Java/JavaVirtualMachines/%'
-  AND dir NOT LIKE '/Library/Printers/%.app/Contents/MacOS'
-  AND dir NOT LIKE '/Library/PrivilegedHelperTools/com.%'
-  AND dir NOT LIKE '/Library/%/Resources/%/Contents/MacOS'
-  AND dir NOT LIKE '/Library/%/sbin' -- Nessus
-  AND dir NOT LIKE '/Library/SystemExtensions/%'
-  AND dir NOT LIKE '/nix/store/%'
-  AND dir NOT LIKE '/opt/homebrew/Caskroom/%'
-  AND dir NOT LIKE '/opt/homebrew/Cellar/%'
-  AND dir NOT LIKE '/private/tmp/%.app/Contents/MacOS'
-  AND dir NOT LIKE '/private/tmp/go-build%/exe'
-  AND dir NOT LIKE '/private/tmp/KSInstallAction.%/Install Google Software Update.app/Contents/Helpers'
-  AND dir NOT LIKE '/private/tmp/nix-build-%'
-  AND dir NOT LIKE '/private/tmp/PKInstallSandbox.%/Scripts/com.microsoft.OneDrive.%'
-  AND dir NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%.xpc/Contents/MacOS'
-  AND dir NOT LIKE '/private/var/folders/%/bin'
-  AND dir NOT LIKE '/private/var/folders/%/Contents/%'
-  AND dir NOT LIKE '/private/var/folders/%/d/Wrapper/%.app'
-  AND dir NOT LIKE '/private/var/folders/%/go-build%'
-  AND dir NOT LIKE '/private/var/folders/%/GoLand'
-  AND dir NOT LIKE '/snap/%'
-  AND dir NOT LIKE '/store/%/bin'
-  AND dir NOT LIKE '/System/%'
-  AND dir NOT LIKE '/usr/libexec/%'
-  AND dir NOT LIKE '/usr/local/%'
-  AND dir NOT LIKE '/Volumes/com.getdropbox.dropbox-%'
-  AND homedir NOT LIKE '~/homebrew/Cellar/%'
-  AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
-  AND homedir NOT LIKE '~/.local/share/%'
-  AND homedir NOT LIKE '~/%/node_modules/.pnpm/esbuild-%/node_modules/esbuild-darwin-arm64/bin'
-  AND homedir NOT LIKE '~/.tflint.d/plugins/%'
   -- Don't spam alerts with repeated invocations of the same command-line
 GROUP BY
   p.cmdline,
