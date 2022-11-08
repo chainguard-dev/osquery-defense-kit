@@ -39,6 +39,7 @@ WHERE
     '/usr/bin/login',
     '/usr/bin/su',
     '/usr/bin/sudo',
+    '/bin/ps',
     '/usr/local/bin/doas',
     '/usr/bin/top'
   )
