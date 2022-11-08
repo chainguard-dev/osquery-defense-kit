@@ -108,6 +108,7 @@ WHERE
     '~/Library/',
     '~/.local/',
     '~/projects/',
+    '~/git/',
     '~/src/',
     '~/.tflint.d/',
     '~/.vscode/',
@@ -131,6 +132,7 @@ WHERE
   AND dir NOT LIKE '/private/var/folders/%/d/Wrapper/%.app'
   AND dir NOT LIKE '/private/var/folders/%/go-build%'
   AND dir NOT LIKE '/private/var/folders/%/GoLand'
+  AND dir NOT LIKE '%/.terraform/providers/%'
   AND dir NOT LIKE '/Volumes/com.getdropbox.dropbox-%'
   AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
   AND homedir NOT LIKE '~/%/node_modules/.pnpm/esbuild-%/node_modules/esbuild-darwin-arm64/bin'

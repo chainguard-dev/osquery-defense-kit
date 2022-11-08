@@ -43,6 +43,7 @@ WHERE
     'fleet_backend',
     'fsdaemon',
     'GoogleSoftwareUpdateAgent',
+    'com.apple.NRD.UpdateBrainService',
     'gopls',
     'grype',
     'java',

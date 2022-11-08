@@ -58,6 +58,7 @@ WHERE
   AND dirname NOT LIKE '/nix/store/%'
   AND dirname NOT LIKE '/opt/%'
   AND dirname NOT LIKE '/snap/%'
+  AND dirname NOT LIKE '%/.terraform/providers/%'
   AND dirname NOT LIKE '/tmp/%/bin'
   AND dirname NOT LIKE '/tmp/go-build%'
   AND dirname NOT LIKE '/usr/lib/%'

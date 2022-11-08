@@ -97,6 +97,7 @@ WHERE
   AND NOT name IN (
     'chrome',
     'com.apple.MobileSoftwareUpdate.UpdateBrainService',
+    'com.apple.NRD.UpdateBrainService',
     'containerd',
     'cargo',
     'esbuild',
