@@ -137,6 +137,7 @@ WHERE
   AND dir NOT LIKE '/private/tmp/PKInstallSandbox.%/Scripts/com.microsoft.OneDrive.%'
   AND dir NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%.xpc/Contents/MacOS'
   AND dir NOT LIKE '/private/var/folders/%/bin'
+  AND dir NOT LIKE '%/.terraform/providers/%'
   AND dir NOT LIKE '/private/var/folders/%/Contents/%'
   AND dir NOT LIKE '/private/var/folders/%/d/Wrapper/%.app'
   AND dir NOT LIKE '/private/var/folders/%/go-build%'

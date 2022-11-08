@@ -46,6 +46,7 @@ WHERE
   AND dirname NOT LIKE '/usr/local/%libexec'
   and dirname NOT LIKE '/usr/local/Cellar/%'
   AND dirname NOT LIKE '/usr/lib/%'
+  AND dirname NOT LIKE '%/.terraform/providers/%'
   AND dirname NOT LIKE '/usr/lib64/%'
   AND dirname NOT LIKE '/tmp/%/bin'
   AND dirname NOT LIKE '/usr/local/go/pkg/tool/%'

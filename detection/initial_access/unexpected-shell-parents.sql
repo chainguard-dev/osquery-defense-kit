@@ -132,7 +132,9 @@ WHERE
   )
   AND NOT p.cmdline LIKE '%/Library/Apple/System/Library/InstallerSandboxes%'
   AND NOT p.cmdline LIKE '%gcloud config config-helper%'
+  AND NOT p.cmdline LIKE '%hugo/hugo server%'
   AND NOT pp.cmdline LIKE '/Applications/Warp.app/%'
+  AND NOT pp.cmdline = 'npm run start'
   AND NOT pp.cmdline LIKE '%brew.rb%'
   AND NOT pp.cmdline LIKE '%/Homebrew/build.rb%'
   AND NOT pp.cmdline LIKE '%Code Helper%'
