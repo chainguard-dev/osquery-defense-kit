@@ -59,6 +59,7 @@ WHERE
     '/usr/bin/rpi-imager',
     '/usr/bin/tailscaled',
     '/usr/bin/udevadm',
+    '/opt/sublime_text/sublime_text',
     '/usr/bin/wpa_supplicant',
     '/usr/lib64/firefox/firefox',
     '/usr/lib64/google-cloud-sdk/platform/bundledpythonunix/bin/python3',

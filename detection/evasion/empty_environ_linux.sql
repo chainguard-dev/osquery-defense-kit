@@ -36,8 +36,12 @@ WHERE -- This time should match the interval
     'slack',
     'gnome-boxes-sea',
     'gnome-contacts-',
+    'gnome-clocks',
+    'systemd-userwor',
+    'gnome-terminal-',
     'sshd',
     'zoom.real',
+    'zoom',
     'zypak-sandbox'
   )
   AND p.path NOT IN (
@@ -45,6 +49,7 @@ WHERE -- This time should match the interval
     '/usr/bin/bwrap',
     '/usr/lib/slack/slack',
     '/usr/sbin/nginx',
+    '/usr/libexec/gnome-terminal-server',
     '/usr/lib/systemd/systemd-userdbd',
     '/opt/google/chrome/chrome',
     '/opt/spotify/spotify'

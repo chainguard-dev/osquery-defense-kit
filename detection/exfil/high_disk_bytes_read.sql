@@ -71,6 +71,7 @@ WHERE
     '/usr/bin/udevadm',
     '/usr/libexec/aned',
     '/usr/libexec/coreduetd',
+    '/usr/bin/update-notifier',
     '/usr/libexec/flatpak-system-helper',
     '/usr/libexec/logd',
     '/usr/libexec/logd_helper',

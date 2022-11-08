@@ -44,6 +44,9 @@ WHERE
     '/usr/bin/fusermount3',
     '/usr/bin/login',
     '/usr/bin/sudo',
+    '/usr/bin/gpgsm',
+    '/usr/bin/gpgconf',
+    '/usr/bin/gpg',
     '/usr/bin/top',
     '/usr/lib/snapd/snap-confine',
     '/usr/lib/snapd/snap-update-ns',
@@ -55,6 +58,7 @@ WHERE
   AND p.path NOT LIKE '/nix/store/%/bin/sudo'
   AND p.path NOT LIKE '/nix/store/%/bin/dhcpcd'
   AND p.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
+  AND NOT pp.cmdline = '/usr/lib/systemd/systemd --user'
   AND NOT (
     child_name = 'polkit-agent-helper-1'
     AND parent_path = '/usr/bin/gnome-shell'
