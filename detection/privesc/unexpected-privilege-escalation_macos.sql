@@ -8,7 +8,7 @@
 --   * unexpected-privilege-escalation-events.sql
 --
 -- tags: transient rapid state process escalation
--- platform: posix
+-- platform: darwin
 SELECT
   p.pid AS child_pid,
   p.path AS child_path,
@@ -24,7 +24,7 @@ SELECT
   pp.cmdline AS parent_cmdline,
   pp.euid AS parent_euid,
   pfile.mode AS parent_mode,
-  hash.sha256 AS parent_hash
+  phash.sha256 AS parent_hash
 FROM
   processes p
   JOIN processes pp ON p.parent = pp.pid
@@ -33,32 +33,12 @@ FROM
   LEFT JOIN file AS pfile ON pp.path = pfile.path
   LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE
-  p.euid < pp.euid
+  p.euid < p.uid
   AND p.path NOT IN (
-    '/bin/ps',
-    '/usr/bin/doas',
-    '/usr/bin/fusermount',
-    '/usr/bin/fusermount3',
+    '/Library/DropboxHelperTools/Dropbox_u501/dbkextd',
     '/usr/bin/login',
     '/usr/bin/su',
     '/usr/bin/sudo',
+    '/usr/local/bin/doas',
     '/usr/bin/top'
-  )
-  AND p.path NOT LIKE '/nix/store/%/bin/sudo'
-  AND p.path NOT LIKE '/nix/store/%/bin/dhcpcd'
-  AND NOT (
-    p.name = 'polkit-agent-he'
-    AND parent_path = '/usr/bin/gnome-shell'
-  )
-  AND NOT (
-    p.name = 'fusermount3'
-    AND parent_path = '/usr/lib/xdg-document-portal'
-  )
-  AND NOT (
-    p.path = '/usr/bin/pkexec'
-    AND parent_path = '/usr/bin/update-notifier'
-  )
-  AND NOT (
-    p.path = '/usr/libexec/xdg-permission-store'
-    AND parent_path = '/usr/lib/systemd/systemd'
   )

@@ -17,7 +17,7 @@ SELECT
   f.directory AS dir,
   REGEX_MATCH (p.path, '(/.*?/.*?/.*?)/', 1) AS top_dir, -- 3 levels deep
   REPLACE(f.directory, u.directory, '~') AS homedir,
-  REGEX_MATCH (REPLACE(f.directory, u.directory, '~'), '(~/.*?/.*?/)', 1) AS top_homedir, -- 2 levels deep
+  REGEX_MATCH (REPLACE(f.directory, u.directory, '~'), '(~/.*?/)', 1) AS top_homedir, -- 1 level deep
   p.cmdline,
   hash.sha256,
   pp.path AS parent_path,
@@ -101,17 +101,17 @@ WHERE
     '~/projects/go/bin'
   )
   AND top_homedir NOT IN (
-    '~/Applications/Chrome Apps.localized/',
-    '~/.config/nvm/',
-    '~/homebrew/Cellar/',
-    '~/Library/Application Support/',
-    '~/Library/Printers',
-    '~/.local/share',
-    '~/projects/go',
-    '~/code/src',
-    '~/.tflint.d/plugins',
-    '~/.vscode/extensions',
-    '~/.vs-kubernetes/tools'
+    '~/Applications/',
+    '~/code/',
+    '~/.config/',
+    '~/homebrew/',
+    '~/Library/',
+    '~/.local/',
+    '~/projects/',
+    '~/src/',
+    '~/.tflint.d/',
+    '~/.vscode/',
+    '~/.vs-kubernetes/'
   )
   -- Locally built executables
   AND NOT (

@@ -63,6 +63,7 @@ WHERE
     '8.8.8.8', -- Google
     '8.8.4.4', -- Google (backup)
     '208.67.222.222', -- OpenDNS
+    '208.67.222.123', -- OpenDNS
     '75.75.75.75', -- Comcast
     '75.75.76.76', -- Comcast
     '68.105.28.13' -- Cox
@@ -71,6 +72,7 @@ WHERE
   AND exception_key NOT IN (
     'coredns,0.0.0.0,53',
     'syncthing,46.162.192.181,53',
+     'Code Helper,208.67.222.123,53',
     'Jabra Direct Helper,208.67.222.123,53'
   )
   AND p.name != 'nessusd'

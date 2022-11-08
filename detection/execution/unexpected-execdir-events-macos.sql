@@ -16,7 +16,7 @@ SELECT
   REGEX_MATCH (p.path, '(.*)/', 1) AS dir,
   REGEX_MATCH (p.path, '(/.*?/.*?/.*?)/', 1) AS top_dir, -- 3 levels deep
   REPLACE(file.directory, u.directory, '~') AS homedir,
-  REGEX_MATCH (REPLACE(file.directory, u.directory, '~'), '(~/.*?/.*?/)', 1) AS top_homedir, -- 2 levels deep
+  REGEX_MATCH (REPLACE(file.directory, u.directory, '~'), '(~/.*?/)', 1) AS top_homedir, -- 1 level deep
   p.cmdline,
   p.mode,
   p.cwd,
@@ -110,23 +110,23 @@ WHERE
     '~/projects/go/bin'
   )
   AND top_homedir NOT IN (
-    '~/Applications/Chrome Apps.localized/',
-    '~/.config/nvm/',
-    '~/homebrew/Cellar/',
-    '~/Library/Application Support/',
-    '~/Library/Printers',
-    '~/.local/share',
-    '~/projects/go',
-    '~/code/src',
-    '~/.tflint.d/plugins',
-    '~/.vscode/extensions',
-    '~/.vs-kubernetes/tools'
+    '~/Applications/',
+    '~/code/',
+    '~/.config/',
+    '~/homebrew/',
+    '~/Library/',
+    '~/.local/',
+    '~/projects/',
+    '~/src/',
+    '~/.tflint.d/',
+    '~/.vscode/',
+    '~/.vs-kubernetes/'
   )
   -- Locally built executables
   AND NOT (
     signature.identifier = "a.out"
     AND homedir LIKE '~/%'
-    AND pp.name LIKE '%sh'
+    AND pp.name IN ('fish', 'sh', 'bash', 'zsh', 'terraform', 'code')
   )
   AND dir NOT LIKE '../%' -- data issue
   AND dir NOT LIKE '/Applications/%'

@@ -75,6 +75,7 @@ WHERE
     '32768,6,0,.tailscaled-wra',
     '32768,6,500,com.docker.backend',
     '32768,6,500,dleyna-renderer',
+    '32768,6,500,jetbrains-toolb',
     '32768,6,500,spotify',
     '3551,6,0,apcupsd',
     '4143,6,500,linkerd2-proxy',
