@@ -82,6 +82,7 @@ WHERE
     OR cmd LIKE '%rm -f /tmp%'
     OR cmd LIKE '%xargs kill -9%'
     OR cmd LIKE '%nohup /bin/bash%'
+    OR cmd LIKE '%history'
     OR cmd LIKE '%echo%|%base64 --decode %|%'
     OR cmd LIKE '%launchctl list%'
     OR (
@@ -123,7 +124,7 @@ WHERE
       '/bin/launchctl list homebrew.mxcl.yabai',
       '/bin/launchctl asuser 0 /bin/launchctl list'
     )
-    AND p.parent = -1
+    OR p.parent = -1
   )
   AND NOT cmd LIKE '/bin/rm -f /tmp/periodic.%'
   AND NOT cmd LIKE 'rm -f /tmp/locate%/_updatedb%'

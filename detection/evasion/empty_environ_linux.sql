@@ -34,6 +34,8 @@ WHERE -- This time should match the interval
     'chrome',
     'jcef_helper',
     'slack',
+    'gnome-boxes-sea',
+    'gnome-contacts-',
     'sshd',
     'zoom.real',
     'zypak-sandbox'

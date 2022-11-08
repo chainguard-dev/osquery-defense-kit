@@ -8,13 +8,15 @@
 --   * unexpected-privilege-escalation.sql
 --
 -- tags: events process escalation
--- platform: posix
+-- platform: darwin
 -- interval: 30
 SELECT
   p.pid AS child_pid,
   p.path AS child_path,
   REGEX_MATCH (RTRIM(file.path, '/'), '.*/(.*?)$', 1) AS child_name,
   p.cmdline AS child_cmdline,
+  p.time,
+  pp.start_time,
   p.euid AS child_euid,
   file.mode AS child_mode,
   hash.sha256 AS child_hash,
@@ -24,7 +26,7 @@ SELECT
   pp.cmdline AS parent_cmdline,
   pp.euid AS parent_euid,
   pfile.mode AS parent_mode,
-  hash.sha256 AS parent_hash
+  phash.sha256 AS parent_hash
 FROM
   process_events p
   JOIN processes pp ON p.parent = pp.pid
@@ -36,32 +38,8 @@ WHERE
   p.time > (strftime('%s', 'now') -30)
   AND p.euid < pp.euid
   AND p.path NOT IN (
-    '/bin/ps',
-    '/usr/bin/doas',
-    '/usr/bin/fusermount',
-    '/usr/bin/fusermount3',
     '/usr/bin/login',
+    '/usr/bin/su',
     '/usr/bin/sudo',
-    '/usr/bin/top',
-    '/usr/lib/snapd/snap-confine',
-    '/usr/lib/snapd/snap-update-ns',
-    '/opt/1Password/1Password-KeyringHelper',
-    '/usr/lib/systemd/systemd',
-    '/usr/lib/Xorg.wrap',
-    '/usr/lib/xorg/Xorg.wrap'
-  )
-  AND p.path NOT LIKE '/nix/store/%/bin/sudo'
-  AND p.path NOT LIKE '/nix/store/%/bin/dhcpcd'
-  AND p.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
-  AND NOT (
-    child_name = 'polkit-agent-helper-1'
-    AND parent_path = '/usr/bin/gnome-shell'
-  )
-  AND NOT (
-    child_name = 'fusermount3'
-    AND parent_path = '/usr/lib/xdg-document-portal'
-  )
-  AND NOT (
-    child_name IN ('dash', 'pkexec')
-    AND parent_path = '/usr/bin/update-notifier'
+    '/usr/local/bin/doas'
   )

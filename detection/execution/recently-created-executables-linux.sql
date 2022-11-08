@@ -59,8 +59,9 @@ WHERE
     '/usr/bin/rpi-imager',
     '/usr/bin/tailscaled',
     '/usr/bin/udevadm',
-    '/usr/libexec/snapd/snapd',
-    '/usr/share/spotify-client/spotify',
+    '/usr/bin/wpa_supplicant',
+    '/usr/lib64/firefox/firefox',
+    '/usr/lib64/google-cloud-sdk/platform/bundledpythonunix/bin/python3',
     '/usr/lib/at-spi2-registryd',
     '/usr/lib/at-spi-bus-launcher',
     '/usr/libexec/docker/docker-proxy',
@@ -73,12 +74,10 @@ WHERE
     '/usr/lib/gdm-x-session',
     '/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3',
     '/usr/lib/polkit-1/polkitd',
-    '/usr/bin/wpa_supplicant',
     '/usr/lib/slack/chrome_crashpad_handler',
     '/usr/lib/slack/slack',
     '/usr/lib/snapd/snapd',
     '/usr/lib/systemd/systemd',
-    '/usr/lib64/google-cloud-sdk/platform/bundledpythonunix/bin/python3',
     '/usr/lib/systemd/systemd-journald',
     '/usr/lib/systemd/systemd-logind',
     '/usr/lib/systemd/systemd-oomd',
@@ -88,7 +87,8 @@ WHERE
     '/usr/lib/xf86-video-intel-backlight-helper',
     '/usr/sbin/chronyd',
     '/usr/sbin/cupsd',
-    '/usr/sbin/tailscaled'
+    '/usr/sbin/tailscaled',
+    '/usr/share/spotify-client/spotify'
   )
   AND NOT p.path LIKE '%-go-build%'
   AND NOT p.path LIKE '/home/%/bin/%'

@@ -92,11 +92,12 @@ WHERE
     '32768,6,0,/usr/tailscaled,0u,0g,tailscaled',
     '3443,6,500,/opt/chrome,0u,0g,chrome',
     '3478,6,500,/opt/chrome,0u,0g,chrome',
-    '4070,6,500,/opt/spotify,0u,0g,spotify',
     '3478,6,500,/usr/firefox,0u,0g,firefox',
+    '4070,6,500,/opt/spotify,0u,0g,spotify',
     '43,6,500,/usr/whois,0u,0g,whois',
     '5228,6,500,/opt/chrome,0u,0g,chrome',
     '5228,6,500,/usr/chrome,0u,0g,chrome',
+    '67,17,0,/usr/NetworkManager,0u,0g,NetworkManager',
     '8000,6,500,/opt/chrome,0u,0g,chrome',
     '8000,6,500,/usr/firefox,0u,0g,firefox',
     '80,6,0,/usr/applydeltarpm,0u,0g,applydeltarpm',
@@ -125,6 +126,7 @@ WHERE
     '8443,6,500,/opt/chrome,0u,0g,chrome',
     '8443,6,500,/usr/firefox,0u,0g,firefox',
     '8801,17,500,/app/zoom.real,u,g,zoom.real',
+    '8801,17,500,/opt/zoom,0u,0g,zoom',
     '993,6,500,/app/thunderbird,u,g,thunderbird'
   )
   AND NOT (
