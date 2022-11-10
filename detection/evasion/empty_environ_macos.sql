@@ -70,6 +70,8 @@ WHERE -- This time should match the interval
     '500,CraftWidgetExtension,com.lukilabs.lukiapp.CraftWidget,Apple Mac OS Application Signing',
     '500,gsleep,sleep,',
     '500,ssh,,',
+    '500,gopls,a.out,',
+    '500,esbuild,a.out,',
     '500,ssh-sk-helper,,',
     '500,Obsidian Helper (Renderer),md.obsidian.helper.Renderer,Developer ID Application: Dynalist Inc. (6JSW4SJWN9)',
     '500,Pages,com.apple.iWork.Pages,Apple Mac OS Application Signing',

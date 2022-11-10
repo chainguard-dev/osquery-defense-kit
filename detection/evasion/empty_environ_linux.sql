@@ -38,6 +38,7 @@ WHERE -- This time should match the interval
     'gnome-contacts-',
     'gnome-clocks',
     'systemd-userwor',
+    'nginx',
     'gnome-terminal-',
     'sshd',
     'zoom.real',

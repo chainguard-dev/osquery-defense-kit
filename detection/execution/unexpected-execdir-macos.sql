@@ -112,6 +112,8 @@ WHERE
     '~/src/',
     '~/.tflint.d/',
     '~/.vscode/',
+    '~/google-cloud-sdk/',
+    '~/.pulumi/',
     '~/.vs-kubernetes/'
   )
   -- Locally built executables
