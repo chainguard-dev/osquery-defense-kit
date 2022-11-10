@@ -111,8 +111,10 @@ WHERE
   )
   AND top_homedir NOT IN (
     '~/Applications/',
+    '~/bin/',
     '~/code/',
     '~/.config/',
+    '~/go/',
     '~/homebrew/',
     '~/Library/',
     '~/.local/',
