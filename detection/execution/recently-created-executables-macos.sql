@@ -52,6 +52,7 @@ WHERE
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     'Developer ID Application: Emmanouil Konstantinidis (3YP8SXP3BF)',
     'Developer ID Application: Galvanix (5BRAQAFB8B)',
+    'Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
     'Developer ID Application: General Arcade (Pte. Ltd.) (S8JLSG5ES7)',
     'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
     'Developer ID Application: GitHub (VEKTX9H2N7)',

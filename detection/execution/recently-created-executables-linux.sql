@@ -51,6 +51,7 @@ WHERE
     '/usr/bin/containerd-shim-runc-v2',
     '/usr/bin/dockerd',
     '/usr/bin/docker-proxy',
+    '/opt/Lens/chrome_crashpad_handler',
     '/usr/bin/gedit',
     '/usr/bin/gnome-keyring-daemon',
     '/usr/bin/obs',
@@ -69,6 +70,8 @@ WHERE
     '/usr/libexec/fwupd/fwupd',
     '/usr/libexec/snapd/snapd',
     '/usr/libexec/sssd/sssd_kcm',
+    '/usr/bin/nm-applet',
+    '/usr/share/code/chrome_crashpad_handler',
     '/usr/lib/fwupd/fwupd',
     '/usr/lib/gdm',
     '/usr/lib/gdm-session-worker',
@@ -76,7 +79,9 @@ WHERE
     '/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3',
     '/usr/lib/polkit-1/polkitd',
     '/usr/lib/slack/chrome_crashpad_handler',
+    '/usr/share/code/code',
     '/usr/lib/slack/slack',
+    '/opt/Lens/lens',
     '/usr/lib/snapd/snapd',
     '/usr/lib/systemd/systemd',
     '/usr/lib/systemd/systemd-journald',
@@ -99,6 +104,7 @@ WHERE
   AND NOT p.path LIKE '/home/%/node_modules/.bin/exec-bin/%'
   AND NOT p.path LIKE '/nix/store/%/bin/%'
   AND NOT p.path LIKE '/usr/local/bin/%'
+  AND NOT p.path LIKE '/opt/%'
   AND NOT p.path LIKE '/usr/local/Cellar/%'
   AND NOT p.path LIKE '/home/%/.local/share/Steam/ubuntu12_64/%'
   AND NOT p.path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'

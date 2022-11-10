@@ -59,6 +59,8 @@ WHERE
       OR cmd LIKE '/opt/homebrew/opt/%'
       OR cmd LIKE '/private/var/folders/%/Visual Studio Code.app/Contents/%'
       OR cmd LIKE '/Users/%/homebrew/opt/mysql/bin/%' -- Sometimes cmd is empty also :(
+      OR cmd LIKE '%/go/src/github.com/%'
+      OR cmd LIKE '%/.terraform/providers/%'
       OR parent_cmd LIKE '/Applications/Google Chrome.app/%'
     )
   )

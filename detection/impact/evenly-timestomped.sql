@@ -13,6 +13,7 @@ SELECT
   DATETIME(file.mtime, 'unixepoch', 'localtime') AS mod_time,
   DATETIME(file.atime, 'unixepoch', 'localtime') AS access_time,
   file.inode,
+  file.type,
   hash.sha256,
   magic.data
 FROM
@@ -30,6 +31,7 @@ WHERE
   -- This timestamp is in UTC
   AND file.mtime > (strftime('%s', 'now') - (86400 * 720))
   AND file.mtime % 3600 = 0
+  AND file.type = 'regular'
   -- Narrow down to specific offsets in the users local timezone (there should be a better way!)
   AND (
     mod_time LIKE "% 12:00:00"
@@ -40,8 +42,10 @@ WHERE
     '/etc/master.passwd',
     '/usr/share/doc/strace/NEWS',
     '/bin/strace-log-merge',
+    '/etc/printcap',
     '/usr/bin/strace-log-merge',
     '/bin/X11/strace-log-merge'
   )
   AND file.path NOT LIKE '%/lynis%'
   AND file.path NOT LIKE '%/yelp-xsl%'
+  AND file.path NOT LIKE '/etc/cups/%'

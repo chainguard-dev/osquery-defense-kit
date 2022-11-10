@@ -113,7 +113,9 @@ WHERE
     '8086,6,500,influxd',
     '8090,6,500,linkerd-policy-',
     '8123,6,500,Brackets-node',
+    '8443,6,101,nginx-ingress-c',
     '8181,6,0,coredns',
+    '10254,6,101,nginx-ingress-c',
     '8443,6,0,kube-apiserver',
     '8443,6,500,controller',
     '8443,6,500,controlplane',
@@ -128,7 +130,7 @@ WHERE
     and lp.protocol = 6
   )
   AND NOT (
-    p.name IN ('hugo', 'docker-proxy', 'rootlessport')
+    p.name IN ('hugo', 'docker-proxy', 'rootlessport', 'nginx-ingress-c')
     AND lp.port > 1024
     and lp.protocol = 6
   )

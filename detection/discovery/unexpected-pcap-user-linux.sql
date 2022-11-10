@@ -47,6 +47,7 @@ WHERE
   AND child_cmd NOT IN (
     '/nix/var/nix/profiles/default/bin/nix-daemon',
     '/run/current-system/systemd/lib/systemd/systemd',
+    '/usr/bin/python3 -s /usr/sbin/firewalld',
     '/usr/bin/python3 -s /usr/sbin/firewalld --nofork --nopid'
   )
 GROUP BY

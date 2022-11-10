@@ -50,3 +50,5 @@ WHERE
     child_name IS NULL
     OR child_name != 'zfs'
   )
+  -- minikube
+  AND cmd != 'sshd: docker@notty'

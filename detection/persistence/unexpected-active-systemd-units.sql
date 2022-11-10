@@ -234,6 +234,7 @@ WHERE
         'rtkit-daemon.service,RealtimeKit Scheduling Policy Service,,1000',
         'setvtrgb.service,Set console scheme,,300',
         'shadow.service,Verify integrity of password and group files,,300',
+        'shadow.service,Verify integrity of password and group files,,900',
         'shadow.timer,Daily verification of password and group files,,100',
         'sleep.target,Sleep,,400',
         '-.slice,Root Slice,,0',
