@@ -106,6 +106,7 @@ WHERE
     '500,/opt/Discord,0u,0g,Discord',
     '500,/opt/firefox,0u,0g,firefox',
     '500,/opt/firefox,0u,0g,Socket Process',
+    '500,/home/cargo,500u,500g,cargo',
     '500,/opt/kubectl,0u,0g,kubectl',
     '500,/opt/slack,0u,0g,slack',
     '500,/opt/snap-store,0u,0g,snap-store',
