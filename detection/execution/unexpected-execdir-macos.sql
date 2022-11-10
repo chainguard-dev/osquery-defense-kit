@@ -102,18 +102,20 @@ WHERE
   )
   AND top_homedir NOT IN (
     '~/Applications/',
+    '~/bin/',
     '~/code/',
     '~/.config/',
+    '~/git/',
+    '~/go/',
+    '~/google-cloud-sdk/',
     '~/homebrew/',
     '~/Library/',
     '~/.local/',
     '~/projects/',
-    '~/git/',
+    '~/.pulumi/',
     '~/src/',
     '~/.tflint.d/',
     '~/.vscode/',
-    '~/google-cloud-sdk/',
-    '~/.pulumi/',
     '~/.vs-kubernetes/'
   )
   -- Locally built executables
