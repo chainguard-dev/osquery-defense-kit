@@ -95,11 +95,11 @@ WHERE
     file.path LIKE '/var/db/timezone/zoneinfo/%'
     AND magic.data LIKE 'timezone%'
     AND file.size < 3000
-    AND file.mode = 0755
+    AND file.mode = '0755'
   )
   -- JetBrains (Delve)
   AND NOT (
     file.path LIKE '/var/folders/%/%/T/dlvLauncher.sh'
     AND file.size < 1024
-    AND file.mode = 0744
+    AND file.mode = '0744'
   )
