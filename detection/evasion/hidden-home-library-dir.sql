@@ -35,14 +35,14 @@ WHERE
   )
   AND file.path NOT LIKE '%/../%'
   AND file.path NOT LIKE '%/./%'
-AND NOT homedir IN (
-  '~/Library/Accessibility/.com.apple.RTTTranscripts_SUPPORT/_EXTERNAL_DATA',
-  '~/Library/Finance/.finance_cloud_SUPPORT/_EXTERNAL_DATA',
-  '~/Library/Finance/.finance_local_SUPPORT/_EXTERNAL_DATA',
-  '~/Library/Group Containers/.SiriTodayViewExtension/Library',
-  '~/Library/Group Containers/.SiriTodayViewExtension',
-  '~/Library/Caches/.sigstore/gitsign',
-  '~/Library/GroupContainersAlias/.SiriTodayViewExtension/Library',
-  '~/Library/GroupContainersAlias/.SiriTodayViewExtension'
-)
-AND NOT homedir LIKE '~/Library/.icedove/%'
+  AND NOT homedir IN (
+    '~/Library/Accessibility/.com.apple.RTTTranscripts_SUPPORT/_EXTERNAL_DATA',
+    '~/Library/Finance/.finance_cloud_SUPPORT/_EXTERNAL_DATA',
+    '~/Library/Finance/.finance_local_SUPPORT/_EXTERNAL_DATA',
+    '~/Library/Group Containers/.SiriTodayViewExtension/Library',
+    '~/Library/Group Containers/.SiriTodayViewExtension',
+    '~/Library/Caches/.sigstore/gitsign',
+    '~/Library/GroupContainersAlias/.SiriTodayViewExtension/Library',
+    '~/Library/GroupContainersAlias/.SiriTodayViewExtension'
+  )
+  AND NOT homedir LIKE '~/Library/.icedove/%'

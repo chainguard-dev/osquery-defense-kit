@@ -127,7 +127,7 @@ WHERE
       '/Library/Apple/System/Library/StagedFrameworks/Safari/SafariShared.framework/XPCServices/com.apple.Safari.History.xpc/Contents/MacOS/com.apple.Safari.History',
       '/bin/launchctl asuser 0 /bin/launchctl list'
     )
-     -- The source of these commands is still a mystery to me.
+    -- The source of these commands is still a mystery to me.
     OR p.parent = -1
   )
   AND NOT cmd LIKE '/bin/rm -f /tmp/periodic.%'

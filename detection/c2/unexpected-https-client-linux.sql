@@ -64,6 +64,7 @@ WHERE
   AND s.remote_address NOT LIKE 'fc00:%'
   AND p.path != ''
   AND NOT exception_key IN (
+    '0,/ko-app/fulcio,u,g,fulcio',
     '0,/opt/snapd,0u,0g,snapd',
     '0,/sbin/apk,u,g,apk',
     '0,/usr/bash,0u,0g,mkinitcpio',
@@ -83,8 +84,10 @@ WHERE
     '0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra',
     '105,/usr/http,0u,0g,https',
     '500,/app/slack,u,g,slack',
+    '500,/app/spotify,u,g,spotify',
     '500,/app/thunderbird,u,g,thunderbird',
     '500,/app/zoom.real,u,g,zoom.real',
+    '500,/home/cargo,500u,500g,cargo',
     '500,/home/chainctl,500u,100g,chainctl',
     '500,/home/chainctl,500u,500g,chainctl',
     '500,/home/code,500u,500g,code',
@@ -106,7 +109,6 @@ WHERE
     '500,/opt/Discord,0u,0g,Discord',
     '500,/opt/firefox,0u,0g,firefox',
     '500,/opt/firefox,0u,0g,Socket Process',
-    '500,/home/cargo,500u,500g,cargo',
     '500,/opt/kubectl,0u,0g,kubectl',
     '500,/opt/slack,0u,0g,slack',
     '500,/opt/snap-store,0u,0g,snap-store',
@@ -130,20 +132,23 @@ WHERE
     '500,/usr/flameshot,0u,0g,flameshot',
     '500,/usr/flatpak-oci-authenticator,0u,0g,flatpak-oci-aut',
     '500,/usr/geoclue,0u,0g,geoclue',
+    '500,/usr/git,0u,0g,git',
     '500,/usr/git-remote-http,0u,0g,git-remote-http',
     '500,/usr/gitsign,0u,0g,gitsign',
     '500,/usr/gnome-recipes,0u,0g,gnome-recipes',
     '500,/usr/gnome-shell,0u,0g,gnome-shell',
     '500,/usr/gnome-software,0u,0g,gnome-software',
     '500,/usr/go,0u,0g,go',
-    '500,/usr/nautilus,0u,0g,nautilus',
     '500,/usr/go,500u,500g,go',
     '500,/usr/gsd-datetime,0u,0g,gsd-datetime',
     '500,/usr/gvfsd-http,0u,0g,gvfsd-http',
     '500,/usr/java,0u,0g,java',
     '500,/usr/java,u,g,java',
+    '500,/usr/kbfsfuse,0u,0g,kbfsfuse',
+    '500,/usr/keybase,0u,0g,keybase',
     '500,/usr/kubectl,500u,500g,kubectl',
     '500,/usr/lens,0u,0g,lens',
+    '500,/usr/nautilus,0u,0g,nautilus',
     '500,/usr/obs,0u,0g,obs',
     '500,/usr/reporter-ureport,0u,0g,reporter-urepor',
     '500,/usr/rpi-imager,0u,0g,rpi-imager',
@@ -156,7 +161,6 @@ WHERE
     '500,/usr/WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '500,/usr/xmobar,0u,0g,xmobar',
     '500,/usr/yay,0u,0g,yay'
-
   )
   -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm exec %'

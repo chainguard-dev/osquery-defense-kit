@@ -58,6 +58,7 @@ WHERE
     'name=gjs,file=gjs-console,500',
     'name=sh,file=busybox,0',
     'name=cc,file=gcc,0',
+    'name=systemd-udevd,file=udevadm,500',
     'name=gnome-characte,file=gjs-console,500',
     'name=gnome-character,file=gjs-console,500',
     'name=gnome-tweak-to,file=python3,500',

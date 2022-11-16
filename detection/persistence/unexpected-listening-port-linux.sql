@@ -105,16 +105,24 @@ WHERE
     '8008,6,500,controlplane',
     '8009,6,0,java',
     '80,6,101,nginx',
+    '8443,6,500,webhook',
     '80,6,60,nginx',
+    '8008,6,500,webhook',
     '8080,6,0,coredns',
+    '8008,6,500,resolvers',
     '8080,6,0,java',
     '8086,6,0,influxd',
     '8086,6,500,controller',
     '8086,6,500,influxd',
+    '2380,6,500,etcd',
     '8090,6,500,linkerd-policy-',
+    '10250,6,500,kubelet',
+    '53,17,500,aardvark-dns',
     '8123,6,500,Brackets-node',
     '8443,6,101,nginx-ingress-c',
+    '2379,6,500,etcd',
     '8181,6,0,coredns',
+    '10256,6,500,kube-proxy',
     '10254,6,101,nginx-ingress-c',
     '8443,6,0,kube-apiserver',
     '8443,6,500,controller',
@@ -125,12 +133,19 @@ WHERE
     '9300,6,500,authentik-proxy'
   )
   AND NOT (
-    p.path LIKE ',ko-app,%'
+    p.path LIKE '/ko-app/%'
     AND lp.port > 1024
     and lp.protocol = 6
   )
   AND NOT (
-    p.name IN ('hugo', 'docker-proxy', 'rootlessport', 'nginx-ingress-c')
+    p.name IN (
+      'hugo',
+      'docker-proxy',
+      'rootlessport',
+      'nginx-ingress-c',
+      'webhook',
+      'controller'
+    )
     AND lp.port > 1024
     and lp.protocol = 6
   )

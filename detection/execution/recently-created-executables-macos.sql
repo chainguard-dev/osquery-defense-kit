@@ -48,6 +48,7 @@ WHERE
     'Developer ID Application: Bryan Jones (49EYHPJ4Q3)',
     'Developer ID Application: CodeWeavers Inc. (9C6B7X7Z8E)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
+    'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     'Developer ID Application: Emmanouil Konstantinidis (3YP8SXP3BF)',

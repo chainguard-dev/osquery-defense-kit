@@ -144,3 +144,5 @@ WHERE
   AND NOT cmd LIKE 'rm -f /var/tmp/mkinitramfs_%'
   AND NOT cmd LIKE 'rm -f -- /tmp/%'
   AND NOT cmd LIKE 'rm -f /var/lib/update-notifier/tmp%'
+  -- Invalid command from someones tmux environment
+  AND NOT cmd LIKE 'pkill -f cut -c3%'

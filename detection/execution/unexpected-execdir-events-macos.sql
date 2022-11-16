@@ -16,7 +16,11 @@ SELECT
   REGEX_MATCH (p.path, '(.*)/', 1) AS dir,
   REGEX_MATCH (p.path, '(/.*?/.*?/.*?)/', 1) AS top_dir, -- 3 levels deep
   REPLACE(file.directory, u.directory, '~') AS homedir,
-  REGEX_MATCH (REPLACE(file.directory, u.directory, '~'), '(~/.*?/)', 1) AS top_homedir, -- 1 level deep
+  REGEX_MATCH (
+    REPLACE(file.directory, u.directory, '~'),
+    '(~/.*?/)',
+    1
+  ) AS top_homedir, -- 1 level deep
   p.cmdline,
   p.mode,
   p.cwd,

@@ -19,6 +19,7 @@ SELECT
   p.cmdline,
   mnt_namespace,
   hash.sha256,
+  pp.path AS parent_path,
   pp.name AS parent_name,
   pp.cmdline AS parent_cmdline
 FROM
@@ -68,6 +69,8 @@ WHERE
     '/usr/bin/osqueryd',
     '/usr/bin/pacman',
     '/usr/bin/sshd',
+    '/usr/sbin/sshd',
+    '/usr/sbin/atd',
     '/usr/bin/tailscaled',
     '/usr/bin/vim',
     '/usr/bin/virtlogd',
@@ -92,6 +95,7 @@ WHERE
     '/usr/lib/systemd/systemd-homed',
     '/usr/lib/systemd/systemd-journald',
     '/usr/lib/systemd/systemd-machined',
+    '/usr/lib/systemd/systemd-fsckd',
     '/usr/lib/udisks2/udisksd',
     '/usr/lib/Xorg',
     '/usr/local/kolide-k2/bin/launcher',
@@ -120,9 +124,11 @@ WHERE
     '/usr/bin/xargs',
     '/usr/bin/python3 -s /usr/sbin/firewalld --nofork --nopid',
     '/usr/bin/python /usr/bin/firewalld --nofork --nopid',
+    '/usr/bin/python3 /usr/libexec/blueman-mechanism',
     '/usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal',
     '/usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers'
   )
+  AND NOT p.cmdline LIKE '/usr/bin/python3 -s% /usr/sbin/firewalld%'
   AND NOT p.cmdline LIKE '/usr/bin/python3 /usr/bin/dnf %'
   AND NOT p.cmdline LIKE '/usr/bin/python3 /usr/bin/yum %'
   AND p.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'

@@ -27,7 +27,6 @@ WHERE
     file.path LIKE '/home/%/.config/%%/.%/%'
     OR file.path LIKE '/home/%/.config/.%/%'
     OR file.path LIKE '/home/%/.config/%%/.%/.%'
-
     OR file.path LIKE '/root/.config/%%/.%/%'
     OR file.path LIKE '/root/.config/.%/%'
     OR file.path LIKE '/root/.config/%%/.%/.%'
