@@ -124,6 +124,7 @@ WHERE
     '~/.local/',
     '~/projects/',
     '~/src/',
+    '~/.pyenv/',
     '~/.tflint.d/',
     '~/.vscode/',
     '~/.vs-kubernetes/'

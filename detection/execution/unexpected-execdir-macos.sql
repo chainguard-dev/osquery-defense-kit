@@ -99,9 +99,10 @@ WHERE
   AND homedir NOT IN (
     '~/bin',
     '~/code/bin',
-    '~/.magefile',
+    '~/Downloads/google-cloud-sdk/bin',
     '~/go/bin',
     '~/.local/bin',
+    '~/.magefile',
     '~/projects/go/bin'
   )
   AND top_homedir NOT IN (

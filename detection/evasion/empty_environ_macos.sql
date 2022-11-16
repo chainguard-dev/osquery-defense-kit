@@ -48,6 +48,7 @@ WHERE -- This time should match the interval
     'Developer ID Application: GitHub (VEKTX9H2N7)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
+    'Developer ID Application: Node.js Foundation (HX7739G8FX)',
     'Developer ID Application: Keybase, Inc. (99229SGT5K)',
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',

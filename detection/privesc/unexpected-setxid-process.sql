@@ -31,6 +31,7 @@ WHERE
     '/Library/DropboxHelperTools/Dropbox_u501/dbkextd',
     '/opt/1Password/1Password-BrowserSupport',
     '/opt/1Password/1Password-KeyringHelper',
+    '/usr/bin/keybase-redirector',
     '/usr/bin/doas',
     '/usr/bin/fusermount',
     '/usr/bin/fusermount3',
