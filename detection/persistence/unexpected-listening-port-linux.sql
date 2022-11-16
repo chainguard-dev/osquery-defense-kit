@@ -133,7 +133,14 @@ WHERE
     and lp.protocol = 6
   )
   AND NOT (
-    p.name IN ('hugo', 'docker-proxy', 'rootlessport', 'nginx-ingress-c', 'webhook', 'controller')
+    p.name IN (
+      'hugo',
+      'docker-proxy',
+      'rootlessport',
+      'nginx-ingress-c',
+      'webhook',
+      'controller'
+    )
     AND lp.port > 1024
     and lp.protocol = 6
   )

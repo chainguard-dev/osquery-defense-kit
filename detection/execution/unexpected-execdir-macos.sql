@@ -17,7 +17,11 @@ SELECT
   f.directory AS dir,
   REGEX_MATCH (p.path, '(/.*?/.*?/.*?)/', 1) AS top_dir, -- 3 levels deep
   REPLACE(f.directory, u.directory, '~') AS homedir,
-  REGEX_MATCH (REPLACE(f.directory, u.directory, '~'), '(~/.*?/)', 1) AS top_homedir, -- 1 level deep
+  REGEX_MATCH (
+    REPLACE(f.directory, u.directory, '~'),
+    '(~/.*?/)',
+    1
+  ) AS top_homedir, -- 1 level deep
   p.cmdline,
   hash.sha256,
   pp.path AS parent_path,
@@ -140,7 +144,6 @@ WHERE
   AND dir NOT LIKE '/Volumes/com.getdropbox.dropbox-%'
   AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
   AND homedir NOT LIKE '~/%/node_modules/.pnpm/esbuild-%/node_modules/esbuild-darwin-arm64/bin'
-
   -- Allow these anywhere (put last because it's slow to query signatures)
   AND signature.authority NOT IN (
     'Apple iPhone OS Application Signing',

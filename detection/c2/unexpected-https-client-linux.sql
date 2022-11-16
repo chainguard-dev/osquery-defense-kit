@@ -103,6 +103,7 @@ WHERE
     '500,/opt/1password,0u,0g,1password',
     '500,/opt/Brackets,0u,0g,Brackets',
     '500,/opt/chrome,0u,0g,chrome',
+    '500,/usr/keybase,0u,0g,keybase',
     '500,/opt/Discord,0u,0g,Discord',
     '500,/opt/firefox,0u,0g,firefox',
     '500,/opt/firefox,0u,0g,Socket Process',
@@ -156,7 +157,6 @@ WHERE
     '500,/usr/WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '500,/usr/xmobar,0u,0g,xmobar',
     '500,/usr/yay,0u,0g,yay'
-
   )
   -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm exec %'

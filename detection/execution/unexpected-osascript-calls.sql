@@ -62,8 +62,8 @@ WHERE
     AND parent_cmd LIKE '% /opt/homebrew/bin/jupyter-notebook'
   )
   AND NOT (
-      parent_cmd LIKE '%/google-cloud-sdk/lib/gcloud.py auth login'
-      OR parent_cmd LIKE '%/bin/gcloud auth login'
+    parent_cmd LIKE '%/google-cloud-sdk/lib/gcloud.py auth login'
+    OR parent_cmd LIKE '%/bin/gcloud auth login'
   )
   AND NOT (
     exception_key = ',,osascript -s se -l JavaScript'
