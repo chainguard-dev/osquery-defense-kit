@@ -73,3 +73,4 @@ WHERE
     dirname = ''
     AND p.name LIKE 'runc%'
   )
+  AND p.path NOT LIKE '/tmp/terraform_%/terraform'

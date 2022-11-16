@@ -97,6 +97,11 @@ WHERE
     AND p.path LIKE '/nix/store/%'
   )
   AND NOT (
+    p.euid > 300
+    -- Electron
+    AND p.path LIKE '% Helper'
+  )
+  AND NOT (
     p.euid = 0
     AND (
       p.path LIKE '/nix/store/%/bin/nix'

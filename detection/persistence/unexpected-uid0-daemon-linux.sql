@@ -17,6 +17,7 @@ SELECT
   f.ctime,
   f.directory AS dirname,
   p.cmdline,
+  p.cgroup_path,
   mnt_namespace,
   hash.sha256,
   pp.path AS parent_path,
@@ -137,3 +138,5 @@ WHERE
   AND p.path NOT LIKE '/nix/store/%-systemd-%/lib/systemd/systemd%'
   AND p.path NOT LIKE '/nix/store/%/libexec/%'
   AND p.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snapd'
+  -- Exclude processes running inside of Docker containers
+  AND NOT p.cgroup_path LIKE '/system.slice/docker-%'

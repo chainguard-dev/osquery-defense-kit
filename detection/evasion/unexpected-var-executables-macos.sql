@@ -49,6 +49,7 @@ WHERE
   AND file.path NOT LIKE '/var/tmp/epdfinfo%'
   AND file.path NOT LIKE '/var/folders/%/T/jansi-%-libjansi.jnilib'
   AND file.path NOT LIKE '/var/tmp/IN_PROGRESS_sysdiagnose_%.tmp/mddiagnose.mdsdiagnostic/diagnostic.log'
+  AND file.path NOT LIKE '/var/run/current-system/etc/profiles/per-user/%'
   AND file.path NOT LIKE '/var/folders/%/T/freefn-%_emacs_%.eln'
   AND (
     file.mode LIKE '%7%'

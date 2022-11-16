@@ -13,6 +13,7 @@ SELECT
   p.name,
   p.path,
   p.cmdline,
+  p.cgroup_path,
   p.cwd,
   hash.sha256,
   CONCAT (
@@ -105,11 +106,14 @@ WHERE
     '8008,6,500,controlplane',
     '8009,6,0,java',
     '80,6,101,nginx',
+    '18000,6,500,kourier',
     '8443,6,500,webhook',
     '80,6,60,nginx',
     '8008,6,500,webhook',
     '8080,6,0,coredns',
     '8008,6,500,resolvers',
+    '8008,6,500,autoscaler',
+    '8008,6,500,activator',
     '8080,6,0,java',
     '8086,6,0,influxd',
     '8086,6,500,controller',
@@ -149,5 +153,7 @@ WHERE
     AND lp.port > 1024
     and lp.protocol = 6
   )
+    -- Exclude processes running inside of Docker containers
+  AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY
   exception_key

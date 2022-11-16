@@ -45,10 +45,6 @@ WHERE
     grandchild_name IS NULL
     OR grandchild_name != 'zfs'
   )
-  -- You must specifically check for NULL here, or risk inadvertently filtering everything out.
-  AND (
-    child_name IS NULL
-    OR child_name != 'zfs'
-  )
-  -- minikube
+  AND child_name IS NOT NULL
+  AND child_name NOT IN ('', 'zfs')
   AND cmd != 'sshd: docker@notty'
