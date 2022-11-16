@@ -43,9 +43,9 @@ WHERE
     OR (
       (btime_ctime_days_diff < -365)
       AND (btime_ctime_days_diff < -1000)
-    ) -- access time is older than start time
-    OR start_atime_days_diff > 90 -- access time is newer than start time
-    OR start_atime_days_diff < -10
+    )
+    -- access time is older than start time
+    OR start_atime_days_diff > 90
   ) -- Vendors that create software packages that look like a touched file.
   AND NOT signature.authority IN (
     'Apple Mac OS Application Signing',
@@ -56,8 +56,10 @@ WHERE
     'Developer ID Application: Bryan Jones (49EYHPJ4Q3)',
     'Developer ID Application: CodeWeavers Inc. (9C6B7X7Z8E)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
+    'Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Emmanouil Konstantinidis (3YP8SXP3BF)',
+    'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Galvanix (5BRAQAFB8B)',
     'Developer ID Application: General Arcade (Pte. Ltd.) (S8JLSG5ES7)',
     'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
