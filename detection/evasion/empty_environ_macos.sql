@@ -37,15 +37,8 @@ WHERE -- This time should match the interval
   p.start_time > (strftime('%s', 'now') - 605) -- Filter out transient processes that may not have an envs entry by the time we poll for it
   AND p.start_time < (strftime('%s', 'now') - 5)
   AND p.path NOT LIKE '/System/Library/%'
-  AND NOT (
-    (
-      p.path LIKE '/Library/Apple/%'
-      OR signature.identifier LIKE 'com.apple.%'
-      OR signature.identifier LIKE 'Safari%'
-    )
-    AND signature.authority = 'Software Signing'
-  )
   AND signature.authority NOT IN (
+    'Software Signing',
     'Apple Mac OS Application Signing',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)',
