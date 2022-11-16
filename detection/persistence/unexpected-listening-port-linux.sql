@@ -105,8 +105,11 @@ WHERE
     '8008,6,500,controlplane',
     '8009,6,0,java',
     '80,6,101,nginx',
+    '8443,6,500,webhook',
     '80,6,60,nginx',
+    '8008,6,500,webhook',
     '8080,6,0,coredns',
+    '8008,6,500,resolvers',
     '8080,6,0,java',
     '8086,6,0,influxd',
     '8086,6,500,controller',
@@ -130,7 +133,7 @@ WHERE
     and lp.protocol = 6
   )
   AND NOT (
-    p.name IN ('hugo', 'docker-proxy', 'rootlessport', 'nginx-ingress-c')
+    p.name IN ('hugo', 'docker-proxy', 'rootlessport', 'nginx-ingress-c', 'webhook', 'controller')
     AND lp.port > 1024
     and lp.protocol = 6
   )
