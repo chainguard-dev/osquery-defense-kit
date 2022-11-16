@@ -46,7 +46,8 @@ WHERE
   AND NOT (
     file.uid = 1000
     AND file.gid = 1000
-    AND file.mode = 0700
+    AND file.mode = '0700'
+    AND magic.data = 'data'
     AND file.path LIKE '/dev/shm/pulse-shm-%'
     AND file.size > 60000000
   )
@@ -54,7 +55,8 @@ WHERE
   AND NOT (
     file.uid = 1000
     AND file.gid = 100
-    AND file.mode = 0755
+    AND file.mode = '0755'
+    AND magic.data = 'data'
     AND file.path LIKE '/dev/shm/u1000-Shm_%'
     AND file.size > 1000000
   )
