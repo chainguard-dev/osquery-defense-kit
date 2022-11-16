@@ -120,6 +120,7 @@ WHERE
     '~/src/',
     '~/.tflint.d/',
     '~/.vscode/',
+    '~/.pulumi/',
     '~/.vs-kubernetes/'
   )
   -- Locally built executables

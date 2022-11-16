@@ -103,6 +103,7 @@ WHERE
     '6443,6,500,/usr/kubectl,0u,0g,kubectl',
     '67,17,0,/usr/NetworkManager,0u,0g,NetworkManager',
     '8000,6,500,/opt/chrome,0u,0g,chrome',
+    '80,6,500,/app/spotify,u,g,spotify',
     '8000,6,500,/usr/firefox,0u,0g,firefox',
     '80,6,0,/usr/applydeltarpm,0u,0g,applydeltarpm',
     '80,6,0,/usr/NetworkManager,0u,0g,NetworkManager',

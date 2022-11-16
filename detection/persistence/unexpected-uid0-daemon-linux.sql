@@ -69,6 +69,8 @@ WHERE
     '/usr/bin/osqueryd',
     '/usr/bin/pacman',
     '/usr/bin/sshd',
+    '/usr/sbin/sshd',
+    '/usr/sbin/atd',
     '/usr/bin/tailscaled',
     '/usr/bin/vim',
     '/usr/bin/virtlogd',
@@ -126,6 +128,7 @@ WHERE
     '/usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal',
     '/usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers'
   )
+  AND NOT p.cmdline LIKE '/usr/bin/python3 -s% /usr/sbin/firewalld%'
   AND NOT p.cmdline LIKE '/usr/bin/python3 /usr/bin/dnf %'
   AND NOT p.cmdline LIKE '/usr/bin/python3 /usr/bin/yum %'
   AND p.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'

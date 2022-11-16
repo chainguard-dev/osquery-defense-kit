@@ -76,6 +76,7 @@ WHERE
       'aws,aws,~/.aws',
       'python3,python3,~/.config/gcloud',
       'chrome_crashpad_handler,chrome_crashpad,',
+      'soffice.bin,soffice.bin,~/.mozilla/firefox',
       'chrome_crashpad_handler,chrome_crashpad,~/.config/google-chrome',
       'chrome,chrome,~/.config/google-chrome',
       'firefox,.firefox-wrappe,~/.cache/mozilla',

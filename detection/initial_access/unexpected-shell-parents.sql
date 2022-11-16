@@ -51,6 +51,7 @@ WHERE
     'go',
     'goland',
     'helm',
+    'i3blocks',
     'java',
     'ko',
     'kubectl',
