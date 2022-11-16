@@ -44,10 +44,12 @@ WHERE
   AND file.path NOT LIKE '/var/db/oah/%'
   AND file.path NOT LIKE '/var/folders/%/C/com.apple.FontRegistry/annex_aux'
   AND file.path NOT LIKE '/var/folders/%/T/go.%.%.sum'
+  AND file.path NOT LIKE '/var/folders/%/T/pulumi-go.%'
   AND file.path NOT LIKE '/var/folders%/T/sp_relauncher'
   AND file.path NOT LIKE '/var/tmp/epdfinfo%'
   AND file.path NOT LIKE '/var/folders/%/T/jansi-%-libjansi.jnilib'
   AND file.path NOT LIKE '/var/tmp/IN_PROGRESS_sysdiagnose_%.tmp/mddiagnose.mdsdiagnostic/diagnostic.log'
+  AND file.path NOT LIKE '/var/run/current-system/etc/profiles/per-user/%'
   AND file.path NOT LIKE '/var/folders/%/T/freefn-%_emacs_%.eln'
   AND (
     file.mode LIKE '%7%'

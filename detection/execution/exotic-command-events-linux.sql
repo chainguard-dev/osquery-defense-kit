@@ -79,9 +79,9 @@ WHERE
     OR cmd LIKE '%systemctl stop firewalld%'
     OR cmd LIKE '%systemctl disable firewalld%'
     OR cmd LIKE '%pkill -f%'
+    OR (cmd LIKE '%xargs kill -9%' AND p.euid=0)
     OR cmd LIKE '%rm -f%/tmp%'
     OR cmd LIKE '%rm -rf /boot%'
-    OR cmd LIKE '%xargs kill -9%'
     OR cmd LIKE '%nohup /bin/bash%'
     OR cmd LIKE '%echo%|%base64 --decode %|%'
     OR cmd LIKE '%UserKnownHostsFile=/dev/null%'

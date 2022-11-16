@@ -83,6 +83,7 @@ WHERE
     '.TemporaryItems',
     '.Trashes',
     '._Id.txt',
+    '._AUTORUN.INF',
     '.vol',
     '.apdisk',
     '._.Trashes',

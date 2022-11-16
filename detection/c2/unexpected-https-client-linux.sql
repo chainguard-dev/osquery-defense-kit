@@ -143,18 +143,24 @@ WHERE
     '500,/usr/gsd-datetime,0u,0g,gsd-datetime',
     '500,/usr/gvfsd-http,0u,0g,gvfsd-http',
     '500,/usr/java,0u,0g,java',
+    '500,/ko-app/controller,u,g,controller',
     '500,/usr/java,u,g,java',
     '500,/usr/kbfsfuse,0u,0g,kbfsfuse',
     '500,/usr/keybase,0u,0g,keybase',
     '500,/usr/kubectl,500u,500g,kubectl',
     '500,/usr/lens,0u,0g,lens',
+    '500,/usr/signal-desktop,u,g,signal-desktop',
     '500,/usr/nautilus,0u,0g,nautilus',
     '500,/usr/obs,0u,0g,obs',
     '500,/usr/reporter-ureport,0u,0g,reporter-urepor',
     '500,/usr/rpi-imager,0u,0g,rpi-imager',
+    '500,/usr/ko,u,g,ko',
     '500,/usr/signal-desktop,0u,0g,signal-desktop',
+    '500,/tmp/terraform,500u,500g,terraform',
+    '500,/home/terraform,500u,500g,terraform',
     '500,/usr/slack,0u,0g,slack',
     '500,/usr/spotify,0u,0g,spotify',
+    '500,/tmp/obsidian,u,g,obsidian',
     '500,/usr/syncthing,0u,0g,syncthing',
     '500,/usr/terraform,0u,0g,terraform',
     '500,/usr/trivy,0u,0g,trivy',
@@ -164,7 +170,7 @@ WHERE
   )
   -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm exec %'
-  AND NOT exception_key LIKE '500,%/terraform-provider-aws_%,500u,500g,terraform-provi'
+  AND NOT exception_key LIKE '500,%/terraform-provider-%,500u,500g,terraform-provi'
   -- stay weird, NixOS (Fastly nix mirror)
   AND NOT (
     pp.cmdline = '/run/current-system/sw/bin/bash'
@@ -176,5 +182,7 @@ WHERE
     exception_key = '500,/tmp/main,500u,500g,main'
     AND p.path LIKE '/tmp/go-build%/exe/main'
   )
+  -- Exclude processes running inside of Docker containers
+  AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY
   p.cmdline

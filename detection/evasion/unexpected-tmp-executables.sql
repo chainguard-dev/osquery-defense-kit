@@ -92,8 +92,12 @@ WHERE
   ) -- macOS updates
   AND NOT file.directory LIKE '/tmp/msu-target-%' -- I don't know man. I don't work here.
   AND NOT file.directory LIKE '/tmp/UpdateBrain-%/AssetData/com.apple.MobileSoftwareUpdate.UpdateBrainService.xpc/Contents/MacOS/'
+  -- terraform
   AND NOT (
-    file.path LIKE('/tmp/%compressed')
+    uid > 500 AND file.path LIKE '/tmp/terraform_%/terraform'
+  )
+  AND NOT (
+    file.path LIKE '/tmp/%compressed'
     AND size < 4000
     AND uid > 500
   )

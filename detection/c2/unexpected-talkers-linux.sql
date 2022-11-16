@@ -108,6 +108,7 @@ WHERE
     '80,6,0,/usr/applydeltarpm,0u,0g,applydeltarpm',
     '80,6,0,/usr/NetworkManager,0u,0g,NetworkManager',
     '80,6,0,/usr/packagekitd,0u,0g,packagekitd',
+    '4070,6,500,/app/spotify,u,g,spotify',
     '80,6,0,/usr/pacman,0u,0g,pacman',
     '80,6,0,/usr/python3.10,0u,0g,dnf',
     '80,6,0,/usr/python3.10,0u,0g,yum',

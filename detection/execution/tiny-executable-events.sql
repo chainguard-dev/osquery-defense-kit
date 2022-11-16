@@ -38,6 +38,10 @@ WHERE
   AND p.path NOT LIKE '%.sh'
   AND p.path NOT LIKE '%.py'
   AND p.path NOT LIKE '%.rb'
+  AND NOT (
+    p.path LIKE '/Users/%'
+    AND magic.data LIKE 'POSIX shell script%'
+  )
   AND p.path NOT LIKE '/private/var/folders/%/T/iTerm2-scrip%sh'
   -- Removes a false-positive we've seen on Linux, generated through 'runc init'
   AND NOT (

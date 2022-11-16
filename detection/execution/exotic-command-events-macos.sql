@@ -80,7 +80,7 @@ WHERE
     OR cmd LIKE '%rm -f /var/tmp%'
     OR cmd LIKE '%rm -rf /boot%'
     OR cmd LIKE '%rm -f /tmp%'
-    OR cmd LIKE '%xargs kill -9%'
+    OR (cmd LIKE '%xargs kill -9%' AND p.euid=0)
     OR cmd LIKE '%nohup /bin/bash%'
     OR cmd LIKE '%history'
     OR cmd LIKE '%echo%|%base64 --decode %|%'
