@@ -19,6 +19,7 @@ SELECT
   p.cmdline,
   mnt_namespace,
   hash.sha256,
+  pp.path AS parent_path,
   pp.name AS parent_name,
   pp.cmdline AS parent_cmdline
 FROM
@@ -92,6 +93,7 @@ WHERE
     '/usr/lib/systemd/systemd-homed',
     '/usr/lib/systemd/systemd-journald',
     '/usr/lib/systemd/systemd-machined',
+    '/usr/lib/systemd/systemd-fsckd',
     '/usr/lib/udisks2/udisksd',
     '/usr/lib/Xorg',
     '/usr/local/kolide-k2/bin/launcher',
@@ -120,6 +122,7 @@ WHERE
     '/usr/bin/xargs',
     '/usr/bin/python3 -s /usr/sbin/firewalld --nofork --nopid',
     '/usr/bin/python /usr/bin/firewalld --nofork --nopid',
+    '/usr/bin/python3 /usr/libexec/blueman-mechanism',
     '/usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal',
     '/usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers'
   )
