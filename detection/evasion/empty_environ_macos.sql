@@ -6,8 +6,7 @@
 -- tags: persistent state daemon process
 -- platform: darwin
 -- interval: 600
-SELECT
-  COUNT(key) AS count,
+SELECT COUNT(key) AS count,
   p.pid,
   p.path,
   p.name,
@@ -29,8 +28,7 @@ SELECT
     ',',
     signature.authority
   ) AS exception_key -- Processes is 20X faster to scan than process_envs
-FROM
-  processes p
+FROM processes p
   LEFT JOIN process_envs pe ON p.pid = pe.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
@@ -39,13 +37,12 @@ WHERE -- This time should match the interval
   p.start_time > (strftime('%s', 'now') - 605) -- Filter out transient processes that may not have an envs entry by the time we poll for it
   AND p.start_time < (strftime('%s', 'now') - 5)
   AND p.path NOT LIKE '/System/Library/%'
-  -- This condition happens a fair bit on macOS, particularly electron apps
   AND NOT (
-    p.path LIKE '/Applications/%.app/Contents/%/Contents/MacOS/%'
-    AND signature.authority = 'Apple Mac OS Application Signing'
-  )
-  AND NOT (
-    signature.identifier LIKE 'com.apple.%'
+    (
+      p.path LIKE '/Library/Apple/%'
+      OR signature.identifier LIKE 'com.apple.%'
+      OR signature.identifier LIKE 'Safari%'
+    )
     AND signature.authority = 'Software Signing'
   )
   AND signature.authority NOT IN (
@@ -77,8 +74,7 @@ WHERE -- This time should match the interval
     '500,Pages,com.apple.iWork.Pages,Apple Mac OS Application Signing',
     '500,SafariLaunchAgent,SafariLaunchAgent-55554944882a849c6a6839b4b0e7c551bbc81898,Software Signing',
     '500,TwitterNotificationServiceExtension,maccatalyst.com.atebits.Tweetie2.NotificationServiceExtension,Apple Mac OS Application Signing'
-  )
-  -- Electron apps
+  ) -- Electron apps
   AND NOT (
     p.path LIKE '/Applications/%Helper%'
     AND (
@@ -87,7 +83,5 @@ WHERE -- This time should match the interval
     )
   )
   AND NOT p.path LIKE '/opt/homebrew/Cellar/%'
-GROUP BY
-  p.pid
-HAVING
-  count == 0;
+GROUP BY p.pid
+HAVING count == 0;
