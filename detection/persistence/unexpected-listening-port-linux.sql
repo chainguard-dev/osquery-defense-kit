@@ -125,7 +125,7 @@ WHERE
     '9300,6,500,authentik-proxy'
   )
   AND NOT (
-    p.path LIKE ',ko-app,%'
+    p.path LIKE '/ko-app/%'
     AND lp.port > 1024
     and lp.protocol = 6
   )
