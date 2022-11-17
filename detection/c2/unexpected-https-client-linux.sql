@@ -146,6 +146,7 @@ WHERE
     '500,/usr/gnome-software,0u,0g,gnome-software',
     '500,/usr/go,0u,0g,go',
     '500,/usr/go,500u,500g,go',
+    '500,/usr/goa-daemon,0u,0g,goa-daemon',
     '500,/usr/gsd-datetime,0u,0g,gsd-datetime',
     '500,/usr/gvfsd-http,0u,0g,gvfsd-http',
     '500,/usr/java,0u,0g,java',
