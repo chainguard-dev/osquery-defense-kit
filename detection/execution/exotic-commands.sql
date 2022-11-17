@@ -75,7 +75,7 @@ WHERE
   OR cmd LIKE '%pty.spawn%'
   OR (
     cmd LIKE '%sh -i'
-    AND NOT parent_name = 'sh'
+    AND NOT parent_name IN ('sh', 'java')
   )
   OR cmd LIKE '%socat%'
   OR cmd LIKE '%SOCK_STREAM%'

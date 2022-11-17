@@ -59,6 +59,7 @@ WHERE
   AND parent_path NOT LIKE '/app/extra/%'
   AND parent_path NOT LIKE '/opt/homebrew/Cellar/%'
   AND parent_path NOT LIKE '/tmp/.mount_%/%'
+  AND parent_path NOT LIKE '%google-cloud-sdk/.install/.backup%'
   AND NOT (
     parent_name LIKE 'kworker/%+events_unbound'
     AND child_name IN ('modprobe')

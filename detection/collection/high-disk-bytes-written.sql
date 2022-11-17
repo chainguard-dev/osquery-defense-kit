@@ -106,6 +106,7 @@ WHERE
     'fsdaemon',
     'go',
     'goland',
+    'qemu-system-aarch64',
     'gopls',
     'grype',
     'java',

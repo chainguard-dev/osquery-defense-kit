@@ -42,6 +42,7 @@ WHERE -- This time should match the interval
     'gnome-terminal-',
     'sshd',
     'zoom.real',
+    'teams',
     'zoom',
     'zypak-sandbox'
   )
