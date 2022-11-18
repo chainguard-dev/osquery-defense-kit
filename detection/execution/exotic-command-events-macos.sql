@@ -76,11 +76,15 @@ WHERE
     OR cmd LIKE '%nohup%tmp%'
     OR cmd LIKE '%killall Terminal%'
     OR cmd LIKE '%iptables stop'
-    OR cmd LIKE '%pkill -f%'
+    OR (
+      p.euid = 0
+      AND (
+        cmd LIKE '%pkill -f%'
+        OR cmd LIKE '%xargs kill -9%'
+      )
+    )
     OR cmd LIKE '%rm -f /var/tmp%'
-    OR cmd LIKE '%rm -rf /boot%'
     OR cmd LIKE '%rm -f /tmp%'
-    OR (cmd LIKE '%xargs kill -9%' AND p.euid=0)
     OR cmd LIKE '%nohup /bin/bash%'
     OR cmd LIKE '%history'
     OR cmd LIKE '%echo%|%base64 --decode %|%'
@@ -101,8 +105,11 @@ WHERE
     OR cmd LIKE '%SOCK_STREAM%'
     OR (
       cmd LIKE '%Socket.%'
-      AND NOT basename IN ('compile', 'sed', 'mv')
+      AND NOT basename IN ('compile', 'sed', 'mv', 'cover')
       AND NOT cmd LIKE "%sys/socket.h%"
+      AND NOT cmd LIKE "%websocket%"
+      AND NOT cmd LIKE "%socket.go%"
+      AND NOT cmd LIKE "%socket.cpython%"
     )
   ) -- Things that could reasonably happen at boot.
   AND NOT (
@@ -115,17 +122,17 @@ WHERE
   )
   AND NOT (
     cmd IN (
-      '/usr/bin/csrutil status',
-      '/usr/bin/csrutil report',
+      '/bin/launchctl asuser 0 /bin/launchctl list',
       '/bin/launchctl list',
-      'launchctl list com.parallels.desktop.launchdaemon',
-      'launchctl list us.zoom.ZoomDaemon',
-      'sudo launchctl list us.zoom.ZoomDaemon',
       '/bin/launchctl list com.logi.optionsplus.update',
       '/bin/launchctl list homebrew.mxcl.yabai',
-      'xpcproxy com.apple.Safari.History',
+      'launchctl list com.parallels.desktop.launchdaemon',
+      'launchctl list us.zoom.ZoomDaemon',
       '/Library/Apple/System/Library/StagedFrameworks/Safari/SafariShared.framework/XPCServices/com.apple.Safari.History.xpc/Contents/MacOS/com.apple.Safari.History',
-      '/bin/launchctl asuser 0 /bin/launchctl list'
+      'sudo launchctl list us.zoom.ZoomDaemon',
+      '/usr/bin/csrutil report',
+      '/usr/bin/csrutil status',
+      'xpcproxy com.apple.Safari.History'
     )
     -- The source of these commands is still a mystery to me.
     OR p.parent = -1
@@ -137,3 +144,5 @@ WHERE
   AND NOT cmd LIKE '/bin/cp %history%sessions/%'
   AND NOT cmd LIKE 'touch -r /tmp/KSInstallAction.%'
   AND NOT cmd LIKE '%find /Applications/LogiTuneInstaller.app -type d -exec chmod 777 {}%'
+  AND NOT cmd LIKE '/bin/rm -f /tmp/com.adobe.%.updater/%'
+  AND NOT cmd LIKE 'dirname %history'

@@ -24,6 +24,7 @@ SELECT
   p.euid,
   p.parent,
   p.syscall,
+  pp.cgroup_path,
   hash.sha256,
   pp.path AS parent_path,
   pp.name AS parent_name,
@@ -79,7 +80,10 @@ WHERE
     OR cmd LIKE '%systemctl stop firewalld%'
     OR cmd LIKE '%systemctl disable firewalld%'
     OR cmd LIKE '%pkill -f%'
-    OR (cmd LIKE '%xargs kill -9%' AND p.euid=0)
+    OR (
+      cmd LIKE '%xargs kill -9%'
+      AND p.euid = 0
+    )
     OR cmd LIKE '%rm -f%/tmp%'
     OR cmd LIKE '%rm -rf /boot%'
     OR cmd LIKE '%nohup /bin/bash%'
@@ -149,3 +153,4 @@ WHERE
   AND NOT cmd LIKE 'rm -f /var/lib/update-notifier/tmp%'
   -- Invalid command from someones tmux environment
   AND NOT cmd LIKE 'pkill -f cut -c3%'
+  AND NOT cmd LIKE 'dirname %history'

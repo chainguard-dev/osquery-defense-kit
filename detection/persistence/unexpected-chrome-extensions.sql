@@ -69,6 +69,7 @@ WHERE
     'true,All uBlock contributors,uBlock - free ad blocker,epcnnfbjfcgphgdmggkamkmgojdagdnn,contextMenus, storage, tabs, unlimitedStorage, webNavigation, webRequest, webRequestBlocking, <all_urls>',
     'true,,Bardeen - automate workflows with one click,ihhkmalpkhkoedlmcnilbbhhbhnicjga,<all_urls>, webNavigation, unlimitedStorage, notifications, activeTab, tabs, storage, *://*/*, history, bookmarks, contextMenus',
     'true,BetaFish,AdBlock — best ad blocker,gighmmpiobklfepjocnamgkkbiglidom,tabs, <all_urls>, contextMenus, webRequest, webRequestBlocking, webNavigation, storage, unlimitedStorage, notifications, idle, alarms',
+    'true,Adblock, Inc.,AdBlock — best ad blocker,gighmmpiobklfepjocnamgkkbiglidom,tabs, <all_urls>, contextMenus, webRequest, webRequestBlocking, webNavigation, storage, unlimitedStorage, notifications, idle, alarms',
     'true,Bitwarden Inc.,Bitwarden - Free Password Manager,nngceckbapebfimnlniiiahkandclblb,tabs, contextMenus, storage, unlimitedStorage, clipboardRead, clipboardWrite, idle, http://*/*, https://*/*, webRequest, webRequestBlocking',
     'true,,BrowserStack Local,mfiddfehmfdojjfdpfngagldgaaafcfo,https://*.bsstag.com/*, https://*.browserstack.com/*, , clipboardWrite, app.window, storage',
     'true,,Capital One Shopping: Add to Chrome for Free,nenlahapcbofgnanklpelkaejcehkggg,tabs, contextMenus, storage, cookies, webRequest, webRequestBlocking, <all_urls>',

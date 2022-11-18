@@ -112,6 +112,7 @@ WHERE
     '~/.config/',
     '~/git/',
     '~/go/',
+    '~/.kuberlr/',
     '~/google-cloud-sdk/',
     '~/homebrew/',
     '~/Library/',
