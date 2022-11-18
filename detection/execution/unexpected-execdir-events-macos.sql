@@ -116,6 +116,7 @@ WHERE
   AND top_homedir NOT IN (
     '~/Applications/',
     '~/bin/',
+    '~/.cargo/',
     '~/code/',
     '~/.config/',
     '~/go/',
@@ -123,8 +124,8 @@ WHERE
     '~/Library/',
     '~/.local/',
     '~/projects/',
-    '~/src/',
     '~/.pyenv/',
+    '~/src/',
     '~/.tflint.d/',
     '~/.vscode/',
     '~/.vs-kubernetes/'

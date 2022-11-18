@@ -124,6 +124,7 @@ WHERE
     '/etc/update-motd.d',
     '/etc/vmware-tools',
     '/etc/vpnc',
+    '/etc/localtime',
     '/etc/wpa_supplicant',
     '/etc/X11',
     '/etc/X11/xinit',

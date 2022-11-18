@@ -26,15 +26,17 @@ SELECT
   s.authority,
   s.identifier
 FROM
-  process_memory_map pmm
+  processes p
+  LEFT JOIN process_memory_map pmm ON p.pid = pmm.pid
   LEFT JOIN processes p ON pmm.pid = p.pid
   LEFT JOIN hash h ON p.path = h.path
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash AS ph ON pp.path = ph.path
   LEFT JOIN signature s ON p.path = s.path
 WHERE
-  pmm.path LIKE '%libpcap%'
-  AND p.euid = 0 -- These are all protected directories
+  p.euid = 0
+  AND pmm.path LIKE '%libpcap%'
+  -- These are all protected directories
   AND child_path NOT LIKE '/System/%'
   AND child_path NOT LIKE '/usr/libexec/%'
   AND child_path NOT LIKE '/usr/sbin/%'
@@ -49,4 +51,4 @@ WHERE
     'Developer ID Application: Docker Inc (9BNSXJN65R)'
   )
 GROUP BY
-  pmm.pid
+  p.pid

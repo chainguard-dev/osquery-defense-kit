@@ -131,6 +131,7 @@ WHERE
     '500,/usr/cosign,500u,500g,cosign',
     '500,/usr/curl,0u,0g,curl',
     '500,/usr/electron,0u,0g,electron',
+    '500,/usr/evolution-addressbook-factory,0u,0g,evolution-addre',
     '500,/usr/evolution-calendar-factory,0u,0g,evolution-calen',
     '500,/usr/firefox,0u,0g,firefox',
     '500,/usr/firefox,0u,0g,.firefox-wrappe',
@@ -158,6 +159,7 @@ WHERE
     '500,/usr/lens,0u,0g,lens',
     '500,/usr/nautilus,0u,0g,nautilus',
     '500,/usr/obs,0u,0g,obs',
+    '500,/usr/python3,0u,0g,python3',
     '500,/usr/reporter-ureport,0u,0g,reporter-urepor',
     '500,/usr/rpi-imager,0u,0g,rpi-imager',
     '500,/usr/signal-desktop,0u,0g,signal-desktop',
@@ -167,6 +169,7 @@ WHERE
     '500,/usr/syncthing,0u,0g,syncthing',
     '500,/usr/teams,0u,0g,teams',
     '500,/usr/terraform,0u,0g,terraform',
+    '500,/usr/thunderbird,0u,0g,thunderbird',
     '500,/usr/trivy,0u,0g,trivy',
     '500,/usr/WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '500,/usr/xmobar,0u,0g,xmobar',
@@ -174,6 +177,7 @@ WHERE
   )
   -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm exec %'
+  AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm install %'
   AND NOT exception_key LIKE '500,%/terraform-provider-%,500u,500g,terraform-provi'
   -- stay weird, NixOS (Fastly nix mirror)
   AND NOT (

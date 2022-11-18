@@ -36,7 +36,8 @@ FROM
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN signature ON p.path = signature.path
 WHERE
-  p.euid = 0 AND
+  p.euid = 0
+  AND
   -- This time should match the interval
   p.start_time > (strftime('%s', 'now') - 601) -- Filter out transient processes that may not have an envs entry by the time we poll for it
   AND p.start_time < (strftime('%s', 'now') - 1)

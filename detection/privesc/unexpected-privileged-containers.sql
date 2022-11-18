@@ -30,6 +30,7 @@ WHERE
   AND image NOT IN (
     'cgr.dev/chainguard/melange',
     'wolfi:test',
+    'distroless.dev/melange',
     'distroless.dev/melange:latest'
   )
   AND command NOT LIKE '/usr/bin/melange build %'

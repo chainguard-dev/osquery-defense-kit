@@ -26,6 +26,9 @@ FROM
   LEFT JOIN users u ON p.uid = u.uid
   LEFT JOIN hash ON p.path = hash.path
 WHERE
-  (p.name LIKE '.%' OR f.filename LIKE '.%')
-AND NOT f.path LIKE '/nix/store/%/%-wrapped'
-AND NOT p.name = '.firefox-wrappe'
+  (
+    p.name LIKE '.%'
+    OR f.filename LIKE '.%'
+  )
+  AND NOT f.path LIKE '/nix/store/%/%-wrapped'
+  AND NOT p.name = '.firefox-wrappe'

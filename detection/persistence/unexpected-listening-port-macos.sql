@@ -151,7 +151,10 @@ WHERE
     AND lp.protocol = 6
   )
   AND NOT (
-    p.cwd LIKE '/Users/%/src/%'
+    (
+      p.cwd LIKE '/Users/%/src/%'
+      OR p.cwd LIKE '/Users/%/dev/%'
+    )
     AND p.cmdline LIKE './%'
     AND lp.port > 1024
     AND lp.protocol = 6

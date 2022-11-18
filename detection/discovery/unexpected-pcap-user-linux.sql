@@ -23,15 +23,16 @@ SELECT
   pp.cwd AS parent_cwd,
   pp.euid AS parent_euid,
   ph.sha256 AS parent_sha256
+  -- Using processes is much faster than process_memory_map
 FROM
-  process_memory_map pmm
-  LEFT JOIN processes p ON pmm.pid = p.pid
+  processes p
+  LEFT JOIN process_memory_map pmm ON p.pid = pmm.pid
   LEFT JOIN hash h ON p.path = h.path
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash AS ph ON pp.path = ph.path
 WHERE
-  pmm.path LIKE '%libpcap%'
-  AND p.euid = 0
+  p.euid = 0
+  AND pmm.path LIKE '%libpcap%'
   AND child_path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND child_path NOT LIKE '/nix/store/%-systemd-%/lib/systemd/systemd%'
   AND child_path NOT LIKE '/nix/store/%-systemd-%/bin/udevadm'
@@ -50,4 +51,4 @@ WHERE
   )
   AND child_cmd NOT LIKE '/usr/bin/python3 -s%/usr/sbin/firewalld%'
 GROUP BY
-  pmm.pid
+  p.pid

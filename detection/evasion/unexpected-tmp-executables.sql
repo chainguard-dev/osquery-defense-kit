@@ -94,7 +94,8 @@ WHERE
   AND NOT file.directory LIKE '/tmp/UpdateBrain-%/AssetData/com.apple.MobileSoftwareUpdate.UpdateBrainService.xpc/Contents/MacOS/'
   -- terraform
   AND NOT (
-    uid > 500 AND file.path LIKE '/tmp/terraform_%/terraform'
+    uid > 500
+    AND file.path LIKE '/tmp/terraform_%/terraform'
   )
   AND NOT (
     file.path LIKE '/tmp/%compressed'

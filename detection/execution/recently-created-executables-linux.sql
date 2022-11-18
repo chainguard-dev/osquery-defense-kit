@@ -56,6 +56,7 @@ WHERE
     '/usr/bin/docker',
     '/usr/bin/dockerd',
     '/usr/bin/docker-proxy',
+    '/usr/lib/flatpak-session-helper',
     '/usr/bin/gedit',
     '/usr/bin/gnome-keyring-daemon',
     '/usr/bin/kbfsfuse',

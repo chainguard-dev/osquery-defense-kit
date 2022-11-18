@@ -153,7 +153,7 @@ WHERE
     AND lp.port > 1024
     and lp.protocol = 6
   )
-    -- Exclude processes running inside of Docker containers
+  -- Exclude processes running inside of Docker containers
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY
   exception_key
