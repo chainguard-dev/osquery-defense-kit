@@ -1,4 +1,4 @@
--- Find programs which have cleared their environment
+-- Find programs which spawn root children without propagating environment variables
 --
 -- references:
 --   * https://www.sandflysecurity.com/blog/bpfdoor-an-evasive-linux-backdoor-technical-analysis/
@@ -28,16 +28,18 @@ SELECT
     signature.identifier,
     ',',
     signature.authority
-  ) AS exception_key -- Processes is 20X faster to scan than process_envs
+  ) AS exception_key
 FROM
   processes p
   LEFT JOIN process_envs pe ON p.pid = pe.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN signature ON p.path = signature.path
-WHERE -- This time should match the interval
-  p.start_time > (strftime('%s', 'now') - 605) -- Filter out transient processes that may not have an envs entry by the time we poll for it
-  AND p.start_time < (strftime('%s', 'now') - 5)
+WHERE
+  p.euid = 0 AND
+  -- This time should match the interval
+  p.start_time > (strftime('%s', 'now') - 601) -- Filter out transient processes that may not have an envs entry by the time we poll for it
+  AND p.start_time < (strftime('%s', 'now') - 1)
   AND p.path NOT LIKE '/System/Library/%'
   AND signature.authority NOT IN (
     'Software Signing',
@@ -58,25 +60,6 @@ WHERE -- This time should match the interval
     'Developer ID Application: Opal Camera Inc (97Z3HJWCRT)',
     'Developer ID Application: Parallels International GmbH (4C6364ACXT)',
     'Developer ID Application: Yubico Limited (LQA3CS5MM7)'
-  )
-  AND NOT exception_key IN (
-    '500,CraftWidgetExtension,com.lukilabs.lukiapp.CraftWidget,Apple Mac OS Application Signing',
-    '500,gsleep,sleep,',
-    '500,ssh,,',
-    '500,gopls,a.out,',
-    '500,esbuild,a.out,',
-    '500,ssh-sk-helper,,',
-    '500,Obsidian Helper (Renderer),md.obsidian.helper.Renderer,Developer ID Application: Dynalist Inc. (6JSW4SJWN9)',
-    '500,Pages,com.apple.iWork.Pages,Apple Mac OS Application Signing',
-    '500,SafariLaunchAgent,SafariLaunchAgent-55554944882a849c6a6839b4b0e7c551bbc81898,Software Signing',
-    '500,TwitterNotificationServiceExtension,maccatalyst.com.atebits.Tweetie2.NotificationServiceExtension,Apple Mac OS Application Signing'
-  ) -- Electron apps
-  AND NOT (
-    p.path LIKE '/Applications/%Helper%'
-    AND (
-      exception_key LIKE '500,%Helper%,Renderer,Developer ID Application: % (%)'
-      OR exception_key LIKE '500,%Helper%,helper,Developer ID Application: % (%)'
-    )
   )
   AND NOT p.path LIKE '/opt/homebrew/Cellar/%'
 GROUP BY
