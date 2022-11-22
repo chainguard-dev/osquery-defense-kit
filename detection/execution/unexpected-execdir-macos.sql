@@ -127,7 +127,8 @@ WHERE
     '~/src/',
     '~/.tflint.d/',
     '~/.vscode/',
-    '~/.vs-kubernetes/'
+    '~/.vs-kubernetes/',
+    '~/Code/'
   )
   -- Locally built executables
   AND NOT (
@@ -152,7 +153,7 @@ WHERE
   AND dir NOT LIKE '/Volumes/com.getdropbox.dropbox-%'
   AND homedir NOT LIKE '~/%/google-cloud-sdk/bin/%'
   AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
-  AND homedir NOT LIKE '~/%/node_modules/.pnpm/esbuild-%/node_modules/esbuild-darwin-arm64/bin'
+  AND homedir NOT LIKE '~/%/node_modules/.pnpm/%'
 
   -- Allow these anywhere (put last because it's slow to query signatures)
   AND signature.authority NOT IN (
