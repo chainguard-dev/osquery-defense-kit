@@ -224,6 +224,7 @@ WHERE
     '443,6,500,pulumi-resource-gcp,a.out,',
     '443,6,500,pulumi-resource-github,a.out,',
     '443,6,500,python2.7,python2.7,',
+    '443,6,500,GitHub Desktop Helper,com.github.GitHubClient.helper,Developer ID Application: GitHub (VEKTX9H2N7)',
     '443,6,500,python3.10,python3.10,',
     '443,6,500,Python,com.apple.python3,Software Signing',
     '443,6,500,Python,org.python.python,',
@@ -335,7 +336,7 @@ WHERE
   )
   AND NOT (
     remote_port IN (53, 443)
-    AND p.name LIKE 'kubectl.%'
+    AND p.name LIKE 'kubectl%'
   )
   -- Python programs
   AND NOT (

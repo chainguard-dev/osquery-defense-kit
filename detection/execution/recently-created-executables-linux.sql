@@ -33,7 +33,8 @@ FROM
   LEFT JOIN hash AS ph ON pp.path = ph.path
 WHERE
   p.start_time > 0
-  AND f.ctime > 0 -- Only process programs that had an inode modification within the last 3 minutes
+  AND f.ctime > 0
+  AND p.start_time > (strftime('%s', 'now') - 7200)
   AND (p.start_time - MAX(f.ctime, f.btime)) < 180
   AND p.start_time >= MAX(f.ctime, f.ctime)
   AND NOT f.directory IN ('/usr/lib/firefox', '/usr/local/kolide-k2/bin') -- Typically daemons or long-running desktop apps
@@ -46,9 +47,11 @@ WHERE
     '/opt/google/chrome/chrome_crashpad_handler',
     '/opt/google/chrome/nacl_helper',
     '/opt/Lens/chrome_crashpad_handler',
+    '/usr/lib/flatpak-session-helper',
     '/opt/Lens/lens',
     '/opt/sublime_text/sublime_text',
     '/usr/bin/alacritty',
+    '/usr/sbin/avahi-daemon',
     '/usr/bin/bash',
     '/usr/bin/cargo',
     '/usr/bin/containerd',

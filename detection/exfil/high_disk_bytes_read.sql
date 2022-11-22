@@ -76,6 +76,7 @@ WHERE
     '/usr/libexec/flatpak-system-helper',
     '/usr/libexec/logd',
     '/usr/libexec/logd_helper',
+    '/usr/libexec/tracker-miner-fs-3',
     '/usr/libexec/packagekitd',
     '/usr/libexec/PerfPowerServices',
     '/usr/libexec/signpost_reporter',

@@ -134,6 +134,7 @@ WHERE
   )
   AND NOT path_exception IN (
     '/dev/autofs,systemd',
+    '/dev/kmsg,systemd-coredump',
     '/dev/hidraw,chrome',
     '/dev/input/event,thermald',
     '/dev/input/event,Xorg',

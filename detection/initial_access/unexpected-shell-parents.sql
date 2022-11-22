@@ -46,6 +46,7 @@ WHERE
     'direnv',
     'doas',
     'find',
+    'sdk',
     'FinderSyncExtension',
     'fish',
     'go',

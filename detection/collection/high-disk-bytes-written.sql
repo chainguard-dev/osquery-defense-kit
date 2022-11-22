@@ -12,6 +12,7 @@
 -- tags: transient process
 SELECT
   p.name,
+  p.cgroup_path,
   p.path,
   p.pid,
   p.cmdline,
@@ -32,6 +33,7 @@ WHERE
   AND pid > 2
   AND p.path NOT IN (
     '/bin/bash',
+    '/bin-busybox',
     '/opt/homebrew/bin/qemu-system-aarch64',
     '/usr/bin/apt',
     '/usr/bin/aptd',
