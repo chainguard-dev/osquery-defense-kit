@@ -8,7 +8,8 @@
 --
 -- tags: transient process events
 -- platform: linux
--- interval: 60
+-- interval: 30
+
 SELECT
   p.pid,
   p.path,
@@ -38,7 +39,7 @@ FROM
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE
-  p.time > (strftime('%s', 'now') -60)
+  p.time > (strftime('%s', 'now') -30)
   AND (
     basename IN (
       'bitspin',
@@ -48,8 +49,13 @@ WHERE
       'dnscat2',
       'tuns',
       'iodine',
+      'minerd',
+      'cpuminer-multi',
+      'cpuminer',
+      'httpdns',
       'rshell',
       'rsh',
+      'xmrig',
       'incbit',
       'insmod',
       'kmod',
@@ -84,19 +90,15 @@ WHERE
       cmd LIKE '%xargs kill -9%'
       AND p.euid = 0
     )
-    OR cmd LIKE '%rm -f%/tmp%'
     OR cmd LIKE '%rm -rf /boot%'
     OR cmd LIKE '%nohup /bin/bash%'
     OR cmd LIKE '%echo%|%base64 --decode %|%'
     OR cmd LIKE '%UserKnownHostsFile=/dev/null%'
     -- Crypto miners
-    OR cmd LIKE '%minerd%'
     OR cmd LIKE '%monero%'
     OR cmd LIKE '%nanopool%'
     OR cmd LIKE '%nicehash%'
     OR cmd LIKE '%stratum%'
-    OR basename LIKE '%xig%'
-    OR basename LIKE '%xmr%'
     -- Random keywords
     OR cmd LIKE '%ransom%'
     -- Reverse shells
@@ -111,11 +113,7 @@ WHERE
     )
     OR cmd LIKE '%socat%'
     OR cmd LIKE '%SOCK_STREAM%'
-    OR (
-      cmd LIKE '%Socket.%'
-      AND NOT cmd LIKE '%ipc-socket%'
-      AND NOT cmd LIKE '%/include%'
-    )
+    OR cmd GLOB '*Socket.*'
   ) -- Things that could reasonably happen at boot.
   AND NOT (
     p.path IN ('/usr/bin/kmod', '/bin/kmod')
@@ -146,11 +144,6 @@ WHERE
   AND NOT cmd LIKE '%modprobe aufs'
   AND NOT cmd LIKE 'modprobe --all%'
   AND NOT cmd IN ('lsmod')
-  -- Seen on Ubuntu
-  AND NOT cmd LIKE 'rm -f /tmp/apt-key-gpghome.%/pubring.gpg'
-  AND NOT cmd LIKE 'rm -f /var/tmp/mkinitramfs_%'
-  AND NOT cmd LIKE 'rm -f -- /tmp/%'
-  AND NOT cmd LIKE 'rm -f /var/lib/update-notifier/tmp%'
   -- Invalid command from someones tmux environment
   AND NOT cmd LIKE 'pkill -f cut -c3%'
   AND NOT cmd LIKE 'dirname %history'

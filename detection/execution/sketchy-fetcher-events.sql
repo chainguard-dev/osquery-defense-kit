@@ -91,7 +91,7 @@ WHERE
       OR p.cmdline LIKE '%/openid/v1/jwks%'
       OR p.cmdline LIKE '%--progress-bar%'
       OR p.cmdline LIKE '%.well-known/openid-configuration%'
-      OR p.cmdline LIKE 'wget --no-check-certificate https://github.com/'
+      OR p.cmdline LIKE 'wget --no-check-certificate https://github.com/%'
       OR p.cmdline LIKE 'curl -sL wttr.in%'
       OR parent_cmdline LIKE '%brew.rb%'
       OR parent_cmdline LIKE '%brew.sh%'

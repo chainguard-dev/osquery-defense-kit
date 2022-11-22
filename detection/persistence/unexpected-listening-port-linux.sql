@@ -86,6 +86,7 @@ WHERE
     '5000,6,0,registry',
     '5000,6,500,ControlCenter',
     '5001,6,0,registry',
+    '443,6,0,tailscaled',
     '53,17,0,coredns',
     '53,17,500,dnsmasq',
     '5355,6,193,systemd-resolve',

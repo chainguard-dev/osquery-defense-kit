@@ -36,7 +36,8 @@ FROM
   LEFT JOIN signature ON p.path = signature.path
 WHERE
   p.start_time > 0
-  AND f.ctime > 0 -- Only process programs that had an inode modification within the last 3 minutes
+  AND f.ctime > 0
+  AND p.start_time > (strftime('%s', 'now') - 7200)
   AND (p.start_time - MAX(f.ctime, f.btime)) < 180
   AND p.start_time >= MAX(f.ctime, f.ctime)
   AND signature.authority NOT IN (

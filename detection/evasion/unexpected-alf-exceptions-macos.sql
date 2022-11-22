@@ -35,19 +35,14 @@ WHERE -- NOTE:We intentionally want to preserve missing files
   -- Unfortunately, there is no column for when an exception was granted, so
   -- we're currently unable to filter out old entries.
   exception_key NOT IN (
+    'Apple Mac OS Application Signing,com.apple.garageband10,/Applications/GarageBand.app/,0',
+    'Apple Mac OS Application Signing,com.utmapp.QEMULauncher,/Applications/UTM.app/Contents/XPCServices/QEMUHelper.xpc/Contents/MacOS/QEMULauncher.app/,0',
+    'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
     ',,/Applications/Google%20Chrome.app/,',
     ',,/Applications/IntelliJ%20IDEA.app/,',
     ',,/Applications/ProtonMail%20Bridge.app/,',
     ',,/Applications/Visual%20Studio%20Code.app/,',
     ',,/Applications/Visual%20Studio%20Code.app/Contents/Frameworks/Code%20Helper.app/,',
-    ',,/System/Library/PrivateFrameworks/Admin.framework/Versions/A/Resources/readconfig,',
-    ',,/usr/bin/nmblookup,',
-    ',,/usr/libexec/discoveryd,',
-    ',iodined-55554944d1ffcb236a84363d9b667be6a1742a17,/usr/local/sbin/iodined,501', -- thanks Jed!
-    ',java,/opt/homebrew/Cellar/openjdk/19/libexec/openjdk.jdk/Contents/Home/bin/java,501',
-    'Apple Mac OS Application Signing,com.apple.garageband10,/Applications/GarageBand.app/,0',
-    'Apple Mac OS Application Signing,com.utmapp.QEMULauncher,/Applications/UTM.app/Contents/XPCServices/QEMUHelper.xpc/Contents/MacOS/QEMULauncher.app/,0',
-    'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
     'Developer ID Application: Bohemian Coding (WUGMZZ5K46),com.bohemiancoding.sketch3,/Applications/Sketch.app/,501',
     'Developer ID Application: Bohemian Coding (WUGMZZ5K46),com.bohemiancoding.SketchMirrorHelper,/Applications/Sketch.app/Contents/XPCServices/SketchMirrorHelper.xpc/,501',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW),com.brother.utility.WorkflowAppControlServer,/Library/Printers/Brother/Utilities/Server/WorkflowAppControl.app/,0',
@@ -58,6 +53,8 @@ WHERE -- NOTE:We intentionally want to preserve missing files
     'Developer ID Application: Sonos, Inc. (2G4LW83Q3E),com.sonos.macController,/Applications/Sonos.app/,501',
     'Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client,/Applications/Spotify.app/,501',
     'Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),com.vng.zalo,/Applications/Zalo.app/,501',
+    ',iodined-55554944d1ffcb236a84363d9b667be6a1742a17,/usr/local/sbin/iodined,501', -- thanks Jed!
+    ',java,/opt/homebrew/Cellar/openjdk/19/libexec/openjdk.jdk/Contents/Home/bin/java,501',
     'Software Signing,com.apple.bootpd,/usr/libexec/bootpd,0',
     'Software Signing,com.apple.configd,/usr/libexec/configd,0',
     'Software Signing,com.apple.controlcenter,/System/Library/CoreServices/ControlCenter.app/,0',
@@ -68,7 +65,13 @@ WHERE -- NOTE:We intentionally want to preserve missing files
     'Software Signing,com.apple.racoon,/usr/sbin/racoon,0',
     'Software Signing,com.apple.universalcontrol,/System/Library/CoreServices/UniversalControl.app/,0',
     'Software Signing,com.apple.WebKit.Networking,/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/,0',
-    'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0'
+    'Software Signing,com.apple.WebKit.Networking,/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/,0',
+    'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0',
+    ',,/System/Library/PrivateFrameworks/Admin.framework/Versions/A/Resources/readconfig,',
+    '/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/',
+    ',,/usr/bin/nmblookup,',
+    ',,/usr/libexec/discoveryd,'
+
   )
   AND NOT (
     signature.identifier LIKE 'cargo-%'
@@ -104,6 +107,7 @@ WHERE -- NOTE:We intentionally want to preserve missing files
       OR file.directory LIKE '/Users/%/bin'
       OR file.directory LIKE '/Users/%/code/%'
       OR file.directory LIKE '/Users/%/src/%'
+      OR file.directory LIKE '/Users/%/sigstore/%'
       OR file.directory LIKE '/Users/%/node_modules/.bin/%'
       OR file.directory LIKE '/Users/%/git/%'
       OR file.directory LIKE '/Users/%/%-cli'

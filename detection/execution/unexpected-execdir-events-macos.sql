@@ -108,22 +108,30 @@ WHERE
   AND homedir NOT IN (
     '~/bin',
     '~/code/bin',
-    '~/.magefile',
+    '~/Downloads/google-cloud-sdk/bin',
     '~/go/bin',
     '~/.local/bin',
+    '~/.magefile',
     '~/projects/go/bin'
   )
   AND top_homedir NOT IN (
     '~/Applications/',
+    '~/Applications (Parallels)/',
     '~/bin/',
     '~/.cargo/',
+    '~/.rustup/',
     '~/code/',
     '~/.config/',
+    '~/git/',
     '~/go/',
+    '~/Parallels/',
+    '~/google-cloud-sdk/',
     '~/homebrew/',
+    '~/.kuberlr/',
     '~/Library/',
     '~/.local/',
     '~/projects/',
+    '~/.pulumi/',
     '~/.pyenv/',
     '~/src/',
     '~/.tflint.d/',
@@ -145,14 +153,16 @@ WHERE
   AND dir NOT LIKE '/private/tmp/PKInstallSandbox.%/Scripts/com.microsoft.OneDrive.%'
   AND dir NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%.xpc/Contents/MacOS'
   AND dir NOT LIKE '/private/var/folders/%/bin'
-  AND dir NOT LIKE '%/.terraform/providers/%'
   AND dir NOT LIKE '/private/var/folders/%/Contents/%'
   AND dir NOT LIKE '/private/var/folders/%/d/Wrapper/%.app'
   AND dir NOT LIKE '/private/var/folders/%/go-build%'
   AND dir NOT LIKE '/private/var/folders/%/GoLand'
+  AND dir NOT LIKE '%/.terraform/providers/%'
   AND dir NOT LIKE '/Volumes/com.getdropbox.dropbox-%'
+  AND homedir NOT LIKE '~/%/google-cloud-sdk/bin/%'
   AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
   AND homedir NOT LIKE '~/%/node_modules/.pnpm/esbuild-%/node_modules/esbuild-darwin-arm64/bin'
+
   AND signature.authority NOT IN (
     'Apple iPhone OS Application Signing',
     'Apple Mac OS Application Signing',

@@ -35,6 +35,7 @@ FROM
 WHERE
   p.euid < p.uid
   AND p.path NOT IN (
+    '',
     '/bin/ps',
     '/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_session_monitor',
     '/Library/DropboxHelperTools/Dropbox_u501/dbkextd',

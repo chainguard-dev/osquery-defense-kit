@@ -111,6 +111,7 @@ WHERE
     '67,17,0,bootpd,Software Signing',
     '53,6,65,mDNSResponder,Software Signing',
     '547,17,500,dhcp6d,Software Signing',
+    '2112,6,500,timestamp-server,',
     '68,17,0,configd,Software Signing',
     '7000,6,500,ControlCenter,Software Signing',
     '80,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',

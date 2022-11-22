@@ -56,7 +56,7 @@ WHERE
   )
   AND NOT (
     f.path = '/usr/bin/sudo'
-    AND f.mode = '0411'
+    AND f.mode = '4111'
     AND f.uid = 0
   )
   AND NOT (

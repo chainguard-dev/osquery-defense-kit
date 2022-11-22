@@ -124,6 +124,8 @@ WHERE
     cmd IN (
       '/bin/launchctl asuser 0 /bin/launchctl list',
       '/bin/launchctl list',
+      'launchctl list',
+      'sudo launchctl list',
       '/bin/launchctl list com.logi.optionsplus.update',
       '/bin/launchctl list homebrew.mxcl.yabai',
       'launchctl list com.parallels.desktop.launchdaemon',

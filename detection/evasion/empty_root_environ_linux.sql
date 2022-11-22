@@ -35,13 +35,13 @@ WHERE
     'gpg-agent',
     'dhcpcd',
     'bwrap',
-    'systemd-userwor',
-    'systemd-userdbd',
     'nginx',
+    'dnf',
     'cupsd',
     'sshd',
     'zypak-sandbox'
   )
+  AND NOT (p.name LIKE 'systemd-%' AND p.parent=1)
   AND NOT pp.cmdline LIKE 'bwrap %'
   AND NOT p.cmdline LIKE '%--type=zygote%'
   AND NOT p.cmdline LIKE '%--disable-seccomp-filter-sandbox%'

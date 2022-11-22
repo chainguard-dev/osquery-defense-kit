@@ -76,13 +76,16 @@ WHERE
     '0,/usr/nix,0u,0g,nix',
     '0,/usr/packagekitd,0u,0g,packagekitd',
     '0,/usr/pacman,0u,0g,pacman',
+    '500,/usr/evolution-addressbook-factory,0u,0g,evolution-addre',
     '0,/usr/python3.10,0u,0g,dnf',
     '0,/usr/python3.10,0u,0g,yum',
     '0,/usr/rpi-imager,0u,0g,rpi-imager',
     '0,/usr/snapd,0u,0g,snapd',
     '0,/usr/tailscaled,0u,0g,tailscaled',
+    '0,/usr/tailscaled,500u,500g,tailscaled',
     '0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra',
     '105,/usr/http,0u,0g,https',
+    '106,/usr/geoclue,0u,0g,geoclue',
     '500,/app/slack,u,g,slack',
     '500,/app/spotify,u,g,spotify',
     '500,/app/thunderbird,u,g,thunderbird',
@@ -166,6 +169,7 @@ WHERE
     '500,/usr/signal-desktop,u,g,signal-desktop',
     '500,/usr/slack,0u,0g,slack',
     '500,/usr/spotify,0u,0g,spotify',
+    '500,/usr/step,500u,500g,step',
     '500,/usr/syncthing,0u,0g,syncthing',
     '500,/usr/teams,0u,0g,teams',
     '500,/usr/terraform,0u,0g,terraform',
@@ -174,6 +178,7 @@ WHERE
     '500,/usr/WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '500,/usr/xmobar,0u,0g,xmobar',
     '500,/usr/yay,0u,0g,yay'
+
   )
   -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm exec %'
