@@ -38,6 +38,7 @@ WHERE
     'nginx',
     'dnf',
     'cupsd',
+    'gdm-session-wor',
     'sshd',
     'zypak-sandbox'
   )
