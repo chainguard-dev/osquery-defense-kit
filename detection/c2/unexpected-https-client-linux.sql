@@ -76,9 +76,9 @@ WHERE
     '0,/usr/nix,0u,0g,nix',
     '0,/usr/packagekitd,0u,0g,packagekitd',
     '0,/usr/pacman,0u,0g,pacman',
-    '500,/usr/evolution-addressbook-factory,0u,0g,evolution-addre',
     '0,/usr/python3.10,0u,0g,dnf',
     '0,/usr/python3.10,0u,0g,yum',
+    '0,/usr/python3.11,0u,0g,dnf',
     '0,/usr/rpi-imager,0u,0g,rpi-imager',
     '0,/usr/snapd,0u,0g,snapd',
     '0,/usr/tailscaled,0u,0g,tailscaled',
@@ -178,7 +178,6 @@ WHERE
     '500,/usr/WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '500,/usr/xmobar,0u,0g,xmobar',
     '500,/usr/yay,0u,0g,yay'
-
   )
   -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm exec %'
