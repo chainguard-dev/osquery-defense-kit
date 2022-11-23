@@ -67,6 +67,7 @@ WHERE
     '0,/ko-app/fulcio,u,g,fulcio',
     '0,/opt/snapd,0u,0g,snapd',
     '0,/sbin/apk,u,g,apk',
+    '0,/usr/applydeltarpm,0u,0g,applydeltarpm',
     '0,/usr/bash,0u,0g,mkinitcpio',
     '0,/usr/cmake,u,g,cmake',
     '0,/usr/containerd,u,g,containerd',

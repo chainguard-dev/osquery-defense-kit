@@ -38,29 +38,11 @@ WHERE
   AND child_on_disk = 1
   AND NOT child_pid IN (1, 2)
   AND NOT parent_pid IN (1, 2) -- launchd, kthreadd
-  AND NOT parent_path IN (
-    '/opt/google/chrome/chrome',
-    '/usr/lib/systemd/systemd',
-    '/usr/bin/dockerd',
-    '/usr/bin/gnome-shell'
-  ) -- long-running launchers
-  AND NOT parent_name IN (
-    'lightdm',
-    'nvim',
-    'gnome-shell',
-    'slack',
-    'kube-proxy',
-    'kubelet'
-  ) -- These alerts were unfortunately useless - lots of spam on macOS
+  -- These alerts were unfortunately useless - lots of spam on macOS
   AND NOT (
     parent_path = ''
     AND p.uid > 500
   )
-  AND parent_path NOT LIKE '/app/extra/%'
   AND parent_path NOT LIKE '/opt/homebrew/Cellar/%'
-  AND parent_path NOT LIKE '/tmp/.mount_%/%'
   AND parent_path NOT LIKE '%google-cloud-sdk/.install/.backup%'
-  AND NOT (
-    parent_name LIKE 'kworker/%+events_unbound'
-    AND child_name IN ('modprobe')
-  )
+  AND parent_path NOT LIKE '/private/var/folders/%/T/PKInstallSandboxTrash/%.sandboxTrash/%'

@@ -13,6 +13,7 @@ SELECT
   p.euid,
   p.cmdline,
   p.path,
+  p.cgroup_path,
   mnt_namespace,
   p.cwd,
   p.on_disk,
