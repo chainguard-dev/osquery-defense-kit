@@ -86,6 +86,7 @@ WHERE
     '123,17,114,/usr/chronyd,0u,0g,chronyd',
     '123,17,500,/usr/chronyd,0u,0g,chronyd',
     '143,6,500,/app/thunderbird,u,g,thunderbird',
+    '143,6,500,/usr/thunderbird,0u,0g,thunderbird',
     '22000,6,500,/usr/syncthing,0u,0g,syncthing',
     '22,6,500,/home/cargo,500u,500g,cargo',
     '22,6,500,/usr/cargo,0u,0g,cargo',

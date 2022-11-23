@@ -63,6 +63,7 @@ WHERE
     '/usr/bin/gedit',
     '/usr/bin/gnome-keyring-daemon',
     '/usr/bin/kbfsfuse',
+    '/usr/sbin/alsactl',
     '/usr/bin/keybase',
     'usr/bin/keybase-redirector',
     '/usr/bin/nm-applet',

@@ -62,11 +62,13 @@ WHERE
     '1.1.1.2', -- Cloudflare
     '8.8.8.8', -- Google
     '8.8.4.4', -- Google (backup)
+    '208.67.220.220', -- OpenDNS
     '208.67.222.222', -- OpenDNS
     '208.67.222.123', -- OpenDNS
     '75.75.75.75', -- Comcast
     '75.75.76.76', -- Comcast
     '68.105.28.13' -- Cox
+
   )
   -- Exceptions that specifically talk to one server
   AND exception_key NOT IN (
