@@ -42,6 +42,7 @@ WHERE
     '/Library/Automator/',
     '/Library/Bluetooth/',
     '/Library/Caches/',
+    '/Library/Parallels/',
     '/Library/Catacomb/',
     '/Library/ColorPickers/',
     '/Library/ColorSync/',

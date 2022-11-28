@@ -83,6 +83,7 @@ WHERE
       'firefox,Web Content,~/.mozilla/firefox',
       'firefox,.firefox-wrappe,~/.mozilla/firefox',
       'firefox,file:// Content,~/.mozilla/firefox',
+      'firefox,Isolated Servic,~/.mozilla/firefox',
       'firefox,firefox,~/.cache/mozilla',
       'firefox,firefox,~/.mozilla/firefox',
       'firefox,file:// Content,~/.cache/mozilla',
