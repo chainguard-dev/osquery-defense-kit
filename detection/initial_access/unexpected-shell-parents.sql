@@ -46,12 +46,12 @@ WHERE
     'direnv',
     'doas',
     'find',
-    'sdk',
     'FinderSyncExtension',
     'fish',
     'go',
     'goland',
     'helm',
+    'i3bar',
     'i3blocks',
     'java',
     'ko',
@@ -69,6 +69,7 @@ WHERE
     'PK-Backend',
     'python',
     'roxterm',
+    'sdk',
     'sdzoomplugin',
     'sh',
     'skhd',
@@ -89,6 +90,7 @@ WHERE
     'yum',
     'zellij',
     'zsh'
+
   )
   AND parent_path NOT IN (
     '/Applications/Docker.app/Contents/MacOS/Docker',

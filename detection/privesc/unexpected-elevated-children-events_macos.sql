@@ -38,6 +38,7 @@ WHERE
   p.time > (strftime('%s', 'now') -30)
   AND p.euid < pp.euid
   AND p.path NOT IN (
+    '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared',
     '/usr/bin/login',
     '/usr/bin/su',
     '/usr/bin/sudo',

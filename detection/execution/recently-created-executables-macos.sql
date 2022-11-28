@@ -105,6 +105,7 @@ WHERE
   AND NOT p.path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND NOT p.path LIKE '%/.vscode/extensions/%'
   AND NOT p.path LIKE '/Users/%/Library/Caches/snyk/%/snyk-macos'
+  AND NOT p.path LIKE '/Users/%/Parallels/%/Contents/MacOS/WinAppHelper'
   AND NOT (
     p.path LIKE '/Users/%'
     AND p.uid > 499

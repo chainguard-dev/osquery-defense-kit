@@ -147,6 +147,7 @@ WHERE
     '443,17,500,Code Helper,com.microsoft.VSCode.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,17,500,Evernote Helper,,',
     '443,17,500,Evernote Helper,com.evernote.Evernote.helper,Apple Mac OS Application Signing',
+    '443,6,500,PlexMobile,com.plexapp.plex,Apple iPhone OS Application Signing',
     '443,17,500,GitKraken Boards,com.axosoft.glo,Apple iPhone OS Application Signing',
     '443,17,500,Reflect Helper,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     '443,17,500,Slack Helper,,',
@@ -263,6 +264,7 @@ WHERE
   )
   -- There are many signing hashes for git
   AND NOT exception_key LIKE '443,6,500,git-remote-http,git-remote-http-%'
+  AND NOT exception_key LIKE '443,6,500,cargo,cargo-%'
   -- nix-shell infects children with open connections
   AND NOT (
     parent_cmd LIKE '%/tmp/nix-shell%'

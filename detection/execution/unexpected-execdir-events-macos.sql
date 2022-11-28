@@ -123,6 +123,7 @@ WHERE
     '~/code/',
     '~/.config/',
     '~/git/',
+    '~/github/',
     '~/go/',
     '~/Parallels/',
     '~/google-cloud-sdk/',

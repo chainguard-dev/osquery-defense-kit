@@ -147,3 +147,4 @@ WHERE
   -- Invalid command from someones tmux environment
   AND NOT cmd LIKE 'pkill -f cut -c3%'
   AND NOT cmd LIKE 'dirname %history'
+  AND NOT cmd LIKE 'tail /%history'
