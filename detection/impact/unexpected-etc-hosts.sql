@@ -29,6 +29,8 @@ WHERE
     'ff00::0'
   )
   AND address NOT LIKE '127.%'
+  AND address NOT LIKE '192.168.%'
+  AND address NOT LIKE '10.%'
   AND hostnames NOT LIKE 'localhost.%'
   AND hostnames NOT LIKE '%.svc'
   AND hostnames NOT LIKE '%.%-%.%.dev'

@@ -76,6 +76,7 @@ WHERE
   OR (
     cmd LIKE '%sh -i'
     AND NOT parent_name IN ('sh', 'java')
+    AND NOT parent_cmd LIKE '%pipenv shell'
   )
   OR cmd LIKE '%socat%'
   OR cmd LIKE '%SOCK_STREAM%'

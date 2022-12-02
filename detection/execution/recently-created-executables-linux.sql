@@ -47,11 +47,9 @@ WHERE
     '/opt/google/chrome/chrome_crashpad_handler',
     '/opt/google/chrome/nacl_helper',
     '/opt/Lens/chrome_crashpad_handler',
-    '/usr/lib/flatpak-session-helper',
     '/opt/Lens/lens',
     '/opt/sublime_text/sublime_text',
     '/usr/bin/alacritty',
-    '/usr/sbin/avahi-daemon',
     '/usr/bin/bash',
     '/usr/bin/cargo',
     '/usr/bin/containerd',
@@ -59,11 +57,9 @@ WHERE
     '/usr/bin/docker',
     '/usr/bin/dockerd',
     '/usr/bin/docker-proxy',
-    '/usr/lib/flatpak-session-helper',
     '/usr/bin/gedit',
     '/usr/bin/gnome-keyring-daemon',
     '/usr/bin/kbfsfuse',
-    '/usr/sbin/alsactl',
     '/usr/bin/keybase',
     'usr/bin/keybase-redirector',
     '/usr/bin/nm-applet',
@@ -74,14 +70,17 @@ WHERE
     '/usr/bin/tailscaled',
     '/usr/bin/udevadm',
     '/usr/bin/wpa_supplicant',
+    '/usr/lib64/electron/electron',
     '/usr/lib64/firefox/firefox',
     '/usr/lib64/google-cloud-sdk/platform/bundledpythonunix/bin/python3',
     '/usr/lib/at-spi2-registryd',
     '/usr/lib/at-spi-bus-launcher',
+    '/usr/libexec/bluetooth/bluetoothd',
     '/usr/libexec/docker/docker-proxy',
     '/usr/libexec/fwupd/fwupd',
     '/usr/libexec/snapd/snapd',
     '/usr/libexec/sssd/sssd_kcm',
+    '/usr/lib/flatpak-session-helper',
     '/usr/lib/fwupd/fwupd',
     '/usr/lib/gdm',
     '/usr/lib/gdm-session-worker',
@@ -94,6 +93,8 @@ WHERE
     '/usr/lib/slack/slack',
     '/usr/lib/snapd/snapd',
     '/usr/lib/systemd/systemd',
+    '/usr/bin/wireplumber',
+    '/usr/lib/xdg-desktop-portal-gtk',
     '/usr/lib/systemd/systemd-journald',
     '/usr/lib/systemd/systemd-logind',
     '/usr/lib/systemd/systemd-oomd',
@@ -102,6 +103,8 @@ WHERE
     '/usr/lib/x86_64-linux-gnu/obs-plugins/obs-browser-page',
     '/usr/lib/xf86-video-intel-backlight-helper',
     '/usr/local/bin/kind',
+    '/usr/sbin/alsactl',
+    '/usr/sbin/avahi-daemon',
     '/usr/sbin/chronyd',
     '/usr/sbin/cupsd',
     '/usr/sbin/tailscaled',
@@ -115,7 +118,7 @@ WHERE
   AND NOT p.path LIKE '/home/%/terraform-provider-%'
   AND NOT p.path LIKE '/home/%/%.test'
   AND NOT p.path LIKE '/home/%/Projects/%'
-  AND NOT p.path LIKE '/home/%/node_modules/.bin/exec-bin/%'
+  AND NOT p.path LIKE '/home/%/node_modules/.bin/%'
   AND NOT p.path LIKE '/nix/store/%/bin/%'
   AND NOT p.path LIKE '/usr/local/bin/%'
   AND NOT p.path LIKE '/opt/%'

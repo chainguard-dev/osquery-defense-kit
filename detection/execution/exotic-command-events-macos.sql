@@ -27,10 +27,10 @@ SELECT
   hash.sha256,
   pp.path AS parent_path,
   pp.name AS parent_name,
+  TRIM(pp.cmdline) AS parent_cmd,
+  pp.euid AS parent_euid,
   ppp.path AS gparent_path,
   ppp.name AS gparent_name,
-  TRIM(p.cmdline) AS parent_cmd,
-  pp.euid AS parent_euid,
   phash.sha256 AS parent_sha256,
   gphash.sha256 AS gparent_sha256
 FROM
@@ -100,6 +100,7 @@ WHERE
     OR (
       cmd LIKE '%sh -i'
       AND NOT parent_name IN ('sh', 'java')
+      AND NOT parent_cmd LIKE "%pipenv shell"
     )
     OR cmd LIKE '%socat%'
     OR cmd LIKE '%SOCK_STREAM%'

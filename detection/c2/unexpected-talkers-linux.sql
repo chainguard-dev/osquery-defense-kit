@@ -91,6 +91,7 @@ WHERE
     '22,6,500,/home/cargo,500u,500g,cargo',
     '22,6,500,/usr/cargo,0u,0g,cargo',
     '22,6,500,/usr/ssh,0u,0g,ssh',
+    '22,6,0,/usr/ssh,0u,0g,ssh',
     '27034,6,500,/home/steam,500u,100g,steam',
     '27035,6,500,/home/steam,500u,100g,steam',
     '32768,6,0,/usr/tailscaled,0u,0g,tailscaled',

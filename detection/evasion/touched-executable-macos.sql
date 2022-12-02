@@ -86,6 +86,7 @@ WHERE
       )
       OR p.path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/%'
       OR p.path LIKE '/Applications/%.app/Contents/MacOS/%'
+      OR p.path LIKE '/Applications/%.app/Contents/Frameworks/%/Versions/A/Resources/%'
       OR p.path LIKE '/opt/homebrew/Cellar/%/bin/%'
       OR p.path LIKE '/opt/homebrew/Caskroom/%/bin/%'
       OR p.path LIKE '/Users/%/google-cloud-sdk/bin/%'

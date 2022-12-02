@@ -44,3 +44,11 @@ WHERE
     '/usr/bin/sudo',
     '/usr/local/bin/doas'
   )
+  -- Exclude weird bad data we've seen due to badly recorded macOS parent/child relationships, fixable by reboot
+  AND NOT (
+    p.cmdline IN (
+      '/usr/sbin/cupsd -l',
+      '/usr/libexec/mdmclient daemon',
+      '/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared -s mdworker -c MDSImporterWorker -m com.apple.mdworker.shared'
+    )
+  )

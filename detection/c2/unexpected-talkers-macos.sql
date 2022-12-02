@@ -247,6 +247,7 @@ WHERE
     '443,6,500,terraform,terraform,Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
     '443,6,500,trivy,a.out,',
     '443,6,500,vegeta,a.out,',
+    '443,6,500,wolfictl,a.out,',
     '443,6,500,vim,vim,',
     '443,6,500,zoom.us,us.zoom.xos,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     '443,6,500,zsh,com.apple.zsh,Software Signing',

@@ -148,3 +148,4 @@ WHERE
   AND NOT cmd LIKE 'pkill -f cut -c3%'
   AND NOT cmd LIKE 'dirname %history'
   AND NOT cmd LIKE 'tail /%history'
+  AND NOT cmd LIKE 'find . -executable -type f -name %grep -l GNU Libtool%touch -r%'
