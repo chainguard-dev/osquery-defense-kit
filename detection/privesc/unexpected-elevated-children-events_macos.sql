@@ -52,3 +52,10 @@ WHERE
       '/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared -s mdworker -c MDSImporterWorker -m com.apple.mdworker.shared'
     )
   )
+  -- More very weird data that keeps showing up: gopls starting everything!
+  -- I think this may be due to some bad joining
+  AND NOT (
+    pp.cmdline LIKE '%/go/bin/gopls -mode=stdio'
+    AND pp.path LIKE '/Users/%/go/bin/gopls'
+    AND pp.euid > 500
+  )

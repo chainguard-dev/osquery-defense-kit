@@ -147,7 +147,7 @@ WHERE
     '8801,17,500,/opt/zoom,0u,0g,zoom',
     '993,6,500,/app/thunderbird,u,g,thunderbird',
     '993,6,500,/usr/thunderbird,0u,0g,thunderbird'
- )
+  )
   AND NOT (
     p.name = 'syncthing'
     AND f.filename = 'syncthing'

@@ -46,6 +46,8 @@ WHERE
     'fcix.net',
     'xtom.com',
     'gaomon.net',
+    'notion-static.com',
+    'notion.so',
     'oracle.com',
     'akmedia.digidesign.com',
     'canon.co.uk',

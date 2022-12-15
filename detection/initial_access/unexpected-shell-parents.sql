@@ -54,6 +54,7 @@ WHERE
     'i3bar',
     'i3blocks',
     'java',
+    'kitty',
     'ko',
     'kubectl',
     'lightdm',
@@ -90,7 +91,6 @@ WHERE
     'yum',
     'zellij',
     'zsh'
-
   )
   AND parent_path NOT IN (
     '/Applications/Docker.app/Contents/MacOS/Docker',

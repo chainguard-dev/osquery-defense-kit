@@ -150,5 +150,4 @@ WHERE
   AND p.path NOT LIKE '/nix/store/%/libexec/%'
   AND p.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snapd'
   -- Exclude processes running inside of Docker containers
-  AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
-;
+  AND NOT p.cgroup_path LIKE '/system.slice/docker-%';

@@ -16,7 +16,7 @@ SELECT
   REGEX_MATCH (RTRIM(file.path, '/'), '.*/(.*?)$', 1) AS child_name,
   p.cmdline AS child_cmdline,
   p.time,
-  p.cgroup_path,
+  pp.cgroup_path,
   pp.start_time,
   p.euid AS child_euid,
   file.mode AS child_mode,
@@ -63,8 +63,8 @@ WHERE
   AND NOT pp.cmdline = '/usr/lib/systemd/systemd --user'
   -- used by kind
   AND NOT (
-   p.path = '/usr/bin/bash'
-   AND p.cmdline = '/bin/bash /usr/local/bin/mount-product-files'
+    p.path = '/usr/bin/bash'
+    AND p.cmdline = '/bin/bash /usr/local/bin/mount-product-files'
   )
   AND NOT (
     child_name = 'polkit-agent-helper-1'

@@ -9,7 +9,6 @@
 -- tags: transient process events
 -- platform: linux
 -- interval: 30
-
 SELECT
   p.pid,
   p.path,
