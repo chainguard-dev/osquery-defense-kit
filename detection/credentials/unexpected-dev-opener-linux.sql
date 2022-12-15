@@ -163,6 +163,7 @@ WHERE
     '/dev/video,ffmpeg',
     '/dev/video,firefox',
     '/dev/video,obs',
+    '/dev/video,brave',
     '/dev/video,obs-ffmpeg-mux',
     '/dev/video,pipewire',
     '/dev/video,vlc',

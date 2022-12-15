@@ -136,7 +136,6 @@ WHERE
     AND homedir LIKE '~/%'
     AND pp.name LIKE '%sh'
   )
-
   AND dir NOT LIKE '/Applications/%'
   AND dir NOT LIKE '/private/tmp/%.app/Contents/MacOS'
   AND dir NOT LIKE '/private/tmp/go-build%/exe'
@@ -154,7 +153,6 @@ WHERE
   AND homedir NOT LIKE '~/%/google-cloud-sdk/bin/%'
   AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
   AND homedir NOT LIKE '~/%/node_modules/.pnpm/%'
-
   -- Allow these anywhere (put last because it's slow to query signatures)
   AND signature.authority NOT IN (
     'Apple iPhone OS Application Signing',

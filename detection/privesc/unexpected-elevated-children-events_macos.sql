@@ -44,3 +44,18 @@ WHERE
     '/usr/bin/sudo',
     '/usr/local/bin/doas'
   )
+  -- Exclude weird bad data we've seen due to badly recorded macOS parent/child relationships, fixable by reboot
+  AND NOT (
+    p.cmdline IN (
+      '/usr/sbin/cupsd -l',
+      '/usr/libexec/mdmclient daemon',
+      '/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared -s mdworker -c MDSImporterWorker -m com.apple.mdworker.shared'
+    )
+  )
+  -- More very weird data that keeps showing up: gopls starting everything!
+  -- I think this may be due to some bad joining
+  AND NOT (
+    pp.cmdline LIKE '%/go/bin/gopls -mode=stdio'
+    AND pp.path LIKE '/Users/%/go/bin/gopls'
+    AND pp.euid > 500
+  )

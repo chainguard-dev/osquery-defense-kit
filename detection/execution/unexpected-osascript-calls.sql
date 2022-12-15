@@ -63,7 +63,7 @@ WHERE
   )
   AND NOT (
     parent_cmd LIKE '%/google-cloud-sdk/lib/gcloud.py auth login'
-    OR parent_cmd LIKE '%/bin/gcloud auth login'
+    OR parent_cmd LIKE '%/bin/gcloud auth%login'
   )
   AND NOT (
     exception_key = ',,osascript -s se -l JavaScript'

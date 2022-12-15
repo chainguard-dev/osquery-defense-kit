@@ -107,6 +107,9 @@ WHERE
     AND uid = 0
     AND gid = 0
     AND file.path IN (
+      '/bin/at',
+      '/bin/atq',
+      '/bin/atrm',
       '/bin/chage',
       '/bin/chfn',
       '/bin/chsh',

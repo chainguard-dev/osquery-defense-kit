@@ -40,3 +40,9 @@ WHERE
     'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)'
   )
   AND program NOT IN ('/usr/local/MacGPG2/libexec/shutdown-gpg-agent')
+  AND NOT (
+    l.path = '/Library/LaunchDaemons/com.docker.socket.plist'
+    AND program_authority = 'Software Signing'
+    AND program_identifier = 'com.apple.ln'
+    AND program_arguments LIKE '/bin/ln -s -f /Users/%/run/docker.sock /var/run/docker.sock'
+  )

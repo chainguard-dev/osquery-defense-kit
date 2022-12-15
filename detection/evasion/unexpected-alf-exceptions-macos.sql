@@ -71,7 +71,6 @@ WHERE -- NOTE:We intentionally want to preserve missing files
     '/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/',
     ',,/usr/bin/nmblookup,',
     ',,/usr/libexec/discoveryd,'
-
   )
   AND NOT (
     signature.identifier LIKE 'cargo-%'

@@ -68,7 +68,6 @@ WHERE
     '75.75.75.75', -- Comcast
     '75.75.76.76', -- Comcast
     '68.105.28.13' -- Cox
-
   )
   -- Exceptions that specifically talk to one server
   AND exception_key NOT IN (

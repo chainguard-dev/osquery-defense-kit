@@ -147,8 +147,8 @@ WHERE
     '443,17,500,Code Helper,com.microsoft.VSCode.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,17,500,Evernote Helper,,',
     '443,17,500,Evernote Helper,com.evernote.Evernote.helper,Apple Mac OS Application Signing',
-    '443,6,500,PlexMobile,com.plexapp.plex,Apple iPhone OS Application Signing',
     '443,17,500,GitKraken Boards,com.axosoft.glo,Apple iPhone OS Application Signing',
+    '443,17,500,old,dev.warp.Warp-Stable,Developer ID Application: Denver Technologies, Inc (2BBY89MBSN)',
     '443,17,500,Reflect Helper,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     '443,17,500,Slack Helper,,',
     '443,6,0,com.apple.MobileSoftwareUpdate.UpdateBrainService,com.apple.MobileSoftwareUpdate.UpdateBrainService,Software Signing',
@@ -191,6 +191,7 @@ WHERE
     '443,6,500,gh,gh,',
     '443,6,500,git,com.apple.git,Software Signing',
     '443,6,500,git,git,',
+    '443,6,500,GitHub Desktop Helper,com.github.GitHubClient.helper,Developer ID Application: GitHub (VEKTX9H2N7)',
     '443,6,500,GitHub.UI,GitHub,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,6,500,GitKraken Boards,com.axosoft.glo,Apple iPhone OS Application Signing',
     '443,6,500,git-remote-http,,',
@@ -220,12 +221,12 @@ WHERE
     '443,6,500,node,node,Developer ID Application: Node.js Foundation (HX7739G8FX)',
     '443,6,500,old,dev.warp.Warp-Stable,Developer ID Application: Denver Technologies, Inc (2BBY89MBSN)',
     '443,6,500,OneDriveStandaloneUpdater,com.microsoft.OneDriveStandaloneUpdater,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
+    '443,6,500,PlexMobile,com.plexapp.plex,Apple iPhone OS Application Signing',
     '443,6,500,prober,a.out,',
     '443,6,500,provisio,,',
     '443,6,500,pulumi-resource-gcp,a.out,',
     '443,6,500,pulumi-resource-github,a.out,',
     '443,6,500,python2.7,python2.7,',
-    '443,6,500,GitHub Desktop Helper,com.github.GitHubClient.helper,Developer ID Application: GitHub (VEKTX9H2N7)',
     '443,6,500,python3.10,python3.10,',
     '443,6,500,Python,com.apple.python3,Software Signing',
     '443,6,500,Python,org.python.python,',
@@ -235,6 +236,7 @@ WHERE
     '443,6,500,release-notes,a.out,',
     '443,6,500,sample,com.apple.dt.SamplingTools.sample,Software Signing',
     '443,6,500,scorecard-darwin-amd64,,',
+    '443,6,500,Signal Helper (Renderer),org.whispersystems.signal-desktop.helper.Renderer,Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR)',
     '443,6,500,Slack Helper,,',
     '443,6,500,Slack Helper,com.tinyspeck.slackmacgap.helper,Apple Mac OS Application Signing',
     '443,6,500,Slack Helper,com.tinyspeck.slackmacgap.helper,Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
@@ -248,12 +250,12 @@ WHERE
     '443,6,500,trivy,a.out,',
     '443,6,500,vegeta,a.out,',
     '443,6,500,vim,vim,',
+    '443,6,500,wolfictl,a.out,',
     '443,6,500,zoom.us,us.zoom.xos,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     '443,6,500,zsh,com.apple.zsh,Software Signing',
     '53,17,500,docker-credential-gcr,a.out,',
     '53,17,500,trivy,,',
     '6000,6,500,ssh,,',
-    '443,17,500,old,dev.warp.Warp-Stable,Developer ID Application: Denver Technologies, Inc (2BBY89MBSN)',
     '6000,6,500,ssh,com.apple.openssh,Software Signing',
     '6000,6,500,ssh,ssh-55554944fbf65684ab9b37c2bad3a27ef78b23f4,',
     '80,6,0,com.apple.MobileSoftwareUpdate.UpdateBrainService,com.apple.MobileSoftwareUpdate.UpdateBrainService,Software Signing',
@@ -262,6 +264,8 @@ WHERE
     '80,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '80,6,500,webhook.test,a.out,'
   )
+  -- Steam uses ports in the 27xxx range
+  AND NOT exception_key LIKE '27%,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)'
   -- There are many signing hashes for git
   AND NOT exception_key LIKE '443,6,500,git-remote-http,git-remote-http-%'
   AND NOT exception_key LIKE '443,6,500,cargo,cargo-%'
