@@ -16,6 +16,7 @@ SELECT
   REGEX_MATCH (RTRIM(file.path, '/'), '.*/(.*?)$', 1) AS child_name,
   p.cmdline AS child_cmdline,
   p.time,
+  p.cgroup_path,
   pp.start_time,
   p.euid AS child_euid,
   file.mode AS child_mode,
@@ -38,6 +39,7 @@ WHERE
   p.time > (strftime('%s', 'now') -30)
   AND p.euid < pp.euid
   AND p.path NOT IN (
+    '/',
     '/bin/ps',
     '/usr/bin/doas',
     '/usr/bin/fusermount',
@@ -59,6 +61,11 @@ WHERE
   AND p.path NOT LIKE '/nix/store/%/bin/dhcpcd'
   AND p.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
   AND NOT pp.cmdline = '/usr/lib/systemd/systemd --user'
+  -- used by kind
+  AND NOT (
+   p.path = '/usr/bin/bash'
+   AND p.cmdline = '/bin/bash /usr/local/bin/mount-product-files'
+  )
   AND NOT (
     child_name = 'polkit-agent-helper-1'
     AND parent_path = '/usr/bin/gnome-shell'
