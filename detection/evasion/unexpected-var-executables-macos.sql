@@ -75,13 +75,14 @@ WHERE
   )
   -- It's pretty rare, but some vendors install updates into /var. Spotify, I'm looking at you!
   AND NOT signature.authority IN (
-    'Developer ID Application: Spotify (2FNC3A47ZF)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: GitHub (VEKTX9H2N7)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
-    'Developer ID Application: Mozilla Corporation (43AQ936H96)'
+    'Developer ID Application: Mozilla Corporation (43AQ936H96)',
+    'Developer ID Application: Spotify (2FNC3A47ZF)',
+    'Software Signing'
   )
   AND file.path NOT IN (
     '/var/log/acroUpdaterTools.log',
@@ -104,4 +105,11 @@ WHERE
     file.path LIKE '/var/folders/%/%/T/dlvLauncher.sh'
     AND file.size < 1024
     AND file.mode = '0744'
+  )
+  -- Epson
+  AND NOT (
+    file.path LIKE '/var/tmp/InstallLog/%.plist'
+    AND magic.data = 'Apple binary property list'
+    AND file.size < 3000
+    AND file.mode = '0777'
   )

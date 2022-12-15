@@ -17,6 +17,7 @@ SELECT
   f.ctime,
   f.btime,
   f.mtime,
+  p.cgroup_path,
   p.start_time,
   pp.path AS parent_path,
   pp.name AS parent_name,
@@ -50,9 +51,11 @@ WHERE
     '/opt/Lens/lens',
     '/opt/sublime_text/sublime_text',
     '/usr/bin/alacritty',
+    '/usr/libexec/tracker-miner-fs-3',
     '/usr/bin/bash',
     '/usr/bin/cargo',
     '/usr/bin/containerd',
+    '/usr/lib64/thunderbird/thunderbird',
     '/usr/bin/containerd-shim-runc-v2',
     '/usr/bin/docker',
     '/usr/bin/dockerd',
@@ -67,8 +70,10 @@ WHERE
     '/usr/bin/pavucontrol',
     '/usr/bin/pipewire',
     '/usr/bin/rpi-imager',
+    '/usr/bin/snap',
     '/usr/bin/tailscaled',
     '/usr/bin/udevadm',
+    '/usr/bin/wireplumber',
     '/usr/bin/wpa_supplicant',
     '/usr/lib64/electron/electron',
     '/usr/lib64/firefox/firefox',
@@ -93,14 +98,13 @@ WHERE
     '/usr/lib/slack/slack',
     '/usr/lib/snapd/snapd',
     '/usr/lib/systemd/systemd',
-    '/usr/bin/wireplumber',
-    '/usr/lib/xdg-desktop-portal-gtk',
     '/usr/lib/systemd/systemd-journald',
     '/usr/lib/systemd/systemd-logind',
     '/usr/lib/systemd/systemd-oomd',
     '/usr/lib/systemd/systemd-resolved',
     '/usr/lib/systemd/systemd-timesyncd',
     '/usr/lib/x86_64-linux-gnu/obs-plugins/obs-browser-page',
+    '/usr/lib/xdg-desktop-portal-gtk',
     '/usr/lib/xf86-video-intel-backlight-helper',
     '/usr/local/bin/kind',
     '/usr/sbin/alsactl',
@@ -118,8 +122,10 @@ WHERE
   AND NOT p.path LIKE '/home/%/terraform-provider-%'
   AND NOT p.path LIKE '/home/%/%.test'
   AND NOT p.path LIKE '/home/%/Projects/%'
+  AND NOT p.path LIKE '/home/%/.local/share/nvim/mason/packages/%'
   AND NOT p.path LIKE '/home/%/node_modules/.bin/%'
   AND NOT p.path LIKE '/nix/store/%/bin/%'
+  AND NOT p.path LIKE '/nix/store/%/libexec/%'
   AND NOT p.path LIKE '/usr/local/bin/%'
   AND NOT p.path LIKE '/opt/%'
   AND NOT p.path LIKE '/usr/local/Cellar/%'

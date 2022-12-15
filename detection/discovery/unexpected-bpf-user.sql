@@ -38,6 +38,7 @@ WHERE
     '/usr/bin/qemu-system-x86_64',
     '/usr/lib/systemd/systemd'
   )
+  AND p.cmdline != '/usr/bin/python3 /usr/sbin/execsnoop-bpfcc'
   AND p.path NOT LIKE '/nix/store/%/lib/systemd/systemd'
 GROUP BY
   pmm.pid

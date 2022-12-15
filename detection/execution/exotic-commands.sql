@@ -10,6 +10,7 @@ SELECT
   p.name,
   p.cmdline AS cmd,
   p.cwd,
+  p.cgroup_path,
   p.euid,
   p.parent,
   pp.name AS parent_name,
@@ -26,7 +27,7 @@ FROM
   LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE
   -- Known attack scripts
-  p.name IN ('nc', 'mkfifo')
+  p.name IN ('nc', 'mkfifo', 'esxcli', 'vim-cmd')
   OR p.name LIKE '%pwn%'
   OR p.name LIKE '%xig%'
   OR p.name LIKE '%xmr%'
@@ -75,11 +76,17 @@ WHERE
   OR cmd LIKE '%pty.spawn%'
   OR (
     cmd LIKE '%sh -i'
-    AND NOT parent_name IN ('sh', 'java')
+    AND NOT p.path = '/usr/bin/docker'
+    AND NOT parent_name IN ('sh', 'java', 'containerd-shim')
     AND NOT parent_cmd LIKE '%pipenv shell'
   )
   OR cmd LIKE '%socat%'
-  OR cmd LIKE '%SOCK_STREAM%'
-  OR cmd LIKE '%Socket.fork%'
-  OR cmd LIKE '%Socket.new%'
-  OR cmd LIKE '%socket.socket%'
+  OR (
+    p.name NOT IN ('cc1plus')
+    AND (
+     cmd LIKE '%SOCK_STREAM%'
+     OR cmd LIKE '%Socket.fork%'
+     OR cmd LIKE '%Socket.new%'
+     OR cmd LIKE '%socket.socket%'
+    )
+  )

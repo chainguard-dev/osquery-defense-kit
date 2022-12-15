@@ -54,7 +54,10 @@ WHERE
     'kube-proxy',
     'kubelet'
   ) -- These alerts were unfortunately useless - lots of spam on macOS
-  AND parent_path NOT LIKE '/app/extra/%'
+  AND NOT (
+    parent_path LIKE '/app/%'
+    AND child_cgroup LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/%'
+  )
   AND parent_path NOT LIKE '/opt/homebrew/Cellar/%'
   AND parent_path NOT LIKE '/tmp/.mount_%/%'
   AND parent_path NOT LIKE '%google-cloud-sdk/.install/.backup%'

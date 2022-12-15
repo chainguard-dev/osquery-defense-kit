@@ -11,6 +11,7 @@ SELECT
   p.path,
   p.euid,
   p.gid,
+  p.cgroup_path,
   f.ctime,
   f.directory AS dirname,
   p.cmdline,
@@ -58,6 +59,7 @@ WHERE
   AND dirname NOT LIKE '/nix/store/%'
   AND dirname NOT LIKE '/opt/%'
   AND dirname NOT LIKE '/snap/%'
+  AND dirname NOT LIKE '/var/lib/snapd/snap/snapd/%'
   AND dirname NOT LIKE '%/.terraform/providers/%'
   AND dirname NOT LIKE '/tmp/%/bin'
   AND dirname NOT LIKE '/tmp/go-build%'
@@ -71,6 +73,6 @@ WHERE
   )
   AND NOT (
     dirname = ''
-    AND p.name LIKE 'runc%'
+    AND (p.name LIKE 'runc%' OR p.cmdline LIKE 'runc init%')
   )
   AND p.path NOT LIKE '/tmp/terraform_%/terraform'

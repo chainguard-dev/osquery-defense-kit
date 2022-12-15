@@ -94,6 +94,8 @@ WHERE
   AND pof.path NOT LIKE '/dev/hidraw%'
   AND pof.path NOT LIKE '/dev/shm/.com.google.Chrome.%'
   AND pof.path NOT LIKE '/dev/shm/.org.chromium.Chromium.%'
+  -- Zoom
+  AND pof.path NOT LIKE '/dev/shm/aomshm.%'
   AND pof.path NOT LIKE '/dev/shm/authentik_%'
   AND NOT dir_exception IN (
     '/dev/bus/usb,pcscd',
@@ -154,6 +156,7 @@ WHERE
     '/dev/tty,gdm-wayland-session',
     '/dev/tty,gdm-x-session',
     '/dev/tty,systemd-logind',
+    '/dev/shm/envoy_shared_memory_1,envoy',
     '/dev/tty,Xorg',
     '/dev/uinput,bluetoothd',
     '/dev/usb/hiddev,apcupsd',

@@ -260,6 +260,7 @@ WHERE
     '6000,6,500,ssh,ssh-55554944fbf65684ab9b37c2bad3a27ef78b23f4,',
     '80,6,0,com.apple.MobileSoftwareUpdate.UpdateBrainService,com.apple.MobileSoftwareUpdate.UpdateBrainService,Software Signing',
     '80,6,500,curl,com.apple.curl,Software Signing',
+    '8801,17,500,zoom.us,us.zoom.xos,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     '80,6,500,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV)',
     '80,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '80,6,500,webhook.test,a.out,'
@@ -364,6 +365,13 @@ WHERE
   AND NOT (
     remote_port IN (53, 443)
     AND p.path LIKE '/private/var/folders/%/T/GoLand/%'
+  )
+  -- theScore and other iPhone apps
+  AND NOT (
+    remote_port = 443
+    AND signature.authority = 'Apple iPhone OS Application Signing'
+    AND p.cwd = '/'
+    AND p.path = '/private/var/folders/%/Wrapper/%.app/%'
   )
 GROUP BY
   s.pid
