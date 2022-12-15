@@ -251,6 +251,7 @@ WHERE
     '443,6,500,vim,vim,',
     '443,6,500,zoom.us,us.zoom.xos,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     '443,6,500,zsh,com.apple.zsh,Software Signing',
+    '443,6,500,Signal Helper (Renderer),org.whispersystems.signal-desktop.helper.Renderer,Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR)',
     '53,17,500,docker-credential-gcr,a.out,',
     '53,17,500,trivy,,',
     '6000,6,500,ssh,,',
