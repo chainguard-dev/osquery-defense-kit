@@ -149,6 +149,13 @@ WHERE
     '993,6,500,/usr/thunderbird,0u,0g,thunderbird'
   )
   AND NOT (
+    p.name = 'java'
+    AND p.cmdline LIKE '/home/%/.local/share/JetBrains/Toolbox/%'
+    AND s.remote_port > 1024
+    AND s.protocol = 6
+    AND p.euid > 500
+  )
+  AND NOT (
     p.name = 'syncthing'
     AND f.filename = 'syncthing'
     AND s.remote_port > 1024
