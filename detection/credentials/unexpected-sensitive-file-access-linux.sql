@@ -74,21 +74,18 @@ WHERE
     file_uid == process_uid
     AND exception_key IN (
       'aws,aws,~/.aws',
-      'python3,python3,~/.config/gcloud',
-      'chrome_crashpad_handler,chrome_crashpad,',
-      'soffice.bin,soffice.bin,~/.mozilla/firefox',
-      'chrome_crashpad_handler,chrome_crashpad,~/.config/google-chrome',
       'chrome,chrome,~/.config/google-chrome',
-      'firefox,.firefox-wrappe,~/.cache/mozilla',
-      'firefox,Web Content,~/.mozilla/firefox',
-      'firefox,.firefox-wrappe,~/.mozilla/firefox',
+      'chrome_crashpad_handler,chrome_crashpad,',
+      'chrome_crashpad_handler,chrome_crashpad,~/.config/google-chrome',
+      'firefox,file:// Content,~/.cache/mozilla',
       'firefox,file:// Content,~/.mozilla/firefox',
-      'firefox,Isolated Servic,~/.mozilla/firefox',
       'firefox,firefox,~/.cache/mozilla',
       'firefox,firefox,~/.mozilla/firefox',
-      'firefox,file:// Content,~/.cache/mozilla',
       'firefox,firefox,~/snap/firefox',
+      'firefox,.firefox-wrappe,~/.cache/mozilla',
+      'firefox,.firefox-wrappe,~/.mozilla/firefox',
       'firefox,Isolated Servic,~/.cache/mozilla',
+      'firefox,Isolated Servic,~/.mozilla/firefox',
       'firefox,Isolated Servic,~/snap/firefox',
       'firefox,Isolated Web Co,~/.cache/mozilla',
       'firefox,Isolated Web Co,~/.mozilla/firefox',
@@ -97,13 +94,17 @@ WHERE
       'firefox,Privileged Cont,~/.mozilla/firefox',
       'firefox,Privileged Cont,~/snap/firefox',
       'firefox,Web Content,~/.cache/mozilla',
+      'firefox,Web Content,~/.mozilla/firefox',
       'firefox,Web Content,~/snap/firefox',
       'firefox,WebExtensions,~/.cache/mozilla',
       'firefox,WebExtensions,~/.mozilla/firefox',
       'firefox,WebExtensions,~/snap/firefox',
       'plugin-container,MainThread,~/.mozilla/firefox',
+      'plugin-container,MainThread,~/snap/firefox',
+      'python3,python3,~/.config/gcloud',
       'slack,slack,~/.config/Slack',
-      'slack,slack,~/snap/slack'
+      'slack,slack,~/snap/slack',
+      'soffice.bin,soffice.bin,~/.mozilla/firefox'
     )
   )
 GROUP BY

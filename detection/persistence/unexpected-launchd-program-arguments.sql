@@ -56,9 +56,10 @@ WHERE
   )
   AND program_arguments NOT IN (
     '/Applications/Stream Deck.app/Contents/MacOS/Stream Deck --runinbk',
+    '/opt/homebrew/opt/jenkins/bin/jenkins --httpListenAddress=127.0.0.1 --httpPort=8080',
     '/opt/homebrew/opt/mariadb/bin/mysqld_safe',
     '/opt/homebrew/opt/skhd/bin/skhd',
-    '/opt/homebrew/opt/jenkins/bin/jenkins --httpListenAddress=127.0.0.1 --httpPort=8080',
+    '/opt/homebrew/opt/tailscale/bin/tailscaled',
     '/opt/homebrew/opt/yubikey-agent/bin/yubikey-agent -l /opt/homebrew/var/run/yubikey-agent.sock',
     '/usr/local/MacGPG2/libexec/fixGpgHome'
   )

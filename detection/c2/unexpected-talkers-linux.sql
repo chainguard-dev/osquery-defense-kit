@@ -90,6 +90,7 @@ WHERE
     '22000,6,500,/usr/syncthing,0u,0g,syncthing',
     '22,6,500,/home/cargo,500u,500g,cargo',
     '22,6,500,/usr/cargo,0u,0g,cargo',
+    '80,6,500,/usr/python3.11,0u,0g,abrt-action-ins',
     '22,6,500,/usr/ssh,0u,0g,ssh',
     '22,6,0,/usr/ssh,0u,0g,ssh',
     '27034,6,500,/home/steam,500u,100g,steam',
@@ -100,6 +101,7 @@ WHERE
     '3478,6,500,/opt/chrome,0u,0g,chrome',
     '3478,6,500,/usr/chrome,0u,0g,chrome',
     '3478,6,500,/usr/firefox,0u,0g,firefox',
+    '80,6,0,/usr/bash,0u,0g,mkinitcpio',
     '4070,6,500,/app/spotify,u,g,spotify',
     '4070,6,500,/opt/spotify,0u,0g,spotify',
     '4070,6,500,/usr/spotify,0u,0g,spotify',
@@ -129,6 +131,7 @@ WHERE
     '80,6,500,/opt/firefox,0u,0g,firefox',
     '80,6,500,/opt/spotify,0u,0g,spotify',
     '80,6,0,/usr/python3.11,0u,0g,yum',
+    '80,6,500,/opt/brave,0u,0g,brave',
     '80,6,500,/usr/chrome,0u,0g,chrome',
     '80,6,500,/usr/curl,0u,0g,curl',
     '80,6,0,/usr/python3.11,0u,0g,dnf',
@@ -147,6 +150,13 @@ WHERE
     '8801,17,500,/opt/zoom,0u,0g,zoom',
     '993,6,500,/app/thunderbird,u,g,thunderbird',
     '993,6,500,/usr/thunderbird,0u,0g,thunderbird'
+  )
+  AND NOT (
+    p.name = 'java'
+    AND p.cmdline LIKE '/home/%/.local/share/JetBrains/Toolbox/%'
+    AND s.remote_port > 1024
+    AND s.protocol = 6
+    AND p.euid > 500
   )
   AND NOT (
     p.name = 'syncthing'

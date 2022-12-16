@@ -45,6 +45,7 @@ WHERE
       OR file.path LIKE '/tmp/%/site-packages/markupsafe/_speedups.cpython-%'
       OR file.path LIKE '/tmp/go.%.sum'
       OR file.path LIKE '/tmp/guile-%/guile-%'
+      OR file.path LIKE '/tmp/src/%'
       OR file.path LIKE '/tmp/terraformer/%'
       OR file.path LIKE '/tmp/tmp.%'
       OR file.path LIKE '%/bin/%-gen'

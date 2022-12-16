@@ -60,6 +60,7 @@ WHERE
   AND p.path NOT LIKE '/nix/store/%/bin/sudo'
   AND p.path NOT LIKE '/nix/store/%/bin/dhcpcd'
   AND p.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
+  AND p.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-update-ns'
   AND NOT pp.cmdline = '/usr/lib/systemd/systemd --user'
   -- used by kind
   AND NOT (

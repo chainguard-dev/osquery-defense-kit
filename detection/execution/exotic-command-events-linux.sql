@@ -48,6 +48,8 @@ WHERE
       'dnscat2',
       'tuns',
       'iodine',
+      'esxcli',
+      'vim-cmd',
       'minerd',
       'cpuminer-multi',
       'cpuminer',

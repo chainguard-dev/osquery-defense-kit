@@ -112,6 +112,7 @@ WHERE
     '~/go/bin',
     '~/.local/bin',
     '~/.magefile',
+    '~/Downloads/protoc/bin',
     '~/projects/go/bin'
   )
   AND top_homedir NOT IN (
@@ -134,6 +135,7 @@ WHERE
     '~/Parallels/',
     '~/projects/',
     '~/.pulumi/',
+    '~/.provisio/',
     '~/.pyenv/',
     '~/.rustup/',
     '~/src/',

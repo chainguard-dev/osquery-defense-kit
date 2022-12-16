@@ -67,7 +67,8 @@ WHERE
     '208.67.222.123', -- OpenDNS
     '75.75.75.75', -- Comcast
     '75.75.76.76', -- Comcast
-    '68.105.28.13' -- Cox
+    '68.105.28.13', -- Cox
+    '80.248.7.1' -- 21st Century (NG)
   )
   -- Exceptions that specifically talk to one server
   AND exception_key NOT IN (

@@ -11,6 +11,7 @@
 SELECT
   s.remote_address,
   p.name,
+  p.cgroup_path,
   p.path,
   p.cmdline AS child_cmd,
   p.cwd,
@@ -75,16 +76,23 @@ WHERE
     '0,/usr/flatpak-system-helper,0u,0g,flatpak-system-',
     '0,/usr/launcher,0u,0g,launcher',
     '0,/usr/nix,0u,0g,nix',
+    '0,/usr/nix,0u,0g,nix-daemon',
     '0,/usr/packagekitd,0u,0g,packagekitd',
     '0,/usr/pacman,0u,0g,pacman',
     '0,/usr/python3.10,0u,0g,dnf',
     '0,/usr/python3.10,0u,0g,dnf-automatic',
     '0,/usr/python3.10,0u,0g,yum',
     '0,/usr/python3.11,0u,0g,dnf',
+    '0,/usr/python3.11,0u,0g,dnf-automatic',
+    '0,/usr/python3.11,0u,0g,yum',
     '0,/usr/rpi-imager,0u,0g,rpi-imager',
     '0,/usr/snapd,0u,0g,snapd',
     '0,/usr/tailscaled,0u,0g,tailscaled',
     '0,/usr/tailscaled,500u,500g,tailscaled',
+    '500,/usr/chainctl,500u,500g,chainctl',
+    '500,/usr/grype,0u,0g,grype',
+    '500,/home/krel,500u,500g,krel',
+    '500,/usr/cosign-linux-amd64,0u,0g,cosign',
     '0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra',
     '105,/usr/http,0u,0g,https',
     '106,/usr/geoclue,0u,0g,geoclue',
@@ -100,6 +108,7 @@ WHERE
     '500,/home/cosign,500u,500g,cosign',
     '500,/home/gitsign,500u,500g,gitsign',
     '500,/home/go,500u,500g,go',
+    '500,/usr/obs-ffmpeg-mux,0u,0g,obs-ffmpeg-mux',
     '500,/home/grype,500u,500g,grype',
     '500,/home/java,500u,500g,java',
     '500,/home/jcef_helper,500u,500g,jcef_helper',
@@ -164,9 +173,11 @@ WHERE
     '500,/usr/kbfsfuse,0u,0g,kbfsfuse',
     '500,/usr/keybase,0u,0g,keybase',
     '500,/usr/ko,u,g,ko',
+    '500,/usr/node,0u,0g,node',
     '500,/usr/kubectl,500u,500g,kubectl',
     '500,/usr/lens,0u,0g,lens',
     '500,/usr/nautilus,0u,0g,nautilus',
+    '500,/usr/nix,0u,0g,nix',
     '500,/usr/obs,0u,0g,obs',
     '500,/usr/pacman,0u,0g,pacman',
     '500,/usr/python3,0u,0g,python3',
@@ -191,6 +202,7 @@ WHERE
   AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm exec %'
   AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm install %'
   AND NOT exception_key LIKE '500,%/terraform-provider-%,500u,500g,terraform-provi'
+  AND NOT exception_key LIKE '0,/ko-app/%,u,g,%'
   -- stay weird, NixOS (Fastly nix mirror)
   AND NOT (
     pp.cmdline = '/run/current-system/sw/bin/bash'

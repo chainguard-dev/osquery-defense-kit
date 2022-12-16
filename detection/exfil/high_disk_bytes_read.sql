@@ -52,6 +52,7 @@ WHERE
     'nautilus',
     'nessusd',
     'nix',
+    'nix-daemon',
     'osqueryd',
     'qemu-system-aarch64',
     'qemu-system-x86',
