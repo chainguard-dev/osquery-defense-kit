@@ -31,7 +31,4 @@ WHERE
     OR f.filename LIKE '.%'
   )
   AND NOT f.path LIKE '/nix/store/%/%-wrapped'
-  AND NOT p.name IN (
-    '.firefox-wrappe',
-    '.pylsp-wrapped'
-  )
+  AND NOT (f.path LIKE '/nix/store/%' AND p.name LIKE '%-wrappe%')

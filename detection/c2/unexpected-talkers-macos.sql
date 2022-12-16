@@ -236,6 +236,7 @@ WHERE
     '443,6,500,release-notes,a.out,',
     '443,6,500,sample,com.apple.dt.SamplingTools.sample,Software Signing',
     '443,6,500,scorecard-darwin-amd64,,',
+    '443,6,500,Signal Helper,org.whispersystems.signal-desktop.helper,Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR)',
     '443,6,500,Signal Helper (Renderer),org.whispersystems.signal-desktop.helper.Renderer,Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR)',
     '443,6,500,Slack Helper,,',
     '443,6,500,Slack Helper,com.tinyspeck.slackmacgap.helper,Apple Mac OS Application Signing',
@@ -260,10 +261,10 @@ WHERE
     '6000,6,500,ssh,ssh-55554944fbf65684ab9b37c2bad3a27ef78b23f4,',
     '80,6,0,com.apple.MobileSoftwareUpdate.UpdateBrainService,com.apple.MobileSoftwareUpdate.UpdateBrainService,Software Signing',
     '80,6,500,curl,com.apple.curl,Software Signing',
-    '8801,17,500,zoom.us,us.zoom.xos,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     '80,6,500,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV)',
     '80,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
-    '80,6,500,webhook.test,a.out,'
+    '80,6,500,webhook.test,a.out,',
+    '8801,17,500,zoom.us,us.zoom.xos,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)'
   )
   -- Steam uses ports in the 27xxx range
   AND NOT exception_key LIKE '27%,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)'

@@ -35,3 +35,4 @@ WHERE
   AND file.path NOT LIKE '%/../%'
   AND file.path NOT LIKE '%/./%'
   AND file.path NOT LIKE '/root/.debug/.build-id/%'
+  AND file.path NOT LIKE '/home/%/.config/%/.git%'

@@ -50,9 +50,10 @@ WHERE
   p.path IN ('/usr/bin/osascript', '/usr/bin/osacompile')
   AND p.time > (strftime('%s', 'now') -60)
   AND exception_key NOT IN (
+    'com.vng.zalo,Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),osascript -ss',
+    'install,Developer ID Application: Docker Inc (9BNSXJN65R),/usr/bin/osascript -e property exit_code: 0\x0Aproperty ',
     ',,osascript',
-    ',,osascript openChrome.applescript https://localhost.ch',
-    'com.vng.zalo,Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),osascript -ss'
+    ',,osascript openChrome.applescript https://localhost.ch'
   )
   AND cmd NOT IN ('osascript -e user locale of (get system info)')
   AND cmd NOT LIKE '/usr/bin/osascript /Users/%/Library/Caches/com.runningwithcrayons.Alfred/Workflow Scripts/%'

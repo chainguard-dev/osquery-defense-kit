@@ -46,6 +46,7 @@ WHERE
     'demoit',
     'direnv',
     'doas',
+    'erl_child_setup',
     'find',
     'FinderSyncExtension',
     'fish',
