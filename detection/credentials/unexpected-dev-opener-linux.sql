@@ -181,6 +181,7 @@ WHERE
     device LIKE '/dev/bus/usb/%'
     AND program_name IN (
       'fwupd',
+      'adb',
       'gphoto2',
       'gvfs-gphoto2-vo',
       'gvfs-gphoto2-volume-monitor',

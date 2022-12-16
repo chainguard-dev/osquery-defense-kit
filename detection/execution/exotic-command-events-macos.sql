@@ -28,6 +28,7 @@ SELECT
   pp.path AS parent_path,
   pp.name AS parent_name,
   TRIM(pp.cmdline) AS parent_cmd,
+  TRIM(ppp.cmdline) AS gparent_cmd,
   pp.euid AS parent_euid,
   ppp.path AS gparent_path,
   ppp.name AS gparent_name,
@@ -136,7 +137,8 @@ WHERE
       'sudo launchctl list us.zoom.ZoomDaemon',
       '/usr/bin/csrutil report',
       '/usr/bin/csrutil status',
-      'xpcproxy com.apple.Safari.History'
+      'xpcproxy com.apple.Safari.History',
+      'git history'
     )
     -- The source of these commands is still a mystery to me.
     OR p.parent = -1

@@ -45,6 +45,7 @@ WHERE
   AND NOT p.path IN (
     '',
     '/opt/google/chrome/chrome',
+    '/usr/bin/NetworkManager',
     '/opt/google/chrome/chrome_crashpad_handler',
     '/opt/google/chrome/nacl_helper',
     '/opt/Lens/chrome_crashpad_handler',
@@ -140,6 +141,12 @@ WHERE
     AND f.ctime = f.mtime
     AND f.uid = p.uid
     AND p.cmdline LIKE './%'
+  )
+  AND NOT (
+    p.path LIKE '/home/%/.magefile/%'
+    AND p.uid > 499
+    AND f.ctime = f.mtime
+    AND f.uid = p.uid
   )
 GROUP BY
   p.pid

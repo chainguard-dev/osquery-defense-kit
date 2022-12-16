@@ -45,6 +45,7 @@ WHERE
     '/usr/bin/fusermount',
     '/usr/bin/fusermount3',
     '/usr/bin/login',
+    '/usr/bin/i3lock',
     '/usr/bin/sudo',
     '/usr/bin/gpgsm',
     '/usr/bin/gpgconf',
