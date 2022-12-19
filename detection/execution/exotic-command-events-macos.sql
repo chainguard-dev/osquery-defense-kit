@@ -105,14 +105,7 @@ WHERE
     )
     OR cmd LIKE '%socat%'
     OR cmd LIKE '%SOCK_STREAM%'
-    OR (
-      cmd LIKE '%Socket.%'
-      AND NOT basename IN ('compile', 'sed', 'mv', 'cover')
-      AND NOT cmd LIKE "%sys/socket.h%"
-      AND NOT cmd LIKE "%websocket%"
-      AND NOT cmd LIKE "%socket.go%"
-      AND NOT cmd LIKE "%socket.cpython%"
-    )
+    OR INSTR(cmd, '%Socket.%') > 0
   ) -- Things that could reasonably happen at boot.
   AND NOT (
     p.path = '/usr/bin/mkfifo'
@@ -129,7 +122,10 @@ WHERE
       '/bin/launchctl list com.logi.optionsplus.update',
       '/bin/launchctl list com.logi.optionsplus.updater',
       '/bin/launchctl list homebrew.mxcl.yabai',
+      '/bin/rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
+      'git history',
       'launchctl list',
+      'launchctl list com.microsoft.OneDriveUpdaterDaemon',
       'launchctl list com.parallels.desktop.launchdaemon',
       'launchctl list us.zoom.ZoomDaemon',
       '/Library/Apple/System/Library/StagedFrameworks/Safari/SafariShared.framework/XPCServices/com.apple.Safari.History.xpc/Contents/MacOS/com.apple.Safari.History',
@@ -137,8 +133,7 @@ WHERE
       'sudo launchctl list us.zoom.ZoomDaemon',
       '/usr/bin/csrutil report',
       '/usr/bin/csrutil status',
-      'xpcproxy com.apple.Safari.History',
-      'git history'
+      'xpcproxy com.apple.Safari.History'
     )
     -- The source of these commands is still a mystery to me.
     OR p.parent = -1

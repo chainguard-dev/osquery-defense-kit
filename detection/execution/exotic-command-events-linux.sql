@@ -114,7 +114,7 @@ WHERE
     )
     OR cmd LIKE '%socat%'
     OR cmd LIKE '%SOCK_STREAM%'
-    OR cmd GLOB '*Socket.*'
+    OR INSTR(cmd, '%Socket.%') > 0
   ) -- Things that could reasonably happen at boot.
   AND NOT (
     p.path IN ('/usr/bin/kmod', '/bin/kmod')

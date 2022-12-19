@@ -32,13 +32,15 @@ WHERE
   AND p.parent NOT IN (0, 2)
   AND NOT p.path IS NULL
   AND p.name NOT IN (
-    'gpg-agent',
-    'dhcpcd',
+    'applydeltarpm',
     'bwrap',
-    'nginx',
-    'dnf',
     'cupsd',
+    'dhcpcd',
+    'modprobe',
+    'dnf',
     'gdm-session-wor',
+    'gpg-agent',
+    'nginx',
     'sshd',
     'zypak-sandbox'
   )

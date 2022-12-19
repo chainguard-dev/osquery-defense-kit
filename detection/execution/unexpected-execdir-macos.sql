@@ -110,8 +110,8 @@ WHERE
     '~/Applications (Parallels)/',
     '~/bin/',
     '~/.cargo/',
-    '~/.rustup/',
     '~/code/',
+    '~/Code/',
     '~/.config/',
     '~/git/',
     '~/go/',
@@ -119,16 +119,17 @@ WHERE
     '~/homebrew/',
     '~/.kuberlr/',
     '~/Library/',
-    '~/Parallels/',
     '~/.local/',
+    '~/Parallels/',
+    '~/proj/',
     '~/projects/',
     '~/.pulumi/',
     '~/.pyenv/',
+    '~/.rustup/',
     '~/src/',
     '~/.tflint.d/',
     '~/.vscode/',
-    '~/.vs-kubernetes/',
-    '~/Code/'
+    '~/.vs-kubernetes/'
   )
   -- Locally built executables
   AND NOT (
@@ -167,6 +168,7 @@ WHERE
     'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
     'Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
+    'Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Node.js Foundation (HX7739G8FX)',

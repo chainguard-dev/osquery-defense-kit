@@ -106,12 +106,6 @@ WHERE
     AND NOT parent_cmd LIKE '%pipenv shell'
   )
   OR cmd LIKE '%socat%'
-  OR (
-    p.name NOT IN ('cc1plus')
-    AND (
-     cmd LIKE '%SOCK_STREAM%'
-     OR cmd LIKE '%Socket.fork%'
-     OR cmd LIKE '%Socket.new%'
-     OR cmd LIKE '%socket.socket%'
-    )
-  )
+  OR cmd LIKE '%SOCK_STREAM%'
+  OR INSTR(cmd, '%Socket.%') > 0
+

@@ -116,6 +116,7 @@ WHERE
     '80,6,0,/usr/applydeltarpm,0u,0g,applydeltarpm',
     '80,6,0,/usr/bash,0u,0g,mkinitcpio',
     '80,6,0,/usr/bash,0u,0g,sh',
+    '80,6,0,/usr/bash,0u,0g,update-ca-trust',
     '80,6,0,/usr/gpg,0u,0g,gpg',
     '80,6,0,/usr/NetworkManager,0u,0g,NetworkManager',
     '80,6,0,/usr/packagekitd,0u,0g,packagekitd',
@@ -151,6 +152,8 @@ WHERE
     '8443,6,500,/usr/firefox,0u,0g,firefox',
     '8801,17,500,/app/zoom.real,u,g,zoom.real',
     '8801,17,500,/opt/zoom,0u,0g,zoom',
+    '80,6,500,/usr/signal-desktop,0u,0g,signal-desktop',
+    '80,6,0,/usr/python3.10,0u,0g,dnf-automatic',
     '993,6,500,/app/thunderbird,u,g,thunderbird',
     '993,6,500,/usr/evolution,0u,0g,evolution',
     '993,6,500,/usr/thunderbird,0u,0g,thunderbird'
