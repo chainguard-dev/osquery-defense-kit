@@ -139,6 +139,7 @@ WHERE
     '/dev/kmsg,systemd-coredump',
     '/dev/hidraw,chrome',
     '/dev/input/event,thermald',
+    '/dev/input/event,touchegg',
     '/dev/input/event,Xorg',
     '/dev/kmsg,kubelet',
     '/dev/kmsg,systemd',
@@ -182,6 +183,7 @@ WHERE
     AND program_name IN (
       'fwupd',
       'adb',
+      'fprintd',
       'gphoto2',
       'gvfs-gphoto2-vo',
       'gvfs-gphoto2-volume-monitor',

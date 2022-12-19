@@ -45,7 +45,7 @@ WHERE
   AND p.path NOT IN (
     '',
     '/sbin/apcupsd',
-    '/usr/sbin/agetty',
+    '/sbin/mount.ntfs',
     '/usr/bin/abrt-dump-journal-core',
     '/usr/bin/abrt-dump-journal-oops',
     '/usr/bin/abrt-dump-journal-xorg',
@@ -110,6 +110,7 @@ WHERE
     '/usr/sbin/abrtd',
     '/usr/sbin/abrt-dbus',
     '/usr/sbin/acpid',
+    '/usr/sbin/agetty',
     '/usr/sbin/alsactl',
     '/usr/sbin/anacron',
     '/usr/sbin/atd',

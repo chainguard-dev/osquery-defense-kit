@@ -119,6 +119,7 @@ WHERE
       'Reflect Helper',
       'ruby',
       'sample',
+      'Signal Helper',
       'ssh',
       'steam_osx',
       'syncthing',

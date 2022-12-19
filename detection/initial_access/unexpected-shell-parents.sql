@@ -37,6 +37,7 @@ WHERE
     'build-script-build',
     'chezmoi',
     'clang-11',
+    'code',
     'Code Helper (Renderer)',
     'Code - Insiders Helper (Renderer)',
     'collect2',
@@ -62,10 +63,10 @@ WHERE
     'lightdm',
     'make',
     'monorail',
+    'ninja',
     'nix',
     'nix-build',
     'nix-daemon',
-    'ninja',
     'node',
     'nvim',
     'package_script_service',
@@ -97,6 +98,7 @@ WHERE
   )
   AND parent_path NOT IN (
     '/Applications/Docker.app/Contents/MacOS/Docker',
+    '/Applications/Docker.app/Contents/Resources/bin/docker-credential-desktop',
     '/bin/dash',
     '/bin/sh',
     '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateDaemon',
