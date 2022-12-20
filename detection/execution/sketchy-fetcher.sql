@@ -11,19 +11,26 @@ SELECT
   p.path,
   p.name,
   p.cmdline,
-  REGEX_MATCH (p.cmdline, '/(\d+\.\d+\.\d+\.\d+)[:/]', 1) AS remote_address,
-  REGEX_MATCH (p.cmdline, '/(:\d+\/)/', 1) AS remote_port,
+  REGEX_MATCH (p.cmdline, '/(\d+\.\d+\.\d+\.\d+)[:/]', 1) AS remote_ip,
+  REGEX_MATCH (p.cmdline, ':(\d+)', 1) AS remote_port,
+  REGEX_MATCH (p.cmdline, '/(\w+[\.-]\w+)[:/]', 1) AS remote_addr,
+  REGEX_MATCH (p.cmdline, '\.(\w+)[:/]', 1) AS remote_tld,
   p.cwd,
   p.euid,
   p.parent,
+  p.cgroup_path,
   pp.path AS parent_path,
   pp.name AS parent_name,
   pp.cmdline AS parent_cmdline,
   pp.euid AS parent_euid,
+  gp.name AS gparent_name,
+  gp.cmdline AS gparent_cmdline,
+  pp.pid AS gparent_pid,
   hash.sha256 AS parent_sha256
 FROM
   processes p
   LEFT JOIN processes pp ON p.parent = pp.pid
+  LEFT JOIN processes gp ON pp.parent = gp.pid
   LEFT JOIN hash ON pp.path = hash.path
 WHERE
   -- NOTE: Sync remaining portion with sketchy-fetcher-events
@@ -32,8 +39,29 @@ WHERE
     OR INSTR(p.cmdline, 'curl ') > 0
   )
   AND (
-    remote_address NOT IN ('', '127.0.0.1', '::1')
+    remote_ip NOT IN ('', '127.0.0.1', '::1')
     OR remote_port != ''
+    OR remote_tld NOT IN (
+      '',
+      'app',
+      'ca',
+      'cloud',
+      'com',
+      'de',
+      'dev',
+      'edu',
+      'fun',
+      'gov',
+      'io',
+      'md',
+      'mil',
+      'net',
+      'org',
+      'se',
+      'sh',
+      'so',
+      'uk'
+    )
     OR p.cmdline LIKE '%.onion%'
     OR p.cmdline LIKE '%tor2web%'
     OR p.cmdline LIKE '%aliyun%'
@@ -91,4 +119,9 @@ WHERE
       OR p.cmdline LIKE '%127.0.0.1:%'
       OR p.name IN ('apko')
     )
+  )
+  -- These are typically curl -k calls
+  AND remote_addr NOT IN (
+    'releases.hashicorp.com',
+    'github.com',
   )
