@@ -58,6 +58,7 @@ WHERE
     parent_path LIKE '/app/%'
     AND child_cgroup LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/%'
   )
+  AND child_cgroup NOT LIKE '/system.slice/docker-%'
   AND parent_cgroup NOT LIKE '/system.slice/docker-%'
   AND parent_cgroup NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
   AND parent_path NOT LIKE '/opt/homebrew/Cellar/%'
