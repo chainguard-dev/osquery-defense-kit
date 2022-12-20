@@ -14,6 +14,8 @@ SELECT
   p.path AS program,
   p.name AS program_name,
   p.cmdline AS cmdline,
+  pp.cmdline AS parent_cmdline,
+  gp.cmdline AS gparent_cmdline,
   hash.sha256,
   CONCAT (
     IIF(
@@ -61,6 +63,8 @@ SELECT
 FROM
   process_open_files pof
   LEFT JOIN processes p ON pof.pid = p.pid
+  LEFT JOIN processes pp ON p.parent = pp.pid
+  LEFT JOIN processes gp ON pp.parent = gp.pid
   LEFT JOIN hash ON hash.path = p.path
 WHERE
   pof.path LIKE '/dev/%'
@@ -115,6 +119,7 @@ WHERE
     '/dev/shm,Brackets',
     '/dev/shm,chrome',
     '/dev/shm,code',
+    '/dev/kmsg,k3s',
     '/dev/shm,electron',
     '/dev/shm,firefox',
     '/dev/shm,gopls',
