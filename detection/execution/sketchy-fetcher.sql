@@ -123,5 +123,5 @@ WHERE
   -- These are typically curl -k calls
   AND remote_addr NOT IN (
     'releases.hashicorp.com',
-    'github.com',
+    'github.com'
   )
