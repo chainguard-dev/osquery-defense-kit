@@ -81,6 +81,7 @@ WHERE
       'firefox,file:// Content,~/.mozilla/firefox',
       'firefox,firefox,~/.cache/mozilla',
       'firefox,firefox,~/.mozilla/firefox',
+      'vim,vim,~/.aws',
       'firefox,firefox,~/snap/firefox',
       'firefox,.firefox-wrappe,~/.cache/mozilla',
       'firefox,.firefox-wrappe,~/.mozilla/firefox',

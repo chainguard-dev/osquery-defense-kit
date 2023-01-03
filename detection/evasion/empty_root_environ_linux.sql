@@ -38,10 +38,12 @@ WHERE
     'dhcpcd',
     'modprobe',
     'dnf',
+    'systemd-udevd',
     'gdm-session-wor',
     'gpg-agent',
     'nginx',
     'sshd',
+    'ssh',
     'zypak-sandbox'
   )
   AND NOT (

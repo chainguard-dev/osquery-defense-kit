@@ -183,6 +183,7 @@ WHERE
     'true,,Vimium,dbepggeogbaibhgnhhndojpepiihcmeb,tabs, bookmarks, history, clipboardRead, storage, sessions, notifications, webNavigation, <all_urls>',
     'true,,Vimium,dbepggeogbaibhgnhhndojpepiihcmeb,tabs, bookmarks, history, storage, sessions, notifications, webNavigation, <all_urls>',
     'true,,Vue.js devtools,nhdogjmejiglipccpnnnanhbledajbpd,<all_urls>, storage',
+    'true,,Vimcal,akopimcimmdmklcmegcflfidpfegngke,activeTab, storage, tabs, identity, https://maps.googleapis.com/*, https://*.vimcal.com/*, webNavigation, <all_urls>, background, history',
     'true,Wappalyzer,Wappalyzer - Technology profiler,gppongmhjkpfnbhagpmjfkannfbllamg,cookies, storage, tabs, webNavigation, webRequest',
     'true,Wappalyzer,Wappalyzer - Technology profiler,gppongmhjkpfnbhagpmjfkannfbllamg,cookies, storage, tabs, webRequest, webNavigation, http://*/*, https://*/*',
     'true,,Windscribe - Free Proxy and Ad Blocker,hnmpcagpplmpfojmgmnngilcnanddlhb,<all_urls>, proxy, management, tabs, webRequest, webRequestBlocking, activeTab, storage, unlimitedStorage, contextMenus, privacy, webNavigation, notifications, cookies',

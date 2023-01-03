@@ -32,6 +32,7 @@ WHERE
   AND file.path NOT IN (
     '/usr/lib/udev/rules.d/50-apport.rules',
     '/usr/lib/udev/rules.d/60-net.rules',
+    '/usr/lib/udev/rules.d/90-rdma-umad.rules',
     '/usr/lib/udev/rules.d/60-rfkill.rules',
     '/usr/lib/udev/rules.d/61-mutter.rules',
     '/usr/lib/udev/rules.d/66-saned.rules',

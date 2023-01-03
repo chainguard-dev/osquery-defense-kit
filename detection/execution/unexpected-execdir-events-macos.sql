@@ -131,6 +131,7 @@ WHERE
     '~/homebrew/',
     '~/.kuberlr/',
     '~/Library/',
+    '~/.gradle/',
     '~/.local/',
     '~/Parallels/',
     '~/projects/',

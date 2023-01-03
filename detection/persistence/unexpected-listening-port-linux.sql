@@ -83,6 +83,7 @@ WHERE
     '4191,6,500,linkerd2-proxy',
     '443,6,500,jcef_helper',
     '4443,6,500,metrics-server',
+    '17,255,0,.tailscaled-wra',
     '5000,6,0,registry',
     '5000,6,500,ControlCenter',
     '5001,6,0,registry',

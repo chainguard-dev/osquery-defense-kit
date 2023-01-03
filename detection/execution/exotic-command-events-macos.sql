@@ -138,6 +138,7 @@ WHERE
     -- The source of these commands is still a mystery to me.
     OR p.parent = -1
   )
+  AND NOT cmd LIKE '-history%'
   AND NOT cmd LIKE '/bin/rm -f /tmp/periodic.%'
   AND NOT cmd LIKE 'rm -f /tmp/locate%/_updatedb%'
   AND NOT cmd LIKE 'rm -f /tmp/locate%/mklocate%/_mklocatedb%'

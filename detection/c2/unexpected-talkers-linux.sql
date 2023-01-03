@@ -154,8 +154,10 @@ WHERE
     '8801,17,500,/opt/zoom,0u,0g,zoom',
     '80,6,500,/usr/signal-desktop,0u,0g,signal-desktop',
     '80,6,0,/usr/python3.10,0u,0g,dnf-automatic',
+    '22,6,500,/home/terraform,500u,500g,terraform',
     '993,6,500,/app/thunderbird,u,g,thunderbird',
     '993,6,500,/usr/evolution,0u,0g,evolution',
+    '80,6,500,/home/steam,500u,500g,steam',
     '993,6,500,/usr/thunderbird,0u,0g,thunderbird'
   )
   AND NOT (
