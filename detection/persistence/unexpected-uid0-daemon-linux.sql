@@ -124,6 +124,7 @@ WHERE
     '/usr/sbin/gssproxy',
     '/usr/sbin/mcelog',
     '/usr/sbin/pcscd',
+    '/usr/sbin/pwrstatd',
     '/usr/sbin/sshd',
     '/usr/sbin/tailscaled',
     '/usr/sbin/thermald',
@@ -140,7 +141,8 @@ WHERE
     '/usr/bin/python3 /usr/sbin/execsnoop-bpfcc',
     '/usr/bin/python3 /usr/lib/pop-transition/service.py',
     '/usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal',
-    '/usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers'
+    '/usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers',
+    '/usr/bin/monitorix -c /etc/monitorix/monitorix.conf -p /run/monitorix.pid'
   )
   AND NOT p.cmdline LIKE '/usr/bin/python3 -s% /usr/sbin/firewalld%'
   AND NOT p.cmdline LIKE '/usr/bin/python3 /usr/bin/dnf %'

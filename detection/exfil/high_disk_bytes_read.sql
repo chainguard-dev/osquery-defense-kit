@@ -41,6 +41,7 @@ WHERE
     'firefox',
     'fish',
     'fleet_backend',
+    'kube-apiserver',
     'fsdaemon',
     'GoogleSoftwareUpdateAgent',
     'com.apple.NRD.UpdateBrainService',

@@ -113,6 +113,7 @@ WHERE
     '/usr/sbin/avahi-daemon',
     '/usr/sbin/chronyd',
     '/usr/sbin/cupsd',
+    '/usr/sbin/rngd',
     '/usr/sbin/tailscaled',
     '/usr/share/code/chrome_crashpad_handler',
     '/usr/share/code/code',

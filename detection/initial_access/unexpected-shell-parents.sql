@@ -1,4 +1,4 @@
--- Unexpected process that spawns shell processes
+-- Unexpected process that spawns shell processes (event based)
 --
 -- false positives:
 --   * IDE's
@@ -7,7 +7,8 @@
 --   * https://attack.mitre.org/techniques/T1059/ (Command and Scripting Interpreter)
 --   * https://attack.mitre.org/techniques/T1204/002/ (User Execution: Malicious File)
 --
--- tags: transient process state
+-- tags: process events
+-- interval: 60
 -- platform: posix
 SELECT
   p.name,
@@ -51,6 +52,7 @@ WHERE
     'find',
     'FinderSyncExtension',
     'fish',
+    'git',
     'go',
     'goland',
     'helm',
@@ -106,6 +108,7 @@ WHERE
     '/sbin/launchd',
     '/usr/lib/xorg/Xorg',
     '/usr/bin/alacritty',
+    '/Library/Developer/CommandLineTools/usr/bin/git',
     '/usr/bin/apt-get',
     '/usr/bin/bash',
     '/usr/bin/bwrap',

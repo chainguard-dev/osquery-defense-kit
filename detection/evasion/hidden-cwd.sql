@@ -110,6 +110,7 @@ WHERE
     OR dir LIKE '~/%/.modcache/%'
     OR dir LIKE '~/%/src/%'
     OR dir LIKE '~/src/%'
+    OR dir LIKE '~/%/node_modules/.pnpm/%'
     OR dir LIKE '~/%/.terraform%'
     OR dir LIKE '/tmp/.mount_%'
     -- For sudo calls to other things

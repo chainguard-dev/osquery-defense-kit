@@ -46,6 +46,7 @@ WHERE
   )
   AND p.path NOT LIKE '/nix/store/%/bin/sudo'
   AND p.path NOT LIKE '/nix/store/%/bin/dhcpcd'
+  AND p.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
   AND NOT (
     p.name = 'polkit-agent-he'
     AND parent_path = '/usr/bin/gnome-shell'
