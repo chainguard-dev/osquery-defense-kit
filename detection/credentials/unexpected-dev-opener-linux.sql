@@ -145,6 +145,7 @@ WHERE
     '/dev/input/event,thermald',
     '/dev/input/event,touchegg',
     '/dev/input/event,Xorg',
+    '/dev/kmsg,dmesg',
     '/dev/kmsg,k3s',
     '/dev/kmsg,kubelet',
     '/dev/kmsg,systemd',
