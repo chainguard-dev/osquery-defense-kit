@@ -23,7 +23,6 @@ SELECT pe.path AS child_path,
     TRIM(IIF(gp.cmdline != NULL, gp.cmdline, gpe.cmdline)) AS gparent_cmd,
     TRIM(IIF(gp.path != NULL, gp.path, gpe.path)) AS gparent_path,
     REGEX_MATCH (IIF(gp.path != NULL, gp.path, gpe.path), '.*/(.*)', 1) AS gparent_name,
-
     IIF(pp.parent != NULL, pp.parent, ppe.parent) AS gparent_pid
 FROM process_events pe
     LEFT JOIN processes p ON pe.pid = p.pid
