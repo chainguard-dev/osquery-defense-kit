@@ -145,6 +145,7 @@ WHERE
     '~/.vscode/',
     '~/.vs-kubernetes/'
   )
+  AND top_dir NOT LIKE '~/%packages/'
   -- Locally built executables
   AND NOT (
     signature.identifier = 'a.out'
