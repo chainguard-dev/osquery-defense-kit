@@ -121,7 +121,7 @@ WHERE
     '/dev/shm,chrome',
     '/dev/shm,code',
     '/dev/shm,electron',
-    '/dev/shm,firekindlefox',
+    '/dev/shm,firefox',
     '/dev/shm,gopls',
     '/dev/shm,java',
     '/dev/shm,jcef_helper',
