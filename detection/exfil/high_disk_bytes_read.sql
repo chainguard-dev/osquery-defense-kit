@@ -40,6 +40,7 @@ WHERE
     'emacs',
     'firefox',
     'fish',
+    'kube-controller',
     'fleet_backend',
     'kube-apiserver',
     'fsdaemon',

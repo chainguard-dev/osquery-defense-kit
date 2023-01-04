@@ -134,6 +134,7 @@ WHERE
     '~/.gradle/',
     '~/.local/',
     '~/Parallels/',
+    '~/proj/',
     '~/projects/',
     '~/.pulumi/',
     '~/.provisio/',
