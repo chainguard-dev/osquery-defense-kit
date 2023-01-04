@@ -81,6 +81,7 @@ WHERE
     '/var/.ntw_cache',
     '/var/.Parallels_swap/',
     '/var/.pwd_cache',
+    '/etc/.resolv.conf.systemd-resolved.bak',
     '/.vol/',
     '/.VolumeIcon.icns'
   )

@@ -163,6 +163,7 @@ WHERE
     'true,,Secure Shell,iodihamcpbpeioajjeobimgagajmlibd,clipboardRead, clipboardWrite, contextMenus, idle, notifications, storage, terminalPrivate, unlimitedStorage, fileSystemProvider, accessibilityFeatures.read',
     'true,,Secure Shell,iodihamcpbpeioajjeobimgagajmlibd,clipboardRead, clipboardWrite, contextMenus, idle, notifications, storage, terminalPrivate, unlimitedStorage, fileSystemProvider, accessibilityFeatures.read, crashReportPrivate, metricsPrivate',
     'true,,Send to Kindle for Google Chrome™,cgdjpilhipecahhcilnafpblkieebhea,tabs, <all_urls>, storage, unlimitedStorage',
+    'true,,Send to Kindle for Google Chrome™,cgdjpilhipecahhcilnafpblkieebhea,tabs, activeTab, storage, unlimitedStorage, alarms, scripting',
     'true,,Session Buddy,edacconmaakjimmfgnblocblbcdcpbko,tabs, unlimitedStorage',
     'true,,Simple Tab Sorter,cgfpgnepljlgenjclbekbjdlgcodfmjp,tabs, storage',
     'true,,Slack,jeogkiiogjbmhklcnbgkdcjoioegiknm,unlimitedStorage, notifications, clipboardRead, clipboardWrite',

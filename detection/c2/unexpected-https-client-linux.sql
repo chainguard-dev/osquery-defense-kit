@@ -113,6 +113,7 @@ WHERE
     '500,/home/promoter,500u,500g,promoter',
     '500,/home/python3,500u,500g,python3',
     '500,/home/slirp4netns,500u,500g,slirp4netns',
+    '500,/home/nerdctl,500u,500g,nerdctl',
     '500,/home/steam,500u,100g,steam',
     '500,/home/steamwebhelper,500u,100g,steamwebhelper',
     '500,/home/terraform,500u,500g,terraform',

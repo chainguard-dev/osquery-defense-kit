@@ -60,3 +60,11 @@ WHERE
     AND file.path LIKE '/dev/shm/u1000-Shm_%'
     AND file.size > 1000000
   )
+  AND NOT (
+    file.uid = 1000
+    AND file.gid = 100
+    AND file.mode = '0755'
+    AND file.path LIKE '/dev/shm/flatpak-com.valvesoftware.Steam-%/u1000-Shm_%'
+    AND file.size > 1000000
+  )
+
