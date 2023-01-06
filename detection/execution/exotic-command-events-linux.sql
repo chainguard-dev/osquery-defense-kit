@@ -12,18 +12,17 @@
 SELECT
   p.pid,
   p.path,
-  REPLACE(
+  TRIM(REPLACE(
     p.path,
     RTRIM(p.path, REPLACE(p.path, '/', '')),
     ''
-  ) AS basename,
+  )) AS basename,
   -- On macOS there is often a trailing space
   TRIM(p.cmdline) AS cmd,
   p.mode,
   p.cwd,
   p.euid,
   p.parent,
-  p.syscall,
   pp.cgroup_path,
   hash.sha256,
   pp.path AS parent_path,
@@ -150,5 +149,4 @@ WHERE
   AND NOT cmd LIKE 'dirname %history'
   AND NOT cmd LIKE 'tail /%history'
   AND NOT cmd LIKE 'find . -executable -type f -name %grep -l GNU Libtool%touch -r%'
-
   AND NOT basename IN ('cc1')
