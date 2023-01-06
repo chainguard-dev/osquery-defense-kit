@@ -9,73 +9,71 @@
 -- false positives:
 --   * none observed, but they are expected
 --
--- interval: 60
+-- interval: 900
 -- platform: darwin
 -- tags: process events
-SELECT
-  p.pid,
-  p.path,
-  TRIM(p.cmdline) AS cmd,
-  p.mode,
-  p.cwd,
-  p.euid,
-  p.parent,
-  pp.name AS parent_name,
-  -- not available in process_events
-  MAX(pp.path, ppe.path) AS parent_path,
-  pp.path AS running_parent_path,
-  ppe.path AS old_running_path,
-  TRIM(MAX(pp.cmdline, ppe.cmdline)) AS parent_cmd,
-  MAX(pp.euid, ppe.euid) AS parent_euid,
-  MAX(hash.sha256, ehash.sha256) AS parent_sha256,
-  MAX(signature.identifier, esignature.identifier) AS parent_identifier,
-  MAX(signature.authority, esignature.authority) AS parent_auth,
-  CONCAT (
-    MAX(signature.identifier, esignature.identifier),
-    ",",
-    MAX(signature.authority, esignature.authority),
-    ",",
-    SUBSTR(TRIM(p.cmdline), 0, 54)
-  ) AS exception_key
-FROM
-  uptime,
-  process_events p
-  LEFT JOIN processes pp ON p.parent = pp.pid
-  LEFT JOIN process_events ppe ON p.parent = ppe.pid
+SELECT pe.path AS path,
+  REGEX_MATCH (pe.path, '.*/(.*)', 1) AS name,
+  TRIM(pe.cmdline) AS cmd,
+  pe.pid AS pid,
+  pe.euid AS euid,
+  pe.parent AS parent_pid,
+  TRIM(IIF(pp.cmdline != NULL, pp.cmdline, ppe.cmdline)) AS parent_cmd,
+  TRIM(IIF(pp.path != NULL, pp.path, ppe.path)) AS parent_path,
+  REGEX_MATCH (
+    IIF(pp.path != NULL, pp.path, ppe.path),
+    '.*/(.*)',
+    1
+  ) AS parent_name,
+  TRIM(IIF(pp.path != NULL, hash.sha256, ehash.sha256)) AS parent_hash,
+  TRIM(IIF(gp.cmdline != NULL, gp.cmdline, gpe.cmdline)) AS gparent_cmd,
+  TRIM(IIF(gp.path != NULL, gp.path, gpe.path)) AS gparent_path,
+  REGEX_MATCH (
+    IIF(gp.path != NULL, gp.path, gpe.path),
+    '.*/(.*)',
+    1
+  ) AS gparent_name,
+  IIF(pp.parent != NULL, pp.parent, ppe.parent) AS gparent_pid,
+  IIF(
+    signature.identifier != NULL,
+    signature.identifier,
+    esignature.identifier
+  ) AS parent_identifier,
+  IIF(
+    signature.authority != NULL,
+    signature.authority,
+    esignature.authority
+  ) AS parent_authority
+FROM process_events pe
+  LEFT JOIN processes p ON pe.pid = p.pid
+  LEFT JOIN processes pp ON pe.parent = pp.pid
+  LEFT JOIN process_events ppe ON pe.parent = ppe.pid
+  LEFT JOIN processes gp ON gp.pid = pp.parent
+  LEFT JOIN process_events gpe ON ppe.parent = gpe.pid
   LEFT JOIN hash ON pp.path = hash.path
   LEFT JOIN hash ehash ON ppe.path = ehash.path
   LEFT JOIN signature ON pp.path = signature.path
   LEFT JOIN signature esignature ON ppe.path = esignature.path
-WHERE
-  p.path IN ('/usr/bin/osascript', '/usr/bin/osacompile')
-  AND p.time > (strftime('%s', 'now') -60)
-  AND exception_key NOT IN (
-    'com.vng.zalo,Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),osascript -ss',
-    ',,osascript',
-    ',,osascript openChrome.applescript https://localhost.ch'
-  )
-  AND exception_key NOT LIKE 'install,Developer ID Application: Docker Inc (9BNSXJN65R),/usr/bin/osascript -e property exit_code%'
-  AND cmd NOT IN ('osascript -e user locale of (get system info)')
-  AND cmd NOT LIKE '/usr/bin/osascript /Users/%/Library/Caches/com.runningwithcrayons.Alfred/Workflow Scripts/%'
-  -- We don't want to allow all of Python as an exception
+WHERE pe.path IN ('/usr/bin/osascript', '/usr/bin/osacompile')
+  AND pe.time > (strftime('%s', 'now') -900)
   AND NOT (
-    exception_key = 'org.python.python,,osascript'
-    AND parent_cmd LIKE '% /opt/homebrew/bin/jupyter-notebook'
+    p.euid > 500
+    AND (
+      cmd IN ('osascript -e user locale of (get system info)')
+      OR cmd LIKE '%"CFBundleName" of property list file (app_path & ":Contents:Info.plist")'
+      OR cmd LIKE 'osascript -e set zoomStatus to "closed"%'
+      OR cmd LIKE 'osascript -e%tell application "System Preferences"%reveal anchor "shortcutsTab"%"com.apple.preference.keyboard"'
+      OR cmd LIKE 'osascript -e tell application "zoom.us"%'
+      OR cmd LIKE 'osascript openChrome.applescript http://127.0.0.1:%'
+      OR cmd LIKE 'osascript openChrome.applescript http%://localhost%'
+      OR cmd LIKE '/usr/bin/osascript /Users/%/Library/Caches/com.runningwithcrayons.Alfred/Workflow Scripts/%'
+      OR cmd LIKE '/usr/bin/osascript /Users/%/osx-trash/trashfile.AppleScript %'
+      OR parent_cmd LIKE '%/bin/gcloud auth%login'
+      OR parent_cmd LIKE '%/google-cloud-sdk/lib/gcloud.py auth login'
+      OR parent_cmd LIKE '% /opt/homebrew/bin/jupyter-notebook'
+      OR parent_name IN ('yubikey-agent')
+    )
   )
-  AND NOT (
-    parent_cmd LIKE '%/google-cloud-sdk/lib/gcloud.py auth login'
-    OR parent_cmd LIKE '%/bin/gcloud auth%login'
-  )
-  AND NOT (
-    exception_key = ',,osascript -s se -l JavaScript'
-    AND parent_name = 'yubikey-agent'
-  )
-  AND NOT cmd LIKE 'osascript -e set zoomStatus to "closed"%'
-  AND NOT cmd LIKE 'osascript openChrome.applescript http://127.0.0.1:%'
-  AND NOT cmd LIKE 'osascript -e tell application "zoom.us"%'
-  AND NOT cmd LIKE 'osascript openChrome.applescript http%://localhost%'
-  AND NOT cmd LIKE '/usr/bin/osascript /Users/%/osx-trash/trashfile.AppleScript %'
-  AND NOT cmd LIKE 'osascript -e%tell application "System Preferences"%reveal anchor "shortcutsTab"%"com.apple.preference.keyboard"'
-  AND NOT cmd LIKE '%"CFBundleName" of property list file (app_path & ":Contents:Info.plist")'
-GROUP BY
-  p.pid
+GROUP BY pe.pid
+
+
