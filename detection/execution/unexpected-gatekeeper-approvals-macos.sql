@@ -32,5 +32,6 @@ WHERE
   AND gap.path NOT LIKE '/Users/%/scorecard-darwin-amd64'
   AND gap.path NOT LIKE '/Users/%/scorecard-darwin-amd64'
   AND gap.path NOT LIKE '/Users/%/configure'
+  AND gap.path NOT LIKE '/Users/%/trivy'
 GROUP BY
   gap.requirement

@@ -62,7 +62,7 @@ WHERE
     '/usr/bin/gnome-keyring-daemon',
     '/usr/bin/kbfsfuse',
     '/usr/bin/keybase',
-    'usr/bin/keybase-redirector',
+    '/usr/bin/keybase-redirector',
     '/usr/bin/NetworkManager',
     '/usr/bin/nm-applet',
     '/usr/bin/obs',

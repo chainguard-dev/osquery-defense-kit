@@ -73,6 +73,9 @@ WHERE
   )
   AND NOT (
     dirname = ''
-    AND (p.name LIKE 'runc%' OR p.cmdline LIKE 'runc init%')
+    AND (
+      p.name LIKE 'runc%'
+      OR p.cmdline LIKE 'runc init%'
+    )
   )
   AND p.path NOT LIKE '/tmp/terraform_%/terraform'

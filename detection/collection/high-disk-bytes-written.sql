@@ -121,6 +121,7 @@ WHERE
     'jetbrains-toolb',
     'launcher',
     'nessusd',
+    'limactl',
     'ninja',
     'photorec',
     'qemu-system-aarch64',
@@ -129,7 +130,6 @@ WHERE
     'snyk',
     'steam',
     'wineserver'
-
   )
   AND p.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p.path NOT LIKE '/home/%/.local/share/Steam'
@@ -139,3 +139,4 @@ WHERE
   AND p.path NOT LIKE '/System/Library/%'
   AND p.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND p.path NOT LIKE '/nix/store/%kolide-launcher-%/bin/launcher'
+  AND NOT cgroup_path LIKE '/system.slice/docker-%'

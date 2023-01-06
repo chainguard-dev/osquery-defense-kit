@@ -103,6 +103,7 @@ WHERE
     '3478,6,500,/usr/firefox,0u,0g,firefox',
     '4070,6,500,/app/spotify,u,g,spotify',
     '4070,6,500,/opt/spotify,0u,0g,spotify',
+    '4070,6,500,/opt/spotify,500u,500g,spotify',
     '4070,6,500,/usr/spotify,0u,0g,spotify',
     '43,6,500,/usr/whois,0u,0g,whois',
     '4460,6,114,/usr/chronyd,0u,0g,chronyd',
