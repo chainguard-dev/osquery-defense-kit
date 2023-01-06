@@ -125,6 +125,8 @@ WHERE
     '/usr/sbin/mcelog',
     '/usr/sbin/pcscd',
     '/usr/sbin/pwrstatd',
+    '/usr/sbin/rsyslogd',
+    '/usr/sbin/smartd',
     '/usr/sbin/sshd',
     '/usr/sbin/tailscaled',
     '/usr/sbin/thermald',

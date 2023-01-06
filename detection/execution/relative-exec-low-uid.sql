@@ -5,8 +5,7 @@
 --
 -- tags: transient process rapid state
 -- platform: linux
-SELECT
-  p.pid,
+SELECT p.pid,
   p.name,
   p.path,
   p.euid,
@@ -21,10 +20,10 @@ SELECT
   pp.cmdline AS parent_cmdline,
   pp.euid AS parent_euid,
   hash.sha256 AS parent_sha256
-FROM
-  processes p
+FROM processes p
   LEFT JOIN file f ON p.path = f.path
   LEFT JOIN hash ON hash.path = p.path
   LEFT JOIN processes pp ON p.parent = pp.pid
-WHERE
-  p.euid < 500 AND p.cmdline LIKE './%'
+WHERE p.euid < 500
+  AND p.cmdline LIKE './%'
+  AND NOT p.cgroup_path LIKE '/system.slice/docker-%'

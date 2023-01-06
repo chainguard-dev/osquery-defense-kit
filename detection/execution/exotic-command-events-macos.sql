@@ -148,3 +148,4 @@ WHERE
   AND NOT cmd LIKE '%find /Applications/LogiTuneInstaller.app -type d -exec chmod 777 {}%'
   AND NOT cmd LIKE '/bin/rm -f /tmp/com.adobe.%.updater/%'
   AND NOT cmd LIKE 'dirname %history'
+  AND NOT cmd LIKE '%-history'

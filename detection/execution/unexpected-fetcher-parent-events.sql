@@ -57,12 +57,16 @@ WHERE
   child_name IN ('curl', 'wget', 'ftp', 'tftp')
   AND pe.time > (strftime('%s', 'now') -900) -- Ignore partial table joins
   AND NOT exception_key IN (
+    'curl,0,nm-dispatcher,',
+    'curl,500,bash,ShellLauncher',
     'curl,500,bash,zsh',
     'curl,500,env,env',
     'curl,500,fish,gnome-terminal-',
-    'curl,0,nm-dispatcher,',
+    'curl,500,ruby,zsh',
+    'curl,500,ShellLauncher,',
     'curl,500,ShellLauncher,login',
-    'curl,500,zsh,login'
+    'curl,500,zsh,login',
+    'wget,500,env,env'
   )
   AND NOT (
     pe.euid > 500
@@ -79,7 +83,11 @@ WHERE
       'zsh'
     )
   )
-  AND NOT parent_name IN ('yay')
+  AND NOT parent_name IN ('yay', 'nvim')
+  AND NOT (
+    pe.euid > 500
+    AND child_cmd IN ('curl --fail https://ipinfo.io/timezone')
+  )
   AND NOT (
     pe.euid > 500
     AND parent_name = 'env'
@@ -95,5 +103,7 @@ WHERE
     AND parent_name = 'env'
     AND parent_cmd LIKE '/usr/bin/env bash ./hack/%.sh'
   )
+  AND NOT child_cmd LIKE 'wget --no-check-certificate https://github.com/istio/istio/%'
+  AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY
   pe.pid

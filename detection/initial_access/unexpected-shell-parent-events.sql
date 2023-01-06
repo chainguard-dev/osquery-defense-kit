@@ -50,6 +50,7 @@ WHERE
       'bash',
       'build-script-build',
       'chezmoi',
+      'gke-gcloud-auth-plugin',
       'clang-11',
       'code',
       'Code Helper (Renderer)',

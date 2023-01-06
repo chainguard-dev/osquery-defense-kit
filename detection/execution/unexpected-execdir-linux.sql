@@ -79,3 +79,11 @@ WHERE
     )
   )
   AND p.path NOT LIKE '/tmp/terraform_%/terraform'
+  AND p.path NOT LIKE '/tmp/%/output/%'
+  AND p.path NOT LIKE '/tmp/%/_output/%'
+  -- Almost certain to be a local console user
+  AND NOT (
+    p.cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-Alacritty-%.scope'
+    AND dirname LIKE '/tmp/%'
+  )
+

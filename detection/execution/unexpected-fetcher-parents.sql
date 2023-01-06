@@ -77,5 +77,10 @@ WHERE
     AND parent_name = 'env'
     AND parent_cmd LIKE '/usr/bin/env bash ./hack/%.sh'
   )
+  AND NOT (
+    p.euid > 500
+    AND parent_name = 'bash'
+    AND parent_cmd LIKE 'bash ./hack/%.sh'
+  )
 GROUP BY
   p.pid

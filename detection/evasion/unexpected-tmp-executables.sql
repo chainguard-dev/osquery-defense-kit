@@ -56,12 +56,12 @@ WHERE
       OR file.path LIKE '%/tmp/epdf%'
       OR -- These regular expressions can be narrowed down
       (
-        file.size < 8000
+        file.size < 50000
         AND file.path LIKE '/tmp/%.sh'
         AND file.uid > 500
       )
       OR (
-        file.size < 8000
+        file.size < 50000
         AND file.path LIKE '/tmp/%.py'
         AND file.uid > 500
       )

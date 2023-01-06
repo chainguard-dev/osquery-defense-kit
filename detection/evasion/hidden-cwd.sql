@@ -101,6 +101,7 @@ WHERE
       'Code Helper'
     )
     OR dir LIKE '~/.%'
+    OR dir LIKE '~/%/.git'
     OR dir LIKE '~/code/%'
     OR dir LIKE '~/%/.github%'
     OR dir LIKE '~/%/github.com/%'
