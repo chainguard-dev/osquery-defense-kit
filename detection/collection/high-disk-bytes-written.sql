@@ -139,3 +139,4 @@ WHERE
   AND p.path NOT LIKE '/System/Library/%'
   AND p.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND p.path NOT LIKE '/nix/store/%kolide-launcher-%/bin/launcher'
+  AND NOT cgroup_path LIKE '/system.slice/docker-%'

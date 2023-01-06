@@ -57,9 +57,11 @@ WHERE
   child_name IN ('curl', 'wget', 'ftp', 'tftp')
   AND pe.time > (strftime('%s', 'now') -900) -- Ignore partial table joins
   AND NOT exception_key IN (
-    'curl,500,fish,gnome-terminal-',
-    'curl,500,env,env',
     'curl,500,bash,zsh',
+    'curl,500,env,env',
+    'curl,500,fish,gnome-terminal-',
+    'curl,0,nm-dispatcher,',
+    'curl,500,ShellLauncher,login',
     'curl,500,zsh,login'
   )
   AND NOT (

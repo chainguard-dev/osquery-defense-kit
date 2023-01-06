@@ -26,7 +26,7 @@ FROM
   LEFT JOIN processes pp ON pp.pid = p.parent
   LEFT JOIN hash ON pp.path = hash.path
 WHERE
-  p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash', 'osascript')
+  p.name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
   -- Ignore partial table joins
   AND parent_path != ''
   -- Editors & terminals mostly.
@@ -100,6 +100,7 @@ WHERE
   )
   AND parent_path NOT IN (
     '/Applications/Docker.app/Contents/MacOS/Docker',
+    '/Applications/Docker.app/Contents/MacOS/install',
     '/Applications/Docker.app/Contents/Resources/bin/docker-credential-desktop',
     '/bin/dash',
     '/bin/sh',

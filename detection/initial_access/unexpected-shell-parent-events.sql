@@ -40,7 +40,7 @@ FROM
   LEFT JOIN processes gp ON gp.pid = pp.parent
   LEFT JOIN process_events gpe ON ppe.parent = gpe.pid
 WHERE
-  child_name IN ('sh', 'fish', 'zsh', 'bash', 'dash', 'osascript')
+  child_name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
   AND pe.time > (strftime('%s', 'now') -300) -- Ignore partial table joins
   AND NOT (
     parent_name IN (
@@ -57,27 +57,27 @@ WHERE
       'conmon',
       'containerd-shim',
       'dash',
-      'docker-credential-desktop',
       'demoit',
       'direnv',
       'doas',
+      'docker-credential-desktop',
+      'env',
       'erl_child_setup',
       'find',
       'FinderSyncExtension',
       'fish',
-      'go',
       'git',
+      'go',
       'goland',
       'helm',
       'i3bar',
       'i3blocks',
       'java',
       'kitty',
-      'login',
-      'env',
       'ko',
       'kubectl',
       'lightdm',
+      'login',
       'make',
       'monorail',
       'ninja',
@@ -94,12 +94,13 @@ WHERE
       'sdk',
       'sdzoomplugin',
       'sh',
-      'snyk',
       'skhd',
+      'snyk',
       'sshd',
       'sudo',
       'swift',
       'systemd',
+      'systemd-sleep',
       'terminator',
       'test2json',
       'tmux',
@@ -114,6 +115,7 @@ WHERE
       'yum',
       'zellij',
       'zsh'
+
     )
     OR parent_name LIKE 'terraform-provider-%'
     -- Do not add shells to this list if you want your query to detect

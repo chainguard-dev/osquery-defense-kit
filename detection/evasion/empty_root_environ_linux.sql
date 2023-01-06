@@ -44,6 +44,7 @@ WHERE
     'nginx',
     'sshd',
     'ssh',
+    'sedispatch',
     'zypak-sandbox'
   )
   AND NOT (

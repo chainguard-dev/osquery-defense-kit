@@ -113,6 +113,7 @@ WHERE
     '~/code/',
     '~/Code/',
     '~/.config/',
+    '~/dev/',
     '~/git/',
     '~/go/',
     '~/google-cloud-sdk/',
@@ -130,6 +131,7 @@ WHERE
     '~/.tflint.d/',
     '~/.vscode/',
     '~/.vs-kubernetes/'
+
   )
   -- Locally built executables
   AND NOT (
