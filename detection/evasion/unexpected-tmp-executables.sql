@@ -65,6 +65,16 @@ WHERE
         AND file.path LIKE '/tmp/%.py'
         AND file.uid > 500
       )
+      OR (
+        file.size < 50000
+        AND file.path LIKE '/tmp/%.pl'
+        AND file.uid > 500
+      )
+      OR (
+        file.size < 50000
+        AND file.path LIKE '/tmp/%.perl'
+        AND file.uid > 500
+      )
     )
   ) -- Nix
   AND NOT (

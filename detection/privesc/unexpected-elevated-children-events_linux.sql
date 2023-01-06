@@ -47,6 +47,7 @@ WHERE
     '/usr/bin/login',
     '/usr/bin/i3lock',
     '/usr/bin/sudo',
+    '/usr/bin/unix_chkpwd',
     '/usr/bin/gpgsm',
     '/usr/bin/gpgconf',
     '/usr/bin/gpg',

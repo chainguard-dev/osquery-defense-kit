@@ -103,6 +103,7 @@ WHERE
     OR dir LIKE '~/.%'
     OR dir LIKE '~/%/.git'
     OR dir LIKE '~/code/%'
+    OR dir LIKE '/opt/homebrew/%/.cache/%'
     OR dir LIKE '~/%/.github%'
     OR dir LIKE '~/%/github.com/%'
     OR dir LIKE '~/%google-cloud-sdk/.install/.backup%'

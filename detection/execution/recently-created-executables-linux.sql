@@ -87,6 +87,7 @@ WHERE
     '/usr/libexec/snapd/snapd',
     '/usr/libexec/sssd/sssd_kcm',
     '/usr/libexec/tracker-extract-3',
+    '/usr/lib/tracker-extract-3',
     '/usr/libexec/tracker-miner-fs-3',
     '/usr/lib/flatpak-session-helper',
     '/usr/lib/fwupd/fwupd',
