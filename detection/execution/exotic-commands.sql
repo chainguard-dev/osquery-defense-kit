@@ -28,30 +28,30 @@ FROM
 WHERE
   -- Known attack scripts
   p.name IN (
-      'bitspin',
-      'bpftool',
-      'heyoka',
-      'nstx',
-      'dnscat2',
-      'tuns',
-      'iodine',
-      'esxcli',
-      'vim-cmd',
-      'minerd',
-      'cpuminer-multi',
-      'cpuminer',
-      'httpdns',
-      'rshell',
-      'rsh',
-      'xmrig',
-      'incbit',
-      'insmod',
-      'kmod',
-      'lushput',
-      'mkfifo',
-      'msfvenom',
-      'nc',
-      'socat'
+    'bitspin',
+    'bpftool',
+    'heyoka',
+    'nstx',
+    'dnscat2',
+    'tuns',
+    'iodine',
+    'esxcli',
+    'vim-cmd',
+    'minerd',
+    'cpuminer-multi',
+    'cpuminer',
+    'httpdns',
+    'rshell',
+    'rsh',
+    'xmrig',
+    'incbit',
+    'insmod',
+    'kmod',
+    'lushput',
+    'mkfifo',
+    'msfvenom',
+    'nc',
+    'socat'
   )
   OR p.name LIKE '%pwn%'
   OR p.name LIKE '%xig%'
@@ -108,4 +108,3 @@ WHERE
   OR cmd LIKE '%socat%'
   OR cmd LIKE '%SOCK_STREAM%'
   OR INSTR(cmd, '%Socket.%') > 0
-

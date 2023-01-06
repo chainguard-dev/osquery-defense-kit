@@ -90,6 +90,7 @@ WHERE
     '0,/usr/tailscaled,0u,0g,tailscaled',
     '0,/usr/tailscaled,500u,500g,tailscaled',
     '0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra',
+    '0,/usr/dirmngr,0u,0g,dirmngr',
     '105,/usr/http,0u,0g,https',
     '106,/usr/geoclue,0u,0g,geoclue',
     '500,/app/signal-desktop,u,g,signal-desktop',

@@ -119,6 +119,7 @@ WHERE
     'jetbrains-toolb',
     'launcher',
     'nessusd',
+    'limactl',
     'ninja',
     'photorec',
     'qemu-system-aarch64',
@@ -126,7 +127,6 @@ WHERE
     'snyk',
     'steam',
     'wineserver'
-
   )
   AND p.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p.path NOT LIKE '/home/%/.local/share/Steam'
