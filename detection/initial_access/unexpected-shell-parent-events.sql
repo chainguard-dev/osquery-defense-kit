@@ -15,6 +15,7 @@ SELECT
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS child_name,
   TRIM(pe.cmdline) AS child_cmd,
   pe.pid AS child_pid,
+  pe.euid AS child_euid,
   p.cgroup_path AS child_cgroup,
   p.parent AS parent_pid,
   TRIM(IIF(pp.cmdline != NULL, pp.cmdline, ppe.cmdline)) AS parent_cmd,
