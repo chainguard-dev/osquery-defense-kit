@@ -42,10 +42,11 @@ WHERE
   AND NOT parent_pid IN (1, 2) -- launchd, kthreadd
   AND NOT parent_path IN (
     '/opt/google/chrome/chrome',
-    '/usr/lib/systemd/systemd',
     '/usr/bin/alacritty',
     '/usr/bin/dockerd',
-    '/usr/bin/gnome-shell'
+    '/usr/bin/fusermount3',
+    '/usr/bin/gnome-shell',
+    '/usr/lib/systemd/systemd'
   ) -- long-running launchers
   AND NOT parent_name IN (
     'lightdm',
