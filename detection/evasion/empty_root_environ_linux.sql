@@ -40,6 +40,7 @@ WHERE
     'dnf',
     'systemd-udevd',
     'gdm-session-wor',
+    'fprintd',
     'gpg-agent',
     'nginx',
     'sshd',

@@ -80,6 +80,7 @@ WHERE
     '/etc/mcelog/triggers',
     '/etc/menu-methods',
     '/etc/network/if-down.d',
+    '/etc/smartmontools',
     '/etc/network/if-post-down.d',
     '/etc/network/if-pre-up.d',
     '/etc/network/if-up.d',

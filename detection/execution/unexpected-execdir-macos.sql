@@ -124,6 +124,7 @@ WHERE
     '~/Parallels/',
     '~/proj/',
     '~/projects/',
+    '~/.provisio/',
     '~/.pulumi/',
     '~/.pyenv/',
     '~/.rustup/',
@@ -131,7 +132,6 @@ WHERE
     '~/.tflint.d/',
     '~/.vscode/',
     '~/.vs-kubernetes/'
-
   )
   -- Locally built executables
   AND NOT (

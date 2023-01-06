@@ -51,6 +51,7 @@ WHERE
   AND enabled = 1
   AND exception_key NOT IN (
     'false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,,background', -- TODO: Move to local exceptions list once osqtool supports them
+    'false,juverm@chainguard.dev,auto-close-gitsign,,',
     'false,,Google Chat,chfbpgnooceecdoohagngmjnndbbaeip,', -- Deprecated Google Extension
     'false,,Google Chat,mdpkiolbdkhdjpekfbkbmhigcaggjagi,', -- Deprecated Google Extension
     'false,,Google Cloud,gmdcbpephenfeelhagpbceidhdbobfpk,', -- Deprecated Google Extension

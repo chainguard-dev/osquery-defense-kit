@@ -58,6 +58,8 @@ WHERE
   AND pe.time > (strftime('%s', 'now') -900) -- Ignore partial table joins
   AND NOT exception_key IN (
     'curl,0,nm-dispatcher,',
+    'curl,0,nm-dispatcher,nm-dispatcher',
+    'curl,500,bash,nix-daemon',
     'curl,500,bash,ShellLauncher',
     'curl,500,bash,zsh',
     'curl,500,env,env',
@@ -66,7 +68,9 @@ WHERE
     'curl,500,ShellLauncher,',
     'curl,500,ShellLauncher,login',
     'curl,500,zsh,login',
+    'curl,500,zsh,sh',
     'wget,500,env,env'
+
   )
   AND NOT (
     pe.euid > 500

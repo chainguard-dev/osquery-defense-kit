@@ -40,11 +40,20 @@ WHERE
   -- NOTE: The remainder of this query is synced with unexpected-fetcher-parent-events
   child_name IN ('curl', 'wget', 'ftp', 'tftp') -- And not a regular local user
   AND NOT exception_key IN (
+    'curl,0,nm-dispatcher,',
+    'curl,0,nm-dispatcher,nm-dispatcher',
+    'curl,500,bash,nix-daemon',
+    'curl,500,bash,ShellLauncher',
     'curl,500,bash,zsh',
     'curl,500,env,env',
     'curl,500,fish,gnome-terminal-',
+    'curl,500,ruby,zsh',
+    'curl,500,ShellLauncher,',
     'curl,500,ShellLauncher,login',
-    'curl,500,zsh,login'
+    'curl,500,zsh,login',
+    'curl,500,zsh,sh',
+    'wget,500,env,env'
+
   )
   AND NOT (
     p.euid > 500

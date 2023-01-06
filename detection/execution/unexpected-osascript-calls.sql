@@ -68,10 +68,15 @@ WHERE pe.path IN ('/usr/bin/osascript', '/usr/bin/osacompile')
       OR cmd LIKE 'osascript openChrome.applescript http%://localhost%'
       OR cmd LIKE '/usr/bin/osascript /Users/%/Library/Caches/com.runningwithcrayons.Alfred/Workflow Scripts/%'
       OR cmd LIKE '/usr/bin/osascript /Users/%/osx-trash/trashfile.AppleScript %'
+      OR cmd LIKE '/usr/bin/osascript /Applications/Amazon Photos.app/Contents/Resources/quit_and_restart_app.scpt /Applications/Amazon Photos.app com.amazon.clouddrive.mac%'
       OR parent_cmd LIKE '%/bin/gcloud auth%login'
-      OR parent_cmd LIKE '%/google-cloud-sdk/lib/gcloud.py auth login'
-      OR parent_cmd LIKE '% /opt/homebrew/bin/jupyter-notebook'
+      OR parent_cmd LIKE '%/google-cloud-sdk/lib/gcloud.py auth%login'
+      OR parent_cmd LIKE '% /opt/homebrew/bin/jupyter%notebook'
       OR parent_name IN ('yubikey-agent')
+      OR (
+        parent_authority = 'Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM)'
+        AND cmd = 'osascript -ss'
+      )
     )
   )
 GROUP BY pe.pid

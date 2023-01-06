@@ -18,6 +18,7 @@ SELECT
   pp.path AS parent_path,
   p.parent AS parent_pid,
   pp.cmdline AS parent_cmd,
+  p.cgroup_path,
   s.state,
   hash.sha256,
   -- This intentionally avoids file.path, as it won't join across mount namespaces
@@ -85,6 +86,7 @@ WHERE
   AND NOT exception_key IN (
     '123,17,114,/usr/chronyd,0u,0g,chronyd',
     '123,17,500,/usr/chronyd,0u,0g,chronyd',
+    '80,6,0,/usr/wget,0u,0g,wget',
     '143,6,500,/app/thunderbird,u,g,thunderbird',
     '143,6,500,/usr/thunderbird,0u,0g,thunderbird',
     '22000,6,500,/usr/syncthing,0u,0g,syncthing',
@@ -92,6 +94,7 @@ WHERE
     '22,6,0,/usr/tailscaled,0u,0g,tailscaled',
     '22,6,500,/home/cargo,500u,500g,cargo',
     '22,6,500,/usr/cargo,0u,0g,cargo',
+    '80,6,500,/home/mconvert,500u,500g,mconvert',
     '22,6,500,/usr/ssh,0u,0g,ssh',
     '27034,6,500,/home/steam,500u,100g,steam',
     '27035,6,500,/home/steam,500u,100g,steam',
