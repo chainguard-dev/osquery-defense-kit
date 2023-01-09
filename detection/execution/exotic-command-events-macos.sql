@@ -87,7 +87,10 @@ WHERE
     OR cmd LIKE '%rm -f /var/tmp%'
     OR cmd LIKE '%rm -f /tmp%'
     OR cmd LIKE '%nohup /bin/bash%'
-    OR cmd LIKE '%history'
+    OR (
+      INSTR(cmd, 'history') > 0
+      AND cmd LIKE '%history'
+    )
     OR cmd LIKE '%echo%|%base64 --decode %|%'
     OR cmd LIKE '%launchctl list%'
     OR (
@@ -105,7 +108,7 @@ WHERE
     )
     OR cmd LIKE '%socat%'
     OR cmd LIKE '%SOCK_STREAM%'
-    OR INSTR(cmd, '%Socket.%') > 0
+    OR INSTR(cmd, 'Socket.') > 0
   ) -- Things that could reasonably happen at boot.
   AND NOT (
     p.path = '/usr/bin/mkfifo'
@@ -148,4 +151,4 @@ WHERE
   AND NOT cmd LIKE '%find /Applications/LogiTuneInstaller.app -type d -exec chmod 777 {}%'
   AND NOT cmd LIKE '/bin/rm -f /tmp/com.adobe.%.updater/%'
   AND NOT cmd LIKE 'dirname %history'
-  AND NOT cmd LIKE '%-history'
+  AND NOT cmd LIKE '%history'

@@ -91,5 +91,10 @@ WHERE
     AND parent_name = 'bash'
     AND parent_cmd LIKE 'bash ./hack/%.sh'
   )
+  AND NOT (
+    p.euid > 500
+    AND parent_name = 'bash'
+    AND parent_cmd LIKE 'bash %/bin/go-build %'
+  )
 GROUP BY
   p.pid
