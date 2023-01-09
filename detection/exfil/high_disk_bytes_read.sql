@@ -17,6 +17,7 @@ SELECT
   p.on_disk,
   p.parent,
   p.start_time,
+  p.cgroup_path,
   hash.sha256,
   p.disk_bytes_read,
   p.cwd,
@@ -26,7 +27,7 @@ FROM
   processes p
   LEFT JOIN hash ON p.path = hash.path
 WHERE
-  bytes_per_second > 3000000
+  bytes_per_second > 3500000
   AND age > 180
   AND p.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p.path NOT LIKE '/System/Library/%'
@@ -37,18 +38,21 @@ WHERE
     'bash',
     'bwrap',
     'chrome',
+    'code',
+    'com.apple.NRD.UpdateBrainService',
+    'docker',
     'emacs',
     'firefox',
     'fish',
-    'kube-controller',
     'fleet_backend',
-    'kube-apiserver',
     'fsdaemon',
     'GoogleSoftwareUpdateAgent',
-    'com.apple.NRD.UpdateBrainService',
     'gopls',
     'grype',
     'java',
+    'kube-apiserver',
+    'kube-controller',
+    'kube-scheduler',
     'launcher',
     'LogiFacecamService',
     'nautilus',
@@ -59,10 +63,11 @@ WHERE
     'qemu-system-aarch64',
     'qemu-system-x86',
     'qemu-system-x86-64',
+    'sh',
     'slack',
     'steam',
-    'thunderbird',
     'systemd',
+    'thunderbird',
     'wineserver',
     'ykman-gui',
     'zsh'
@@ -127,3 +132,5 @@ WHERE
     AND cmdline LIKE 'terraform-ls serve%'
   )
   AND NOT (p.path LIKE '/home/%/Apps/PhpStorm%/jbr/bin/java')
+  AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
+

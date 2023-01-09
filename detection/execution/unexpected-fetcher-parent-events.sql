@@ -15,6 +15,7 @@ SELECT
   p.parent AS parent_pid,
   TRIM(IIF(pp.cmdline != NULL, pp.cmdline, ppe.cmdline)) AS parent_cmd,
   TRIM(IIF(pp.path != NULL, pp.path, ppe.path)) AS parent_path,
+  IIF(pp.path != NULL, phash.sha256, pehash.sha256) AS parent_hash,
   REGEX_MATCH (
     IIF(pp.path != NULL, pp.path, ppe.path),
     '.*/(.*)',
@@ -22,6 +23,7 @@ SELECT
   ) AS parent_name,
   TRIM(IIF(gp.cmdline != NULL, gp.cmdline, gpe.cmdline)) AS gparent_cmd,
   TRIM(IIF(gp.path != NULL, gp.path, gpe.path)) AS gparent_path,
+  IIF(gp.path != NULL, gphash.sha256, gpehash.path) AS gparent_hash,
   REGEX_MATCH (
     IIF(gp.path != NULL, gp.path, gpe.path),
     '.*/(.*)',
@@ -49,9 +51,13 @@ FROM
   process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid
   LEFT JOIN processes pp ON pe.parent = pp.pid
+  LEFT JOIN hash phash ON pp.path = phash.path
   LEFT JOIN process_events ppe ON pe.parent = ppe.pid
+  LEFT JOIN hash pehash ON ppe.path = pehash.path
   LEFT JOIN processes gp ON gp.pid = pp.parent
+  LEFT JOIN hash gphash ON gp.path = gphash.path
   LEFT JOIN process_events gpe ON ppe.parent = gpe.pid
+  LEFT JOIN hash gpehash ON gpe.path = gpehash.path
 WHERE
   -- NOTE: The remainder of this query is synced with unexpected-fetcher-parents
   child_name IN ('curl', 'wget', 'ftp', 'tftp')
@@ -70,7 +76,6 @@ WHERE
     'curl,500,zsh,login',
     'curl,500,zsh,sh',
     'wget,500,env,env'
-
   )
   AND NOT (
     pe.euid > 500

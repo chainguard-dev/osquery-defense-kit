@@ -91,7 +91,10 @@ WHERE
     '/Applications/Slack.app/Contents/Frameworks/Slack Helper.app/Contents/MacOS/Slack Helper',
     '/Applications/Spotify.app/Contents/Frameworks/Spotify Helper.app/Contents/MacOS/Spotify Helper'
   )
+  -- Chromium apps can send stray DNS packets
   AND p.path NOT LIKE '/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/%/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper'
+  AND p.path NOT LIKE '/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions/%/Helpers/Brave Browser Helper.app/Contents/MacOS/Brave Browser Helper'
+
   -- Workaround for the GROUP_CONCAT subselect adding a blank ent
 GROUP BY
   s.remote_address,

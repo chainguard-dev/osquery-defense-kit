@@ -42,6 +42,7 @@ WHERE
     'code',
     'Code Helper (Renderer)',
     'Code - Insiders Helper (Renderer)',
+    'configure',
     'collect2',
     'conmon',
     'containerd-shim',
