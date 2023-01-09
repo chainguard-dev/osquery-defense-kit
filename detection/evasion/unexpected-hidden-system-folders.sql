@@ -71,10 +71,11 @@ WHERE
     '/tmp/.dracula-tmux-weather.lock',
     '/tmp/.font-unix/',
     '/tmp/.ICE-unix/',
-    '/tmp/.%.lock',
     '/tmp/.Test-unix/',
     '/tmp/.vbox-t-ipc/',
     '/tmp/.X0-lock',
+    '/tmp/.X1-lock',
+    '/tmp/.X2-lock',
     '/tmp/.X11-unix/',
     '/tmp/.X1-lock',
     '/tmp/.XIM-unix/',
@@ -110,13 +111,13 @@ WHERE
   AND NOT (
     type = 'regular'
     AND filename = '.placeholder'
-  ) -- A curious addition seen on a NixOS machine
+  ) -- A curious addition seen on NixOS and Fedora machines
   AND NOT (
     file.path = '/.cache/'
     AND file.uid = 0
     AND file.gid = 0
-    AND file.mode = '0755'
-    AND file.size = 3
+    AND file.mode IN ('0755', '0700')
+    AND file.size < 4
   )
   AND NOT (
     file.path = '/.config/'
@@ -124,4 +125,9 @@ WHERE
     AND file.gid = 0
     AND file.mode IN ('0755', '0700')
     AND file.size = 4
+  )
+  AND NOT (
+    file.path LIKE '/tmp/.java_pid%'
+    AND file.type = 'socket'
+    AND file.size = 0
   )

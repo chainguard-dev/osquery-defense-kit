@@ -20,6 +20,7 @@ SELECT
   p.parent AS parent_pid,
   TRIM(IIF(pp.cmdline != NULL, pp.cmdline, ppe.cmdline)) AS parent_cmd,
   TRIM(IIF(pp.path != NULL, pp.path, ppe.path)) AS parent_path,
+  IIF(pp.path != NULL, phash.sha256, pehash.sha256) AS parent_hash,
   REGEX_MATCH (
     IIF(pp.path != NULL, pp.path, ppe.path),
     '.*/(.*)',
@@ -27,6 +28,7 @@ SELECT
   ) AS parent_name,
   TRIM(IIF(gp.cmdline != NULL, gp.cmdline, gpe.cmdline)) AS gparent_cmd,
   TRIM(IIF(gp.path != NULL, gp.path, gpe.path)) AS gparent_path,
+  IIF(gp.path != NULL, gphash.sha256, gpehash.path) AS gparent_hash,
   REGEX_MATCH (
     IIF(gp.path != NULL, gp.path, gpe.path),
     '.*/(.*)',
@@ -37,9 +39,13 @@ FROM
   process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid
   LEFT JOIN processes pp ON pe.parent = pp.pid
+  LEFT JOIN hash phash ON pp.path = phash.path
   LEFT JOIN process_events ppe ON pe.parent = ppe.pid
+  LEFT JOIN hash pehash ON ppe.path = pehash.path
   LEFT JOIN processes gp ON gp.pid = pp.parent
+  LEFT JOIN hash gphash ON gp.path = gphash.path
   LEFT JOIN process_events gpe ON ppe.parent = gpe.pid
+  LEFT JOIN hash gpehash ON gpe.path = gpehash.path
 WHERE
   child_name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
   AND pe.time > (strftime('%s', 'now') -300) -- Ignore partial table joins
@@ -52,6 +58,7 @@ WHERE
       'chezmoi',
       'gke-gcloud-auth-plugin',
       'clang-11',
+      'gdm-session-worker',
       'code',
       'Code Helper (Renderer)',
       'Code - Insiders Helper (Renderer)',

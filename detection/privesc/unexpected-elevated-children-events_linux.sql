@@ -63,7 +63,10 @@ WHERE
   AND p.path NOT LIKE '/nix/store/%/bin/dhcpcd'
   AND p.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
   AND p.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-update-ns'
-  AND NOT pp.cmdline = '/usr/lib/systemd/systemd --user'
+  AND NOT pp.cmdline IN (
+    '/usr/lib/systemd/systemd --user',
+    '/bin/sh -c /usr/bin/pkexec /usr/share/apport/apport-gtk'
+  )
   -- used by kind
   AND NOT (
     p.path = '/usr/bin/bash'

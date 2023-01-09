@@ -40,7 +40,7 @@ FROM
 WHERE
   short_filename != short_name
   AND NOT cmd LIKE '/nix/store/%/bin/bash%' -- Serial masqueraders
-  AND NOT short_filename IN ('bash', 'ruby', 'python', 'python3', 'perl')
+  AND NOT short_filename IN ('bash', 'ruby', 'python', 'python3', 'perl', 'node')
   AND exception_key NOT IN (
     'name=blueman-applet,file=python3,500',
     'name=blueman-tray,file=python3,500',

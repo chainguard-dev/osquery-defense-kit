@@ -57,6 +57,7 @@ WHERE
       OR p.path LIKE '/opt/homebrew/Cellar/%/bin/%'
       OR p.path LIKE '/private/var/folders/zz/%/T/PKInstallSandboxTrash/%.sandboxTrash/%'
       OR p.path LIKE '/Users/%/node_modules/.pnpm/%'
+      OR p.path LIKE '/Users/%/homebrew/Cellar/%/bin/%'
       OR cmd LIKE '/opt/homebrew/opt/%'
       OR cmd LIKE '/private/var/folders/%/Visual Studio Code.app/Contents/%'
       OR cmd LIKE '/Users/%/homebrew/opt/mysql/bin/%' -- Sometimes cmd is empty also :(

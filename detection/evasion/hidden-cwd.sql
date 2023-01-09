@@ -115,6 +115,7 @@ WHERE
     OR dir LIKE '~/%/node_modules/.pnpm/%'
     OR dir LIKE '~/%/.terraform%'
     OR dir LIKE '/tmp/.mount_%'
+    OR dir LIKE '~/%/.config/nvim'
     -- For sudo calls to other things
     OR (
       dir LIKE '/home/.terraform.d/%'

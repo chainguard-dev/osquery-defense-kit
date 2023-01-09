@@ -138,6 +138,10 @@ WHERE
     AND lp.port > 5000
   )
   AND NOT (
+    exception_key LIKE '%,6,500,IPNExtension,Apple Mac OS Application Signing'
+    AND lp.port > 5000
+  )
+  AND NOT (
     p.path LIKE ',ko-app,%'
     AND lp.port > 1024
     and lp.protocol = 6
