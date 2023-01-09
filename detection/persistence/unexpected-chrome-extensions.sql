@@ -51,12 +51,13 @@ WHERE
   AND enabled = 1
   AND exception_key NOT IN (
     'false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,,background', -- TODO: Move to local exceptions list once osqtool supports them
-    'false,juverm@chainguard.dev,auto-close-gitsign,,',
+    'false,,base64 encode or decode selected text,,contextMenus',
     'false,,Google Chat,chfbpgnooceecdoohagngmjnndbbaeip,', -- Deprecated Google Extension
     'false,,Google Chat,mdpkiolbdkhdjpekfbkbmhigcaggjagi,', -- Deprecated Google Extension
     'false,,Google Cloud,gmdcbpephenfeelhagpbceidhdbobfpk,', -- Deprecated Google Extension
     'false,,Google Drive,aghbiahbpaijignceidepookljebhfak,', -- Deprecated Google Extension
     'false,,Google Photos,ncmjhecbjeaamljdfahankockkkdmedg,', -- Deprecated Google Extension
+    'false,juverm@chainguard.dev,auto-close-gitsign,,',
     'false,,YouTube,agimnkijcaahngcdmfeangaknmldooml,', -- Deprecated Google Extension
     'true,Adaware,Safe Torrent Scanner,aegnopegbbhjeeiganiajffnalhlkkjb,storage, tabs',
     'true,,Adblock for Youtube™,cmedhionkhpnakcndndgjdbohmhepckk,storage, unlimitedStorage, webRequest, webRequestBlocking, <all_urls>',
@@ -120,6 +121,7 @@ WHERE
     'true,,GSConnect,jfnifeihccihocjbfcfhicmmgpjicaec,nativeMessaging, tabs, contextMenus',
     'true,Guilherme Nascimento,Prevent Duplicate Tabs,eednccpckdkpojaiemedoejdngappaag,tabs',
     'true,,Honey: Automatic Coupons & Cash Back,bmnlcjabgnpnenekpadlanbbkooimhnj,cookies, storage, unlimitedStorage, webRequest, webRequestBlocking, http://*/*, https://*/*',
+    'true,,Honey: Automatic Coupons & Rewards,bmnlcjabgnpnenekpadlanbbkooimhnj,cookies, storage, unlimitedStorage, webRequest, webRequestBlocking, http:///, https:///',
     'true,,HTTPS Everywhere,gcbommkclmclpchllfjekcdonpmejbdp,webNavigation, webRequest, webRequestBlocking, tabs, cookies, storage, *://*/*, ftp://*/*',
     'true,https://metamask.io,MetaMask,nkbihfbeogaeaoehlefnkodbefgpgknn,storage, unlimitedStorage, clipboardWrite, http://localhost:8545/, https://*.infura.io/, https://chainid.network/chains.json, https://lattice.gridplus.io/*, activeTab, webRequest, *://*.eth/, notifications',
     'true,James Anderson,LeechBlock NG,blaaajhemilngeeffpbfkdjjoefldkok,downloads, contextMenus, storage, tabs, unlimitedStorage, webNavigation',
@@ -135,6 +137,7 @@ WHERE
     'true,,Loom – Screen Recorder & Screen Capture,liecbddmkiiihnedobmlmillhodjkdmb,<all_urls>, tabCapture, webNavigation, activeTab, contextMenus, storage, tabs, desktopCapture, notifications, cookies, *://*.useloom.com/, *://*.loom.com/, http://localhost/*',
     'true,,Lucidchart Diagrams,apboafhkiegglekeafbckfjldecefkhn,unlimitedStorage, notifications, clipboardRead, clipboardWrite',
     'true,,Markdown Preview Plus,febilkbfcbhebfnokafefeacimjdckgl,storage, clipboardWrite, <all_urls>',
+    'true,Marker.io,Marker.io: Visual bug reporting for websites,jofhoojcehdmaiibilpcoofpdbbddkkl,<all_urls>, notifications, contextMenus, desktopCapture',
     'true,NortonLifeLock Inc,Norton Safe Web,fnpbeacklnhmkkilekogeiekaglbmmka,tabs, background, webNavigation, storage, <all_urls>, webRequest, webRequestBlocking, downloads, notifications',
     'true,NortonLifeLock Inc,Norton Safe Web,fnpbeacklnhmkkilekogeiekaglbmmka,tabs, background, webNavigation, storage, scripting, alarms, webRequest, declarativeNetRequest, declarativeNetRequestFeedback, downloads, notifications',
     'true,,Notion Web Clipper,knheggckgoiihginacbkhaalnibhilkk,activeTab, storage, cookies',
@@ -148,6 +151,7 @@ WHERE
     'true,,Password Alert,noondiphcddnnabmjcihcjfbhfklnnep,identity, identity.email, notifications, storage, tabs, <all_urls>',
     'true,Pawel Psztyc,Advanced REST client,hgmloofddffdnphfgcellkdfbfbjeloo,<all_urls>, storage, unlimitedStorage, identity, syncFileSystem,',
     'true,,Picture-in-Picture Extension (by Google),hkgfoiooedgoejojocmhlaklaeopbecg,<all_urls>, storage',
+    'true,,Playback Rate,jgmkoefgnppfpagkhifpialkkkgnfgag,contextMenus, tabs, <all_urls>',
     'true,,PlayTo for Chromecast™,jngkenaoceimiimeokpdbmejeonaaami,storage, webRequest, <all_urls>, tabs, webRequestBlocking',
     'true,,Postman,fhbjgbiflinjbdggehcddcbncdddomop,webview, system.display, http://*/*, https://*/*, contextMenus, unlimitedStorage, storage, fileSystem, fileSystem.write, notifications, identity,',
     'true,,Privacy Badger,pkehgijcmpdhfbdbbnkijodmdjhbjlgp,tabs, http://*/*, https://*/*, webNavigation, webRequest, webRequestBlocking, storage, privacy',
@@ -157,14 +161,15 @@ WHERE
     'true,,React Developer Tools,fmkadmapgofadopljbjfkapdkoienihi,file:///*, http://*/*, https://*/*',
     'true,,Reader Mode,llimhhconnjiflfimocjggfjdlmlhblm,tabs, activeTab, contextMenus, http://*/*, https://*/*, storage',
     'true,,Reader Mode,llimhhconnjiflfimocjggfjdlmlhblm,tabs, activeTab, contextMenus, storage, scripting',
+    'true,,Readwise Highlighter,jjhefcfhmnkfeepcpnilbbkaadhngkbi,<all_urls>, activeTab, background, contextMenus, notifications, storage, tabs, unlimitedStorage',
     'true,Reddit Enhancement Suite contributors,Reddit Enhancement Suite,kbmfpngjjgdllneeigpgjifpgocmfgmb,https://*.reddit.com/*, tabs, history, storage, unlimitedStorage, webRequest',
     'true,,RSS Subscription Extension (by Google),nlbjncdgjeocebhnmkbbbdekmmmcbfjd,tabs, http://*/*, https://*/*, storage',
     'true,,Save to Google Drive,gmbmikajjgmnabiglmofipeabaddhgne,contextMenus, identity, printerProvider, notifications, pageCapture, storage, tabs, webRequest, <all_urls>',
     'true,,Save to Pocket,niloccemoadcdkdjlinkgdfekeahmflj,tabs, contextMenus, cookies, storage',
     'true,,Secure Shell,iodihamcpbpeioajjeobimgagajmlibd,clipboardRead, clipboardWrite, contextMenus, idle, notifications, storage, terminalPrivate, unlimitedStorage, fileSystemProvider, accessibilityFeatures.read',
     'true,,Secure Shell,iodihamcpbpeioajjeobimgagajmlibd,clipboardRead, clipboardWrite, contextMenus, idle, notifications, storage, terminalPrivate, unlimitedStorage, fileSystemProvider, accessibilityFeatures.read, crashReportPrivate, metricsPrivate',
-    'true,,Send to Kindle for Google Chrome™,cgdjpilhipecahhcilnafpblkieebhea,tabs, <all_urls>, storage, unlimitedStorage',
     'true,,Send to Kindle for Google Chrome™,cgdjpilhipecahhcilnafpblkieebhea,tabs, activeTab, storage, unlimitedStorage, alarms, scripting',
+    'true,,Send to Kindle for Google Chrome™,cgdjpilhipecahhcilnafpblkieebhea,tabs, <all_urls>, storage, unlimitedStorage',
     'true,,Session Buddy,edacconmaakjimmfgnblocblbcdcpbko,tabs, unlimitedStorage',
     'true,,Simple Tab Sorter,cgfpgnepljlgenjclbekbjdlgcodfmjp,tabs, storage',
     'true,,Slack,jeogkiiogjbmhklcnbgkdcjoioegiknm,unlimitedStorage, notifications, clipboardRead, clipboardWrite',
@@ -182,10 +187,10 @@ WHERE
     'true,,UET Tag Helper (by Microsoft Advertising),naijndjklgmffmpembnkfbcjbognokbf,activeTab, downloads, tabs, webNavigation, webRequest, http://*/, https://*/',
     'true,,User-Agent Switcher for Chrome,djflhoibgkdhkhhcedjiklpkjnoahfmg,storage, unlimitedStorage, tabs, webRequest, webRequestBlocking, http://spoofer-extension.appspot.com/, https://spoofer-extension.appspot.com/, <all_urls>',
     'true,,Utime,kpcibgnngaaabebmcabmkocdokepdaki,clipboardWrite, contextMenus, notifications',
+    'true,,Vimcal,akopimcimmdmklcmegcflfidpfegngke,activeTab, storage, tabs, identity, https://maps.googleapis.com/*, https://*.vimcal.com/*, webNavigation, <all_urls>, background, history',
     'true,,Vimium,dbepggeogbaibhgnhhndojpepiihcmeb,tabs, bookmarks, history, clipboardRead, storage, sessions, notifications, webNavigation, <all_urls>',
     'true,,Vimium,dbepggeogbaibhgnhhndojpepiihcmeb,tabs, bookmarks, history, storage, sessions, notifications, webNavigation, <all_urls>',
     'true,,Vue.js devtools,nhdogjmejiglipccpnnnanhbledajbpd,<all_urls>, storage',
-    'true,,Vimcal,akopimcimmdmklcmegcflfidpfegngke,activeTab, storage, tabs, identity, https://maps.googleapis.com/*, https://*.vimcal.com/*, webNavigation, <all_urls>, background, history',
     'true,Wappalyzer,Wappalyzer - Technology profiler,gppongmhjkpfnbhagpmjfkannfbllamg,cookies, storage, tabs, webNavigation, webRequest',
     'true,Wappalyzer,Wappalyzer - Technology profiler,gppongmhjkpfnbhagpmjfkannfbllamg,cookies, storage, tabs, webRequest, webNavigation, http://*/*, https://*/*',
     'true,,Windscribe - Free Proxy and Ad Blocker,hnmpcagpplmpfojmgmnngilcnanddlhb,<all_urls>, proxy, management, tabs, webRequest, webRequestBlocking, activeTab, storage, unlimitedStorage, contextMenus, privacy, webNavigation, notifications, cookies',

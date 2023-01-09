@@ -54,25 +54,26 @@ WHERE
   dir LIKE '%/.%'
   AND NOT (
     exception_key IN (
-      'bash,~/.local/share',
+      'as,~/.cache/yay',
       'bash,~/go/src',
+      'bash,~/.local/share',
+      'bash,~/.Trash',
+      'cc1plus,~/.cache/yay',
+      'c++,~/.cache/yay',
+      'cgo,~/.gimme/versions',
+      'dirhelper,/private/var/folders',
       'Electron,~/.vscode/extensions',
       'fish,~/.local/share',
-      'git,~/.local/share',
-      'makepkg,~/.cache/yay',
-      'zsh,~/.Trash',
-      'cgo,~/.gimme/versions',
-      'bash,~/.Trash',
       'fish,~/.Trash',
-      'make,~/.cache/yay',
+      'git,~/.local/share',
       'java,~/.gradle/daemon',
       'java,~/.local/share',
-      'rust-analyzer-p,~/.cargo/registry',
-      'as,~/.cache/yay',
-      'c++,~/.cache/yay',
-      'cc1plus,~/.cache/yay',
+      'make,~/.cache/yay',
+      'makepkg,~/.cache/yay',
+      'mysqld,~/.local/share',
       'npm install,~/.npm/_cacache',
-      'mysqld,~/.local/share'
+      'rust-analyzer-p,~/.cargo/registry',
+      'zsh,~/.Trash'
     )
     OR exception_key LIKE '%sh,~/.Trash/%'
     OR dir IN (

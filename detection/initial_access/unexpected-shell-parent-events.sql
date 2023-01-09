@@ -17,7 +17,7 @@ SELECT
   pe.pid AS child_pid,
   pe.euid AS child_euid,
   p.cgroup_path AS child_cgroup,
-  p.parent AS parent_pid,
+  pe.parent AS parent_pid,
   TRIM(IIF(pp.cmdline != NULL, pp.cmdline, ppe.cmdline)) AS parent_cmd,
   TRIM(IIF(pp.path != NULL, pp.path, ppe.path)) AS parent_path,
   IIF(pp.path != NULL, phash.sha256, pehash.sha256) AS parent_hash,
@@ -140,7 +140,9 @@ WHERE
     )
     OR child_cmd LIKE '/bin/bash /usr/local/Homebrew/Library%'
     OR child_cmd LIKE '/bin/sh %google-cloud-sdk/bin/docker-credential-gcloud get'
+    OR child_cmd LIKE '%/bash -e%/bin/as -arch%'
     OR gparent_cmd LIKE '/bin/bash /usr/local/bin/brew%'
+    OR gparent_cmd LIKE '/usr/bin/python3 -m py_compile %'
   )
 GROUP BY
   pe.pid
