@@ -44,6 +44,7 @@ WHERE
     'gpg-agent',
     'nginx',
     'sshd',
+    'zfs',
     'ssh',
     'sedispatch',
     'zypak-sandbox'

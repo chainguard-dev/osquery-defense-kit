@@ -29,8 +29,8 @@ WHERE
   AND gap.path NOT LIKE '/Users/%/rekor-cli'
   AND gap.path NOT LIKE '/Users/%/cosign-%'
   AND gap.path NOT LIKE '/usr/local/bin/%'
-  AND gap.path NOT LIKE '/Users/%/scorecard-darwin-amd64'
-  AND gap.path NOT LIKE '/Users/%/scorecard-darwin-amd64'
+  AND gap.path NOT LIKE '/Users/%/%-darwin-amd64'
+  AND gap.path NOT LIKE '/Users/%/%-darwin-arm64'
   AND gap.path NOT LIKE '/Users/%/configure'
   AND gap.path NOT LIKE '/Users/%/trivy'
 GROUP BY

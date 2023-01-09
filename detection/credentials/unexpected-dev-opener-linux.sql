@@ -142,6 +142,7 @@ WHERE
   AND NOT path_exception IN (
     '/dev/autofs,systemd',
     '/dev/hidraw,chrome',
+    '/dev/hwrng,rngd',
     '/dev/input/event,thermald',
     '/dev/input/event,touchegg',
     '/dev/input/event,Xorg',

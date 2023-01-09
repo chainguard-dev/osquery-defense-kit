@@ -65,7 +65,6 @@ WHERE
   AND s.remote_address NOT LIKE 'fc00:%'
   AND p.path != ''
   AND NOT exception_key IN (
-    '0,/ko-app/fulcio,u,g,fulcio',
     '0,/opt/snapd,0u,0g,snapd',
     '0,/sbin/apk,u,g,apk',
     '0,/usr/applydeltarpm,0u,0g,applydeltarpm',
@@ -116,6 +115,7 @@ WHERE
     '500,/home/python3,500u,500g,python3',
     '500,/home/slirp4netns,500u,500g,slirp4netns',
     '500,/home/steam,500u,100g,steam',
+    '500,/home/steam,500u,500g,steam',
     '500,/home/steamwebhelper,500u,100g,steamwebhelper',
     '500,/home/steamwebhelper,500u,500g,steamwebhelper',
     '500,/home/terraform,500u,500g,terraform',
@@ -145,6 +145,7 @@ WHERE
     '500,/tmp/terraform,500u,500g,terraform',
     '500,/usr/abrt-action-generate-core-backtrace,0u,0g,abrt-action-gen',
     '500,/usr/apko,u,g,apko',
+    '500,/usr/aws,0u,0g,aws',
     '500,/usr/bom,500u,500g,bom',
     '500,/usr/cargo,0u,0g,cargo',
     '500,/usr/chainctl,0u,0g,chainctl',
@@ -182,12 +183,12 @@ WHERE
     '500,/usr/kbfsfuse,0u,0g,kbfsfuse',
     '500,/usr/keybase,0u,0g,keybase',
     '500,/usr/ko,u,g,ko',
-    '500,/usr/node,0u,0g,.node2nix-wrapp',
     '500,/usr/kubectl,500u,500g,kubectl',
     '500,/usr/lens,0u,0g,lens',
     '500,/usr/nautilus,0u,0g,nautilus',
     '500,/usr/nix,0u,0g,nix',
     '500,/usr/node,0u,0g,node',
+    '500,/usr/node,0u,0g,.node2nix-wrapp',
     '500,/usr/obs,0u,0g,obs',
     '500,/usr/obs-ffmpeg-mux,0u,0g,obs-ffmpeg-mux',
     '500,/usr/pacman,0u,0g,pacman',

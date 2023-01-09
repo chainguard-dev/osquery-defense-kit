@@ -111,13 +111,13 @@ WHERE
   AND NOT (
     type = 'regular'
     AND filename = '.placeholder'
-  ) -- A curious addition seen on a NixOS machine
+  ) -- A curious addition seen on NixOS and Fedora machines
   AND NOT (
     file.path = '/.cache/'
     AND file.uid = 0
     AND file.gid = 0
-    AND file.mode = '0755'
-    AND file.size = 3
+    AND file.mode IN ('0755', '0700')
+    AND file.size < 4
   )
   AND NOT (
     file.path = '/.config/'

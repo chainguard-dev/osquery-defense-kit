@@ -58,6 +58,7 @@ WHERE
       'chezmoi',
       'gke-gcloud-auth-plugin',
       'clang-11',
+      'gdm-session-worker',
       'code',
       'Code Helper (Renderer)',
       'Code - Insiders Helper (Renderer)',
