@@ -12,11 +12,13 @@
 SELECT
   p.pid,
   p.path,
-  TRIM(REPLACE(
-    p.path,
-    RTRIM(p.path, REPLACE(p.path, '/', '')),
-    ''
-  )) AS basename,
+  TRIM(
+    REPLACE(
+      p.path,
+      RTRIM(p.path, REPLACE(p.path, '/', '')),
+      ''
+    )
+  ) AS basename,
   -- On macOS there is often a trailing space
   TRIM(p.cmdline) AS cmd,
   p.mode,

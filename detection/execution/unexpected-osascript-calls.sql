@@ -12,7 +12,8 @@
 -- interval: 900
 -- platform: darwin
 -- tags: process events
-SELECT pe.path AS path,
+SELECT
+  pe.path AS path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS name,
   TRIM(pe.cmdline) AS cmd,
   pe.pid AS pid,
@@ -44,7 +45,8 @@ SELECT pe.path AS path,
     signature.authority,
     esignature.authority
   ) AS parent_authority
-FROM process_events pe
+FROM
+  process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid
   LEFT JOIN processes pp ON pe.parent = pp.pid
   LEFT JOIN process_events ppe ON pe.parent = ppe.pid
@@ -54,7 +56,8 @@ FROM process_events pe
   LEFT JOIN hash ehash ON ppe.path = ehash.path
   LEFT JOIN signature ON pp.path = signature.path
   LEFT JOIN signature esignature ON ppe.path = esignature.path
-WHERE pe.path IN ('/usr/bin/osascript', '/usr/bin/osacompile')
+WHERE
+  pe.path IN ('/usr/bin/osascript', '/usr/bin/osacompile')
   AND pe.time > (strftime('%s', 'now') -900)
   AND NOT (
     p.euid > 500
@@ -79,6 +82,5 @@ WHERE pe.path IN ('/usr/bin/osascript', '/usr/bin/osacompile')
       )
     )
   )
-GROUP BY pe.pid
-
-
+GROUP BY
+  pe.pid

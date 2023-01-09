@@ -126,7 +126,6 @@ WHERE
       'yum',
       'zellij',
       'zsh'
-
     )
     OR parent_name LIKE 'terraform-provider-%'
     -- Do not add shells to this list if you want your query to detect

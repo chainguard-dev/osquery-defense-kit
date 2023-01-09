@@ -10,6 +10,7 @@ SELECT
   uid,
   gid,
   mode,
+  REGEX_MATCH (RTRIM(file.path, '/'), '.*\.(.*?)$', 1) AS extension,
   file.mtime,
   file.size,
   hash.sha256,
@@ -57,23 +58,8 @@ WHERE
       OR -- These regular expressions can be narrowed down
       (
         file.size < 50000
-        AND file.path LIKE '/tmp/%.sh'
         AND file.uid > 500
-      )
-      OR (
-        file.size < 50000
-        AND file.path LIKE '/tmp/%.py'
-        AND file.uid > 500
-      )
-      OR (
-        file.size < 50000
-        AND file.path LIKE '/tmp/%.pl'
-        AND file.uid > 500
-      )
-      OR (
-        file.size < 50000
-        AND file.path LIKE '/tmp/%.perl'
-        AND file.uid > 500
+        AND extension IN ('sh', 'py', 'pl', 'perl', 'json', 'js', 'txt')
       )
     )
   ) -- Nix
@@ -117,4 +103,9 @@ WHERE
   AND NOT (
     file.type = 'regular'
     AND size < 10
+  )
+  -- Common shell scripts
+  AND NOT (
+    file.filename IN ("configure", "mkinstalldirs")
+    AND magic.data = "POSIX shell script, ASCII text executable"
   )

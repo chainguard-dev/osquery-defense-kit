@@ -31,5 +31,6 @@ FROM
   LEFT JOIN hash ON pe.path = hash.path
   LEFT JOIN hash phash ON pp.path = hash.path
 WHERE
-  pe.euid < 500 AND pe.cmdline LIKE './%'
+  pe.euid < 500
+  AND pe.cmdline LIKE './%'
   AND pe.time > (strftime('%s', 'now') -300)

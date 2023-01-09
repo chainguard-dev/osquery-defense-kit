@@ -133,4 +133,3 @@ WHERE
   )
   AND NOT (p.path LIKE '/home/%/Apps/PhpStorm%/jbr/bin/java')
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
-
