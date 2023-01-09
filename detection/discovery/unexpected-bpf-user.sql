@@ -23,14 +23,16 @@ SELECT
   pp.euid AS parent_euid,
   hash.sha256 AS child_sha256,
   phash.sha256 AS parent_sha256
+  -- Using processes is much faster than process_memory_map
 FROM
-  process_memory_map pmm
-  LEFT JOIN processes p ON pmm.pid = p.pid
+  processes p
+  LEFT JOIN process_memory_map pmm ON p.pid = pmm.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN hash AS phash ON pp.path = phash.path
 WHERE
-  (
+  p.euid = 0
+  AND (
     lib_path LIKE '%:bpf%'
     OR lib_path LIKE '%libbpf%'
   )
