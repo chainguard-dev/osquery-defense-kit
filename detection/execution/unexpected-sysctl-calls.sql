@@ -29,22 +29,7 @@ SELECT
     '.*/(.*)',
     1
   ) AS gparent_name,
-  IIF(pp.parent != NULL, pp.parent, ppe.parent) AS gparent_pid,
-  CONCAT (
-    MIN(pe.euid, 500),
-    ',',
-    REGEX_MATCH (
-      IIF(pp.path != NULL, pp.path, ppe.path),
-      '.*/(.*)',
-      1
-    ),
-    ',',
-    REGEX_MATCH (
-      IIF(gp.path != NULL, gp.path, gpe.path),
-      '.*/(.*)',
-      1
-    )
-  ) AS exception_key
+  IIF(pp.parent != NULL, pp.parent, ppe.parent) AS gparent_pid
 FROM
   process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid
@@ -62,6 +47,7 @@ FROM
   AND NOT p.parent IS NULL
   AND NOT child_cmd IN (
     'sysctl -n hw.optional.arm64',
+    'sysctl -n sysctl.proc_translated',
     '/usr/sbin/sysctl kern.hv_support',
     '/usr/sbin/sysctl -n hw.cputype',
     '/usr/sbin/sysctl sysctl.proc_translated'
