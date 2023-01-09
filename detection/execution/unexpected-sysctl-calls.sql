@@ -41,9 +41,13 @@ FROM
   LEFT JOIN hash gphash ON gp.path = gphash.path
   LEFT JOIN process_events gpe ON ppe.parent = gpe.pid
   LEFT JOIN hash gpehash ON gpe.path = gpehash.path
- WHERE
+WHERE
   pe.time > (strftime('%s', 'now') -900)
-  AND pe.path IN ('/usr/bin/sysctl', '/sbin/sysctl', '/usr/sbin/sysctl')
+  AND pe.path IN (
+    '/usr/bin/sysctl',
+    '/sbin/sysctl',
+    '/usr/sbin/sysctl'
+  )
   AND NOT p.parent IS NULL
   AND NOT child_cmd IN (
     'sysctl -n hw.optional.arm64',

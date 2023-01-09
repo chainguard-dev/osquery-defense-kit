@@ -53,7 +53,6 @@ WHERE
     'curl,500,zsh,login',
     'curl,500,zsh,sh',
     'wget,500,env,env'
-
   )
   AND NOT (
     p.euid > 500

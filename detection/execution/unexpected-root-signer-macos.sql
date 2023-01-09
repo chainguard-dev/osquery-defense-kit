@@ -29,8 +29,8 @@ FROM
   LEFT JOIN signature ON p.path = signature.path
 WHERE
   -- query optimization: Exclude SIP protected directories
-  p.euid = 0 AND
-  top_dir NOT IN (
+  p.euid = 0
+  AND top_dir NOT IN (
     '/Library/Apple',
     '/System/Library',
     '/usr/bin',
@@ -59,7 +59,7 @@ WHERE
     'Software Signing'
   )
   AND NOT (
-    signature.authority = "" AND
-    p.path LIKE "/nix/store/%-nix-%/bin/nix"
+    signature.authority = ""
+    AND p.path LIKE "/nix/store/%-nix-%/bin/nix"
     AND pp.path = "/sbin/launchd"
   )

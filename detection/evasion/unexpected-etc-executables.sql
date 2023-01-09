@@ -29,6 +29,7 @@ WHERE
   )
   AND file.directory NOT IN (
     '/etc/acpi',
+    '/etc/acpi/actions',
     '/etc/alternatives',
     '/etc/apcupsd',
     '/etc/apm/resume.d',
@@ -80,7 +81,6 @@ WHERE
     '/etc/mcelog/triggers',
     '/etc/menu-methods',
     '/etc/network/if-down.d',
-    '/etc/smartmontools',
     '/etc/network/if-post-down.d',
     '/etc/network/if-pre-up.d',
     '/etc/network/if-up.d',
@@ -121,6 +121,7 @@ WHERE
     '/etc/resolvconf/update.d',
     '/etc/security',
     '/etc/skel',
+    '/etc/smartmontools',
     '/etc/ssl/certs',
     '/etc/ssl/misc',
     '/etc/ssl/trust-source',
@@ -153,3 +154,5 @@ WHERE
   )
   -- Nix (on macOS) -- actually a symbolic link
   AND file.path NOT LIKE '/etc/profiles/per-user/%/bin/%'
+  AND file.path NOT LIKE '/etc/pwrstatd-%.sh'
+  AND file.path NOT LIKE '/etc/pwrstatd-%.sh'

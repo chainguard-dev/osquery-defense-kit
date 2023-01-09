@@ -106,6 +106,7 @@ WHERE
     OR dir LIKE '~/code/%'
     OR dir LIKE '/opt/homebrew/%/.cache/%'
     OR dir LIKE '~/%/.github%'
+    OR dir LIKE '/tmp/%/.github/workflows'
     OR dir LIKE '~/%/github.com/%'
     OR dir LIKE '~/%google-cloud-sdk/.install/.backup%'
     OR dir LIKE '~/.gradle/%'

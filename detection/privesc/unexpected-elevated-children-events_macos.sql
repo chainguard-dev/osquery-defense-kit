@@ -50,7 +50,7 @@ FROM
 WHERE
   pe.time > (strftime('%s', 'now') -60)
   AND child_euid < parent_euid
-  AND pe.path NOT IN (
+  AND parent_path NOT IN (
     '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared',
     '/usr/bin/login',
     '/usr/bin/su',

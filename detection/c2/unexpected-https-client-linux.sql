@@ -205,6 +205,7 @@ WHERE
     '500,/usr/spotify,0u,0g,spotify',
     '500,/usr/step,500u,500g,step',
     '500,/usr/step-cli,0u,0g,step',
+    '500,/usr/node,u,g,node',
     '500,/usr/syncthing,0u,0g,syncthing',
     '500,/usr/teams,0u,0g,teams',
     '500,/usr/terraform,0u,0g,terraform',

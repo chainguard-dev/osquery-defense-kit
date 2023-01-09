@@ -66,4 +66,3 @@ WHERE
     AND file.path LIKE '/dev/shm/flatpak-com.valvesoftware.Steam-%/u1000-Shm_%'
     AND file.size > 1000000
   )
-
