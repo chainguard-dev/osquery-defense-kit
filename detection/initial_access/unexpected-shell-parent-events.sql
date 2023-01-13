@@ -99,8 +99,8 @@ WHERE
       'nvim',
       'package_script_service',
       'perl',
+      -- 'python' - do not include this, or you won't detect supply-chain attacks.
       'PK-Backend',
-      'python',
       'roxterm',
       'sdk',
       'sdzoomplugin',

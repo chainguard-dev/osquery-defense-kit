@@ -130,7 +130,7 @@ WHERE
     '~/google-cloud-sdk/',
     '~/homebrew/',
     '~/.kuberlr/',
-    '~/Library/',
+   --  '~/Library/',
     '~/.gradle/',
     '~/.local/',
     '~/Parallels/',
@@ -145,7 +145,6 @@ WHERE
     '~/.vscode/',
     '~/.vs-kubernetes/'
   )
-  AND top_dir NOT LIKE '~/%packages/'
   -- Locally built executables
   AND NOT (
     signature.identifier = 'a.out'
@@ -177,6 +176,7 @@ WHERE
   AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
   AND homedir NOT LIKE '~/%/node_modules/.pnpm/%'
   AND homedir NOT LIKE '~/%repo%'
+  AND homedir NOT LIKE '~/.local/%/packages/%'
   AND homedir NOT LIKE '~/%sigstore%'
   AND homedir NOT LIKE '~/%/bin'
   AND signature.authority NOT IN (

@@ -10,10 +10,11 @@
 SELECT
   pe.pid,
   pe.cmdline,
-  REGEX_MATCH (pe.cmdline, '/(\d+\.\d+\.\d+\.\d+)[:/]', 1) AS remote_ip,
-  REGEX_MATCH (pe.cmdline, ':(\d+)', 1) AS remote_port,
-  REGEX_MATCH (pe.cmdline, '/(\w+[\.-]\w+)[:/]', 1) AS remote_addr,
-  REGEX_MATCH (pe.cmdline, '\.(\w+)[:/]', 1) AS remote_tld,
+  REGEX_MATCH (pe.cmdline, '(\w+:\/\/.*)\b', 1) AS url,
+  REGEX_MATCH (pe.cmdline, '//(\d+\.\d+\.\d+\.\d+)[:/]', 1) AS ip,
+  REGEX_MATCH (pe.cmdline, ':(\d+)', 1) AS port,
+  REGEX_MATCH (pe.cmdline, '//([\w\-\.]+)[:/]', 1) AS addr,
+  REGEX_MATCH (pe.cmdline, '//[\w\-\.]+\.(\w+)[:/]', 1) AS tld,
   pe.cwd,
   pe.euid,
   pe.parent,
@@ -36,14 +37,14 @@ WHERE
   pe.time > (strftime('%s', 'now') -60)
   -- NOTE: Sync remaining portion with sketchy-fetchers
   AND (
-    INSTR(p.cmdline, 'wget ') > 0
-    OR INSTR(p.cmdline, 'curl ') > 0
+    INSTR(pe.cmdline, 'wget ') > 0
+    OR INSTR(pe.cmdline, 'curl ') > 0
   )
   AND (
     -- If it's an IP or port, it's suspicious
-    remote_ip NOT IN ('', '127.0.0.1', '::1')
-    OR remote_port != ''
-    OR remote_tld NOT IN (
+    ip NOT IN ('', '127.0.0.1', '::1')
+    OR port != ''
+    OR tld NOT IN (
       '',
       'app',
       'ca',
@@ -73,6 +74,7 @@ WHERE
     OR pe.cmdline LIKE '%curl %--user-agent%'
     OR pe.cmdline LIKE '%curl -k%'
     OR pe.cmdline LIKE '%curl -sL %'
+    OR pe.cmdline LIKE '%curl%-o-%'
     OR pe.cmdline LIKE '%curl%--connect-timeout%'
     OR pe.cmdline LIKE '%curl%--output /dev/null%'
     OR pe.cmdline LIKE '%curl%--O /dev/null%'
@@ -80,6 +82,7 @@ WHERE
     OR pe.cmdline LIKE '%wget %--user-agent%'
     OR pe.cmdline LIKE '%wget %--no-check-certificate%'
     OR pe.cmdline LIKE '%wget -nc%'
+    OR pe.cmdline LIKE '%wget -q%'
     OR pe.cmdline LIKE '%wget -t%'
     -- Or anything launched by a system user
     OR (
@@ -124,4 +127,10 @@ WHERE
     )
   )
   -- These are typically curl -k calls
-  AND remote_addr NOT IN ('releases.hashicorp.com', 'github.com')
+  -- We need the addr "IS NOT NULL" to avoid filtering out
+  -- NULL entries
+  AND NOT (
+    addr IS NOT NULL
+    AND addr IN ('releases.hashicorp.com', 'github.com')
+  )
+

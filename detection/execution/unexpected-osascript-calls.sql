@@ -60,7 +60,7 @@ WHERE
   pe.path IN ('/usr/bin/osascript', '/usr/bin/osacompile')
   AND pe.time > (strftime('%s', 'now') -900)
   AND NOT (
-    p.euid > 500
+    pe.euid > 500
     AND (
       cmd IN ('osascript -e user locale of (get system info)')
       OR cmd LIKE '%"CFBundleName" of property list file (app_path & ":Contents:Info.plist")'

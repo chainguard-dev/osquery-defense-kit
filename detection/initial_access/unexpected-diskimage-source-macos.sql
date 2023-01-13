@@ -27,6 +27,7 @@ WHERE
   (
     mdfind.query = "kMDItemWhereFroms != '' && kMDItemFSName == '*.iso'"
     OR mdfind.query = "kMDItemWhereFroms != '' && kMDItemFSName == '*.dmg'"
+    OR mdfind.query = "kMDItemWhereFroms != '' && kMDItemFSName == '*.pkg'"
   )
   AND ea.key = 'where_from'
   AND file.btime > (strftime('%s', 'now') -86400)
