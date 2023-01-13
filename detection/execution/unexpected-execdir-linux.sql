@@ -86,4 +86,3 @@ WHERE
     p.cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-Alacritty-%.scope'
     AND dirname LIKE '/tmp/%'
   )
-

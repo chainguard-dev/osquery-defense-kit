@@ -12,7 +12,7 @@ SELECT
   TRIM(pe.cmdline) AS child_cmd,
   pe.pid AS child_pid,
   p.cgroup_path AS child_cgroup,
-  p.parent AS parent_pid,
+  pe.parent AS parent_pid,
   TRIM(IIF(pp.cmdline != NULL, pp.cmdline, ppe.cmdline)) AS parent_cmd,
   TRIM(IIF(pp.path != NULL, pp.path, ppe.path)) AS parent_path,
   IIF(pp.path != NULL, phash.sha256, pehash.sha256) AS parent_hash,

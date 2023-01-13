@@ -57,6 +57,10 @@ WHERE
   AND NOT p.cmdline LIKE '%--type=zygote%'
   AND NOT p.cmdline LIKE '%--disable-seccomp-filter-sandbox%'
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
+  AND NOT (
+    p.name = 'sh'
+    AND p.cgroup_path = '/system.slice/znapzend.service'
+  )
 GROUP BY
   p.pid
 HAVING

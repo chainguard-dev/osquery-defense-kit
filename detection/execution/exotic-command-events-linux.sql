@@ -12,11 +12,13 @@
 SELECT
   p.pid,
   p.path,
-  TRIM(REPLACE(
-    p.path,
-    RTRIM(p.path, REPLACE(p.path, '/', '')),
-    ''
-  )) AS basename,
+  TRIM(
+    REPLACE(
+      p.path,
+      RTRIM(p.path, REPLACE(p.path, '/', '')),
+      ''
+    )
+  ) AS basename,
   -- On macOS there is often a trailing space
   TRIM(p.cmdline) AS cmd,
   p.mode,
@@ -75,8 +77,11 @@ WHERE
     OR cmd LIKE '%iptables -P % ACCEPT%'
     OR cmd LIKE '%iptables -F%'
     OR cmd LIKE '%chattr -ia%'
-    OR cmd LIKE '%chmod%777 %'
-    OR cmd LIKE '%history'
+    OR cmd LIKE '%chmod %777 %'
+    OR (
+      INSTR(cmd, 'history') > 0
+      AND cmd LIKE '%history'
+    )
     OR cmd LIKE '%touch%acmr%'
     OR cmd LIKE '%touch -r%'
     OR cmd LIKE '%ld.so.preload%'
@@ -113,7 +118,7 @@ WHERE
     )
     OR cmd LIKE '%socat%'
     OR cmd LIKE '%SOCK_STREAM%'
-    OR INSTR(cmd, '%Socket.%') > 0
+    OR INSTR(cmd, 'Socket.') > 0
   ) -- Things that could reasonably happen at boot.
   AND NOT (
     p.path IN ('/usr/bin/kmod', '/bin/kmod')

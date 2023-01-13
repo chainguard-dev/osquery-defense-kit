@@ -53,7 +53,6 @@ WHERE
     'curl,500,zsh,login',
     'curl,500,zsh,sh',
     'wget,500,env,env'
-
   )
   AND NOT (
     p.euid > 500
@@ -90,6 +89,11 @@ WHERE
     p.euid > 500
     AND parent_name = 'bash'
     AND parent_cmd LIKE 'bash ./hack/%.sh'
+  )
+  AND NOT (
+    p.euid > 500
+    AND parent_name = 'bash'
+    AND parent_cmd LIKE 'bash %/bin/go-build %'
   )
 GROUP BY
   p.pid
