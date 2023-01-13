@@ -139,6 +139,7 @@ WHERE
       'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null'
     )
     OR child_cmd LIKE '/bin/bash /usr/local/Homebrew/Library%'
+    OR child_cmd LIKE '/bin/sh -c pkg-config %'
     OR child_cmd LIKE '/bin/sh %google-cloud-sdk/bin/docker-credential-gcloud get'
     OR child_cmd LIKE '%/bash -e%/bin/as -arch%'
     OR gparent_cmd LIKE '/bin/bash /usr/local/bin/brew%'

@@ -112,4 +112,7 @@ WHERE
   OR cmd LIKE '%SOCK_STREAM%'
   OR INSTR(cmd, '%Socket.%') > 0
   -- Keep the shell running, as in https://blog.aquasec.com/threat-alert-kinsing-malware-container-vulnerability
-  OR cmd LIKE '%tail -f /dev/null%'
+  OR (
+    cmd LIKE '%tail -f /dev/null%'
+    AND p.cgroup_path NOT LIKE '/system.slice/docker-%'
+  )

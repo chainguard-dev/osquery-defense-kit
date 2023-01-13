@@ -100,6 +100,7 @@ WHERE
     '~/bin',
     '~/code/bin',
     '~/Downloads/google-cloud-sdk/bin',
+    '~/Library/Application Support/dev.warp.Warp-Stable',
     '~/go/bin',
     '~/.local/bin',
     '~/.magefile',
@@ -129,6 +130,7 @@ WHERE
     '~/.provisio/',
     '~/.pulumi/',
     '~/.pyenv/',
+    '~/.rbenv/',
     '~/.rustup/',
     '~/src/',
     '~/.tflint.d/',
@@ -159,6 +161,7 @@ WHERE
   AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
   AND homedir NOT LIKE '~/%/node_modules/.pnpm/%'
   AND homedir NOT LIKE '~/.local/%/packages/%'
+  AND homedir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
 
   -- Allow these anywhere (put last because it's slow to query signatures)
   AND signature.authority NOT IN (

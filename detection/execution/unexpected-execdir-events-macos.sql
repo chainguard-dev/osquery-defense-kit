@@ -109,6 +109,7 @@ WHERE
     '~/bin',
     '~/code/bin',
     '~/Downloads/google-cloud-sdk/bin',
+    '~/Library/Application Support/dev.warp.Warp-Stable',
     '~/go/bin',
     '~/.local/bin',
     '~/.magefile',
@@ -180,6 +181,8 @@ WHERE
   AND homedir NOT LIKE '~/.local/%/packages/%'
   AND homedir NOT LIKE '~/%sigstore%'
   AND homedir NOT LIKE '~/%/bin'
+  AND homedir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
+
   -- These signers can run from wherever the hell they want.
   AND signature.authority NOT IN (
     'Apple iPhone OS Application Signing',

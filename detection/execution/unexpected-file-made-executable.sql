@@ -20,6 +20,7 @@ SELECT pe.path AS path,
     1
   ) AS parent_name,
   TRIM(IIF(pp.path != NULL, hash.sha256, ehash.sha256)) AS parent_hash,
+  pp.cgroup_path AS parent_cgroup,
   TRIM(IIF(gp.cmdline != NULL, gp.cmdline, gpe.cmdline)) AS gparent_cmd,
   TRIM(IIF(gp.path != NULL, gp.path, gpe.path)) AS gparent_path,
   REGEX_MATCH (
@@ -46,4 +47,10 @@ AND (
   OR cmd LIKE '%chmod 1%'
   OR cmd LIKE '%chmod +%x'
 )
+AND NOT (
+  cmd LIKE 'chmod 700 /tmp/apt-key-gpghome.%'
+  OR cmd like 'chmod 700 /home/%/snap/firefox/%/.config'
+  OR cmd = 'chmod 755 /usr/local/share/ca-certificates'
+)
+AND NOT parent_cgroup LIKE '/system.slice/docker-%'
 GROUP BY pe.pid
