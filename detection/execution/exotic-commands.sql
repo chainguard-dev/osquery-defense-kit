@@ -66,11 +66,14 @@ WHERE
   OR cmd LIKE '%iptables -P % ACCEPT%'
   OR cmd LIKE '%iptables -F%'
   OR cmd LIKE '%chattr -ia%'
+  OR cmd LIKE '%chflags uchg%'
   OR cmd LIKE '%chmod 777 %'
   OR cmd LIKE '%bpftool%'
   OR cmd LIKE '%touch%acmr%'
   OR cmd LIKE '%ld.so.preload%'
   OR cmd LIKE '%urllib.urlopen%'
+  OR cmd LIKE '%launchctl list%'
+  OR cmd LIKE '%launchctl load%'
   OR cmd LIKE '%nohup%tmp%'
   OR cmd LIKE '%set visible of front window to false%'
   OR cmd LIKE '%chrome%--load-extension%'
@@ -108,3 +111,5 @@ WHERE
   OR cmd LIKE '%socat%'
   OR cmd LIKE '%SOCK_STREAM%'
   OR INSTR(cmd, '%Socket.%') > 0
+  -- Keep the shell running, as in https://blog.aquasec.com/threat-alert-kinsing-malware-container-vulnerability
+  OR cmd LIKE '%tail -f /dev/null%'
