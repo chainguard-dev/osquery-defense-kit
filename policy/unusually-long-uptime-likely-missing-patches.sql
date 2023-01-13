@@ -1,4 +1,7 @@
 -- Indicative of a machine that probably needs a reboot for operating-system patches
+--
+-- tags: persistent state
+-- platform: posix
 SELECT
   os_version.name AS os_name,
   os_version.version AS os_version,
