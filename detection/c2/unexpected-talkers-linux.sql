@@ -119,6 +119,7 @@ WHERE
     '80,6,0,/usr/bash,0u,0g,mkinitcpio',
     '80,6,0,/usr/bash,0u,0g,sh',
     '80,6,0,/usr/bash,0u,0g,update-ca-trust',
+    '80,6,100,/usr/http,0u,0g,http',
     '80,6,0,/usr/gpg,0u,0g,gpg',
     '80,6,0,/usr/kubelet,u,g,kubelet',
     '80,6,0,/usr/NetworkManager,0u,0g,NetworkManager',
@@ -201,6 +202,12 @@ WHERE
     exception_key = '32768,6,500,/usr/ssh,0u,0g,ssh'
     AND s.remote_port = 40022
     AND s.remote_address = '104.131.84.33' -- gatekeeper.uservers.net
+  )
+  AND NOT (
+    s.remote_port = 80 AND (
+      p.cgroup_path LIKE '/system.slice/docker-%'
+      OR p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
+    )
   )
 GROUP BY
   p.cmdline

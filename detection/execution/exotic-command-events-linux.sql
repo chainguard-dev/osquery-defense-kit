@@ -119,6 +119,10 @@ WHERE
     OR cmd LIKE '%socat%'
     OR cmd LIKE '%SOCK_STREAM%'
     OR INSTR(cmd, 'Socket.') > 0
+    OR (
+      cmd LIKE '%tail -f /dev/null%'
+      AND cgroup_path NOT LIKE '/system.slice/docker-%'
+    )
   ) -- Things that could reasonably happen at boot.
   AND NOT (
     p.path IN ('/usr/bin/kmod', '/bin/kmod')

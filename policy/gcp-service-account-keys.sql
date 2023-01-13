@@ -11,9 +11,7 @@ SELECT
   file.ctime,
   file.gid,
   hash.sha256,
-  magic.data,
-  u.username,
-  REPLACE(LOWER(TRIM(description))," ", "-")
+  magic.data
 FROM
   file
   LEFT JOIN hash ON file.path = hash.path

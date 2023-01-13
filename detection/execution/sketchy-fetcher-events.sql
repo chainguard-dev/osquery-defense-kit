@@ -88,11 +88,13 @@ WHERE
     OR (
       pe.cmdline LIKE '%wget -%'
       AND pe.euid < 500
+      AND p.cgroup_path NOT LIKE '/system.slice/docker-%'
     )
     OR (
       pe.cmdline LIKE '%curl %'
       AND pe.euid < 500
       AND pe.cmdline NOT LIKE "%./configure %--with-curl%"
+      AND p.cgroup_path NOT LIKE '/system.slice/docker-%'
     )
   )
   -- Exceptions for all calls
@@ -131,6 +133,6 @@ WHERE
   -- NULL entries
   AND NOT (
     addr IS NOT NULL
-    AND addr IN ('releases.hashicorp.com', 'github.com')
+    AND addr IN ('releases.hashicorp.com', 'github.com', 'dl.enforce.dev')
   )
 

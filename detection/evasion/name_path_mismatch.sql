@@ -54,6 +54,7 @@ WHERE
     'name=editor,file=nano,500',
     'name=cat,file=coreutils,500',
     'name=cc,file=gcc,0',
+    'name=com,file=docker,500',
     'name=chrome-gnome-s,file=python3,500',
     'name=Chroot,file=firefox,500',
     'name=code-oss,file=electron,500',

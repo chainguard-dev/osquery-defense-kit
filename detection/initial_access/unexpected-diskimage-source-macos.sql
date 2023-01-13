@@ -99,7 +99,8 @@ WHERE
     'umd.edu',
     'virtualbox.org',
     'warp.dev',
-    'webex.com'
+    'webex.com',
+    'zoom.us'
   )
   AND host NOT IN (
     'dl.google.com',
