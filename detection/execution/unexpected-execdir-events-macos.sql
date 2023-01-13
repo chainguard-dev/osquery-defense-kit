@@ -136,6 +136,7 @@ WHERE
     '~/Parallels/',
     '~/proj/',
     '~/projects/',
+    '~/Projects/',
     '~/.pulumi/',
     '~/.provisio/',
     '~/.pyenv/',
@@ -179,12 +180,14 @@ WHERE
   AND homedir NOT LIKE '~/.local/%/packages/%'
   AND homedir NOT LIKE '~/%sigstore%'
   AND homedir NOT LIKE '~/%/bin'
+  -- These signers can run from wherever the hell they want.
   AND signature.authority NOT IN (
     'Apple iPhone OS Application Signing',
     'Apple Mac OS Application Signing',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Cisco (DE8Y96K9QP)',
     'Developer ID Application: CodeWeavers Inc. (9C6B7X7Z8E)',
+    'Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',

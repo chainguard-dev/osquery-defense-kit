@@ -43,6 +43,7 @@ WHERE
     'curl,0,nm-dispatcher,',
     'curl,0,nm-dispatcher,nm-dispatcher',
     'curl,500,bash,nix-daemon',
+    'curl,500,bash,bash',
     'curl,500,bash,ShellLauncher',
     'curl,500,bash,zsh',
     'curl,500,env,env',

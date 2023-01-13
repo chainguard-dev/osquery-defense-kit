@@ -1,6 +1,6 @@
 -- Find programs that use the Security Framework on macOS - popular among malware authors
 --
--- platform: posix
+-- platform: macos
 -- tags: persistent state process
 SELECT
   pmm.pid,

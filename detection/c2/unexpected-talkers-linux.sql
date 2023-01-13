@@ -95,17 +95,13 @@ WHERE
     '22,6,500,/home/terraform,500u,500g,terraform',
     '22,6,500,/usr/cargo,0u,0g,cargo',
     '22,6,500,/usr/ssh,0u,0g,ssh',
-    '27020,6,500,/home/steam,500u,500g,steam',
-    '27022,6,500,/home/steam,500u,500g,steam',
-    '27034,6,500,/home/steam,500u,100g,steam',
-    '27035,6,500,/home/steam,500u,100g,steam',
     '32768,6,0,/usr/tailscaled,0u,0g,tailscaled',
     '32768,6,500,/usr/ssh,0u,0g,ssh',
     '3443,6,500,/opt/chrome,0u,0g,chrome',
     '3478,6,500,/opt/chrome,0u,0g,chrome',
+    '3478,6,500,/opt/firefox,0u,0g,firefox',
     '3478,6,500,/usr/chrome,0u,0g,chrome',
     '3478,6,500,/usr/firefox,0u,0g,firefox',
-    '3478,6,500,/opt/firefox,0u,0g,firefox',
     '4070,6,500,/app/spotify,u,g,spotify',
     '4070,6,500,/opt/spotify,0u,0g,spotify',
     '4070,6,500,/opt/spotify,500u,500g,spotify',
@@ -124,6 +120,7 @@ WHERE
     '80,6,0,/usr/bash,0u,0g,sh',
     '80,6,0,/usr/bash,0u,0g,update-ca-trust',
     '80,6,0,/usr/gpg,0u,0g,gpg',
+    '80,6,0,/usr/kubelet,u,g,kubelet',
     '80,6,0,/usr/NetworkManager,0u,0g,NetworkManager',
     '80,6,0,/usr/packagekitd,0u,0g,packagekitd',
     '80,6,0,/usr/pacman,0u,0g,pacman',
@@ -155,14 +152,14 @@ WHERE
     '80,6,500,/usr/gnome-software,0u,0g,gnome-software',
     '80,6,500,/usr/pacman,0u,0g,pacman',
     '80,6,500,/usr/python3.10,0u,0g,yum',
-    '8080,6,500,/usr/python3.11,0u,0g,speedtest-cli',
     '80,6,500,/usr/python3.11,0u,0g,abrt-action-ins',
     '80,6,500,/usr/rpi-imager,0u,0g,rpi-imager',
     '80,6,500,/usr/signal-desktop,0u,0g,signal-desktop',
     '80,6,500,/usr/thunderbird,0u,0g,thunderbird',
-    '8080,6,500,/usr/speedtest,500u,500g,speedtest',
     '8080,6,500,/opt/chrome,0u,0g,chrome',
     '8080,6,500,/usr/firefox,0u,0g,firefox',
+    '8080,6,500,/usr/python3.11,0u,0g,speedtest-cli',
+    '8080,6,500,/usr/speedtest,500u,500g,speedtest',
     '8443,6,500,/opt/chrome,0u,0g,chrome',
     '8443,6,500,/usr/firefox,0u,0g,firefox',
     '8801,17,500,/app/zoom.real,u,g,zoom.real',
@@ -182,6 +179,13 @@ WHERE
     p.name = 'syncthing'
     AND f.filename = 'syncthing'
     AND s.remote_port > 1024
+    AND s.protocol = 6
+    AND p.euid > 500
+  )
+  AND NOT (
+    p.name = 'steam'
+    AND f.filename = 'steam'
+    AND s.remote_port > 27000
     AND s.protocol = 6
     AND p.euid > 500
   )

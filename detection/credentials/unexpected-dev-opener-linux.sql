@@ -174,6 +174,7 @@ WHERE
     '/dev/video,brave',
     '/dev/video,chrome',
     '/dev/video,ffmpeg',
+    '/dev/cpu/0/msr,nvidia-powerd',
     '/dev/video,firefox',
     '/dev/video,obs',
     '/dev/video,obs-ffmpeg-mux',
@@ -182,6 +183,7 @@ WHERE
     '/dev/video,wireplumber',
     '/dev/video,zoom',
     '/dev/video,zoom.real',
+    '/dev/mapper/control,gpartedbin',
     '/dev/zfs,zed',
     '/dev/zfs,zfs',
     '/dev/zfs,zpool'

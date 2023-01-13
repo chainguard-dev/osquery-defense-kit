@@ -148,6 +148,7 @@ WHERE
     '/etc/grub2-efi.cfg',
     '/etc/paths.d/100-rvictl',
     '/etc/profile',
+    '/etc/sudoers.d/lima',
     '/etc/qemu-ifdown',
     '/etc/qemu-ifup',
     '/etc/opt/chrome/native-messaging-hosts/com.google.endpoint_verification.api_helper.json'

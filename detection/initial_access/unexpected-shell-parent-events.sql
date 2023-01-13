@@ -79,6 +79,7 @@ WHERE
       'fish',
       'git',
       'go',
+      'ShellLauncher',
       'goland',
       'helm',
       'i3bar',

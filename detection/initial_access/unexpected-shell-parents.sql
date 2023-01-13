@@ -74,6 +74,7 @@ WHERE
     'nix-build',
     'nix-daemon',
     'node',
+    'git-remote-https',
     'nvim',
     'package_script_service',
     'perl',
@@ -139,6 +140,10 @@ WHERE
   AND NOT (
     pp.name = 'sshd'
     AND p.cmdline LIKE '%askpass%'
+  )
+  AND NOT (
+    pp.name = 'steam'
+    AND p.cmdline LIKE 'sh -c %steamwebhelper.sh%'
   )
   AND NOT (
     pp.name = 'bash'

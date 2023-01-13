@@ -59,7 +59,7 @@ WHERE
       (
         file.size < 50000
         AND file.uid > 500
-        AND extension IN ('sh', 'py', 'pl', 'perl', 'json', 'js', 'txt')
+        AND extension IN ('sh', 'py', 'pl', 'perl', 'json', 'js', 'txt', 'log')
       )
     )
   ) -- Nix

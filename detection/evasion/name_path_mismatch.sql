@@ -51,6 +51,7 @@ WHERE
   AND exception_key NOT IN (
     'name=blueman-applet,file=python3,500',
     'name=blueman-tray,file=python3,500',
+    'name=editor,file=nano,500',
     'name=cat,file=coreutils,500',
     'name=cc,file=gcc,0',
     'name=chrome-gnome-s,file=python3,500',
