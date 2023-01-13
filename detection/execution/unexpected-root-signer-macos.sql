@@ -63,3 +63,9 @@ WHERE
     AND p.path LIKE "/nix/store/%-nix-%/bin/nix"
     AND pp.path = "/sbin/launchd"
   )
+  AND NOT (
+    signature.authority = ""
+    AND p.path = "/opt/socket_vmnet/bin/socket_vmnet"
+    AND pp.path = "/usr/bin/sudo"
+  )
+

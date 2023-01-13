@@ -195,10 +195,13 @@ WHERE
     '500,/usr/python3,0u,0g,python3',
     '500,/usr/python3.10,0u,0g,python',
     '500,/usr/python3.10,0u,0g,python3',
+    '0,/usr/launcher,500u,500g,launcher',
     '500,/usr/python3.11,0u,0g,gnome-abrt',
     '500,/usr/python3.11,0u,0g,prowler',
+    '88,6,500,/usr/syncthing,0u,0g,syncthing',
     '500,/usr/reporter-ureport,0u,0g,reporter-urepor',
     '500,/usr/rpi-imager,0u,0g,rpi-imager',
+    '500,/usr/htop,0u,0g,htop',
     '500,/usr/signal-desktop,0u,0g,signal-desktop',
     '500,/usr/signal-desktop,u,g,signal-desktop',
     '500,/usr/slack,0u,0g,slack',
@@ -232,7 +235,8 @@ WHERE
     exception_key = '500,/tmp/main,500u,500g,main'
     AND p.path LIKE '/tmp/go-build%/exe/main'
   )
-  -- Exclude processes running inside of Docker containers
+  -- Exclude processes running inside of containers
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
+  AND NOT p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
 GROUP BY
   p.cmdline

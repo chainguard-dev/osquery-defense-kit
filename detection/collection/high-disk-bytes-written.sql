@@ -116,6 +116,7 @@ WHERE
     'fsdaemon',
     'go',
     'goland',
+    'node',
     'golangci-lint-v',
     'gopls',
     'grype',
