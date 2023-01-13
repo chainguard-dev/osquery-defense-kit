@@ -69,7 +69,7 @@ WHERE
     OR basename LIKE '%pwn%'
     OR basename LIKE '%attack%' -- Unusual behaviors
     OR cmd LIKE '%chattr -ia%'
-    OR cmd LIKE '%chmod 777 %'
+    OR cmd LIKE '%chmod%777 %'
     OR cmd LIKE '%touch%acmr%'
     OR cmd LIKE '%touch -r%'
     OR cmd LIKE '%ld.so.preload%'
@@ -90,6 +90,8 @@ WHERE
     OR cmd LIKE '%history'
     OR cmd LIKE '%echo%|%base64 --decode %|%'
     OR cmd LIKE '%launchctl list%'
+    OR cmd LIKE '%launchctl load%'
+    OR cmd LIKE '%chflags uchg%'
     OR (
       cmd LIKE '%UserKnownHostsFile=/dev/null%'
       AND NOT parent_name = 'limactl'
