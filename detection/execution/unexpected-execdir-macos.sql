@@ -119,8 +119,10 @@ WHERE
     '~/google-cloud-sdk/',
     '~/homebrew/',
     '~/.kuberlr/',
-    '~/Library/',
-    '~/.local/',
+    -- Abused by KeySteal
+    -- '~/Library/',
+    -- Abused by DazzleSpy, use a more specific place
+    -- '~/.local/',
     '~/Parallels/',
     '~/proj/',
     '~/projects/',
@@ -156,6 +158,8 @@ WHERE
   AND homedir NOT LIKE '~/%/google-cloud-sdk/bin/%'
   AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
   AND homedir NOT LIKE '~/%/node_modules/.pnpm/%'
+  AND homedir NOT LIKE '~/.local/%/packages/%'
+
   -- Allow these anywhere (put last because it's slow to query signatures)
   AND signature.authority NOT IN (
     'Apple iPhone OS Application Signing',
