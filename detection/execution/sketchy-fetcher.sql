@@ -11,10 +11,11 @@ SELECT
   p.path,
   p.name,
   p.cmdline,
-  REGEX_MATCH (p.cmdline, '/(\d+\.\d+\.\d+\.\d+)[:/]', 1) AS remote_ip,
-  REGEX_MATCH (p.cmdline, ':(\d+)', 1) AS remote_port,
-  REGEX_MATCH (p.cmdline, '/(\w+[\.-]\w+)[:/]', 1) AS remote_addr,
-  REGEX_MATCH (p.cmdline, '\.(\w+)[:/]', 1) AS remote_tld,
+  REGEX_MATCH (p.cmdline, '(\w+:\/\/.*)\b', 1) AS url,
+  REGEX_MATCH (p.cmdline, '//(\d+\.\d+\.\d+\.\d+)[:/]', 1) AS ip,
+  REGEX_MATCH (p.cmdline, ':(\d+)', 1) AS port,
+  REGEX_MATCH (p.cmdline, '//([\w\-\.]+)[:/]', 1) AS addr,
+  REGEX_MATCH (p.cmdline, '//[\w\-\.]+\.(\w+)[:/]', 1) AS tld,
   p.cwd,
   p.euid,
   p.parent,
@@ -39,9 +40,9 @@ WHERE
     OR INSTR(p.cmdline, 'curl ') > 0
   )
   AND (
-    remote_ip NOT IN ('', '127.0.0.1', '::1')
-    OR remote_port != ''
-    OR remote_tld NOT IN (
+    ip NOT IN ('', '127.0.0.1', '::1')
+    OR port != ''
+    OR tld NOT IN (
       '',
       'app',
       'ca',
@@ -69,12 +70,14 @@ WHERE
     OR p.cmdline LIKE '%curl %--user-agent%'
     OR p.cmdline LIKE '%curl -k%'
     OR p.cmdline LIKE '%curl -sL %'
+    OR p.cmdline LIKE '%curl%-o-%'
     OR p.cmdline LIKE '%curl%--insecure%'
     OR p.cmdline LIKE '%wget %--user-agent%'
     OR p.cmdline LIKE '%wget %--no-check-certificate%'
     OR p.cmdline LIKE '%curl%--connect-timeout%'
     OR p.cmdline LIKE '%wget -nc%'
     OR p.cmdline LIKE '%wget -t%'
+    OR p.cmdline LIKE '%wget -q%'
     OR (
       p.cmdline LIKE '%wget %'
       AND p.euid < 500
@@ -121,4 +124,9 @@ WHERE
     )
   )
   -- These are typically curl -k calls
-  AND remote_addr NOT IN ('releases.hashicorp.com', 'github.com')
+  -- We need the addr "IS NOT NULL" to avoid filtering out
+  -- NULL entries
+  AND NOT (
+    addr IS NOT NULL
+    AND addr IN ('releases.hashicorp.com', 'github.com')
+  )
