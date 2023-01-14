@@ -111,6 +111,7 @@ WHERE
     '~/Downloads/google-cloud-sdk/bin',
     '~/Library/Application Support/dev.warp.Warp-Stable',
     '~/go/bin',
+    '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
     '~/.local/bin',
     '~/.magefile',
     '~/Downloads/protoc/bin',

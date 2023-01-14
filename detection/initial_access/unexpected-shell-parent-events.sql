@@ -86,6 +86,7 @@ WHERE
       'i3blocks',
       'java',
       'kitty',
+      'local-path-provisioner',
       'ko',
       'kubectl',
       'lightdm',

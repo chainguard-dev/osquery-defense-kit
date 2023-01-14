@@ -42,7 +42,7 @@ WHERE
   )
   AND (
     -- If it's an IP or port, it's suspicious
-    ip NOT IN ('', '127.0.0.1', '::1')
+    ip NOT IN ('', '127.0.0.1', '0.0.0.0', '::1')
     OR port != ''
     OR tld NOT IN (
       '',
@@ -133,6 +133,11 @@ WHERE
   -- NULL entries
   AND NOT (
     addr IS NOT NULL
-    AND addr IN ('releases.hashicorp.com', 'github.com', 'dl.enforce.dev')
+    AND (
+      addr IN ('releases.hashicorp.com', 'github.com', 'dl.enforce.dev')
+      -- Ignore local addresses (Docker development)
+      OR addr NOT LIKE '%.%'
+      OR ip LIKE '172.2%'
+    )
   )
 

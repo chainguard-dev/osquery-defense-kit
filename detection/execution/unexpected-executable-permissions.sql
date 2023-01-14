@@ -68,3 +68,7 @@ WHERE
     f.path LIKE '/Users/%/Applications (Parallels)/%.app/Contents/MacOS/WinAppHelper'
     AND f.mode = '0777'
   )
+  AND NOT (
+    f.path LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
+    AND f.mode = '1555'
+  )

@@ -102,6 +102,7 @@ WHERE
     '~/Downloads/google-cloud-sdk/bin',
     '~/Library/Application Support/dev.warp.Warp-Stable',
     '~/go/bin',
+    '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
     '~/.local/bin',
     '~/.magefile',
     '~/projects/go/bin'
@@ -162,6 +163,7 @@ WHERE
   AND homedir NOT LIKE '~/%/node_modules/.pnpm/%'
   AND homedir NOT LIKE '~/.local/%/packages/%'
   AND homedir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
+  AND homedir NOT LIKE '~/Library/Application Support/cloud-code/bin/versions/%'
 
   -- Allow these anywhere (put last because it's slow to query signatures)
   AND signature.authority NOT IN (

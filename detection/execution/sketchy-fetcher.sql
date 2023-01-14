@@ -128,5 +128,11 @@ WHERE
   -- NULL entries
   AND NOT (
     addr IS NOT NULL
-    AND addr IN ('releases.hashicorp.com', 'github.com')
+    AND (
+      addr IN ('releases.hashicorp.com', 'github.com', 'dl.enforce.dev')
+      -- Ignore local addresses (Docker development)
+      OR addr NOT LIKE '%.%'
+      OR addr LIKE '172.21.%'
+    )
   )
+

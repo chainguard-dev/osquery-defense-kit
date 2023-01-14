@@ -46,3 +46,4 @@ WHERE
     '/usr/sbin/traceroute'
   )
   AND f.path NOT LIKE '/Users/%/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
+  AND f.path NOT LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'

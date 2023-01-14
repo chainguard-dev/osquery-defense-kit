@@ -65,7 +65,7 @@ WHERE
   )
   AND NOT (
     signature.authority = ""
-    AND p.path = "/opt/socket_vmnet/bin/socket_vmnet"
+    AND p.path LIKE "/opt/%/bin/socket_vmnet"
     AND pp.path = "/usr/bin/sudo"
   )
 
