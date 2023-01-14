@@ -157,7 +157,6 @@ WHERE
     '443,6,0,Install,com.adobe.Install,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,0,launcher,launcher,Developer ID Application: Kolide Inc (YZ3EM74M78)',
     '443,6,0,nessusd,nessusd,Developer ID Application: Tenable, Inc. (4B8J598M7U)',
-    '443,6,500,aws,37c466-aws,Developer ID Application: AMZN Mobile LLC (94KV3E626L)',
     '443,6,0,nix,nix,',
     '443,6,0,OneDrivePkgTelemetry,com.microsoft.OneDrivePkgTelemetry,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,6,0,Setup,com.adobe.acc.Setup,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
