@@ -92,8 +92,8 @@ WHERE
       AND cmd LIKE '%history'
     )
     OR cmd LIKE '%echo%|%base64 --decode %|%'
-    OR cmd LIKE '%launchctl list%'
     OR cmd LIKE '%launchctl load%'
+    OR cmd LIKE '%launchctl bootout%'
     OR cmd LIKE '%chflags uchg%'
     OR (
       cmd LIKE '%UserKnownHostsFile=/dev/null%'
@@ -122,22 +122,13 @@ WHERE
   )
   AND NOT (
     cmd IN (
-      '/bin/launchctl asuser 0 /bin/launchctl list',
-      '/bin/launchctl list',
-      '/bin/launchctl list com.logi.optionsplus.update',
-      '/bin/launchctl list com.logi.optionsplus.updater',
-      '/bin/launchctl list homebrew.mxcl.yabai',
-      '/bin/launchctl list homebrew.mxcl.socket_vmnet',
+      'launchctl load /Library/LaunchDaemons/us.zoom.ZoomDaemon.plist',
+      'sudo launchctl load /Library/LaunchDaemons/us.zoom.ZoomDaemon.plist',
+      '/bin/launchctl load -wF /Library/LaunchAgents/com.adobe.GC.AGM.plist',
       '/bin/rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
       'git history',
       '/usr/bin/pkill -F /private/var/run/lima/shared_socket_vmnet.pid',
-      'launchctl list',
-      'launchctl list com.microsoft.OneDriveUpdaterDaemon',
-      'launchctl list com.parallels.desktop.launchdaemon',
-      'launchctl list us.zoom.ZoomDaemon',
       '/Library/Apple/System/Library/StagedFrameworks/Safari/SafariShared.framework/XPCServices/com.apple.Safari.History.xpc/Contents/MacOS/com.apple.Safari.History',
-      'sudo launchctl list',
-      'sudo launchctl list us.zoom.ZoomDaemon',
       '/usr/bin/csrutil report',
       '/usr/bin/csrutil status',
       'xpcproxy com.apple.Safari.History'
@@ -145,6 +136,7 @@ WHERE
     -- The source of these commands is still a mystery to me.
     OR p.parent = -1
   )
+  AND NOT cmd LIKE '/bin/launchctl load -wF /Users/%/Library/PreferencePanes/../LaunchAgents/com.adobe.GC.Invoker-1.0.plist'
   AND NOT cmd LIKE '-history%'
   AND NOT cmd LIKE '/bin/rm -f /tmp/periodic.%'
   AND NOT cmd LIKE 'rm -f /tmp/locate%/_updatedb%'
@@ -154,5 +146,4 @@ WHERE
   AND NOT cmd LIKE 'touch -r /tmp/KSInstallAction.%'
   AND NOT cmd LIKE '%find /Applications/LogiTuneInstaller.app -type d -exec chmod 777 {}%'
   AND NOT cmd LIKE '/bin/rm -f /tmp/com.adobe.%.updater/%'
-  AND NOT cmd LIKE 'dirname %history'
   AND NOT cmd LIKE '%history'

@@ -71,6 +71,9 @@ WHERE
     )
   )
   AND NOT parent_name IN ('yay')
+  AND NOT p.cmdline IN (
+    'curl -s https://support-sp.apple.com/sp/product?cc=QL'
+  )
   AND NOT (
     p.euid > 500
     AND parent_name = 'env'

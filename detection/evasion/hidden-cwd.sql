@@ -93,6 +93,7 @@ WHERE
       '~/.hunter/_Base',
       '~/.zsh'
     )
+    OR top_dir IN ('~/Sync')
     OR p.name IN (
       'bindfs',
       'vim',

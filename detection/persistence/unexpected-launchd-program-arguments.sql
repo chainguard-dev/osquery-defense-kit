@@ -66,3 +66,4 @@ WHERE
   AND program_arguments NOT LIKE '/Users/%/Library/Application Support/com.grammarly.ProjectLlama/Scripts/Grammarly Uninstaller'
   AND program_arguments NOT LIKE '/Users/%/Library/Application Support/com.grammarly.ProjectLlama/Scripts/post-uninstall.sh'
   AND program_arguments NOT LIKE '%/mysqld_safe --datadir=%'
+  AND program_arguments NOT LIKE '/opt/homebrew/opt/socket_vmnet/bin/socket_vmnet --vmnet-gateway=% /opt/homebrew/var/run/socket_vmnet'

@@ -57,6 +57,7 @@ WHERE
     '/usr/bin/containerd-shim-runc-v2',
     '/usr/bin/crond',
     '/usr/bin/dbus-broker',
+    '/usr/bin/nvidia-powerd',
     '/usr/bin/dbus-broker-launch',
     '/usr/bin/dbus-daemon',
     '/usr/bin/dbus-launch',
@@ -137,6 +138,7 @@ WHERE
   AND p.cmdline NOT IN (
     'xargs logger -s',
     '/usr/bin/xargs',
+    '/usr/bin/python3 /usr/sbin/lvmdbusd',
     '/usr/bin/python3 -s /usr/sbin/firewalld --nofork --nopid',
     '/usr/bin/python /usr/bin/firewalld --nofork --nopid',
     '/usr/bin/python3 /usr/libexec/blueman-mechanism',

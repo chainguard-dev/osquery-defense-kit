@@ -52,6 +52,7 @@ WHERE
       OR file.path LIKE '%/bin/%-gen'
       OR file.path LIKE '%/bin/%'
       OR file.path LIKE '%/CCLBS/%'
+      OR file.path LIKE '/tmp/%/target/debug/build/%'
       OR file.path LIKE '%/ko/%'
       OR file.path LIKE '%/pdf-tools/%'
       OR file.path LIKE '%/tmp/epdf%'

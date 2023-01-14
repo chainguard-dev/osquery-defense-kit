@@ -42,6 +42,7 @@ WHERE
     'gdm-session-wor',
     'fprintd',
     'gpg-agent',
+    'systemd-userdbd',
     'nginx',
     'sshd',
     'zfs',

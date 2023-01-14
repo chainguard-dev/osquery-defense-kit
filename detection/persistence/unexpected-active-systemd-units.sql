@@ -127,6 +127,7 @@ WHERE
         'firewalld.service,firewalld - dynamic firewall daemon,,600',
         'firewall.service,Firewall,,1500',
         'flatpak-system-helper.service,flatpak system helper,,200',
+        'lvm2-lvmdbusd.service,LVM2 D-Bus service,,100',
         'fprintd.service,Fingerprint Authentication Daemon,,800',
         'fprintd.service,Fingerprint Authentication Daemon,,900',
         'fstrim.service,Discard unused blocks on filesystems from /etc/fstab,,400',
