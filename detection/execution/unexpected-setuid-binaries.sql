@@ -157,6 +157,7 @@ FROM
           '/bin/su',
           '/bin/sudo',
           '/bin/firejail',
+          '/sbin/firejail',
           '/usr/bin/firejail',
           '/usr/sbin/firejail',
           '/bin/sudoedit',

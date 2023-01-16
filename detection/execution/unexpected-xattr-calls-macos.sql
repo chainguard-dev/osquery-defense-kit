@@ -49,21 +49,17 @@ FROM process_events pe
   LEFT JOIN signature ON pp.path = signature.path
   LEFT JOIN signature esignature ON ppe.path = esignature.path
 WHERE pe.path = '/usr/bin/xattr'
-  AND pe.time > (strftime('%s', 'now') -300)
+  AND pe.time > (strftime('%s', 'now') -30000)
+  AND cmd != '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app'
   AND NOT (
-    pe.euid > 500 AND
-    cmd LIKE '%xattr -l %'
-  )
-  AND NOT cmd IN (
-    '/usr/bin/xattr -r -d com.apple.quarantine /Applications/1Password.app'
+    pe.euid > 500
+    AND cmd LIKE '%xattr -l %'
   )
   AND NOT (
-    cmd = '/usr/bin/xattr -h'
+    pe.euid > 500
+    AND cmd = '/usr/bin/xattr -h'
     AND parent_cmd LIKE '%/opt/homebrew/bin/brew%'
   )
-  -- 0002 is downloaded, but never opened
-  AND NOT cmd LIKE '/usr/bin/xattr -w com.apple.quarantine 0002;%'
-  -- 0181 seems the same?
-  AND NOT cmd LIKE '/usr/bin/xattr -w com.apple.quarantine 0181;%'
-  AND NOT cmd LIKE '/usr/bin/xattr -p com.apple.quarantine %'
-GROUP BY pe.pid
+  AND cmd NOT LIKE '/usr/bin/xattr -w com.apple.quarantine 0002;%'
+  AND cmd NOT LIKE '/usr/bin/xattr -w com.apple.quarantine 0181;%'
+GROUP BY pe.pid, cmd

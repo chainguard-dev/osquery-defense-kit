@@ -234,6 +234,7 @@ WHERE
         'plocate-updatedb.service,Update the plocate database,,200',
         'plocate-updatedb.timer,Update the plocate database daily,,100',
         'plymouth-quit-wait.service,Hold until boot process finishes up,,200',
+        'plymouth-quit.service,Terminate Plymouth Boot Screen,,200',
         'plymouth-read-write.service,Tell Plymouth To Write Out Runtime Data,,200',
         'plymouth-start.service,Show Plymouth Boot Screen,,500',
         'plymouth-start.service,Show Plymouth Boot Screen,,600',
