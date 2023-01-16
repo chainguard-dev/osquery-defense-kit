@@ -9,7 +9,7 @@ SELECT
   p.pid,
   p.path,
   p.name AS child_name,
-  p.cmdline,
+  p.cmdline AS cmd,
   p.cwd,
   p.euid,
   p.parent,
@@ -98,6 +98,11 @@ WHERE
     p.euid > 500
     AND parent_name = 'bash'
     AND parent_cmd LIKE 'bash %/bin/go-build %'
+  )
+  AND NOT (
+    p.euid > 500
+    AND parent_name = 'ruby'
+    AND p.cmdline LIKE '/usr/bin/curl --disable --cookie /dev/null --globoff --show-error --user-agent Homebrew/%'
   )
 GROUP BY
   p.pid

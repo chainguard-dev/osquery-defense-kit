@@ -113,3 +113,8 @@ WHERE
     AND file.size < 3000
     AND file.mode = '0777'
   )
+  AND NOT (
+    file.path LIKE '/var/folders/%/T/libjansi-%.jnilib'
+    AND file.size < 40000
+    AND file.uid = 501
+  )

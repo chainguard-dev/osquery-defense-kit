@@ -168,6 +168,7 @@ WHERE
     'true,,Save to Pocket,niloccemoadcdkdjlinkgdfekeahmflj,tabs, contextMenus, cookies, storage',
     'true,,Secure Shell,iodihamcpbpeioajjeobimgagajmlibd,clipboardRead, clipboardWrite, contextMenus, idle, notifications, storage, terminalPrivate, unlimitedStorage, fileSystemProvider, accessibilityFeatures.read',
     'true,,Secure Shell,iodihamcpbpeioajjeobimgagajmlibd,clipboardRead, clipboardWrite, contextMenus, idle, notifications, storage, terminalPrivate, unlimitedStorage, fileSystemProvider, accessibilityFeatures.read, crashReportPrivate, metricsPrivate',
+    'true,,Selenium IDE,mooikfkahbdckldjjndioackbalphokd,tabs, activeTab, contextMenus, downloads, webNavigation, storage, debugger, <all_urls>',
     'true,,Send to Kindle for Google Chrome™,cgdjpilhipecahhcilnafpblkieebhea,tabs, activeTab, storage, unlimitedStorage, alarms, scripting',
     'true,,Send to Kindle for Google Chrome™,cgdjpilhipecahhcilnafpblkieebhea,tabs, <all_urls>, storage, unlimitedStorage',
     'true,,Session Buddy,edacconmaakjimmfgnblocblbcdcpbko,tabs, unlimitedStorage',

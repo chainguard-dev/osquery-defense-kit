@@ -32,6 +32,7 @@ WHERE
     '/opt/1Password/1Password-BrowserSupport',
     '/opt/1Password/1Password-KeyringHelper',
     '/usr/bin/keybase-redirector',
+    '/usr/lib/polkit-1/polkit-agent-helper-1',
     '/usr/bin/doas',
     '/usr/bin/fusermount',
     '/usr/bin/fusermount3',

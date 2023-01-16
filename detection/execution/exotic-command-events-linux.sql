@@ -74,6 +74,7 @@ WHERE
     OR basename LIKE '%attack%'
     -- Unusual behaviors
     OR cmd LIKE '%ufw disable%'
+    OR cmd LIKE '%powershell%'
     OR cmd LIKE '%iptables -P % ACCEPT%'
     OR cmd LIKE '%iptables -F%'
     OR cmd LIKE '%chattr -ia%'
@@ -152,7 +153,7 @@ WHERE
   AND NOT cmd LIKE '%modprobe overlay'
   AND NOT cmd LIKE '%modprobe aufs'
   AND NOT cmd LIKE 'modprobe --all%'
-  AND NOT cmd IN ('lsmod')
+  AND NOT cmd LIKE 'modinfo -k%'
   -- Invalid command from someones tmux environment
   AND NOT cmd LIKE 'pkill -f cut -c3%'
   AND NOT cmd LIKE 'dirname %history'

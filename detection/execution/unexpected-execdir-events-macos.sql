@@ -17,6 +17,11 @@ SELECT
   REGEX_MATCH (p.path, '(/.*?/.*?/.*?)/', 1) AS top_dir, -- 3 levels deep
   REPLACE(file.directory, u.directory, '~') AS homedir,
   REGEX_MATCH (
+    REPLACE(f.directory, u.directory, '~'),
+    '(~/.*?/.*?/.*?/)',
+    1
+  ) AS top3_homedir,
+  REGEX_MATCH (
     REPLACE(file.directory, u.directory, '~'),
     '(~/.*?/)',
     1
@@ -116,6 +121,11 @@ WHERE
     '~/.magefile',
     '~/Downloads/protoc/bin',
     '~/projects/go/bin'
+  )
+  AND top3_homedir NOT IN (
+    '~/Library/Application Support/com.elgato.StreamDeck/',
+    '~/Library/Caches/snyk/',
+    '~/Library/Application Support/BraveSoftware/'
   )
   AND top_homedir NOT IN (
     '~/Applications/',

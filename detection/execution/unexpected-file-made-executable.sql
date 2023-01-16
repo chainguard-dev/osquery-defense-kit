@@ -47,10 +47,9 @@ AND (
   OR cmd LIKE '%chmod 1%'
   OR cmd LIKE '%chmod +%x'
 )
-AND NOT (
-  cmd LIKE 'chmod 700 /tmp/apt-key-gpghome.%'
-  OR cmd like 'chmod 700 /home/%/snap/firefox/%/.config'
-  OR cmd = 'chmod 755 /usr/local/share/ca-certificates'
-)
+AND cmd NOT LIKE 'chmod 700 /tmp/apt-key-gpghome.%'
+AND cmd NOT LIKE 'chmod 700 /home/%/snap/%/.config'
+AND cmd NOT LIKE 'chmod 755 /home/%/.gradle/wrapper/dists/gradle-%-bin/%bin/gradle'
+AND cmd NOT IN ('chmod 755 /usr/local/share/ca-certificates')
 AND NOT parent_cgroup LIKE '/system.slice/docker-%'
 GROUP BY pe.pid

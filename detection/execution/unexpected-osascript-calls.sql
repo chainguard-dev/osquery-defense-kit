@@ -82,5 +82,7 @@ WHERE
       )
     )
   )
+  -- The following apply to all uids
+  AND NOT cmd = 'osascript -e user locale of (get system info)'
 GROUP BY
   pe.pid

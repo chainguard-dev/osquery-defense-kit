@@ -141,7 +141,7 @@ WHERE
     )
     OR child_cmd LIKE '/bin/bash /usr/local/Homebrew/Library%'
     OR child_cmd LIKE '/bin/sh -c pkg-config %'
-    OR child_cmd LIKE '/bin/sh %google-cloud-sdk/bin/docker-credential-gcloud get'
+    OR child_cmd LIKE '/bin/sh %/docker-credential-gcloud get'
     OR child_cmd LIKE '%/bash -e%/bin/as -arch%'
     OR gparent_cmd LIKE '/bin/bash /usr/local/bin/brew%'
     OR gparent_cmd LIKE '/usr/bin/python3 -m py_compile %'
