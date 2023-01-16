@@ -41,6 +41,7 @@ WHERE
     'systemd-udevd',
     'gdm-session-wor',
     'fprintd',
+    'systemd',
     'gpg-agent',
     'systemd-userdbd',
     'nginx',
