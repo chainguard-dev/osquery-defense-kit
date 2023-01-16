@@ -35,6 +35,8 @@ WHERE
   AND file.size > 0
   AND file.size < 10000
   AND file.type = 'regular'
+  AND p.cwd != ""
+  AND p.cwd IS NOT NULL
   AND p.path NOT LIKE '%.sh'
   AND p.path NOT LIKE '%.py'
   AND p.path NOT LIKE '%.rb'

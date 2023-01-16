@@ -51,10 +51,19 @@ WHERE
     '500,gitsign-credential-cache,a.out,',
     '500,GitterHelperApp,com.troupe.gitter.mac.GitterHelperApp,Developer ID Application: Troupe Technology Limited (A86QBWJ43W)',
     '500,gopls,a.out,',
+    '500,ipcserver,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '500,gpg-agent,gpg-agent,',
+    '500,cpu,cpu-555549441132dc6b7af538428ce3359ae94eab37,',
     '500,ipcserver.old,,',
+    '500,vim,vim,',
+    '500,gopls,gopls,',
+    '500,TwitchStudioStreamDeck,TwitchStudioStreamDeck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
+    '500,vim,,',
     '500,kubectl,a.out,',
+    '500,cosign,a.out,',
+    '500,sdzoomplugin,,',
     '500,lua-language-server,lua-language-server,',
+    '500,sdaudioswitch,sdaudioswitch,',
     '500,Magnet,com.crowdcafe.windowmagnet,Apple Mac OS Application Signing',
     '500,Mattermost Helper,Mattermost.Desktop.helper,Apple Mac OS Application Signing',
     '500,Mattermost Helper (Renderer),Mattermost.Desktop.helper.Renderer,Apple Mac OS Application Signing',
@@ -76,9 +85,14 @@ WHERE
   )
   -- TODO: Narrow this down
   AND NOT p.path LIKE '/opt/homebrew/Cellar/%'
+  AND NOT p.path LIKE '/usr/local/Cellar/%/bin/%'
   AND NOT (
     p.path LIKE '/Users/%/homebrew/Cellar/%'
     AND p.name = 'limactl'
+  )
+  AND NOT (
+    p.path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/com.elgato.cpu.sdPlugin/cpu'
+    AND p.name = 'cpu'
   )
   AND NOT p.path IN ('/opt/socket_vmnet/bin/socket_vmnet')
 GROUP BY

@@ -19,6 +19,11 @@ SELECT
   REPLACE(f.directory, u.directory, '~') AS homedir,
   REGEX_MATCH (
     REPLACE(f.directory, u.directory, '~'),
+    '(~/.*?/.*?/.*?/)',
+    1
+  ) AS top3_homedir,
+  REGEX_MATCH (
+    REPLACE(f.directory, u.directory, '~'),
     '(~/.*?/)',
     1
   ) AS top_homedir, -- 1 level deep
@@ -113,6 +118,7 @@ WHERE
     '~/bin/',
     '~/.cargo/',
     '~/code/',
+    '~/sigstore/',
     '~/Code/',
     '~/.config/',
     '~/dev/',
@@ -137,6 +143,11 @@ WHERE
     '~/.tflint.d/',
     '~/.vscode/',
     '~/.vs-kubernetes/'
+  )
+  AND top3_homedir NOT IN (
+    '~/Library/Application Support/com.elgato.StreamDeck/',
+    '~/Library/Caches/snyk/',
+    '~/Library/Application Support/BraveSoftware/'
   )
   -- Locally built executables
   AND NOT (
@@ -164,7 +175,6 @@ WHERE
   AND homedir NOT LIKE '~/.local/%/packages/%'
   AND homedir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
   AND homedir NOT LIKE '~/Library/Application Support/cloud-code/bin/versions/%'
-
   -- Allow these anywhere (put last because it's slow to query signatures)
   AND signature.authority NOT IN (
     'Apple iPhone OS Application Signing',

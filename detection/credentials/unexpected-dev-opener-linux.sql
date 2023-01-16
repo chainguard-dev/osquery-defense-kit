@@ -186,6 +186,7 @@ WHERE
     '/dev/mapper/control,gpartedbin',
     '/dev/zfs,zed',
     '/dev/zfs,zfs',
+    '/dev/zfs,',
     '/dev/zfs,zpool'
   )
   -- Halflife
@@ -209,3 +210,4 @@ WHERE
   )
 GROUP BY
   pof.pid
+

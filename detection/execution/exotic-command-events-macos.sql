@@ -68,6 +68,7 @@ WHERE
     OR cmd LIKE '%chrome%-load-extension%' -- Known attack scripts
     OR basename LIKE '%pwn%'
     OR basename LIKE '%attack%' -- Unusual behaviors
+    OR cmd LIKE '%powershell%'
     OR cmd LIKE '%chattr -ia%'
     OR cmd LIKE '%chmod%777 %'
     OR cmd LIKE '%touch%acmr%'
@@ -137,6 +138,7 @@ WHERE
     OR p.parent = -1
   )
   AND NOT cmd LIKE '/bin/launchctl load -wF /Users/%/Library/PreferencePanes/../LaunchAgents/com.adobe.GC.Invoker-1.0.plist'
+  AND NOT cmd LIKE '/bin/launchctl load -w /Users/%/Library/LaunchAgents/keybase.%.plist'
   AND NOT cmd LIKE '-history%'
   AND NOT cmd LIKE '/bin/rm -f /tmp/periodic.%'
   AND NOT cmd LIKE 'rm -f /tmp/locate%/_updatedb%'

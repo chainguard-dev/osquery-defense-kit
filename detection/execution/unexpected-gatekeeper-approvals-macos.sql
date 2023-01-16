@@ -31,9 +31,11 @@ WHERE
   AND gap.path NOT LIKE '/usr/local/bin/%'
   AND gap.path NOT LIKE '/Users/%/%-darwin-amd64'
   AND gap.path NOT LIKE '/Users/%/%-darwin-arm64'
-  AND gap.path NOT LIKE '/Users/%/%_darwin_amd64'
-  AND gap.path NOT LIKE '/Users/%/%_darwin_arm64'
+  AND gap.path NOT LIKE '/Users/%/%_darwin_amd64%'
+  AND gap.path NOT LIKE '/Users/%/%_darwin_arm64%'
   AND gap.path NOT LIKE '/Users/%/configure'
   AND gap.path NOT LIKE '/Users/%/trivy'
+  AND gap.path NOT LIKE '/Users/%/crane'
+  AND gap.path NOT LIKE '/Users/%/bom'
 GROUP BY
   gap.requirement
