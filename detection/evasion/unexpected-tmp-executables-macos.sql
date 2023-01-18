@@ -127,5 +127,10 @@ WHERE (
     file.filename IN ("configure", "mkinstalldirs")
     AND magic.data = "POSIX shell script, ASCII text executable"
   )
-  AND NOT magic.data = 'JSON data'
-  AND NOT magic.data LIKE 'ELF %-bit %SB executable%'
+  AND NOT (
+    magic.data IS NOT NULL
+    AND (
+        magic.data = 'JSON data'
+        OR magic.data LIKE 'ELF %-bit %SB executable%'
+    )
+  )

@@ -45,21 +45,23 @@ WHERE (
       OR file.path LIKE '/tmp/go.%.sum'
       OR file.path LIKE '/tmp/guile-%/guile-%'
       OR file.path LIKE '/tmp/src/%'
+      OR file.path LIKE '/tmp/%/src/%'
+      OR file.path LIKE '/tmp/%/git/%'
+      OR file.path LIKE '/tmp/%/ci/%'
       OR file.path LIKE '/tmp/kots/%'
       OR file.path LIKE '/tmp/terraformer/%'
       OR file.path LIKE '/tmp/tmp.%'
       OR file.path LIKE '%/bin/%-gen'
-      OR file.path LIKE '%/bin/%'
-      OR file.path LIKE '%/sbin/%'
-      OR file.path LIKE '%/CCLBS/%'
       OR file.path LIKE '/tmp/%/target/debug/build/%'
       OR file.path LIKE '%/ko/%'
       OR file.path LIKE '%/pdf-tools/%'
       OR file.path LIKE '%/tmp/epdf%'
+      OR file.path LIKE "/tmp/%/gradlew"
       OR -- These regular expressions can be narrowed down
       (
         file.size < 50000
         AND file.uid > 500
+        AND file.filename LIKE "%.%"
         AND extension IN (
           'adoc',
           'bat',
@@ -78,7 +80,6 @@ WHERE (
           'yaml',
           'yml'
         )
-        AND magic.data NOT LIKE "ELF 64-bit LSB%"
       )
     )
   ) -- Nix
@@ -118,40 +119,38 @@ WHERE (
   AND NOT (
     file.type = 'regular'
     AND size < 10
-  ) -- Common shell scripts
-  AND NOT (
-    file.filename IN ("configure", "mkinstalldirs")
-    AND magic.data = "POSIX shell script, ASCII text executable"
   )
-  AND NOT (
-    (
-      file.directory LIKE "%/lib"
-      OR file.directory LIKE "%/lib64"
-    )
-    AND file.uid > 500
-    AND (
-      file.filename LIKE "%.so.%"
-      OR file.filename LIKE "%.so"
-    )
-    AND (
-      magic.data LIKE "ELF 64-bit LSB shared object%"
-      OR magic.data LIKE "symbolic link to %"
-    )
-  ) -- Binaries we might actually see
+ -- Binaries we might actually see legitimately
   AND NOT (
     file.path LIKE '/tmp/%'
     AND file.uid > 500
-    AND magic.data LIKE "ELF 64-bit LSB executable%"
     AND (
       file.filename LIKE "%ctl"
       OR file.filename LIKE "%adm"
       OR file.filename LIKE "%-cli"
     )
   )
+
+  -- All checks with magic.data must first check for a lack of NULL value,
+  -- otherwise you filter out platforms without magic.data.
   AND NOT (
-    file.filename LIKE '%.js'
-    AND file.uid > 500
-    AND magic.data LIKE "Unicode text%"
+    file.uid > 500
+    AND magic.data IS NOT NULL
+    AND (
+      magic.data IN (
+        "POSIX shell script, ASCII text executable",
+        "JSON data"
+      )
+      OR magic.data LIKE "Unicode text%"
+      OR magic.data LIKE "gzip compressed data%"
+    )
   )
-  AND NOT magic.data = 'JSON data'
-  AND NOT magic.data LIKE 'gzip compressed data%'
+  AND NOT (
+    file.directory LIKE "%/lib"
+    OR file.directory LIKE "%/lib64"
+    AND file.uid > 500
+    AND (
+      file.filename LIKE "%.so.%"
+      OR file.filename LIKE "%.so"
+    )
+  )
