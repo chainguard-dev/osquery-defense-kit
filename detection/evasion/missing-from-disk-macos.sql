@@ -54,6 +54,7 @@ WHERE
         '/Applications/Slack.app/Contents/Frameworks/Slack Helper.app/Contents/MacOS/Slack Helper'
       )
       OR cmd LIKE '/opt/homebrew/Cellar/%'
+      OR p.path LIKE '/Users/%/Library/Application Support/Steam/Steam.AppBundle/Steam/Contents/MacOS/ipcserver.old'
       OR p.path LIKE '/opt/homebrew/Cellar/%/bin/%'
       OR p.path LIKE '/private/var/folders/zz/%/T/PKInstallSandboxTrash/%.sandboxTrash/%'
       OR p.path LIKE '/Users/%/node_modules/.pnpm/%'

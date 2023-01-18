@@ -23,4 +23,4 @@ FROM
 WHERE
   p.time > (strftime('%s', 'now') -60)
   AND file.mode NOT LIKE '0%'
-  AND p.cmdline_size > 1024
+  AND p.cmdline_size > 2048

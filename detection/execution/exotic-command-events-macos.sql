@@ -9,43 +9,53 @@
 -- tags: transient process events
 -- platform: darwin
 -- interval: 45
-SELECT
-  p.pid,
-  p.path,
-  REPLACE(
-    p.path,
-    RTRIM(p.path, REPLACE(p.path, '/', '')),
-    ''
-  ) AS basename,
-  -- On macOS there is often a trailing space
-  TRIM(p.cmdline) AS cmd,
-  p.mode,
-  p.cwd,
-  p.euid,
-  p.parent,
-  p.syscall,
-  hash.sha256,
-  pp.path AS parent_path,
-  pp.name AS parent_name,
-  TRIM(pp.cmdline) AS parent_cmd,
-  TRIM(ppp.cmdline) AS gparent_cmd,
-  pp.euid AS parent_euid,
-  ppp.path AS gparent_path,
-  ppp.name AS gparent_name,
-  phash.sha256 AS parent_sha256,
-  gphash.sha256 AS gparent_sha256
-FROM
-  uptime,
-  process_events p
-  LEFT JOIN processes pp ON p.parent = pp.pid
-  LEFT JOIN processes ppp ON pp.parent = ppp.pid
-  LEFT JOIN hash ON p.path = hash.path
-  LEFT JOIN hash AS phash ON pp.path = phash.path
-  LEFT JOIN hash AS gphash ON ppp.path = gphash.path
+SELECT pe.path AS path,
+  REGEX_MATCH (pe.path, '.*/(.*)', 1) AS name,
+  TRIM(pe.cmdline) AS cmd,
+  pe.pid AS pid,
+  pe.euid AS euid,
+  pe.parent AS parent_pid,
+  TRIM(IIF(pp.cmdline != NULL, pp.cmdline, ppe.cmdline)) AS parent_cmd,
+  TRIM(IIF(pp.path != NULL, pp.path, ppe.path)) AS parent_path,
+  REGEX_MATCH (
+    IIF(pp.path != NULL, pp.path, ppe.path),
+    '.*/(.*)',
+    1
+  ) AS parent_name,
+  TRIM(IIF(pp.path != NULL, hash.sha256, ehash.sha256)) AS parent_hash,
+  TRIM(IIF(gp.cmdline != NULL, gp.cmdline, gpe.cmdline)) AS gparent_cmd,
+  TRIM(IIF(gp.path != NULL, gp.path, gpe.path)) AS gparent_path,
+  REGEX_MATCH (
+    IIF(gp.path != NULL, gp.path, gpe.path),
+    '.*/(.*)',
+    1
+  ) AS gparent_name,
+  IIF(pp.parent != NULL, pp.parent, ppe.parent) AS gparent_pid,
+  IIF(
+    signature.identifier != NULL,
+    signature.identifier,
+    esignature.identifier
+  ) AS parent_identifier,
+  IIF(
+    signature.authority != NULL,
+    signature.authority,
+    esignature.authority
+  ) AS parent_authority
+FROM process_events pe
+  LEFT JOIN processes p ON pe.pid = p.pid
+  LEFT JOIN processes pp ON pe.parent = pp.pid
+  LEFT JOIN process_events ppe ON pe.parent = ppe.pid
+  LEFT JOIN processes gp ON gp.pid = pp.parent
+  LEFT JOIN process_events gpe ON ppe.parent = gpe.pid
+  LEFT JOIN hash ON pp.path = hash.path
+  LEFT JOIN hash ehash ON ppe.path = ehash.path
+  LEFT JOIN signature ON pp.path = signature.path
+  LEFT JOIN signature esignature ON ppe.path = esignature.path
 WHERE
-  p.time > (strftime('%s', 'now') -45)
+  pe.time > (strftime('%s', 'now') -45)
+  AND pe.status = 0
   AND (
-    basename IN (
+    name IN (
       'bitspin',
       'bpftool',
       'csrutil',
@@ -66,8 +76,8 @@ WHERE
     ) -- Chrome Stealer
     OR cmd LIKE '%set visible of front window to false%'
     OR cmd LIKE '%chrome%-load-extension%' -- Known attack scripts
-    OR basename LIKE '%pwn%'
-    OR basename LIKE '%attack%' -- Unusual behaviors
+    OR name LIKE '%pwn%'
+    OR name LIKE '%attack%' -- Unusual behaviors
     OR cmd LIKE '%powershell%'
     OR cmd LIKE '%chattr -ia%'
     OR cmd LIKE '%chmod%777 %'
@@ -79,7 +89,7 @@ WHERE
     OR cmd LIKE '%killall Terminal%'
     OR cmd LIKE '%iptables stop'
     OR (
-      p.euid = 0
+      pe.euid = 0
       AND (
         cmd LIKE '%pkill -f%'
         OR cmd LIKE '%xargs kill -9%'
@@ -114,7 +124,7 @@ WHERE
     OR INSTR(cmd, 'Socket.') > 0
   ) -- Things that could reasonably happen at boot.
   AND NOT (
-    p.path = '/usr/bin/mkfifo'
+    pe.path = '/usr/bin/mkfifo'
     AND cmd LIKE '%/org.gpgtools.log.%/fifo'
   )
   AND NOT (
@@ -135,7 +145,7 @@ WHERE
       'xpcproxy com.apple.Safari.History'
     )
     -- The source of these commands is still a mystery to me.
-    OR p.parent = -1
+    OR pe.parent = -1
   )
   AND NOT cmd LIKE '/bin/launchctl load -wF /Users/%/Library/PreferencePanes/../LaunchAgents/com.adobe.GC.Invoker-1.0.plist'
   AND NOT cmd LIKE '/bin/launchctl load -w /Users/%/Library/LaunchAgents/keybase.%.plist'
@@ -149,3 +159,4 @@ WHERE
   AND NOT cmd LIKE '%find /Applications/LogiTuneInstaller.app -type d -exec chmod 777 {}%'
   AND NOT cmd LIKE '/bin/rm -f /tmp/com.adobe.%.updater/%'
   AND NOT cmd LIKE '%history'
+  AND NOT name IN ('cc1', 'compile')

@@ -28,8 +28,8 @@ FROM
   processes p
   LEFT JOIN hash ON p.path = hash.path
 WHERE
-  bytes_per_second > 3000000
-  AND age > 120
+  bytes_per_second > 6500000
+  AND age > 30
   AND pid > 2
   AND p.path NOT IN (
     '/bin/bash',
@@ -38,6 +38,7 @@ WHERE
     '/usr/bin/apt',
     '/usr/bin/aptd',
     '/usr/bin/pacman',
+    '/usr/bin/git',
     '/usr/bin/bash',
     '/usr/lib/baloo_file_extractor',
     '/usr/bin/bwrap',
@@ -114,6 +115,7 @@ WHERE
     'esbuild',
     'firefox',
     'fsdaemon',
+    'docker-index',
     'go',
     'goland',
     'node',

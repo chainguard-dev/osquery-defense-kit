@@ -59,6 +59,8 @@ FROM
 WHERE
   pe.path IN ('/usr/bin/osascript', '/usr/bin/osacompile')
   AND pe.time > (strftime('%s', 'now') -900)
+  -- Only include successful executions: On macOS, process_events includes unsuccessful path lookups!
+  AND pe.status = 0
   AND NOT (
     pe.euid > 500
     AND (
@@ -85,4 +87,4 @@ WHERE
   -- The following apply to all uids
   AND NOT cmd = 'osascript -e user locale of (get system info)'
 GROUP BY
-  pe.pid
+  pe.pid, pe.cmd

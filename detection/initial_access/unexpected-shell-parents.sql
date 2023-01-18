@@ -47,6 +47,7 @@ WHERE
     'configure',
     'conmon',
     'containerd-shim',
+    'buildkit-runc',
     'dash',
     'demoit',
     'direnv',
@@ -89,6 +90,7 @@ WHERE
     'swift',
     'systemd',
     'terminator',
+    'kue',
     'test2json',
     'tmux',
     'tmux:server',
@@ -154,6 +156,10 @@ WHERE
   AND NOT (
     pp.cmdline LIKE 'perl%/help2man%'
     AND p.cmdline LIKE 'sh -c man/%'
+  )
+  AND NOT (
+    pp.cmdline LIKE '%/google-cloud-sdk/bin/docker-credential-gcloud get'
+    AND parent_path LIKE '/private/var/folders/%/T/go-build%.test'
   )
   AND NOT p.cmdline LIKE '%/Library/Apple/System/Library/InstallerSandboxes%'
   AND NOT p.cmdline LIKE '%gcloud config config-helper%'

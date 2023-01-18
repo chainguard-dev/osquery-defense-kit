@@ -8,12 +8,14 @@ SELECT
   lp.address,
   lp.port,
   lp.protocol,
-  p.uid,
+  p.euid,
+  p.parent,
   p.pid,
   p.name,
   p.path,
   p.cmdline,
   p.cgroup_path,
+  datetime(file.mtime,'unixepoch') AS mtime,
   p.cwd,
   hash.sha256,
   CONCAT (
@@ -28,6 +30,7 @@ SELECT
 FROM
   listening_ports lp
   LEFT JOIN processes p ON lp.pid = p.pid
+  LEFT JOIN file ON p.path = file.path
   LEFT JOIN hash ON p.path = hash.path
 WHERE
   port != 0

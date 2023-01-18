@@ -80,6 +80,7 @@ WHERE
     '/Library/KernelCollections/.file',
     '/Library/Keyboard Layouts/',
     '/Library/Keychains/',
+    '/Library/Tailscale/',
     '/Library/LaunchAgents/',
     '/Library/LaunchDaemons/',
     '/Library/.localized',

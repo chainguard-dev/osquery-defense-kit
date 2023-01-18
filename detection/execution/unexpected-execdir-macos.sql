@@ -106,6 +106,7 @@ WHERE
     '~/code/bin',
     '~/Downloads/google-cloud-sdk/bin',
     '~/Library/Application Support/dev.warp.Warp-Stable',
+    '~/Library/Application Support/zoom.us/Plugins/aomhost.app/Contents/MacOS',
     '~/go/bin',
     '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
     '~/.local/bin',

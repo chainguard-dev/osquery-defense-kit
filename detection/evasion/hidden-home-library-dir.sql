@@ -41,6 +41,8 @@ WHERE
     '~/Library/Finance/.finance_local_SUPPORT/_EXTERNAL_DATA',
     '~/Library/Group Containers/.SiriTodayViewExtension/Library',
     '~/Library/Group Containers/.SiriTodayViewExtension',
+    '~/Library/HomeKit/.core-cloudkit_SUPPORT/_EXTERNAL_DATA',
+    '~/Library/HomeKit/.core-cloudkit-shared_SUPPORT/_EXTERNAL_DATA',
     '~/Library/Caches/.sigstore/gitsign',
     '~/Library/GroupContainersAlias/.SiriTodayViewExtension/Library',
     '~/Library/GroupContainersAlias/.SiriTodayViewExtension'

@@ -60,6 +60,7 @@ WHERE
     '/usr/bin/docker-proxy',
     '/usr/bin/gedit',
     '/usr/bin/gnome-keyring-daemon',
+    '/usr/bin/fusermount3',
     '/usr/bin/kbfsfuse',
     '/usr/bin/keybase',
     '/usr/bin/keybase-redirector',

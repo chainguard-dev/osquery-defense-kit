@@ -138,6 +138,7 @@ WHERE
       -- Ignore local addresses (Docker development)
       OR addr NOT LIKE '%.%'
       OR ip LIKE '172.2%'
+      OR ip LIKE '192.168.%'
     )
   )
 

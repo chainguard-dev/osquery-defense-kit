@@ -49,6 +49,7 @@ WHERE
     '/usr/sbin/sysctl'
   )
   AND NOT p.parent IS NULL
+  AND NOT p.parent = -1
   AND NOT child_cmd IN (
     'sysctl -n hw.optional.arm64',
     'sysctl -n sysctl.proc_translated',
