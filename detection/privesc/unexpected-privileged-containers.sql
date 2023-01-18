@@ -31,6 +31,7 @@ WHERE
   AND image NOT IN (
     'cgr.dev/chainguard/melange',
     'cgr.dev/chainguard/sdk',
+    'moby/buildkit:buildx-stable-1',
     'cgr.dev/chainguard/wolfi-base',
     'distroless.dev/melange',
     'distroless.dev/melange:latest',

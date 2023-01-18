@@ -5,8 +5,7 @@
 --
 -- tags: persistent
 -- platform: posix
-SELECT
-  file.path,
+SELECT file.path,
   uid,
   gid,
   mode,
@@ -17,12 +16,10 @@ SELECT
   file.size,
   hash.sha256,
   magic.data
-FROM
-  file
+FROM file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE
-  (
+WHERE (
     -- Recursive queries don't seem to work well with hidden directories :(
     file.path LIKE '/tmp/%%'
     OR file.path LIKE '/tmp/.%/%%'
@@ -53,6 +50,7 @@ WHERE
       OR file.path LIKE '/tmp/tmp.%'
       OR file.path LIKE '%/bin/%-gen'
       OR file.path LIKE '%/bin/%'
+      OR file.path LIKE '%/sbin/%'
       OR file.path LIKE '%/CCLBS/%'
       OR file.path LIKE '/tmp/%/target/debug/build/%'
       OR file.path LIKE '%/ko/%'
@@ -62,7 +60,23 @@ WHERE
       (
         file.size < 50000
         AND file.uid > 500
-        AND extension IN ('sh', 'py', 'pl', 'perl', 'json', 'js', 'txt', 'log')
+        AND extension IN (
+          'adoc',
+          'bat',
+          'java',
+          'js',
+          'json',
+          'log',
+          'perl',
+          'pl',
+          'py',
+          'script',
+          'sh',
+          'txt',
+          'yaml',
+          'yml'
+        )
+        AND magic.data NOT LIKE "ELF 64-bit LSB%"
       )
     )
   ) -- Nix
@@ -91,8 +105,7 @@ WHERE
     AND (strftime('%s', 'now') - ctime) < 30
   ) -- macOS updates
   AND NOT file.directory LIKE '/tmp/msu-target-%' -- I don't know man. I don't work here.
-  AND NOT file.directory LIKE '/tmp/UpdateBrain-%/AssetData/com.apple.MobileSoftwareUpdate.UpdateBrainService.xpc/Contents/MacOS'
-  -- terraform
+  AND NOT file.directory LIKE '/tmp/UpdateBrain-%/AssetData/com.apple.MobileSoftwareUpdate.UpdateBrainService.xpc/Contents/MacOS' -- terraform
   AND NOT (
     uid > 500
     AND file.path LIKE '/tmp/terraform_%/terraform'
@@ -101,19 +114,37 @@ WHERE
     file.path LIKE '/tmp/%compressed'
     AND size < 4000
     AND uid > 500
-  )
-  -- Executables too small to even hold '#!/bin/sh\nuid'
+  ) -- Executables too small to even hold '#!/bin/sh\nuid'
   AND NOT (
     file.type = 'regular'
     AND size < 10
-  )
-  -- Common shell scripts
+  ) -- Common shell scripts
   AND NOT (
     file.filename IN ("configure", "mkinstalldirs")
     AND magic.data = "POSIX shell script, ASCII text executable"
   )
   AND NOT (
-    file.directory LIKE "%/lib"
-    AND file.filename LIKE "%.so.%"
-    AND magic.data LIKE "ELF 64-bit LSB shared object%"
+    (
+      file.directory LIKE "%/lib"
+      OR file.directory LIKE "%/lib64"
+    )
+    AND file.uid > 500
+    AND (
+      file.filename LIKE "%.so.%"
+      OR file.filename LIKE "%.so"
+    )
+    AND (
+      magic.data LIKE "ELF 64-bit LSB shared object%"
+      OR magic.data LIKE "symbolic link to %"
+    )
+  ) -- Binaries we might actually see
+  AND NOT (
+    file.path LIKE '/tmp/%'
+    AND file.uid > 500
+    AND magic.data LIKE "ELF 64-bit LSB executable%"
+    AND (
+      file.filename LIKE "%ctl"
+      OR file.filename LIKE "%adm"
+      OR file.filename LIKE "%-cli"
+    )
   )
