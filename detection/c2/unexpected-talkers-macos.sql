@@ -258,6 +258,7 @@ WHERE
     '443,6,500,terraform,terraform,Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
     '443,6,500,trivy,a.out,',
     '31580,6,500,kubectl.1.23,a.out,',
+    '443,6,500,Install,com.adobe.cc.Install,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,500,docker-index,docker-index,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '443,6,500,vegeta,a.out,',
     '443,6,500,policy-tester,a.out,',

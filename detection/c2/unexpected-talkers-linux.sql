@@ -130,6 +130,7 @@ WHERE
     '80,6,0,/usr/python3.10,0u,0g,yum',
     '80,6,0,/usr/python3.11,0u,0g,dnf',
     '80,6,0,/usr/python3.11,0u,0g,yum',
+    '80,6,0,/usr/cp,0u,0g,cp',
     '80,6,0,/usr/tailscaled,0u,0g,tailscaled',
     '80,6,0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra',
     '80,6,0,/usr/wget,0u,0g,wget',

@@ -199,6 +199,7 @@ WHERE
     '500,/usr/lens,0u,0g,lens',
     '500,/usr/melange,u,g,melange',
     '500,/usr/nautilus,0u,0g,nautilus',
+    '500,/home/Melvor Idle,500u,500g,exe',
     '500,/usr/nix,0u,0g,nix',
     '500,/usr/node,0u,0g,node',
     '500,/usr/node,0u,0g,.node2nix-wrapp',
