@@ -37,6 +37,7 @@ WHERE -- This time should match the interval
     AND NOT pe.value IN ('libfakeroot.so', '/usr/local/lib/libmimalloc.so')
     AND NOT pe.value LIKE ':/home/%/.local/share/Steam'
     AND NOT pe.value LIKE ':/home/%/.var/app/com.valvesoftware.Steam/%'
+    AND NOT pe.value LIKE ':/home/%/.local/share/Steam/ubuntu%/gameoverlayrenderer.so:/home/%/.local/share/Steam/ubuntu%/gameoverlayrenderer.so'
     AND NOT pe.value LIKE ':/snap/%'
     AND NOT pe.value LIKE '/app/bin/%'
     AND NOT pe.value LIKE 'libmozsandbox.so%'

@@ -4,7 +4,7 @@
 --   * developers building code out of /tmp
 --
 -- tags: persistent
--- platform: posix
+-- platform: macos
 SELECT file.path,
   uid,
   gid,
@@ -15,10 +15,13 @@ SELECT file.path,
   file.mtime,
   file.size,
   hash.sha256,
-  magic.data
+  magic.data,
+  signature.identifier,
+  signature.authority
 FROM file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
+  LEFT JOIN signature ON file.path = signature.path
 WHERE (
     -- Recursive queries don't seem to work well with hidden directories :(
     file.path LIKE '/tmp/%%'
@@ -49,8 +52,7 @@ WHERE (
       OR file.path LIKE '/tmp/terraformer/%'
       OR file.path LIKE '/tmp/tmp.%'
       OR file.path LIKE '%/bin/%-gen'
-      OR file.path LIKE '%/bin/%'
-      OR file.path LIKE '%/sbin/%'
+      OR file.path LIKE '/tmp/%-%/Photoshop Installer.app/Contents/%'
       OR file.path LIKE '%/CCLBS/%'
       OR file.path LIKE '/tmp/%/target/debug/build/%'
       OR file.path LIKE '%/ko/%'
@@ -66,7 +68,9 @@ WHERE (
           'java',
           'js',
           'json',
+          'nib',
           'log',
+          'strings',
           'perl',
           'pl',
           'py',
@@ -76,7 +80,7 @@ WHERE (
           'yaml',
           'yml'
         )
-        AND magic.data NOT LIKE "ELF 64-bit LSB%"
+        AND magic.data NOT LIKE "%Mach-O%"
       )
     )
   ) -- Nix
@@ -123,28 +127,5 @@ WHERE (
     file.filename IN ("configure", "mkinstalldirs")
     AND magic.data = "POSIX shell script, ASCII text executable"
   )
-  AND NOT (
-    (
-      file.directory LIKE "%/lib"
-      OR file.directory LIKE "%/lib64"
-    )
-    AND file.uid > 500
-    AND (
-      file.filename LIKE "%.so.%"
-      OR file.filename LIKE "%.so"
-    )
-    AND (
-      magic.data LIKE "ELF 64-bit LSB shared object%"
-      OR magic.data LIKE "symbolic link to %"
-    )
-  ) -- Binaries we might actually see
-  AND NOT (
-    file.path LIKE '/tmp/%'
-    AND file.uid > 500
-    AND magic.data LIKE "ELF 64-bit LSB executable%"
-    AND (
-      file.filename LIKE "%ctl"
-      OR file.filename LIKE "%adm"
-      OR file.filename LIKE "%-cli"
-    )
-  )
+  AND NOT magic.data = 'JSON data'
+  AND NOT magic.data LIKE 'ELF %-bit %SB executable%'

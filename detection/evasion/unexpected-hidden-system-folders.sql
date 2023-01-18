@@ -1,4 +1,4 @@
--- Find unexpected hidden directories in operating-system folders
+-- Find unexpected hidden directories in operating-system foldersbin/
 --
 -- references:
 --   * https://themittenmac.com/what-does-apt-activity-look-like-on-macos/
@@ -92,6 +92,7 @@ WHERE
   AND file.path NOT LIKE '/tmp/.wine-%'
   AND file.path NOT LIKE '/tmp/.%.gcode'
   AND file.path NOT LIKE '/tmp/.vbox-%-ipc/'
+  AND file.path NOT LIKE '/tmp/.io.nwjs.%'
   AND file.path NOT LIKE '/tmp/.com.google.Chrome.%'
   AND file.path NOT LIKE '/tmp/.org.chromium.Chromium%'
   AND file.path NOT LIKE '/tmp/.X1%-lock'
