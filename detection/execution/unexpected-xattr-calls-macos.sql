@@ -3,7 +3,7 @@
 -- false positives:
 --   * none observed, but they are expected
 --
--- interval: 300
+-- interval: 60
 -- platform: darwin
 -- tags: process events
 SELECT pe.path AS path,
@@ -49,8 +49,13 @@ FROM process_events pe
   LEFT JOIN signature ON pp.path = signature.path
   LEFT JOIN signature esignature ON ppe.path = esignature.path
 WHERE pe.path = '/usr/bin/xattr'
-  AND pe.time > (strftime('%s', 'now') -300)
-  AND cmd != '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app'
+  AND pe.status = 0
+  AND pe.time > (strftime('%s', 'now') -60)
+  AND cmd NOT IN (
+    '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app',
+    'xattr -d -r com.apple.quarantine /Applications/Google Chrome.app',
+    '/usr/bin/xattr -d com.apple.quarantine /Applications/Keybase.app'
+  )
   AND NOT (
     pe.euid > 500
     AND cmd LIKE '%xattr -l %'

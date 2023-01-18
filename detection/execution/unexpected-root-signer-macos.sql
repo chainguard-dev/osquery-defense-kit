@@ -47,6 +47,7 @@ WHERE
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Mersive Technologies (63B5A5WDNG)',
+    'Developer ID Application: Keybase, Inc. (99229SGT5K)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
     'Developer ID Application: Objective-See, LLC (VBG97UB4TA)',
@@ -67,5 +68,10 @@ WHERE
     signature.authority = ""
     AND p.path LIKE "/opt/%/bin/socket_vmnet"
     AND pp.path IN ("/usr/bin/sudo", "/sbin/launchd")
+  )
+  AND NOT (
+    signature.authority = "Developer ID Application: Node.js Foundation (HX7739G8FX)"
+    AND p.name = "node"
+    AND parent_name IN ("vim", "nvim")
   )
 

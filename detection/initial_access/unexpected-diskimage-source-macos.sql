@@ -15,14 +15,19 @@ SELECT
   file.size,
   datetime(file.btime, 'unixepoch') AS file_created,
   magic.data,
+  hash.sha256,
+  signature.identifier,
+  signature.authority,
   ea.value AS url,
   REGEX_MATCH (ea.value, '/[\w_-]+\.([\w\._-]+)[:/]', 1) AS domain,
   REGEX_MATCH (ea.value, '/([\w_-]+\.[\w\._-]+)[:/]', 1) AS host
 FROM
   mdfind
   LEFT JOIN file ON mdfind.path = file.path
+  LEFT JOIN hash ON mdfind.path = hash.path
   LEFT JOIN extended_attributes ea ON mdfind.path = ea.path
-  LEFT JOIN magic ON file.path = magic.path
+  LEFT JOIN magic ON mdfind.path = magic.path
+  LEFT JOIN signature ON mdfind.path = signature.path
 WHERE
   (
     mdfind.query = "kMDItemWhereFroms != '' && kMDItemFSName == '*.iso'"
@@ -58,6 +63,7 @@ WHERE
     'docker.com',
     'duckduckgo.com',
     'eclipse.org',
+    'whatsapp.com',
     'gimp.org',
     'github.io',
     'githubusercontent.com',
@@ -66,6 +72,7 @@ WHERE
     'jetbrains.com',
     'libreoffice.org',
     'loom.com',
+    'zoomgov.com',
     'microsoft.com',
     'minecraft.net',
     'mirrorservice.org',
@@ -108,6 +115,7 @@ WHERE
     'warp-releases.storage.googleapis.com',
     'mail.google.com',
     'github.com',
+    'obdev.at',
     'ubuntu.com',
     'balsamiq.com',
     'tableplus.com',
@@ -140,7 +148,10 @@ WHERE
   AND host NOT LIKE '%release%.storage.googleapis.com'
   AND NOT (
     host LIKE '%.fbcdn.net'
-    AND file.filename LIKE 'Messenger.%.dmg'
+    AND (
+      file.filename LIKE 'Messenger.%.dmg'
+      OR file.filename LIKE '%WhatsApp.dmg'
+    )
   )
 GROUP BY
   ea.value

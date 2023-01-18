@@ -89,6 +89,7 @@ WHERE
     'swift',
     'systemd',
     'terminator',
+    'kue',
     'test2json',
     'tmux',
     'tmux:server',

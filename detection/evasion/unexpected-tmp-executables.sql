@@ -11,6 +11,8 @@ SELECT
   gid,
   mode,
   REGEX_MATCH (RTRIM(file.path, '/'), '.*\.(.*?)$', 1) AS extension,
+  file.btime,
+  file.ctime,
   file.mtime,
   file.size,
   hash.sha256,
@@ -109,4 +111,9 @@ WHERE
   AND NOT (
     file.filename IN ("configure", "mkinstalldirs")
     AND magic.data = "POSIX shell script, ASCII text executable"
+  )
+  AND NOT (
+    file.directory LIKE "%/lib"
+    AND file.filename LIKE "%.so.%"
+    AND magic.data LIKE "ELF 64-bit LSB shared object%"
   )
