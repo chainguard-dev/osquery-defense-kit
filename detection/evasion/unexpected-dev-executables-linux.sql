@@ -32,6 +32,7 @@ WHERE (
     OR file.path LIKE '/dev/shm/%/.%/%%'
   )
   AND file.type = 'regular'
+  AND file.size > 64
   AND file.path NOT LIKE '%/../%'
   AND file.path NOT LIKE '%/./%'
   AND (

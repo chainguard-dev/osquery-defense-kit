@@ -39,6 +39,7 @@ WHERE
   AND exception_key NOT IN (
     '0,nix,nix,',
     '0,osqueryd,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
+    '500,bash,com.apple.bash,Software Signing',
     '500,Bitwarden,com.bitwarden.desktop,Apple Mac OS Application Signing',
     '500,Bitwarden Helper,com.bitwarden.desktop.helper,Apple Mac OS Application Signing',
     '500,Bitwarden Helper (GPU),com.bitwarden.desktop.helper.GPU,Apple Mac OS Application Signing',
@@ -75,6 +76,7 @@ WHERE
     '500,Slack,com.tinyspeck.slackmacgap,Apple Mac OS Application Signing',
     '500,Slack Helper,com.tinyspeck.slackmacgap.helper,Apple Mac OS Application Signing',
     '500,Slack Helper (GPU),com.tinyspeck.slackmacgap.helper,Apple Mac OS Application Signing',
+    '500,Slack Helper (Plugin),com.tinyspeck.slackmacgap.helper,Apple Mac OS Application Signing',
     '500,Slack Helper (Renderer),com.tinyspeck.slackmacgap.helper,Apple Mac OS Application Signing',
     '500,syncthing,syncthing,',
     '500,terraform-provider-google-beta_v4.48.0_x5,a.out,',

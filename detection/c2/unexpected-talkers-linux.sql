@@ -121,6 +121,7 @@ WHERE
     '80,6,0,/usr/bash,0u,0g,update-ca-trust',
     '80,6,100,/usr/http,0u,0g,http',
     '80,6,0,/usr/gpg,0u,0g,gpg',
+    '88,6,500,/usr/syncthing,0u,0g,syncthing',
     '80,6,0,/usr/kubelet,u,g,kubelet',
     '80,6,0,/usr/NetworkManager,0u,0g,NetworkManager',
     '80,6,0,/usr/packagekitd,0u,0g,packagekitd',

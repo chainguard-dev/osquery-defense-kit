@@ -51,6 +51,8 @@ WHERE
     'dash',
     'demoit',
     'direnv',
+    'Runner.Worker',
+    'Runner.Listener',
     'dnf',
     'doas',
     'Docker Desktop',

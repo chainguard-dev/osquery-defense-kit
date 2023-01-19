@@ -51,6 +51,7 @@ WHERE (
       OR file.path LIKE '/tmp/kots/%'
       OR file.path LIKE '/tmp/terraformer/%'
       OR file.path LIKE '/tmp/tmp.%'
+      OR file.path LIKE '/tmp/%/dist/%'
       OR file.path LIKE '%/bin/%-gen'
       OR file.path LIKE '/tmp/%/target/debug/build/%'
       OR file.path LIKE '%/ko/%'
