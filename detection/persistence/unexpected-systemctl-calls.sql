@@ -67,5 +67,10 @@ WHERE
     '/sbin/systemctl'
   )
   AND pe.time > (strftime('%s', 'now') -29000) -- Ignore partial table joins
+  AND NOT exception_key IN (
+    'systemctl,0,apt-helper,'
+  )
+  -- apt-helper form
+  AND NOT child_cmd LIKE 'systemctl is-active -q %.service'
 GROUP BY
   pe.pid
