@@ -12,4 +12,4 @@ FROM
   os_version,
   uptime
 WHERE
-  uptime.days > 60;
+  uptime.days > 90;
