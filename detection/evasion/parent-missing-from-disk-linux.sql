@@ -45,6 +45,7 @@ WHERE
     '/usr/bin/alacritty',
     '/usr/bin/dockerd',
     '/usr/bin/fusermount3',
+    '/usr/bin/osqueryd',
     '/usr/bin/yay',
     '/usr/bin/doas',
     '/usr/bin/gnome-shell',

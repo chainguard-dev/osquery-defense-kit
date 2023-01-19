@@ -67,6 +67,7 @@ WHERE
         'apcupsd.service,APC UPS Power Control Daemon for Linux,,300',
         'apparmor.service,Load AppArmor profiles,,1100',
         'apport.service,LSB: automatic crash report generation,,500',
+        'apt-daily.service,Daily apt download activities,,300',
         'apt-daily.timer,Daily apt download activities,,100',
         'apt-daily-upgrade.timer,Daily apt upgrade and clean activities,,100',
         'archlinux-keyring-wkd-sync.service,Refresh existing keys of archlinux-keyring,,900',

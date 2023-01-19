@@ -285,6 +285,9 @@ WHERE
   -- There are many signing hashes for git
   AND NOT exception_key LIKE '443,6,500,git-remote-http,git-remote-http-%'
   AND NOT exception_key LIKE '443,6,500,cargo,cargo-%'
+  -- Github actions-runner
+  AND NOT exception_key LIKE '443,6,500,Runner.Worker,apphost-%'
+  --
   -- nix-shell infects children with open connections
   AND NOT (
     parent_cmd LIKE '%/tmp/nix-shell%'
@@ -353,7 +356,7 @@ WHERE
     AND remote_port IN (53, 443, 8009, 4070, 32211)
   )
   AND NOT (
-    remote_port IN (53, 443)
+    remote_port IN (53, 80, 443)
     AND p.name LIKE 'terraform-provider-%'
   )
   AND NOT (
