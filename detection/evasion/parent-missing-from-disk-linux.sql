@@ -55,6 +55,8 @@ WHERE
     'lightdm',
     'nvim',
     'gnome-shell',
+    'fish',
+    'bash',
     'slack',
     'kube-proxy',
     'kubelet'

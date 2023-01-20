@@ -147,7 +147,7 @@ WHERE
     '80,6,500,/opt/brave,0u,0g,brave',
     '80,6,500,/opt/chrome,0u,0g,chrome',
     '3000,6,500,/opt/brave,0u,0g,brave',
-    '3000,6,500,/opt/chrome,0u,0g,chrome'
+    '3000,6,500,/opt/chrome,0u,0g,chrome',
     '5006,6,500,/opt/brave,0u,0g,brave',
     '80,6,500,/opt/firefox,0u,0g,firefox',
     '80,6,500,/opt/spotify,0u,0g,spotify',
