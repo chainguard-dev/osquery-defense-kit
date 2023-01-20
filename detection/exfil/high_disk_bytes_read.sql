@@ -150,4 +150,5 @@ WHERE
   )
   AND NOT (p.path LIKE '/home/%/Apps/PhpStorm%/jbr/bin/java')
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
-GROUP BY p.pid
+GROUP BY
+  p.pid

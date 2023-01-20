@@ -9,7 +9,8 @@
 -- tags: transient process events
 -- platform: darwin
 -- interval: 45
-SELECT pe.path AS path,
+SELECT
+  pe.path AS path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS name,
   TRIM(pe.cmdline) AS cmd,
   pe.pid AS pid,
@@ -41,7 +42,8 @@ SELECT pe.path AS path,
     signature.authority,
     esignature.authority
   ) AS parent_authority
-FROM process_events pe
+FROM
+  process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid
   LEFT JOIN processes pp ON pe.parent = pp.pid
   LEFT JOIN process_events ppe ON pe.parent = ppe.pid

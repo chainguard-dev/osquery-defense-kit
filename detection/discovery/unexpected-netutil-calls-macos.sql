@@ -48,7 +48,8 @@ SELECT
     )
   ) AS exception_key
 FROM
-  process_events pe, uptime
+  process_events pe,
+  uptime
   LEFT JOIN processes p ON pe.pid = p.pid
   LEFT JOIN processes pp ON pe.parent = pp.pid
   LEFT JOIN hash phash ON pp.path = phash.path
@@ -81,9 +82,7 @@ WHERE
       'zsh'
     )
   )
-  AND exception_key NOT IN (
-    'netstat,0,sh,sudo'
-  )
+  AND exception_key NOT IN ('netstat,0,sh,sudo')
   AND parent_cmd NOT IN ('/bin/sh /etc/periodic/daily/420.status-network')
 GROUP BY
   pe.pid

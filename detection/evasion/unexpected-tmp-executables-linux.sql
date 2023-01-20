@@ -5,7 +5,8 @@
 --
 -- tags: persistent
 -- platform: posix
-SELECT file.path,
+SELECT
+  file.path,
   uid,
   gid,
   mode,
@@ -16,10 +17,12 @@ SELECT file.path,
   file.size,
   hash.sha256,
   magic.data
-FROM file
+FROM
+  file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE (
+WHERE
+  (
     -- Recursive queries don't seem to work well with hidden directories :(
     file.path LIKE '/tmp/%%'
     OR file.path LIKE '/tmp/.%/%%'
@@ -126,7 +129,7 @@ WHERE (
     file.type = 'regular'
     AND size < 10
   )
- -- Binaries we might actually see legitimately
+  -- Binaries we might actually see legitimately
   AND NOT (
     file.path LIKE '/tmp/%'
     AND file.uid > 500
@@ -136,7 +139,6 @@ WHERE (
       OR file.filename LIKE "%-cli"
     )
   )
-
   -- All checks with magic.data must first check for a lack of NULL value,
   -- otherwise you filter out platforms without magic.data.
   AND NOT (

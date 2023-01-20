@@ -5,7 +5,8 @@
 --
 -- tags: persistent
 -- platform: macos
-SELECT file.path,
+SELECT
+  file.path,
   uid,
   gid,
   mode,
@@ -18,11 +19,13 @@ SELECT file.path,
   magic.data,
   signature.identifier,
   signature.authority
-FROM file
+FROM
+  file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
   LEFT JOIN signature ON file.path = signature.path
-WHERE (
+WHERE
+  (
     -- Recursive queries don't seem to work well with hidden directories :(
     file.path LIKE '/tmp/%%'
     OR file.path LIKE '/tmp/.%/%%'
@@ -130,7 +133,7 @@ WHERE (
   AND NOT (
     magic.data IS NOT NULL
     AND (
-        magic.data = 'JSON data'
-        OR magic.data LIKE 'ELF %-bit %SB executable%'
+      magic.data = 'JSON data'
+      OR magic.data LIKE 'ELF %-bit %SB executable%'
     )
   )

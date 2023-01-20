@@ -48,7 +48,8 @@ SELECT
     )
   ) AS exception_key
 FROM
-  process_events pe, uptime
+  process_events pe,
+  uptime
   LEFT JOIN processes p ON pe.pid = p.pid
   LEFT JOIN processes pp ON pe.parent = pp.pid
   LEFT JOIN hash phash ON pp.path = phash.path
@@ -87,6 +88,5 @@ WHERE
   AND NOT child_cmd LIKE 'systemctl show --property=%'
   AND NOT child_cmd LIKE 'systemctl % snap-kubectl-%.mount'
   AND NOT child_cmd LIKE '/usr/bin/systemctl --user set-environment DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%/bus'
-
 GROUP BY
   pe.pid
