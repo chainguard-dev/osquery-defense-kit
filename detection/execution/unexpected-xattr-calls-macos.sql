@@ -67,8 +67,12 @@ WHERE pe.path = '/usr/bin/xattr'
   )
   AND NOT (
     pe.euid > 500
+    AND cmd LIKE '%xattr -p com.apple.quarantine %'
+  )
+  AND NOT (
+    pe.euid > 500
     AND cmd = '/usr/bin/xattr -h'
-    AND parent_cmd LIKE '%/opt/homebrew/bin/brew%'
+    AND parent_cmd LIKE '%homebrew%'
   )
   AND cmd NOT LIKE '/usr/bin/xattr -w com.apple.quarantine 0002;%'
   AND cmd NOT LIKE '/usr/bin/xattr -w com.apple.quarantine 0181;%'

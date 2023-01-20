@@ -5,7 +5,7 @@
 --
 -- tags: transient process state often
 -- platform: linux
--- interval: 900
+-- interval: 600
 SELECT
   pe.path AS child_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS child_name,
@@ -67,7 +67,7 @@ WHERE
     '/usr/libexec/ApplicationFirewall/socketfilterfw'
   )
   AND uptime.total_seconds > 30
-  AND pe.time > (strftime('%s', 'now') -900) -- Ignore partial table joins
+  AND pe.time > (strftime('%s', 'now') -600) -- Ignore partial table joins
   AND pe.status == 0
   AND NOT (
     pe.euid > 500

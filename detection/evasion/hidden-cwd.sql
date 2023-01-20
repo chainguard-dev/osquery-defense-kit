@@ -107,7 +107,7 @@ WHERE
     OR dir LIKE '~/.%'
     OR dir LIKE '~/code/%'
     OR dir LIKE '~/%/.config/nvim'
-    OR dir LIKE '~/dev/%/dots/%/.config/%'
+    OR dir LIKE '~/dev/%/dots/%/.config%'
     OR dir LIKE '~/%/.git'
     OR dir LIKE '~/%/.github%'
     OR dir LIKE '~/%/github.com/%'

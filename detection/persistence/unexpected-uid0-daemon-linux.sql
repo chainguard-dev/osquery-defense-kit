@@ -136,17 +136,20 @@ WHERE
   )
   -- Because I don't want to whitelist all of Python3
   AND p.cmdline NOT IN (
-    'xargs logger -s',
-    '/usr/bin/xargs',
-    '/usr/bin/python3 /usr/sbin/lvmdbusd',
+    '/bin/sh /usr/lib/apt/apt.systemd.daily lock_is_held',
+    '/sbin/init splash',
+    '/usr/bin/monitorix -c /etc/monitorix/monitorix.conf -p /run/monitorix.pid',
     '/usr/bin/python3 -s /usr/sbin/firewalld --nofork --nopid',
-    '/usr/bin/python /usr/bin/firewalld --nofork --nopid',
-    '/usr/bin/python3 /usr/libexec/blueman-mechanism',
-    '/usr/bin/python3 /usr/sbin/execsnoop-bpfcc',
-    '/usr/bin/python3 /usr/lib/pop-transition/service.py',
-    '/usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal',
     '/usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers',
-    '/usr/bin/monitorix -c /etc/monitorix/monitorix.conf -p /run/monitorix.pid'
+    '/usr/bin/python3 /usr/bin/unattended-upgrade --download-only',
+    '/usr/bin/python3 /usr/libexec/blueman-mechanism',
+    '/usr/bin/python3 /usr/lib/pop-transition/service.py',
+    '/usr/bin/python3 /usr/sbin/execsnoop-bpfcc',
+    '/usr/bin/python3 /usr/sbin/lvmdbusd',
+    '/usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal',
+    '/usr/bin/python /usr/bin/firewalld --nofork --nopid',
+    '/usr/bin/xargs',
+    'xargs logger -s'
   )
   AND NOT p.cmdline LIKE '/usr/bin/python3 -s% /usr/sbin/firewalld%'
   AND NOT p.cmdline LIKE '/usr/bin/python3 /usr/bin/dnf %'

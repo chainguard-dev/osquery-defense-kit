@@ -11,7 +11,7 @@ SELECT
   pe.pid,
   pe.cmdline,
   REGEX_MATCH (pe.cmdline, '(\w+:\/\/.*)\b', 1) AS url,
-  REGEX_MATCH (pe.cmdline, '//(\d+\.\d+\.\d+\.\d+)[:/]', 1) AS ip,
+  REGEX_MATCH (pe.cmdline, '[ /](\d+\.\d+\.\d+\.\d+)[:/]', 1) AS ip,
   REGEX_MATCH (pe.cmdline, ':(\d+)', 1) AS port,
   REGEX_MATCH (pe.cmdline, '//([\w\-\.]+)[:/]', 1) AS addr,
   REGEX_MATCH (pe.cmdline, '//[\w\-\.]+\.(\w+)[:/]', 1) AS tld,
