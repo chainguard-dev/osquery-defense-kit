@@ -71,6 +71,7 @@ WHERE
     '500,PrinterProxy,com.apple.print.PrinterProxy,',
     '500,registry-redirect,a.out,',
     '500,rust-analyzer,rust_analyzer-d11ae4e1bae4360d,',
+    '500,Runner.Listener,apphost-55554944a938bab90f04347d83659c53dd1197d6,',
     '500,scdaemon,scdaemon,',
     '500,sdaudioswitch,,',
     '500,sdaudioswitch,sdaudioswitch,',
@@ -93,6 +94,8 @@ WHERE
     '500,WinAppHelper,,',
     '500,WinAppHelper,WinAppHelper,'
   )
+  AND NOT execption_key LIKE '500,terraform-provider-%,a.out,'
+  AND NOT exception_key LIKE '500,Runner.%,apphost-%,'
   -- TODO: Narrow this down
   AND NOT p.path LIKE '/opt/homebrew/Cellar/%'
   AND NOT p.path LIKE '/usr/local/Cellar/%/bin/%'
