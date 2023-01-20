@@ -78,6 +78,7 @@ WHERE
       'zsh,~/.Trash'
     )
     OR exception_key LIKE '%sh,~/.Trash/%'
+    OR exception_key LIKE '%sh,~/dev/%'
     OR dir IN (
       '~/.config',
       '~/.local/bin',

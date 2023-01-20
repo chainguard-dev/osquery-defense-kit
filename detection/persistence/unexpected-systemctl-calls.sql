@@ -75,18 +75,25 @@ WHERE
     'systemctl,0,,containerd-shim-runc-v2'
   )
   AND NOT child_cmd IN (
-    'systemctl status kubelet',
-    'systemctl restart cups.service',
-    'systemctl --user import-environment DISPLAY XAUTHORITY',
+    '/sbin/runlevel',
+    'systemctl is-enabled power-profiles-daemon.service',
+    'systemctl is-enabled systemd-rfkill.service',
+    'systemctl is-enabled systemd-rfkill.socket',
+    'systemctl is-enabled snapd.apparmor',
+    'systemctl is-enabled tlp.service',
+    '/bin/systemctl is-enabled -q whoopsie.path',
+    '/bin/systemctl stop --no-block nvidia-persistenced',
     'systemctl -p LoadState show cups.service',
     'systemctl --quiet is-enabled cups.service',
+    'systemctl restart cups.service',
+    'systemctl status kubelet',
     'systemctl stop kubelet',
-    '/sbin/runlevel'
+    'systemctl --user import-environment DISPLAY XAUTHORITY'
   )
   -- apt-helper form
-  AND NOT child_cmd LIKE 'systemctl is-active -q %.service'
-  AND NOT child_cmd LIKE 'systemctl show --property=%'
-  AND NOT child_cmd LIKE 'systemctl % snap-kubectl-%.mount'
-  AND NOT child_cmd LIKE '/usr/bin/systemctl --user set-environment DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%/bus'
+  AND NOT child_cmd LIKE '%systemctl is-active -q %.service'
+  AND NOT child_cmd LIKE '%systemctl show --property=%'
+  AND NOT child_cmd LIKE '%systemctl % snap-kubectl-%.mount'
+  AND NOT child_cmd LIKE '%systemctl --user set-environment DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%/bus'
 GROUP BY
   pe.pid
