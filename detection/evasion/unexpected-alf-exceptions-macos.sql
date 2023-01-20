@@ -76,6 +76,7 @@ WHERE -- NOTE:We intentionally want to preserve missing files
     ',,/usr/bin/nmblookup,',
     ',,/usr/libexec/discoveryd,'
   )
+  AND NOT exception_key LIKE ',node,/opt/homebrew/Cellar/nvm/%/versions/node/v%/bin/node,501'
   AND NOT (
     signature.identifier LIKE 'cargo-%'
     AND ae.path LIKE '/Users/%/.rustup/%'

@@ -105,6 +105,7 @@ WHERE
     '5000,6,500,ControlCenter,Software Signing',
     '5060,6,500,CommCenter,Software Signing',
     '546,17,0,configd,Software Signing',
+    '5990,6,500,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     '5900,6,0,launchd,Software Signing',
     '5900,6,0,screensharingd,Software Signing',
     '6000,6,500,X11.bin,Developer ID Application: Apple Inc. - XQuartz (NA574AWV7E)',

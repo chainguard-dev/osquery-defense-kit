@@ -69,6 +69,7 @@ WHERE
   )
   AND uptime.total_seconds > 30
   AND pe.time > (strftime('%s', 'now') -600) -- Ignore partial table joins
+  AND pe.cmdline IS NOT NULL
   AND pe.status == 0
   AND NOT (
     pe.euid > 500

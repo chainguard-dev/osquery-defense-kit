@@ -110,6 +110,7 @@ WHERE
     'containerd',
     'containerd-',
     'containerd-shim',
+    'Cisco WebEx Start',
     'darkfiles',
     'dnf',
     'esbuild',

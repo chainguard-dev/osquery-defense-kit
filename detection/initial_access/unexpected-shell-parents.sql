@@ -79,6 +79,7 @@ WHERE
     'nix',
     'nix-build',
     'nix-daemon',
+    'jetbrains_client',
     'node',
     'git-remote-https',
     'nvim',
@@ -161,10 +162,7 @@ WHERE
     pp.cmdline LIKE 'perl%/help2man%'
     AND p.cmdline LIKE 'sh -c man/%'
   )
-  AND NOT (
-    pp.cmdline LIKE '%/google-cloud-sdk/bin/docker-credential-gcloud get'
-    AND parent_path LIKE '/private/var/folders/%/T/go-build%.test'
-  )
+  AND NOT parent_path LIKE '/private/var/folders/%/T/go-build%.test'
   AND NOT p.cmdline LIKE '%/Library/Apple/System/Library/InstallerSandboxes%'
   AND NOT p.cmdline LIKE '%gcloud config config-helper%'
   AND NOT p.cmdline LIKE '%hugo/hugo server%'
