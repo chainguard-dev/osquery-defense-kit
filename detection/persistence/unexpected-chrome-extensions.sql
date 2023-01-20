@@ -143,6 +143,7 @@ WHERE
     'true,,Lucidchart Diagrams,apboafhkiegglekeafbckfjldecefkhn,unlimitedStorage, notifications, clipboardRead, clipboardWrite',
     'true,,Markdown Preview Plus,febilkbfcbhebfnokafefeacimjdckgl,storage, clipboardWrite, <all_urls>',
     'true,Marker.io,Marker.io: Visual bug reporting for websites,jofhoojcehdmaiibilpcoofpdbbddkkl,<all_urls>, notifications, contextMenus, desktopCapture',
+    'true,,Meta Pixel Helper,fdgfkebogiimcoedlicjlajpkdmockpc,storage, tabs, activeTab, webRequest, unlimitedStorage, webNavigation',
     'true,NortonLifeLock Inc,Norton Safe Web,fnpbeacklnhmkkilekogeiekaglbmmka,tabs, background, webNavigation, storage, <all_urls>, webRequest, webRequestBlocking, downloads, notifications',
     'true,NortonLifeLock Inc,Norton Safe Web,fnpbeacklnhmkkilekogeiekaglbmmka,tabs, background, webNavigation, storage, scripting, alarms, webRequest, declarativeNetRequest, declarativeNetRequestFeedback, downloads, notifications',
     'true,,NoScript,doojmbjmlfjjnbmnoijecmcbfeoakpjm,contextMenus, storage, tabs, unlimitedStorage, webNavigation, webRequest, webRequestBlocking, <all_urls>',

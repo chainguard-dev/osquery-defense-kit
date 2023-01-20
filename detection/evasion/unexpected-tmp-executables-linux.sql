@@ -50,6 +50,8 @@ WHERE (
       OR file.path LIKE '/tmp/%/ci/%'
       OR file.path LIKE '/tmp/kots/%'
       OR file.path LIKE '/tmp/bin/%'
+      OR file.path LIKE '/tmp/%/target/%'
+      OR file.path LIKE '/tmp/%/debug/%'
       OR file.path LIKE '/tmp/%/github/%'
       OR file.path LIKE '/tmp/terraformer/%'
       OR file.path LIKE '/tmp/tmp.%'
