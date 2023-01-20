@@ -37,6 +37,9 @@ WHERE
   AND filename LIKE "%-%-%.json"
   AND size BETWEEN 2311 AND 2385
   -- Don't alert on tokens that begin with the username-, as they may be personal
-  AND NOT INSTR(filename, CONCAT(u.username, "-")) == 1
+  AND NOT INSTR(filename, CONCAT (u.username, "-")) == 1
   -- Don't alert on tokens that begin with the users full name and a dash
-  AND NOT INSTR(filename, REPLACE(LOWER(TRIM(description))," ", "-")) == 1
+  AND NOT INSTR(
+    filename,
+    REPLACE(LOWER(TRIM(description)), " ", "-")
+  ) == 1

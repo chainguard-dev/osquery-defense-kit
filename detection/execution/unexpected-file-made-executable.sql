@@ -6,7 +6,8 @@
 -- interval: 600
 -- platform: posix
 -- tags: process events
-SELECT pe.path AS path,
+SELECT
+  pe.path AS path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS name,
   TRIM(pe.cmdline) AS cmd,
   pe.pid AS pid,
@@ -29,8 +30,9 @@ SELECT pe.path AS path,
     1
   ) AS gparent_name,
   IIF(pp.parent != NULL, pp.parent, ppe.parent) AS gparent_pid,
-  REGEX_MATCH(TRIM(pe.cmdline), ".* (.*?)$", 1) AS target_path
-FROM process_events pe
+  REGEX_MATCH (TRIM(pe.cmdline), ".* (.*?)$", 1) AS target_path
+FROM
+  process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid
   LEFT JOIN processes pp ON pe.parent = pp.pid
   LEFT JOIN process_events ppe ON pe.parent = ppe.pid
@@ -39,17 +41,19 @@ FROM process_events pe
   LEFT JOIN hash ON pp.path = hash.path
   LEFT JOIN hash thash ON target_path = thash.path
   LEFT JOIN hash ehash ON ppe.path = ehash.path
-WHERE pe.time > (strftime('%s', 'now') -600)
-AND pe.path LIKE '%/chmod'
-AND (
-  cmd LIKE '%chmod 7%'
-  OR cmd LIKE '%chmod 5%'
-  OR cmd LIKE '%chmod 1%'
-  OR cmd LIKE '%chmod +%x'
-)
-AND cmd NOT LIKE 'chmod 700 /tmp/apt-key-gpghome.%'
-AND cmd NOT LIKE 'chmod 700 /home/%/snap/%/.config'
-AND cmd NOT LIKE 'chmod 755 /home/%/.gradle/wrapper/dists/gradle-%-bin/%bin/gradle'
-AND cmd NOT IN ('chmod 755 /usr/local/share/ca-certificates')
-AND NOT parent_cgroup LIKE '/system.slice/docker-%'
-GROUP BY pe.pid
+WHERE
+  pe.time > (strftime('%s', 'now') -600)
+  AND pe.path LIKE '%/chmod'
+  AND (
+    cmd LIKE '%chmod 7%'
+    OR cmd LIKE '%chmod 5%'
+    OR cmd LIKE '%chmod 1%'
+    OR cmd LIKE '%chmod +%x'
+  )
+  AND cmd NOT LIKE 'chmod 700 /tmp/apt-key-gpghome.%'
+  AND cmd NOT LIKE 'chmod 700 /home/%/snap/%/.config'
+  AND cmd NOT LIKE 'chmod 755 /home/%/.gradle/wrapper/dists/gradle-%-bin/%bin/gradle'
+  AND cmd NOT IN ('chmod 755 /usr/local/share/ca-certificates')
+  AND NOT parent_cgroup LIKE '/system.slice/docker-%'
+GROUP BY
+  pe.pid

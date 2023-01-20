@@ -7,7 +7,8 @@
 --   * https://attack.mitre.org/techniques/T1070/006/ (Indicator Removal on Host: Timestomp)
 --
 -- tags: transient process state
-SELECT p.path,
+SELECT
+  p.path,
   p.cmdline,
   p.cwd,
   p.pid,
@@ -22,11 +23,13 @@ SELECT p.path,
   f.uid,
   m.path,
   f.gid
-FROM processes p
+FROM
+  processes p
   LEFT JOIN file f ON p.path = f.path
   LEFT JOIN hash h ON p.path = h.path
   LEFT JOIN magic m ON p.path = m.path
-WHERE (
+WHERE
+  (
     ctime_age_days > 1050
     OR mtime_age_days > 1050
   )
@@ -59,5 +62,6 @@ WHERE (
     'Pandora Helper',
     'dlv'
   )
-GROUP BY p.pid,
+GROUP BY
+  p.pid,
   p.path

@@ -74,4 +74,3 @@ WHERE
     AND p.name = "node"
     AND parent_name IN ("vim", "nvim")
   )
-

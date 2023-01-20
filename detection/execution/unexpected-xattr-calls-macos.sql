@@ -6,7 +6,8 @@
 -- interval: 60
 -- platform: darwin
 -- tags: process events
-SELECT pe.path AS path,
+SELECT
+  pe.path AS path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS name,
   TRIM(pe.cmdline) AS cmd,
   pe.pid AS pid,
@@ -38,7 +39,8 @@ SELECT pe.path AS path,
     signature.authority,
     esignature.authority
   ) AS parent_authority
-FROM process_events pe
+FROM
+  process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid
   LEFT JOIN processes pp ON pe.parent = pp.pid
   LEFT JOIN process_events ppe ON pe.parent = ppe.pid
@@ -48,7 +50,8 @@ FROM process_events pe
   LEFT JOIN hash ehash ON ppe.path = ehash.path
   LEFT JOIN signature ON pp.path = signature.path
   LEFT JOIN signature esignature ON ppe.path = esignature.path
-WHERE pe.path = '/usr/bin/xattr'
+WHERE
+  pe.path = '/usr/bin/xattr'
   AND pe.status = 0
   AND pe.time > (strftime('%s', 'now') -60)
   AND cmd NOT IN (
@@ -81,4 +84,6 @@ WHERE pe.path = '/usr/bin/xattr'
   )
   AND cmd NOT LIKE '/usr/bin/xattr -w com.apple.quarantine 0002;%'
   AND cmd NOT LIKE '/usr/bin/xattr -w com.apple.quarantine 0181;%'
-GROUP BY pe.pid, cmd
+GROUP BY
+  pe.pid,
+  cmd

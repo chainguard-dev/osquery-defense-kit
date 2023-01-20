@@ -9,7 +9,8 @@
 -- tags: transient process events
 -- platform: linux
 -- interval: 30
-SELECT pe.path AS path,
+SELECT
+  pe.path AS path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS child_name,
   TRIM(pe.cmdline) AS cmd,
   pe.pid AS pid,
@@ -31,7 +32,9 @@ SELECT pe.path AS path,
     1
   ) AS gparent_name,
   IIF(pp.parent != NULL, pp.parent, ppe.parent) AS gparent_pid
-FROM process_events pe, uptime
+FROM
+  process_events pe,
+  uptime
   LEFT JOIN processes p ON pe.pid = p.pid
   LEFT JOIN processes pp ON pe.parent = pp.pid
   LEFT JOIN process_events ppe ON pe.parent = ppe.pid

@@ -210,4 +210,3 @@ WHERE
   )
 GROUP BY
   pof.pid
-

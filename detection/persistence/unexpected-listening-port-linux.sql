@@ -15,7 +15,7 @@ SELECT
   p.path,
   p.cmdline,
   p.cgroup_path,
-  datetime(file.mtime,'unixepoch') AS mtime,
+  datetime(file.mtime, 'unixepoch') AS mtime,
   p.cwd,
   hash.sha256,
   CONCAT (

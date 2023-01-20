@@ -210,7 +210,8 @@ WHERE
     AND s.remote_address = '104.131.84.33' -- gatekeeper.uservers.net
   )
   AND NOT (
-    s.remote_port = 80 AND (
+    s.remote_port = 80
+    AND (
       p.cgroup_path LIKE '/system.slice/docker-%'
       OR p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
     )
