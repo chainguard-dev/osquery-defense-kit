@@ -74,6 +74,7 @@ WHERE
     'make',
     'monorail',
     'ninja',
+    'update-notifier',
     'nix',
     'nix-build',
     'nix-daemon',

@@ -122,6 +122,7 @@ WHERE
     'discord.com',
     'dl.discordapp.net',
     'obsproject.com',
+    'getkap.co',
     'www.messenger.com',
     'brave.com',
     'emacsformacosx.com',

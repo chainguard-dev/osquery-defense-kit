@@ -92,6 +92,7 @@ WHERE (
     '/var/.Parallels_swap/',
     '/var/.pwd_cache',
     '/var/root/.bash_history',
+    '/tmp/.go_version',
     '/var/root/.cache/',
     '/var/root/.CFUserTextEncoding',
     '/var/root/.forward',

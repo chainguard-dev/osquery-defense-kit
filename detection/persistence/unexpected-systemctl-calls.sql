@@ -5,7 +5,7 @@
 --
 -- tags: transient process state often
 -- platform: linux
--- interval: 900
+-- interval: 300
 SELECT
   pe.path AS child_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS child_name,
@@ -66,11 +66,22 @@ WHERE
     '/bin/systemctl',
     '/sbin/systemctl'
   )
-  AND pe.time > (strftime('%s', 'now') -29000) -- Ignore partial table joins
+  AND pe.time > (strftime('%s', 'now') -300) -- Ignore partial table joins
   AND NOT exception_key IN (
-    'systemctl,0,apt-helper,'
+    'systemctl,0,apt-helper,',
+    'systemctl,500,systemd,',
+    'systemctl,0,dash,logrotate',
+    'systemctl,0,,containerd-shim-runc-v2'
+  )
+  AND NOT child_cmd IN (
+    'systemctl status kubelet',
+    'systemctl stop kubelet',
+    '/sbin/runlevel'
   )
   -- apt-helper form
   AND NOT child_cmd LIKE 'systemctl is-active -q %.service'
+  AND NOT child_cmd LIKE 'systemctl show --property=%'
+  AND NOT child_cmd LIKE 'systemctl % snap-kubectl-%.mount'
+
 GROUP BY
   pe.pid

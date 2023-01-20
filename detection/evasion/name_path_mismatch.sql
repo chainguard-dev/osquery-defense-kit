@@ -63,6 +63,7 @@ WHERE
     'name=file,file=firefox,500',
     'name=firefox-wrappe,file=firefox,500',
     'name=firewalld,file=python3,0',
+    'name=apt,file=dash,0',
     'name=gimp,file=gimp-2,500',
     'name=gjs,file=gjs-console,120',
     'name=gjs,file=gjs-console,42',
