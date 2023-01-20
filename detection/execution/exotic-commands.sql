@@ -107,6 +107,7 @@ WHERE
     AND NOT p.path = '/usr/bin/docker'
     AND NOT parent_name IN ('sh', 'java', 'containerd-shim')
     AND NOT parent_cmd LIKE '%pipenv shell'
+    AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
   )
   OR cmd LIKE '%socat%'
   OR cmd LIKE '%SOCK_STREAM%'

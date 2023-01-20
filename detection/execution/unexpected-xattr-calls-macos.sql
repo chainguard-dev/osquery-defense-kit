@@ -53,6 +53,11 @@ WHERE pe.path = '/usr/bin/xattr'
   AND pe.time > (strftime('%s', 'now') -60)
   AND cmd NOT IN (
     '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app',
+    '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app/Contents/Library/LoginItems/1Password Launcher.app',
+    '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app/Contents/XPCServices/OP Updater Service.xpc',
+    '/usr/bin/xattr -r -d com.apple.quarantine /Applications/1Password.app',
+    '/usr/bin/xattr -d -r com.apple.quarantine /Applications/iTerm.app',
+    '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app/Contents/XPCServices/OP Updater Service.xpc/Contents/Helpers/1Password Updater.app',
     '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app/Contents/Frameworks/1Password Helper.app',
     '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app/Contents/Frameworks/1Password Helper (GPU).app',
     '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app/Contents/Frameworks/1Password Helper (Plugin).app',

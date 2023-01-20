@@ -220,6 +220,7 @@ WHERE
     '443,6,500,kubectl,a.out,',
     '443,6,500,limactl,,',
     '443,6,500,main,a.out,',
+    '443,6,500,aws,e956a0-aws,Developer ID Application: AMZN Mobile LLC (94KV3E626L)',
     '443,6,500,melange,a.out,',
     '443,6,500,minikube,,',
     '443,6,500,ngrok,darwin_amd64,Developer ID Application: ngrok LLC (TEX8MHRDQ9)',
@@ -285,8 +286,11 @@ WHERE
   -- There are many signing hashes for git
   AND NOT exception_key LIKE '443,6,500,git-remote-http,git-remote-http-%'
   AND NOT exception_key LIKE '443,6,500,cargo,cargo-%'
+  -- aws
+  AND NOT exception_key LIKE '443,6,500,aws,%-aws,Developer ID Application: AMZN Mobile LLC (94KV3E626L)'
   -- Github actions-runner
   AND NOT exception_key LIKE '443,6,500,Runner.Worker,apphost-%'
+  AND NOT exception_key LIKE '443,6,500,Runner.Listener,apphost-%'
   --
   -- nix-shell infects children with open connections
   AND NOT (

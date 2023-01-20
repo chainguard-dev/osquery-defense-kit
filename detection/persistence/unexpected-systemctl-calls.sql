@@ -75,6 +75,10 @@ WHERE
   )
   AND NOT child_cmd IN (
     'systemctl status kubelet',
+    'systemctl restart cups.service',
+    'systemctl --user import-environment DISPLAY XAUTHORITY',
+    'systemctl -p LoadState show cups.service',
+    'systemctl --quiet is-enabled cups.service',
     'systemctl stop kubelet',
     '/sbin/runlevel'
   )
@@ -82,6 +86,7 @@ WHERE
   AND NOT child_cmd LIKE 'systemctl is-active -q %.service'
   AND NOT child_cmd LIKE 'systemctl show --property=%'
   AND NOT child_cmd LIKE 'systemctl % snap-kubectl-%.mount'
+  AND NOT child_cmd LIKE '/usr/bin/systemctl --user set-environment DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%/bus'
 
 GROUP BY
   pe.pid
