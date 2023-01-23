@@ -98,6 +98,7 @@ WHERE
     OR p.name IN (
       'bindfs',
       'vim',
+      'find',
       'nvim',
       'code',
       'updatedb',
@@ -111,6 +112,7 @@ WHERE
     OR dir LIKE '~/dev/%/dots/%/.config%'
     OR dir LIKE '~/%/.git'
     OR dir LIKE '~/%/.github%'
+    OR dir LIKE '~/%/.vercel%'
     OR dir LIKE '~/%/github.com/%'
     OR dir LIKE '~/%google-cloud-sdk/.install/.backup%'
     OR dir LIKE '~/.gradle/%'

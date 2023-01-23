@@ -79,6 +79,10 @@ WHERE
   )
   AND NOT (
     pe.euid > 500
+    AND cmd LIKE '/usr/bin/xattr -w com.apple.metadata:kMDItemAlternateNames %'
+  )
+  AND NOT (
+    pe.euid > 500
     AND cmd = '/usr/bin/xattr -h'
     AND parent_cmd LIKE '%homebrew%'
   )

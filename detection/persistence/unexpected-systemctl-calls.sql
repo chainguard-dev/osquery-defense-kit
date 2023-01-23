@@ -75,14 +75,16 @@ WHERE
     'systemctl,0,,containerd-shim-runc-v2'
   )
   AND NOT child_cmd IN (
+    '/bin/systemctl is-enabled -q whoopsie.path',
+    '/bin/systemctl -q is-enabled whoopsie.path',
+    '/bin/systemctl stop --no-block nvidia-persistenced',
     '/sbin/runlevel',
     'systemctl is-enabled power-profiles-daemon.service',
+    'systemctl is-enabled snapd.apparmor',
     'systemctl is-enabled systemd-rfkill.service',
     'systemctl is-enabled systemd-rfkill.socket',
-    'systemctl is-enabled snapd.apparmor',
     'systemctl is-enabled tlp.service',
-    '/bin/systemctl is-enabled -q whoopsie.path',
-    '/bin/systemctl stop --no-block nvidia-persistenced',
+    'systemctl kill -s HUP rsyslog.service',
     'systemctl -p LoadState show cups.service',
     'systemctl --quiet is-enabled cups.service',
     'systemctl restart cups.service',

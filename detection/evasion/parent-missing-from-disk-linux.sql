@@ -47,6 +47,7 @@ WHERE
     '/usr/bin/fusermount3',
     '/usr/bin/osqueryd',
     '/usr/bin/yay',
+    '/usr/bin/sudo',
     '/usr/bin/doas',
     '/usr/bin/gnome-shell',
     '/usr/lib/systemd/systemd'

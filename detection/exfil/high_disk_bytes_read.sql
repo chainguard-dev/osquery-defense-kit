@@ -37,7 +37,7 @@ FROM
   LEFT JOIN hash AS phash ON pp.path = phash.path
   LEFT JOIN hash ON p.path = hash.path
 WHERE
-  bytes_per_second > 3500000
+  bytes_per_second > 4000000
   AND age > 180
   AND p.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p.path NOT LIKE '/System/Library/%'
@@ -64,6 +64,7 @@ WHERE
     'kube-apiserver',
     'kube-controller',
     'kube-scheduler',
+    'kue',
     'launcher',
     'LogiFacecamService',
     'nautilus',

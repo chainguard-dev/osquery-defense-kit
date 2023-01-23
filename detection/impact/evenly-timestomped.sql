@@ -40,6 +40,7 @@ WHERE
   -- false positives
   AND filename NOT IN (
     'master.passwd',
+    'COPYING',
     'NEWS',
     'printcap',
     'strace-log-merge'
@@ -47,4 +48,5 @@ WHERE
   AND file.path NOT LIKE '%/lynis%'
   AND file.path NOT LIKE '%/yelp-xsl%'
   AND file.path NOT LIKE '/etc/cups/%'
+  AND file.path NOT LIKE '/usr/share/libinput/%.quirks'
   AND file.path NOT LIKE '/usr/lib64/electron/locales/%.pak'
