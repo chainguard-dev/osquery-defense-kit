@@ -104,9 +104,6 @@ WHERE
   AND NOT dir_exception IN (
     '/dev/bus/usb,pcscd',
     '/dev/input,acpid',
-    '/dev/shm,gameoverlayui',
-    '/dev/shm,hl2_linux',
-    '/dev/shm,reaper',
     '/dev/input,gnome-shell',
     '/dev/input,systemd',
     '/dev/input,systemd-logind',
@@ -122,9 +119,13 @@ WHERE
     '/dev/shm,code',
     '/dev/shm,electron',
     '/dev/shm,firefox',
+    '/dev/shm,gameoverlayui',
     '/dev/shm,gopls',
+    '/dev/shm,hl2_linux',
     '/dev/shm,java',
     '/dev/shm,jcef_helper',
+    '/dev/shm,Melvor Idle',
+    '/dev/shm,reaper',
     '/dev/shm,slack',
     '/dev/shm,spotify',
     '/dev/shm,steam',
@@ -196,13 +197,14 @@ WHERE
   AND NOT (
     device LIKE '/dev/bus/usb/%'
     AND program_name IN (
-      'fwupd',
       'adb',
       'fprintd',
+      'fwupd',
       'gphoto2',
+      'gvfsd-gphoto2',
+      'gvfsd-mtp',
       'gvfs-gphoto2-vo',
       'gvfs-gphoto2-volume-monitor',
-      'gvfsd-gphoto2',
       'pcscd',
       'streamdeck',
       'usbmuxd'

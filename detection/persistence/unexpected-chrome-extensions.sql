@@ -72,6 +72,7 @@ WHERE
     'true,AgileBits,1Password – Password Manager,aeblfdkhhhdcdjpifhhbdiojplfjncoa,<all_urls>, contextMenus, downloads, idle, management, nativeMessaging, notifications, privacy, tabs, webNavigation, webRequest, webRequestBlocking',
     'true,Alexander Shutau,Dark Reader,eimadpbcbfnmbkopoojfekhnkhdbieeh,alarms, fontSettings, storage, tabs, <all_urls>',
     'true,All uBlock contributors,uBlock - free ad blocker,epcnnfbjfcgphgdmggkamkmgojdagdnn,contextMenus, storage, tabs, unlimitedStorage, webNavigation, webRequest, webRequestBlocking, <all_urls>',
+    'true,,Application Launcher For Drive (by Google),lmjegmlicamnimmfhcmpkclmigmmcbeh,nativeMessaging, https://docs.google.com/*, https://drive.google.com/*',
     'true,,Bardeen - automate manual work,ihhkmalpkhkoedlmcnilbbhhbhnicjga,activeTab, alarms, bookmarks, contextMenus, history, notifications, scripting, storage, tabs, tts, unlimitedStorage, webNavigation',
     'true,,Bardeen - automate workflows with one click,ihhkmalpkhkoedlmcnilbbhhbhnicjga,activeTab, alarms, bookmarks, contextMenus, history, notifications, scripting, storage, tabs, tts, unlimitedStorage, webNavigation',
     'true,,Bardeen - automate workflows with one click,ihhkmalpkhkoedlmcnilbbhhbhnicjga,<all_urls>, webNavigation, unlimitedStorage, notifications, activeTab, tabs, storage, *://*/*, history, bookmarks, contextMenus',

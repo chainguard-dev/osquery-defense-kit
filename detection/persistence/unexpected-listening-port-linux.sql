@@ -107,6 +107,8 @@ WHERE
     '53,6,500,dnsmasq',
     '5432,6,70,postgres',
     '546,17,500,dhcpcd',
+    '5556,6,500,dex',
+    '5558,6,500,dex',
     '58,255,0,dhcpcd',
     '58,255,0,NetworkManager',
     '58,255,500,dhcpcd',

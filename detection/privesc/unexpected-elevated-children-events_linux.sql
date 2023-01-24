@@ -85,3 +85,4 @@ WHERE
     child_name IN ('dash', 'pkexec')
     AND parent_path = '/usr/bin/update-notifier'
   )
+  AND NOT cgroup_path LIKE '/system.slice/docker-%'

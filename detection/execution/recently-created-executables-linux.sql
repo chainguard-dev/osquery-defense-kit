@@ -93,6 +93,7 @@ WHERE
     '/usr/libexec/ibus-extension-gtk3',
     '/usr/libexec/ibus-portal',
     '/usr/libexec/ibus-x11',
+    '/usr/bin/hugo',
     '/usr/libexec/snapd/snapd',
     '/usr/libexec/sssd/sssd_kcm',
     '/usr/libexec/tracker-extract-3',

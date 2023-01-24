@@ -42,6 +42,7 @@ WHERE
     'master.passwd',
     'COPYING',
     'NEWS',
+    '_libinput',
     'printcap',
     'strace-log-merge'
   )

@@ -38,17 +38,20 @@ SELECT
 FROM
   process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid
-  LEFT JOIN processes pp ON pe.parent = pp.pid
+  LEFT JOIN processes pp ON pe.parent = pp.pid AND pp.cmdline IS NOT NULL
   LEFT JOIN hash phash ON pp.path = phash.path
-  LEFT JOIN process_events ppe ON pe.parent = ppe.pid
+  LEFT JOIN process_events ppe ON pe.parent = ppe.pid AND ppe.cmdline IS NOT NULL
   LEFT JOIN hash pehash ON ppe.path = pehash.path
   LEFT JOIN processes gp ON gp.pid = pp.parent
   LEFT JOIN hash gphash ON gp.path = gphash.path
-  LEFT JOIN process_events gpe ON ppe.parent = gpe.pid
+  LEFT JOIN process_events gpe ON ppe.parent = gpe.pid AND gpe.cmdline IS NOT NULL
   LEFT JOIN hash gpehash ON gpe.path = gpehash.path
 WHERE
-  child_name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
+  pe.parent > 0
+  AND pe.cmdline IS NOT NULL
   AND pe.time > (strftime('%s', 'now') -300) -- Ignore partial table joins
+  AND child_cmd != ''
+  AND child_name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
   AND NOT (
     parent_name IN (
       'abrt-handle-eve',
@@ -104,6 +107,7 @@ WHERE
       'PK-Backend',
       -- 'python' - do not include this, or you won't detect supply-chain attacks.
       'roxterm',
+      'HP Diagnose & Fix',
       'sdk',
       'sdzoomplugin',
       'sh',

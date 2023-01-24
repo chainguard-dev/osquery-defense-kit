@@ -54,6 +54,8 @@ WHERE
       OR file.path LIKE '/tmp/src/%'
       OR file.path LIKE '/tmp/terraformer/%'
       OR file.path LIKE '/tmp/tmp.%'
+      OR file.path LIKE '/tmp/%/etc/network/if-up.d/%'
+      OR file.path LIKE '/tmp/%/bin/busybox'
       OR file.path LIKE '%/bin/%-gen'
       OR file.path LIKE '/tmp/%-%/Photoshop Installer.app/Contents/%'
       OR file.path LIKE '%/CCLBS/%'
@@ -135,5 +137,7 @@ WHERE
     AND (
       magic.data = 'JSON data'
       OR magic.data LIKE 'ELF %-bit %SB executable%'
+      OR magic.data LIKE 'symbolic link to ld%.so.%'
+      OR magic.data LIKE 'ELF %-bit LSB shared object%'
     )
   )

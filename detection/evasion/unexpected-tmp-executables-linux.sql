@@ -54,6 +54,7 @@ WHERE
       OR file.path LIKE '/tmp/kots/%'
       OR file.path LIKE '/tmp/bin/%'
       OR file.path LIKE '/tmp/%/target/%'
+      OR file.path LIKE '/tmp/%/bin/busybox'
       OR file.path LIKE '/tmp/%/debug/%'
       OR file.path LIKE '/tmp/%/github/%'
       OR file.path LIKE '/tmp/terraformer/%'
@@ -151,6 +152,9 @@ WHERE
       )
       OR magic.data LIKE "Unicode text%"
       OR magic.data LIKE "gzip compressed data%"
+      -- Exotic platforms
+      OR magic.data LIKE 'ELF 64-bit MSB pie executable, IBM S/390%'
+      OR magic.data LIKE 'ELF 32-bit LSB pie executable, ARM, EABI5%'
     )
   )
   AND NOT (

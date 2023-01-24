@@ -72,6 +72,8 @@ WHERE
     'systemctl,0,apt-helper,',
     'systemctl,500,systemd,',
     'systemctl,0,dash,logrotate',
+    'systemctl,0,pacman,sudo',
+    'systemctl,0,tailscaled,',
     'systemctl,0,,containerd-shim-runc-v2'
   )
   AND NOT child_cmd IN (
@@ -79,6 +81,7 @@ WHERE
     '/bin/systemctl -q is-enabled whoopsie.path',
     '/bin/systemctl stop --no-block nvidia-persistenced',
     '/sbin/runlevel',
+    'systemctl is-active systemd-resolved.service',
     'systemctl is-enabled power-profiles-daemon.service',
     'systemctl is-enabled snapd.apparmor',
     'systemctl is-enabled systemd-rfkill.service',
@@ -90,7 +93,8 @@ WHERE
     'systemctl restart cups.service',
     'systemctl status kubelet',
     'systemctl stop kubelet',
-    'systemctl --user import-environment DISPLAY XAUTHORITY'
+    'systemctl --user import-environment DISPLAY XAUTHORITY',
+    '/usr/bin/systemctl try-reload-or-restart dbus'
   )
   -- apt-helper form
   AND NOT child_cmd LIKE '%systemctl is-active -q %.service'
