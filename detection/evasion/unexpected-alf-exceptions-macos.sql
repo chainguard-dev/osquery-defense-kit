@@ -101,6 +101,11 @@ WHERE -- NOTE:We intentionally want to preserve missing files
     ae.path LIKE '/Users/%/Library/Application%20Support/Steam/Steam.AppBundle/Steam/'
   )
   AND NOT (
+    signature.authority = ''
+    AND signature.identifier = 'org.chromium.Chromium'
+    AND ae.path LIKE '/Users/%/Library/pnpm/global/%/.pnpm/carlo@%/node_modules/carlo/lib/.local-data/mac-%/chrome-mac/Chromium.app/'
+  )
+  AND NOT (
     (
       signature.identifier = 'a.out'
       OR signature.identifier LIKE '%-%'

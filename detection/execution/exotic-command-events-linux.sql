@@ -166,3 +166,4 @@ WHERE
   AND NOT cmd LIKE '%/usr/bin/cmake%Socket.cpp'
   AND NOT cmd LIKE 'find . -executable -type f -name %grep -l GNU Libtool%touch -r%'
   AND NOT child_name IN ('cc1', 'compile', 'cmake', 'cc1plus')
+  AND NOT cmd IN ('lsmod')

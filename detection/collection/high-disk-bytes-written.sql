@@ -105,21 +105,20 @@ WHERE
     'bwrap',
     'cargo',
     'chrome',
+    'Cisco WebEx Start',
     'com.apple.MobileSoftwareUpdate.UpdateBrainService',
     'com.apple.NRD.UpdateBrainService',
     'containerd',
     'containerd-',
     'containerd-shim',
-    'Cisco WebEx Start',
     'darkfiles',
     'dnf',
+    'docker-index',
     'esbuild',
     'firefox',
     'fsdaemon',
-    'docker-index',
     'go',
     'goland',
-    'node',
     'golangci-lint-v',
     'gopls',
     'grype',
@@ -129,6 +128,7 @@ WHERE
     'limactl',
     'nessusd',
     'ninja',
+    'node',
     'photorec',
     'qemu-system-aarch64',
     'qemu-system-x86_64',
@@ -136,7 +136,8 @@ WHERE
     'snyk',
     'steam',
     'syft',
-    'wineserver'
+    'wineserver',
+    'yum'
   )
   AND p.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p.path NOT LIKE '/home/%/.local/share/Steam'

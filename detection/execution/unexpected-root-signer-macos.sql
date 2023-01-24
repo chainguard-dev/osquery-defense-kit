@@ -72,7 +72,7 @@ WHERE
   AND NOT (
     signature.authority = ""
     AND p.path LIKE "/opt/homebrew/Cellar/mariadb/%/bin/mariadbd"
-    AND cmdline LIKE "'/opt/homebrew/opt/mariadb/bin/mariadbd %"
+    AND cmdline LIKE "/opt/homebrew/opt/mariadb/bin/mariadbd %"
   )
   AND NOT (
     signature.authority = "Developer ID Application: Node.js Foundation (HX7739G8FX)"

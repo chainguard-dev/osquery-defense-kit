@@ -60,6 +60,7 @@ WHERE
       'Applesoft BASIC program data, first line number 86',
       'mc68k executable (shared)',
       'OpenPGP Secret Key',
+      '',
       'floppy image data (IBM SaveDskF, old)',
       'DOS executable (COM)'
     )

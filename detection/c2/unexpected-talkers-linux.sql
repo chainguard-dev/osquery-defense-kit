@@ -81,6 +81,7 @@ WHERE
   AND s.remote_address NOT LIKE '::ffff:172.%'
   AND s.remote_address NOT LIKE '10.%'
   AND s.remote_address NOT LIKE '::ffff:10.%'
+  AND s.remote_address NOT LIKE '::ffff:192.168.%'
   AND s.remote_address NOT LIKE 'fc00:%'
   AND p.path != ''
   AND NOT exception_key IN (
@@ -91,6 +92,8 @@ WHERE
     '19305,6,500,/usr/firefox,0u,0g,firefox',
     '22000,6,500,/usr/syncthing,0u,0g,syncthing',
     '22,6,0,/usr/ssh,0u,0g,ssh',
+    '80,6,0,/usr/kmod,0u,0g,depmod',
+    '80,6,0,/usr/find,0u,0g,find',
     '22,6,0,/usr/tailscaled,0u,0g,tailscaled',
     '22,6,500,/home/cargo,500u,500g,cargo',
     '22,6,500,/home/terraform,500u,500g,terraform',

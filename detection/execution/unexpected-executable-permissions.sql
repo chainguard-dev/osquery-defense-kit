@@ -44,8 +44,9 @@ WHERE
   -- Vendors who are very relaxed about permissions
   AND NOT (
     f.path IN (
-      '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService',
-      '/Applications/Camera Settings.app/Contents/MacOS/LogitechCamera'
+      '/Applications/Camera Settings.app/Contents/MacOS/LogitechCamera',
+      '/Applications/motionVFX/Plugins/mUtility.app/Contents/PlugIns/mUtility XPC Service.pluginkit/Contents/MacOS/mUtility XPC Service',
+      '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService'
     )
     AND f.mode = '0777'
     AND f.uid > 500

@@ -27,6 +27,7 @@ WHERE
   AND image NOT LIKE 'ghcr.io/k3d-io/k3d-%'
   AND image NOT LIKE 'docker.io/rancher/k3s:%'
   AND image NOT LIKE 'melange-%'
+  AND image NOT LIKE 'gcr.io/k8s-minikube/kicbase:%'
   -- this one makes me sad. It's due to limitations running bubblewrap in a container
   AND image NOT IN (
     'cgr.dev/chainguard/melange',
