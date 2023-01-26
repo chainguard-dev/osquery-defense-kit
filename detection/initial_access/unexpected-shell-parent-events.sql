@@ -11,49 +11,54 @@
 -- interval: 300
 -- platform: posix
 SELECT
-  pe.path AS child_path,
-  REGEX_MATCH (pe.path, '.*/(.*)', 1) AS child_name,
-  TRIM(pe.cmdline) AS child_cmd,
-  pe.pid AS child_pid,
-  pe.euid AS child_euid,
-  p.cgroup_path AS child_cgroup,
-  pe.parent AS parent_pid,
-  TRIM(IIF(pp.cmdline != NULL, pp.cmdline, ppe.cmdline)) AS parent_cmd,
-  TRIM(IIF(pp.path != NULL, pp.path, ppe.path)) AS parent_path,
-  IIF(pp.path != NULL, phash.sha256, pehash.sha256) AS parent_hash,
-  REGEX_MATCH (
-    IIF(pp.path != NULL, pp.path, ppe.path),
-    '.*/(.*)',
-    1
-  ) AS parent_name,
-  TRIM(IIF(gp.cmdline != NULL, gp.cmdline, gpe.cmdline)) AS gparent_cmd,
-  TRIM(IIF(gp.path != NULL, gp.path, gpe.path)) AS gparent_path,
-  IIF(gp.path != NULL, gphash.sha256, gpehash.path) AS gparent_hash,
-  REGEX_MATCH (
-    IIF(gp.path != NULL, gp.path, gpe.path),
-    '.*/(.*)',
-    1
-  ) AS gparent_name,
-  IIF(pp.parent != NULL, pp.parent, ppe.parent) AS gparent_pid
+  -- Child
+  pe.path AS p0_path,
+  REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
+  TRIM(pe.cmdline) AS p0_cmd,
+  pe.pid AS p0_pid,
+  p.cgroup_path AS p0_cgroup,
+  IIF(p.pid IS NOT NULL, 1, 0) AS p0_active,
+  -- Parent
+  pe.parent AS p1_pid,
+  p1.cgroup_path AS p1_cgroup,
+  TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
+  COALESCE(p1.path, pe1.path) AS p1_path,
+  COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
+  REGEX_MATCH(COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
+  IIF(p1.pid IS NOT NULL, 1, 0) AS p1_active,
+  -- Grandparent
+  COALESCE(p1.parent, pe1.parent) AS p2_pid,
+  COALESCE(p1_p2.cgroup_path, pe1_p2.cgroup_path) AS p2_cgroup,
+  TRIM(COALESCE(p1_p2.cmdline, pe1_p2.cmdline, pe1_pe2.cmdline)) AS p2_cmd,
+  COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path) AS p2_path,
+  COALESCE(p1_p2_hash.path, pe1_p2_hash.path, pe1_pe2_hash.path) AS p2_hash,
+  REGEX_MATCH(COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path), '.*/(.*)', 1) AS p2_name,
+  IIF(COALESCE(p1_p2.pid, pe1_p2.pid) IS NOT NULL, 1, 0) AS p2_active,
+  -- Exception key
+  REGEX_MATCH (pe.path, '.*/(.*)', 1) || ',' || MIN(pe.euid, 500) || ',' || REGEX_MATCH(COALESCE(p1.path, pe1.path), '.*/(.*)', 1) || ',' || REGEX_MATCH(COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path), '.*/(.*)', 1) AS exception_key
 FROM
   process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid
-  LEFT JOIN processes pp ON pe.parent = pp.pid AND pp.cmdline IS NOT NULL
-  LEFT JOIN hash phash ON pp.path = phash.path
-  LEFT JOIN process_events ppe ON pe.parent = ppe.pid AND ppe.cmdline IS NOT NULL
-  LEFT JOIN hash pehash ON ppe.path = pehash.path
-  LEFT JOIN processes gp ON gp.pid = pp.parent
-  LEFT JOIN hash gphash ON gp.path = gphash.path
-  LEFT JOIN process_events gpe ON ppe.parent = gpe.pid AND gpe.cmdline IS NOT NULL
-  LEFT JOIN hash gpehash ON gpe.path = gpehash.path
+  -- Parents (via two paths)
+  LEFT JOIN processes p1 ON pe.parent = p1.pid
+  LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
+  LEFT JOIN process_events pe1 ON pe.parent = pe1.pid AND pe1.cmdline != ''
+  LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path
+
+  -- Grandparents (via 3 paths)
+  LEFT JOIN processes p1_p2 ON p1.parent = p1_p2.pid -- Current grandparent via parent processes
+  LEFT JOIN processes pe1_p2 ON pe1.parent = pe1_p2.pid -- Current grandparent via parent events
+  LEFT JOIN process_events pe1_pe2 ON pe1.parent = pe1_p2.pid AND pe1_pe2.cmdline != '' -- Past grandparent via parent events
+  LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
+  LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
+  LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
 WHERE
-  pe.parent > 0
-  AND pe.cmdline IS NOT NULL
-  AND pe.time > (strftime('%s', 'now') -300) -- Ignore partial table joins
-  AND child_cmd != ''
-  AND child_name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
+  pe.time > (strftime('%s', 'now') -300)
+  AND pe.cmdline != ''
+  AND pe.parent > 0
+  AND p0_name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
   AND NOT (
-    parent_name IN (
+    p1_name IN (
       'abrt-handle-eve',
       'alacritty',
       'bash',
@@ -135,22 +140,22 @@ WHERE
       'zellij',
       'zsh'
     )
-    OR parent_name LIKE 'terraform-provider-%'
+    OR p1_name LIKE 'terraform-provider-%'
     -- Do not add shells to this list if you want your query to detect
     -- bad programs that were started from a shell.
-    OR gparent_name IN ('env', 'git')
+    OR p2_name IN ('env', 'git')
     -- Homebrew, except we don't want to allow all of ruby
-    OR child_cmd IN (
+    OR p0_cmd IN (
       'sh -c /bin/stty size 2>/dev/null',
       'sh -c python3.7 --version 2>&1',
       'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null'
     )
-    OR child_cmd LIKE '/bin/bash /usr/local/Homebrew/Library%'
-    OR child_cmd LIKE '/bin/sh -c pkg-config %'
-    OR child_cmd LIKE '/bin/sh %/docker-credential-gcloud get'
-    OR child_cmd LIKE '%/bash -e%/bin/as -arch%'
-    OR gparent_cmd LIKE '/bin/bash /usr/local/bin/brew%'
-    OR gparent_cmd LIKE '/usr/bin/python3 -m py_compile %'
+    OR p0_cmd LIKE '/bin/bash /usr/local/Homebrew/Library%'
+    OR p0_cmd LIKE '/bin/sh -c pkg-config %'
+    OR p0_cmd LIKE '/bin/sh %/docker-credential-gcloud get'
+    OR p0_cmd LIKE '%/bash -e%/bin/as -arch%'
+    OR p2_cmd LIKE '/bin/bash /usr/local/bin/brew%'
+    OR p2_cmd LIKE '/usr/bin/python3 -m py_compile %'
   )
 GROUP BY
   pe.pid

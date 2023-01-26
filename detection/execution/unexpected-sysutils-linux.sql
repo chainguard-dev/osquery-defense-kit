@@ -1,11 +1,10 @@
--- Detect commands used to bless a file as executable
+-- Unexpected calls to sysctl (event-based)
 --
--- false positives:
---   * none observed, but they are expected
+-- refs:
+--   * https://attack.mitre.org/techniques/T1497/001/ (Virtualization/Sandbox Evasion: System Checks)
 --
--- interval: 600
 -- platform: posix
--- tags: process events
+-- interval: 600
 SELECT
   -- Child
   pe.path AS p0_path,
@@ -30,8 +29,8 @@ SELECT
   COALESCE(p1_p2_hash.path, pe1_p2_hash.path, pe1_pe2_hash.path) AS p2_hash,
   REGEX_MATCH(COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path), '.*/(.*)', 1) AS p2_name,
   IIF(COALESCE(p1_p2.pid, pe1_p2.pid) IS NOT NULL, 1, 0) AS p2_active,
-  -- Extra fields
-  REGEX_MATCH (TRIM(pe.cmdline), ".* (.*?)$", 1) AS target_path
+  -- Exception key
+  REGEX_MATCH (pe.path, '.*/(.*)', 1) || ',' || MIN(pe.euid, 500) || ',' || REGEX_MATCH(COALESCE(p1.path, pe1.path), '.*/(.*)', 1) || ',' || REGEX_MATCH(COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path), '.*/(.*)', 1) AS exception_key
 FROM
   process_events pe,
   uptime
@@ -52,17 +51,11 @@ FROM
 WHERE
   pe.time > (strftime('%s', 'now') -600)
   AND pe.cmdline != ''
-  AND pe.path IN ('/bin/chmod', '/usr/bin/chmod')
-  AND (
-    p0_cmd LIKE '%chmod 7%'
-    OR p0_cmd LIKE '%chmod 5%'
-    OR p0_cmd LIKE '%chmod 1%'
-    OR p0_cmd LIKE '%chmod +%x'
+  AND pe.path IN (
+    '/usr/bin/sysctl',
+    '/sbin/sysctl',
+    '/usr/sbin/sysctl'
   )
-  AND p0_cmd NOT LIKE 'chmod 700 /tmp/apt-key-gpghome.%'
-  AND p0_cmd NOT LIKE 'chmod 700 /home/%/snap/%/.config'
-  AND p0_cmd NOT LIKE 'chmod 755 /home/%/.gradle/wrapper/dists/gradle-%-bin/%bin/gradle'
-  AND p0_cmd NOT IN ('chmod 755 /usr/local/share/ca-certificates')
-  AND NOT p0_cgroup LIKE '/system.slice/docker-%'
+  AND p.parent > 0
 GROUP BY
   pe.pid

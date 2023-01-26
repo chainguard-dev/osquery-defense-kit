@@ -65,7 +65,13 @@ WHERE
       'DOS executable (COM)'
     )
     AND file.path LIKE '/dev/shm/u1000-Shm_%'
-    AND file.size > 1000000
+  )
+  AND NOT (
+    file.uid = 1000
+    AND file.gid IN (100, 1000)
+    AND file.mode IN ('0755', '0775')
+    AND magic.data IS NULL
+    AND file.path LIKE '/dev/shm/u1000-Shm_%'
   )
   AND NOT (
     file.uid = 1000

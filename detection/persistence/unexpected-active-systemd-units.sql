@@ -276,6 +276,7 @@ WHERE
         'snapd.service,Snap Daemon,,400',
         'snapd.service,Snap Daemon,,500',
         'snapd.socket,Socket activation for snappy daemon,,200',
+        'snap.yubioath-desktop.pcscd.service,Service for snap application yubioath-desktop.pcscd,,500',
         'sockets.target,Socket Units,,400',
         'sound.target,Sound Card,,400',
         'sshd-keygen.target,sshd-keygen.target,,100',
