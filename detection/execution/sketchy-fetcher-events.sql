@@ -105,8 +105,6 @@ WHERE
       pe.cmdline LIKE '%--dump-header%'
       OR pe.cmdline LIKE '%127.0.0.1:%'
       OR pe.cmdline LIKE '%/192.168.%:%'
-      OR pe.cmdline LIKE '%/api/v%'
-      OR pe.cmdline LIKE '/api %'
       OR pe.cmdline LIKE '%application/json%'
       OR pe.cmdline LIKE '%/chainctl_%'
       OR pe.cmdline LIKE '%ctlog%'
@@ -129,6 +127,12 @@ WHERE
       OR parent_cmdline LIKE '%brew.rb%'
       OR parent_cmdline LIKE '%brew.sh%'
     )
+  )
+  AND NOT (
+    pe.euid > 500
+    AND pe.cmdline LIKE '%/api'
+    AND pe.cmdline NOT LIKE '%-o%'
+    AND pe.cmdline NOT LIKE '%-O%'
   )
   -- These are typically curl -k calls
   -- We need the addr "IS NOT NULL" to avoid filtering out

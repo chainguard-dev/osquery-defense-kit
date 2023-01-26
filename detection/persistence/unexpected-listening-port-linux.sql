@@ -100,6 +100,7 @@ WHERE
     '5000,6,500,ControlCenter',
     '5001,6,0,registry',
     '53,17,0,coredns',
+    '5050,6,500,rootlesskit',
     '53,17,500,aardvark-dns',
     '53,17,500,dnsmasq',
     '5355,6,193,systemd-resolve',

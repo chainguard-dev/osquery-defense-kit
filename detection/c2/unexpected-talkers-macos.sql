@@ -134,6 +134,7 @@ WHERE
     )
   )
   AND NOT exception_key IN (
+    '123,17,500,gvproxy,a.out,',
     '22,6,500,Cyberduck,ch.sudo.cyberduck,Developer ID Application: David Kocher (G69SCX94XU)',
     '22,6,500,ssh,,',
     '22,6,500,ssh,com.apple.openssh,Software Signing',
@@ -214,6 +215,7 @@ WHERE
     '443,6,500,go,org.golang.go,Developer ID Application: Google LLC (EQHXZ8M8AV)',
     '443,6,500,grype,grype,',
     '443,6,500,grype,grype,Developer ID Application: ANCHORE, INC. (9MJHKYX5AT)',
+    '443,6,500,gvproxy,a.out,',
     '443,6,500,helm,a.out,',
     '443,6,500,Install,com.adobe.cc.Install,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,500,istioctl,a.out,',

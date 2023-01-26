@@ -147,6 +147,7 @@ WHERE
   AND NOT p.path LIKE '/nix/store/%/libexec/%'
   AND NOT p.path LIKE '/usr/local/bin/%'
   AND NOT p.path LIKE '/opt/%'
+  AND NOT p.path LIKE '/tmp/tmp.%/%/bin/%'
   AND NOT p.path LIKE '/usr/local/Cellar/%'
   AND NOT p.path LIKE '/home/%/.local/share/Steam/ubuntu12_64/%'
   AND NOT p.path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
