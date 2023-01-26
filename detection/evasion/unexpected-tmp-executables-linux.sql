@@ -4,7 +4,7 @@
 --   * developers building code out of /tmp
 --
 -- tags: persistent
--- platform: posix
+-- platform: linux
 SELECT
   file.path,
   uid,
@@ -78,6 +78,7 @@ WHERE
           'java',
           'js',
           'json',
+          'pem',
           'nib',
           'log',
           'strings',

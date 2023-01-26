@@ -66,6 +66,7 @@ WHERE
       'Electron,~/.vscode/extensions',
       'fish,~/.local/share',
       'fish,~/.Trash',
+      'cc1,/home/build/.cache',
       'git,~/.local/share',
       'java,~/.gradle/daemon',
       'java,~/.local/share',
@@ -131,3 +132,5 @@ WHERE
       AND p.euid = 0
     )
   )
+  AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
+

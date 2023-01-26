@@ -182,6 +182,7 @@ WHERE
     'true,,Send to Kindle for Google Chrome™,cgdjpilhipecahhcilnafpblkieebhea,tabs, <all_urls>, storage, unlimitedStorage',
     'true,,Session Buddy,edacconmaakjimmfgnblocblbcdcpbko,tabs, unlimitedStorage',
     'true,,Simple Tab Sorter,cgfpgnepljlgenjclbekbjdlgcodfmjp,tabs, storage',
+    'true,,Github Absolute Dates,iepecohjelcmdnahbddleblfphbaheno,webNavigation, https://github.com/*',
     'true,,Slack,jeogkiiogjbmhklcnbgkdcjoioegiknm,unlimitedStorage, notifications, clipboardRead, clipboardWrite',
     'true,,SSH for Google Cloud Platform,ojilllmhjhibplnppnamldakhpmdnibd,clipboardRead, clipboardWrite',
     'true,,Super Dark Mode,nlgphodeccebbcnkgmokeegopgpnjfkc,storage, <all_urls>, contextMenus',

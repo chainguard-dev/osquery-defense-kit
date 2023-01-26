@@ -37,6 +37,7 @@ WHERE
   AND (
     file.filename LIKE 'Installer.%'
     OR file.filename LIKE '%Player.%'
+    OR file.filename LIKE '% AIR %'
     OR file.filename LIKE '%Flash%'
     OR file.filename LIKE '%Resume%'
   )

@@ -19,7 +19,9 @@ AND vol_name NOT LIKE '%backup%'
 AND vol_name NOT IN (
   'Slack',
   'Docker',
+  'Figma Agent Installer',
   'WhatsApp Installer',
+  'Snagit',
   'Bartender 4'
 )
 AND vol_name NOT LIKE 'Signal %-universal'

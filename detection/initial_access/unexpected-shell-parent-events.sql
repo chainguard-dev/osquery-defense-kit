@@ -72,10 +72,12 @@ WHERE
       'collect2',
       'conmon',
       'containerd-shim',
+      'cpptools',
       'dash',
       'demoit',
       'direnv',
       'doas',
+      'com.docker.backend',
       'docker-credential-desktop',
       'docker-credential-gcr',
       'env',
@@ -83,12 +85,16 @@ WHERE
       'find',
       'FinderSyncExtension',
       'fish',
+      'gatherheaderdoc',
       'gdm-session-worker',
       'git',
       'gke-gcloud-auth-plugin',
+      'gnome-terminal-server',
       'go',
       'goland',
+      'gopls',
       'helm',
+      'HP Diagnose & Fix',
       'i3bar',
       'i3blocks',
       'java',
@@ -105,6 +111,7 @@ WHERE
       'nix',
       'nix-build',
       'nix-daemon',
+      'nm-dispatcher',
       'node',
       'nvim',
       'package_script_service',
@@ -112,7 +119,6 @@ WHERE
       'PK-Backend',
       -- 'python' - do not include this, or you won't detect supply-chain attacks.
       'roxterm',
-      'HP Diagnose & Fix',
       'sdk',
       'sdzoomplugin',
       'sh',
@@ -128,6 +134,7 @@ WHERE
       'test2json',
       'tmux',
       'tmux:server',
+      'Stream Deck',
       'update-notifier',
       'vi',
       'vim',
@@ -137,6 +144,7 @@ WHERE
       'xcrun',
       'xfce4-terminal',
       'yum',
+      'Vim',
       'zellij',
       'zsh'
     )
@@ -148,12 +156,22 @@ WHERE
     OR p0_cmd IN (
       'sh -c /bin/stty size 2>/dev/null',
       'sh -c python3.7 --version 2>&1',
+      '/bin/sh -c ps ax -ww -o pid,ppid,uid,gid,args',
+      "sh -c osascript -e 'user locale of (get system info)'",
       'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null'
     )
-    OR p0_cmd LIKE '/bin/bash /usr/local/Homebrew/Library%'
+    OR exception_key IN ('bash,0,pia-daemon,launchd')
+    OR p0_cmd LIKE '%/bash -e%/bin/as -arch%'
+    OR p0_cmd LIKE '/bin/bash /usr/local/Homebrew/%'
+    OR p0_cmd LIKE '/bin/bash /opt/homebrew/%'
     OR p0_cmd LIKE '/bin/sh -c pkg-config %'
     OR p0_cmd LIKE '/bin/sh %/docker-credential-gcloud get'
-    OR p0_cmd LIKE '%/bash -e%/bin/as -arch%'
+    OR p0_cmd LIKE '%/google-chrome --flag-switches-begin --flag-switches-end --product-version'
+    OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-open %'
+    OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings set %'
+    OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings check %'
+    OR p0_cmd LIKE '%gcloud config config-helper --format=json'
+    OR p1_cmd LIKE '%Python /opt/homebrew/bin/aws configure sso'
     OR p2_cmd LIKE '/bin/bash /usr/local/bin/brew%'
     OR p2_cmd LIKE '/usr/bin/python3 -m py_compile %'
   )
