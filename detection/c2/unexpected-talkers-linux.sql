@@ -92,6 +92,7 @@ WHERE
     '143,6,500,/usr/thunderbird,0u,0g,thunderbird',
     '19305,6,500,/opt/firefox,0u,0g,firefox',
     '19305,6,500,/usr/firefox,0u,0g,firefox',
+    '19305,6,500,/usr/firefox,0u,0g,.firefox-wrappe',
     '22000,6,500,/usr/syncthing,0u,0g,syncthing',
     '22,6,0,/usr/ssh,0u,0g,ssh',
     '22,6,0,/usr/tailscaled,0u,0g,tailscaled',
