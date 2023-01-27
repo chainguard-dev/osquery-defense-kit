@@ -91,6 +91,7 @@ WHERE
   AND p.path NOT IN (
     '/usr/lib/systemd/systemd-resolved',
     '/Library/Nessus/run/sbin/nessusd',
+    '/usr/bin/apko',
     '/opt/google/chrome/chrome',
     '/Applications/Slack.app/Contents/Frameworks/Slack Helper.app/Contents/MacOS/Slack Helper',
     '/Applications/Spotify.app/Contents/Frameworks/Spotify Helper.app/Contents/MacOS/Spotify Helper'

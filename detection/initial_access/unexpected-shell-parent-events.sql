@@ -159,6 +159,7 @@ WHERE
       'sh -c /bin/stty size 2>/dev/null',
       'sh -c python3.7 --version 2>&1',
       '/bin/sh -c lsb_release -a --short',
+      '/bin/zsh -c ls',
       '/bin/sh -c ps ax -ww -o pid,ppid,uid,gid,args',
       "sh -c osascript -e 'user locale of (get system info)'",
       'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null'
@@ -168,7 +169,14 @@ WHERE
       -- WhatsApp grabs the serial number from people's machines :(
       AND p0_cmd = '/bin/sh -c ioreg -c IOPlatformExpertDevice -d 2'
     )
-    OR p1_cmd IN ('/usr/bin/python3 /usr/share/apport/apport-gtk')
+    OR p1_cmd IN (
+      '/usr/bin/python3 /usr/share/apport/apport-gtk',
+      'php ./autodocs update images'
+    )
+    OR (
+      p1_cmd LIKE '%Python% /opt/homebrew/bin/jupyter%'
+      AND p0_cmd =  '/bin/sh -c osascript'
+    )
     OR exception_key IN ('bash,0,pia-daemon,launchd')
     OR p0_cmd LIKE '%/bash -e%/bin/as -arch%'
     OR p0_cmd LIKE '/bin/bash /usr/local/Homebrew/%'
