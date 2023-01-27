@@ -87,6 +87,7 @@ WHERE
   AND NOT exception_key IN (
     '123,17,114,/usr/chronyd,0u,0g,chronyd',
     '123,17,500,/usr/chronyd,0u,0g,chronyd',
+    '80,6,500,/usr/WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '143,6,500,/app/thunderbird,u,g,thunderbird',
     '143,6,500,/usr/thunderbird,0u,0g,thunderbird',
     '19305,6,500,/opt/firefox,0u,0g,firefox',

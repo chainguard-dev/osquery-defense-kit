@@ -17,7 +17,6 @@ SELECT
   pe.pid AS p0_pid,
   pe.euid AS p0_euid,
   p.cgroup_path AS p0_cgroup,
-  IIF(p.pid IS NOT NULL, 1, 0) AS p0_active,
   s.authority AS p0_authority,
   -- Parent
   pe.parent AS p1_pid,
@@ -26,7 +25,6 @@ SELECT
   COALESCE(p1.path, pe1.path) AS p1_path,
   COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
   REGEX_MATCH(COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
-  IIF(p1.pid IS NOT NULL, 1, 0) AS p1_active,
   pe_sig1.authority AS p1_authority,
   -- Grandparent
   COALESCE(p1.parent, pe1.parent) AS p2_pid,
@@ -35,7 +33,6 @@ SELECT
   COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path) AS p2_path,
   COALESCE(p1_p2_hash.path, pe1_p2_hash.path, pe1_pe2_hash.path) AS p2_hash,
   REGEX_MATCH(COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path), '.*/(.*)', 1) AS p2_name,
-  IIF(COALESCE(p1_p2.pid, pe1_p2.pid) IS NOT NULL, 1, 0) AS p2_active,
   COALESCE(p1_p2_sig.authority, pe1_p2_sig.authority, pe1_pe2_sig.authority) AS p2_authority,
   -- Exception key
   REGEX_MATCH (pe.path, '.*/(.*)', 1) || ',' || MIN(pe.euid, 500) || ',' || REGEX_MATCH(COALESCE(p1.path, pe1.path), '.*/(.*)', 1) || ',' || REGEX_MATCH(COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path), '.*/(.*)', 1) AS exception_key
@@ -144,15 +141,18 @@ WHERE
   )
   AND NOT (
     p0_cmd IN (
-      'launchctl load /Library/LaunchDaemons/us.zoom.ZoomDaemon.plist',
-      'sudo launchctl load /Library/LaunchDaemons/us.zoom.ZoomDaemon.plist',
       '/bin/launchctl load -wF /Library/LaunchAgents/com.adobe.GC.AGM.plist',
       '/bin/rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
       'git history',
-      '/usr/bin/pkill -F /private/var/run/lima/shared_socket_vmnet.pid',
+      'launchctl asuser 501 launchctl load /System/Library/LaunchAgents/com.apple.SafariBookmarksSyncAgent.plist',
+      'launchctl load /Library/LaunchDaemons/us.zoom.ZoomDaemon.plist',
+      'launchctl load /System/Library/LaunchAgents/com.apple.SafariBookmarksSyncAgent.plist',
       '/Library/Apple/System/Library/StagedFrameworks/Safari/SafariShared.framework/XPCServices/com.apple.Safari.History.xpc/Contents/MacOS/com.apple.Safari.History',
+      'sudo launchctl load /Library/LaunchDaemons/us.zoom.ZoomDaemon.plist',
       '/usr/bin/csrutil report',
       '/usr/bin/csrutil status',
+      '/usr/bin/pkill -F /private/var/run/lima/shared_socket_vmnet.pid',
+      '/usr/bin/xattr -d com.apple.writer_bundle_identifier /Applications/Safari.app',
       'xpcproxy com.apple.Safari.History'
     )
     -- The source of these commands is still a mystery to me.
