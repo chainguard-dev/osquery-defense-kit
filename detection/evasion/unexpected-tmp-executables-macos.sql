@@ -114,7 +114,8 @@ WHERE
     AND (strftime('%s', 'now') - ctime) < 30
   ) -- macOS updates
   AND NOT file.directory LIKE '/tmp/msu-target-%' -- I don't know man. I don't work here.
-  AND NOT file.directory LIKE '/tmp/UpdateBrain-%/AssetData/com.apple.MobileSoftwareUpdate.UpdateBrainService.xpc/Contents/MacOS' -- terraform
+  AND NOT file.directory LIKE '/tmp/UpdateBrain-%/AssetData/com.apple.MobileSoftwareUpdate.UpdateBrainService.xpc/Contents/MacOS'
+  -- terraform
   AND NOT (
     uid > 500
     AND file.path LIKE '/tmp/terraform_%/terraform'
@@ -135,9 +136,10 @@ WHERE
   AND NOT (
     magic.data IS NOT NULL
     AND (
-      magic.data = 'JSON data'
+      magic.data IN ('JSON data', 'ASCII text')
       OR magic.data LIKE 'ELF %-bit %SB executable%'
-      OR magic.data LIKE 'symbolic link to ld%.so.%'
+      OR magic.data LIKE 'symbolic link to l%.so.%'
       OR magic.data LIKE 'ELF %-bit LSB shared object%'
+      OR magic.data LIKE 'libtool library file,%'
     )
   )

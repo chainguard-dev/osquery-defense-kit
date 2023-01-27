@@ -46,6 +46,7 @@ WHERE
     'curl,500,bash,fakeroot',
     'curl,500,bash,nix-daemon',
     'curl,500,bash,ShellLauncher',
+    'curl,500,Slack,launchd',
     'curl,500,bash,zsh',
     'curl,500,env,env',
     'curl,500,fish,gnome-terminal-',

@@ -83,7 +83,10 @@ WHERE
       'zsh'
     )
   )
-  AND NOT exception_key IN ('netstat,500,IPNExtension,launchd')
+  AND NOT exception_key IN (
+    'netstat,500,IPNExtension,launchd',
+    'pfctl,0,pia-daemon,launchd'
+  )
   AND p1_cmd NOT IN ('/bin/sh /etc/periodic/daily/420.status-network')
 GROUP BY
   pe.pid

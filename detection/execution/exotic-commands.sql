@@ -117,3 +117,6 @@ WHERE
     cmd LIKE '%tail -f /dev/null%'
     AND p.cgroup_path NOT LIKE '/system.slice/docker-%'
   )
+  AND NOT cmd IN (
+    'socat UNIX-LISTEN:/run/user/1000/app/com.discordapp.Discord/discord-ipc-0,forever,fork UNIX-CONNECT:/run/user/1000/discord-ipc-0'
+  )

@@ -164,6 +164,8 @@ WHERE
   AND NOT p0_cmd LIKE '/bin/rm -f /tmp/periodic.%'
   AND NOT p0_cmd LIKE 'rm -f /tmp/locate%/_updatedb%'
   AND NOT p0_cmd LIKE 'rm -f /tmp/locate%/mklocate%/_mklocatedb%'
+  AND NOT p0_cmd LIKE '%launchctl load -w /Library/LaunchAgents/com.opalcamera.vcam.assistant.plist'
+  AND NOT p0_cmd LIKE '%launchctl load -w /Library/LaunchAgents/com.opalcamera.OpalCamera.startOnUsbPlugged.agent.plist'
   AND NOT p0_cmd LIKE 'rm -f /tmp/insttmp_%'
   AND NOT p0_cmd LIKE '/bin/cp %history%sessions/%'
   AND NOT p0_cmd LIKE 'touch -r /tmp/KSInstallAction.%'

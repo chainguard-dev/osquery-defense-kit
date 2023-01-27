@@ -13,7 +13,9 @@ SELECT
   p.pid,
   p.name,
   p.path,
-  p.cmdline,
+  p.cmdline AS p0_cmd,
+  p_p.cmdline AS p1_cmd,
+  p_p_p.cmdline AS p2_cmd,
   p.cgroup_path,
   datetime(file.mtime, 'unixepoch') AS mtime,
   p.cwd,
@@ -30,6 +32,8 @@ SELECT
 FROM
   listening_ports lp
   LEFT JOIN processes p ON lp.pid = p.pid
+  LEFT JOIN processes p_p ON p.parent = p_p.pid
+  LEFT JOIN processes p_p_p ON p_p.parent = p_p_p.pid
   LEFT JOIN file ON p.path = file.path
   LEFT JOIN hash ON p.path = hash.path
 WHERE
@@ -167,5 +171,6 @@ WHERE
   )
   -- Exclude processes running inside of Docker containers
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
+  AND NOT p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
 GROUP BY
   exception_key

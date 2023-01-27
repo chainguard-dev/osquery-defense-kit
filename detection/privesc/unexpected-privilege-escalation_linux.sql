@@ -39,6 +39,7 @@ WHERE
     '/usr/bin/doas',
     '/usr/bin/fusermount',
     '/usr/bin/fusermount3',
+    '/usr/libexec/Xorg',
     '/usr/bin/login',
     '/usr/bin/su',
     '/usr/bin/sudo',

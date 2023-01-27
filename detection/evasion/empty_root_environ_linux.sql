@@ -38,8 +38,10 @@ WHERE
     'dhcpcd',
     'modprobe',
     'dnf',
+    'gdm-x-session',
     'systemd-udevd',
     'gdm-session-wor',
+    'systemd-userwor',
     'fprintd',
     'systemd',
     'gpg-agent',
@@ -51,6 +53,7 @@ WHERE
     'sedispatch',
     'zypak-sandbox'
   )
+  AND NOT pp.name IN ('systemd-userdbd')
   AND NOT (
     p.name LIKE 'systemd-%'
     AND p.parent = 1

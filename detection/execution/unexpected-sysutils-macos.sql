@@ -59,6 +59,7 @@ FROM
 WHERE
   pe.time > (strftime('%s', 'now') -900)
   AND pe.status = 0
+  AND pe.parent > 0
   AND pe.cmdline != ''
   AND pe.cmdline IS NOT NULL
   AND pe.status == 0

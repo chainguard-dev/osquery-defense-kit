@@ -4,7 +4,7 @@
 --   * developers building code out of /tmp
 --
 -- tags: persistent
--- platform: posix
+-- platform: linux
 SELECT
   file.path,
   uid,
@@ -42,31 +42,32 @@ WHERE
     uid > 500
     AND (
       file.path LIKE '%/go-build%'
-      OR file.path LIKE '/tmp/checkout/%'
-      OR file.path LIKE '/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%'
-      OR file.path LIKE '/tmp/%/site-packages/markupsafe/_speedups.cpython-%'
-      OR file.path LIKE '/tmp/go.%.sum'
-      OR file.path LIKE '/tmp/guile-%/guile-%'
-      OR file.path LIKE '/tmp/src/%'
-      OR file.path LIKE '/tmp/%/src/%'
-      OR file.path LIKE '/tmp/%/git/%'
-      OR file.path LIKE '/tmp/%/ci/%'
-      OR file.path LIKE '/tmp/kots/%'
+      OR file.directory LIKE '/tmp/%/out'
+      OR file.path LIKE '%/bin/%-gen'
+      OR file.path LIKE '%/ko/%'
+      OR file.path LIKE '%/pdf-tools/%'
       OR file.path LIKE '/tmp/bin/%'
-      OR file.path LIKE '/tmp/%/target/%'
       OR file.path LIKE '/tmp/%/bin/busybox'
+      OR file.path LIKE '/tmp/checkout/%'
+      OR file.path LIKE '/tmp/%/ci/%'
       OR file.path LIKE '/tmp/%/debug/%'
+      OR file.path LIKE '/tmp/%/dist/%'
+      OR file.path LIKE '%/tmp/epdf%'
+      OR file.path LIKE '/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%'
+      OR file.path LIKE '/tmp/%/git/%'
       OR file.path LIKE '/tmp/%/github/%'
+      OR file.path LIKE '/tmp/go.%.sum'
+      OR file.path LIKE "/tmp/%/gradlew"
+      OR file.path LIKE '/tmp/guile-%/guile-%'
+      OR file.path LIKE '/tmp/kots/%'
+      OR file.path LIKE '/tmp/%/site-packages/markupsafe/_speedups.cpython-%'
+      OR file.path LIKE '/tmp/%/src/%'
+      OR file.path LIKE '/tmp/src/%'
+      OR file.path LIKE '/tmp/%/target/%'
+      OR file.path LIKE '/tmp/%/target/debug/build/%'
       OR file.path LIKE '/tmp/terraformer/%'
       OR file.path LIKE '/tmp/tmp.%'
-      OR file.path LIKE '/tmp/%/dist/%'
-      OR file.path LIKE '%/bin/%-gen'
-      OR file.path LIKE '/tmp/%/target/debug/build/%'
-      OR file.path LIKE '%/ko/%'
-      OR file.directory LIKE '/tmp/%/out'
-      OR file.path LIKE '%/pdf-tools/%'
-      OR file.path LIKE '%/tmp/epdf%'
-      OR file.path LIKE "/tmp/%/gradlew"
+      OR file.path LIKE '/tmp/%/venv/bin/%'
       OR -- These regular expressions can be narrowed down
       (
         file.size < 50000
@@ -78,6 +79,7 @@ WHERE
           'java',
           'js',
           'json',
+          'pem',
           'nib',
           'log',
           'strings',

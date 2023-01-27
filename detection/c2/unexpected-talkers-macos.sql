@@ -140,6 +140,7 @@ WHERE
     '22,6,500,ssh,com.apple.openssh,Software Signing',
     '22,6,500,ssh,com.apple.ssh,Software Signing',
     '22,6,500,ssh,ssh,',
+    '443,6,500,jx,,',
     '22,6,500,ssh,ssh-55554944fbf65684ab9b37c2bad3a27ef78b23f4,',
     '30004,6,500,java,net.java.openjdk.java,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '30011,6,500,java,net.java.openjdk.java,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
@@ -294,6 +295,7 @@ WHERE
   -- Github actions-runner
   AND NOT exception_key LIKE '443,6,500,Runner.Worker,apphost-%'
   AND NOT exception_key LIKE '443,6,500,Runner.Listener,apphost-%'
+  AND NOT exception_key LIKE '443,6,500,gh-dash,gh-dash-%,'
   --
   -- nix-shell infects children with open connections
   AND NOT (
