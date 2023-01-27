@@ -4,7 +4,7 @@
 --   * https://www.microsoft.com/en-us/security/blog/2022/12/21/microsoft-research-uncovers-new-zerobot-capabilities/
 --
 -- platform: posix
--- interval: 300
+-- interval: 45
 -- tags: process events
 SELECT
   -- Child
@@ -45,7 +45,11 @@ FROM
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
 WHERE
-  pe.time > (strftime('%s', 'now') -300)
+  pe.time > (strftime('%s', 'now') -45)
   AND pe.cmdline != ''
   AND pe.euid < 500
   AND pe.cmdline LIKE './%'
+  AND p0_cmd NOT IN (
+    './conftest',
+    './configure'
+  )
