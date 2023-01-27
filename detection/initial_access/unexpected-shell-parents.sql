@@ -94,6 +94,7 @@ WHERE
     'sdzoomplugin',
     'sh',
     'ssh',
+    'GoogleSoftwareUpdateAgent',
     'skhd',
     'sshd',
     'swift',

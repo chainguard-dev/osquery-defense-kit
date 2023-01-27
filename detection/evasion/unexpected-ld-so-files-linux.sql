@@ -28,6 +28,9 @@ WHERE
   )
   AND file.filename NOT IN ('.', '..')
   AND exception_key NOT IN (
+    '/etc/ld.so.conf.d/gds-11-8.conf,0644,46,2b48cb0abd03ff1d8926eca02a71540f4ee00ebccad5515e4d28a542dae8438a',
+    '/etc/ld.so.conf.d/989_cuda-11.conf,0644,44,915b1ed4caa95cf65a62a74d8255c5ef80ef864cc2767933c85e240a78957167',
+    '/etc/ld.so.conf.d/000_cuda.conf,0644,41,a9327cff9435220eac872cffedc7f6144d915bdcb70d985304c72f4c3cb9a7d3',
     '/etc/ld.so.conf,0644,117,dad04a370e488aa85fb0a813a5c83cf6fd981ce01883fc59685447b092de84b5',
     '/etc/ld.so.conf,0644,28,239c865e4c0746a01f82b03d38d620853bab2a2ba8e81d6f5606c503e0ea379f',
     '/etc/ld.so.conf,0644,34,d4b198c463418b493208485def26a6f4c57279467b9dfa491b70433cedb602e8',

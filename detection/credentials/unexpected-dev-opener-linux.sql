@@ -187,6 +187,7 @@ WHERE
     '/dev/mapper/control,gpartedbin',
     '/dev/zfs,zed',
     '/dev/zfs,zfs',
+    '/dev/fb,Xorg',
     '/dev/zfs,',
     '/dev/zfs,zpool'
   )

@@ -26,3 +26,4 @@ AND vol_name NOT IN (
 )
 AND vol_name NOT LIKE 'Signal %-universal'
 AND vol_name NOT LIKE 'Gephi %'
+AND mounts.path NOT LIKE '/private/tmp/KSInstallAction.%'

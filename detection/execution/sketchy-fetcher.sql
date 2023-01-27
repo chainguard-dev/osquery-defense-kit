@@ -39,6 +39,9 @@ WHERE
     INSTR(p.cmdline, 'wget ') > 0
     OR INSTR(p.cmdline, 'curl ') > 0
   )
+  -- Sketchy fetcher events always seem to contain a switch
+  AND p.cmdline LIKE '%-%'
+  AND p.cmdline LIKE '%/%'
   AND (
     ip NOT IN ('', '127.0.0.1', '::1')
     OR port != ''

@@ -37,6 +37,7 @@ WHERE
   AND p.path NOT IN (
     '',
     '/bin/ps',
+    '/Applications/Parallels Desktop.app/Contents/MacOS/Parallels Service',
     '/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_session_monitor',
     '/Library/DropboxHelperTools/Dropbox_u501/dbkextd',
     '/usr/bin/login',

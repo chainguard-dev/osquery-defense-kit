@@ -46,6 +46,7 @@ WHERE
     AND (
       exception_key IN (
         'abrtd.service,ABRT Automated Bug Reporting Tool,,400',
+        'nvidia-fallback.service,Fallback to nouveau as nvidia did not load,,400',
         'abrt-journal-core.service,Creates ABRT problems from coredumpctl messages,,200',
         'abrt-oops.service,ABRT kernel log watcher,,200',
         'abrt-xorg.service,ABRT Xorg log watcher,,200',

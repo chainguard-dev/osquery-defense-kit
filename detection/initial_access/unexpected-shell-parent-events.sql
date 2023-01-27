@@ -70,6 +70,7 @@ WHERE
       'Code Helper (Renderer)',
       'Code - Insiders Helper (Renderer)',
       'collect2',
+      'com.docker.backend',
       'conmon',
       'containerd-shim',
       'cpptools',
@@ -77,7 +78,6 @@ WHERE
       'demoit',
       'direnv',
       'doas',
-      'com.docker.backend',
       'docker-credential-desktop',
       'docker-credential-gcr',
       'env',
@@ -87,6 +87,7 @@ WHERE
       'fish',
       'gatherheaderdoc',
       'gdm-session-worker',
+      'gdm-x-session',
       'git',
       'gke-gcloud-auth-plugin',
       'gnome-terminal-server',
@@ -117,6 +118,7 @@ WHERE
       'package_script_service',
       'perl',
       'PK-Backend',
+      'pulumi',
       -- 'python' - do not include this, or you won't detect supply-chain attacks.
       'roxterm',
       'sdk',
@@ -126,6 +128,7 @@ WHERE
       'skhd',
       'snyk',
       'sshd',
+      'Stream Deck',
       'sudo',
       'swift',
       'systemd',
@@ -134,17 +137,17 @@ WHERE
       'test2json',
       'tmux',
       'tmux:server',
-      'Stream Deck',
       'update-notifier',
       'vi',
       'vim',
+      'Vim',
       'watch',
       'wezterm-gui',
       'xargs',
       'xcrun',
       'xfce4-terminal',
+      'yay',
       'yum',
-      'Vim',
       'zellij',
       'zsh'
     )
@@ -156,6 +159,7 @@ WHERE
     OR p0_cmd IN (
       'sh -c /bin/stty size 2>/dev/null',
       'sh -c python3.7 --version 2>&1',
+      '/bin/sh -c lsb_release -a --short',
       '/bin/sh -c ps ax -ww -o pid,ppid,uid,gid,args',
       "sh -c osascript -e 'user locale of (get system info)'",
       'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null'
@@ -167,6 +171,7 @@ WHERE
     OR p0_cmd LIKE '/bin/sh -c pkg-config %'
     OR p0_cmd LIKE '/bin/sh %/docker-credential-gcloud get'
     OR p0_cmd LIKE '%/google-chrome --flag-switches-begin --flag-switches-end --product-version'
+    OR p0_cmd LIKE '%/google-chrome --restart --flag-switches-begin --flag-switches-end --product-version'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-open %'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings set %'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings check %'
