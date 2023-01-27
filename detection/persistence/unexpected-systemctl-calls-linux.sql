@@ -13,7 +13,6 @@ SELECT
   TRIM(pe.cmdline) AS p0_cmd,
   pe.pid AS p0_pid,
   p.cgroup_path AS p0_cgroup,
-  IIF(p.pid IS NOT NULL, 1, 0) AS p0_active,
   -- Parent
   pe.parent AS p1_pid,
   p1.cgroup_path AS p1_cgroup,
@@ -21,7 +20,6 @@ SELECT
   COALESCE(p1.path, pe1.path) AS p1_path,
   COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
   REGEX_MATCH(COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
-  IIF(p1.pid IS NOT NULL, 1, 0) AS p1_active,
   -- Grandparent
   COALESCE(p1.parent, pe1.parent) AS p2_pid,
   COALESCE(p1_p2.cgroup_path, pe1_p2.cgroup_path) AS p2_cgroup,
@@ -29,7 +27,6 @@ SELECT
   COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path) AS p2_path,
   COALESCE(p1_p2_hash.path, pe1_p2_hash.path, pe1_pe2_hash.path) AS p2_hash,
   REGEX_MATCH(COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path), '.*/(.*)', 1) AS p2_name,
-  IIF(COALESCE(p1_p2.pid, pe1_p2.pid) IS NOT NULL, 1, 0) AS p2_active,
   -- Exception key
   REGEX_MATCH (pe.path, '.*/(.*)', 1) || ',' || MIN(pe.euid, 500) || ',' || REGEX_MATCH(COALESCE(p1.path, pe1.path), '.*/(.*)', 1) || ',' || REGEX_MATCH(COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path), '.*/(.*)', 1) AS exception_key
 FROM

@@ -113,6 +113,7 @@ WHERE
     OR dir LIKE '~/dev/%/dots/%/.config%'
     OR dir LIKE '~/%/.git'
     OR dir LIKE '~/%/.github%'
+    OR dir LIKE '~/%/.docker%'
     OR dir LIKE '~/%/.vercel%'
     OR dir LIKE '~/%/github.com/%'
     OR dir LIKE '~/%google-cloud-sdk/.install/.backup%'

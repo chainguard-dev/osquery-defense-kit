@@ -4,7 +4,7 @@
 --   * developers building code out of /tmp
 --
 -- tags: persistent
--- platform: macos
+-- platform: darwin
 SELECT
   file.path,
   uid,

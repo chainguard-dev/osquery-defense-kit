@@ -20,7 +20,6 @@ SELECT
   pe.pid AS p0_pid,
   pe.euid AS p0_euid,
   p.cgroup_path AS p0_cgroup,
-  IIF(p.pid IS NOT NULL, 1, 0) AS p0_active,
   s.authority AS p0_authority,
   -- Parent
   pe.parent AS p1_pid,
@@ -29,7 +28,6 @@ SELECT
   COALESCE(p1.path, pe1.path) AS p1_path,
   COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
   REGEX_MATCH(COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
-  IIF(p1.pid IS NOT NULL, 1, 0) AS p1_active,
   pe_sig1.authority AS p1_authority,
   -- Grandparent
   COALESCE(p1.parent, pe1.parent) AS p2_pid,
@@ -38,7 +36,6 @@ SELECT
   COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path) AS p2_path,
   COALESCE(p1_p2_hash.path, pe1_p2_hash.path, pe1_pe2_hash.path) AS p2_hash,
   REGEX_MATCH(COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path), '.*/(.*)', 1) AS p2_name,
-  IIF(COALESCE(p1_p2.pid, pe1_p2.pid) IS NOT NULL, 1, 0) AS p2_active,
   COALESCE(p1_p2_sig.authority, pe1_p2_sig.authority, pe1_pe2_sig.authority) AS p2_authority
 FROM
   process_events pe
