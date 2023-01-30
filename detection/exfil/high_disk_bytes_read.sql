@@ -83,6 +83,7 @@ WHERE
     'thunderbird',
     'vim',
     'wineserver',
+    'yay',
     'ykman-gui',
     'zsh'
   )

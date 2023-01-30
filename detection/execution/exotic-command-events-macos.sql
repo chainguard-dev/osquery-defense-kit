@@ -157,7 +157,11 @@ WHERE pe.time > (strftime('%s', 'now') -30)
   )
   AND NOT (
     p0_cmd IN (
+      '/bin/launchctl bootout gui/501 /Library/LaunchAgents/com.logi.optionsplus.plist',
+      '/bin/launchctl bootout system/com.docker.socket',
+      '/bin/launchctl load /Library/LaunchDaemons/com.logi.optionsplus.updater.plist',
       '/bin/launchctl load -wF /Library/LaunchAgents/com.adobe.GC.AGM.plist',
+      '/bin/launchctl load -w /Library/LaunchDaemons/com.docker.socket.plist',
       '/bin/rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
       'git history',
       'launchctl asuser 501 launchctl load /System/Library/LaunchAgents/com.apple.SafariBookmarksSyncAgent.plist',
