@@ -1,11 +1,11 @@
--- Suspicious parenting of fetch tools (event-based)
+-- Suspicious parenting of network utilities (event-based)
 --
 -- refs:
 --   * https://attack.mitre.org/techniques/T1016/ (System Network Configuration Discovery)
 --
 -- tags: transient process state often
 -- platform: linux
--- interval: 300
+-- interval: 60
 SELECT
   -- Child
   pe.path AS p0_path,
@@ -65,7 +65,7 @@ WHERE
     '/sbin/nft'
   )
   AND pe.cmdline != ''
-  AND pe.time > (strftime('%s', 'now') -300)
+  AND pe.time > (strftime('%s', 'now') -60)
   AND NOT (
     pe.euid > 500
     AND p1_name IN ('sh', 'fish', 'zsh', 'bash', 'dash')

@@ -45,8 +45,8 @@ WHERE
     )
     AND (
       exception_key IN (
-        'abrtd.service,ABRT Automated Bug Reporting Tool,,400',
-        'nvidia-fallback.service,Fallback to nouveau as nvidia did not load,,400',
+
+       'abrtd.service,ABRT Automated Bug Reporting Tool,,400',
         'abrt-journal-core.service,Creates ABRT problems from coredumpctl messages,,200',
         'abrt-oops.service,ABRT kernel log watcher,,200',
         'abrt-xorg.service,ABRT Xorg log watcher,,200',
@@ -226,6 +226,7 @@ WHERE
         'nscd.service,Name Service Cache Daemon,nscd,1800',
         'nss-lookup.target,Host and Network Name Lookups,,500',
         'nss-user-lookup.target,User and Group Name Lookups,,500',
+        'nvidia-fallback.service,Fallback to nouveau as nvidia did not load,,400',
         'nvidia-persistenced.service,NVIDIA Persistence Daemon,,300',
         'nvidia-powerd.service,nvidia-powerd service,,100',
         'openvpn.service,OpenVPN service,,200',
@@ -389,6 +390,7 @@ WHERE
         'user.slice,User and Session Slice,,400',
         'uuidd.socket,UUID daemon activation socket,,100',
         'vboxautostart-service.service,vboxautostart-service.service,,400',
+        'vboxballoonctrl-service.service,vboxballoonctrl-service.service,,500',
         'vboxdrv.service,VirtualBox Linux kernel module,,400',
         'vboxweb-service.service,vboxweb-service.service,,500',
         'veritysetup.target,Local Verity Protected Volumes,,400',
@@ -434,7 +436,7 @@ WHERE
         'znapzend.service,ZnapZend - ZFS Backup System,root,1700',
         'zpool-trim.service,ZFS pools trim,,1200',
         'zpool-trim.timer,zpool-trim.timer,,0'
-      )
+     )
       OR exception_key LIKE 'machine-qemu%,Virtual Machine qemu%,,300'
       OR exception_key LIKE 'dbus-:1.%-org.freedesktop.problems@%.service,dbus-:%.%-org.freedesktop.problems@%.service,0,200'
       OR exception_key LIKE 'run-media-%.mount,run-media-%.mount,,0'

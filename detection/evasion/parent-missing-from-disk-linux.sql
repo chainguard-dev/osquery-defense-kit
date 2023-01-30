@@ -43,13 +43,14 @@ WHERE
   AND NOT parent_path IN (
     '/opt/google/chrome/chrome',
     '/usr/bin/alacritty',
+    '/usr/bin/doas',
     '/usr/bin/dockerd',
     '/usr/bin/fusermount3',
-    '/usr/bin/osqueryd',
-    '/usr/bin/yay',
-    '/usr/bin/sudo',
-    '/usr/bin/doas',
     '/usr/bin/gnome-shell',
+    '/usr/bin/osqueryd',
+    '/usr/bin/sudo',
+    '/usr/bin/yay',
+    '/usr/libexec/gnome-terminal-server',
     '/usr/lib/systemd/systemd'
   ) -- long-running launchers
   AND NOT parent_name IN (

@@ -58,6 +58,7 @@ WHERE
     p1_name IN (
       'abrt-handle-eve',
       'alacritty',
+      'at-spi-bus-launcher',
       'bash',
       'build-script-build',
       'chainctl',
@@ -77,22 +78,26 @@ WHERE
       'doas',
       'docker-credential-desktop',
       'docker-credential-gcr',
+      'Docker Desktop',
+      'Emacs-arm64-11',
       'env',
       'erl_child_setup',
       'find',
       'FinderSyncExtension',
       'fish',
       'gatherheaderdoc',
+      'gdm3',
       'gdm-session-worker',
       'gdm-x-session',
       'git',
       'gke-gcloud-auth-plugin',
+      'gnome-session-binary',
+      'gnome-shell',
       'gnome-terminal-server',
       'go',
       'goland',
       'gopls',
       'helm',
-      'Docker Desktop',
       'HP Diagnose & Fix',
       'i3bar',
       'i3blocks',
@@ -101,7 +106,6 @@ WHERE
       'ko',
       'kubectl',
       'lightdm',
-      'Xorg',
       'local-path-provisioner',
       'login',
       'make',
@@ -133,6 +137,7 @@ WHERE
       'systemd',
       'systemd-sleep',
       'terminator',
+      'terraform-ls',
       'test2json',
       'tmux',
       'tmux:server',
@@ -145,8 +150,10 @@ WHERE
       'xargs',
       'xcrun',
       'xfce4-terminal',
+      'Xorg',
       'yay',
       'yum',
+      'zed'','
       'zellij',
       'zsh'
     )
@@ -156,12 +163,14 @@ WHERE
     OR p2_name IN ('env', 'git')
     -- Homebrew, except we don't want to allow all of ruby
     OR p0_cmd IN (
-      'sh -c /bin/stty size 2>/dev/null',
-      'sh -c python3.7 --version 2>&1',
+      '/bin/bash /usr/bin/xdg-settings set default-url-scheme-handler slack Slack.desktop',
       '/bin/sh -c lsb_release -a --short',
-      '/bin/zsh -c ls',
       '/bin/sh -c ps ax -ww -o pid,ppid,uid,gid,args',
+      '/bin/sh /usr/bin/lsb_release -a --short',
+      '/bin/zsh -c ls',
+      'sh -c /bin/stty size 2>/dev/null',
       "sh -c osascript -e 'user locale of (get system info)'",
+      'sh -c python3.7 --version 2>&1',
       'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null'
     )
     OR (
@@ -175,20 +184,33 @@ WHERE
     )
     OR (
       p1_cmd LIKE '%Python% /opt/homebrew/bin/jupyter%'
-      AND p0_cmd =  '/bin/sh -c osascript'
+      AND p0_cmd = '/bin/sh -c osascript'
     )
-    OR exception_key IN ('bash,0,pia-daemon,launchd')
+    OR (
+      p1_name = 'osqueryd'
+      AND p0_cmd LIKE '/bin/sh /etc/NetworkManager/dispatcher.d/%'
+    )
+    OR (
+      p1_name = 'ssh'
+      AND p0_cmd LIKE 'gcloud.py compute start-iap-tunnel%'
+    )
+
+    OR exception_key IN (
+      'bash,0,pia-daemon,launchd',
+      'zsh,500,python3.10,gnome-shell'
+    )
     OR p0_cmd LIKE '%/bash -e%/bin/as -arch%'
     OR p0_cmd LIKE '/bin/bash /usr/local/Homebrew/%'
     OR p0_cmd LIKE '/bin/bash /opt/homebrew/%'
     OR p0_cmd LIKE '/bin/sh -c pkg-config %'
     OR p0_cmd LIKE '/bin/sh %/docker-credential-gcloud get'
-    OR p0_cmd LIKE '%/google-chrome --flag-switches-begin % --product-version'
+    OR p0_cmd LIKE '%/google-chrome% --flag-switches-begin % --product-version'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-open %'
     OR p0_cmd LIKE '/bin/bash /usr/bin/xdg-settings check %'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings set %'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings check %'
     OR p0_cmd LIKE '%gcloud config config-helper --format=json'
+    OR p0_cmd LIKE '%gcloud config get-value%'
     OR p1_cmd LIKE '%Python /opt/homebrew/bin/aws configure sso'
     OR p2_cmd LIKE '/bin/bash /usr/local/bin/brew%'
     OR p2_cmd LIKE '/usr/bin/python3 -m py_compile %'

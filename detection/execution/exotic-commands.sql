@@ -120,3 +120,4 @@ WHERE
   AND NOT cmd IN (
     'socat UNIX-LISTEN:/run/user/1000/app/com.discordapp.Discord/discord-ipc-0,forever,fork UNIX-CONNECT:/run/user/1000/discord-ipc-0'
   )
+   AND NOT p.name IN ('cc1', 'compile', 'cmake', 'cc1plus')
