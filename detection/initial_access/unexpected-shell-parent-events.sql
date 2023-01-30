@@ -153,7 +153,7 @@ WHERE
       'Xorg',
       'yay',
       'yum',
-      'zed'','
+      'zed',
       'zellij',
       'zsh'
     )
