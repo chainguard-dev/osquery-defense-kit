@@ -7,7 +7,7 @@
 --   * software installers and updaters
 --   * developers running programs out of /tmp
 --
--- interval: 60
+-- interval: 240
 -- platform: darwin
 -- tags: filesystem events
 SELECT
@@ -49,7 +49,7 @@ FROM
   LEFT JOIN hash phash ON pp.path = phash.path
   LEFT JOIN signature ON p.path = signature.path
 WHERE
-  p.time > (strftime('%s', 'now') -60)
+  p.time > (strftime('%s', 'now') -240)
   -- The process_events table on macOS ends up with relative directories for some reason?
   AND dir LIKE '/%'
   AND file.size > 0

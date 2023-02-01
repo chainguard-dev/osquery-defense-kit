@@ -6,7 +6,7 @@
 -- false positives:
 --   * programs running in alternative namespaces (Docker)
 --
--- interval: 60
+-- interval: 300
 -- platform: linux
 -- tags: process events
 SELECT
@@ -30,7 +30,7 @@ FROM
   LEFT JOIN hash ON pe.path = hash.path
   LEFT JOIN hash phash ON pp.path = hash.path
 WHERE
-  pe.time > (strftime('%s', 'now') -60)
+  pe.time > (strftime('%s', 'now') -300)
   AND dirname NOT LIKE '/home/%'
   AND dirname NOT LIKE '/nix/store/%/bin'
   AND dirname NOT LIKE '/nix/store/%/lib/%'

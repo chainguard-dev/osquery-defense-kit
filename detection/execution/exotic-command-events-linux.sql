@@ -8,7 +8,7 @@
 --
 -- tags: transient process events
 -- platform: linux
--- interval: 60
+-- interval: 300
 SELECT
   -- Child
   pe.path AS p0_path,
@@ -51,7 +51,7 @@ FROM
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
 WHERE
-  pe.time > (strftime('%s', 'now') -60)
+  pe.time > (strftime('%s', 'now') -300)
   AND pe.cmdline != ''
   AND (
     p0_name IN (

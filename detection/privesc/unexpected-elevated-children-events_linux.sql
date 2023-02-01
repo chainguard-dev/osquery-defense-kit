@@ -9,7 +9,7 @@
 --
 -- tags: events process escalation
 -- platform: linux
--- interval: 60
+-- interval: 300
 SELECT
   file.mode AS p0_binary_mode,
   pe.cmdline_size AS p0_cmd_size,
@@ -52,7 +52,7 @@ FROM
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
 WHERE
-  pe.time > (strftime('%s', 'now') -60)
+  pe.time > (strftime('%s', 'now') -300)
   AND pe.euid < p1_euid
   AND pe.path NOT IN (
     '/',

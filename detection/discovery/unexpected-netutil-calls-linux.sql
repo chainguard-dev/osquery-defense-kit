@@ -5,7 +5,7 @@
 --
 -- tags: transient process state often
 -- platform: linux
--- interval: 60
+-- interval: 300
 SELECT
   -- Child
   pe.path AS p0_path,
@@ -66,7 +66,7 @@ WHERE
     '/sbin/nft'
   )
   AND pe.cmdline != ''
-  AND pe.time > (strftime('%s', 'now') -60)
+  AND pe.time > (strftime('%s', 'now') -300)
   AND NOT (
     pe.euid > 500
     AND p1_name IN ('sh', 'fish', 'zsh', 'bash', 'dash')

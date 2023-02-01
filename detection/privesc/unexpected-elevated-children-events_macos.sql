@@ -9,7 +9,7 @@
 --
 -- tags: events process escalation
 -- platform: darwin
--- interval: 60
+-- interval: 300
 SELECT
   -- Child
   pe.path AS p0_path,
@@ -60,7 +60,7 @@ FROM
   LEFT JOIN signature pe1_p2_sig ON pe1_p2.path = pe1_p2_sig.path
   LEFT JOIN signature pe1_pe2_sig ON pe1_pe2.path = pe1_pe2_sig.path
 WHERE
-  pe.time > (strftime('%s', 'now') -60)
+  pe.time > (strftime('%s', 'now') -300)
   AND p0_euid < p1_euid
   AND p1_path NOT IN (
     '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared',

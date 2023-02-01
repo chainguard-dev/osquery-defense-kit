@@ -8,7 +8,7 @@
 --
 -- tags: transient process events
 -- platform: darwin
--- interval: 30
+-- interval: 180
 SELECT -- Child
   pe.path AS p0_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
@@ -74,7 +74,7 @@ FROM process_events pe,
   LEFT JOIN signature p1_p2_sig ON p1_p2.path = p1_p2_sig.path
   LEFT JOIN signature pe1_p2_sig ON pe1_p2.path = pe1_p2_sig.path
   LEFT JOIN signature pe1_pe2_sig ON pe1_pe2.path = pe1_pe2_sig.path
-WHERE pe.time > (strftime('%s', 'now') -30)
+WHERE pe.time > (strftime('%s', 'now') -180)
   AND pe.status = 0
   AND pe.cmdline != ''
   AND pe.cmdline IS NOT NULL
