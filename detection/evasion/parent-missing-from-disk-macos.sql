@@ -14,35 +14,52 @@
 --
 -- tags: persistent daemon
 SELECT
-  p.name AS child_name,
-  p.pid AS child_pid,
-  p.path AS child_path,
-  p.cmdline AS child_cmd,
-  p.euid AS child_euid,
-  p.gid AS child_gid,
-  hash.path,
-  p.on_disk AS child_on_disk,
-  pp.pid AS parent_pid,
-  pp.name AS parent_name,
-  pp.path AS parent_path,
-  pp.cmdline AS cmd,
-  pp.on_disk AS parent_on_disk,
-  pp.uid AS parent_uid,
-  pp.gid AS parent_gid
+  s.authority AS p0_auth,
+  s.identifier AS p0_id,
+  DATETIME(f.ctime, 'unixepoch') AS p0_changed,
+  DATETIME(f.mtime, 'unixepoch') AS p0_modified,
+  -- Child
+  p0.path AS p0_path,
+  p0.name AS p0_name,
+  p0.cmdline AS p0_cmd,
+  p0.cwd AS p0_cwd,
+  p0.cgroup_path AS p0_cgroup,
+  p0.euid AS p0_euid,
+  p0_hash.sha256 AS p0_sha256,
+  -- Parent
+  p0.parent AS p1_pid,
+  p1.path AS p1_path,
+  p1.name AS p1_name,
+  p1_f.mode AS p1_mode,
+  p1.euid AS p1_euid,
+  p1.cmdline AS p1_cmd,
+  p1_hash.sha256 AS p1_sha256,
+  -- Grandparent
+  p1.parent AS p2_pid,
+  p2.name AS p2_name,
+  p2.path AS p2_path,
+  p2.cmdline AS p2_cmd,
+  p2_hash.sha256 AS p2_sha256
 FROM
-  processes p
-  JOIN processes pp ON pp.pid = p.parent
-  LEFT JOIN hash ON p.path = hash.path
+  processes p0
+  LEFT JOIN file f ON p0.path = f.path
+  LEFT JOIN signature s ON p0.path = s.path
+  LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
+  LEFT JOIN processes p1 ON p0.parent = p1.pid
+  LEFT JOIN file p1_f ON p1.path = p1_f.path
+  LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
+  LEFT JOIN processes p2 ON p1.parent = p2.pid
+  LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  parent_on_disk != 1
-  AND child_on_disk = 1
-  AND NOT child_pid IN (1, 2)
-  AND NOT parent_pid IN (1, 2) -- launchd, kthreadd
+  p1.on_disk != 1
+  AND p0.on_disk = 1
+  AND NOT p0.pid IN (1, 2)
+  AND NOT p1.pid IN (1, 2) -- launchd, kthreadd
   -- These alerts were unfortunately useless - lots of spam on macOS
   AND NOT (
-    parent_path = ''
-    AND p.uid > 500
+    p1.path = ''
+    AND p0.euid > 500
   )
-  AND parent_path NOT LIKE '/opt/homebrew/Cellar/%'
-  AND parent_path NOT LIKE '%google-cloud-sdk/.install/.backup%'
-  AND parent_path NOT LIKE '/private/var/folders/%/T/PKInstallSandboxTrash/%.sandboxTrash/%'
+  AND p1.path NOT LIKE '/opt/homebrew/Cellar/%'
+  AND p1.path NOT LIKE '%google-cloud-sdk/.install/.backup%'
+  AND p1.path NOT LIKE '/private/var/folders/%/T/PKInstallSandboxTrash/%.sandboxTrash/%'

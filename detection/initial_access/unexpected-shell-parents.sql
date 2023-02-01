@@ -17,6 +17,7 @@ SELECT
   p.pid,
   p.cgroup_path,
   p.parent,
+  p.cwd,
   pp.name AS parent_name,
   pp.path AS parent_path,
   pp.cmdline AS parent_cmd,

@@ -9,40 +9,46 @@
 -- tags: persistent process state
 -- platform: linux
 SELECT
-  p.pid,
-  p.name,
-  p.path,
-  p.euid,
-  p.gid,
-  p.cgroup_path,
-  f.ctime,
-  f.directory AS dirname,
-  p.cmdline,
-  p.cgroup_path,
-  mnt_namespace,
-  hash.sha256,
-  pp.path AS parent_path,
-  pp.name AS parent_name,
-  pp.cmdline AS parent_cmdline
+  DATETIME(f.ctime, 'unixepoch') AS p0_changed,
+  DATETIME(f.mtime, 'unixepoch') AS p0_modified,
+  (strftime('%s', 'now') - p0.start_time) AS p0_runtime_s,
+  -- Child
+  p0.pid AS p0_pid,
+  p0.path AS p0_path,
+  p0.name AS p0_name,
+  p0.cmdline AS p0_cmd,
+  p0.cwd AS p0_cwd,
+  p0.cgroup_path AS p0_cgroup,
+  p0.euid AS p0_euid,
+  p0_hash.sha256 AS p0_sha256,
+  -- Parent
+  p0.parent AS p1_pid,
+  p1.path AS p1_path,
+  p1.name AS p1_name,
+  p1_f.mode AS p1_mode,
+  p1.euid AS p1_euid,
+  p1.cmdline AS p1_cmd,
+  p1_hash.sha256 AS p1_sha256,
+  -- Grandparent
+  p1.parent AS p2_pid,
+  p2.name AS p2_name,
+  p2.path AS p2_path,
+  p2.cmdline AS p2_cmd,
+  p2_hash.sha256 AS p2_sha256
 FROM
-  processes p
-  LEFT JOIN file f ON p.path = f.path
-  LEFT JOIN process_namespaces ON p.pid = process_namespaces.pid
-  LEFT JOIN hash ON p.path = hash.path
-  LEFT JOIN processes pp ON p.parent = pp.pid
+  processes p0
+  LEFT JOIN file f ON p0.path = f.path
+  LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
+  LEFT JOIN processes p1 ON p0.parent = p1.pid
+  LEFT JOIN file p1_f ON p1.path = p1_f.path
+  LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
+  LEFT JOIN processes p2 ON p1.parent = p2.pid
+  LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  p.uid = 0
-  AND (strftime('%s', 'now') - p.start_time) > 15 -- use osquery as the reference mount namespace
-  AND mnt_namespace IN (
-    SELECT DISTINCT
-      (mnt_namespace)
-    FROM
-      process_namespaces
-      JOIN processes ON processes.pid = process_namespaces.pid
-    WHERE
-      processes.name IN ('osqueryi', 'osqueryd')
-  )
-  AND p.path NOT IN (
+  p0.euid = 0
+  AND p0.parent > 0
+  AND (strftime('%s', 'now') - p0.start_time) > 15
+  AND p0.path NOT IN (
     '',
     '/sbin/apcupsd',
     '/sbin/mount.ntfs',
@@ -50,9 +56,22 @@ WHERE
     '/usr/bin/abrt-dump-journal-oops',
     '/usr/bin/abrt-dump-journal-xorg',
     '/usr/bin/anacron',
+    '/usr/bin/NetworkManager',
+    '/usr/lib/upowerd',
+    '/usr/bin/fusermount3',
     '/usr/bin/apcupsd',
     '/usr/bin/bash',
     '/usr/bin/clamscan',
+    '/usr/lib/fwupd/fwupd',
+    '/usr/lib/accounts-daemon',
+    '/usr/lib/systemd/systemd-logind',
+    '/usr/lib/boltd',
+    '/usr/lib/power-profiles-daemon',
+    '/usr/bin/udevadm',
+    '/usr/bin/doas',
+    '/usr/bin/auditd',
+    '/usr/lib/boltd',
+    '/usr/lib/bluetooth/bluetoothd',
     '/usr/bin/containerd',
     '/usr/bin/containerd-shim-runc-v2',
     '/usr/bin/crond',
@@ -135,7 +154,7 @@ WHERE
     '/usr/sbin/zed'
   )
   -- Because I don't want to whitelist all of Python3
-  AND p.cmdline NOT IN (
+  AND p0.cmdline NOT IN (
     '/bin/sh /usr/lib/apt/apt.systemd.daily lock_is_held',
     '/sbin/init splash',
     '/usr/bin/monitorix -c /etc/monitorix/monitorix.conf -p /run/monitorix.pid',
@@ -151,14 +170,15 @@ WHERE
     '/usr/bin/xargs',
     'xargs logger -s'
   )
-  AND NOT p.cmdline LIKE '/usr/bin/python3 -s% /usr/sbin/firewalld%'
-  AND NOT p.cmdline LIKE '/usr/bin/python3 /usr/bin/dnf %'
-  AND NOT p.cmdline LIKE '/usr/bin/python3 /usr/bin/yum %'
-  AND p.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
-  AND p.path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/launcher'
-  AND p.path NOT LIKE '/nix/store/%/bin/%'
-  AND p.path NOT LIKE '/nix/store/%-systemd-%/lib/systemd/systemd%'
-  AND p.path NOT LIKE '/nix/store/%/libexec/%'
-  AND p.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snapd'
+  AND NOT p0.cmdline LIKE '/usr/bin/python3 -s% /usr/sbin/firewalld%'
+  AND NOT p0.cmdline LIKE '/usr/bin/python3 /usr/bin/dnf %'
+  AND NOT p0.cmdline LIKE '/usr/bin/python3 /usr/bin/yum %'
+  AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+  AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/launcher'
+  AND p0.path NOT LIKE '/nix/store/%/bin/%'
+  AND p0.path NOT LIKE '/nix/store/%-systemd-%/lib/systemd/systemd%'
+  AND p0.path NOT LIKE '/nix/store/%/libexec/%'
+  AND p0.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snapd'
   -- Exclude processes running inside of Docker containers
-  AND NOT p.cgroup_path LIKE '/system.slice/docker-%';
+  AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
+GROUP BY p0.pid
