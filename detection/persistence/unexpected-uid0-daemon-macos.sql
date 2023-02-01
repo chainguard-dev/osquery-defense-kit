@@ -223,7 +223,7 @@ WHERE
     '/usr/sbin/systemstats',
     '/usr/sbin/WirelessRadioManagerd'
   )
-  AND signature.identifier IN (
+  AND NOT signature.identifier IN (
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Foxit Corporation (8GN47HTP75)',

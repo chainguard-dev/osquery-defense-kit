@@ -31,6 +31,7 @@ WHERE
     OR program = ''
   )
   AND l.path NOT LIKE '/System/%'
+  AND l.path NOT LIKE '/Library/Apple/System/%'
   AND program_authority NOT IN (
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
