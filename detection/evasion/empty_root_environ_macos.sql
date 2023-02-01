@@ -15,6 +15,7 @@ SELECT
   p.on_disk,
   p.parent,
   p.cmdline,
+  p.cwd,
   pp.name AS parent_name,
   pp.cmdline AS parent_cmd,
   signature.identifier,

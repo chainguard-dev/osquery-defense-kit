@@ -1,26 +1,15 @@
--- Find setuid process events with large environment sizes
+-- Unexpected calls to sysctl (event-based)
 --
--- ******************************************************************
--- NOTE: This is a rare case of a non-working query. It does not work
--- in my environment (osquery 5.5.1 running with Kolide) as
--- process_events.env_size is NULL. I believe this to be a bug, but
--- requires more investigation.
--- ******************************************************************
+-- refs:
+--   * https://attack.mitre.org/techniques/T1497/001/ (Virtualization/Sandbox Evasion: System Checks)
 --
--- tags: events process escalation disabled seldom
--- platform: posix
---
--- Uncomment once the underlying problem is addressed:
--- XintervalX: 60
+-- platform: linux
+-- interval: 600
 SELECT
-  file.mode AS p0_binary_mode,
-  pe.env AS p0_env,
-  pe.env_size AS p0_env_size,
   -- Child
   pe.path AS p0_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
-  pe.euid AS p0_euid,
   pe.cwd AS p0_cwd,
   pe.pid AS p0_pid,
   p.cgroup_path AS p0_cgroup,
@@ -37,10 +26,12 @@ SELECT
   TRIM(COALESCE(p1_p2.cmdline, pe1_p2.cmdline, pe1_pe2.cmdline)) AS p2_cmd,
   COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path) AS p2_path,
   COALESCE(p1_p2_hash.path, pe1_p2_hash.path, pe1_pe2_hash.path) AS p2_hash,
-  REGEX_MATCH(COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path), '.*/(.*)', 1) AS p2_name
+  REGEX_MATCH(COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path), '.*/(.*)', 1) AS p2_name,
+  -- Exception key
+  REGEX_MATCH (pe.path, '.*/(.*)', 1) || ',' || MIN(pe.euid, 500) || ',' || REGEX_MATCH(COALESCE(p1.path, pe1.path), '.*/(.*)', 1) || ',' || REGEX_MATCH(COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path), '.*/(.*)', 1) AS exception_key
 FROM
-  process_events pe
-  LEFT JOIN file ON pe.path = file.path
+  process_events pe,
+  uptime
   LEFT JOIN processes p ON pe.pid = p.pid
   -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
@@ -56,6 +47,13 @@ FROM
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
 WHERE
-  pe.time > (strftime('%s', 'now') -60)
-  AND file.mode NOT LIKE '0%'
-  AND pe.env_size > 3500
+  pe.time > (strftime('%s', 'now') -600)
+  AND pe.cmdline != ''
+  AND pe.path IN (
+    '/usr/bin/sysctl',
+    '/sbin/sysctl',
+    '/usr/sbin/sysctl'
+  )
+  AND p.parent > 0
+GROUP BY
+  pe.pid

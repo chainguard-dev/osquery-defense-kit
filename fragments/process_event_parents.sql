@@ -1,28 +1,12 @@
--- Find setuid process events with large environment sizes
---
--- ******************************************************************
--- NOTE: This is a rare case of a non-working query. It does not work
--- in my environment (osquery 5.5.1 running with Kolide) as
--- process_events.env_size is NULL. I believe this to be a bug, but
--- requires more investigation.
--- ******************************************************************
---
--- tags: events process escalation disabled seldom
--- platform: posix
---
--- Uncomment once the underlying problem is addressed:
--- XintervalX: 60
+-- Canonical example of including process parents from process_events
 SELECT
-  file.mode AS p0_binary_mode,
-  pe.env AS p0_env,
-  pe.env_size AS p0_env_size,
   -- Child
   pe.path AS p0_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
-  pe.euid AS p0_euid,
   pe.cwd AS p0_cwd,
   pe.pid AS p0_pid,
+  pe.euid AS p0_euid,
   p.cgroup_path AS p0_cgroup,
   -- Parent
   pe.parent AS p1_pid,
@@ -47,7 +31,6 @@ FROM
   LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
   LEFT JOIN process_events pe1 ON pe.parent = pe1.pid AND pe1.cmdline != ''
   LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path
-
   -- Grandparents (via 3 paths)
   LEFT JOIN processes p1_p2 ON p1.parent = p1_p2.pid -- Current grandparent via parent processes
   LEFT JOIN processes pe1_p2 ON pe1.parent = pe1_p2.pid -- Current grandparent via parent events
@@ -55,7 +38,3 @@ FROM
   LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
-WHERE
-  pe.time > (strftime('%s', 'now') -60)
-  AND file.mode NOT LIKE '0%'
-  AND pe.env_size > 3500

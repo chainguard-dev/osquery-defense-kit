@@ -14,6 +14,8 @@ SELECT
   datetime(file.btime, 'unixepoch') AS file_created,
   magic.data,
   hash.sha256,
+  signature.authority,
+  signature.issuer,
   LOWER(
     REGEX_MATCH (RTRIM(file.path, '/'), '.*\.(.*?)$', 1)
   ) AS extension
@@ -22,6 +24,7 @@ FROM
   LEFT JOIN file ON mdfind.path = file.path
   LEFT JOIN magic ON file.path = magic.path
   LEFT JOIN hash ON file.path = hash.path
+  LEFT JOIN signature ON file.path = signature.path
 WHERE
   mdfind.query = 'kMDItemWhereFroms == ''*https://mail.google.com/*'''
   AND file.btime > (strftime('%s', 'now') -86400)
@@ -31,6 +34,7 @@ WHERE
     'csv',
     'doc',
     'docx',
+    'dwg',
     'eml',
     'gif',
     'htm',
@@ -46,6 +50,7 @@ WHERE
     'mpg',
     'ods',
     'odt',
+    'pages',
     'pdf',
     'pem',
     'pgp',
@@ -53,6 +58,7 @@ WHERE
     'ppt',
     'pptx',
     'pub',
+    'svg',
     'tif',
     'tiff',
     'txt',
@@ -60,5 +66,6 @@ WHERE
     'xls',
     'xlsm',
     'xlsx',
+    'xml',
     'zip'
   )

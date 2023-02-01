@@ -17,6 +17,7 @@ FROM
       p.pid,
       p.name,
       p.cmdline AS cmd,
+      p.cwd,
       cp.name AS child_name,
       cp.cmdline AS child_cmd,
       gcp.name AS grandchild_name,

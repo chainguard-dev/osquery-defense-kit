@@ -13,6 +13,7 @@ SELECT
   p.path,
   p.euid,
   p.gid,
+  p.cwd,
   f.ctime,
   f.directory AS dir,
   REGEX_MATCH (p.path, '(/.*?/.*?/.*?)/', 1) AS top_dir, -- 3 levels deep
@@ -148,6 +149,7 @@ WHERE
   AND top3_homedir NOT IN (
     '~/Library/Application Support/com.elgato.StreamDeck/',
     '~/Library/Caches/snyk/',
+    '~/.terraform.d/plugin-cache/registry.terraform.io/',
     '~/Library/Application Support/Foxit Software/',
     '~/Library/Application Support/BraveSoftware/'
   )
@@ -193,6 +195,7 @@ WHERE
     'Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
     'Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
+    'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Node.js Foundation (HX7739G8FX)',
     'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',

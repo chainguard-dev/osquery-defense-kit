@@ -39,6 +39,9 @@ WHERE
     INSTR(p.cmdline, 'wget ') > 0
     OR INSTR(p.cmdline, 'curl ') > 0
   )
+  -- Sketchy fetcher events always seem to contain a switch
+  AND p.cmdline LIKE '%-%'
+  AND p.cmdline LIKE '%/%'
   AND (
     ip NOT IN ('', '127.0.0.1', '::1')
     OR port != ''
@@ -129,11 +132,14 @@ WHERE
   AND NOT (
     addr IS NOT NULL
     AND (
-      addr IN ('releases.hashicorp.com', 'github.com', 'dl.enforce.dev')
+      addr IN (
+        'releases.hashicorp.com',
+        'github.com',
+        'dl.enforce.dev'
+      )
       -- Ignore local addresses (Docker development)
       OR addr NOT LIKE '%.%'
       OR ip LIKE '172.21.%'
       OR ip LIKE '192.168.%'
     )
   )
-

@@ -4,8 +4,9 @@
 --   * developers building code out of /tmp
 --
 -- tags: persistent
--- platform: macos
-SELECT file.path,
+-- platform: darwin
+SELECT
+  file.path,
   uid,
   gid,
   mode,
@@ -18,11 +19,13 @@ SELECT file.path,
   magic.data,
   signature.identifier,
   signature.authority
-FROM file
+FROM
+  file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
   LEFT JOIN signature ON file.path = signature.path
-WHERE (
+WHERE
+  (
     -- Recursive queries don't seem to work well with hidden directories :(
     file.path LIKE '/tmp/%%'
     OR file.path LIKE '/tmp/.%/%%'
@@ -51,6 +54,8 @@ WHERE (
       OR file.path LIKE '/tmp/src/%'
       OR file.path LIKE '/tmp/terraformer/%'
       OR file.path LIKE '/tmp/tmp.%'
+      OR file.path LIKE '/tmp/%/etc/network/if-up.d/%'
+      OR file.path LIKE '/tmp/%/bin/busybox'
       OR file.path LIKE '%/bin/%-gen'
       OR file.path LIKE '/tmp/%-%/Photoshop Installer.app/Contents/%'
       OR file.path LIKE '%/CCLBS/%'
@@ -109,7 +114,8 @@ WHERE (
     AND (strftime('%s', 'now') - ctime) < 30
   ) -- macOS updates
   AND NOT file.directory LIKE '/tmp/msu-target-%' -- I don't know man. I don't work here.
-  AND NOT file.directory LIKE '/tmp/UpdateBrain-%/AssetData/com.apple.MobileSoftwareUpdate.UpdateBrainService.xpc/Contents/MacOS' -- terraform
+  AND NOT file.directory LIKE '/tmp/UpdateBrain-%/AssetData/com.apple.MobileSoftwareUpdate.UpdateBrainService.xpc/Contents/MacOS'
+  -- terraform
   AND NOT (
     uid > 500
     AND file.path LIKE '/tmp/terraform_%/terraform'
@@ -130,7 +136,10 @@ WHERE (
   AND NOT (
     magic.data IS NOT NULL
     AND (
-        magic.data = 'JSON data'
-        OR magic.data LIKE 'ELF %-bit %SB executable%'
+      magic.data IN ('JSON data', 'ASCII text')
+      OR magic.data LIKE 'ELF %-bit %SB executable%'
+      OR magic.data LIKE 'symbolic link to l%.so.%'
+      OR magic.data LIKE 'ELF %-bit LSB shared object%'
+      OR magic.data LIKE 'libtool library file,%'
     )
   )

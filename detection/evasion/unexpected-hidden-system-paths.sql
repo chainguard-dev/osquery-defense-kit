@@ -8,7 +8,8 @@
 --
 -- platform: posix
 -- tags: persistent filesystem state
-SELECT file.path,
+SELECT
+  file.path,
   file.directory,
   uid,
   gid,
@@ -20,10 +21,12 @@ SELECT file.path,
   size,
   hash.sha256,
   magic.data
-FROM file
+FROM
+  file
   LEFT JOIN hash ON file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE (
+WHERE
+  (
     file.path LIKE '/lib/.%'
     OR file.path LIKE '/.%'
     OR file.path LIKE '/bin/%/.%'
@@ -70,6 +73,7 @@ WHERE (
     '/tmp/.dracula-tmux-weather.lock',
     '/tmp/.DS_Store',
     '/tmp/.font-unix/',
+    '/tmp/.go-version',
     '/tmp/.ICE-unix/',
     '/tmp/.terraform/',
     '/tmp/.terraform.lock.hcl',
@@ -78,6 +82,8 @@ WHERE (
     '/tmp/.X0-lock',
     '/tmp/.X11-unix/',
     '/tmp/.X1-lock',
+    '/var/root/.viminfo',
+    '/var/root/.bash_profile',
     '/tmp/.X2-lock',
     '/tmp/.XIM-unix/',
     '/var/db/.AppleUpgrade',
@@ -86,6 +92,7 @@ WHERE (
     '/var/db/.LastGKApp',
     '/var/db/.LastGKReject',
     '/var/db/.MASManifest',
+    '/var/db/.SoftwareUpdateOptions',
     '/var/db/.StagedAppleUpgrade',
     '/var/db/.SystemPolicy-default',
     '/var/.ntw_cache',

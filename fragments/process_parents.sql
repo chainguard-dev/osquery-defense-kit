@@ -1,14 +1,5 @@
--- Unexpected programs speaking over ICMP (state-based)
---
--- references:
---   *https://attack.mitre.org/techniques/T1095/ (C2: Non-Application Layer Protocol)
---
--- tags: transient state net often
+-- Canonical example of information to include for processes
 SELECT
-  pop.pid AS p0_pid,
-  pop.socket,
-  pop.local_address,
-  pop.remote_address,
   -- Child
   p0.path AS p0_path,
   p0.name AS p0_name,
@@ -21,6 +12,7 @@ SELECT
   p0.parent AS p1_pid,
   p1.path AS p1_path,
   p1.name AS p1_name,
+  p1.euid AS p1_euid,
   p1.cmdline AS p1_cmd,
   p1_hash.sha256 AS p1_sha256,
   -- Grandparent
@@ -38,7 +30,3 @@ FROM
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  pop.family = 2 -- PF_INET
-  AND pop.protocol = 1 -- ICMP
-  AND p0.name NOT IN ('ping')
-GROUP BY p0_pid

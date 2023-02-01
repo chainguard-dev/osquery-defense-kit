@@ -1,6 +1,6 @@
 -- Find programs that use the Security Framework on macOS - popular among malware authors
 --
--- platform: macos
+-- platform: darwin
 -- tags: persistent state process
 SELECT
   pmm.pid,
@@ -47,6 +47,7 @@ WHERE
     '500,bufls,a.out,',
     '500,.cargo-wrapped,.cargo-wrapped,',
     '500,cloud_sql_proxy,a.out,',
+    '500,Mattermost Helper (GPU),Mattermost.Desktop.helper.GPU,Apple Mac OS Application Signing',
     '500,cosign,a.out,',
     '500,cpu,cpu-555549441132dc6b7af538428ce3359ae94eab37,',
     '500,Emacs-arm64-11,Emacs-arm64-11,Developer ID Application: Galvanix (5BRAQAFB8B)',
@@ -70,7 +71,9 @@ WHERE
     '500,PrinterProxy,com.apple.print.PrinterProxy,',
     '500,registry-redirect,a.out,',
     '500,rust-analyzer,rust_analyzer-d11ae4e1bae4360d,',
+    '500,Runner.Listener,apphost-55554944a938bab90f04347d83659c53dd1197d6,',
     '500,scdaemon,scdaemon,',
+    '500,sdaudioswitch,,',
     '500,sdaudioswitch,sdaudioswitch,',
     '500,sdzoomplugin,,',
     '500,Slack,com.tinyspeck.slackmacgap,Apple Mac OS Application Signing',
@@ -91,6 +94,8 @@ WHERE
     '500,WinAppHelper,,',
     '500,WinAppHelper,WinAppHelper,'
   )
+  AND NOT execption_key LIKE '500,terraform-provider-%,a.out,'
+  AND NOT exception_key LIKE '500,Runner.%,apphost-%,'
   -- TODO: Narrow this down
   AND NOT p.path LIKE '/opt/homebrew/Cellar/%'
   AND NOT p.path LIKE '/usr/local/Cellar/%/bin/%'

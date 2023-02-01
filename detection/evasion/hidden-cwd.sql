@@ -66,6 +66,7 @@ WHERE
       'Electron,~/.vscode/extensions',
       'fish,~/.local/share',
       'fish,~/.Trash',
+      'cc1,/home/build/.cache',
       'git,~/.local/share',
       'java,~/.gradle/daemon',
       'java,~/.local/share',
@@ -78,6 +79,7 @@ WHERE
       'zsh,~/.Trash'
     )
     OR exception_key LIKE '%sh,~/.Trash/%'
+    OR exception_key LIKE '%sh,~/dev/%'
     OR dir IN (
       '~/.config',
       '~/.local/bin',
@@ -97,6 +99,7 @@ WHERE
     OR p.name IN (
       'bindfs',
       'vim',
+      'find',
       'nvim',
       'code',
       'updatedb',
@@ -107,9 +110,11 @@ WHERE
     OR dir LIKE '~/.%'
     OR dir LIKE '~/code/%'
     OR dir LIKE '~/%/.config/nvim'
-    OR dir LIKE '~/dev/%/dots/%/.config/%'
+    OR dir LIKE '~/dev/%/dots/%/.config%'
     OR dir LIKE '~/%/.git'
     OR dir LIKE '~/%/.github%'
+    OR dir LIKE '~/%/.docker%'
+    OR dir LIKE '~/%/.vercel%'
     OR dir LIKE '~/%/github.com/%'
     OR dir LIKE '~/%google-cloud-sdk/.install/.backup%'
     OR dir LIKE '~/.gradle/%'
@@ -128,3 +133,5 @@ WHERE
       AND p.euid = 0
     )
   )
+  AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
+

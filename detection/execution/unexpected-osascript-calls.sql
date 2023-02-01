@@ -13,78 +13,84 @@
 -- platform: darwin
 -- tags: process events
 SELECT
-  pe.path AS path,
-  REGEX_MATCH (pe.path, '.*/(.*)', 1) AS name,
-  TRIM(pe.cmdline) AS cmd,
-  pe.pid AS pid,
-  pe.euid AS euid,
-  pe.parent AS parent_pid,
-  TRIM(IIF(pp.cmdline != NULL, pp.cmdline, ppe.cmdline)) AS parent_cmd,
-  TRIM(IIF(pp.path != NULL, pp.path, ppe.path)) AS parent_path,
-  REGEX_MATCH (
-    IIF(pp.path != NULL, pp.path, ppe.path),
-    '.*/(.*)',
-    1
-  ) AS parent_name,
-  TRIM(IIF(pp.path != NULL, hash.sha256, ehash.sha256)) AS parent_hash,
-  TRIM(IIF(gp.cmdline != NULL, gp.cmdline, gpe.cmdline)) AS gparent_cmd,
-  TRIM(IIF(gp.path != NULL, gp.path, gpe.path)) AS gparent_path,
-  REGEX_MATCH (
-    IIF(gp.path != NULL, gp.path, gpe.path),
-    '.*/(.*)',
-    1
-  ) AS gparent_name,
-  IIF(pp.parent != NULL, pp.parent, ppe.parent) AS gparent_pid,
-  IIF(
-    signature.identifier != NULL,
-    signature.identifier,
-    esignature.identifier
-  ) AS parent_identifier,
-  IIF(
-    signature.authority != NULL,
-    signature.authority,
-    esignature.authority
-  ) AS parent_authority
+  -- Child
+  pe.path AS p0_path,
+  REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
+  TRIM(pe.cmdline) AS p0_cmd,
+  pe.cwd AS p0_cwd,
+  pe.pid AS p0_pid,
+  pe.euid AS p0_euid,
+  p.cgroup_path AS p0_cgroup,
+  s.authority AS p0_authority,
+  -- Parent
+  pe.parent AS p1_pid,
+  p1.cgroup_path AS p1_cgroup,
+  TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
+  COALESCE(p1.path, pe1.path) AS p1_path,
+  COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
+  REGEX_MATCH(COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
+  pe_sig1.authority AS p1_authority,
+  -- Grandparent
+  COALESCE(p1.parent, pe1.parent) AS p2_pid,
+  COALESCE(p1_p2.cgroup_path, pe1_p2.cgroup_path) AS p2_cgroup,
+  TRIM(COALESCE(p1_p2.cmdline, pe1_p2.cmdline, pe1_pe2.cmdline)) AS p2_cmd,
+  COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path) AS p2_path,
+  COALESCE(p1_p2_hash.path, pe1_p2_hash.path, pe1_pe2_hash.path) AS p2_hash,
+  REGEX_MATCH(COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path), '.*/(.*)', 1) AS p2_name,
+  COALESCE(p1_p2_sig.authority, pe1_p2_sig.authority, pe1_pe2_sig.authority) AS p2_authority
 FROM
   process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid
-  LEFT JOIN processes pp ON pe.parent = pp.pid
-  LEFT JOIN process_events ppe ON pe.parent = ppe.pid
-  LEFT JOIN processes gp ON gp.pid = pp.parent
-  LEFT JOIN process_events gpe ON ppe.parent = gpe.pid
-  LEFT JOIN hash ON pp.path = hash.path
-  LEFT JOIN hash ehash ON ppe.path = ehash.path
-  LEFT JOIN signature ON pp.path = signature.path
-  LEFT JOIN signature esignature ON ppe.path = esignature.path
+  LEFT JOIN signature s ON pe.path = s.path
+  -- Parents (via two paths)
+  LEFT JOIN processes p1 ON pe.parent = p1.pid
+  LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
+  LEFT JOIN process_events pe1 ON pe.parent = pe1.pid AND pe1.cmdline != ''
+  LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path
+  LEFT JOIN signature pe_sig1 ON pe1.path = pe_sig1.path
+  -- Grandparents (via 3 paths)
+  LEFT JOIN processes p1_p2 ON p1.parent = p1_p2.pid -- Current grandparent via parent processes
+  LEFT JOIN processes pe1_p2 ON pe1.parent = pe1_p2.pid -- Current grandparent via parent events
+  LEFT JOIN process_events pe1_pe2 ON pe1.parent = pe1_p2.pid AND pe1_pe2.cmdline != '' -- Past grandparent via parent events
+  LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
+  LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
+  LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
+
+  LEFT JOIN signature p1_p2_sig ON p1_p2.path = p1_p2_sig.path
+  LEFT JOIN signature pe1_p2_sig ON pe1_p2.path = pe1_p2_sig.path
+  LEFT JOIN signature pe1_pe2_sig ON pe1_pe2.path = pe1_pe2_sig.path
 WHERE
   pe.path IN ('/usr/bin/osascript', '/usr/bin/osacompile')
   AND pe.time > (strftime('%s', 'now') -900)
+  AND pe.cmdline != ''
   -- Only include successful executions: On macOS, process_events includes unsuccessful path lookups!
   AND pe.status = 0
   AND NOT (
     pe.euid > 500
     AND (
-      cmd IN ('osascript -e user locale of (get system info)')
-      OR cmd LIKE '%"CFBundleName" of property list file (app_path & ":Contents:Info.plist")'
-      OR cmd LIKE 'osascript -e set zoomStatus to "closed"%'
-      OR cmd LIKE 'osascript -e%tell application "System Preferences"%reveal anchor "shortcutsTab"%"com.apple.preference.keyboard"'
-      OR cmd LIKE 'osascript -e tell application "zoom.us"%'
-      OR cmd LIKE 'osascript openChrome.applescript http://127.0.0.1:%'
-      OR cmd LIKE 'osascript openChrome.applescript http%://localhost%'
-      OR cmd LIKE '/usr/bin/osascript /Users/%/Library/Caches/com.runningwithcrayons.Alfred/Workflow Scripts/%'
-      OR cmd LIKE '/usr/bin/osascript /Users/%/osx-trash/trashfile.AppleScript %'
-      OR cmd LIKE '/usr/bin/osascript /Applications/Amazon Photos.app/Contents/Resources/quit_and_restart_app.scpt /Applications/Amazon Photos.app com.amazon.clouddrive.mac%'
-      OR parent_cmd LIKE '%/bin/gcloud auth%login'
-      OR parent_cmd LIKE '%/google-cloud-sdk/lib/gcloud.py auth%login'
-      OR parent_cmd LIKE '% /opt/homebrew/bin/jupyter%notebook'
-      OR parent_name IN ('yubikey-agent')
+      p0_cmd IN ('osascript -e user locale of (get system info)')
+      OR p0_cmd LIKE '%"CFBundleName" of property list file (app_path & ":Contents:Info.plist")'
+      OR p0_cmd LIKE 'osascript -e set zoomStatus to "closed"%'
+      OR p0_cmd LIKE 'osascript -e%tell application "System Preferences"%reveal anchor "shortcutsTab"%"com.apple.preference.keyboard"'
+      OR p0_cmd LIKE 'osascript -e tell application "zoom.us"%'
+      OR p0_cmd LIKE 'osascript openChrome.applescript http://127.0.0.1:%'
+      OR p0_cmd LIKE 'osascript openChrome.applescript http%://localhost%'
+      OR p0_cmd LIKE '/usr/bin/osascript /Users/%/Library/Caches/com.runningwithcrayons.Alfred/Workflow Scripts/%'
+      OR p0_cmd LIKE '/usr/bin/osascript /Users/%/osx-trash/trashfile.AppleScript %'
+      OR p0_cmd LIKE '/usr/bin/osascript /Applications/Amazon Photos.app/Contents/Resources/quit_and_restart_app.scpt /Applications/Amazon Photos.app com.amazon.clouddrive.mac%'
+      OR p1_cmd LIKE '%/bin/gcloud auth%login'
+      OR p1_cmd LIKE '%/google-cloud-sdk/lib/gcloud.py auth%login'
+      OR p1_cmd LIKE '%aws configure sso'
+      OR p1_cmd LIKE '% /opt/homebrew/bin/jupyter%notebook'
+      OR p1_name IN ('yubikey-agent')
       OR (
-        parent_authority = 'Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM)'
-        AND cmd = 'osascript -ss'
+        p1_authority = 'Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM)'
+        AND p0_cmd = 'osascript -ss'
       )
+
     )
   )
   -- The following apply to all uids
-  AND NOT cmd = 'osascript -e user locale of (get system info)'
+  AND NOT p0_cmd = 'osascript -e user locale of (get system info)'
 GROUP BY
-  pe.pid, pe.cmd
+  pe.pid

@@ -4,7 +4,8 @@
 --   * https://www.sandflysecurity.com/blog/bpfdoor-an-evasive-linux-backdoor-technical-analysis/
 --
 -- tags: persistent state filesystem
-SELECT file.path,
+SELECT
+  file.path,
   file.directory,
   uid,
   gid,
@@ -13,10 +14,12 @@ SELECT file.path,
   file.size,
   hash.sha256,
   magic.data
-FROM file
+FROM
+  file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE (
+WHERE
+  (
     -- This list is the result of multiple queries combined and can likely be minimized
     file.path LIKE '/dev/%%'
     OR file.path LIKE '/dev/%%/%%'
@@ -57,11 +60,18 @@ WHERE (
       'Applesoft BASIC program data, first line number 86',
       'mc68k executable (shared)',
       'OpenPGP Secret Key',
+      '',
       'floppy image data (IBM SaveDskF, old)',
       'DOS executable (COM)'
     )
     AND file.path LIKE '/dev/shm/u1000-Shm_%'
-    AND file.size > 1000000
+  )
+  AND NOT (
+    file.uid = 1000
+    AND file.gid IN (100, 1000)
+    AND file.mode IN ('0755', '0775')
+    AND magic.data IS NULL
+    AND file.path LIKE '/dev/shm/u1000-Shm_%'
   )
   AND NOT (
     file.uid = 1000

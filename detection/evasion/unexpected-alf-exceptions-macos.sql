@@ -77,6 +77,9 @@ WHERE
     'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0',
     '/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/',
   )
+  AND NOT exception_key LIKE ',node,/opt/homebrew/Cellar/nvm/%/versions/node/v%/bin/node,501'
+  AND NOT exception_key LIKE  ',a.out,/opt/homebrew/Cellar/podman/%/libexec/podman/gvproxy,501'
+
   AND NOT (
     signature.identifier LIKE 'cargo-%'
     AND ae.path LIKE '/Users/%/.rustup/%'
@@ -99,6 +102,11 @@ WHERE
   )
   AND NOT (
     ae.path LIKE '/Users/%/Library/Application%20Support/Steam/Steam.AppBundle/Steam/'
+  )
+  AND NOT (
+    signature.authority = ''
+    AND signature.identifier = 'org.chromium.Chromium'
+    AND ae.path LIKE '/Users/%/Library/pnpm/global/%/.pnpm/carlo@%/node_modules/carlo/lib/.local-data/mac-%/chrome-mac/Chromium.app/'
   )
   AND NOT (
     (

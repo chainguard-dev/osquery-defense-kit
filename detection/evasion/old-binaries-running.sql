@@ -7,7 +7,8 @@
 --   * https://attack.mitre.org/techniques/T1070/006/ (Indicator Removal on Host: Timestomp)
 --
 -- tags: transient process state
-SELECT p.path,
+SELECT
+  p.path,
   p.cmdline,
   p.cwd,
   p.pid,
@@ -22,15 +23,18 @@ SELECT p.path,
   f.uid,
   m.path,
   f.gid
-FROM processes p
+FROM
+  processes p
   LEFT JOIN file f ON p.path = f.path
   LEFT JOIN hash h ON p.path = h.path
   LEFT JOIN magic m ON p.path = m.path
-WHERE (
+WHERE
+  (
     ctime_age_days > 1050
     OR mtime_age_days > 1050
   )
-  AND f.mtime > 1
+  -- Jan 1st, 1980 (the source of many false positives)
+  AND f.mtime > 315561600
   AND f.path NOT LIKE '/home/%/idea-IU-223.8214.52/%'
   AND f.path NOT IN (
     '/Library/Printers/Brother/Utilities/Server/LOGINserver.app/Contents/MacOS/LOGINserver',
@@ -44,6 +48,7 @@ WHERE (
     '/Applications/Skitch.app/Contents/Library/LoginItems/J8RPQ294UB.com.skitch.SkitchHelper.app/Contents/MacOS/J8RPQ294UB.com.skitch.SkitchHelper',
     '/opt/homebrew/Cellar/bash/5.1.16/bin/bash',
     '/snap/brackets/138/opt/brackets/Brackets',
+    '/Applications/Pandora.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/crashpad_handler',
     '/snap/brackets/138/opt/brackets/Brackets-node',
     '/Applications/Emacs.app/Contents/MacOS/Emacs-x86_64-10_14',
     '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService',
@@ -54,7 +59,9 @@ WHERE (
     'BluejeansHelper',
     'J8RPQ294UB.com.skitch.SkitchHelper',
     'Pandora',
-    'Pandora Helper'
+    'Pandora Helper',
+    'dlv'
   )
-GROUP BY p.pid,
+GROUP BY
+  p.pid,
   p.path

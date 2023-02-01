@@ -1,12 +1,11 @@
--- Suspicious parenting of fetch tools (event-based)
+-- Suspicious calls to systemctl(event-based)
 --
 -- refs:
---   * https://attack.mitre.org/techniques/T1105/ (Ingress Tool Transfer)
+--   * https://attack.mitre.org/techniques/T1543/002/ (Create or Modify System Process: Systemd Service)
 --
 -- tags: transient process state often
--- platform: posix
--- interval: 450
-
+-- platform: linux
+-- interval: 300
 SELECT
   -- Child
   pe.path AS p0_path,
@@ -49,61 +48,49 @@ FROM
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
 WHERE
+  uptime.total_seconds > 30
   -- NOTE: The remainder of this query is synced with unexpected-fetcher-parents
-  pe.cmdline != ''
-  AND pe.time > (strftime('%s', 'now') -450)
-  AND p0_name IN ('curl', 'wget', 'ftp', 'tftp')
+  AND pe.path IN (
+    '/usr/bin/systemctl',
+    '/bin/systemctl',
+    '/sbin/systemctl'
+  )
+  AND pe.cmdline != ''
+  AND pe.time > (strftime('%s', 'now') -300)
   AND NOT exception_key IN (
-    'curl,0,nm-dispatcher,',
-    'curl,0,nm-dispatcher,nm-dispatcher',
-    'curl,500,bash,nix-daemon',
-    'curl,500,bash,ShellLauncher',
-    'curl,500,bash,zsh',
-    'curl,500,env,env',
-    'curl,500,fish,gnome-terminal-',
-    'curl,500,ruby,zsh',
-    'curl,500,ShellLauncher,',
-    'curl,500,ShellLauncher,login',
-    'curl,500,zsh,login',
-    'curl,500,zsh,sh',
-    'wget,500,env,env'
+    'systemctl,0,apt-helper,',
+    'systemctl,500,systemd,',
+    'systemctl,0,dash,logrotate',
+    'systemctl,0,pacman,pacman',
+    'systemctl,0,pacman,sudo',
+    'systemctl,0,tailscaled,',
+    'systemctl,0,,containerd-shim-runc-v2'
   )
-  AND NOT (
-    pe.euid > 500
-    AND p1_name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
-    AND p2_name IN (
-      'alacritty',
-      'gnome-terminal-',
-      'kitty',
-      'login',
-      'roxterm',
-      'tmux',
-      'tmux:server',
-      'wezterm-gui',
-      'zsh'
-    )
+  AND NOT p0_cmd IN (
+    '/bin/systemctl is-enabled -q whoopsie.path',
+    '/bin/systemctl -q is-enabled whoopsie.path',
+    '/bin/systemctl stop --no-block nvidia-persistenced',
+    '/sbin/runlevel',
+    'systemctl is-active systemd-resolved.service',
+    'systemctl is-enabled power-profiles-daemon.service',
+    'systemctl is-enabled snapd.apparmor',
+    'systemctl is-enabled systemd-rfkill.service',
+    'systemctl is-enabled systemd-rfkill.socket',
+    'systemctl is-enabled tlp.service',
+    'systemctl kill -s HUP rsyslog.service',
+    'systemctl -p LoadState show cups.service',
+    'systemctl -q is-enabled whoopsie',
+    'systemctl --quiet is-enabled cups.service',
+    'systemctl restart cups.service',
+    'systemctl status kubelet',
+    'systemctl stop kubelet',
+    'systemctl --user import-environment DISPLAY XAUTHORITY',
+    '/usr/bin/systemctl try-reload-or-restart dbus'
   )
-  AND NOT p1_name IN ('yay', 'nvim')
-  AND NOT (
-    pe.euid > 500
-    AND p0_cmd IN ('curl --fail https://ipinfo.io/timezone')
-  )
-  AND NOT (
-    pe.euid > 500
-    AND p1_name = 'env'
-    AND p1_cmd LIKE '/usr/bin/env -i % HOMEBREW_BREW_FILE=%'
-  )
-  AND NOT (
-    pe.euid > 500
-    AND p1_name = 'ruby'
-    AND p1_cmd LIKE '%/opt/homebrew/Library/Homebrew/brew.rb%'
-  )
-  AND NOT (
-    pe.euid > 500
-    AND p1_name = 'env'
-    AND p1_cmd LIKE '/usr/bin/env bash ./hack/%.sh'
-  )
-  AND NOT p0_cmd LIKE 'wget --no-check-certificate https://github.com/istio/istio/%'
-  AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
+  -- apt-helper form
+  AND NOT p0_cmd LIKE '%systemctl is-active -q %.service'
+  AND NOT p0_cmd LIKE '%systemctl show --property=%'
+  AND NOT p0_cmd LIKE '%systemctl % snap-kubectl-%.mount'
+  AND NOT p0_cmd LIKE '%systemctl --user set-environment DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%/bus'
 GROUP BY
   pe.pid

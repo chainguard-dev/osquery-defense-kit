@@ -81,6 +81,7 @@ WHERE
   AND s.remote_address NOT LIKE '::ffff:172.%'
   AND s.remote_address NOT LIKE '10.%'
   AND s.remote_address NOT LIKE '::ffff:10.%'
+  AND s.remote_address NOT LIKE '::ffff:192.168.%'
   AND s.remote_address NOT LIKE 'fc00:%'
   AND p.path != ''
   AND NOT exception_key IN (
@@ -88,6 +89,9 @@ WHERE
     '123,17,500,/usr/chronyd,0u,0g,chronyd',
     '143,6,500,/app/thunderbird,u,g,thunderbird',
     '143,6,500,/usr/thunderbird,0u,0g,thunderbird',
+    '19305,6,500,/opt/firefox,0u,0g,firefox',
+    '19305,6,500,/usr/firefox,0u,0g,firefox',
+    '19305,6,500,/usr/firefox,0u,0g,.firefox-wrappe',
     '22000,6,500,/usr/syncthing,0u,0g,syncthing',
     '22,6,0,/usr/ssh,0u,0g,ssh',
     '22,6,0,/usr/tailscaled,0u,0g,tailscaled',
@@ -95,6 +99,8 @@ WHERE
     '22,6,500,/home/terraform,500u,500g,terraform',
     '22,6,500,/usr/cargo,0u,0g,cargo',
     '22,6,500,/usr/ssh,0u,0g,ssh',
+    '3000,6,500,/opt/brave,0u,0g,brave',
+    '3000,6,500,/opt/chrome,0u,0g,chrome',
     '32768,6,0,/usr/tailscaled,0u,0g,tailscaled',
     '32768,6,500,/usr/ssh,0u,0g,ssh',
     '3443,6,500,/opt/chrome,0u,0g,chrome',
@@ -108,6 +114,8 @@ WHERE
     '4070,6,500,/usr/spotify,0u,0g,spotify',
     '43,6,500,/usr/whois,0u,0g,whois',
     '4460,6,114,/usr/chronyd,0u,0g,chronyd',
+    '5004,6,500,/opt/brave,0u,0g,brave',
+    '5006,6,500,/opt/brave,0u,0g,brave',
     '500,/usr/htop,0u,0g,htop',
     '5228,6,500,/opt/chrome,0u,0g,chrome',
     '5228,6,500,/usr/chrome,0u,0g,chrome',
@@ -119,10 +127,13 @@ WHERE
     '80,6,0,/usr/bash,0u,0g,mkinitcpio',
     '80,6,0,/usr/bash,0u,0g,sh',
     '80,6,0,/usr/bash,0u,0g,update-ca-trust',
-    '80,6,100,/usr/http,0u,0g,http',
+    '80,6,0,/usr/cp,0u,0g,cp',
+    '80,6,0,/usr/fc-cache,0u,0g,fc-cache',
+    '80,6,0,/usr/find,0u,0g,find',
     '80,6,0,/usr/gpg,0u,0g,gpg',
-    '88,6,500,/usr/syncthing,0u,0g,syncthing',
+    '80,6,0,/usr/kmod,0u,0g,depmod',
     '80,6,0,/usr/kubelet,u,g,kubelet',
+    '80,6,0,/usr/ldconfig,0u,0g,ldconfig',
     '80,6,0,/usr/NetworkManager,0u,0g,NetworkManager',
     '80,6,0,/usr/packagekitd,0u,0g,packagekitd',
     '80,6,0,/usr/pacman,0u,0g,pacman',
@@ -131,10 +142,10 @@ WHERE
     '80,6,0,/usr/python3.10,0u,0g,yum',
     '80,6,0,/usr/python3.11,0u,0g,dnf',
     '80,6,0,/usr/python3.11,0u,0g,yum',
-    '80,6,0,/usr/cp,0u,0g,cp',
     '80,6,0,/usr/tailscaled,0u,0g,tailscaled',
     '80,6,0,/usr/.tailscaled-wrapped,0u,0g,.tailscaled-wra',
     '80,6,0,/usr/wget,0u,0g,wget',
+    '80,6,100,/usr/http,0u,0g,http',
     '80,6,105,/usr/http,0u,0g,http',
     '80,6,500,/app/signal-desktop,u,g,signal-desktop',
     '80,6,500,/app/spotify,u,g,spotify',
@@ -148,6 +159,7 @@ WHERE
     '80,6,500,/opt/chrome,0u,0g,chrome',
     '80,6,500,/opt/firefox,0u,0g,firefox',
     '80,6,500,/opt/spotify,0u,0g,spotify',
+    '80,6,500,/opt/zoom,0u,0g,zoom',
     '80,6,500,/usr/chrome,0u,0g,chrome',
     '80,6,500,/usr/curl,0u,0g,curl',
     '80,6,500,/usr/firefox,0u,0g,firefox',
@@ -159,6 +171,7 @@ WHERE
     '80,6,500,/usr/rpi-imager,0u,0g,rpi-imager',
     '80,6,500,/usr/signal-desktop,0u,0g,signal-desktop',
     '80,6,500,/usr/thunderbird,0u,0g,thunderbird',
+    '80,6,500,/usr/WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '8080,6,500,/opt/chrome,0u,0g,chrome',
     '8080,6,500,/usr/firefox,0u,0g,firefox',
     '8080,6,500,/usr/python3.11,0u,0g,speedtest-cli',
@@ -167,6 +180,7 @@ WHERE
     '8443,6,500,/usr/firefox,0u,0g,firefox',
     '8801,17,500,/app/zoom.real,u,g,zoom.real',
     '8801,17,500,/opt/zoom,0u,0g,zoom',
+    '88,6,500,/usr/syncthing,0u,0g,syncthing',
     '993,6,500,/app/thunderbird,u,g,thunderbird',
     '993,6,500,/usr/evolution,0u,0g,evolution',
     '993,6,500,/usr/thunderbird,0u,0g,thunderbird'
@@ -206,7 +220,8 @@ WHERE
     AND s.remote_address = '104.131.84.33' -- gatekeeper.uservers.net
   )
   AND NOT (
-    s.remote_port = 80 AND (
+    s.remote_port = 80
+    AND (
       p.cgroup_path LIKE '/system.slice/docker-%'
       OR p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
     )

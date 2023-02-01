@@ -4,8 +4,9 @@
 --   * developers building code out of /tmp
 --
 -- tags: persistent
--- platform: posix
-SELECT file.path,
+-- platform: linux
+SELECT
+  file.path,
   uid,
   gid,
   mode,
@@ -16,10 +17,12 @@ SELECT file.path,
   file.size,
   hash.sha256,
   magic.data
-FROM file
+FROM
+  file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE (
+WHERE
+  (
     -- Recursive queries don't seem to work well with hidden directories :(
     file.path LIKE '/tmp/%%'
     OR file.path LIKE '/tmp/.%/%%'
@@ -39,25 +42,32 @@ WHERE (
     uid > 500
     AND (
       file.path LIKE '%/go-build%'
-      OR file.path LIKE '/tmp/checkout/%'
-      OR file.path LIKE '/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%'
-      OR file.path LIKE '/tmp/%/site-packages/markupsafe/_speedups.cpython-%'
-      OR file.path LIKE '/tmp/go.%.sum'
-      OR file.path LIKE '/tmp/guile-%/guile-%'
-      OR file.path LIKE '/tmp/src/%'
-      OR file.path LIKE '/tmp/%/src/%'
-      OR file.path LIKE '/tmp/%/git/%'
-      OR file.path LIKE '/tmp/%/ci/%'
-      OR file.path LIKE '/tmp/kots/%'
-      OR file.path LIKE '/tmp/terraformer/%'
-      OR file.path LIKE '/tmp/tmp.%'
-      OR file.path LIKE '/tmp/%/dist/%'
+      OR file.directory LIKE '/tmp/%/out'
       OR file.path LIKE '%/bin/%-gen'
-      OR file.path LIKE '/tmp/%/target/debug/build/%'
       OR file.path LIKE '%/ko/%'
       OR file.path LIKE '%/pdf-tools/%'
+      OR file.path LIKE '/tmp/bin/%'
+      OR file.path LIKE '/tmp/%/bin/busybox'
+      OR file.path LIKE '/tmp/checkout/%'
+      OR file.path LIKE '/tmp/%/ci/%'
+      OR file.path LIKE '/tmp/%/debug/%'
+      OR file.path LIKE '/tmp/%/dist/%'
       OR file.path LIKE '%/tmp/epdf%'
+      OR file.path LIKE '/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%'
+      OR file.path LIKE '/tmp/%/git/%'
+      OR file.path LIKE '/tmp/%/github/%'
+      OR file.path LIKE '/tmp/go.%.sum'
       OR file.path LIKE "/tmp/%/gradlew"
+      OR file.path LIKE '/tmp/guile-%/guile-%'
+      OR file.path LIKE '/tmp/kots/%'
+      OR file.path LIKE '/tmp/%/site-packages/markupsafe/_speedups.cpython-%'
+      OR file.path LIKE '/tmp/%/src/%'
+      OR file.path LIKE '/tmp/src/%'
+      OR file.path LIKE '/tmp/%/target/%'
+      OR file.path LIKE '/tmp/%/target/debug/build/%'
+      OR file.path LIKE '/tmp/terraformer/%'
+      OR file.path LIKE '/tmp/tmp.%'
+      OR file.path LIKE '/tmp/%/venv/bin/%'
       OR -- These regular expressions can be narrowed down
       (
         file.size < 50000
@@ -69,6 +79,7 @@ WHERE (
           'java',
           'js',
           'json',
+          'pem',
           'nib',
           'log',
           'strings',
@@ -121,7 +132,7 @@ WHERE (
     file.type = 'regular'
     AND size < 10
   )
- -- Binaries we might actually see legitimately
+  -- Binaries we might actually see legitimately
   AND NOT (
     file.path LIKE '/tmp/%'
     AND file.uid > 500
@@ -131,7 +142,6 @@ WHERE (
       OR file.filename LIKE "%-cli"
     )
   )
-
   -- All checks with magic.data must first check for a lack of NULL value,
   -- otherwise you filter out platforms without magic.data.
   AND NOT (
@@ -144,6 +154,9 @@ WHERE (
       )
       OR magic.data LIKE "Unicode text%"
       OR magic.data LIKE "gzip compressed data%"
+      -- Exotic platforms
+      OR magic.data LIKE 'ELF 64-bit MSB pie executable, IBM S/390%'
+      OR magic.data LIKE 'ELF 32-bit LSB pie executable, ARM, EABI5%'
     )
   )
   AND NOT (

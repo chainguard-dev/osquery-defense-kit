@@ -42,14 +42,17 @@ WHERE
   AND NOT exception_key IN (
     'curl,0,nm-dispatcher,',
     'curl,0,nm-dispatcher,nm-dispatcher',
-    'curl,500,bash,nix-daemon',
     'curl,500,bash,bash',
-    'curl,500,bash,ShellLauncher',
     'curl,500,bash,fakeroot',
-    'curl,500,makepkg,yay',
+    'curl,500,bash,nix-daemon',
+    'curl,500,bash,ShellLauncher',
+    'curl,500,Slack,launchd',
     'curl,500,bash,zsh',
     'curl,500,env,env',
     'curl,500,fish,gnome-terminal-',
+    'curl,500,Slack,launchd',
+    'curl,500,launchd,kernel_task',
+    'curl,500,makepkg,yay',
     'curl,500,ruby,zsh',
     'curl,500,ShellLauncher,',
     'curl,500,ShellLauncher,login',
@@ -73,9 +76,7 @@ WHERE
     )
   )
   AND NOT parent_name IN ('yay')
-  AND NOT p.cmdline IN (
-    'curl -s https://support-sp.apple.com/sp/product?cc=QL'
-  )
+  AND NOT p.cmdline LIKE 'curl -s https://support-sp.apple.com/sp/product%'
   AND NOT (
     p.euid > 500
     AND parent_name = 'env'

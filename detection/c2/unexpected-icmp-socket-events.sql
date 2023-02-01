@@ -8,6 +8,8 @@
 SELECT
   se.*,
   p.path,
+  p.cwd,
+  p.euid,
   p.cmdline
 FROM
   socket_events se

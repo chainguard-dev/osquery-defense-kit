@@ -4,13 +4,14 @@
 --   * https://www.microsoft.com/en-us/security/blog/2022/12/21/microsoft-research-uncovers-new-zerobot-capabilities/
 --
 -- tags: transient process rapid state
--- platform: linux
+-- platform: posix
 SELECT
   p.pid,
   p.name,
   p.path,
   p.euid,
   p.gid,
+  p.cwd,
   p.cgroup_path,
   f.ctime,
   f.directory AS dirname,

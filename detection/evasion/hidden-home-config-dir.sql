@@ -7,7 +7,7 @@
 --   * programs which create new Library directories
 --
 -- tags: persistent state filesystem
--- platform: linux
+-- platform: posix
 SELECT
   file.path,
   file.type,
