@@ -3,7 +3,7 @@
 -- references:
 --   * https://cybersecurity.att.com/blogs/labs-research/shikitega-new-stealthy-malware-targeting-linux
 --
--- interval: 30
+-- interval: 300
 -- tags: transient process events
 SELECT
   p.pid,
@@ -31,7 +31,7 @@ FROM
   LEFT JOIN hash phash ON pp.path = phash.path
   LEFT JOIN magic ON p.path = magic.path
 WHERE
-  p.time > (strftime('%s', 'now') -30)
+  p.time > (strftime('%s', 'now') -300)
   AND file.size > 0
   AND file.size < 10000
   AND file.type = 'regular'

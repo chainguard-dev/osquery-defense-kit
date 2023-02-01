@@ -1,4 +1,4 @@
--- Find launchd entries which purport to be by Apple, but are not signed by Apple.
+-- Find launchd entries which purport to be by Apple, but point to binaries that are not signed by Apple.
 --
 -- references:
 --   * https://attack.mitre.org/techniques/T1543/004/ (Create or Modify System Process: Launch Daemon)
@@ -9,15 +9,17 @@
 --
 -- platform: darwin
 -- tags: persistent launchd state
-select
-  *
-FROM
-  signature s
-  JOIN launchd d ON d.program_arguments = s.path
-WHERE
-  d.name LIKE 'com.apple.%'
-  AND (
-    signed = 0
-    OR authority != 'Software Signing'
+SELECT *
+FROM launchd
+  LEFT JOIN file ON launchd.path = file.path
+  LEFT JOIN signature ON launchd.program_arguments = signature.path
+WHERE launchd.name LIKE 'com.apple.%'
+  -- Optimization, assumes SIP
+  AND file.directory NOT IN (
+    '/System/Library/LaunchAgents',
+    '/System/Library/LaunchDaemons',
+    '/Library/Apple/System/Library/LaunchDaemons',
+    '/Library/Apple/System/Library/LaunchAgents'
   )
-  AND d.run_at_load = 1;
+  AND launchd.run_at_load = 1
+  AND signature.authority != 'Software Signing'

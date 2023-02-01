@@ -5,7 +5,7 @@
 --
 -- WARNING: This query is known to require a higher than average wall time.
 --
--- interval: 20
+-- interval: 30
 -- platform: darwin
 SELECT
   key,

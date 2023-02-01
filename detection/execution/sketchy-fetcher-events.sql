@@ -4,7 +4,7 @@
 --   * https://attack.mitre.org/techniques/T1105/ (Ingress Tool Transfer)
 --   * https://attack.mitre.org/techniques/T1571/ (Non-Standard Port)
 --
--- interval: 60
+-- interval: 120
 -- tags: transient process events
 -- platform: posix
 SELECT
@@ -54,7 +54,7 @@ FROM
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
   -- Extra fields
 WHERE
-  pe.time > (strftime('%s', 'now') -60)
+  pe.time > (strftime('%s', 'now') -120)
   AND pe.cmdline != ''
   -- NOTE: Sync remaining portion with sketchy-fetchers
   AND (
