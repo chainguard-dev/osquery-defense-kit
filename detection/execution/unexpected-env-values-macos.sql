@@ -12,6 +12,7 @@ SELECT
   value,
   p.pid,
   p.path,
+  p.cwd,
   p.cmdline,
   p.parent AS parent_pid,
   pp.cmdline AS parent_cmd

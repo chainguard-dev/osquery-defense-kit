@@ -10,6 +10,7 @@ SELECT
   p.name,
   p.path,
   p.euid,
+  p.cwd,
   p.gid,
   p.cgroup_path,
   f.ctime,

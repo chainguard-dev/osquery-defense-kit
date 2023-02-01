@@ -11,6 +11,7 @@ SELECT
   p.path,
   p.euid,
   p.gid,
+  p.cwd,
   p.cgroup_path,
   f.ctime,
   f.directory AS dirname,

@@ -15,6 +15,7 @@ SELECT
   pe.path AS p0_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
+  pe.cwd AS p0_cwd,
   pe.pid AS p0_pid,
   p.cgroup_path AS p0_cgroup,
   -- Parent
@@ -197,6 +198,7 @@ WHERE
 
     OR exception_key IN (
       'bash,0,pia-daemon,launchd',
+      'bash,0,udevadm,udevadm',
       'zsh,500,python3.10,gnome-shell'
     )
     OR p0_cmd LIKE '%/bash -e%/bin/as -arch%'

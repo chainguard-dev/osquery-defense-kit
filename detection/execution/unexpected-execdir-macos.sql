@@ -13,6 +13,7 @@ SELECT
   p.path,
   p.euid,
   p.gid,
+  p.cwd,
   f.ctime,
   f.directory AS dir,
   REGEX_MATCH (p.path, '(/.*?/.*?/.*?)/', 1) AS top_dir, -- 3 levels deep

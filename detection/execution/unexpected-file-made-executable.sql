@@ -11,6 +11,8 @@ SELECT
   pe.path AS p0_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
+  pe.cwd AS p0_cwd,
+  pe.euid AS p0_euid,
   pe.pid AS p0_pid,
   p.cgroup_path AS p0_cgroup,
   -- Parent

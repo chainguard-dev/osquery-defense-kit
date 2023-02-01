@@ -16,6 +16,7 @@ SELECT
   hash.sha256,
   p.parent,
   p.cmdline,
+  p.cwd,
   pp.name AS parent_name,
   pp.cmdline AS parent_cmd
   -- Processes is 20X faster to scan than process_envs

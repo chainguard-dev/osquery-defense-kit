@@ -11,6 +11,7 @@
 SELECT
   p.pid,
   p.name,
+  p.cwd,
   p.path,
   f.mode,
   f.uid,

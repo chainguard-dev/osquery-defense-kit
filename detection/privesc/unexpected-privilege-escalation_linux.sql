@@ -10,31 +10,39 @@
 -- tags: transient rapid state process escalation
 -- platform: linux
 SELECT
-  p.pid AS child_pid,
-  p.path AS child_path,
-  p.name AS child_name,
-  p.cmdline AS child_cmdline,
-  p.euid AS child_euid,
-  p.state AS child_state,
-  file.mode AS child_mode,
-  hash.sha256 AS child_hash,
-  p.parent AS parent_pid,
-  pp.path AS parent_path,
-  pp.name AS parent_name,
-  pp.cmdline AS parent_cmdline,
-  pp.euid AS parent_euid,
-  pfile.mode AS parent_mode,
-  phash.sha256 AS parent_hash
+  -- Child
+  p0.path AS p0_path,
+  p0.name AS p0_name,
+  p0.cmdline AS p0_cmd,
+  p0.cwd AS p0_cwd,
+  p0.cgroup_path AS p0_cgroup,
+  p0.euid AS p0_euid,
+  p0_hash.sha256 AS p0_sha256,
+  -- Parent
+  p0.parent AS p1_pid,
+  p1.path AS p1_path,
+  p1.name AS p1_name,
+  p1_f.mode AS p1_mode,
+  p1.euid AS p1_euid,
+  p1.cmdline AS p1_cmd,
+  p1_hash.sha256 AS p1_sha256,
+  -- Grandparent
+  p1.parent AS p2_pid,
+  p2.name AS p2_name,
+  p2.path AS p2_path,
+  p2.cmdline AS p2_cmd,
+  p2_hash.sha256 AS p2_sha256
 FROM
-  processes p
-  JOIN processes pp ON p.parent = pp.pid
-  LEFT JOIN file ON p.path = file.path
-  LEFT JOIN hash ON p.path = hash.path
-  LEFT JOIN file AS pfile ON pp.path = pfile.path
-  LEFT JOIN hash AS phash ON pp.path = phash.path
+  processes p0
+  LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
+  LEFT JOIN processes p1 ON p0.parent = p1.pid
+  LEFT JOIN file p1_f ON p1.path = p1_f.path
+  LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
+  LEFT JOIN processes p2 ON p1.parent = p2.pid
+  LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  p.euid < p.uid
-  AND p.path NOT IN (
+  p0.euid < p0.uid
+  AND p0.path NOT IN (
     '/bin/ps',
     '/usr/bin/doas',
     '/usr/bin/fusermount',
@@ -45,22 +53,22 @@ WHERE
     '/usr/bin/sudo',
     '/usr/bin/top'
   )
-  AND p.path NOT LIKE '/nix/store/%/bin/sudo'
-  AND p.path NOT LIKE '/nix/store/%/bin/dhcpcd'
-  AND p.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
+  AND p0.path NOT LIKE '/nix/store/%/bin/sudo'
+  AND p0.path NOT LIKE '/nix/store/%/bin/dhcpcd'
+  AND p0.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
   AND NOT (
-    p.name = 'polkit-agent-he'
-    AND parent_path = '/usr/bin/gnome-shell'
+    p0.name = 'polkit-agent-he'
+    AND p1.path = '/usr/bin/gnome-shell'
   )
   AND NOT (
-    p.name = 'fusermount3'
-    AND parent_path = '/usr/lib/xdg-document-portal'
+    p0.name = 'fusermount3'
+    AND p1.path = '/usr/lib/xdg-document-portal'
   )
   AND NOT (
-    p.path = '/usr/bin/pkexec'
-    AND parent_path = '/usr/bin/update-notifier'
+    p0.path = '/usr/bin/pkexec'
+    AND p1.path = '/usr/bin/update-notifier'
   )
   AND NOT (
-    p.path = '/usr/libexec/xdg-permission-store'
-    AND parent_path = '/usr/lib/systemd/systemd'
+    p0.path = '/usr/libexec/xdg-permission-store'
+    AND p1.path = '/usr/lib/systemd/systemd'
   )
