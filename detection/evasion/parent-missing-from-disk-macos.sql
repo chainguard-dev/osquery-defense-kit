@@ -13,8 +13,7 @@
 --   * none observed
 --
 -- tags: persistent daemon
-SELECT
-  s.authority AS p0_auth,
+SELECT s.authority AS p0_auth,
   s.identifier AS p0_id,
   DATETIME(f.ctime, 'unixepoch') AS p0_changed,
   DATETIME(f.mtime, 'unixepoch') AS p0_modified,
@@ -40,8 +39,7 @@ SELECT
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM
-  processes p0
+FROM processes p0
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN signature s ON p0.path = s.path
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
@@ -50,16 +48,21 @@ FROM
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
-WHERE
-  p1.on_disk != 1
-  AND p0.on_disk = 1
-  AND NOT p0.pid IN (1, 2)
-  AND NOT p1.pid IN (1, 2) -- launchd, kthreadd
-  -- These alerts were unfortunately useless - lots of spam on macOS
-  AND NOT (
-    p1.path = ''
-    AND p0.euid > 500
-  )
-  AND p1.path NOT LIKE '/opt/homebrew/Cellar/%'
-  AND p1.path NOT LIKE '%google-cloud-sdk/.install/.backup%'
-  AND p1.path NOT LIKE '/private/var/folders/%/T/PKInstallSandboxTrash/%.sandboxTrash/%'
+WHERE p0.pid IN (
+    SELECT p.pid
+    FROM processes p
+      -- NOTE: This is an expensive join on macOS
+      JOIN processes pp ON p.parent = pp.parent
+    WHERE p.parent NOT IN (0, 2)
+      AND p.path != ""
+      -- macOS Optimization
+      AND p.path NOT LIKE '/System/%'
+      AND p.path NOT LIKE '/usr/libexec/%'
+      AND p.path NOT LIKE '/usr/bin/%'
+      AND p.path NOT LIKE '/sbin/%'
+      -- Exceptions
+      AND pp.path NOT LIKE '/opt/homebrew/Cellar/%'
+      AND pp.path NOT LIKE '%google-cloud-sdk/.install/.backup%'
+      AND pp.path NOT LIKE '/private/var/folders/%/T/PKInstallSandboxTrash/%.sandboxTrash/%'
+      AND pp.on_disk != 1
+  );
