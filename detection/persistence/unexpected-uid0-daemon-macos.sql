@@ -253,10 +253,12 @@ WHERE
   AND NOT s.authority IN (
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
+    'Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     'Developer ID Application: Foxit Corporation (8GN47HTP75)',
     'Developer ID Application: Keybase, Inc. (99229SGT5K)',
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: MacPaw Inc. (S8EX82NJP6)',
+    'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'Developer ID Application: Mersive Technologies (63B5A5WDNG)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',

@@ -100,7 +100,6 @@ WHERE p0.pid IN (
       OR p.cmdline LIKE '%stratum%' -- Random keywords
       OR p.cmdline LIKE '%ransom%'
       OR p.cmdline LIKE '%malware%'
-      OR p.cmdline LIKE '%bash%'
       OR p.cmdline LIKE '%plant%' -- Reverse shells
       OR p.cmdline LIKE '%fsockopen%'
       OR p.cmdline LIKE '%openssl%quiet%'

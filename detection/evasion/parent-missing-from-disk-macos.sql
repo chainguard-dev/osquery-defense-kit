@@ -64,5 +64,6 @@ WHERE p0.pid IN (
       AND pp.path NOT LIKE '/opt/homebrew/Cellar/%'
       AND pp.path NOT LIKE '%google-cloud-sdk/.install/.backup%'
       AND pp.path NOT LIKE '/private/var/folders/%/T/PKInstallSandboxTrash/%.sandboxTrash/%'
+      AND pp.path != ""
       AND pp.on_disk != 1
   );
