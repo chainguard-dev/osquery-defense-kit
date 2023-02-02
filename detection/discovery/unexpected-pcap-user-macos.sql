@@ -1,49 +1,55 @@
 -- Find root-run processes which link against libpcap
 --
--- WARNING: This check consumes an unusual amount of system memory (up to 225MB)
---
 -- references:
 --   * https://attack.mitre.org/techniques/T1205/001/ (Traffic Signaling: Port Knocking)
 --
 -- platform: darwin
 -- tags: persistent state process sniffer
 SELECT
-  pmm.pid,
-  p.uid,
-  p.gid,
-  pmm.path AS lib_path,
-  p.path AS child_path,
-  p.name AS child_name,
-  p.cmdline AS child_cmd,
-  p.cwd AS child_cwd,
-  h.sha256 AS child_sha256,
-  pp.path AS parent_path,
-  pp.name AS parent_name,
-  pp.cmdline AS parent_cmd,
-  pp.cwd AS parent_cwd,
-  pp.euid AS parent_euid,
-  ph.sha256 AS parent_sha256,
   s.authority,
-  s.identifier
+  s.identifier,
+  -- Child
+  p0.pid AS p0_pid,
+  p0.path AS p0_path,
+  p0.name AS p0_name,
+  p0.cmdline AS p0_cmd,
+  p0.cwd AS p0_cwd,
+  p0.cgroup_path AS p0_cgroup,
+  p0.euid AS p0_euid,
+  p0_hash.sha256 AS p0_sha256,
+  -- Parent
+  p0.parent AS p1_pid,
+  p1.path AS p1_path,
+  p1.name AS p1_name,
+  p1.euid AS p1_euid,
+  p1.cmdline AS p1_cmd,
+  p1_hash.sha256 AS p1_sha256,
+  -- Grandparent
+  p1.parent AS p2_pid,
+  p2.name AS p2_name,
+  p2.path AS p2_path,
+  p2.cmdline AS p2_cmd,
+  p2_hash.sha256 AS p2_sha256
 FROM
-  processes p
-  LEFT JOIN process_memory_map pmm ON p.pid = pmm.pid
-  LEFT JOIN processes p ON pmm.pid = p.pid
-  LEFT JOIN hash h ON p.path = h.path
-  LEFT JOIN processes pp ON p.parent = pp.pid
-  LEFT JOIN hash AS ph ON pp.path = ph.path
-  LEFT JOIN signature s ON p.path = s.path
+  processes p0
+  JOIN process_memory_map pmm ON p0.pid = pmm.pid
+  LEFT JOIN signature s ON p0.path = s.path
+  LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
+  LEFT JOIN processes p1 ON p0.parent = p1.pid
+  LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
+  LEFT JOIN processes p2 ON p1.parent = p2.pid
+  LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  p.euid = 0
+  p0.euid = 0
   AND pmm.path LIKE '%libpcap%'
   -- These are all protected directories
-  AND child_path NOT LIKE '/System/%'
-  AND child_path NOT LIKE '/usr/libexec/%'
-  AND child_path NOT LIKE '/usr/sbin/%'
-  AND child_path NOT LIKE '/usr/bin/%'
-  AND child_path NOT LIKE '/nix/store/%/bin/nix'
-  AND child_path NOT LIKE '/opt/homebrew/Cellar/vim/%/bin/vim'
-  AND child_path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+  AND p0.path NOT LIKE '/System/%'
+  AND p0.path NOT LIKE '/usr/libexec/%'
+  AND p0.path NOT LIKE '/usr/sbin/%'
+  AND p0.path NOT LIKE '/usr/bin/%'
+  AND p0.path NOT LIKE '/nix/store/%/bin/nix'
+  AND p0.path NOT LIKE '/opt/homebrew/Cellar/vim/%/bin/vim'
+  AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND NOT s.authority IN (
     'Software Signing',
     'Apple Mac OS Application Signing',
@@ -51,4 +57,4 @@ WHERE
     'Developer ID Application: Docker Inc (9BNSXJN65R)'
   )
 GROUP BY
-  p.pid
+  p0.pid

@@ -18,8 +18,8 @@ SELECT
     ),
     ',',
     REPLACE(
-      p.path,
-      RTRIM(p.path, REPLACE(p.path, '/', '')),
+      p0.path,
+      RTRIM(p0.path, REPLACE(p0.path, '/', '')),
       ''
     ),
     ',',

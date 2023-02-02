@@ -47,8 +47,8 @@ FROM
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
   p0.euid = 0
-  AND (strftime('%s', 'now') - p.start_time) > 15
-  AND p.path NOT IN (
+  AND (strftime('%s', 'now') - p0.start_time) > 15
+  AND p0.path NOT IN (
     '/Applications/Foxit PDF Reader.app/Contents/MacOS/FoxitPDFReaderUpdateService.app/Contents/MacOS/FoxitPDFReaderUpdateService',
     '/Applications/OneDrive.app/Contents/StandaloneUpdaterDaemon.xpc/Contents/MacOS/StandaloneUpdaterDaemon',
     '/Applications/Opal.app/Contents/Library/LaunchServices/com.opalcamera.cameraExtensionShim',
@@ -240,7 +240,7 @@ WHERE
     '/usr/sbin/systemstats',
     '/usr/sbin/WirelessRadioManagerd'
   )
-  AND NOT signature.identifier IN (
+  AND NOT s.identifier IN (
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Foxit Corporation (8GN47HTP75)',
@@ -257,4 +257,4 @@ WHERE
     'Software Signing'
   )
 GROUP BY
-  p.path
+  p0.path

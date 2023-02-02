@@ -11,48 +11,64 @@
 -- platform: darwin
 -- tags: filesystem events
 SELECT
-  p.pid,
-  p.path,
+  -- Child
+  pe.path AS p0_path,
+  REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   REGEX_MATCH (p.path, '(.*)/', 1) AS dir,
   REGEX_MATCH (p.path, '(/.*?/.*?/.*?)/', 1) AS top_dir, -- 3 levels deep
-  REPLACE(file.directory, u.directory, '~') AS homedir,
+  REPLACE(f.directory, u.directory, '~') AS homedir,
   REGEX_MATCH (
     REPLACE(f.directory, u.directory, '~'),
     '(~/.*?/.*?/.*?/)',
     1
   ) AS top3_homedir,
   REGEX_MATCH (
-    REPLACE(file.directory, u.directory, '~'),
+    REPLACE(f.directory, u.directory, '~'),
     '(~/.*?/)',
     1
   ) AS top_homedir, -- 1 level deep
-  p.cmdline,
-  p.mode,
-  p.cwd,
-  p.euid,
-  p.parent,
-  pp.path AS parent_path,
-  pp.name AS parent_name,
-  pp.cmdline AS parent_cmd,
-  pp.euid AS parent_euid,
-  hash.sha256 AS child_sha256,
-  phash.sha256 AS parent_sha256,
-  signature.identifier,
-  signature.authority
+  TRIM(pe.cmdline) AS p0_cmd,
+  pe.cwd AS p0_cwd,
+  pe.pid AS p0_pid,
+  pe.euid AS p0_euid,
+  p.cgroup_path AS p0_cgroup,
+  -- Parent
+  pe.parent AS p1_pid,
+  p1.cgroup_path AS p1_cgroup,
+  TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
+  COALESCE(p1.path, pe1.path) AS p1_path,
+  COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
+  REGEX_MATCH(COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
+  -- Grandparent
+  COALESCE(p1.parent, pe1.parent) AS p2_pid,
+  COALESCE(p1_p2.cgroup_path, pe1_p2.cgroup_path) AS p2_cgroup,
+  TRIM(COALESCE(p1_p2.cmdline, pe1_p2.cmdline, pe1_pe2.cmdline)) AS p2_cmd,
+  COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path) AS p2_path,
+  COALESCE(p1_p2_hash.path, pe1_p2_hash.path, pe1_pe2_hash.path) AS p2_hash,
+  REGEX_MATCH(COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path), '.*/(.*)', 1) AS p2_name
 FROM
-  process_events p
-  LEFT JOIN processes ON p.pid = processes.pid
-  LEFT JOIN file ON p.path = file.path
-  LEFT JOIN users u ON p.uid = u.uid
-  LEFT JOIN processes pp ON p.parent = pp.pid
-  LEFT JOIN hash ON p.path = hash.path
-  LEFT JOIN hash phash ON pp.path = phash.path
-  LEFT JOIN signature ON p.path = signature.path
+  process_events pe
+  LEFT JOIN file f ON pe.path = f.path
+  LEFT JOIN signature S ON pe.path = s.path
+  LEFT JOIN users u ON pe.euid = u.uid
+  LEFT JOIN processes p ON pe.pid = p.pid
+  -- Parents (via two paths)
+  LEFT JOIN processes p1 ON pe.parent = p1.pid
+  LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
+  LEFT JOIN process_events pe1 ON pe.parent = pe1.pid AND pe1.cmdline != ''
+  LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path
+  -- Grandparents (via 3 paths)
+  LEFT JOIN processes p1_p2 ON p1.parent = p1_p2.pid -- Current grandparent via parent processes
+  LEFT JOIN processes pe1_p2 ON pe1.parent = pe1_p2.pid -- Current grandparent via parent events
+  LEFT JOIN process_events pe1_pe2 ON pe1.parent = pe1_p2.pid AND pe1_pe2.cmdline != '' -- Past grandparent via parent events
+  LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
+  LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
+  LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
 WHERE
-  p.time > (strftime('%s', 'now') -240)
+  pe.time > (strftime('%s', 'now') -240)
   -- The process_events table on macOS ends up with relative directories for some reason?
   AND dir LIKE '/%'
-  AND file.size > 0
+  AND f.size > 0
   AND dir NOT IN (
     '/bin',
     '/Library/Application Support/Logitech.localized/Logitech Options.localized/LogiMgrUpdater.app/Contents/Resources',
@@ -160,14 +176,14 @@ WHERE
   )
   -- Locally built executables
   AND NOT (
-    signature.identifier = 'a.out'
+    s.identifier = 'a.out'
     AND homedir LIKE '~/%'
-    AND pp.name IN ('fish', 'sh', 'bash', 'zsh', 'terraform', 'code')
+    AND p1_name IN ('fish', 'sh', 'bash', 'zsh', 'terraform', 'code')
   )
   AND NOT (
-    signature.authority = ''
+    s.authority = ''
     AND homedir LIKE '~/%'
-    AND pp.name IN ('fish', 'sh', 'bash', 'zsh')
+    AND p1_name IN ('fish', 'sh', 'bash', 'zsh')
     AND p.cmdline LIKE './%'
   )
   AND dir NOT LIKE '../%' -- data issue
@@ -194,7 +210,7 @@ WHERE
   AND homedir NOT LIKE '~/%/bin'
   AND homedir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
   -- These signers can run from wherever the hell they want.
-  AND signature.authority NOT IN (
+  AND s.authority NOT IN (
     'Apple iPhone OS Application Signing',
     'Apple Mac OS Application Signing',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
