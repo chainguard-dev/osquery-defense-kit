@@ -198,6 +198,16 @@ WHERE
     '/usr/libexec/powerdatad',
     '/usr/libexec/PowerUIAgent',
     '/usr/libexec/remoted',
+    '/System/Library/PrivateFrameworks/AppSSO.framework/Support/AppSSODaemon',
+    '/System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Versions/A/Resources/backgroundtaskmanagementd',
+    '/System/Library/PrivateFrameworks/BridgeOSInstallReporting.framework/Versions/A/Resources/bosreporter',
+    '/System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Versions/A/Resources/backgroundtaskmanagementd',
+    '/System/Library/PrivateFrameworks/InstallerDiagnostics.framework/Versions/A/Resources/installerdiagd',
+    '/System/Library/PrivateFrameworks/InstallerDiagnostics.framework/Versions/A/Resources/installerdiagwatcher',
+    '/System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Versions/A/Resources/backgroundtaskmanagementd',
+    '/System/Library/PrivateFrameworks/XprotectFramework.framework/Versions/A/XPCServices/XProtectBehaviorService.xpc/Contents/MacOS/XProtectBehaviorService',
+    '/usr/bin/login',
+    '/usr/libexec/cryptexd',
     '/usr/libexec/rtcreportingd',
     '/usr/libexec/runningboardd',
     '/usr/libexec/sandboxd',
@@ -240,7 +250,7 @@ WHERE
     '/usr/sbin/systemstats',
     '/usr/sbin/WirelessRadioManagerd'
   )
-  AND NOT s.identifier IN (
+  AND NOT s.authority IN (
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Foxit Corporation (8GN47HTP75)',
