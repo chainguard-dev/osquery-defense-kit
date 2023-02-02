@@ -4,7 +4,7 @@
 --   * possible, but none known
 --
 -- tags: transient process state
--- platform: darwin
+-- platform: linux
 SELECT
   DATETIME(f.ctime, 'unixepoch') AS p0_changed,
   DATETIME(f.mtime, 'unixepoch') AS p0_modified,
