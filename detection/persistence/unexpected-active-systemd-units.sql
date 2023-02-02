@@ -7,6 +7,7 @@
 --   * System updates
 --
 -- tags: persistent seldom filesystem systemd
+-- platform: linux
 SELECT
   description AS 'desc',
   fragment_path AS path,

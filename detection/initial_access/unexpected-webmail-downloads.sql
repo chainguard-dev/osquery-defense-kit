@@ -14,8 +14,8 @@ SELECT
   datetime(file.btime, 'unixepoch') AS file_created,
   magic.data,
   hash.sha256,
-  signature.authority,
-  signature.issuer,
+  s.authority,
+  s.identifier,
   LOWER(
     REGEX_MATCH (RTRIM(file.path, '/'), '.*\.(.*?)$', 1)
   ) AS extension
@@ -24,7 +24,7 @@ FROM
   LEFT JOIN file ON mdfind.path = file.path
   LEFT JOIN magic ON file.path = magic.path
   LEFT JOIN hash ON file.path = hash.path
-  LEFT JOIN signature ON file.path = signature.path
+  LEFT JOIN signature s ON file.path = s.path
 WHERE
   mdfind.query = 'kMDItemWhereFroms == ''*https://mail.google.com/*'''
   AND file.btime > (strftime('%s', 'now') -86400)

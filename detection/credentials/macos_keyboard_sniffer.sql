@@ -47,7 +47,7 @@ SELECT
   p2_hash.sha256 AS p2_sha256
 FROM
   event_taps et
-  LEFT JOIN processes p0 ON et.tapping_process = p.pid
+  LEFT JOIN processes p0 ON et.tapping_process = p0.pid
   LEFT JOIN signature s ON p0.path = s.path
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
