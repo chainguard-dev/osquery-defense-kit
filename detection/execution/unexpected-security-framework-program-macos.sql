@@ -50,6 +50,7 @@ WHERE
   pmm.path LIKE '%Security.framework%'
   AND exception_key NOT IN (
     '0,nix,nix,',
+    '500,osqueryd,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     '0,osqueryd,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     '500,bash,com.apple.bash,Software Signing',
     '500,Bitwarden,com.bitwarden.desktop,Apple Mac OS Application Signing',
