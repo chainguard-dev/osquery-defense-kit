@@ -73,6 +73,7 @@ WHERE
     '/tmp/.dracula-tmux-weather.lock',
     '/tmp/.DS_Store',
     '/tmp/.font-unix/',
+    '/var/db/.AppleInstallType.plist',
     '/tmp/.go-version',
     '/tmp/.ICE-unix/',
     '/tmp/.terraform/',
