@@ -11,7 +11,7 @@
 -- platform: posix
 --
 -- Uncomment once the underlying problem is addressed:
--- XintervalX: 60
+-- interval: 60
 SELECT
   file.mode AS p0_binary_mode,
   pe.env AS p0_env,
