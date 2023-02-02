@@ -181,4 +181,5 @@ WHERE
   AND p0.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snapd'
   -- Exclude processes running inside of Docker containers
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
-GROUP BY p0.pid
+GROUP BY
+  p0.pid

@@ -13,7 +13,8 @@
 --   * none observed
 --
 -- tags: persistent daemon
-SELECT s.authority AS p0_auth,
+SELECT
+  s.authority AS p0_auth,
   s.identifier AS p0_id,
   DATETIME(f.ctime, 'unixepoch') AS p0_changed,
   DATETIME(f.mtime, 'unixepoch') AS p0_modified,
@@ -39,7 +40,8 @@ SELECT s.authority AS p0_auth,
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM processes p0
+FROM
+  processes p0
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN signature s ON p0.path = s.path
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
@@ -48,12 +50,16 @@ FROM processes p0
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
-WHERE p0.pid IN (
-    SELECT p.pid
-    FROM processes p
+WHERE
+  p0.pid IN (
+    SELECT
+      p.pid
+    FROM
+      processes p
       -- NOTE: This is an expensive join on macOS
       JOIN processes pp ON p.parent = pp.parent
-    WHERE p.parent NOT IN (0, 2)
+    WHERE
+      p.parent NOT IN (0, 2)
       AND p.path != ""
       -- macOS Optimization
       AND p.path NOT LIKE '/System/%'

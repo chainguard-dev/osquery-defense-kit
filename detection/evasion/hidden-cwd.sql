@@ -134,4 +134,3 @@ WHERE
     )
   )
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
-

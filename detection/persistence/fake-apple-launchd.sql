@@ -9,11 +9,14 @@
 --
 -- platform: darwin
 -- tags: persistent launchd state
-SELECT *
-FROM launchd
+SELECT
+  *
+FROM
+  launchd
   LEFT JOIN file ON launchd.path = file.path
   LEFT JOIN signature ON launchd.program_arguments = signature.path
-WHERE launchd.name LIKE 'com.apple.%'
+WHERE
+  launchd.name LIKE 'com.apple.%'
   -- Optimization, assumes SIP
   AND file.directory NOT IN (
     '/System/Library/LaunchAgents',

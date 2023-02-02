@@ -46,8 +46,7 @@ WHERE
     )
     AND (
       exception_key IN (
-
-       'abrtd.service,ABRT Automated Bug Reporting Tool,,400',
+        'abrtd.service,ABRT Automated Bug Reporting Tool,,400',
         'abrt-journal-core.service,Creates ABRT problems from coredumpctl messages,,200',
         'abrt-oops.service,ABRT kernel log watcher,,200',
         'abrt-xorg.service,ABRT Xorg log watcher,,200',
@@ -437,7 +436,7 @@ WHERE
         'znapzend.service,ZnapZend - ZFS Backup System,root,1700',
         'zpool-trim.service,ZFS pools trim,,1200',
         'zpool-trim.timer,zpool-trim.timer,,0'
-     )
+      )
       OR exception_key LIKE 'machine-qemu%,Virtual Machine qemu%,,300'
       OR exception_key LIKE 'dbus-:1.%-org.freedesktop.problems@%.service,dbus-:%.%-org.freedesktop.problems@%.service,0,200'
       OR exception_key LIKE 'run-media-%.mount,run-media-%.mount,,0'

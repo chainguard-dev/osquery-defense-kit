@@ -24,7 +24,7 @@ SELECT -- Child
   TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
   COALESCE(p1.path, pe1.path) AS p1_path,
   COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
-  REGEX_MATCH(COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
+  REGEX_MATCH (COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
   pe_sig1.authority AS p1_authority,
   -- Grandparent
   COALESCE(p1.parent, pe1.parent) AS p2_pid,
@@ -38,7 +38,7 @@ SELECT -- Child
     pe1_p2_hash.path,
     pe1_pe2_hash.path
   ) AS p2_hash,
-  REGEX_MATCH(
+  REGEX_MATCH (
     COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path),
     '.*/(.*)',
     1
@@ -49,12 +49,13 @@ SELECT -- Child
     pe1_pe2_sig.authority
   ) AS p2_authority,
   -- Exception key
-  REGEX_MATCH (pe.path, '.*/(.*)', 1) || ',' || MIN(pe.euid, 500) || ',' || REGEX_MATCH(COALESCE(p1.path, pe1.path), '.*/(.*)', 1) || ',' || REGEX_MATCH(
+  REGEX_MATCH (pe.path, '.*/(.*)', 1) || ',' || MIN(pe.euid, 500) || ',' || REGEX_MATCH (COALESCE(p1.path, pe1.path), '.*/(.*)', 1) || ',' || REGEX_MATCH (
     COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path),
     '.*/(.*)',
     1
   ) AS exception_key
-FROM process_events pe,
+FROM
+  process_events pe,
   uptime
   LEFT JOIN processes p ON pe.pid = p.pid
   LEFT JOIN signature s ON pe.path = s.path -- Parents (via two paths)
@@ -74,7 +75,8 @@ FROM process_events pe,
   LEFT JOIN signature p1_p2_sig ON p1_p2.path = p1_p2_sig.path
   LEFT JOIN signature pe1_p2_sig ON pe1_p2.path = pe1_p2_sig.path
   LEFT JOIN signature pe1_pe2_sig ON pe1_pe2.path = pe1_pe2_sig.path
-WHERE pe.time > (strftime('%s', 'now') -180)
+WHERE
+  pe.time > (strftime('%s', 'now') -180)
   AND pe.status = 0
   AND pe.cmdline != ''
   AND pe.cmdline IS NOT NULL
