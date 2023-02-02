@@ -10,16 +10,22 @@
 --   * None observed
 --
 -- tags: persistent daemon
-SELECT p.*,
+SELECT
+  p.*,
   hash.sha256,
   GROUP_CONCAT(DISTINCT pof.path) AS open_files
-FROM processes p
+FROM
+  processes p
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN process_open_files pof ON p.pid = pof.pid
-WHERE p.parent NOT IN (
-    SELECT pid
-    FROM processes
+WHERE
+  p.parent NOT IN (
+    SELECT
+      pid
+    FROM
+      processes
   )
   AND p.parent != 0
   AND p.parent IS NOT NULL
-GROUP BY p.pid
+GROUP BY
+  p.pid

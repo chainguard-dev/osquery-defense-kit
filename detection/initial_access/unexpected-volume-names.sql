@@ -5,7 +5,8 @@
 --
 -- tags: transient volume filesystem often
 -- platform: darwin
-SELECT mounts.path,
+SELECT
+  mounts.path,
   mounts.device,
   mounts.type,
   REGEX_MATCH (mounts.path, '.*/(.*)', 1) AS vol_name,
@@ -16,12 +17,15 @@ SELECT mounts.path,
   file.path AS possible_path,
   hash.sha256 AS possible_sha256,
   ea.value AS possible_url
-FROM mounts
+FROM
+  mounts
   LEFT JOIN block_devices ON mounts.device = block_devices.name
   LEFT JOIN file ON file.path LIKE '/Users/%/Downloads/%' || REGEX_MATCH (mounts.path, '.*/(\w+)', 1) || '%.%'
-  LEFT JOIN extended_attributes ea ON file.path = ea.path AND ea.key = 'where_from'
+  LEFT JOIN extended_attributes ea ON file.path = ea.path
+  AND ea.key = 'where_from'
   LEFT JOIN hash ON file.path = hash.path
-WHERE block_devices.type NOT IN ('Apple Fabric', 'PCI-Express')
+WHERE
+  block_devices.type NOT IN ('Apple Fabric', 'PCI-Express')
   AND vol_name NOT LIKE '%backup%'
   AND vol_name NOT IN (
     'Slack',
@@ -35,4 +39,5 @@ WHERE block_devices.type NOT IN ('Apple Fabric', 'PCI-Express')
   AND vol_name NOT LIKE 'Gephi %'
   AND mounts.path NOT LIKE '/private/tmp/KSInstallAction.%'
   AND mounts.path NOT IN ('/private/var/setup')
-GROUP BY mounts.path
+GROUP BY
+  mounts.path
