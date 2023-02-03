@@ -5,7 +5,6 @@
 --
 -- tags: transient process state often
 -- platform: darwin
-
 SELECT
   f.ctime,
   f.btime,

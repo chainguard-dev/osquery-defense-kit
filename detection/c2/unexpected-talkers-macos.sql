@@ -159,6 +159,7 @@ WHERE
     '443,6,0,com.apple.NRD.UpdateBrainService,com.apple.NRD.UpdateBrainService,Software Signing',
     '443,6,0,Install,com.adobe.Install,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,0,launcher,launcher,Developer ID Application: Kolide Inc (YZ3EM74M78)',
+    '443,6,0,launcher,com.kolide.agent,Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     '443,6,0,nessusd,nessusd,Developer ID Application: Tenable, Inc. (4B8J598M7U)',
     '443,6,0,nix,nix,',
     '443,6,0,OneDrivePkgTelemetry,com.microsoft.OneDrivePkgTelemetry,Developer ID Application: Microsoft Corporation (UBF8T346G9)',

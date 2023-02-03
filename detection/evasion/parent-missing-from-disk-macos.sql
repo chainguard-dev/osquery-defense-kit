@@ -51,15 +51,25 @@ FROM
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  p1.on_disk != 1
-  AND p0.on_disk = 1
-  AND NOT p0.pid IN (1, 2)
-  AND NOT p1.pid IN (1, 2) -- launchd, kthreadd
-  -- These alerts were unfortunately useless - lots of spam on macOS
-  AND NOT (
-    p1.path = ''
-    AND p0.euid > 500
-  )
-  AND p1.path NOT LIKE '/opt/homebrew/Cellar/%'
-  AND p1.path NOT LIKE '%google-cloud-sdk/.install/.backup%'
-  AND p1.path NOT LIKE '/private/var/folders/%/T/PKInstallSandboxTrash/%.sandboxTrash/%'
+  p0.pid IN (
+    SELECT
+      p.pid
+    FROM
+      processes p
+      -- NOTE: This is an expensive join on macOS
+      JOIN processes pp ON p.parent = pp.parent
+    WHERE
+      p.parent NOT IN (0, 2)
+      AND p.path != ""
+      -- macOS Optimization
+      AND p.path NOT LIKE '/System/%'
+      AND p.path NOT LIKE '/usr/libexec/%'
+      AND p.path NOT LIKE '/usr/bin/%'
+      AND p.path NOT LIKE '/sbin/%'
+      -- Exceptions
+      AND pp.path NOT LIKE '/opt/homebrew/Cellar/%'
+      AND pp.path NOT LIKE '%google-cloud-sdk/.install/.backup%'
+      AND pp.path NOT LIKE '/private/var/folders/%/T/PKInstallSandboxTrash/%.sandboxTrash/%'
+      AND pp.path != ""
+      AND pp.on_disk != 1
+  );

@@ -9,7 +9,7 @@ out/odk-policy.conf: out/osqtool
 	./out/osqtool --max-results=0 --verify pack policy/ > out/odk-policy.conf
 
 out/odk-incident-response.conf: out/osqtool
-	./out/osqtool --max-results=40960 --max-query-duration=8s --max-total-daily-duration=90m --verify pack incident_response/ > out/odk-incident-response.conf
+	./out/osqtool --max-results=150000 --max-query-duration=8s --max-total-daily-duration=90m --verify pack incident_response/ > out/odk-incident-response.conf
 
 # An alternative rules file for configurations where the "wireless_networks" table is forbidden for querying
 out/odk-incident-response-no-wifi.conf: out/osqtool

@@ -41,4 +41,5 @@ WHERE
   pop.family = 2 -- PF_INET
   AND pop.protocol = 1 -- ICMP
   AND p0.name NOT IN ('ping')
-GROUP BY p0_pid
+GROUP BY
+  p0_pid

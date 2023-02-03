@@ -4,7 +4,7 @@
 --   * possible, but none known
 --
 -- tags: transient process state
--- platform: darwin
+-- platform: linux
 SELECT
   DATETIME(f.ctime, 'unixepoch') AS p0_changed,
   DATETIME(f.mtime, 'unixepoch') AS p0_modified,
@@ -132,4 +132,4 @@ WHERE
   AND NOT p0.cmdline IN (
     'socat UNIX-LISTEN:/run/user/1000/app/com.discordapp0.Discord/discord-ipc-0,forever,fork UNIX-CONNECT:/run/user/1000/discord-ipc-0'
   )
-   AND NOT p0.name IN ('cc1', 'compile', 'cmake', 'cc1plus')
+  AND NOT p0.name IN ('cc1', 'compile', 'cmake', 'cc1plus')
