@@ -130,7 +130,6 @@ WHERE
       AND p0_cmd LIKE '%history'
     )
     OR p0_cmd LIKE '%echo%|%base64 --decode %|%'
-    OR p0_cmd LIKE '%launchctl load%'
     OR p0_cmd LIKE '%launchctl bootout%'
     OR p0_cmd LIKE '%chflags uchg%'
     OR (
@@ -162,18 +161,9 @@ WHERE
     p0_cmd IN (
       '/bin/launchctl bootout gui/501 /Library/LaunchAgents/com.logi.optionsplus.plist',
       '/bin/launchctl bootout system/com.docker.socket',
-      '/bin/launchctl load /Library/LaunchDaemons/com.logi.optionsplus.updater.plist',
-      '/bin/launchctl load -wF /Library/LaunchAgents/com.adobe.GC.AGM.plist',
-      '/bin/launchctl load -w /Library/LaunchDaemons/com.docker.socket.plist',
       '/bin/rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
       'git history',
-      'launchctl asuser 501 launchctl load /System/Library/LaunchAgents/com.apple.SafariBookmarksSyncAgent.plist',
-      'launchctl load /Library/LaunchDaemons/us.zoom.ZoomDaemon.plist',
-      'launchctl load /System/Library/LaunchAgents/com.apple.SafariBookmarksSyncAgent.plist',
-      'launchctl load -w /Library/LaunchDaemons/com.opalcamera.cameraExtensionShim.plist',
-      'launchctl load -w /Library/LaunchDaemons/com.opalcamera.OpalCamera.installUpdate.daemon.plist',
       '/Library/Apple/System/Library/StagedFrameworks/Safari/SafariShared.framework/XPCServices/com.apple.Safari.History.xpc/Contents/MacOS/com.apple.Safari.History',
-      'sudo launchctl load /Library/LaunchDaemons/us.zoom.ZoomDaemon.plist',
       '/usr/bin/csrutil report',
       '/usr/bin/csrutil status',
       '/usr/bin/pkill -F /private/var/run/lima/shared_socket_vmnet.pid',
@@ -182,14 +172,10 @@ WHERE
     ) -- The source of these commands is still a mystery to me.
     OR pe.parent = -1
   )
-  AND NOT p0_cmd LIKE '/bin/launchctl load -wF /Users/%/Library/PreferencePanes/../LaunchAgents/com.adobe.GC.Invoker-1.0.plist'
-  AND NOT p0_cmd LIKE '/bin/launchctl load -w /Users/%/Library/LaunchAgents/keybase.%.plist'
   AND NOT p0_cmd LIKE '-history%'
   AND NOT p0_cmd LIKE '/bin/rm -f /tmp/periodic.%'
   AND NOT p0_cmd LIKE 'rm -f /tmp/locate%/_updatedb%'
   AND NOT p0_cmd LIKE 'rm -f /tmp/locate%/mklocate%/_mklocatedb%'
-  AND NOT p0_cmd LIKE '%launchctl load -w /Library/LaunchAgents/com.opalcamera.vcam.assistant.plist'
-  AND NOT p0_cmd LIKE '%launchctl load -w /Library/LaunchAgents/com.opalcamera.OpalCamera.startOnUsbPlugged.agent.plist'
   AND NOT p0_cmd LIKE 'rm -f /tmp/insttmp_%'
   AND NOT p0_cmd LIKE '/bin/cp %history%sessions/%'
   AND NOT p0_cmd LIKE 'touch -r /tmp/KSInstallAction.%'
