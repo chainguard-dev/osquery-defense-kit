@@ -43,13 +43,8 @@ SELECT
     p1_p2_sig.authority,
     pe1_p2_sig.authority,
     pe1_pe2_sig.authority
-  ) AS p2_authority,
-  -- Exception key
-  REGEX_MATCH (pe.path, '.*/(.*)', 1) || ',' || MIN(pe.euid, 500) || ',' || REGEX_MATCH (COALESCE(p1.path, pe1.path), '.*/(.*)', 1) || ',' || REGEX_MATCH (
-    COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path),
-    '.*/(.*)',
-    1
-  ) AS exception_key
+  ) AS p2_authority
+
 FROM
   process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid
@@ -98,5 +93,6 @@ WHERE
     '/usr/sbin/sysctl -n hw.cputype',
     '/usr/sbin/sysctl sysctl.proc_translated'
   )
+  AND NOT p0_cmd LIKE '/usr/libexec/security_authtrampoline /Library/Application Support/Adobe/Adobe Desktop Common/ElevationManager/Adobe Installer auth%'
 GROUP BY
   pe.pid

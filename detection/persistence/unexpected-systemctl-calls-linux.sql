@@ -84,6 +84,7 @@ WHERE
   AND NOT p0_cmd IN (
     '/bin/systemctl is-enabled -q whoopsie.path',
     '/bin/systemctl -q is-enabled whoopsie.path',
+    'systemctl reboot',
     '/bin/systemctl stop --no-block nvidia-persistenced',
     '/sbin/runlevel',
     'systemctl is-active systemd-resolved.service',

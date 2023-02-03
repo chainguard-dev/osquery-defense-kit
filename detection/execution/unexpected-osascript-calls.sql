@@ -20,11 +20,9 @@ SELECT
   pe.cwd AS p0_cwd,
   pe.pid AS p0_pid,
   pe.euid AS p0_euid,
-  p.cgroup_path AS p0_cgroup,
   s.authority AS p0_authority,
   -- Parent
   pe.parent AS p1_pid,
-  p1.cgroup_path AS p1_cgroup,
   TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
   COALESCE(p1.path, pe1.path) AS p1_path,
   COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
@@ -32,7 +30,6 @@ SELECT
   pe_sig1.authority AS p1_authority,
   -- Grandparent
   COALESCE(p1.parent, pe1.parent) AS p2_pid,
-  COALESCE(p1_p2.cgroup_path, pe1_p2.cgroup_path) AS p2_cgroup,
   TRIM(
     COALESCE(p1_p2.cmdline, pe1_p2.cmdline, pe1_pe2.cmdline)
   ) AS p2_cmd,
@@ -95,8 +92,9 @@ WHERE
       OR p0_cmd LIKE '/usr/bin/osascript /Applications/Amazon Photos.app/Contents/Resources/quit_and_restart_app.scpt /Applications/Amazon Photos.app com.amazon.clouddrive.mac%'
       OR p1_cmd LIKE '%/bin/gcloud auth%login'
       OR p1_cmd LIKE '%/google-cloud-sdk/lib/gcloud.py auth%login'
-      OR p1_cmd LIKE '%aws configure sso'
+      OR p1_cmd LIKE '%aws configure sso%'
       OR p1_cmd LIKE '% /opt/homebrew/bin/jupyter%notebook'
+      OR p1_authority = 'Developer ID Application: Docker Inc (9BNSXJN65R)'
       OR p1_name IN ('yubikey-agent')
       OR (
         p1_authority = 'Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM)'

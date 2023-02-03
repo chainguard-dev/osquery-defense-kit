@@ -89,6 +89,7 @@ WHERE
     'oobesaas.adobe.com',
     'oracle.com',
     'osuosl.org',
+    'securew2.com',
     'pqrs.org',
     'prusa3d.com',
     'remarkable.com',

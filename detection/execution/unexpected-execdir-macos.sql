@@ -149,6 +149,7 @@ WHERE
   AND top3_homedir NOT IN (
     '~/Library/Application Support/com.elgato.StreamDeck/',
     '~/Library/Caches/snyk/',
+    '~/Library/Caches/com.mimestream.Mimestream/',
     '~/.terraform.d/plugin-cache/registry.terraform.io/',
     '~/Library/Application Support/Foxit Software/',
     '~/Library/Application Support/BraveSoftware/'

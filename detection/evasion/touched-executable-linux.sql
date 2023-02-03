@@ -33,7 +33,7 @@ WHERE
   AND f.path != '/opt/google/endpoint-verification/bin/apihelper'
   AND f.path NOT LIKE '/home/%'
   AND f.path NOT LIKE '/snap/%'
-  AND f.path NOT LIKE '/tmp/go-build%/exe/main'
+  AND f.path NOT LIKE '/tmp/go-build%/exe/%'
   AND f.path NOT LIKE '/usr/local/bin/%'
   AND f.path NOT LIKE '/usr/local/aws-cli/%/dist/aws'
   AND f.path NOT LIKE '/usr/local/kolide-k2/bin/%-updates/%'

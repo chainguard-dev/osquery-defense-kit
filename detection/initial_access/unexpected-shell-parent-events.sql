@@ -155,6 +155,7 @@ WHERE
       'terminator',
       'terraform-ls',
       'test2json',
+      'containerd-shim-runc-v2',
       'tmux',
       'tmux:server',
       'update-notifier',
@@ -184,6 +185,8 @@ WHERE
       '/bin/sh -c ps ax -ww -o pid,ppid,uid,gid,args',
       '/bin/sh /usr/bin/lsb_release -a --short',
       '/bin/zsh -c ls',
+      '/bin/sh /usr/bin/lsb_release -a',
+      '/bin/bash /usr/local/bin/mount-product-files',
       'sh -c /bin/stty size 2>/dev/null',
       "sh -c osascript -e 'user locale of (get system info)'",
       'sh -c python3.7 --version 2>&1',
@@ -213,6 +216,13 @@ WHERE
     OR exception_key IN (
       'bash,0,pia-daemon,launchd',
       'bash,0,udevadm,udevadm',
+      'sh,500,updater,Foxit PDF Reader',
+      'bash,500,Foxit PDF Reader,launchd',
+      'zsh,500,stable,launchd',
+      'dash,0,anacron,systemd',
+      'sh,500,docs,zsh',
+      'bash,0,kube-apiserver,containerd-shim-runc-v2',
+      'bash,0,etcd,containerd-shim-runc-v2',
       'zsh,500,python3.10,gnome-shell'
     )
     OR p0_cmd LIKE '%/bash -e%/bin/as -arch%'
@@ -223,6 +233,7 @@ WHERE
     OR p0_cmd LIKE '%/google-chrome% --flag-switches-begin % --product-version'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-open %'
     OR p0_cmd LIKE '/bin/bash /usr/bin/xdg-settings check %'
+    OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings get %'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings set %'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings check %'
     OR p0_cmd LIKE '%gcloud config config-helper --format=json'

@@ -154,6 +154,7 @@ WHERE
     '443,17,500,old,dev.warp.Warp-Stable,Developer ID Application: Denver Technologies, Inc (2BBY89MBSN)',
     '443,17,500,Reflect Helper,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     '443,17,500,Slack Helper,,',
+    '443,6,0,Adobe Installer,com.adobe.AAMHelper,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,17,500,Slack Helper,com.tinyspeck.slackmacgap.helper,Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
     '443,6,0,com.apple.MobileSoftwareUpdate.UpdateBrainService,com.apple.MobileSoftwareUpdate.UpdateBrainService,Software Signing',
     '443,6,0,com.apple.NRD.UpdateBrainService,com.apple.NRD.UpdateBrainService,Software Signing',
@@ -172,6 +173,7 @@ WHERE
     '443,6,500,bash,bash,',
     '443,6,500,BlockBlock Installer,com.objective-see.blockblock.installer,Developer ID Application: Objective-See, LLC (VBG97UB4TA)',
     '443,6,500,bom,,',
+    '443,6,500,legitify,legitify,Developer ID Application: LEGIT SECURITY LTD (8V693922X7)',
     '443,6,500,chainctl,,',
     '443,6,500,chainctl,a.out,',
     '443,6,500,chainctl,chainctl,',
@@ -289,6 +291,7 @@ WHERE
     '80,6,500,webhook.test,a.out,',
     '8801,17,500,zoom.us,us.zoom.xos,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)'
   )
+  AND NOT exception_key LIKE '443,6,500,java,com.oracle.java.%.java,Developer ID Application: Oracle America, Inc. (VB5E2TV963)'
   -- Steam uses ports in the 27xxx range
   AND NOT exception_key LIKE '27%,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)'
   -- There are many signing hashes for git

@@ -42,6 +42,7 @@ WHERE
     'chezmoi',
     'clang-11',
     'code',
+    'pacman',
     'Code Helper (Renderer)',
     'Code - Insiders Helper (Renderer)',
     'collect2',
@@ -49,6 +50,7 @@ WHERE
     'conmon',
     'containerd-shim',
     'dash',
+    'dumb-init',
     'demoit',
     'direnv',
     'dnf',
@@ -189,3 +191,4 @@ WHERE
   AND NOT pp.name LIKE '%/bin/direnv'
   AND NOT parent_path LIKE '/nix/store/%sh'
   AND NOT parent_path LIKE '/opt/homebrew/%'
+
