@@ -102,7 +102,8 @@ WHERE
   )
   AND NOT exception_key IN (
     'netstat,500,IPNExtension,launchd',
-    'pfctl,0,pia-daemon,launchd'
+    'pfctl,0,pia-daemon,launchd',
+    'pfctl,0,bash,pia-daemon'
   )
   AND p1_cmd NOT IN ('/bin/sh /etc/periodic/daily/420.status-network')
 GROUP BY

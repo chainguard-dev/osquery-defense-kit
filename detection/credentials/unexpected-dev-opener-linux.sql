@@ -213,9 +213,9 @@ WHERE
   -- Halflife
   AND path_exception NOT LIKE '/dev/shm/u1000-Shm_%,bash'
   -- lvmdbusd
-  AND path_Exception NOT LIKE '/dev/shm/pym-%python3.%'
+  AND path_exception NOT LIKE '/dev/shm/pym-%python3.%'
   AND NOT (
-    device LIKE '/dev/bus/usb/%'
+    pof.path LIKE '/dev/bus/usb/%'
     AND p0.name IN (
       'adb',
       'fprintd',

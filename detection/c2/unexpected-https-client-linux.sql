@@ -73,6 +73,7 @@ WHERE
     '0,/usr/chainctl,0u,0g,chainctl',
     '0,/usr/cmake,u,g,cmake',
     '0,/usr/containerd,u,g,containerd',
+    '500,/home/crane,500u,500g,crane',
     '0,/usr/dirmngr,0u,0g,dirmngr',
     '0,/usr/dockerd,0u,0g,dockerd',
     '0,/usr/flatpak-system-helper,0u,0g,flatpak-system-',
@@ -82,6 +83,7 @@ WHERE
     '0,/usr/nix,0u,0g,nix-daemon',
     '0,/usr/packagekitd,0u,0g,packagekitd',
     '0,/usr/pacman,0u,0g,pacman',
+    '500,/opt/signal-desktop,0u,0g,signal-desktop',
     '0,/usr/python3.10,0u,0g,dnf',
     '0,/usr/python3.10,0u,0g,dnf-automatic',
     '0,/usr/python3.10,0u,0g,yum',
@@ -96,6 +98,7 @@ WHERE
     '105,/usr/http,0u,0g,https',
     '106,/usr/geoclue,0u,0g,geoclue',
     '500,/app/Discord,u,g,Discord',
+    '500,/usr/rustup,0u,0g,rustup',
     '500,/app/signal-desktop,u,g,signal-desktop',
     '500,/app/slack,u,g,slack',
     '500,/app/spotify,u,g,spotify',
@@ -255,6 +258,10 @@ WHERE
   AND NOT (
     exception_key = '500,/tmp/main,500u,500g,main'
     AND p.path LIKE '/tmp/go-build%/exe/main'
+  )
+  AND NOT (
+    exception_key = '0,/usr/curl,0u,0g,curl'
+    AND p.cmdline = 'curl --fail https://ipinfo.io/timezone'
   )
   -- Exclude processes running inside of containers
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'

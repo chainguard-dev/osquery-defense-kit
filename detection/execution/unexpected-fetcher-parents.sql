@@ -51,6 +51,7 @@ WHERE
     'curl,500,env,env',
     'curl,500,fish,gnome-terminal-',
     'curl,500,Slack,launchd',
+    'curl,500,bash,fish',
     'curl,500,launchd,kernel_task',
     'curl,500,makepkg,yay',
     'curl,500,ruby,zsh',

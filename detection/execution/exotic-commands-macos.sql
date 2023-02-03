@@ -55,7 +55,6 @@ WHERE
         'nstx',
         'dnscat2',
         'tuns',
-        'zsh',
         'iodine',
         'esxcli',
         'vim-cmd',

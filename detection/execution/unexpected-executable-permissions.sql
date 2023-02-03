@@ -74,3 +74,7 @@ WHERE
     f.path LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
     AND f.mode = '1555'
   )
+  AND NOT (
+    f.path LIKE '/opt/homebrew/Cellar/dnsmasq/%/sbin/dnsmasq'
+    AND f.mode = '1555'
+  )

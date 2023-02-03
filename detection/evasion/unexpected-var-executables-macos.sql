@@ -103,7 +103,7 @@ WHERE
   )
   -- JetBrains (Delve)
   AND NOT (
-    file.path LIKE '/var/folders/%/%/T/dlvLauncher.sh'
+    file.path LIKE '/var/folders/%/T/dlvLauncher%.sh'
     AND file.size < 1024
     AND file.mode = '0744'
   )

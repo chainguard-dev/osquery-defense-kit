@@ -52,6 +52,8 @@ WHERE
     'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
     ',,/Applications/Google%20Chrome.app/,',
     ',,/Applications/IntelliJ%20IDEA.app/,',
+    ',,/usr/local/sbin/iodined,501',
+    ',dnsmasq,/opt/homebrew/Cellar/dnsmasq/2.88/sbin/dnsmasq,0',
     ',,/Applications/ProtonMail%20Bridge.app/,',
     ',,/Applications/Visual%20Studio%20Code.app/,',
     ',,/Applications/Visual%20Studio%20Code.app/Contents/Frameworks/Code%20Helper.app/,',

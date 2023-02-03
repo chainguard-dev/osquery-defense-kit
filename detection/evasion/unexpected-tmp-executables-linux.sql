@@ -60,6 +60,7 @@ WHERE
       OR file.path LIKE "/tmp/%/gradlew"
       OR file.path LIKE '/tmp/guile-%/guile-%'
       OR file.path LIKE '/tmp/kots/%'
+      OR file.path LIKE '/tmp/%-release%/%'
       OR file.path LIKE '/tmp/%/site-packages/markupsafe/_speedups.cpython-%'
       OR file.path LIKE '/tmp/%/src/%'
       OR file.path LIKE '/tmp/src/%'
