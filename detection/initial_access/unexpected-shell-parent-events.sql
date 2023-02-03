@@ -208,7 +208,7 @@ WHERE
     )
     OR (
       p1_name = 'ssh'
-      AND p0_cmd LIKE 'gcloud.py compute start-iap-tunnel%'
+      AND p0_cmd LIKE '%gcloud.py compute start-iap-tunnel%'
     )
     OR exception_key IN (
       'bash,0,pia-daemon,launchd',
