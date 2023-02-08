@@ -51,6 +51,8 @@ WHERE
   AND p0.path NOT LIKE '/opt/homebrew/Cellar/vim/%/bin/vim'
   AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
+  AND p0.path NOT LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
+  AND p0.path != '/opt/socket_vmnet/bin/socket_vmnet'
   AND NOT s.authority IN (
     'Software Signing',
     'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',

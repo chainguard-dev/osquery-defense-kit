@@ -152,6 +152,11 @@ WHERE
     AND file.mode IN ('0755', '0700')
     AND file.size < 4
   )
+  -- Mystery
+  AND NOT (
+    file.path = "/tmp/.elive"
+    AND file.size = 5
+  )
   AND NOT (
     file.path = '/.config/'
     AND file.uid = 0

@@ -223,6 +223,7 @@ WHERE
       'bash,500,Private Internet Access,launchd',
       'bash,0,udevadm,udevadm',
       'sh,0,auditd,launchd',
+      'sh,500,Google Drive,launchd',
       'sh,500,updater,Foxit PDF Reader',
       'bash,500,Foxit PDF Reader,launchd',
       'zsh,500,stable,launchd',

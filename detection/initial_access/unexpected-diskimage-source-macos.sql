@@ -120,6 +120,7 @@ WHERE
     'obdev.at',
     'ubuntu.com',
     'balsamiq.com',
+    'krisp.ai',
     'tableplus.com',
     'discord.com',
     'dl.discordapp.net',
