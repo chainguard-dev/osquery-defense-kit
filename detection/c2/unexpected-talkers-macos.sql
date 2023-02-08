@@ -10,6 +10,8 @@ SELECT
   s.local_port,
   s.remote_port,
   s.remote_address,
+  s.local_port,
+  s.local_address,
   p.name,
   p.path,
   p.cmdline AS child_cmd,

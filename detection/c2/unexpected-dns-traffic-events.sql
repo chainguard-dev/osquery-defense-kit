@@ -14,6 +14,8 @@ SELECT
   protocol,
   s.remote_port,
   s.remote_address,
+  s.local_port,
+  s.local_address,
   s.action,
   s.status,
   p.name,

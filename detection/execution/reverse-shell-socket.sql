@@ -22,6 +22,8 @@ SELECT DISTINCT
   p.start_time,
   pos.remote_address,
   pos.remote_port,
+  pos.local_address,
+  pos.local_port,
   pp.cmdline,
   pp.path
 FROM
