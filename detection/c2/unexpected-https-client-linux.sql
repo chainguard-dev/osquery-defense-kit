@@ -18,6 +18,8 @@ SELECT
   pp.path AS parent_path,
   p.parent AS parent_pid,
   pp.cmdline AS parent_cmd,
+  s.local_address,
+  s.local_port,
   s.state,
   hash.sha256,
   -- This intentionally avoids file.path, as it won't join across mount namespaces
