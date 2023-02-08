@@ -47,7 +47,29 @@ FROM
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  pmm.path LIKE '%Security.framework%'
+  -- Focus on longer-running programs
+  p0.pid IN (
+    SELECT pid FROM processes WHERE
+    start_time < (strftime('%s', 'now') - 900)
+    AND parent != 0
+    -- Assume STP
+    AND NOT path LIKE '/System/%'
+    AND NOT path LIKE '/usr/libexec/%'
+    AND NOT path LIKE '/usr/sbin/%'
+    -- Other oddball binary paths
+    AND NOT path LIKE '/opt/homebrew/Cellar/%'
+    AND NOT path LIKE '/usr/local/Cellar/%/bin/%'
+    AND NOT (
+      path LIKE '/Users/%/homebrew/Cellar/%'
+      AND name = 'limactl'
+    )
+    AND NOT (
+      path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/com.elgato.cpu.sdPlugin/cpu'
+      AND name = 'cpu'
+    )
+    AND NOT path IN ('/opt/socket_vmnet/bin/socket_vmnet')
+  )
+  AND pmm.path LIKE '%Security.framework%'
   AND exception_key NOT IN (
     '0,nix,nix,',
     '0,osqueryd,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
@@ -113,17 +135,5 @@ WHERE
   )
   AND NOT exception_key LIKE '500,terraform-provider-%,a.out,'
   AND NOT exception_key LIKE '500,Runner.%,apphost-%,'
-  -- TODO: Narrow this down
-  AND NOT p0.path LIKE '/opt/homebrew/Cellar/%'
-  AND NOT p0.path LIKE '/usr/local/Cellar/%/bin/%'
-  AND NOT (
-    p0.path LIKE '/Users/%/homebrew/Cellar/%'
-    AND p0.name = 'limactl'
-  )
-  AND NOT (
-    p0.path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/com.elgato.cpu.sdPlugin/cpu'
-    AND p0.name = 'cpu'
-  )
-  AND NOT p0.path IN ('/opt/socket_vmnet/bin/socket_vmnet')
 GROUP BY
   p0.pid

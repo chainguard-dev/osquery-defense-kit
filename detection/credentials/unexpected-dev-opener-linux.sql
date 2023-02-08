@@ -161,6 +161,8 @@ WHERE
   )
   AND NOT path_exception IN (
     '/dev/autofs,systemd',
+    '/dev/cpu/0/msr,nvidia-powerd',
+    '/dev/fb,Xorg',
     '/dev/hidraw,chrome',
     '/dev/hwrng,rngd',
     '/dev/input/event,thermald',
@@ -174,6 +176,7 @@ WHERE
     '/dev/kmsg,systemd-journald',
     '/dev/kvm,qemu-system-x86_64',
     '/dev/mapper/control,dockerd',
+    '/dev/mapper/control,gpartedbin',
     '/dev/mcelog,mcelog',
     '/dev/media0,pipewire',
     '/dev/media0,wireplumber',
@@ -192,9 +195,9 @@ WHERE
     '/dev/usb/hiddev,upowerd',
     '/dev/video0,chrome',
     '/dev/video,brave',
+    '/dev/video,cheese',
     '/dev/video,chrome',
     '/dev/video,ffmpeg',
-    '/dev/cpu/0/msr,nvidia-powerd',
     '/dev/video,firefox',
     '/dev/video,obs',
     '/dev/video,obs-ffmpeg-mux',
@@ -203,11 +206,9 @@ WHERE
     '/dev/video,wireplumber',
     '/dev/video,zoom',
     '/dev/video,zoom.real',
-    '/dev/mapper/control,gpartedbin',
+    '/dev/zfs,',
     '/dev/zfs,zed',
     '/dev/zfs,zfs',
-    '/dev/fb,Xorg',
-    '/dev/zfs,',
     '/dev/zfs,zpool'
   )
   -- Halflife

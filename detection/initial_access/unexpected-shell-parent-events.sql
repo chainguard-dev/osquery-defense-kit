@@ -190,12 +190,17 @@ WHERE
       'sh -c /bin/stty size 2>/dev/null',
       "sh -c osascript -e 'user locale of (get system info)'",
       'sh -c python3.7 --version 2>&1',
+      'sh -c /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find python3 2> /dev/null',
       'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null'
     )
     OR (
       p1_name = 'WhatsApp'
       -- WhatsApp grabs the serial number from people's machines :(
       AND p0_cmd = '/bin/sh -c ioreg -c IOPlatformExpertDevice -d 2'
+    )
+    OR (
+      p1_name LIKE 'emacs-%'
+      AND p1_path LIKE '%/bin/emacs%'
     )
     OR p1_cmd IN (
       '/usr/bin/python3 /usr/share/apport/apport-gtk',
@@ -215,7 +220,9 @@ WHERE
     )
     OR exception_key IN (
       'bash,0,pia-daemon,launchd',
+      'bash,500,Private Internet Access,launchd',
       'bash,0,udevadm,udevadm',
+      'sh,0,auditd,launchd',
       'sh,500,updater,Foxit PDF Reader',
       'bash,500,Foxit PDF Reader,launchd',
       'zsh,500,stable,launchd',

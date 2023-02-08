@@ -83,6 +83,7 @@ WHERE
     '/tmp/.X0-lock',
     '/tmp/.X11-unix/',
     '/tmp/.X1-lock',
+    '/tmp/.eos-update-notifier.log',
     '/tmp/.X2-lock',
     '/tmp/.XIM-unix/',
     '/usr/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',

@@ -5,7 +5,7 @@
 --   * https://attack.mitre.org/techniques/T1204/002/ (User Execution: Malicious File)
 --   * https://www.crowdstrike.com/blog/how-crowdstrike-uncovered-a-new-macos-browser-hijacking-campaign/
 --
--- tags: transient volume filesystem rapid
+-- tags: transient volume filesystem
 -- platform: darwin
 SELECT RTRIM(file.path, '/') AS f,
     file.bsd_flags AS f_flags,

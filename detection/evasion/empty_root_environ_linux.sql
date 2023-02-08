@@ -28,7 +28,8 @@ FROM
 WHERE
   p.euid = 0
   -- This time should match the interval
-  AND p.start_time > (strftime('%s', 'now') - 601) -- Filter out transient processes that may not have an envs entry by the time we poll for it
+  AND p.start_time > (strftime('%s', 'now') - 601)
+  -- Filter out transient processes that may not have an envs entry by the time we poll for it
   AND p.start_time < (strftime('%s', 'now') - 1)
   AND p.parent NOT IN (0, 2)
   AND NOT p.path IS NULL

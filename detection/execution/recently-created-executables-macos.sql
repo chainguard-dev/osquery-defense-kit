@@ -119,6 +119,10 @@ WHERE
   AND NOT p0.path LIKE '/Users/%/Parallels/%/Contents/MacOS/WinAppHelper'
   AND NOT p0.path LIKE '/Users/%/Applications (Parallels)/%/Contents/MacOS/WinAppHelper'
   AND NOT (
+    p0.path LIKE '/Users/%/__debug_bin'
+    AND s.identifier = 'a.out'
+  )
+  AND NOT (
     p0.path LIKE '/Users/%'
     AND p0.uid > 499
     AND f.ctime = f.mtime

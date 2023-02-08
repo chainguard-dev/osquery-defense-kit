@@ -60,6 +60,7 @@ WHERE
     '/opt/homebrew/opt/jenkins/bin/jenkins --httpListenAddress=127.0.0.1 --httpPort=8080',
     '/opt/homebrew/opt/mariadb/bin/mysqld_safe',
     '/opt/homebrew/opt/skhd/bin/skhd',
+    '/opt/homebrew/opt/dnsmasq/sbin/dnsmasq --keep-in-foreground -C /opt/homebrew/etc/dnsmasq.conf -7 /opt/homebrew/etc/dnsmasq.d,*.conf',
     '/opt/homebrew/opt/tailscale/bin/tailscaled',
     '/opt/homebrew/opt/yubikey-agent/bin/yubikey-agent -l /opt/homebrew/var/run/yubikey-agent.sock',
     '/usr/local/MacGPG2/libexec/fixGpgHome'

@@ -75,6 +75,7 @@ WHERE
     '._AUTORUN.INF',
     '.background',
     '.disk_label',
+    '.keystone_install',
     '.disk_label_2x',
     '.DS_Store',
     '.file',

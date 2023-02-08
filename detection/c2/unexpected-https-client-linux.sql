@@ -109,6 +109,7 @@ WHERE
     '500,/home/bom,500u,500g,bom',
     '500,/home/buildkitd,500u,500g,buildkitd',
     '500,/home/cargo,500u,500g,cargo',
+    '500,/tmp/scoville,500u,500g,scoville',
     '500,/home/chainctl,500u,100g,chainctl',
     '500,/home/chainctl,500u,500g,chainctl',
     '500,/home/code,500u,500g,code',

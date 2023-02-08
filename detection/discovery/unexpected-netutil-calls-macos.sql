@@ -103,6 +103,10 @@ WHERE
   AND NOT exception_key IN (
     'netstat,500,IPNExtension,launchd',
     'pfctl,0,pia-daemon,launchd',
+    'ifconfig,0,pia-openvpn,pia-daemon',
+    'ifconfig,0,pia-openvpn,pia-daemon',
+    'ifconfig,0,pia-daemon,launchd',
+    'netstat,0,pia-daemon,launchd',
     'pfctl,0,bash,pia-daemon'
   )
   AND p1_cmd NOT IN ('/bin/sh /etc/periodic/daily/420.status-network')

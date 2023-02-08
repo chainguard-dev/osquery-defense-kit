@@ -53,6 +53,12 @@ WHERE
     '/usr/bin/sudo',
     '/usr/bin/top'
   )
+  -- doas may be in the process of being upgraded
+  AND NOT (
+    p0.name IN ('doas', 'sudo')
+    AND p0_cmd LIKE '%pacman%'
+    AND p1_cmd LIKE 'yay%'
+  )
   AND p0.path NOT LIKE '/nix/store/%/bin/sudo'
   AND p0.path NOT LIKE '/nix/store/%/bin/dhcpcd'
   AND p0.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
