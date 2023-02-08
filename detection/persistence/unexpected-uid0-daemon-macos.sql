@@ -232,6 +232,7 @@ WHERE -- Focus on longer-running programs
         '/usr/libexec/wifip2pd',
         '/usr/libexec/wifivelocityd',
         '/usr/local/kolide-k2/bin/osquery-extension.ext',
+        '/opt/socket_vmnet/bin/socket_vmnet',
         '/usr/sbin/aslmanager',
         '/usr/sbin/auditd',
         '/usr/sbin/BlueTool',
@@ -276,7 +277,16 @@ WHERE -- Focus on longer-running programs
     'Software Signing'
   )
   AND NOT (
+    p0.path LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
+    AND s.identifier = 'socket_vmnet'
+  )
+  AND NOT (
     p0.path LIKE '/nix/store/%-nix-%/bin/nix'
     AND s.identifier = 'nix'
+  )
+  AND NOT (
+    p0.path = '/Library/Printers/DYMO/Utilities/pnpd'
+    AND s.identifier = 'pnpd'
+    AND s.authority = 'Developer ID Application: Sanford, L.P. (N3S6676K3E)'
   )
 GROUP BY p0.path
