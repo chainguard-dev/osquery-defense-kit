@@ -14,11 +14,9 @@ SELECT
   pe.cwd AS p0_cwd,
   pe.pid AS p0_pid,
   pe.euid AS p0_euid,
-  p.cgroup_path AS p0_cgroup,
   s.authority AS p0_authority,
   -- Parent
-  pe.parent AS p1_pid,
-  p1.cgroup_path AS p1_cgroup,
+  pe.parent AS p1_pid,  
   TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
   COALESCE(p1.path, pe1.path) AS p1_path,
   COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
@@ -26,7 +24,6 @@ SELECT
   pe_sig1.authority AS p1_authority,
   -- Grandparent
   COALESCE(p1.parent, pe1.parent) AS p2_pid,
-  COALESCE(p1_p2.cgroup_path, pe1_p2.cgroup_path) AS p2_cgroup,
   TRIM(
     COALESCE(p1_p2.cmdline, pe1_p2.cmdline, pe1_pe2.cmdline)
   ) AS p2_cmd,
