@@ -100,3 +100,4 @@ WHERE
     '/Volumes/Google Chrome Canary/.keystone_install',
     '/Volumes/Jabra Direct Setup/JabraDirectSetup.pkg'
   )
+  AND trimpath NOT LIKE '/Volumes/JDK %/JDK %.pkg'

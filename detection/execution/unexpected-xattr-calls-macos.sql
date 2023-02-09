@@ -114,6 +114,10 @@ WHERE
   )
   AND NOT (
     pe.euid > 500
+    AND p0_cmd LIKE 'xattr -r -d com.apple.quarantine /Users/%/.provisio/bin/%.app'
+  )
+  AND NOT (
+    pe.euid > 500
     AND p0_cmd = '/usr/bin/xattr -h'
     AND p1_cmd LIKE '%homebrew%'
   )

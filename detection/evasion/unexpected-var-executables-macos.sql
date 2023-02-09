@@ -119,3 +119,7 @@ WHERE
     AND file.size < 40000
     AND file.uid = 501
   )
+AND NOT (
+  file.path LIKE '/var/tmp/_bazel_%/%/install/%'
+  AND file.uid = 501
+)

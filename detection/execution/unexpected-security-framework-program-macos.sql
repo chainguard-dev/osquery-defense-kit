@@ -61,7 +61,7 @@ WHERE
     AND NOT path LIKE '/usr/local/Cellar/%/bin/%'
     AND NOT (
       path LIKE '/Users/%/homebrew/Cellar/%'
-      AND name = 'limactl'
+      AND name IN ('limactl', 'Python')
     )
     AND NOT (
       path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/com.elgato.cpu.sdPlugin/cpu'
@@ -99,6 +99,7 @@ WHERE
     '500,ko,a.out,',
     '500,kubectl,a.out,',
     '500,lua-language-server,lua-language-server,',
+    '500,Telegram,ru.keepcoder.Telegram,Apple Mac OS Application Signing',
     '500,Magnet,com.crowdcafe.windowmagnet,Apple Mac OS Application Signing',
     '500,Mattermost Helper (GPU),Mattermost.Desktop.helper.GPU,Apple Mac OS Application Signing',
     '500,Mattermost Helper,Mattermost.Desktop.helper,Apple Mac OS Application Signing',
@@ -135,5 +136,6 @@ WHERE
   )
   AND NOT exception_key LIKE '500,terraform-provider-%,a.out,'
   AND NOT exception_key LIKE '500,Runner.%,apphost-%,'
+  AND NOT exception_key LIKE '500,kubectl.%,a.out,'
 GROUP BY
   p0.pid

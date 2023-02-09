@@ -44,7 +44,7 @@ WHERE file.path IN (
             AND parent != ""
             AND mounts.path LIKE "/Volumes/%"
             -- osquery will traverse symlinks, this prevents following symlinks to /Applications (poorly)
-            AND mounts.path NOT LIKE "/Volumes/%/Applications/%"
+            AND file.path NOT LIKE "/Volumes/%/Applications/%"
     )
     AND (
         --   Rule 0. App binaries that are hidden, like WnBJLaF/1302.app/Contents/MacOS/1302 (1302.app)

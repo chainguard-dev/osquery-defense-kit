@@ -103,6 +103,7 @@ WHERE
   AND NOT exception_key IN (
     'netstat,500,IPNExtension,launchd',
     'pfctl,0,pia-daemon,launchd',
+    'ifconfig,500,zsh,stable',
     'ifconfig,0,pia-openvpn,pia-daemon',
     'ifconfig,0,pia-openvpn,pia-daemon',
     'ifconfig,0,pia-daemon,launchd',

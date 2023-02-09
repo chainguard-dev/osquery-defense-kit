@@ -38,6 +38,7 @@ WHERE
     'bwrap',
     'cupsd',
     'dhcpcd',
+    '1Password-Keyri',
     'modprobe',
     'dnf',
     'gdm-x-session',

@@ -87,6 +87,7 @@ WHERE
   AND p.path NOT IN (
     '/usr/lib/systemd/systemd-resolved',
     '/Applications/Slack.app/Contents/Frameworks/Slack Helper.app/Contents/MacOS/Slack Helper',
+    '/System/Volumes/Preboot/Cryptexes/Incoming/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking',
     '/Applications/Spotify.app/Contents/Frameworks/Spotify Helper.app/Contents/MacOS/Spotify Helper'
   )
   AND p.path NOT LIKE '/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/%/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper'

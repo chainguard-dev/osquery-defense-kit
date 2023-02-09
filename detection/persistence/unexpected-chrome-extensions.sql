@@ -49,7 +49,8 @@ WHERE
   )
   AND enabled = 1
   AND exception_key NOT IN (
-    'false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,',
+
+   'false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,',
     'false,,base64 encode or decode selected text,',
     'false,,Google Chat,chfbpgnooceecdoohagngmjnndbbaeip', -- Deprecated Google Extension
     'false,,Google Chat,mdpkiolbdkhdjpekfbkbmhigcaggjagi', -- Deprecated Google Extension
@@ -58,6 +59,7 @@ WHERE
     'false,,Google Photos,ncmjhecbjeaamljdfahankockkkdmedg', -- Deprecated Google Extension
     'false,julienv3@gmail.com,treasure-clicker,',
     'false,juverm@chainguard.dev,auto-close-gitsign,',
+    'false,,Trotto go links,nkeoojidblilnkcbbmfhaeebndapehjk',
     'false,,YouTube,agimnkijcaahngcdmfeangaknmldooml', -- Deprecated Google Extension
     'true,Adaware,Safe Torrent Scanner,aegnopegbbhjeeiganiajffnalhlkkjb',
     'true,,Adblock for Youtube™,cmedhionkhpnakcndndgjdbohmhepckk',
@@ -126,6 +128,7 @@ WHERE
     'true,James Anderson,LeechBlock NG,blaaajhemilngeeffpbfkdjjoefldkok',
     'true,,Jitsi Meetings,kglhbbefdnlheedjiejgomgmfplipfeb',
     'true,,JSON Formatter,bcjindcccaagfpapjjmafapmmgkkhgoa',
+    'true,,JSON Viewer Pro,eifflpmocdbdmepbjaopkkhbfmdgijcc',
     'true,Kas Elvirov,GitHub Gloc,kaodcnpebhdbpaeeemkiobcokcnegdki',
     'true,Keepa GmbH,Keepa - Amazon Price Tracker,neebplgakaahbhdphmkckjjcegoiijjo',
     'true,LastPass,LastPass: Free Password Manager,hdokiejnpimakedhajhdlcegeplioahd',
@@ -180,6 +183,7 @@ WHERE
     'true,,Tab Wrangler,egnjhciaieeiiohknchakcodbpgjnchh',
     'true,,Tag Assistant Legacy (by Google),kejbdjndbnbjgmefkgdddjlbokphdefk',
     'true,Thomas Rientjes,Decentraleyes,ldpochfccmkkmhdbclfhpagapcfdljkj',
+    'true,,TickTick - Todo & Task List,diankknpkndanachmlckaikddgcehkod',
     'true,,Todoist for Chrome,jldhpllghnbhlbpcmnajkpdmadaolakh',
     'true,Tomas Popela, tpopela@redhat.com,Fedora User Agent,hojggiaghnldpcknpbciehjcaoafceil',
     'true,Tulio Ornelas <ornelas.tulio@gmail.com>,JSON Viewer,gbmdgpbipfallnflgajpaliibnhdgobh',
@@ -196,6 +200,6 @@ WHERE
     'true,,Windscribe - Free Proxy and Ad Blocker,hnmpcagpplmpfojmgmnngilcnanddlhb',
     'true,,WiseStamp email signature,pbcgnkmbeodkmiijjfnliicelkjfcldg',
     'true,,Zoom Scheduler,kgjfgplpablkjnlkjmjdecgdpfankdle'
-  )
+ )
 GROUP BY
   exception_key

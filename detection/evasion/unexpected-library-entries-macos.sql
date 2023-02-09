@@ -42,13 +42,11 @@ WHERE
     '/Library/Automator/',
     '/Library/Bluetooth/',
     '/Library/Caches/',
-    '/Library/Parallels/',
     '/Library/Catacomb/',
     '/Library/ColorPickers/',
     '/Library/ColorSync/',
     '/Library/Components/',
     '/Library/Compositions/',
-    '/Library/DropboxHelperTools/',
     '/Library/Compositions/.localized',
     '/Library/Contextual Menu Items/',
     '/Library/CoreAnalytics/',
@@ -80,19 +78,20 @@ WHERE
     '/Library/KernelCollections/.file',
     '/Library/Keyboard Layouts/',
     '/Library/Keychains/',
-    '/Library/Tailscale/',
     '/Library/LaunchAgents/',
     '/Library/LaunchDaemons/',
     '/Library/.localized',
     '/Library/Logs/',
     '/Library/Mail/',
     '/Library/Managed Preferences/',
+    '/Library/Microsoft/',
     '/Library/Modem Scripts/',
     '/Library/Nessus/',
     '/Library/Objective-See/',
     '/Library/OpenDirectory/',
     '/Library/OSAnalytics/',
     '/Library/OSAnalytics/.DS_Store',
+    '/Library/Parallels/',
     '/Library/PDF Services/',
     '/Library/Perl/',
     '/Library/Plug-Ins/',
@@ -120,6 +119,7 @@ WHERE
     '/Library/SystemExtensions/.staging/',
     '/Library/SystemMigration/',
     '/Library/SystemProfiler/',
+    '/Library/Tailscale/',
     '/Library/TeX/',
     '/Library/Updates/',
     '/Library/User Pictures/',
@@ -132,3 +132,10 @@ WHERE
     '/Library/WebServer/share/'
   )
   AND NOT file.path LIKE '/Library/Caches/.0%'
+  AND NOT file.path LIKE '/Library/Caches/.1%'
+  AND NOT file.path LIKE '/Library/Caches/.2%'
+  AND NOT (
+    file.path = '/Library/Caches/.DS_Store'
+    AND magic.data = 'Apple Desktop Services Store'
+    AND file.size < 9000
+  )

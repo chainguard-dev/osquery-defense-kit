@@ -30,12 +30,14 @@ WHERE
   AND file.btime > (strftime('%s', 'now') -86400)
   -- Extensions that would not normally raise suspicion if sent by e-mail (excludes dmg, iso, lnk, exe)
   AND extension NOT IN (
+    'ai',
     'cer',
     'csv',
     'doc',
     'docx',
     'dwg',
     'eml',
+    'eps',
     'gif',
     'htm',
     'html',

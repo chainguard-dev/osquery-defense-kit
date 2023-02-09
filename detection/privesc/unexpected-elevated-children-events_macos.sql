@@ -85,6 +85,7 @@ WHERE
   AND p0_euid < p1_euid
   AND p1_path NOT IN (
     '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared',
+    '/usr/libexec/PerfPowerServicesExtended',
     '/usr/bin/login',
     '/usr/bin/su',
     '/usr/bin/sudo',
