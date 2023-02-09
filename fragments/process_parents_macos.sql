@@ -7,7 +7,6 @@ SELECT
   p0.name AS p0_name,
   p0.cmdline AS p0_cmd,
   p0.cwd AS p0_cwd,
-  p0.cgroup_path AS p0_cgroup,
   p0.euid AS p0_euid,
   p0_hash.sha256 AS p0_sha256,
   -- Parent
