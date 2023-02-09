@@ -7,10 +7,12 @@
 -- related:
 --   * unexpected-privilege-escalation-events.sql
 --
--- tags: transient rapid state process escalation
+-- tags: transient state process escalation
 -- platform: linux
 SELECT
+  p0.uid AS p0_uid,
   -- Child
+  p0.pid AS p0_pid,
   p0.path AS p0_path,
   p0.name AS p0_name,
   p0.cmdline AS p0_cmd,
@@ -41,27 +43,33 @@ FROM
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  p0.euid < p0.uid
-  AND p0.path NOT IN (
-    '/bin/ps',
-    '/usr/bin/doas',
-    '/usr/bin/fusermount',
-    '/usr/bin/fusermount3',
-    '/usr/libexec/Xorg',
-    '/usr/bin/login',
-    '/usr/bin/su',
-    '/usr/bin/sudo',
-    '/usr/bin/top'
+  p0.pid IN (
+    SELECT
+      pid
+    FROM
+      processes
+    WHERE
+      euid < uid
+      AND NOT path IN (
+        '/bin/ps',
+        '/usr/bin/doas',
+        '/usr/bin/fusermount',
+        '/usr/bin/fusermount3',
+        '/usr/libexec/Xorg',
+        '/usr/bin/login',
+        '/usr/bin/su',
+        '/usr/bin/sudo',
+        '/usr/bin/top'
+      ) -- doas may be in the process of being upgraded
+      AND NOT path LIKE '/nix/store/%/bin/sudo'
+      AND NOT path LIKE '/nix/store/%/bin/dhcpcd'
+      AND NOT path LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
+      AND NOT name IN ('doas', 'sudo')
   )
-  -- doas may be in the process of being upgraded
   AND NOT (
-    p0.name IN ('doas', 'sudo')
-    AND p0_cmd LIKE '%pacman%'
-    AND p1_cmd LIKE 'yay%'
+    p0.cmdline LIKE '%pacman%'
+    AND p1.cmdline LIKE 'yay%'
   )
-  AND p0.path NOT LIKE '/nix/store/%/bin/sudo'
-  AND p0.path NOT LIKE '/nix/store/%/bin/dhcpcd'
-  AND p0.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
   AND NOT (
     p0.name = 'polkit-agent-he'
     AND p1.path = '/usr/bin/gnome-shell'

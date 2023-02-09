@@ -7,16 +7,8 @@
 --
 -- platform: darwin
 -- tags: transient seldom process filesystem state
-SELECT
-  p.pid,
-  p.name,
-  p.path,
-  p.euid,
-  p.gid,
-  p.cwd,
-  f.ctime,
-  f.directory AS dir,
-  REGEX_MATCH (p.path, '(/.*?/.*?/.*?)/', 1) AS top_dir, -- 3 levels deep
+SELECT DISTINCT
+  REGEX_MATCH (p0.path, '(.*)/', 1) AS dir,
   REPLACE(f.directory, u.directory, '~') AS homedir,
   REGEX_MATCH (
     REPLACE(f.directory, u.directory, '~'),
@@ -27,26 +19,59 @@ SELECT
     REPLACE(f.directory, u.directory, '~'),
     '(~/.*?/)',
     1
-  ) AS top_homedir, -- 1 level deep
-  p.cmdline,
-  hash.sha256,
-  pp.path AS parent_path,
-  pp.name AS parent_name,
-  pp.cmdline AS parent_cmdline,
-  pp.euid AS parent_euid,
-  hash.sha256 AS parent_sha256,
-  signature.identifier,
-  signature.authority
+  ) AS top_homedir,
+  s.authority AS p0_auth,
+  s.identifier AS p0_id,
+  -- Child
+  p0.pid AS p0_pid,
+  p0.path AS p0_path,
+  p0.name AS p0_name,
+  p0.cmdline AS p0_cmd,
+  p0.cwd AS p0_cwd,
+  p0.euid AS p0_euid,
+  p0_hash.sha256 AS p0_sha256,
+  -- Parent
+  p0.parent AS p1_pid,
+  p1.path AS p1_path,
+  p1.name AS p1_name,
+  p1_f.mode AS p1_mode,
+  p1.euid AS p1_euid,
+  p1.cmdline AS p1_cmd,
+  p1_hash.sha256 AS p1_sha256,
+  -- Grandparent
+  p1.parent AS p2_pid,
+  p2.name AS p2_name,
+  p2.path AS p2_path,
+  p2.cmdline AS p2_cmd,
+  p2_hash.sha256 AS p2_sha256
 FROM
-  processes p
-  LEFT JOIN file f ON p.path = f.path
-  LEFT JOIN hash ON hash.path = p.path
-  LEFT JOIN users u ON p.uid = u.uid
-  LEFT JOIN processes pp ON p.parent = pp.pid
-  LEFT JOIN signature ON p.path = signature.path
+  processes p0
+  LEFT JOIN file f ON p0.path = f.path
+  LEFT JOIN users u ON p0.uid = u.uid
+  LEFT JOIN signature s ON p0.path = s.path
+  LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
+  LEFT JOIN processes p1 ON p0.parent = p1.pid
+  LEFT JOIN file p1_f ON p1.path = p1_f.path
+  LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
+  LEFT JOIN processes p2 ON p1.parent = p2.pid
+  LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  dir NOT IN (
-    '/bin',
+  p0.pid IN (
+    SELECT
+      pid
+    FROM
+      processes
+    WHERE
+      pid > 0
+      AND REGEX_MATCH (
+        path,
+        "^(/System|/usr/libexec/|/usr/sbin/|/usr/bin/|/usr/lib/|/bin/|/Applications|/Library/Apple/|/sbin/|/usr/local/kolide-k2)",
+        1
+      ) IS NULL
+    GROUP BY
+      path
+  )
+  AND dir NOT IN (
     '/Library/Application Support/Logitech.localized/Logitech Options.localized/LogiMgrUpdater.app/Contents/Resources',
     '/Library/DropboxHelperTools/Dropbox_u501',
     '/Library/Filesystems/kbfuse.fs/Contents/Resources',
@@ -63,53 +88,16 @@ WHERE
     '/opt/usr/bin',
     '/opt/X11/bin',
     '/opt/X11/libexec',
-    '/run/current-system/sw/bin',
-    '/sbin',
-    '/usr/bin',
-    '/usr/lib',
-    '/usr/lib/bluetooth',
-    '/usr/lib/cups/notifier',
-    '/usr/libexec',
-    '/usr/libexec/ApplicationFirewall',
-    '/usr/libexec/AssetCache',
-    '/usr/libexec/firmwarecheckers',
-    '/usr/libexec/firmwarecheckers/eficheck',
-    '/usr/libexec/rosetta',
-    '/usr/lib/fwupd',
-    '/usr/lib/ibus',
-    '/usr/lib/system',
-    '/usr/local/bin',
-    '/usr/sbin'
-  )
-  AND top_dir NOT IN (
-    '/Applications/Firefox.app/Contents',
-    '/Applications/Google Chrome.app/Contents',
-    '/Library/Apple/System',
-    '/Library/Application Support/Adobe',
-    '/Library/Application Support/GPGTools',
-    '/Library/Google/GoogleSoftwareUpdate',
-    '/System/Applications/Mail.app',
-    '/System/Applications/Music.app',
-    '/System/Applications/News.app',
-    '/System/Applications/TV.app',
-    '/System/Applications/Weather.app',
-    '/System/Library/CoreServices',
-    '/System/Library/Filesystems',
-    '/System/Library/Frameworks',
-    '/System/Library/PrivateFrameworks',
-    '/System/Library/SystemConfiguration',
-    '/System/Library/SystemProfiler',
-    '/System/Volumes/Preboot',
-    '/usr/local/kolide-k2'
+    '/run/current-system/sw/bin'
   )
   AND homedir NOT IN (
     '~/bin',
     '~/code/bin',
     '~/Downloads/google-cloud-sdk/bin',
-    '~/Library/Application Support/dev.warp.Warp-Stable',
-    '~/Library/Application Support/zoom.us/Plugins/aomhost.app/Contents/MacOS',
     '~/go/bin',
     '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
+    '~/Library/Application Support/dev.warp.Warp-Stable',
+    '~/Library/Application Support/zoom.us/Plugins/aomhost.app/Contents/MacOS',
     '~/.local/bin',
     '~/.magefile',
     '~/projects/go/bin'
@@ -120,7 +108,6 @@ WHERE
     '~/bin/',
     '~/.cargo/',
     '~/code/',
-    '~/sigstore/',
     '~/Code/',
     '~/.config/',
     '~/dev/',
@@ -129,9 +116,7 @@ WHERE
     '~/google-cloud-sdk/',
     '~/homebrew/',
     '~/.kuberlr/',
-    -- Abused by KeySteal
     -- '~/Library/',
-    -- Abused by DazzleSpy, use a more specific place
     -- '~/.local/',
     '~/Parallels/',
     '~/proj/',
@@ -141,24 +126,19 @@ WHERE
     '~/.pyenv/',
     '~/.rbenv/',
     '~/.rustup/',
+    '~/sigstore/',
     '~/src/',
     '~/.tflint.d/',
     '~/.vscode/',
     '~/.vs-kubernetes/'
   )
   AND top3_homedir NOT IN (
+    '~/Library/Application Support/BraveSoftware/',
     '~/Library/Application Support/com.elgato.StreamDeck/',
-    '~/Library/Caches/snyk/',
-    '~/Library/Caches/com.mimestream.Mimestream/',
-    '~/.terraform.d/plugin-cache/registry.terraform.io/',
     '~/Library/Application Support/Foxit Software/',
-    '~/Library/Application Support/BraveSoftware/'
-  )
-  -- Locally built executables
-  AND NOT (
-    signature.identifier = "a.out"
-    AND homedir LIKE '~/%'
-    AND pp.name LIKE '%sh'
+    '~/Library/Caches/com.mimestream.Mimestream/',
+    '~/Library/Caches/snyk/',
+    '~/.terraform.d/plugin-cache/registry.terraform.io/'
   )
   AND dir NOT LIKE '/Applications/%'
   AND dir NOT LIKE '/private/tmp/%.app/Contents/MacOS'
@@ -180,8 +160,7 @@ WHERE
   AND homedir NOT LIKE '~/.local/%/packages/%'
   AND homedir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
   AND homedir NOT LIKE '~/Library/Application Support/cloud-code/bin/versions/%'
-  -- Allow these anywhere (put last because it's slow to query signatures)
-  AND signature.authority NOT IN (
+  AND s.authority NOT IN (
     'Apple iPhone OS Application Signing',
     'Apple Mac OS Application Signing',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
@@ -208,4 +187,9 @@ WHERE
     'Developer ID Application: Valve Corporation (MXGJJ98X76)',
     'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)',
     'Software Signing'
+  ) -- Locally built executables
+  AND NOT (
+    signature.identifier = "a.out"
+    AND homedir LIKE '~/%'
+    AND pp.name LIKE '%sh'
   )

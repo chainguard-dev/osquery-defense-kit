@@ -7,7 +7,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1555/ (Credentials from Password Stores)
 --
--- tags: transient often state file access
+-- tags: transient state file access
 SELECT
   pof.pid,
   pof.fd,

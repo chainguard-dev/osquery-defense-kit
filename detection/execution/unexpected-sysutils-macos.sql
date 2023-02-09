@@ -42,7 +42,6 @@ SELECT
     pe1_p2_sig.authority,
     pe1_pe2_sig.authority
   ) AS p2_authority
-
 FROM
   process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid

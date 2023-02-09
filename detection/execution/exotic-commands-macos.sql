@@ -65,59 +65,36 @@ WHERE
         'rsh',
         'xmrig',
         'incbit',
-        'insmod',
-        'kmod',
         'lushput',
         'mkfifo',
         'msfvenom',
         'nc',
         'socat'
+      ) -- coin miner names
+      OR REGEX_MATCH (p.name, "(pwn|xig|xmr)", 1) != "" -- malicious processes
+      OR REGEX_MATCH (
+        p.cmdline,
+        "(sshd|bitspin|lushput|incbit|traitor|msfvenom|urllib.urlopen|nohup.*tmp|chrome.*--load-extension|tail -f /dev/null|)",
+        1
+      ) != "" -- suspicious things
+      OR REGEX_MATCH (
+        p.cmdline,
+        "(UserKnownHostsFile=/dev/null|ransom|malware|plant|fsockopen|openssl.*quiet|pty.spawn|socat|SOCK_STREAM)",
+        1
+      ) != "" -- Crypto miners
+      OR REGEX_MATCH (
+        p.cmdline,
+        "(c3pool|cryptonight|f2pool|hashrate|hashvault|minerd|monero|nanopool|nicehash|stratum)",
+        1
+      ) != "" -- Needs to be case sensitive
+      OR (
+        INSTR(p.cmdline, '%Socket.%') > 0
+        AND NOT p.name IN ('cc1', 'compile', 'cmake', 'cc1plus')
       )
-      OR p.name LIKE '%pwn%'
-      OR p.name LIKE '%xig%'
-      OR p.name LIKE '%xmr%'
-      OR p.cmdline LIKE '%bitspin%'
-      OR p.cmdline LIKE '%lushput%'
-      OR p.cmdline LIKE '%incbit%'
-      OR p.cmdline LIKE '%traitor%'
-      OR p.cmdline LIKE '%msfvenom%' -- Unusual behaviors
-      OR p.cmdline LIKE '%chattr -ia%'
-      OR p.cmdline LIKE '%chflags uchg%'
-      OR p.cmdline LIKE '%chmod 777 %'
-      OR p.cmdline LIKE '%touch%acmr%'
-      OR p.cmdline LIKE '%urllib.urlopen%'
-      OR p.cmdline LIKE '%launchctl load%'
-      OR p.cmdline LIKE '%launchctl bootout%'
-      OR p.cmdline LIKE '%nohup%tmp%'
-      OR p.cmdline LIKE '%set visible of front window to false%'
-      OR p.cmdline LIKE '%chrome%--load-extension%'
-      -- Crypto miners
-      OR p.cmdline LIKE '%c3pool%'
-      OR p.cmdline LIKE '%cryptonight%'
-      OR p.cmdline LIKE '%f2pool%'
-      OR p.cmdline LIKE '%hashrate%'
-      OR p.cmdline LIKE '%hashvault%'
-      OR p.cmdline LIKE '%minerd%'
-      OR p.cmdline LIKE '%monero%'
-      OR p.cmdline LIKE '%nanopool%'
-      OR p.cmdline LIKE '%nicehash%'
-      OR p.cmdline LIKE '%stratum%' -- Random keywords
-      OR p.cmdline LIKE '%ransom%'
-      OR p.cmdline LIKE '%malware%'
-      OR p.cmdline LIKE '%plant%' -- Reverse shells
-      OR p.cmdline LIKE '%fsockopen%'
-      OR p.cmdline LIKE '%openssl%quiet%'
-      OR p.cmdline LIKE '%pty.spawn%'
-      OR p.cmdline LIKE '%sh -i'
-      OR p.cmdline LIKE '%socat%'
-      OR p.cmdline LIKE '%SOCK_STREAM%'
-      OR INSTR(p.cmdline, '%Socket.%') > 0
-      OR p.cmdline LIKE '%tail -f /dev/null%'
-      AND NOT p.name IN ('cc1', 'compile', 'cmake', 'cc1plus')
   )
   AND NOT (
     p0.cmdline LIKE '%UserKnownHostsFile=/dev/null%'
-    AND p1.name = 'limactl'
+    AND p1.name == 'limactl'
   )
   AND NOT (
     p0.cmdline LIKE '%sh -i'

@@ -10,6 +10,7 @@ SELECT
   DATETIME(f.mtime, 'unixepoch') AS p0_modified,
   (strftime('%s', 'now') - p0.start_time) AS p0_runtime_s,
   -- Child
+  p0.pid AS p0_pid,
   p0.path AS p0_path,
   p0.name AS p0_name,
   p0.cmdline AS p0_cmd,

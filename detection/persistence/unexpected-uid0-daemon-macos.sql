@@ -8,12 +8,14 @@
 --
 -- tags: persistent process state
 -- platform: darwin
-SELECT s.authority AS p0_auth,
+SELECT
+  s.authority AS p0_auth,
   s.identifier AS p0_id,
   DATETIME(f.ctime, 'unixepoch') AS p0_changed,
   DATETIME(f.mtime, 'unixepoch') AS p0_modified,
   (strftime('%s', 'now') - p0.start_time) AS p0_runtime_s,
   -- Child
+  p0.pid AS p0_pid,
   p0.path AS p0_path,
   p0.name AS p0_name,
   p0.cmdline AS p0_cmd,
@@ -34,7 +36,8 @@ SELECT s.authority AS p0_auth,
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM processes p0
+FROM
+  processes p0
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN signature s ON p0.path = s.path
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
@@ -45,9 +48,12 @@ FROM processes p0
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE -- Focus on longer-running programs
   p0.pid IN (
-    SELECT pid
-    FROM processes
-    WHERE euid = 0
+    SELECT
+      pid
+    FROM
+      processes
+    WHERE
+      euid = 0
       AND start_time < (strftime('%s', 'now') - 900)
       AND parent != 0 -- Assume STP
       AND path NOT IN (
@@ -57,6 +63,15 @@ WHERE -- Focus on longer-running programs
         '/Applications/Parallels Desktop.app/Contents/MacOS/Parallels Service.app/Contents/MacOS/prl_disp_service',
         '/Applications/Parallels Desktop.app/Contents/MacOS/prl_naptd',
         '/bin/bash',
+        '/usr/sbin/sshd',
+        '/usr/libexec/trustdFileHelper',
+        '/usr/libexec/multiversed',
+        '/usr/libexec/firmwarecheckers/ethcheck/ethcheck',
+        '/usr/libexec/storagekitd',
+        '/usr/sbin/audioclocksyncd',
+        '/System/Library/PrivateFrameworks/Heimdal.framework/Helpers/kdc',
+        '/usr/libexec/thermald',
+        '/usr/libexec/mdmclient',
         '/Library/Apple/System/Library/CoreServices/XProtect.app/Contents/MacOS/XProtect',
         '/Library/Apple/System/Library/CoreServices/XProtect.app/Contents/XPCServices/XProtectPluginService.xpc/Contents/MacOS/XProtectPluginService',
         '/Library/Application Support/Adobe/Adobe Desktop Common/ElevationManager/Adobe Installer',
@@ -157,6 +172,7 @@ WHERE -- Focus on longer-running programs
         '/System/Library/PrivateFrameworks/XprotectFramework.framework/Versions/A/XPCServices/XprotectService.xpc/Contents/MacOS/XprotectService',
         '/usr/bin/login',
         '/usr/bin/sudo',
+        '/usr/libexec/dirhelper',
         '/usr/bin/sysdiagnose',
         '/usr/libexec/AirPlayXPCHelper',
         '/usr/libexec/airportd',
@@ -225,6 +241,7 @@ WHERE -- Focus on longer-running programs
         '/usr/libexec/tzd',
         '/usr/libexec/tzlinkd',
         '/usr/libexec/usbd',
+        '/usr/libexec/usermanagerd',
         '/usr/libexec/UserEventAgent',
         '/usr/libexec/warmd',
         '/usr/libexec/watchdogd',
@@ -251,6 +268,10 @@ WHERE -- Focus on longer-running programs
         '/usr/sbin/systemstats',
         '/usr/sbin/WirelessRadioManagerd'
       )
+      AND NOT path LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
+      AND NOT path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+    GROUP BY
+      path
   )
   AND NOT s.authority IN (
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
@@ -289,4 +310,5 @@ WHERE -- Focus on longer-running programs
     AND s.identifier = 'pnpd'
     AND s.authority = 'Developer ID Application: Sanford, L.P. (N3S6676K3E)'
   )
-GROUP BY p0.path
+GROUP BY
+  p0.path

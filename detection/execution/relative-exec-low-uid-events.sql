@@ -37,7 +37,8 @@ SELECT -- Child
     '.*/(.*)',
     1
   ) AS p2_name
-FROM process_events pe,
+FROM
+  process_events pe,
   uptime
   LEFT JOIN processes p ON pe.pid = p.pid -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
@@ -52,7 +53,8 @@ FROM process_events pe,
   LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
-WHERE pe.time > (strftime('%s', 'now') -180)
+WHERE
+  pe.time > (strftime('%s', 'now') -180)
   AND pe.cmdline != ''
   AND pe.euid < 500
   AND pe.cmdline LIKE './%'
