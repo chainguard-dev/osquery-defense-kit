@@ -66,6 +66,10 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       AND file.path NOT LIKE '/var/run/current-system/etc/profiles/per-user/%'
       AND file.path NOT LIKE '/var/folders/%/T/freefn-%_emacs_%.eln'
       AND file.directory NOT IN (
+        '/var/db/xcode_select_link/Makefiles/VersioningSystems/',
+        '/var/db/xcode_select_link/usr/bin',
+        '/var/db/xcode_select_link/usr/lib',
+        '/var/db/xcode_select_link/usr/libexec',
         '/var/ossec/agentless',
         '/var/ossec/bin',
         '/var/ossec/wodles',
@@ -73,14 +77,11 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         '/var/run/current-system',
         '/var/run/current-system/sw/bin',
         '/var/select',
-        '/var/db/xcode_select_link/usr/bin',
-        '/var/db/xcode_select_link/usr/lib',
-        '/var/db/xcode_select_link/usr/libexec',
         '/var/select/X11/bin',
-        '/var/select/X11/lib/dri',
-        '/var/select/X11/lib/flat_namespace',
         '/var/select/X11/lib',
-        '/var/select/X11/libexec'
+        '/var/select/X11/lib/dri',
+        '/var/select/X11/libexec',
+        '/var/select/X11/lib/flat_namespace'
       )
       AND file.path NOT IN (
         '/var/log/acroUpdaterTools.log',

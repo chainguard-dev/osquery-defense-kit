@@ -9,6 +9,7 @@ SELECT
   lp.port,
   lp.protocol,
   p.euid,
+  p.cgroup_path,
   p.parent,
   p.pid,
   p.name,
@@ -161,12 +162,13 @@ WHERE
   )
   AND NOT (
     p.name IN (
-      'hugo',
+      'caddy',
+      'controller',
       'docker-proxy',
-      'rootlessport',
+      'hugo',
       'nginx-ingress-c',
-      'webhook',
-      'controller'
+      'rootlessport',
+      'webhook'
     )
     AND lp.port > 1024
     and lp.protocol = 6

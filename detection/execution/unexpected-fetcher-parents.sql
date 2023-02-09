@@ -56,6 +56,7 @@ WHERE
     'curl,500,launchd,kernel_task',
     'curl,500,makepkg,yay',
     'curl,500,ruby,zsh',
+    'curl,0,build.sh,buildkit-runc',
     'curl,500,ShellLauncher,',
     'curl,500,ShellLauncher,login',
     'curl,500,zsh,login',
@@ -109,5 +110,6 @@ WHERE
     AND parent_name = 'ruby'
     AND p.cmdline LIKE '/usr/bin/curl --disable --cookie /dev/null --globoff --show-error --user-agent Homebrew/%'
   )
+
 GROUP BY
   p.pid

@@ -63,3 +63,5 @@ WHERE
     './configure',
     './ksinstall --install=Keystone.tbz'
   )
+  AND p0_cmd NOT LIKE './tools/bpf/resolve_btfids/resolve_btfids -b vmlinux /var/lib/dkms/%'
+  AND p0_cmd NOT LIKE './tools/objtool/objtool --hacks=jump_label --link --module'

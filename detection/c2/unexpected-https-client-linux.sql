@@ -127,6 +127,7 @@ WHERE
     '500,/home/publish-release,500u,500g,publish-release',
     '500,/home/python3,500u,500g,python3',
     '500,/home/slirp4netns,500u,500g,slirp4netns',
+    '500,/home/spotify,500u,500g,spotify',
     '500,/home/steam,500u,100g,steam',
     '500,/home/steam,500u,500g,steam',
     '500,/home/steamwebhelper,500u,100g,steamwebhelper',
