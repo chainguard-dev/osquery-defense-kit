@@ -54,6 +54,7 @@ WHERE
     'demoit',
     'direnv',
     'dnf',
+    'Core Sync',
     'doas',
     'Docker Desktop',
     'erl_child_setup',
@@ -93,6 +94,7 @@ WHERE
     'Runner.Listener',
     'gnome-session-b',
     'Runner.Worker',
+    'provisio',
     'sdk',
     'sdzoomplugin',
     'sh',
@@ -124,6 +126,7 @@ WHERE
     '/Applications/Docker.app/Contents/Resources/bin/com.docker.cli',
     '/Applications/Docker.app/Contents/Resources/bin/docker-credential-desktop',
     '/Applications/IntelliJ IDEA.app/Contents/MacOS/idea',
+    '/Applications/Parallels Desktop.app/Contents/MacOS/Parallels Service',
     '/bin/dash',
     '/bin/sh',
     '/Library/Developer/CommandLineTools/usr/bin/git',
@@ -170,6 +173,7 @@ WHERE
     pp.cmdline LIKE 'perl%/help2man%'
     AND p.cmdline LIKE 'sh -c man/%'
   )
+  AND NOT p.cmdline LIKE '/bin/sh %/bin/docker-credential-gcloud get'
   AND NOT parent_path LIKE '/private/var/folders/%/T/go-build%.test'
   AND NOT p.cmdline LIKE '%/Library/Apple/System/Library/InstallerSandboxes%'
   AND NOT p.cmdline LIKE '%gcloud config config-helper%'

@@ -53,6 +53,7 @@ WHERE
     '/usr/bin/dockerd',
     '/usr/bin/fusermount3',
     '/usr/bin/gnome-shell',
+    '/usr/bin/tmux',
     '/usr/bin/osqueryd',
     '/usr/bin/sudo',
     '/usr/bin/yay',

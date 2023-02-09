@@ -59,7 +59,7 @@ WHERE
       -- NOTE: This is an expensive join on macOS
       JOIN processes pp ON p.parent = pp.parent
     WHERE
-      p.parent NOT IN (0, 2)
+      p.parent NOT IN (0, 1, 2)
       AND p.path != ""
       -- macOS Optimization
       AND p.path NOT LIKE '/System/%'
@@ -71,5 +71,6 @@ WHERE
       AND pp.path NOT LIKE '%google-cloud-sdk/.install/.backup%'
       AND pp.path NOT LIKE '/private/var/folders/%/T/PKInstallSandboxTrash/%.sandboxTrash/%'
       AND pp.path != ""
+      AND pp.path != "/sbin/launchd"
       AND pp.on_disk != 1
   );

@@ -83,6 +83,7 @@ WHERE
     '/tmp/.X0-lock',
     '/tmp/.X11-unix/',
     '/tmp/.X1-lock',
+    '/tmp/.eos-update-notifier.log',
     '/tmp/.X2-lock',
     '/tmp/.XIM-unix/',
     '/usr/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
@@ -150,6 +151,11 @@ WHERE
     AND file.gid = 0
     AND file.mode IN ('0755', '0700')
     AND file.size < 4
+  )
+  -- Mystery
+  AND NOT (
+    file.path = "/tmp/.elive"
+    AND file.size = 5
   )
   AND NOT (
     file.path = '/.config/'

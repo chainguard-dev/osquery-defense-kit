@@ -153,6 +153,8 @@ WHERE
   AND top3_homedir NOT IN (
     '~/Library/Application Support/com.elgato.StreamDeck/',
     '~/Library/Caches/snyk/',
+    '~/Library/Caches/com.mimestream.Mimestream/',
+    '~/Library/Application Support/JetBrains/',
     '~/Library/Application Support/BraveSoftware/'
   )
   AND top_homedir NOT IN (

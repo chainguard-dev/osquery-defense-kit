@@ -68,9 +68,11 @@ WHERE
     p.name
   ) IN (
     '10250,6,0,kubelet',
+    '1,255,500,mtr-packet',
     '10250,6,500,kubelet',
     '10254,6,101,nginx-ingress-c',
     '10256,6,0,kube-proxy',
+    '255,255,500,mtr-packet',
     '10256,6,500,kube-proxy',
     '1716,6,500,kdeconnectd',
     '17,255,0,dhcpcd',

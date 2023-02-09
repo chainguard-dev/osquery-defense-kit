@@ -147,6 +147,7 @@ WHERE
       'skhd',
       'snyk',
       'sshd',
+      'provisio',
       'Stream Deck',
       'sudo',
       'swift',
@@ -182,20 +183,30 @@ WHERE
     OR p0_cmd IN (
       '/bin/bash /usr/bin/xdg-settings set default-url-scheme-handler slack Slack.desktop',
       '/bin/sh -c lsb_release -a --short',
+      "sh -c pacmd list-sinks |grep 'name:\|module:'",
+      'sh -c cat /proc/sys/kernel/pid_max',
+      'sh -c pactl --version',
       '/bin/sh -c ps ax -ww -o pid,ppid,uid,gid,args',
       '/bin/sh /usr/bin/lsb_release -a --short',
+      '/bin/sh -c black .',
       '/bin/zsh -c ls',
+      '/bin/sh -c scutil --get ComputerName',
       '/bin/sh /usr/bin/lsb_release -a',
       '/bin/bash /usr/local/bin/mount-product-files',
       'sh -c /bin/stty size 2>/dev/null',
       "sh -c osascript -e 'user locale of (get system info)'",
       'sh -c python3.7 --version 2>&1',
+      'sh -c /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find python3 2> /dev/null',
       'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null'
     )
     OR (
       p1_name = 'WhatsApp'
       -- WhatsApp grabs the serial number from people's machines :(
       AND p0_cmd = '/bin/sh -c ioreg -c IOPlatformExpertDevice -d 2'
+    )
+    OR (
+      p1_name LIKE 'emacs-%'
+      AND p1_path LIKE '%/bin/emacs%'
     )
     OR p1_cmd IN (
       '/usr/bin/python3 /usr/share/apport/apport-gtk',
@@ -215,7 +226,18 @@ WHERE
     )
     OR exception_key IN (
       'bash,0,pia-daemon,launchd',
+      'bash,500,Private Internet Access,launchd',
       'bash,0,udevadm,udevadm',
+      'bash,500,.man-wrapped,zsh',
+      'sh,0,auditd,launchd',
+      'sh,500,snyk-macos,snyk',
+      'bash,500,gpg-agent,launchd',
+      'sh,500,ssh,mosh-client',
+      'sh,500,Google Drive,launchd',
+      'sh,500,yabai,launchd',
+      'sh,500,cloud_sql_proxy,zsh',
+      'bash,500,com.docker.dev-envs,com.docker.backend',
+      'zsh,500,old,launchd',
       'sh,500,updater,Foxit PDF Reader',
       'bash,500,Foxit PDF Reader,launchd',
       'zsh,500,stable,launchd',
@@ -226,6 +248,8 @@ WHERE
       'zsh,500,python3.10,gnome-shell'
     )
     OR p0_cmd LIKE '%/bash -e%/bin/as -arch%'
+    OR p0_cmd LIKE '/bin/sh %/bin/gcloud --format json config config-helper%'
+    OR p0_cmd LIKE '/gcloud% auth login%'
     OR p0_cmd LIKE '/bin/bash /usr/local/Homebrew/%'
     OR p0_cmd LIKE '/bin/bash /opt/homebrew/%'
     OR p0_cmd LIKE '/bin/sh -c pkg-config %'
@@ -239,6 +263,7 @@ WHERE
     OR p0_cmd LIKE '%gcloud config config-helper --format=json'
     OR p0_cmd LIKE '%gcloud config get-value%'
     OR p1_cmd LIKE '%Python /opt/homebrew/bin/aws configure sso'
+    OR p1_cmd LIKE '%/bin/pipenv shell'
     OR p2_cmd LIKE '/bin/bash /usr/local/bin/brew%'
     OR p2_cmd LIKE '/usr/bin/python3 -m py_compile %'
   )

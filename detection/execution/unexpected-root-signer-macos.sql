@@ -80,6 +80,7 @@ WHERE
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Mersive Technologies (63B5A5WDNG)',
+    'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     'Developer ID Application: Keybase, Inc. (99229SGT5K)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',

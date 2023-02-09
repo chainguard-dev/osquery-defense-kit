@@ -75,6 +75,7 @@ WHERE
     '._AUTORUN.INF',
     '.background',
     '.disk_label',
+    '.keystone_install',
     '.disk_label_2x',
     '.DS_Store',
     '.file',
@@ -99,3 +100,4 @@ WHERE
     '/Volumes/Google Chrome Canary/.keystone_install',
     '/Volumes/Jabra Direct Setup/JabraDirectSetup.pkg'
   )
+  AND trimpath NOT LIKE '/Volumes/JDK %/JDK %.pkg'

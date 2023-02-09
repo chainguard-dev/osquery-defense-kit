@@ -85,9 +85,11 @@ WHERE
     'coredns,0.0.0.0,53',
     'syncthing,46.162.192.181,53',
     'Code Helper,208.67.222.123,53',
+    'Opera Helper,77.111.247.77,53',
     'chrome,74.125.250.47,53',
     'Jabra Direct Helper,208.67.222.123,53'
   )
+  AND exception_key NOT LIKE 'Opera Helper,77.111.247.%,53'
   AND p.name != 'nessusd'
   -- Local DNS servers and custom clients go here
   AND p.path NOT IN (

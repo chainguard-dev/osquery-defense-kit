@@ -51,6 +51,7 @@ WHERE
   AND p0.start_time >= MAX(f.ctime, f.ctime)
   AND s.authority NOT IN (
     'Apple Mac OS Application Signing',
+    'Apple iPhone OS Application Signing',
     'Developer ID Application: SUSE LLC (2Q6FHJR3H3)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)',
@@ -103,6 +104,7 @@ WHERE
   AND NOT p0.path LIKE '/private/var/folders/%/T/pulumi-go.%'
   AND NOT p0.path LIKE '/Users/%/bin/%'
   AND NOT p0.path LIKE '/Users/%/code/%'
+  AND NOT p0.path LIKE '/Users/%/dev/%'
   AND NOT p0.path LIKE '/Users/%/src/%'
   AND NOT p0.path LIKE '/Users/%/Library/Application Support/%/Contents/MacOS/%'
   AND NOT p0.path LIKE '/Users/%/Library/Application Support/iTerm2/iTermServer-%'
@@ -118,6 +120,10 @@ WHERE
   AND NOT p0.path LIKE '/Users/%/Library/Caches/snyk/%/snyk-macos'
   AND NOT p0.path LIKE '/Users/%/Parallels/%/Contents/MacOS/WinAppHelper'
   AND NOT p0.path LIKE '/Users/%/Applications (Parallels)/%/Contents/MacOS/WinAppHelper'
+  AND NOT (
+    p0.path LIKE '/Users/%/__debug_bin'
+    AND s.identifier = 'a.out'
+  )
   AND NOT (
     p0.path LIKE '/Users/%'
     AND p0.uid > 499

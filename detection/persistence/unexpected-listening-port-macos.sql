@@ -59,6 +59,7 @@ WHERE
     '10011,6,0,launchd,Software Signing',
     '1313,6,500,hugo,',
     '1338,6,500,registry,',
+    '49152,6,500,logioptionsplus_agent,Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     '53,6,500,dnsmasq,',
     '137,17,0,launchd,Software Signing',
     '1024,6,0,systemmigrationd,Software Signing',

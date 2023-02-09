@@ -60,6 +60,7 @@ WHERE
   AND s.authority != 'Software Signing'
   -- Popular programs that sniff keyboard events, but do not appear to be malware.
   AND NOT exception_key IN (
+    'TextExpander,com.smileonmymac.textexpander,Developer ID Application: SmileOnMyMac, LLC (7PKJ6G4DXL)',
     'BetterTouchTool,com.hegenberg.BetterTouchTool,Developer ID Application: folivora.AI GmbH (DAFVSXZ82P)',
     'Contexts,com.contextsformac.Contexts,Developer ID Application: Usman Khalid (RZ7E748ZSC)',
     'Hyperkey,com.knollsoft.Hyperkey,Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',

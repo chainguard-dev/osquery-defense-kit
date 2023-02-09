@@ -5,7 +5,7 @@
 --   * https://attack.mitre.org/techniques/T1204/002/ (User Execution: Malicious File)
 --   * https://www.crowdstrike.com/blog/how-crowdstrike-uncovered-a-new-macos-browser-hijacking-campaign/
 --
--- tags: transient volume filesystem rapid
+-- tags: transient volume filesystem
 -- platform: darwin
 SELECT RTRIM(file.path, '/') AS f,
     file.bsd_flags AS f_flags,
@@ -44,7 +44,7 @@ WHERE file.path IN (
             AND parent != ""
             AND mounts.path LIKE "/Volumes/%"
             -- osquery will traverse symlinks, this prevents following symlinks to /Applications (poorly)
-            AND mounts.path NOT LIKE "/Volumes/%/Applications/%"
+            AND file.path NOT LIKE "/Volumes/%/Applications/%"
     )
     AND (
         --   Rule 0. App binaries that are hidden, like WnBJLaF/1302.app/Contents/MacOS/1302 (1302.app)
@@ -97,6 +97,7 @@ WHERE file.path IN (
                 OR file.mode LIKE "%1%"
             )
             AND file.filename NOT IN ('.Trashes')
+            AND file.filename NOT LIKE '%.previous'
         ) --   7. Volumes containing a top-level symlink to something other than /Applications, such as yWnBJLaF (1302.app)
         OR (
             file.symlink = 1

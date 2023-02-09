@@ -84,6 +84,7 @@ WHERE
       '~/.config',
       '~/.local/bin',
       '~/.vim',
+      '~/.provisio',
       '~/.terraform.d',
       '~/.cache/yay',
       '~/.emacs.d',

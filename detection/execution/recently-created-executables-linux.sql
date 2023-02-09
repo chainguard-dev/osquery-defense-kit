@@ -51,6 +51,7 @@ WHERE
     '/opt/Lens/lens',
     '/opt/sublime_text/sublime_text',
     '/usr/lib/systemd/systemd-machined',
+    '/usr/lib/upowerd',
     '/usr/bin/alacritty',
     '/usr/bin/bash',
     '/usr/bin/rpmbuild',
