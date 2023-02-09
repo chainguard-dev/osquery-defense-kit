@@ -109,6 +109,7 @@ WHERE
     '~/.cargo/',
     '~/code/',
     '~/Code/',
+    '~/.steampipe/',
     '~/.config/',
     '~/dev/',
     '~/git/',

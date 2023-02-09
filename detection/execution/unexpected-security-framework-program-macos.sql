@@ -97,12 +97,12 @@ WHERE
     '500,gopls,a.out,',
     '500,gopls,gopls,',
     '500,gpg-agent,gpg-agent,',
+    '500,InternalFiltersXPC,com.apple.InternalFiltersXPC,Apple Mac OS Application Signing',
     '500,ipcserver,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '500,ipcserver.old,,',
     '500,ko,a.out,',
     '500,kubectl,a.out,',
     '500,lua-language-server,lua-language-server,',
-    '500,Telegram,ru.keepcoder.Telegram,Apple Mac OS Application Signing',
     '500,Magnet,com.crowdcafe.windowmagnet,Apple Mac OS Application Signing',
     '500,Mattermost Helper (GPU),Mattermost.Desktop.helper.GPU,Apple Mac OS Application Signing',
     '500,Mattermost Helper,Mattermost.Desktop.helper,Apple Mac OS Application Signing',
@@ -125,8 +125,7 @@ WHERE
     '500,Steam Helper,com.valvesoftware.steam.helper,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '500,syncthing,syncthing,',
-    '500,terraform-provider-google-beta_v4.48.0_x5,a.out,',
-    '500,terraform-provider-google_v4.48.0_x5,a.out,',
+    '500,Telegram,ru.keepcoder.Telegram,Apple Mac OS Application Signing',
     '500,Todoist,com.todoist.mac.Todoist,Apple Mac OS Application Signing',
     '500,Todoist Helper,com.todoist.mac.Todoist.helper,Apple Mac OS Application Signing',
     '500,Todoist Helper (GPU),com.todoist.mac.Todoist.helper.GPU,Apple Mac OS Application Signing',
@@ -140,5 +139,6 @@ WHERE
   AND NOT exception_key LIKE '500,terraform-provider-%,a.out,'
   AND NOT exception_key LIKE '500,Runner.%,apphost-%,'
   AND NOT exception_key LIKE '500,kubectl.%,a.out,'
+  AND NOT exception_key LIKE '500,rustlings,rustlings-%,'
 GROUP BY
   p0.pid

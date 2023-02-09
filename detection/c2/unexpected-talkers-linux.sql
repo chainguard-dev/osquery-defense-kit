@@ -167,6 +167,7 @@ WHERE
     '80,6,500,/opt/spotify,0u,0g,spotify',
     '80,6,0,/usr/bash,0u,0g,bash',
     '80,6,500,/opt/zoom,0u,0g,zoom',
+    '80,6,500,/usr/spotify-launcher,0u,0g,spotify-launche',
     '80,6,500,/usr/chrome,0u,0g,chrome',
     '80,6,500,/usr/curl,0u,0g,curl',
     '80,6,500,/usr/electron,0u,0g,electron',

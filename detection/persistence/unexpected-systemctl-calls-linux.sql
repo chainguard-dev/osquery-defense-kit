@@ -77,6 +77,7 @@ WHERE
     'systemctl,500,systemd,',
     'systemctl,0,dash,logrotate',
     'systemctl,0,snapd,systemd',
+    'systemctl,500,bash,gnome-terminal-server',
     'systemctl,0,pacman,pacman',
     'systemctl,0,pacman,sudo',
     'systemctl,0,tailscaled,',

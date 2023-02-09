@@ -95,6 +95,7 @@ WHERE
     'gnome-session-b',
     'Runner.Worker',
     'provisio',
+    'pacman',
     'sdk',
     'sdzoomplugin',
     'sh',
@@ -195,3 +196,4 @@ WHERE
   AND NOT pp.name LIKE '%/bin/direnv'
   AND NOT parent_path LIKE '/nix/store/%sh'
   AND NOT parent_path LIKE '/opt/homebrew/%'
+  AND NOT p.cgroup_path LIKE '/system.slice/docker-%'

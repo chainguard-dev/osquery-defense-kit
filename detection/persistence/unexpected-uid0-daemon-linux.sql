@@ -163,6 +163,7 @@ WHERE
     'pwrstatd,/usr/sbin/pwrstatd,0,system.slice,pwrstatd.service,0700',
     'rsyslogd,/usr/sbin/rsyslogd,0,system.slice,rsyslog.service,0755',
     'scdaemon,/usr/libexec/scdaemon,0,system.slice,packagekit.service,0755',
+    'sshd,/usr/sbin/sshd,0,user.slice,user-1000.slice,0755',
     'scdaemon,/usr/libexec/scdaemon,0,user.slice,user-1000.slice,0755',
     'sedispatch,/usr/sbin/sedispatch,0,system.slice,auditd.service,0755',
     'sh,/nix/store/__VERSION__/bin/bash,0,system.slice,znapzend.service,0555',

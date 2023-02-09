@@ -225,27 +225,28 @@ WHERE
       AND p0_cmd LIKE '%gcloud.py compute start-iap-tunnel%'
     )
     OR exception_key IN (
-      'bash,0,pia-daemon,launchd',
-      'bash,500,Private Internet Access,launchd',
-      'bash,0,udevadm,udevadm',
-      'bash,500,.man-wrapped,zsh',
-      'sh,0,auditd,launchd',
-      'sh,500,snyk-macos,snyk',
-      'bash,500,gpg-agent,launchd',
-      'sh,500,ssh,mosh-client',
-      'sh,500,Google Drive,launchd',
-      'sh,500,yabai,launchd',
-      'sh,500,cloud_sql_proxy,zsh',
-      'bash,500,com.docker.dev-envs,com.docker.backend',
-      'zsh,500,old,launchd',
-      'sh,500,updater,Foxit PDF Reader',
-      'bash,500,Foxit PDF Reader,launchd',
-      'zsh,500,stable,launchd',
-      'dash,0,anacron,systemd',
-      'sh,500,docs,zsh',
-      'bash,0,kube-apiserver,containerd-shim-runc-v2',
       'bash,0,etcd,containerd-shim-runc-v2',
-      'zsh,500,python3.10,gnome-shell'
+      'bash,0,kube-apiserver,containerd-shim-runc-v2',
+      'bash,0,pia-daemon,launchd',
+      'bash,0,udevadm,udevadm',
+      'bash,500,com.docker.dev-envs,com.docker.backend',
+      'bash,500,Foxit PDF Reader,launchd',
+      'bash,500,gnome-session-binary,systemd',
+      'bash,500,gpg-agent,launchd',
+      'bash,500,.man-wrapped,zsh',
+      'bash,500,Private Internet Access,launchd',
+      'dash,0,anacron,systemd',
+      'sh,0,auditd,launchd',
+      'sh,500,cloud_sql_proxy,zsh',
+      'sh,500,docs,zsh',
+      'sh,500,Google Drive,launchd',
+      'sh,500,snyk-macos,snyk',
+      'sh,500,ssh,mosh-client',
+      'sh,500,updater,Foxit PDF Reader',
+      'sh,500,yabai,launchd',
+      'zsh,500,old,launchd',
+      'zsh,500,python3.10,gnome-shell',
+      'zsh,500,stable,launchd'
     )
     OR p0_cmd LIKE '%/bash -e%/bin/as -arch%'
     OR p0_cmd LIKE '/bin/bash /opt/homebrew/%'
@@ -262,7 +263,7 @@ WHERE
     OR p0_cmd LIKE '%gcloud config get-value%'
     OR p0_cmd LIKE '%/google-chrome% --flag-switches-begin % --product-version'
     OR p1_cmd LIKE '%/bin/pipenv shell'
-    OR p1_cmd LIKE 'gcloud% auth login%'
+    OR p1_cmd LIKE 'gcloud% auth%login%'
     OR p1_cmd LIKE '%Python /opt/homebrew/bin/aws configure sso'
     OR p2_cmd LIKE '/bin/bash /usr/local/bin/brew%'
     OR p2_cmd LIKE '/usr/bin/python3 -m py_compile %'

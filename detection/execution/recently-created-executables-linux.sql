@@ -49,6 +49,7 @@ WHERE
     '/opt/google/chrome/nacl_helper',
     '/opt/Lens/chrome_crashpad_handler',
     '/opt/Lens/lens',
+    '/usr/bin/faked',
     '/opt/sublime_text/sublime_text',
     '/usr/lib/systemd/systemd-machined',
     '/usr/lib/upowerd',
