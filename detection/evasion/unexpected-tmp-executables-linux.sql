@@ -5,7 +5,8 @@
 --
 -- tags: persistent
 -- platform: linux
-SELECT DISTINCT file.path,
+SELECT DISTINCT
+  file.path,
   uid,
   gid,
   mode,
@@ -16,14 +17,18 @@ SELECT DISTINCT file.path,
   file.size,
   hash.sha256,
   magic.data
-FROM file
+FROM
+  file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
 WHERE -- Optimization: don't join things until we have a whittled down list of files
   file.path IN (
-    SELECT path
-    FROM file
-    WHERE (
+    SELECT DISTINCT
+      path
+    FROM
+      file
+    WHERE
+      (
         file.directory = '/tmp'
         OR file.directory LIKE '/tmp/%'
         OR file.directory LIKE '/tmp/%/%'
@@ -46,32 +51,28 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         AND (
           file.path LIKE '%/go-build%'
           OR file.directory LIKE '/tmp/%/out'
-          OR file.path LIKE '%/bin/%-gen'
+          OR file.path LIKE '%/bin/%'
+          OR file.path LIKE '%/checkout/%'
+          OR file.path LIKE '%/ci/%'
+          OR file.path LIKE '%/debug/%'
+          OR file.path LIKE '%/dist/%'
+          OR file.path LIKE '%/flow/%.npmzS_cacachezStmpzSgit-clone%'
+          OR file.path LIKE '%/git/%'
+          OR file.path LIKE '%/github/%'
+          OR file.path LIKE '%/go.%.sum'
+          OR file.path LIKE "%/%/gradlew"
+          OR file.path LIKE '%/guile-%/guile-%'
           OR file.path LIKE '%/ko/%'
+          OR file.path LIKE '%/kots/%'
+          OR file.path LIKE "%/lib/%.so"
+          OR file.path LIKE "%/lib/%.so.%"
           OR file.path LIKE '%/pdf-tools/%'
-          OR file.path LIKE '/tmp/bin/%'
-          OR file.path LIKE '/tmp/%/bin/busybox'
-          OR file.path LIKE '/tmp/checkout/%'
-          OR file.path LIKE '/tmp/%/ci/%'
-          OR file.path LIKE '/tmp/%/debug/%'
-          OR file.path LIKE '/tmp/%/dist/%'
+          OR file.path LIKE '%-release%/%'
+          OR file.path LIKE '%/site-packages/markupsafe/_speedups.cpython-%'
+          OR file.path LIKE '%/src/%'
+          OR file.path LIKE '%/target/%'
+          OR file.path LIKE '%/terraformer/%'
           OR file.path LIKE '%/tmp/epdf%'
-          OR file.path LIKE '/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%'
-          OR file.path LIKE '/tmp/%/git/%'
-          OR file.path LIKE '/tmp/%/github/%'
-          OR file.path LIKE '/tmp/go.%.sum'
-          OR file.path LIKE "/tmp/%/gradlew"
-          OR file.path LIKE '/tmp/guile-%/guile-%'
-          OR file.path LIKE '/tmp/kots/%'
-          OR file.path LIKE '/tmp/%-release%/%'
-          OR file.path LIKE '/tmp/%/site-packages/markupsafe/_speedups.cpython-%'
-          OR file.path LIKE '/tmp/%/src/%'
-          OR file.path LIKE '/tmp/src/%'
-          OR file.path LIKE '/tmp/%/target/%'
-          OR file.path LIKE '/tmp/%/target/debug/build/%'
-          OR file.path LIKE '/tmp/terraformer/%'
-          OR file.path LIKE '/tmp/tmp.%'
-          OR file.path LIKE '/tmp/%/venv/bin/%'
         )
       ) -- Nix
       AND NOT (

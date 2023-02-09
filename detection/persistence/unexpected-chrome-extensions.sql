@@ -49,8 +49,7 @@ WHERE
   )
   AND enabled = 1
   AND exception_key NOT IN (
-
-   'false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,',
+    'false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,',
     'false,,base64 encode or decode selected text,',
     'false,,Google Chat,chfbpgnooceecdoohagngmjnndbbaeip', -- Deprecated Google Extension
     'false,,Google Chat,mdpkiolbdkhdjpekfbkbmhigcaggjagi', -- Deprecated Google Extension
@@ -200,6 +199,6 @@ WHERE
     'true,,Windscribe - Free Proxy and Ad Blocker,hnmpcagpplmpfojmgmnngilcnanddlhb',
     'true,,WiseStamp email signature,pbcgnkmbeodkmiijjfnliicelkjfcldg',
     'true,,Zoom Scheduler,kgjfgplpablkjnlkjmjdecgdpfankdle'
- )
+  )
 GROUP BY
   exception_key

@@ -81,7 +81,7 @@ WHERE
     'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0',
     '/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/',
     ',,/usr/local/sbin/iodined,501'
- )
+  )
   AND NOT exception_key LIKE ',a.out,/opt/homebrew/Cellar/podman/%/libexec/podman/gvproxy,501'
   AND NOT exception_key LIKE ',a.out,/private/var/folders/%/T/GoLand/%,501'
   AND NOT exception_key LIKE ',a.out,/Users/%/GolandProjects/documentation-code-examples/debuggingTutorial/myApp,501'

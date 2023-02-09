@@ -9,7 +9,7 @@
 -- may reflect the number of times the attack has been attempted.
 --
 -- platform: linux
--- tags: transient often
+-- tags: transient
 SELECT
   *
 FROM

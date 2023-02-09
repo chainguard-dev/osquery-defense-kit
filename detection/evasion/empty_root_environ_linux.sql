@@ -36,6 +36,7 @@ WHERE
   AND p.name NOT IN (
     'applydeltarpm',
     'bwrap',
+    'crond',
     'cupsd',
     'dhcpcd',
     '1Password-Keyri',
@@ -56,11 +57,12 @@ WHERE
     'sedispatch',
     'zypak-sandbox'
   )
-  AND NOT pp.name IN ('systemd-userdbd')
+  AND NOT pp.name IN ('systemd-userdbd', 'crond')
   AND NOT (
     p.name LIKE 'systemd-%'
     AND p.parent = 1
   )
+  AND NOT p.cgroup_path IN ('/system.slice/cronie.service')
   AND NOT pp.cmdline LIKE 'bwrap %'
   AND NOT p.cmdline LIKE '%--type=zygote%'
   AND NOT p.cmdline LIKE '%--disable-seccomp-filter-sandbox%'

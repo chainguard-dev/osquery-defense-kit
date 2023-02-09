@@ -3,7 +3,7 @@ out/osqtool:
 	GOBIN=$(CURDIR)/out go install github.com/chainguard-dev/osqtool/cmd/osqtool@latest
 
 out/odk-detection.conf: out/osqtool
-	./out/osqtool --max-results=0 --verify pack detection/ > out/odk-detection.conf
+	./out/osqtool --max-results=0 --max-total-daily-duration=3h --max-query-daily-duration=45m --verify pack detection/ > out/odk-detection.conf
 
 out/odk-policy.conf: out/osqtool
 	./out/osqtool --max-results=0 --verify pack policy/ > out/odk-policy.conf

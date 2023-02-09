@@ -195,4 +195,3 @@ WHERE
   AND NOT pp.name LIKE '%/bin/direnv'
   AND NOT parent_path LIKE '/nix/store/%sh'
   AND NOT parent_path LIKE '/opt/homebrew/%'
-

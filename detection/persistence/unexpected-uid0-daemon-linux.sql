@@ -8,14 +8,15 @@
 --
 -- tags: persistent process state
 -- platform: linux
-SELECT CONCAT(
+SELECT
+  CONCAT (
     p0.name,
     ',',
     REPLACE(
       p0.path,
       COALESCE(
-        REGEX_MATCH(p0.path, "/nix/store/(.*?)/.*", 1),
-        REGEX_MATCH(p0.path, "(\d[\.\d]+)/.*", 1),
+        REGEX_MATCH (p0.path, "/nix/store/(.*?)/.*", 1),
+        REGEX_MATCH (p0.path, "(\d[\.\d]+)/.*", 1),
         "3.11"
       ),
       "__VERSION__"
@@ -23,10 +24,10 @@ SELECT CONCAT(
     ',',
     p0.uid,
     ',',
-    CONCAT(
-      SPLIT(p0.cgroup_path, "/", 0),
+    CONCAT (
+      SPLIT (p0.cgroup_path, "/", 0),
       ",",
-      SPLIT(p0.cgroup_path, "/", 1)
+      SPLIT (p0.cgroup_path, "/", 1)
     ),
     ',',
     f.mode
@@ -57,7 +58,8 @@ SELECT CONCAT(
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM processes p0
+FROM
+  processes p0
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
@@ -65,7 +67,8 @@ FROM processes p0
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
-WHERE p0.euid = 0
+WHERE
+  p0.euid = 0
   AND p0.parent > 0
   AND p0.path != ""
   AND p0.start_time < (strftime('%s', 'now') - 900)

@@ -8,7 +8,7 @@
 -- dependent on the polling time.
 --
 -- platform: linux
--- tags: transient rapid container escalation
+-- tags: transient container escalation
 SELECT
   command,
   image_id,

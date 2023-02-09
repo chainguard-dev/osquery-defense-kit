@@ -16,7 +16,7 @@ SELECT
   pe.euid AS p0_euid,
   s.authority AS p0_authority,
   -- Parent
-  pe.parent AS p1_pid,  
+  pe.parent AS p1_pid,
   TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
   COALESCE(p1.path, pe1.path) AS p1_path,
   COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,

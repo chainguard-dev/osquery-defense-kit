@@ -3,9 +3,10 @@
 -- false positives:
 --   * developers building code out of /tmp
 --
--- tags: persistent
+-- tags: persistent seldom
 -- platform: darwin
-SELECT DISTINCT file.path,
+SELECT DISTINCT
+  file.path,
   uid,
   gid,
   mode,
@@ -18,15 +19,19 @@ SELECT DISTINCT file.path,
   magic.data,
   signature.identifier,
   signature.authority
-FROM file
+FROM
+  file
   LEFT JOIN hash on file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
   LEFT JOIN signature ON file.path = signature.path
 WHERE -- Optimization: don't join things until we have a whittled down list of files
   file.path IN (
-    SELECT path
-    FROM file
-    WHERE (
+    SELECT
+      path
+    FROM
+      file
+    WHERE
+      (
         file.directory = '/tmp'
         OR file.directory LIKE '/tmp/%'
         OR file.directory LIKE '/tmp/%/%'
@@ -48,27 +53,35 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         uid > 500
         AND (
           file.path LIKE '%/go-build%'
-          OR file.path LIKE '/tmp/checkout/%'
-          OR file.path LIKE '/tmp/com.apple.installer%'
-          OR file.path LIKE '/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%'
-          OR file.path LIKE '/tmp/%/site-packages/markupsafe/_speedups.cpython-%'
-          OR file.path LIKE '/tmp/go.%.sum'
-          OR file.path LIKE '/tmp/guile-%/guile-%'
-          OR file.path LIKE '/tmp/src/%'
-          OR file.path LIKE '/tmp/terraformer/%'
-          OR file.path LIKE '/tmp/tmp.%'
-          OR file.path LIKE '/tmp/%/etc/network/if-up.d/%'
-          OR file.path LIKE '/tmp/%/bin/busybox'
-          OR file.path LIKE '%/bin/%-gen'
-          OR file.path LIKE '/tmp/%-%/Photoshop Installer.app/Contents/%'
+          OR file.path LIKE '%/bin/%'
           OR file.path LIKE '%/CCLBS/%'
-          OR file.path LIKE '/tmp/%/target/debug/build/%'
+          OR file.path LIKE '%/checkout/%'
+          OR file.path LIKE '%/ci/%'
+          OR file.path LIKE '%/debug/%'
+          OR file.path LIKE '%/dist/%'
+          OR file.path LIKE '%/etc/network/if-up.d/%'
+          OR file.path LIKE '%/flow/%.npmzS_cacachezStmpzSgit-clone%'
+          OR file.path LIKE '%/git/%'
+          OR file.path LIKE '%/github/%'
+          OR file.path LIKE '%/go.%.sum'
+          OR file.path LIKE "%/%/gradlew"
+          OR file.path LIKE '%/guile-%/guile-%'
           OR file.path LIKE '%/ko/%'
+          OR file.path LIKE '%/kots/%'
+          OR file.path LIKE "%/lib/%.so"
+          OR file.path LIKE "%/lib/%.so.%"
           OR file.path LIKE '%/pdf-tools/%'
+          OR file.path LIKE '%/Photoshop Installer.app/Contents/%'
+          OR file.path LIKE '%-release%/%'
+          OR file.path LIKE '%/site-packages/markupsafe/_speedups.cpython-%'
+          OR file.path LIKE '%/src/%'
+          OR file.path LIKE '%/target/%'
+          OR file.path LIKE '%/terraformer/%'
+          OR file.path LIKE '/tmp/com.apple.installer%'
           OR file.path LIKE '%/tmp/epdf%'
+          OR file.path LIKE '/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%'
         )
-      )
-      -- Nix
+      ) -- Nix
       AND NOT (
         file.directory LIKE '/tmp/tmp%'
         AND gid = 0
@@ -88,8 +101,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           file.directory LIKE '/tmp/%/test'
           OR file.directory LIKE '/tmp/%/testdata'
         )
-      )
-      -- macOS updates
+      ) -- macOS updates
       AND NOT file.directory LIKE '/tmp/msu-target-%' -- I don't know man. I don't work here.
       AND NOT file.directory LIKE '/tmp/UpdateBrain-%/AssetData/com.apple.MobileSoftwareUpdate.UpdateBrainService.xpc/Contents/MacOS' -- terraform
       AND NOT (
@@ -107,10 +119,6 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       ) -- Common shell scripts
   )
   AND NOT (
-    file.filename IN ("configure", "mkinstalldirs")
-    AND magic.data = "POSIX shell script, ASCII text executable"
-  )
-  AND NOT (
     magic.data IS NOT NULL
     AND (
       magic.data IN ('JSON data', 'ASCII text')
@@ -118,30 +126,33 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       OR magic.data LIKE 'symbolic link to l%.so.%'
       OR magic.data LIKE 'ELF %-bit LSB shared object%'
       OR magic.data LIKE 'libtool library file,%'
+      OR (
+        file.filename IN ("configure", "mkinstalldirs")
+        AND magic.data = "POSIX shell script, ASCII text executable"
+      )
+      OR (
+        file.size < 50000
+        AND file.uid > 500
+        AND extension IN (
+          'adoc',
+          'bat',
+          'java',
+          'js',
+          'json',
+          'log',
+          'nib',
+          'pem',
+          'perl',
+          'pl',
+          'py',
+          'script',
+          'sh',
+          'strings',
+          'txt',
+          'yaml',
+          'yml'
+        )
+        AND magic.data NOT LIKE "%Mach-O%"
+      )
     )
-  )
-  AND NOT (
-    file.size < 50000
-    AND file.uid > 500
-    AND file.filename LIKE "%.%"
-    AND extension IN (
-      'adoc',
-      'bat',
-      'java',
-      'js',
-      'json',
-      'log',
-      'nib',
-      'pem',
-      'perl',
-      'pl',
-      'py',
-      'script',
-      'sh',
-      'strings',
-      'txt',
-      'yaml',
-      'yml'
-    )
-    AND magic.data NOT LIKE "%Mach-O%"
   )

@@ -12,7 +12,9 @@
 SELECT
   s.authority AS p0_auth,
   s.identifier AS p0_id,
+  p0.uid AS p0_uid,
   -- Child
+  p0.pid AS p0_pid,
   p0.path AS p0_path,
   p0.name AS p0_name,
   p0.cmdline AS p0_cmd,

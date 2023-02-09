@@ -24,6 +24,7 @@ SELECT
   s.authority,
   s.identifier,
   -- Child
+  p0.pid AS p0_pid,
   p0.path AS p0_path,
   p0.name AS p0_name,
   p0.cmdline AS p0_cmd,

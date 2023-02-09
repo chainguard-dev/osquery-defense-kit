@@ -48,25 +48,29 @@ FROM
 WHERE
   -- Focus on longer-running programs
   p0.pid IN (
-    SELECT pid FROM processes WHERE
-    start_time < (strftime('%s', 'now') - 900)
-    AND parent != 0
-    -- Assume STP
-    AND NOT path LIKE '/System/%'
-    AND NOT path LIKE '/usr/libexec/%'
-    AND NOT path LIKE '/usr/sbin/%'
-    -- Other oddball binary paths
-    AND NOT path LIKE '/opt/homebrew/Cellar/%'
-    AND NOT path LIKE '/usr/local/Cellar/%/bin/%'
-    AND NOT (
-      path LIKE '/Users/%/homebrew/Cellar/%'
-      AND name IN ('limactl', 'Python')
-    )
-    AND NOT (
-      path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/com.elgato.cpu.sdPlugin/cpu'
-      AND name = 'cpu'
-    )
-    AND NOT path IN ('/opt/socket_vmnet/bin/socket_vmnet')
+    SELECT
+      pid
+    FROM
+      processes
+    WHERE
+      start_time < (strftime('%s', 'now') - 900)
+      AND parent != 0
+      -- Assume STP
+      AND NOT path LIKE '/System/%'
+      AND NOT path LIKE '/usr/libexec/%'
+      AND NOT path LIKE '/usr/sbin/%'
+      -- Other oddball binary paths
+      AND NOT path LIKE '/opt/homebrew/Cellar/%'
+      AND NOT path LIKE '/usr/local/Cellar/%/bin/%'
+      AND NOT (
+        path LIKE '/Users/%/homebrew/Cellar/%'
+        AND name IN ('limactl', 'Python')
+      )
+      AND NOT (
+        path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/com.elgato.cpu.sdPlugin/cpu'
+        AND name = 'cpu'
+      )
+      AND NOT path IN ('/opt/socket_vmnet/bin/socket_vmnet')
   )
   AND pmm.path LIKE '%Security.framework%'
   AND exception_key NOT IN (
