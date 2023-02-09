@@ -94,6 +94,7 @@ WHERE
     '/Library/Parallels/',
     '/Library/PDF Services/',
     '/Library/Perl/',
+    '/Library/ThunderboltAccessoryFirmwareUpdates/',
     '/Library/Plug-Ins/',
     '/Library/PreferencePanes/',
     '/Library/Preferences/',
