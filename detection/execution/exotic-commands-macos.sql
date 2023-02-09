@@ -74,7 +74,7 @@ WHERE
       OR REGEX_MATCH (p.name, "(pwn|xig|xmr)", 1) != "" -- malicious processes
       OR REGEX_MATCH (
         p.cmdline,
-        "(sshd|bitspin|lushput|incbit|traitor|msfvenom|urllib.urlopen|nohup.*tmp|chrome.*--load-extension|tail -f /dev/null|)",
+        "(bitspin|lushput|incbit|traitor|msfvenom|urllib.urlopen|nohup.*tmp|chrome.*--load-extension|tail -f /dev/null|)",
         1
       ) != "" -- suspicious things
       OR REGEX_MATCH (

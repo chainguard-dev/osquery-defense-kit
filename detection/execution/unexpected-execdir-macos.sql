@@ -189,7 +189,7 @@ WHERE
     'Software Signing'
   ) -- Locally built executables
   AND NOT (
-    signature.identifier = "a.out"
+    s.identifier = "a.out"
     AND homedir LIKE '~/%'
-    AND pp.name LIKE '%sh'
+    AND p1.name LIKE '%sh'
   )
