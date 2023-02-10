@@ -5,8 +5,7 @@
 --
 -- tags: transient process state often
 -- platform: darwin
-SELECT
-  f.ctime,
+SELECT f.ctime,
   f.btime,
   f.mtime,
   p0.start_time,
@@ -33,8 +32,7 @@ SELECT
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM
-  processes p0
+FROM processes p0
   LEFT JOIN signature s ON p0.path = s.path
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
@@ -42,10 +40,52 @@ FROM
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
-WHERE
-  p0.start_time > 0
+WHERE p0.pid IN (
+    SELECT pid
+    FROM processes
+    WHERE start_time > 0
+      AND start_time > (strftime('%s', 'now') - 7200)
+      AND pid > 0
+      AND REGEX_MATCH (
+        path,
+        "^(/System|/usr/libexec/|/usr/sbin/|/usr/local/Cellar/|/opt/homebrew/|/nix/store/|/usr/bin/|/usr/lib/|/bin/|/Applications|/Library/Apple/|/sbin/|/usr/local/kolide-k2)",
+        1
+      ) IS NULL
+      AND path != ""
+      AND NOT path LIKE '/Applications/%.app/%'
+      AND NOT path LIKE '%-go-build%'
+      AND NOT path LIKE '/Library/Application Support/Adobe/Adobe Desktop Common/%'
+      AND NOT path LIKE '%/Library/Application Support/com.elgato.StreamDeck%' -- Known parent processes, typically GUI shells and updaters
+      AND NOT path LIKE '/Library/Application Support/Logitech.localized/%'
+      AND NOT path LIKE '/private/tmp/%/Creative Cloud Installer.app/Contents/MacOS/Install'
+      AND NOT path LIKE '/private/tmp/go-%'
+      AND NOT path LIKE '/private/tmp/nix-build-%'
+      AND NOT path LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%'
+      AND NOT path LIKE '/private/var/folders/%/bin/%'
+      AND NOT path LIKE '/private/var/folders/%/go-build%'
+      AND NOT path LIKE '/private/var/folders/%/GoLand/%'
+      AND NOT path LIKE '/private/var/folders/%/T/download/ARMDCHammer'
+      AND NOT path LIKE '/private/var/folders/%/T/pulumi-go.%'
+      AND NOT path LIKE '/Users/%/Applications (Parallels)/%/Contents/MacOS/WinAppHelper'
+      AND NOT path LIKE '/Users/%/bin/%'
+      AND NOT path LIKE '/Users/%/code/%'
+      AND NOT path LIKE '/Users/%/dev/%'
+      AND NOT path LIKE '/Users/%/Library/Application Support/%/Contents/MacOS/%'
+      AND NOT path LIKE '/Users/%/Library/Application Support/iTerm2/iTermServer-%'
+      AND NOT path LIKE '/Users/%/Library/Caches/%/Contents/MacOS/%'
+      AND NOT path LIKE '/Users/%/Library/Caches/snyk/%/snyk-macos'
+      AND NOT path LIKE '/Users/%/Library/Google/%.bundle/Contents/Helpers/%'
+      AND NOT path LIKE '/Users/%/Library/Mobile Documents/%/Contents/Frameworks%'
+      AND NOT path LIKE '/Users/%/Parallels/%/Contents/MacOS/WinAppHelper'
+      AND NOT path LIKE '/Users/%/src/%'
+      AND NOT path LIKE '/Users/%/terraform-provider-%'
+      AND NOT path LIKE '/Users/%/%.test'
+      AND NOT path LIKE '/Users/%/.local/share/nvim/mason/packages/%'
+      AND NOT path LIKE '/usr/local/Cellar/%'
+      AND NOT path LIKE '/usr/sbin/%'
+      AND NOT path LIKE '%/.vscode/extensions/%'
+  )
   AND f.ctime > 0
-  AND p0.start_time > (strftime('%s', 'now') - 7200)
   AND (p0.start_time - MAX(f.ctime, f.btime)) < 180
   AND p0.start_time >= MAX(f.ctime, f.ctime)
   AND s.authority NOT IN (
@@ -82,43 +122,6 @@ WHERE
     'Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     'Software Signing'
   )
-  AND NOT p0.path LIKE '/Applications/%.app/%'
-  AND NOT p0.path LIKE '%-go-build%'
-  AND NOT p0.path LIKE '/Library/Apple/System/%'
-  AND NOT p0.path LIKE '/Library/Application Support/Adobe/Adobe Desktop Common/%'
-  AND NOT p0.path LIKE '%/Library/Application Support/com.elgato.StreamDeck%' -- Known parent processes, typically GUI shells and updaters
-  AND NOT p0.path LIKE '/Library/Application Support/Logitech.localized/%'
-  AND NOT p0.path LIKE '/nix/store/%/bin/%'
-  AND NOT p0.path LIKE '/opt/homebrew/bin/%'
-  AND NOT p0.path LIKE '/opt/homebrew/Cellar/%'
-  AND NOT p0.path LIKE '/private/tmp/%/Creative Cloud Installer.app/Contents/MacOS/Install'
-  AND NOT p0.path LIKE '/private/tmp/go-build%'
-  AND NOT p0.path LIKE '/private/tmp/go-%/go/pkg/%'
-  AND NOT p0.path LIKE '/private/tmp/nix-build-%'
-  AND NOT p0.path LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%'
-  AND NOT p0.path LIKE '/private/var/folders/%/bin/%'
-  AND NOT p0.path LIKE '/private/var/folders/%/go-build%'
-  AND NOT p0.path LIKE '/private/var/folders/%/T/download/ARMDCHammer'
-  AND NOT p0.path LIKE '/private/var/folders/%/GoLand/%'
-  AND NOT p0.path LIKE '/private/var/folders/%/T/pulumi-go.%'
-  AND NOT p0.path LIKE '/Users/%/bin/%'
-  AND NOT p0.path LIKE '/Users/%/code/%'
-  AND NOT p0.path LIKE '/Users/%/dev/%'
-  AND NOT p0.path LIKE '/Users/%/src/%'
-  AND NOT p0.path LIKE '/Users/%/Library/Application Support/%/Contents/MacOS/%'
-  AND NOT p0.path LIKE '/Users/%/Library/Application Support/iTerm2/iTermServer-%'
-  AND NOT p0.path LIKE '/Users/%/Library/Caches/%/Contents/MacOS/%'
-  AND NOT p0.path LIKE '/Users/%/Library/Google/%.bundle/Contents/Helpers/%'
-  AND NOT p0.path LIKE '/Users/%/Library/Mobile Documents/%/Contents/Frameworks%'
-  AND NOT p0.path LIKE '/Users/%/terraform-provider-%'
-  AND NOT p0.path LIKE '/Users/%/%.test'
-  AND NOT p0.path LIKE '/usr/local/bin/%'
-  AND NOT p0.path LIKE '/usr/local/Cellar/%'
-  AND NOT p0.path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
-  AND NOT p0.path LIKE '%/.vscode/extensions/%'
-  AND NOT p0.path LIKE '/Users/%/Library/Caches/snyk/%/snyk-macos'
-  AND NOT p0.path LIKE '/Users/%/Parallels/%/Contents/MacOS/WinAppHelper'
-  AND NOT p0.path LIKE '/Users/%/Applications (Parallels)/%/Contents/MacOS/WinAppHelper'
   AND NOT (
     p0.path LIKE '/Users/%/__debug_bin'
     AND s.identifier = 'a.out'
@@ -135,5 +138,4 @@ WHERE
     AND s.identifier = 'com.apple.print.PrinterProxy'
     AND s.authority = ''
   )
-GROUP BY
-  p0.pid
+GROUP BY p0.pid
