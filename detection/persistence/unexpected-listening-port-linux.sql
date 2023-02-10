@@ -163,7 +163,6 @@ WHERE
   AND NOT (
     p.name IN (
       'caddy',
-      'com.docker.backend',
       'controller',
       'docker-proxy',
       'hugo',
