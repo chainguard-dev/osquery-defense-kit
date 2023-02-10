@@ -39,21 +39,17 @@ WHERE
   AND lp.address NOT LIKE '127.0.0.%'
   AND lp.address NOT LIKE '172.1%'
   AND lp.address NOT LIKE 'fe80::%'
-  AND lp.address NOT LIKE '::ffff:127.0.0.%'
-  -- All outgoing UDP (protocol 17) sessions are 'listening'
+  AND lp.address NOT LIKE '::ffff:127.0.0.%' -- All outgoing UDP (protocol 17) sessions are 'listening'
   AND NOT (
     lp.protocol = 17
     AND lp.port > 1024
-  )
-  -- Random webservers
+  ) -- Random webservers
   AND NOT (
     p.uid > 500
     AND lp.port IN (8000, 8080)
     AND lp.protocol = 6
-  )
-  -- Filter out unmapped raw sockets
-  AND NOT (p.pid == '')
-  -- Exceptions: the uid is capped at 500 to represent regular users versus system users
+  ) -- Filter out unmapped raw sockets
+  AND NOT (p.pid == '') -- Exceptions: the uid is capped at 500 to represent regular users versus system users
   -- port is capped at 49152 to represent transient ports
   AND NOT exception_key IN (
     '10011,6,0,launchd,Software Signing',
@@ -154,7 +150,16 @@ WHERE
     and lp.protocol = 6
   )
   AND NOT (
-    p.name IN ('hugo', 'node', 'com.docker.backend', 'kubectl')
+    p.name IN (
+      'caddy',
+      'com.docker.backend',
+      'controller',
+      'docker-proxy',
+      'hugo',
+      'kubectl',
+      'node',
+      'webhook'
+    )
     AND lp.port > 1024
     and lp.protocol = 6
   )

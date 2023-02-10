@@ -166,7 +166,9 @@ WHERE
       'controller',
       'docker-proxy',
       'hugo',
+      'kubectl',
       'nginx-ingress-c',
+      'node',
       'rootlessport',
       'webhook'
     )
