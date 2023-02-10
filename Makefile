@@ -24,4 +24,8 @@ out/odk-packs.zip: packs
 reformat:
 	find . -type f -name "*.sql" | perl -ne 'chomp; system("cp $$_ /tmp/fix.sql && npx sql-formatter -l sqlite /tmp/fix.sql > $$_");'
 
+.PHONY: reformat-updates
+reformat-updates:
+	git status -s | awk '{ print $$2 }' | grep ".sql" | perl -ne 'chomp; system("cp $$_ /tmp/fix.sql && npx sql-formatter -l sqlite /tmp/fix.sql > $$_");'
+
 all: out/odk-packs.zip
