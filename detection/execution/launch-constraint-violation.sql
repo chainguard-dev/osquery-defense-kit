@@ -1,13 +1,9 @@
--- Catch programs that failed to run due to signing problems
+-- Catch programs that failed to run due to a launch constraint violation, such as a signing issue.
 --
 -- references:
 --   * https://attack.mitre.org/techniques/T1204/
 --
--- false positives:
---   * software installers and updaters
---   * developers running programs out of /tmp
---
--- interval: 600
+-- interval: 900
 -- platform: darwin
 -- tags: filesystem events
 SELECT
@@ -44,17 +40,14 @@ SELECT
     '.*/(.*)',
     1
   ) AS p2_name
-FROM
-  process_events pe
+FROM process_events pe
   LEFT JOIN signature s ON pe.path = s.path
-  LEFT JOIN processes p ON pe.pid = p.pid
-  -- Parents (via two paths)
+  LEFT JOIN processes p ON pe.pid = p.pid -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
   LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
   LEFT JOIN process_events pe1 ON pe.parent = pe1.pid
   AND pe1.cmdline != ''
-  LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path
-  -- Grandparents (via 3 paths)
+  LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path -- Grandparents (via 3 paths)
   LEFT JOIN processes p1_p2 ON p1.parent = p1_p2.pid -- Current grandparent via parent processes
   LEFT JOIN processes pe1_p2 ON pe1.parent = pe1_p2.pid -- Current grandparent via parent events
   LEFT JOIN process_events pe1_pe2 ON pe1.parent = pe1_p2.pid
@@ -62,8 +55,10 @@ FROM
   LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
-WHERE pe.time > (strftime('%s', 'now') -600)
+WHERE pe.time > (strftime('%s', 'now') -900)
   AND pe.status = 1
   AND pe.cmdline != ''
   AND pe.cmdline IS NOT NULL
-GROUP BY pe.euid, pe.path, pe.cmdline
+GROUP BY pe.euid,
+  pe.path,
+  pe.cmdline
