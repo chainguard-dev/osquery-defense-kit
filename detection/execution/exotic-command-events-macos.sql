@@ -77,7 +77,6 @@ WHERE
   AND pe.status = 0
   AND pe.cmdline != ''
   AND pe.cmdline IS NOT NULL
-  AND pe.status == 0
   AND (
     p0_name IN (
       'bitspin',

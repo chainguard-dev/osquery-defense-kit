@@ -87,8 +87,10 @@ WHERE
       'com.docker.backend',
       'conmon',
       'containerd-shim',
+      'containerd-shim-runc-v2',
       'cpptools',
       'dash',
+      'dbus-run-session',
       'demoit',
       'direnv',
       'doas',
@@ -137,6 +139,7 @@ WHERE
       'package_script_service',
       'perl',
       'PK-Backend',
+      'provisio',
       'pulumi',
       -- 'python' - do not include this, or you won't detect supply-chain attacks.
       'roxterm',
@@ -147,7 +150,7 @@ WHERE
       'skhd',
       'snyk',
       'sshd',
-      'provisio',
+      'stable',
       'Stream Deck',
       'sudo',
       'swift',
@@ -156,7 +159,6 @@ WHERE
       'terminator',
       'terraform-ls',
       'test2json',
-      'containerd-shim-runc-v2',
       'tmux',
       'tmux:server',
       'update-notifier',
@@ -182,21 +184,23 @@ WHERE
     -- Homebrew, except we don't want to allow all of ruby
     OR p0_cmd IN (
       '/bin/bash /usr/bin/xdg-settings set default-url-scheme-handler slack Slack.desktop',
-      '/bin/sh -c lsb_release -a --short',
-      "sh -c pacmd list-sinks |grep 'name:\|module:'",
-      'sh -c cat /proc/sys/kernel/pid_max',
-      'sh -c pactl --version',
-      '/bin/sh -c ps ax -ww -o pid,ppid,uid,gid,args',
-      '/bin/sh /usr/bin/lsb_release -a --short',
-      '/bin/sh -c black .',
-      '/bin/zsh -c ls',
-      '/bin/sh -c scutil --get ComputerName',
-      '/bin/sh /usr/bin/lsb_release -a',
       '/bin/bash /usr/local/bin/mount-product-files',
-      'sh -c /bin/stty size 2>/dev/null',
-      "sh -c osascript -e 'user locale of (get system info)'",
-      'sh -c python3.7 --version 2>&1',
+      '/bin/sh -c black .',
+      '/bin/sh -c lsb_release -a --short',
+      '/bin/sh -c ps ax -ww -o pid,ppid,uid,gid,args',
+      '/bin/sh -c scutil --get ComputerName',
+      '/bin/sh -c sysctl hw.model kern.osrelease',
+      '/bin/sh /usr/bin/lsb_release -a',
+      '/bin/sh /usr/bin/lsb_release -a --short',
+      '/bin/zsh -c ls',
       'sh -c /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find python3 2> /dev/null',
+      'sh -c /bin/stty size 2>/dev/null',
+      'sh -c cat /proc/sys/kernel/pid_max',
+      "sh -c osascript -e 'user locale of (get system info)'",
+      "sh -c pacmd list-sinks |grep 'name:\|module:'",
+      'sh -c pactl --version',
+      'sh -c python3.7 --version 2>&1',
+      'sh -c /usr/bin/xcrun clang 2>&1',
       'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null'
     )
     OR (
@@ -234,6 +238,8 @@ WHERE
       'bash,500,gnome-session-binary,systemd',
       'bash,500,gpg-agent,launchd',
       'bash,500,.man-wrapped,zsh',
+      'dash,0,kube-proxy,containerd-shim-runc-v2',
+      'dash,0,kindnetd,containerd-shim-runc-v2',
       'bash,500,Private Internet Access,launchd',
       'dash,0,anacron,systemd',
       'sh,0,auditd,launchd',
@@ -264,9 +270,13 @@ WHERE
     OR p0_cmd LIKE '%/google-chrome% --flag-switches-begin % --product-version'
     OR p1_cmd LIKE '%/bin/pipenv shell'
     OR p1_cmd LIKE 'gcloud% auth%login%'
+    OR (exception_key = 'sh,500,ruby,zsh' AND p1_cmd LIKE '%brew.rb')
     OR p1_cmd LIKE '%Python /opt/homebrew/bin/aws configure sso'
     OR p2_cmd LIKE '/bin/bash /usr/local/bin/brew%'
     OR p2_cmd LIKE '/usr/bin/python3 -m py_compile %'
   )
+  AND NOT p0_cgroup LIKE '/system.slice/docker-%'
+  AND NOT p1_cgroup LIKE '/system.slice/docker-%'
+  AND NOT p2_cgroup LIKE '/system.slice/docker-%'
 GROUP BY
   pe.pid

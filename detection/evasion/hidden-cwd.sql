@@ -91,6 +91,7 @@ WHERE
       'bash,~/go/src',
       'bash,~/.local/share',
       'bash,~/.Trash',
+      'cc1,/home/build/.cache',
       'cc1plus,~/.cache/yay',
       'c++,~/.cache/yay',
       'cgo,~/.gimme/versions',
@@ -98,16 +99,16 @@ WHERE
       'Electron,~/.vscode/extensions',
       'fish,~/.local/share',
       'fish,~/.Trash',
-      'cc1,/home/build/.cache',
       'git,~/.local/share',
       'java,~/.gradle/daemon',
       'java,~/.local/share',
       'make,~/.cache/yay',
-      'vet,/home/build/.cache',
       'makepkg,~/.cache/yay',
       'mysqld,~/.local/share',
       'npm install,~/.npm/_cacache',
+      'opera_autoupdate,/private/var/folders',
       'rust-analyzer-p,~/.cargo/registry',
+      'vet,/home/build/.cache',
       'zsh,~/.Trash'
     )
     OR exception_key LIKE '%sh,~/.Trash/%'

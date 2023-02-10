@@ -10,30 +10,29 @@
 -- interval: 240
 -- platform: darwin
 -- tags: filesystem events
-SELECT
+SELECT REGEX_MATCH (REPLACE(pe.path, u.directory, '~'), '(.*)/', 1) AS dir,
+  REGEX_MATCH (
+    REPLACE(pe.path, u.directory, '~'),
+    '(~*/.*?)/',
+    1
+  ) AS top1_dir,
+  REGEX_MATCH (
+    REPLACE(pe.path, u.directory, '~'),
+    '(~*/.*?/.*?/.*?)/',
+    1
+  ) AS top3_dir,
   -- Child
   pe.path AS p0_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
-  REGEX_MATCH (p.path, '(.*)/', 1) AS dir,
-  REGEX_MATCH (p.path, '(/.*?/.*?/.*?)/', 1) AS top_dir, -- 3 levels deep
-  REPLACE(f.directory, u.directory, '~') AS homedir,
-  REGEX_MATCH (
-    REPLACE(f.directory, u.directory, '~'),
-    '(~/.*?/.*?/.*?/)',
-    1
-  ) AS top3_homedir,
-  REGEX_MATCH (
-    REPLACE(f.directory, u.directory, '~'),
-    '(~/.*?/)',
-    1
-  ) AS top_homedir, -- 1 level deep
   TRIM(pe.cmdline) AS p0_cmd,
-  pe.cwd AS p0_cwd,
+  -- pe.cwd is NULL on macOS
+  p.cwd AS p0_cwd,
   pe.pid AS p0_pid,
   pe.euid AS p0_euid,
   -- Parent
   pe.parent AS p1_pid,
   TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
+  p1.cwd AS p1_cwd,
   COALESCE(p1.path, pe1.path) AS p1_path,
   COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
   REGEX_MATCH (COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
@@ -42,6 +41,7 @@ SELECT
   TRIM(
     COALESCE(p1_p2.cmdline, pe1_p2.cmdline, pe1_pe2.cmdline)
   ) AS p2_cmd,
+  p1_p2.cwd AS p2_cwd,
   COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path) AS p2_path,
   COALESCE(
     p1_p2_hash.path,
@@ -53,19 +53,16 @@ SELECT
     '.*/(.*)',
     1
   ) AS p2_name
-FROM
-  process_events pe
+FROM process_events pe
   LEFT JOIN file f ON pe.path = f.path
   LEFT JOIN signature S ON pe.path = s.path
-  LEFT JOIN users u ON pe.euid = u.uid
-  LEFT JOIN processes p ON pe.pid = p.pid
-  -- Parents (via two paths)
+  LEFT JOIN users u ON pe.uid = u.uid
+  LEFT JOIN processes p ON pe.pid = p.pid -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
   LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
   LEFT JOIN process_events pe1 ON pe.parent = pe1.pid
   AND pe1.cmdline != ''
-  LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path
-  -- Grandparents (via 3 paths)
+  LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path -- Grandparents (via 3 paths)
   LEFT JOIN processes p1_p2 ON p1.parent = p1_p2.pid -- Current grandparent via parent processes
   LEFT JOIN processes pe1_p2 ON pe1.parent = pe1_p2.pid -- Current grandparent via parent events
   LEFT JOIN process_events pe1_pe2 ON pe1.parent = pe1_p2.pid
@@ -73,13 +70,72 @@ FROM
   LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
-WHERE
-  pe.time > (strftime('%s', 'now') -240)
-  -- The process_events table on macOS ends up with relative directories for some reason?
-  AND dir LIKE '/%'
-  AND f.size > 0
+WHERE pe.time > (strftime('%s', 'now') -240)
+  AND pe.status = 0
+  AND pe.cmdline != ''
+  AND pe.cmdline IS NOT NULL
+  AND top1_dir NOT IN (
+    '/Applications',
+    '~/Applications',
+    '~/Applications (Parallels)',
+    '~/bin',
+    '~/.cargo',
+    '~/chainguard',
+    '~/code',
+    '~/Code',
+    '~/.config',
+    '~/git',
+    '~/github',
+    '~/go',
+    '~/google-cloud-sdk',
+    '~/.gradle',
+    '~/homebrew',
+    '~/.kuberlr',
+    --  '~/Library',
+    '~/.local',
+    '/nix',
+    '~/Parallels',
+    '~/proj',
+    '~/projects',
+    '~/Projects',
+    '~/.provisio',
+    '~/.pulumi',
+    '~/.pyenv',
+    '~/.rustup',
+    '~/src',
+    '/System',
+    '~/.tflint.d',
+    '~/.vscode',
+    '~/.vs-kubernetes'
+  )
+  AND top3_dir NOT IN (
+    '/Library/Apple/System',
+    '/usr/libexec/AssetCache',
+    '/usr/libexec/rosetta',
+    '/Library/Developer/CommandLineTools',
+    '/Library/Application Support/Adobe',
+    '~/Library/Application Support/BraveSoftware',
+    '~/Library/Application Support/com.elgato.StreamDeck',
+    '/Library/Application Support/GPGTools',
+    '~/Library/Application Support/JetBrains',
+    '~/Library/Google/GoogleSoftwareUpdate',
+    '~/Library/Caches/com.mimestream.Mimestream',
+    '~/Library/Caches/snyk',
+    '/Library/Google/GoogleSoftwareUpdate',
+    '/opt/homebrew/Caskroom',
+    '/opt/homebrew/Cellar',
+    '/usr/local/kolide-k2'
+  )
   AND dir NOT IN (
     '/bin',
+    '~/bin',
+    '~/code/bin',
+    '~/Downloads/google-cloud-sdk/bin',
+    '~/Downloads/protoc/bin',
+    '~/go/bin',
+    '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
+    '~/Library/Application Support/dev.warp.Warp-Stable',
+    '/Library/Application Support/Logitech.localized/LogiOptionsPlus/logioptionsplus_agent.app/Contents/MacOS',
     '/Library/Application Support/Logitech.localized/Logitech Options.localized/LogiMgrUpdater.app/Contents/Resources',
     '/Library/DropboxHelperTools/Dropbox_u501',
     '/Library/Filesystems/kbfuse.fs/Contents/Resources',
@@ -89,13 +145,13 @@ WHERE
     '/Library/Printers/DYMO/Utilities',
     '/Library/PrivilegedHelperTools',
     '/Library/TeX/texbin',
-    '/nix/store',
-    '/nix/var/nix/profiles/default/bin',
+    '~/.local/bin',
+    '~/.magefile',
     '/node_modules/.bin',
-    '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/gke-gcloud-auth-plugin',
     '/opt/usr/bin',
     '/opt/X11/bin',
     '/opt/X11/libexec',
+    '~/projects/go/bin',
     '/run/current-system/sw/bin',
     '/sbin',
     '/usr/bin',
@@ -113,114 +169,40 @@ WHERE
     '/usr/lib/system',
     '/usr/local/bin',
     '/usr/sbin'
-  )
-  AND top_dir NOT IN (
-    '/Applications/Firefox.app/Contents',
-    '/Applications/Google Chrome.app/Contents',
-    '/Library/Apple/System',
-    '/Library/Application Support/Adobe',
-    '/Library/Application Support/GPGTools',
-    '/Library/Google/GoogleSoftwareUpdate',
-    '/System/Applications/Mail.app',
-    '/System/Applications/Music.app',
-    '/System/Applications/News.app',
-    '/System/Applications/TV.app',
-    '/System/Applications/Weather.app',
-    '/System/Library/CoreServices',
-    '/System/Library/Filesystems',
-    '/System/Library/Frameworks',
-    '/System/Library/PrivateFrameworks',
-    '/System/Library/SystemConfiguration',
-    '/System/Library/SystemProfiler',
-    '/System/Volumes/Preboot',
-    '/usr/local/kolide-k2'
-  )
-  AND homedir NOT IN (
-    '~/bin',
-    '~/code/bin',
-    '~/Downloads/google-cloud-sdk/bin',
-    '~/Library/Application Support/dev.warp.Warp-Stable',
-    '~/go/bin',
-    '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
-    '~/.local/bin',
-    '~/.magefile',
-    '~/Downloads/protoc/bin',
-    '~/projects/go/bin'
-  )
-  AND top3_homedir NOT IN (
-    '~/Library/Application Support/com.elgato.StreamDeck/',
-    '~/Library/Caches/snyk/',
-    '~/Library/Caches/com.mimestream.Mimestream/',
-    '~/Library/Application Support/JetBrains/',
-    '~/Library/Application Support/BraveSoftware/'
-  )
-  AND top_homedir NOT IN (
-    '~/Applications/',
-    '~/Applications (Parallels)/',
-    '~/bin/',
-    '~/.cargo/',
-    '~/chainguard/',
-    '~/code/',
-    '~/Code/',
-    '~/.config/',
-    '~/git/',
-    '~/github/',
-    '~/go/',
-    '~/google-cloud-sdk/',
-    '~/homebrew/',
-    '~/.kuberlr/',
-    --  '~/Library/',
-    '~/.gradle/',
-    '~/.local/',
-    '~/Parallels/',
-    '~/proj/',
-    '~/projects/',
-    '~/Projects/',
-    '~/.pulumi/',
-    '~/.provisio/',
-    '~/.pyenv/',
-    '~/.rustup/',
-    '~/src/',
-    '~/.tflint.d/',
-    '~/.vscode/',
-    '~/.vs-kubernetes/'
-  )
-  -- Locally built executables
+  ) -- Locally built executables
   AND NOT (
     s.identifier = 'a.out'
-    AND homedir LIKE '~/%'
+    AND dir LIKE '~/%'
     AND p1_name IN ('fish', 'sh', 'bash', 'zsh', 'terraform', 'code')
   )
   AND NOT (
     s.authority = ''
-    AND homedir LIKE '~/%'
+    AND dir LIKE '~/%'
     AND p1_name IN ('fish', 'sh', 'bash', 'zsh')
     AND p.cmdline LIKE './%'
   )
-  AND dir NOT LIKE '../%' -- data issue
   AND dir NOT LIKE '/Applications/%'
+  AND dir NOT LIKE '~/%/bin'
+  AND dir NOT LIKE '~/%/google-cloud-sdk/bin/%'
+  AND dir NOT LIKE '~/Library/Caches/ms-playwright/%'
+  AND dir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
+  AND dir NOT LIKE '~/.local/%/packages/%'
+  AND dir NOT LIKE '~/%/node_modules/.pnpm/%'
   AND dir NOT LIKE '/private/tmp/%.app/Contents/MacOS'
   AND dir NOT LIKE '/private/tmp/go-build%/exe'
   AND dir NOT LIKE '/private/tmp/KSInstallAction.%/Install Google Software Update.app/Contents/Helpers'
   AND dir NOT LIKE '/private/tmp/nix-build-%'
   AND dir NOT LIKE '/private/tmp/PKInstallSandbox.%/Scripts/com.microsoft.OneDrive.%'
   AND dir NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%.xpc/Contents/MacOS'
+  AND dir NOT LIKE '/private/var/folders/%/d/Wrapper/%.app/%'
   AND dir NOT LIKE '/private/var/folders/%/bin'
   AND dir NOT LIKE '/private/var/folders/%/Contents/%'
-  AND dir NOT LIKE '/private/var/folders/%/d/Wrapper/%.app'
   AND dir NOT LIKE '/private/var/folders/%/go-build%'
   AND dir NOT LIKE '/private/var/folders/%/GoLand'
+  AND dir NOT LIKE '~/%repo%'
+  AND dir NOT LIKE '~/%sigstore%'
   AND dir NOT LIKE '%/.terraform/providers/%'
-  AND dir NOT LIKE '/Volumes/com.getdropbox.dropbox-%'
-  AND homedir NOT LIKE '~/%/google-cloud-sdk/bin/%'
-  AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
-  AND homedir NOT LIKE '~/%/node_modules/.pnpm/%'
-  AND homedir NOT LIKE '~/%repo%'
-  AND homedir NOT LIKE '~/.local/%/packages/%'
-  AND homedir NOT LIKE '~/%sigstore%'
-  AND homedir NOT LIKE '~/%/bin'
-  AND homedir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
-  -- These signers can run from wherever the hell they want.
+  AND dir NOT LIKE '/Volumes/com.getdropbox.dropbox-%' -- These signers can run from wherever the hell they want.
   AND s.authority NOT IN (
     'Apple iPhone OS Application Signing',
     'Apple Mac OS Application Signing',
@@ -237,7 +219,8 @@ WHERE
     'Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
-    'Developer ID Application: Ned Deily (DJ3H93M7VJ)', -- Python
+    'Developer ID Application: Ned Deily (DJ3H93M7VJ)',
+    -- ^-- Python
     'Developer ID Application: Node.js Foundation (HX7739G8FX)',
     'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
     'Developer ID Application: Objective-See, LLC (VBG97UB4TA)',
@@ -248,9 +231,7 @@ WHERE
     'Developer ID Application: Valve Corporation (MXGJJ98X76)',
     'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)',
     'Software Signing'
-  )
-  -- Don't spam alerts with repeated invocations of the same command-line
-GROUP BY
-  p.cmdline,
+  ) -- Don't spam alerts with repeated invocations of the same command-line
+GROUP BY p.cmdline,
   p.cwd,
   p.euid;
