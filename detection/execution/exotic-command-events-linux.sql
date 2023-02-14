@@ -168,6 +168,10 @@ WHERE
     )
   )
   AND NOT (
+    p0_cmd LIKE '/usr/bin/modprobe %'
+    AND p1_cgroup = '/system.slice/firewalld.service'
+  )
+  AND NOT (
     pe.path IN ('/usr/bin/kmod', '/bin/kmod')
     AND uptime.total_seconds < 15
   )
@@ -183,6 +187,7 @@ WHERE
   AND NOT p0_cmd LIKE 'modprobe --all%'
   AND NOT p0_cmd LIKE '%modprobe aufs'
   AND NOT p0_cmd LIKE '%modprobe overlay'
+  AND NOT p0_cmd LIKE '%modprobe nf_nat_netbios_ns'
   AND NOT p0_cmd LIKE '%modprobe -va%'
   AND NOT p0_cmd LIKE 'pkill -f cut -c3%'
   AND NOT p0_cmd LIKE 'tail /%history'

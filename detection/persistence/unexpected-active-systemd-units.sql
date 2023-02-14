@@ -87,6 +87,7 @@ WHERE
         'bluetooth.service,Bluetooth service,,700',
         'bluetooth.target,Bluetooth Support,,400',
         'bolt.service,Thunderbolt system service,,600',
+        'nessusd.service,The Nessus Vulnerability Scanner,,800',
         'chronyd.service,NTP client/server,,1500',
         "chrony.service,chrony, an NTP client/server,,1600",
         'colord.service,Manage, Install and Generate Color Profiles,colord,200',

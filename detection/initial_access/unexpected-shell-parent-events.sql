@@ -120,6 +120,7 @@ WHERE
       'i3bar',
       'i3blocks',
       'java',
+      'jetbrains-toolbox',
       'kitty',
       'ko',
       'kubectl',
@@ -246,6 +247,7 @@ WHERE
       'sh,500,cloud_sql_proxy,zsh',
       'sh,500,docs,zsh',
       'sh,500,Google Drive,launchd',
+      'dash,0,snapd,systemd',
       'sh,500,snyk-macos,snyk',
       'sh,500,ssh,mosh-client',
       'sh,500,updater,Foxit PDF Reader',
@@ -267,6 +269,7 @@ WHERE
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings set %'
     OR p0_cmd LIKE '%gcloud config config-helper --format=json'
     OR p0_cmd LIKE '%gcloud config get-value%'
+    OR p0_cmd LIKE '%sh -c ntia-checker %'
     OR p0_cmd LIKE '%/google-chrome% --flag-switches-begin % --product-version'
     OR p1_cmd LIKE '%/bin/pipenv shell'
     OR p1_cmd LIKE 'gcloud% auth%login%'

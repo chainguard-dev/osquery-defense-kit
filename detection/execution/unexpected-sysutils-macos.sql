@@ -91,5 +91,7 @@ WHERE
     '/usr/sbin/sysctl sysctl.proc_translated'
   )
   AND NOT p0_cmd LIKE '/usr/libexec/security_authtrampoline /Library/Application Support/Adobe/Adobe Desktop Common/ElevationManager/Adobe Installer auth%'
+  AND NOT p1_path IN ('/Applications/LogiTune.app/Contents/MacOS/LogiTune')
+
 GROUP BY
   pe.pid

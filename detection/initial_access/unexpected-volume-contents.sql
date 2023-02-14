@@ -101,3 +101,4 @@ WHERE
     '/Volumes/Jabra Direct Setup/JabraDirectSetup.pkg'
   )
   AND trimpath NOT LIKE '/Volumes/JDK %/JDK %.pkg'
+  AND trimpath NOT LIKE '/Volumes/mysql-shell-%/mysql-shell-%.pkg'

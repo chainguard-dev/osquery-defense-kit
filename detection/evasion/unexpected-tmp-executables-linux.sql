@@ -62,6 +62,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '%/go.%.sum'
           OR file.path LIKE "%/%/gradlew"
           OR file.path LIKE '%/guile-%/guile-%'
+          OR file.path LIKE '%/melange-guest-%'
           OR file.path LIKE '%/ko/%'
           OR file.path LIKE '%/kots/%'
           OR file.path LIKE "%/lib/%.so"
@@ -153,6 +154,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
     AND extension IN (
       'adoc',
       'bat',
+      'erb',
       'java',
       'js',
       'json',
@@ -162,6 +164,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       'perl',
       'pl',
       'py',
+      'rb',
       'script',
       'sh',
       'strings',

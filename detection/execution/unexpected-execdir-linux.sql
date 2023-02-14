@@ -47,7 +47,7 @@ WHERE
       AND path != ""
       AND REGEX_MATCH (
         path,
-        "^(/bin/|/app/bin|/app/extra/|/usr/share/teams/resources/|/sbin/|/usr/bin/|/usr/lib/|/usr/share/spotify-client/|/usr/lib64/|/usr/libexec|/usr/sbin/|/usr/share/code/|/home/|/nix/store/|/opt/|/snap/|/var/lib/snapd/snap/|/tmp/go-build|/usr/local/)",
+        "^(/bin/|/app/|/usr/share/teams/resources/|/sbin/|/usr/bin/|/usr/lib/|/usr/share/spotify-client/|/usr/lib64/|/usr/libexec|/usr/sbin/|/usr/share/code/|/home/|/nix/store/|/opt/|/snap/|/var/lib/snapd/snap/|/tmp/go-build|/usr/local/)",
         1
       ) IS NULL -- Docker
       AND NOT cgroup_path LIKE '/system.slice/docker-%' -- Interactive terminal
