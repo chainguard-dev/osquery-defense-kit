@@ -96,6 +96,7 @@ WHERE
     '32768,6,500,dleyna-renderer',
     '32768,6,500,jetbrains-toolb',
     '32768,6,500,spotify',
+    '8834,6,0,nessusd',
     '3551,6,0,apcupsd',
     '4143,6,500,linkerd2-proxy',
     '4191,6,500,linkerd2-proxy',

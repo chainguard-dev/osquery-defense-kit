@@ -58,7 +58,6 @@ FROM
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
 WHERE
   uptime.total_seconds > 30
-  -- NOTE: The remainder of this query is synced with unexpected-fetcher-parents
   AND pe.path IN (
     '/usr/bin/ifconfig',
     '/usr/bin/ip',
@@ -94,6 +93,7 @@ WHERE
     )
   )
   AND NOT p1_cmd IN ('/bin/sh /etc/network/if-up.d/avahi-autoipd')
+  AND NOT p1_path IN ('/usr/libexec/gvfsd')
   AND p0_cmd NOT LIKE '/bin/ip route add % dev % metric 1000 scope link'
 GROUP BY
   pe.pid

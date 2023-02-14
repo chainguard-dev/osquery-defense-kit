@@ -67,6 +67,7 @@ WHERE
   AND s.remote_address NOT LIKE 'fc00:%'
   AND p.path != ''
   AND NOT exception_key IN (
+    '0,/opt/nessusd,0u,0g,nessusd',
     '0,/opt/snapd,0u,0g,snapd',
     '0,/sbin/apk,u,g,apk',
     '0,/usr/applydeltarpm,0u,0g,applydeltarpm',
@@ -79,6 +80,7 @@ WHERE
     '0,/usr/dirmngr,0u,0g,dirmngr',
     '0,/usr/dockerd,0u,0g,dockerd',
     '0,/usr/flatpak-system-helper,0u,0g,flatpak-system-',
+    '0,/usr/kmod,0u,0g,depmod',
     '0,/usr/launcher,0u,0g,launcher',
     '0,/usr/launcher,500u,500g,launcher',
     '0,/usr/nix,0u,0g,nix',
@@ -177,8 +179,11 @@ WHERE
     '500,/usr/code,0u,0g,code',
     '500,/usr/cosign,500u,500g,cosign',
     '500,/usr/cosign-linux-amd64,0u,0g,cosign',
+    '500,/usr/crane,0u,0g,crane',
+    '500,/usr/crane,500u,500g,crane',
     '500,/usr/curl,0u,0g,curl',
     '500,/usr/docker,0u,0g,docker',
+    '500,/usr/eksctl,0u,0g,eksctl',
     '500,/usr/electron,0u,0g,electron',
     '500,/usr/evolution-addressbook-factory,0u,0g,evolution-addre',
     '500,/usr/evolution-calendar-factory,0u,0g,evolution-calen',
@@ -192,6 +197,7 @@ WHERE
     '500,/usr/git-remote-http,0u,0g,git-remote-http',
     '500,/usr/gitsign,0u,0g,gitsign',
     '500,/usr/gitsign,500u,0g,gitsign',
+    '500,/usr/gjs-console,0u,0g,org.gnome.Maps',
     '500,/usr/gnome-recipes,0u,0g,gnome-recipes',
     '500,/usr/gnome-shell,0u,0g,gnome-shell',
     '500,/usr/gnome-software,0u,0g,gnome-software',

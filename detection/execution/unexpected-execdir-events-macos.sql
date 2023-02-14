@@ -75,8 +75,8 @@ WHERE pe.time > (strftime('%s', 'now') -240)
   AND pe.cmdline != ''
   AND pe.cmdline IS NOT NULL
   AND top1_dir NOT IN (
-    '/Applications',
-    '~/Applications',
+     '~/Applications',
+   '/Applications',
     '~/Applications (Parallels)',
     '~/bin',
     '~/.cargo',
@@ -84,6 +84,7 @@ WHERE pe.time > (strftime('%s', 'now') -240)
     '~/code',
     '~/Code',
     '~/.config',
+    '~/.gimme',
     '~/git',
     '~/github',
     '~/go',
@@ -103,6 +104,7 @@ WHERE pe.time > (strftime('%s', 'now') -240)
     '~/.pyenv',
     '~/.rustup',
     '~/src',
+    '~/.steampipe',
     '/System',
     '~/.tflint.d',
     '~/.vscode',
@@ -110,20 +112,23 @@ WHERE pe.time > (strftime('%s', 'now') -240)
   )
   AND top3_dir NOT IN (
     '/Library/Apple/System',
-    '/usr/libexec/AssetCache',
-    '/usr/libexec/rosetta',
-    '/Library/Developer/CommandLineTools',
     '/Library/Application Support/Adobe',
     '~/Library/Application Support/BraveSoftware',
     '~/Library/Application Support/com.elgato.StreamDeck',
+    '/Library/Application Support/EcammLive',
     '/Library/Application Support/GPGTools',
     '~/Library/Application Support/JetBrains',
-    '~/Library/Google/GoogleSoftwareUpdate',
     '~/Library/Caches/com.mimestream.Mimestream',
     '~/Library/Caches/snyk',
+    '/Library/Developer/CommandLineTools',
     '/Library/Google/GoogleSoftwareUpdate',
+    '~/Library/Google/GoogleSoftwareUpdate',
     '/opt/homebrew/Caskroom',
+    '/usr/local/Cellar',
     '/opt/homebrew/Cellar',
+    '/Volumes/Slack/Slack.app',
+    '/usr/libexec/AssetCache',
+    '/usr/libexec/rosetta',
     '/usr/local/kolide-k2'
   )
   AND dir NOT IN (
@@ -181,6 +186,8 @@ WHERE pe.time > (strftime('%s', 'now') -240)
     AND p1_name IN ('fish', 'sh', 'bash', 'zsh')
     AND p.cmdline LIKE './%'
   )
+  -- Spotify
+  AND path NOT LIKE '/private/var/folders/%/T/sp_relauncher'
   AND dir NOT LIKE '/Applications/%'
   AND dir NOT LIKE '~/%/bin'
   AND dir NOT LIKE '~/%/google-cloud-sdk/bin/%'

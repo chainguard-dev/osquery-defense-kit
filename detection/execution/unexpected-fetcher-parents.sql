@@ -46,6 +46,7 @@ WHERE
     'curl,500,bash,fakeroot',
     'curl,500,bash,nix-daemon',
     'wget,500,zsh,bash',
+    'wget,500,sh,bwrap',
     'curl,500,bash,ShellLauncher',
     'curl,500,Slack,launchd',
     'curl,500,bash,zsh',

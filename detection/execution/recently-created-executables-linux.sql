@@ -50,6 +50,7 @@ WHERE
     '/opt/Lens/chrome_crashpad_handler',
     '/opt/Lens/lens',
     '/usr/bin/faked',
+    '/usr/bin/appstreamcli',
     '/opt/sublime_text/sublime_text',
     '/usr/lib/systemd/systemd-machined',
     '/usr/lib/upowerd',

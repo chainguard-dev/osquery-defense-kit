@@ -153,10 +153,12 @@ WHERE
     '/usr/libexec/periodic-wrapper',
     '/usr/lib/xorg/Xorg'
   )
-  -- npm run server
   AND NOT p.cmdline IN (
+    -- npm run server
     'sh -c -- exec-bin node_modules/.bin/hugo/hugo server',
-    'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null'
+    'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null',
+    -- Brother printer
+    'sh -c ps -xcocommand,pid | grep "LOGINserver"'
   )
   AND NOT (
     pp.name = 'sshd'

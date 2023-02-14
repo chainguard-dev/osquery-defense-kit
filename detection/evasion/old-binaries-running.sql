@@ -1,4 +1,4 @@
--- Alert on programs running that are unusually old (poor timestomping)
+-- Alert on programs running that are unusually old
 --
 -- false positive:
 --   * legimitely ancient programs. For instance, printer drivers.
@@ -45,6 +45,7 @@ WHERE
     '/Applications/Gitter.app/Contents/Library/LoginItems/GitterHelperApp.app/Contents/MacOS/GitterHelperApp',
     '/Applications/Divvy.app/Contents/MacOS/Divvy',
     '/opt/homebrew/Cellar/watch/3.3.16/bin/watch',
+    '/usr/bin/xss-lock',
     '/Applications/Skitch.app/Contents/Library/LoginItems/J8RPQ294UB.com.skitch.SkitchHelper.app/Contents/MacOS/J8RPQ294UB.com.skitch.SkitchHelper',
     '/opt/homebrew/Cellar/bash/5.1.16/bin/bash',
     '/snap/brackets/138/opt/brackets/Brackets',
@@ -56,6 +57,7 @@ WHERE
   )
   AND p.name NOT IN (
     'buildkitd',
+    'kail',
     'BluejeansHelper',
     'J8RPQ294UB.com.skitch.SkitchHelper',
     'Pandora',

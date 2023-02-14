@@ -138,6 +138,7 @@ WHERE
     '~/Library/Application Support/com.elgato.StreamDeck/',
     '~/Library/Application Support/Foxit Software/',
     '~/Library/Caches/com.mimestream.Mimestream/',
+    '~/Library/Caches/com.sempliva.Tiles/',
     '~/Library/Caches/snyk/',
     '~/.terraform.d/plugin-cache/registry.terraform.io/'
   )
@@ -160,6 +161,7 @@ WHERE
   AND homedir NOT LIKE '~/%/node_modules/.pnpm/%'
   AND homedir NOT LIKE '~/.local/%/packages/%'
   AND homedir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
+  AND homedir NOT LIKE '~/Library/Caches/%/org.sparkle-project.Sparkle/Launcher/%/Updater.app/Contents/MacOS'
   AND homedir NOT LIKE '~/Library/Application Support/cloud-code/bin/versions/%'
   AND s.authority NOT IN (
     'Apple iPhone OS Application Signing',

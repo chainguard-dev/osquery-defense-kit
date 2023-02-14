@@ -52,6 +52,7 @@ WHERE -- This time should match the interval
   )
   OR (
     pe.key = 'LD_PRELOAD'
+    AND NOT pe.value = ''
     AND NOT p0.path LIKE '%/firefox'
     AND NOT pe.value IN ('libfakeroot.so', '/usr/local/lib/libmimalloc.so')
     AND NOT pe.value LIKE ':/home/%/.local/share/Steam'
