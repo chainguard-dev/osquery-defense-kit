@@ -67,7 +67,13 @@ WHERE
   AND pe.path IN (
     '/usr/bin/sysctl',
     '/sbin/sysctl',
-    '/usr/sbin/sysctl'
+    '/usr/sbin/sysctl',
+    '/usr/bin/chattr',
+    '/sbin/chattr',
+    '/usr/sbin/chattr',
+    '/usr/bin/setenforce',
+    '/sbin/setenforce',
+    '/usr/sbin/setenforce'
   )
   AND p.parent > 0
 GROUP BY
