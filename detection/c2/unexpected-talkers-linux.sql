@@ -172,6 +172,7 @@ WHERE
     '80,6,0,/usr/bash,0u,0g,bash',
     '80,6,500,/home/cloud_sql_proxy,0u,0g,cloud_sql_proxy',
     '80,6,500,/opt/zoom,0u,0g,zoom',
+    '80,6,500,/usr/python3.10,0u,0g,aws',
     '80,6,500,/usr/spotify-launcher,0u,0g,spotify-launche',
     '80,6,500,/usr/chrome,0u,0g,chrome',
     '80,6,500,/usr/curl,0u,0g,curl',

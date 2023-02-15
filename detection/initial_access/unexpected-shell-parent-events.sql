@@ -274,7 +274,11 @@ WHERE
     OR p0_cmd LIKE '%/google-chrome% --flag-switches-begin % --product-version'
     OR p1_cmd LIKE '%/bin/pipenv shell'
     OR p1_cmd LIKE 'gcloud% auth%login%'
-    OR (exception_key = 'sh,500,ruby,zsh' AND p1_cmd LIKE '%brew.rb')
+    OR p1_cmd LIKE '/%google-cloud-sdk/lib/gcloud.py%'
+    OR (
+      exception_key = 'sh,500,ruby,zsh'
+      AND p1_cmd LIKE '%brew.rb'
+    )
     OR p1_cmd LIKE '%Python /opt/homebrew/bin/aws configure sso'
     OR p2_cmd LIKE '/bin/bash /usr/local/bin/brew%'
     OR p2_cmd LIKE '/usr/bin/python3 -m py_compile %'

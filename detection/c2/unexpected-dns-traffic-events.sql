@@ -104,6 +104,7 @@ WHERE
   -- Chromium apps can send stray DNS packets
   AND p.path NOT LIKE '/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/%/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper'
   AND p.path NOT LIKE '/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions/%/Helpers/Brave Browser Helper.app/Contents/MacOS/Brave Browser Helper'
+  AND p.path NOT LIKE '/Applications/Opera.app/Contents/Frameworks/Opera Framework.framework/Versions/%/Helpers/Opera Helper.app/Contents/MacOS/Opera Helper'
   -- Workaround for the GROUP_CONCAT subselect adding a blank ent
 GROUP BY
   s.remote_address,

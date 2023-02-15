@@ -118,6 +118,7 @@ WHERE
     'rsync',
     'docker-index',
     'esbuild',
+    'dnf-automatic',
     'firefox',
     'fsdaemon',
     'go',

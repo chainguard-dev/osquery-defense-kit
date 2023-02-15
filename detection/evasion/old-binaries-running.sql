@@ -37,26 +37,28 @@ WHERE
   AND f.mtime > 315561600
   AND f.path NOT LIKE '/home/%/idea-IU-223.8214.52/%'
   AND f.path NOT IN (
+    '/Applications/Divvy.app/Contents/MacOS/Divvy',
+    '/Applications/Emacs.app/Contents/MacOS/Emacs-x86_64-10_14',
+    '/Applications/Gitter.app/Contents/Library/LoginItems/GitterHelperApp.app/Contents/MacOS/GitterHelperApp',
+    '/Applications/Pandora.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/crashpad_handler',
+    '/Applications/Skitch.app/Contents/Library/LoginItems/J8RPQ294UB.com.skitch.SkitchHelper.app/Contents/MacOS/J8RPQ294UB.com.skitch.SkitchHelper',
+    '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService',
     '/Library/Printers/Brother/Utilities/Server/LOGINserver.app/Contents/MacOS/LOGINserver',
+    '/Library/Printers/Brother/Utilities/Server/NETserver.app/Contents/MacOS/NETserver',
+    '/Library/Printers/Brother/Utilities/Server/USBAppControl.app/Contents/MacOS/USBAppControl',
     '/Library/Printers/Brother/Utilities/Server/USBserver.app/Contents/MacOS/USBserver',
     '/Library/Printers/Brother/Utilities/Server/WorkflowAppControl.app/Contents/MacOS/WorkflowAppControl',
-    '/Library/Printers/Brother/Utilities/Server/USBAppControl.app/Contents/MacOS/USBAppControl',
-    '/Library/Printers/Brother/Utilities/Server/NETserver.app/Contents/MacOS/NETserver',
-    '/Applications/Gitter.app/Contents/Library/LoginItems/GitterHelperApp.app/Contents/MacOS/GitterHelperApp',
-    '/Applications/Divvy.app/Contents/MacOS/Divvy',
-    '/opt/homebrew/Cellar/watch/3.3.16/bin/watch',
-    '/usr/bin/xss-lock',
-    '/Applications/Skitch.app/Contents/Library/LoginItems/J8RPQ294UB.com.skitch.SkitchHelper.app/Contents/MacOS/J8RPQ294UB.com.skitch.SkitchHelper',
     '/opt/homebrew/Cellar/bash/5.1.16/bin/bash',
+    '/opt/homebrew/Cellar/kail/0.15.0/bin/kail',
+    '/opt/homebrew/Cellar/watch/3.3.16/bin/watch',
     '/snap/brackets/138/opt/brackets/Brackets',
-    '/Applications/Pandora.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/crashpad_handler',
     '/snap/brackets/138/opt/brackets/Brackets-node',
-    '/Applications/Emacs.app/Contents/MacOS/Emacs-x86_64-10_14',
-    '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService',
-    '/usr/bin/i3blocks'
+    '/usr/bin/i3blocks',
+    '/usr/bin/xss-lock'
   )
   AND p.name NOT IN (
     'buildkitd',
+    'kail',
     'kail',
     'BluejeansHelper',
     'J8RPQ294UB.com.skitch.SkitchHelper',

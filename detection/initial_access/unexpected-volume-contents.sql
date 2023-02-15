@@ -44,6 +44,7 @@ WHERE
     extension IN (
       'command',
       'lnk',
+      'gcode',
       'mpkg',
       'pkg',
       'scpt',

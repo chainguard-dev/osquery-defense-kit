@@ -37,6 +37,7 @@ WHERE -- This time should match the interval
   )
   OR (
     key = 'DYLD_INSERT_LIBRARIES' -- actively exploited on programs which disable library security
+    AND NOT pe.value = '/System/Library/PrivateFrameworks/PreviewsInjection.framework/PreviewsInjection'
   )
   OR (
     key = 'DYLD_FRAMEWORK_PATH' -- sort of obsolete, but may affect SIP abusers

@@ -203,6 +203,7 @@ WHERE
     '/dev/video,firefox',
     '/dev/drm_dp_aux,fwupd',
     '/dev/video,obs',
+    '/dev/video,slack',
     '/dev/video,obs-ffmpeg-mux',
     '/dev/video,pipewire',
     '/dev/video,vlc',
