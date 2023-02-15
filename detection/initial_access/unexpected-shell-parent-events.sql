@@ -166,6 +166,7 @@ WHERE
       'vi',
       'vim',
       'Vim',
+      'MacVim',
       'watch',
       'wezterm-gui',
       'xargs',

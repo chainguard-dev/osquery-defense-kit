@@ -67,6 +67,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE "%/%/gradlew"
           OR file.path LIKE '%/guile-%/guile-%'
           OR file.path LIKE '%/ko/%'
+          OR file.path LIKE '%/nix/%'
           OR file.path LIKE '%/kots/%'
           OR file.path LIKE "%/lib/%.so"
           OR file.path LIKE "%/lib/%.so.%"

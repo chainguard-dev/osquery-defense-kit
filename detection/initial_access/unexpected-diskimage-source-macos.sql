@@ -64,6 +64,7 @@ WHERE
     'epson.com',
     'fcix.net',
     'gaomon.net',
+    'kagi.com',
     'getutm.app',
     'gimp.org',
     'github.io',

@@ -89,6 +89,7 @@ WHERE
   AND NOT exception_key IN (
     '123,17,114,/usr/chronyd,0u,0g,chronyd',
     '123,17,500,/usr/chronyd,0u,0g,chronyd',
+    '4070,6,500,/home/spotify,500u,500g,spotify',
     '143,6,500,/app/thunderbird,u,g,thunderbird',
     '143,6,500,/usr/thunderbird,0u,0g,thunderbird',
     '19305,6,500,/opt/firefox,0u,0g,firefox',
@@ -169,6 +170,7 @@ WHERE
     '80,6,500,/opt/firefox,0u,0g,firefox',
     '80,6,500,/opt/spotify,0u,0g,spotify',
     '80,6,0,/usr/bash,0u,0g,bash',
+    '80,6,500,/home/cloud_sql_proxy,0u,0g,cloud_sql_proxy',
     '80,6,500,/opt/zoom,0u,0g,zoom',
     '80,6,500,/usr/spotify-launcher,0u,0g,spotify-launche',
     '80,6,500,/usr/chrome,0u,0g,chrome',

@@ -82,6 +82,7 @@ WHERE
     '500,Bitwarden Helper (GPU),com.bitwarden.desktop.helper.GPU,Apple Mac OS Application Signing',
     '500,Bitwarden Helper (Renderer),com.bitwarden.desktop.helper.Renderer,Apple Mac OS Application Signing',
     '500,bufls,a.out,',
+    '500,testing,com.yourcompany.testing,', -- Xcode iPhone emulator
     '500,.cargo-wrapped,.cargo-wrapped,',
     '500,cloud_sql_proxy,a.out,',
     '500,CopyClip,com.fiplab.clipboard,Apple Mac OS Application Signing',

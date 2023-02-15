@@ -138,6 +138,8 @@ WHERE
     '~/Library/Application Support/com.elgato.StreamDeck/',
     '~/Library/Application Support/Foxit Software/',
     '~/Library/Caches/com.mimestream.Mimestream/',
+    '/Library/Application Support/EcammLive',
+    '/Library/Developer/Xcode/',
     '~/Library/Caches/com.sempliva.Tiles/',
     '~/Library/Caches/snyk/',
     '~/.terraform.d/plugin-cache/registry.terraform.io/'

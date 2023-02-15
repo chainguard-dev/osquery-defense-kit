@@ -75,6 +75,7 @@ WHERE
     '208.67.220.220', -- OpenDNS
     '208.67.222.222', -- OpenDNS
     '208.67.222.123', -- OpenDNS
+    '208.67.220.123', -- OpenDNS FamilyShield
     '75.75.75.75', -- Comcast
     '75.75.76.76', -- Comcast
     '68.105.28.13', -- Cox

@@ -115,6 +115,7 @@ WHERE
     'trivy',
     'dlv',
     'dnf',
+    'rsync',
     'docker-index',
     'esbuild',
     'firefox',
