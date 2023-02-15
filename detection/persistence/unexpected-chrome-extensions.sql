@@ -57,6 +57,7 @@ WHERE
     'false,,Google Drive,aghbiahbpaijignceidepookljebhfak', -- Deprecated Google Extension
     'false,,Google Photos,ncmjhecbjeaamljdfahankockkkdmedg', -- Deprecated Google Extension
     'false,julienv3@gmail.com,treasure-clicker,',
+    "true,Gareth Stephenson,My O'Reilly Downloader,deebiaolijlopiocielojiipnpnaldlk",
     'false,juverm@chainguard.dev,auto-close-gitsign,',
     'false,,Trotto go links,nkeoojidblilnkcbbmfhaeebndapehjk',
     'false,,YouTube,agimnkijcaahngcdmfeangaknmldooml', -- Deprecated Google Extension

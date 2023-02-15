@@ -66,6 +66,7 @@ WHERE
       'so',
       'uk'
     )
+    OR p.cmdline LIKE '%chmod%'
     OR p.cmdline LIKE '%.onion%'
     OR p.cmdline LIKE '%tor2web%'
     OR p.cmdline LIKE '%aliyun%'

@@ -247,6 +247,8 @@ WHERE
     '500,/usr/step-cli,0u,0g,step',
     '500,/usr/syncthing,0u,0g,syncthing',
     '500,/usr/teams,0u,0g,teams',
+    '500,/usr/gjs-console,0u,0g,org.gnome.Maps',
+    '500,/home/cloud_sql_proxy,0u,0g,cloud_sql_proxy',
     '500,/usr/terraform,0u,0g,terraform',
     '500,/usr/thunderbird,0u,0g,thunderbird',
     '500,/usr/trivy,0u,0g,trivy',
@@ -259,6 +261,7 @@ WHERE
   -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm exec %'
   AND NOT exception_key LIKE '500,/usr/node,0u,0g,npm install %'
+  AND NOT exception_key LIKE '500,/usr/cosign-%,500u,500g,cosign-%'
   AND NOT exception_key LIKE '500,%/terraform-provider-%,500u,500g,terraform-provi'
   AND NOT exception_key LIKE '0,/ko-app/%,u,g,%'
   -- stay weird, NixOS (Fastly nix mirror)
@@ -269,8 +272,8 @@ WHERE
     AND s.state = 'ESTABLISHED'
   )
   AND NOT (
-    exception_key = '500,/tmp/main,500u,500g,main'
-    AND p.path LIKE '/tmp/go-build%/exe/main'
+    exception_key = '500,/tmp/%,500u,500g,%'
+    AND p.path LIKE '/tmp/go-build%/exe/%'
   )
   AND NOT (
     exception_key = '0,/usr/curl,0u,0g,curl'

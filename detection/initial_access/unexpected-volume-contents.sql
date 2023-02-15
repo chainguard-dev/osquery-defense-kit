@@ -44,6 +44,7 @@ WHERE
     extension IN (
       'command',
       'lnk',
+      'gcode',
       'mpkg',
       'pkg',
       'scpt',
@@ -93,7 +94,8 @@ WHERE
     '.VolumeIcon.icns'
   )
   AND authority NOT IN (
-    'Developer ID Application: Google LLC (EQHXZ8M8AV)'
+    'Developer ID Application: Google LLC (EQHXZ8M8AV)',
+    'Developer ID Application: Adobe Inc. (JQ525L2MZD)'
   ) -- Unsigned programs here
   AND trimpath NOT IN (
     '/Volumes/Google Chrome/.keystone_install',

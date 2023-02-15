@@ -132,9 +132,12 @@ WHERE
     '/Library/WebServer/Documents/index.html.en',
     '/Library/WebServer/share/'
   )
-  AND NOT file.path LIKE '/Library/Caches/.0%'
-  AND NOT file.path LIKE '/Library/Caches/.1%'
-  AND NOT file.path LIKE '/Library/Caches/.2%'
+  -- Probably Adobe copy protection, my guess is the host serial number or MAC addr.
+  AND NOT REGEX_MATCH (
+    file.path,
+    '^/Library/Caches/\.([0-9ABCDEF]{12})$',
+    1
+  ) != ""
   AND NOT (
     file.path = '/Library/Caches/.DS_Store'
     AND magic.data = 'Apple Desktop Services Store'

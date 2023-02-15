@@ -72,6 +72,9 @@ WHERE
   OR p0.name LIKE '%pwn%'
   OR p0.name LIKE '%xig%'
   OR p0.name LIKE '%xmr%'
+  OR p0.cmdline LIKE '%--pool%'
+  OR p0.cmdline LIKE '%--algo%'
+  OR p0.cmdline LIKE '%--wss%'
   OR p0.cmdline LIKE '%bitspin%'
   OR p0.cmdline LIKE '%lushput%'
   OR p0.cmdline LIKE '%incbit%'
@@ -130,8 +133,5 @@ WHERE
     p0.cmdline LIKE '%tail -f /dev/null%'
     AND p0.cgroup_path NOT LIKE '/system.slice/docker-%'
   )
-  AND NOT p0.cmdline IN (
-    'socat UNIX-LISTEN:/run/user/1000/app/com.discordapp0.Discord/discord-ipc-0,forever,fork UNIX-CONNECT:/run/user/1000/discord-ipc-0',
-    'socat UNIX-LISTEN:/run/user/1000/app/com.discordapp.Discord/discord-ipc-0,forever,fork UNIX-CONNECT:/run/user/1000/discord-ipc-0'
-  )
+  AND NOT p0.cmdline like 'socat UNIX-LISTEN:%/com.discordapp%fork UNIX-CONNECT:%'
   AND NOT p0.name IN ('cc1', 'compile', 'cmake', 'cc1plus')

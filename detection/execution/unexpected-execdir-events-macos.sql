@@ -10,7 +10,8 @@
 -- interval: 240
 -- platform: darwin
 -- tags: filesystem events
-SELECT REGEX_MATCH (REPLACE(pe.path, u.directory, '~'), '(.*)/', 1) AS dir,
+SELECT
+  REGEX_MATCH (REPLACE(pe.path, u.directory, '~'), '(.*)/', 1) AS dir,
   REGEX_MATCH (
     REPLACE(pe.path, u.directory, '~'),
     '(~*/.*?)/',
@@ -53,7 +54,8 @@ SELECT REGEX_MATCH (REPLACE(pe.path, u.directory, '~'), '(.*)/', 1) AS dir,
     '.*/(.*)',
     1
   ) AS p2_name
-FROM process_events pe
+FROM
+  process_events pe
   LEFT JOIN file f ON pe.path = f.path
   LEFT JOIN signature S ON pe.path = s.path
   LEFT JOIN users u ON pe.uid = u.uid
@@ -70,13 +72,14 @@ FROM process_events pe
   LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
-WHERE pe.time > (strftime('%s', 'now') -240)
+WHERE
+  pe.time > (strftime('%s', 'now') -240)
   AND pe.status = 0
   AND pe.cmdline != ''
   AND pe.cmdline IS NOT NULL
   AND top1_dir NOT IN (
-     '~/Applications',
-   '/Applications',
+    '~/Applications',
+    '/Applications',
     '~/Applications (Parallels)',
     '~/bin',
     '~/.cargo',
@@ -121,15 +124,17 @@ WHERE pe.time > (strftime('%s', 'now') -240)
     '~/Library/Caches/com.mimestream.Mimestream',
     '~/Library/Caches/snyk',
     '/Library/Developer/CommandLineTools',
+    '/Library/Plug-Ins/FxPlug',
+    '~/Library/Developer/Xcode',
     '/Library/Google/GoogleSoftwareUpdate',
     '~/Library/Google/GoogleSoftwareUpdate',
     '/opt/homebrew/Caskroom',
-    '/usr/local/Cellar',
     '/opt/homebrew/Cellar',
-    '/Volumes/Slack/Slack.app',
     '/usr/libexec/AssetCache',
     '/usr/libexec/rosetta',
-    '/usr/local/kolide-k2'
+    '/usr/local/Cellar',
+    '/usr/local/kolide-k2',
+    '/Volumes/Slack/Slack.app'
   )
   AND dir NOT IN (
     '/bin',
@@ -137,6 +142,7 @@ WHERE pe.time > (strftime('%s', 'now') -240)
     '~/code/bin',
     '~/Downloads/google-cloud-sdk/bin',
     '~/Downloads/protoc/bin',
+    '/Library/Audio/Plug-Ins/HAL/ACE.driver/Contents/Resources/aceagent.app/Contents/MacOS',
     '~/go/bin',
     '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
     '~/Library/Application Support/dev.warp.Warp-Stable',
@@ -239,6 +245,7 @@ WHERE pe.time > (strftime('%s', 'now') -240)
     'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)',
     'Software Signing'
   ) -- Don't spam alerts with repeated invocations of the same command-line
-GROUP BY p.cmdline,
+GROUP BY
+  p.cmdline,
   p.cwd,
   p.euid;

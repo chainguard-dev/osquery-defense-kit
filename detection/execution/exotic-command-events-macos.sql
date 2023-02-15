@@ -164,6 +164,7 @@ WHERE
       '/Library/Apple/System/Library/StagedFrameworks/Safari/SafariShared.framework/XPCServices/com.apple.Safari.History.xpc/Contents/MacOS/com.apple.Safari.History',
       '/usr/bin/csrutil report',
       '/usr/bin/csrutil status',
+      'sh -c launchctl bootout system "/Library/LaunchDaemons/com.ecamm.EcammAudioXPCHelper.plist"',
       '/usr/bin/pkill -F /private/var/run/lima/shared_socket_vmnet.pid',
       '/usr/bin/xattr -d com.apple.writer_bundle_identifier /Applications/Safari.app',
       'xpcproxy com.apple.Safari.History'

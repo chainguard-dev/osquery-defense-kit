@@ -101,6 +101,7 @@ WHERE
       'uk'
     )
     -- Or if it matches weird keywords we've seen
+    OR p.cmdline LIKE '%chmod%'
     OR pe.cmdline LIKE '%.onion%'
     OR pe.cmdline LIKE '%tor2web%'
     OR pe.cmdline LIKE '%aliyun%'

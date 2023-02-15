@@ -84,7 +84,7 @@ WHERE
       ) != "" -- Crypto miners
       OR REGEX_MATCH (
         p.cmdline,
-        "(c3pool|cryptonight|f2pool|hashrate|hashvault|minerd|monero|nanopool|nicehash|stratum)",
+        "(c3pool|cryptonight|f2pool|hashrate|hashvault|minerd|monero|nanopool|nicehash|stratum|wss://| --pool| --algo)",
         1
       ) != "" -- Needs to be case sensitive
       OR (

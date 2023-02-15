@@ -84,6 +84,7 @@ WHERE
     '49152,6,0,remotepairingdeviced,Software Signing',
     '49152,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '49152,6,500,com.docker.supervisor,Developer ID Application: Docker Inc (9BNSXJN65R)',
+    '49152,6,500,EcammLiveRemoteXPCServer,Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     '49152,6,500,GarageBand,Apple Mac OS Application Signing',
     '49152,6,500,IPNExtension,Apple Mac OS Application Signing',
     '49152,6,500,java,Developer ID Application: Eclipse Foundation, Inc. (JCDTMS22B4)',

@@ -77,6 +77,7 @@ WHERE
     '/dev/afsc_type,revisiond,Software Signing,com.apple.revisiond',
     '/dev/auditpipe,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF),osqueryd',
     '/dev/auditsessions,authd,Software Signing,com.apple.authd',
+    '/dev/console,launchd_sim,Software Signing,com.apple.xpc.launchd',
     '/dev/auditsessions,GSSCred,Software Signing,com.apple.GSSCred',
     '/dev/auditsessions,securityd,Software Signing,com.apple.securityd',
     '/dev/auditsessions,TouchBarServer,Software Signing,com.apple.touchbarserver',
