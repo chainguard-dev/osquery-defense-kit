@@ -32,15 +32,15 @@ SELECT
   p2_hash.sha256 AS p2_sha256
 FROM
   processes p0
-  LEFT JOIN process_memory_map pmm ON p0.pid = pmm.pid
-  LEFT JOIN file f ON p0.path = f.path
+  JOIN process_memory_map pmm ON p0.pid = pmm.pid
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  pmm.offset = 0
+  p0.path != ""
+  AND pmm.offset = 0
   AND pmm.device = '00:00'
   AND pmm.permissions = 'r--p'
   AND pmm.pseudo = 0
