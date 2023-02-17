@@ -51,13 +51,17 @@ FROM
 WHERE
   short_filename != short_name
   AND NOT p0_cmd LIKE '/nix/store/%/bin/bash%' -- Serial masqueraders
-  AND NOT short_filename IN (
-    'bash',
-    'ruby',
-    'python',
-    'python3',
-    'perl',
-    'node'
+  AND NOT (
+    short_filename IN (
+      'bash',
+      'ruby',
+      'python',
+      'python3',
+      'perl',
+      'node'
+    )
+    -- ddexec
+    AND LENGTH(p0.cmdline) > 2
   )
   AND exception_key NOT IN (
     'name=apt,file=dash,0',

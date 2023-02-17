@@ -10,6 +10,7 @@
 -- tags: persistent filesystem state
 SELECT
   file.path,
+  file.inode,
   file.directory,
   uid,
   gid,
