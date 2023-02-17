@@ -59,6 +59,7 @@ WHERE
     'false,julienv3@gmail.com,treasure-clicker,',
     "true,Gareth Stephenson,My O'Reilly Downloader,deebiaolijlopiocielojiipnpnaldlk",
     'false,juverm@chainguard.dev,auto-close-gitsign,',
+    'true,,Jamstash,jccdpflnecheidefpofmlblgebobbloc',
     'false,,Trotto go links,nkeoojidblilnkcbbmfhaeebndapehjk',
     'false,,YouTube,agimnkijcaahngcdmfeangaknmldooml', -- Deprecated Google Extension
     'true,Adaware,Safe Torrent Scanner,aegnopegbbhjeeiganiajffnalhlkkjb',

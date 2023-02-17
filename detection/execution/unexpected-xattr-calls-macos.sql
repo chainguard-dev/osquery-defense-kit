@@ -79,21 +79,10 @@ WHERE
   AND pe.cmdline IS NOT NULL
   AND pe.status == 0
   AND pe.path = '/usr/bin/xattr'
-  AND p0_cmd NOT IN (
-    '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app',
-    '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app/Contents/Library/LoginItems/1Password Launcher.app',
-    '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app/Contents/XPCServices/OP Updater Service.xpc',
-    '/usr/bin/xattr -r -d com.apple.quarantine /Applications/1Password.app',
-    '/usr/bin/xattr -d -r com.apple.quarantine /Applications/iTerm.app',
-    '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app/Contents/XPCServices/OP Updater Service.xpc/Contents/Helpers/1Password Updater.app',
-    '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app/Contents/Frameworks/1Password Helper.app',
-    '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app/Contents/Frameworks/1Password Helper (GPU).app',
-    '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app/Contents/Frameworks/1Password Helper (Plugin).app',
-    '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app/Contents/Frameworks/1Password Helper (Renderer).app',
-    '/usr/bin/xattr -d com.apple.quarantine /Applications/Keybase.app',
-    '/usr/bin/xattr -d com.apple.quarantine /Applications/1Password.app/Contents/Library/LoginItems/1Password Browser Helper.app',
-    'xattr -d -r com.apple.quarantine /Applications/Google Chrome.app'
-  )
+  AND p0_cmd NOT LIKE '%xattr -d -r com.apple.quarantine /Applications/%.app'
+  AND p0_cmd NOT LIKE '%xattr -r -d com.apple.quarantine /Applications/%.app'
+  AND p0_cmd NOT LIKE '%xattr -d com.apple.quarantine /Applications/%.app'
+  AND p0_cmd NOT LIKE '%xattr -d com.apple.quarantine /Applications/%.app/%.xpc'
   AND NOT (
     pe.euid > 500
     AND p0_cmd LIKE '%xattr -l %'

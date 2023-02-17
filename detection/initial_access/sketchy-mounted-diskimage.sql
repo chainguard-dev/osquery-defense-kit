@@ -105,6 +105,7 @@ WHERE
       AND file.filename NOT IN ('.Trashes', '.background')
       AND file.filename NOT LIKE '%.previous'
       AND file.filename NOT LIKE '%.interrupted'
+      AND file.filename NOT LIKE '%.backup'
     ) --   7. Volumes containing a top-level symlink to something other than /Applications, such as yWnBJLaF (1302.app)
     OR (
       file.symlink = 1

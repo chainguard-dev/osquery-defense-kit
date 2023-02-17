@@ -80,6 +80,10 @@ FROM
 WHERE
   pe.time > (strftime('%s', 'now') -300)
   AND p0_euid < p1_euid
+  AND pe.status = 0
+  AND pe.parent > 0
+  AND pe.cmdline != ''
+  AND pe.cmdline IS NOT NULL
   AND p1_path NOT IN (
     '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared',
     '/usr/libexec/PerfPowerServicesExtended',

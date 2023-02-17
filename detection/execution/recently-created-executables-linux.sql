@@ -106,6 +106,8 @@ WHERE
     '/usr/lib/flatpak-session-helper',
     '/usr/lib/fwupd/fwupd',
     '/usr/lib/gdm',
+    '/usr/bin/gnome-shell',
+    '/usr/lib/gnome-shell-calendar-server',
     '/usr/lib/gdm-session-worker',
     '/usr/lib/gdm-x-session',
     '/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3',

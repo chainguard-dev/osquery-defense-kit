@@ -130,6 +130,7 @@ WHERE
     '/Applications/Docker.app/Contents/Resources/bin/docker-credential-desktop',
     '/Applications/IntelliJ IDEA.app/Contents/MacOS/idea',
     '/Applications/Parallels Desktop.app/Contents/MacOS/Parallels Service',
+    '/Applications/Parallels Desktop.app/Contents/MacOS/prl_update_helper',
     '/bin/dash',
     '/bin/sh',
     '/Library/Developer/CommandLineTools/usr/bin/git',
@@ -202,3 +203,4 @@ WHERE
   AND NOT parent_path LIKE '/nix/store/%sh'
   AND NOT parent_path LIKE '/opt/homebrew/%'
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
+  AND NOT p.cgroup_path LIKE '/system.slice/system.slice:docker:%'

@@ -90,9 +90,8 @@ WHERE
       OR p0_cmd LIKE '/usr/bin/osascript /Users/%/Library/Caches/com.runningwithcrayons.Alfred/Workflow Scripts/%'
       OR p0_cmd LIKE '/usr/bin/osascript /Users/%/osx-trash/trashfile.AppleScript %'
       OR p0_cmd LIKE '/usr/bin/osascript /Applications/Amazon Photos.app/Contents/Resources/quit_and_restart_app.scpt /Applications/Amazon Photos.app com.amazon.clouddrive.mac%'
-      OR p1_cmd LIKE '%/bin/gcloud auth%login'
-      OR p1_cmd LIKE '%/google-cloud-sdk/lib/gcloud.py auth%login'
-      OR p1_cmd LIKE '%aws configure sso%'
+      OR p1_cmd LIKE '%gcloud% auth %login'
+      OR p1_cmd LIKE '%aws %sso%'
       OR p1_cmd LIKE '% /opt/homebrew/bin/jupyter%notebook'
       OR p1_authority = 'Developer ID Application: Docker Inc (9BNSXJN65R)'
       OR p1_name IN ('yubikey-agent')

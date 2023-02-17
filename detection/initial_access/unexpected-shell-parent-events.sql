@@ -249,6 +249,7 @@ WHERE
       'sh,500,docs,zsh',
       'sh,500,Google Drive,launchd',
       'dash,0,snapd,systemd',
+      'bash,500,xdg-desktop-portal,systemd',
       'sh,500,snyk-macos,snyk',
       'sh,500,ssh,mosh-client',
       'sh,500,updater,Foxit PDF Reader',

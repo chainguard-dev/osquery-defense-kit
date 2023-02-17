@@ -28,7 +28,7 @@ FROM
   processes p
   LEFT JOIN hash ON p.path = hash.path
 WHERE
-  bytes_per_second > 6500000
+  bytes_per_second > 7500000
   AND age > 30
   AND pid > 2
   AND p.path NOT IN (
@@ -123,6 +123,7 @@ WHERE
     'fsdaemon',
     'go',
     'goland',
+    'trivy-db',
     'golangci-lint-v',
     'gopls',
     'grype',

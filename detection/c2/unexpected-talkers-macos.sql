@@ -69,6 +69,7 @@ WHERE
   AND p.path NOT LIKE '/opt/homebrew/Cellar/%/bin/%'
   AND p.path NOT LIKE '/usr/libexec/%'
   AND p.path NOT LIKE '/usr/sbin/%'
+  AND p.path NOT LIKE '/usr/local/kolide-k2/bin/%'
   AND p.path NOT LIKE '/private/var/folders/%/go-build%/%'
   -- Apple programs running from weird places, like the UpdateBrainService
   AND NOT (
@@ -179,11 +180,14 @@ WHERE
     '443,6,500,bom,,',
     '443,6,500,chainctl,,',
     '443,6,500,chainctl,a.out,',
+    '443,6,0,launcher,launcher,Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     '443,6,500,chainctl,chainctl,',
+    '443,6,500,trivy,,',
     '443,6,500,chainctl_darwin_arm64,a.out,',
     '443,6,500,chainctl_Darwin_arm64,a.out,',
     '443,6,500,civo,a.out,',
     '443,6,500,cloud_sql_proxy,a.out,',
+    '443,6,500,Paintbrush,com.soggywaffles.paintbrush,Developer ID Application: Michael Schreiber (G966ML7VBG)',
     '443,6,500,Code Helper,com.microsoft.VSCode.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,6,500,Code Helper (Renderer),com.github.Electron.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,6,500,com.docker.backend,com.docker,Developer ID Application: Docker Inc (9BNSXJN65R)',
@@ -192,7 +196,9 @@ WHERE
     '443,6,500,cosign,a.out,',
     '443,6,500,cosign,cosign,',
     '443,6,500,crane,,',
+    '443,17,500,Signal Helper,org.whispersystems.signal-desktop.helper,Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR)',
     '443,6,500,crane,a.out,',
+    '443,6,500,Amazon Photos Installer,com.amazon.clouddrive.mac.installer,Developer ID Application: AMZN Mobile LLC (94KV3E626L)',
     '443,6,500,crane,crane,',
     '443,6,500,ctclient,a.out,',
     '443,6,500,curl,com.apple.curl,Software Signing',
