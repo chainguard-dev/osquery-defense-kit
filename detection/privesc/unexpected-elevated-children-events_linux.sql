@@ -1,5 +1,6 @@
 -- Find processes that run with a lower effective UID than their parent (event-based)
 --
+--
 -- references:
 --   * https://attack.mitre.org/techniques/T1548/001/ (Setuid and Setgid)
 --   * https://cybersecurity.att.com/blogs/labs-research/shikitega-new-stealthy-malware-targeting-linux
@@ -9,9 +10,8 @@
 --
 -- tags: events process escalation
 -- platform: linux
--- interval: 300
-SELECT
-  file.mode AS p0_binary_mode,
+-- interval: 600
+SELECT file.mode AS p0_binary_mode,
   pe.cmdline_size AS p0_cmd_size,
   -- Child
   pe.path AS p0_path,
@@ -45,17 +45,14 @@ SELECT
     '.*/(.*)',
     1
   ) AS p2_name
-FROM
-  process_events pe
+FROM process_events pe
   LEFT JOIN file ON pe.path = file.path
-  LEFT JOIN processes p ON pe.pid = pe.pid
-  -- Parents (via two paths)
+  LEFT JOIN processes p ON pe.pid = pe.pid -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
   LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
   LEFT JOIN process_events pe1 ON pe.parent = pe1.pid
   AND pe1.cmdline != ''
-  LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path
-  -- Grandparents (via 3 paths)
+  LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path -- Grandparents (via 3 paths)
   LEFT JOIN processes p1_p2 ON p1.parent = p1_p2.pid -- Current grandparent via parent processes
   LEFT JOIN processes pe1_p2 ON pe1.parent = pe1_p2.pid -- Current grandparent via parent events
   LEFT JOIN process_events pe1_pe2 ON pe1.parent = pe1_p2.pid
@@ -63,11 +60,26 @@ FROM
   LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
-WHERE
-  pe.time > (strftime('%s', 'now') -300)
-  AND pe.euid < p1_euid
+WHERE pe.pid IN (
+    SELECT pid
+    FROM process_events
+    WHERE time > (strftime('%s', 'now') -600)
+      AND syscall = "execve"
+      AND euid < 500
+      AND (
+        uid = 0
+        OR euid < uid
+      )
+  )
+  AND pe.time > (strftime('%s', 'now') -600)
+  AND pe.syscall = "execve"
+  AND pe.euid < 500
+  AND (
+    pe.euid < pe.uid
+    OR pe.euid < p1_euid
+    OR pe.euid < pe1.euid
+  )
   AND pe.path NOT IN (
-    '/',
     '/bin/ps',
     '/usr/bin/doas',
     '/usr/bin/fusermount',
@@ -96,11 +108,6 @@ WHERE
     '/usr/lib/systemd/systemd --user',
     '/bin/sh -c /usr/bin/pkexec /usr/share/apport/apport-gtk'
   )
-  -- used by kind
-  AND NOT (
-    pe.path = '/usr/bin/bash'
-    AND pe.cmdline = '/bin/bash /usr/local/bin/mount-product-files'
-  )
   AND NOT (
     p0_name = 'polkit-agent-helper-1'
     AND p1_path = '/usr/bin/gnome-shell'
@@ -114,3 +121,5 @@ WHERE
     AND p1_path = '/usr/bin/update-notifier'
   )
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
+  AND NOT p1.cgroup_path LIKE '/system.slice/docker-%'
+GROUP BY pe.pid
