@@ -86,7 +86,7 @@ WHERE
   AND NOT p0_cmd IN (
     '/bin/systemctl is-enabled -q whoopsie.path',
     '/bin/systemctl -q is-enabled whoopsie.path',
-    'systemctl reboot',
+    '/bin/systemctl --quiet is-enabled whoopsie.path',
     '/bin/systemctl stop --no-block nvidia-persistenced',
     '/sbin/runlevel',
     'systemctl is-active systemd-resolved.service',
@@ -99,6 +99,7 @@ WHERE
     'systemctl -p LoadState show cups.service',
     'systemctl -q is-enabled whoopsie',
     'systemctl --quiet is-enabled cups.service',
+    'systemctl reboot',
     'systemctl restart cups.service',
     'systemctl status kubelet',
     'systemctl stop kubelet',

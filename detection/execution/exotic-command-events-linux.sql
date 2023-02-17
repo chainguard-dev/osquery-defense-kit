@@ -109,6 +109,7 @@ WHERE
     OR (
       INSTR(p0_cmd, 'history') > 0
       AND p0_cmd LIKE '%history'
+      AND p0_cmd NOT LIKE 'man %'
     )
     OR p0_cmd LIKE '%touch%acmr%'
     OR p0_cmd LIKE '%touch -r%'

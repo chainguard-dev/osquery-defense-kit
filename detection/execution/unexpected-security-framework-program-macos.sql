@@ -143,5 +143,6 @@ WHERE
   AND NOT exception_key LIKE '500,Runner.%,apphost-%,'
   AND NOT exception_key LIKE '500,kubectl.%,a.out,'
   AND NOT exception_key LIKE '500,rustlings,rustlings-%,'
+  AND NOT exception_key LIKE '500,rust-analyzer,rust-analyzer-%,'
 GROUP BY
   p0.pid
