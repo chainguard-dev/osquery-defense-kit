@@ -6,7 +6,7 @@
 -- false positives:
 --   * programs running in alternative namespaces (Docker)
 --
--- interval: 600
+-- interval: 300
 -- platform: linux
 -- tags: process events
 SELECT -- Child
@@ -58,37 +58,33 @@ FROM process_events pe
 WHERE pe.pid IN (
     SELECT pid
     FROM process_events
-    WHERE time > (strftime('%s', 'now') -600)
-      AND syscall = "execve"
-      AND path NOT LIKE '/home/%'
-      AND path NOT LIKE '/nix/%'
-      AND path NOT LIKE '/opt/%'
-      AND path NOT LIKE '/usr/local/%'
-      AND path NOT LIKE '/snap/%'
-      AND path NOT LIKE '%/.terraform/providers/%'
-      AND path NOT LIKE '/tmp/%/bin'
-      AND path NOT LIKE '/tmp/go-build%'
-      AND REGEX_MATCH (path, '(.*)/', 1) NOT IN (
-        '/',
-        '/app',
-        '/bin',
-        '/ko-app',
-        '/sbin',
-        '/usr/bin',
-        '/usr/sbin',
-        '/usr/share/code',
-        '/usr/share/teams',
-        '/usr/lib/NetworkManager',
-        '/usr/lib/firefox',
-        '/usr/lib64/firefox',
-        '/usr/libexec',
-        '/usr/bin',
-        '/usr/sbin',
-        '/usr/share/teams/resources/app.asar.unpacked/node_modules/slimcore/bin'
+    WHERE time > (strftime('%s', 'now') -300)
+      AND (
+        INSTR(path, "/bin") != 1
+        AND INSTR(path, "/sbin/") != 1
+        AND INSTR(path, "/usr/bin/") != 1
+        AND INSTR(path, "/usr/lib/") != 1
+        AND INSTR(path, "/usr/lib64/") != 1
+        AND INSTR(path, "/usr/libexec") != 1
+        AND INSTR(path, "/usr/sbin/") != 1
+        AND INSTR(path, "/home/") != 1
+        AND INSTR(path, "/nix/") != 1
+        AND INSTR(path, "/opt/") != 1
+        AND INSTR(path, "/snap/") != 1
+        AND INSTR(path, "/var/lib/snapd/") != 1
+        AND INSTR(path, "/usr/share/spotify") != 1
+        AND INSTR(path, "/usr/share/code/") != 1
+        AND INSTR(path, "/usr/local/") != 1
+        AND INSTR(path, "/tmp/go-build") != 1
+        AND INSTR(path, "/app/") != 1
+        AND INSTR(path, "/ko-app") != 1
+        AND INSTR(path, "/usr/share/teams/") != 1
+        AND INSTR(path, "/.terraform/") > 0
       )
-    GROUP BY pid
+      AND syscall = "execve" -- REGEX_MATCH performed terribly. INSTR and LIKE are very very close.
+    GROUP BY path
   )
-  AND pe.time > (strftime('%s', 'now') -600)
+  AND pe.time > (strftime('%s', 'now') -300)
   AND pe.syscall = "execve"
   AND p.cgroup_path NOT LIKE '/system.slice/docker-%'
   AND p.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
