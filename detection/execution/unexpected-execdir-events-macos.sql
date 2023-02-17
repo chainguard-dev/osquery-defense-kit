@@ -193,7 +193,7 @@ WHERE
     AND p.cmdline LIKE './%'
   )
   -- Spotify
-  AND path NOT LIKE '/private/var/folders/%/T/sp_relauncher'
+  AND pe.path NOT LIKE '/private/var/folders/%/T/sp_relauncher'
   AND dir NOT LIKE '/Applications/%'
   AND dir NOT LIKE '~/%/bin'
   AND dir NOT LIKE '~/%/google-cloud-sdk/bin/%'
