@@ -40,6 +40,7 @@ FROM
         '/etc',
         '/tmp',
         '/var/lib',
+        '/usr/libexec',
         '/usr/bin',
         '/usr/lib',
         '/usr/lib64',
