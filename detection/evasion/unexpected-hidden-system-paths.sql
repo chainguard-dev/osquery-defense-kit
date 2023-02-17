@@ -79,6 +79,8 @@ WHERE
     '/tmp/.ICE-unix/',
     '/tmp/.terraform/',
     '/tmp/.terraform.lock.hcl',
+    '/tmp/.last_update_check.json',
+    '/tmp/.last_survey_prompt.yaml',
     '/tmp/.Test-unix/',
     '/tmp/.vbox-t-ipc/',
     '/tmp/.X0-lock',
