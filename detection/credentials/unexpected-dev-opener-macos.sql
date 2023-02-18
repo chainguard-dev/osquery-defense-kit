@@ -106,6 +106,7 @@ WHERE
     '/dev/io,WiFiAgent,Software Signing,com.apple.wifi.WiFiAgent',
     '/dev/io,WirelessRadioManagerd,Software Signing,com.apple.WirelessRadioManagerd',
     '/dev/klog,syslogd,Software Signing,com.apple.syslogd',
+    '/dev/macfuse,rclone,,a.out',
     '/dev/oslog,logd,Software Signing,com.apple.logd',
     '/dev/xcpm,PerfPowerServices,Software Signing,com.apple.PerfPowerServices',
     '/dev/xcpm,systemstats,Software Signing,com.apple.systemstats',

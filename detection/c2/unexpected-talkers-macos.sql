@@ -266,6 +266,7 @@ WHERE
     '443,6,500,Python,org.python.python,',
     '443,6,500,Python,Python,',
     '443,6,500,git-remote-http,git-remote-http,',
+    '443,6,500,rclone,a.out,',
     '443,6,500,Reflect,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     '443,6,500,Reflect Helper,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     '443,6,500,release-notes,a.out,',
