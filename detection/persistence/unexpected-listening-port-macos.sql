@@ -180,7 +180,7 @@ WHERE
   )
   AND NOT (
     (
-      p.path LIKE '/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent'
+      p.path = '/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent'
      AND  lp.port = 3283
      AND lp.protocol = 6
     )
