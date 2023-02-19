@@ -160,3 +160,4 @@ WHERE
   AND p.path NOT LIKE '/nix/store/%kolide-launcher-%/bin/launcher'
   AND NOT cmdline LIKE '%/lib/gcloud.py components update'
   AND NOT cgroup_path LIKE '/system.slice/docker-%'
+  AND NOT p.path = '/opt/osquery/lib/osquery.app/Contents/MacOS/osqueryd'
