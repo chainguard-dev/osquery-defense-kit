@@ -56,5 +56,6 @@ WHERE
     '/usr/bin/su',
     '/usr/bin/sudo',
     '/usr/bin/top',
-    '/usr/local/bin/doas'
+    '/usr/local/bin/doas',
+    '/Applications/VMware Fusion.app/Contents/Library/vmware-vmx'
   )
