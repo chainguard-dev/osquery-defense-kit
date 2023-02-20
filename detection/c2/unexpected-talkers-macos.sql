@@ -165,6 +165,8 @@ WHERE
     '443,6,0,launcher,com.kolide.agent,Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     '443,6,0,launcher,launcher,Developer ID Application: Kolide Inc (YZ3EM74M78)',
     '443,6,0,nessusd,nessusd,Developer ID Application: Tenable, Inc. (4B8J598M7U)',
+    '443,6,0,com.paragon-software.extfsd,com.paragon-software.extfsd,Developer ID Application: Paragon Software GmbH (LSJ6YVK468)', -- update checks
+    '443,6,0,com.paragon-software.ntfsd,com.paragon-software.ntfsd,Developer ID Application: Paragon Software GmbH (LSJ6YVK468)', -- update checks
     '443,6,0,nix,nix,',
     '443,6,500,go,,',
     '443,6,0,OneDrivePkgTelemetry,com.microsoft.OneDrivePkgTelemetry,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
@@ -266,6 +268,7 @@ WHERE
     '443,6,500,Python,org.python.python,',
     '443,6,500,Python,Python,',
     '443,6,500,git-remote-http,git-remote-http,',
+    '443,6,500,rclone,a.out,',
     '443,6,500,Reflect,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     '443,6,500,Reflect Helper,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     '443,6,500,release-notes,a.out,',

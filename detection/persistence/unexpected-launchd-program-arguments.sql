@@ -52,6 +52,10 @@ WHERE
     'Developer ID Application: Canva Pty Ltd (5HD2ARTBFS)',
     'Developer ID Application: Private Internet Access, Inc. (5357M5NW9W)',
     'Developer ID Application: Tenable, Inc. (4B8J598M7U)',
+    'Developer ID Application: Objective-See, LLC (VBG97UB4TA)',
+    'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
+    'Developer ID Application: PFU LIMITED (XW4U7W2E9L)', -- Fujitsu
+    'Developer ID Application: Paragon Software GmbH (LSJ6YVK468)',
     'Software Signing', -- Apple
     'yabai-cert'
   )

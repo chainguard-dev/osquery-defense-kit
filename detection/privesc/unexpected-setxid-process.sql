@@ -44,7 +44,9 @@ WHERE
     '/usr/bin/top',
     '/usr/lib/xf86-video-intel-backlight-helper',
     '/usr/lib/Xorg.wrap',
-    '/usr/sbin/traceroute'
+    '/usr/sbin/traceroute',
+    '/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent',
+    '/Applications/VMware Fusion.app/Contents/Library/vmware-vmx'
   )
   AND f.path NOT LIKE '/Users/%/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
   AND f.path NOT LIKE '/opt/homebrew/Cellar/dnsmasq/%/sbin/dnsmasq'

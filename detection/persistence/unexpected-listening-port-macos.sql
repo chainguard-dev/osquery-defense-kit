@@ -178,5 +178,12 @@ WHERE
     AND lp.port > 1024
     AND lp.protocol = 6
   )
+  AND NOT (
+    (
+      p.path = '/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent'
+     AND  lp.port = 3283
+     AND lp.protocol = 6
+    )
+  )
 GROUP BY
   exception_key
