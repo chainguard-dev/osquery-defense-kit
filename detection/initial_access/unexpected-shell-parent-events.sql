@@ -94,6 +94,7 @@ WHERE
       'demoit',
       'direnv',
       'doas',
+      'pacman',
       'docker-credential-desktop',
       'docker-credential-gcr',
       'Docker Desktop',
@@ -262,7 +263,7 @@ WHERE
     OR p0_cmd LIKE '/bin/bash /opt/homebrew/%'
     OR p0_cmd LIKE '/bin/bash /usr/bin/xdg-settings check %'
     OR p0_cmd LIKE '/bin/bash /usr/local/Homebrew/%'
-    OR p0_cmd LIKE '/bin/sh %/bin/gcloud --format json config config-helper%'
+    OR p0_cmd LIKE '/bin/sh %/bin/gcloud%config config-helper%'
     OR p0_cmd LIKE '/bin/sh -c pkg-config %'
     OR p0_cmd LIKE '/bin/sh %/docker-credential-gcloud get'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-open %'
