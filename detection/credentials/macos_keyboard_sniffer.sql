@@ -66,6 +66,7 @@ WHERE
     'lghub_agent,com.logi.ghub.agent,Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'logioptionsplus_agent,com.logi.cp-dev-mgr,Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'MonitorControl,me.guillaumeb.MonitorControl,Developer ID Application: Joni Van Roost (CYC8C8R4K9)',
+    'Rocket,net.matthewpalmer.Rocket,Developer ID Application: Matthew Palmer (Z4JV2M65MH)',
     'skhd,skhd,',
     'TextExpander,com.smileonmymac.textexpander,Developer ID Application: SmileOnMyMac, LLC (7PKJ6G4DXL)'
   )

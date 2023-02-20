@@ -111,6 +111,7 @@ WHERE
     '67,17,0,NetworkManager,0u,0g,NetworkManager',
     '8000,6,500,brave,0u,0g,brave',
     '8000,6,500,chrome,0u,0g,chrome',
+    '465,6,500,thunderbird,0u,0g,thunderbird',
     '8000,6,500,firefox,0u,0g,firefox',
     '80,6,0,applydeltarpm,0u,0g,applydeltarpm',
     '80,6,0,appstreamcli,0u,0g,appstreamcli',

@@ -171,6 +171,7 @@ WHERE
     ) -- The source of these commands is still a mystery to me.
     OR pe.parent = -1
   )
+  AND NOT p0_cmd LIKE 'launchctl bootout gui/501 /Users/%/Library/LaunchAgents/com.elgato.StreamDeck.plist'
   AND NOT p0_cmd LIKE '-history%'
   AND NOT p0_cmd LIKE 'dirname %history'
   AND NOT p0_cmd LIKE '/bin/rm -f /tmp/periodic.%'
