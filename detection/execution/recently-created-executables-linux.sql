@@ -81,6 +81,7 @@ WHERE
     '/usr/bin/rpi-imager',
     '/usr/bin/snap',
     '/usr/bin/tailscaled',
+    '/usr/bin/sshfs',
     '/usr/bin/udevadm',
     '/usr/bin/wireplumber',
     '/usr/bin/wpa_supplicant',
@@ -163,6 +164,13 @@ WHERE
   AND NOT pp.path IN ('/usr/bin/gnome-shell') -- Filter out developers working on their own code
   AND NOT (
     p.path LIKE '/home/%'
+    AND p.uid > 499
+    AND f.ctime = f.mtime
+    AND f.uid = p.uid
+    AND p.cmdline LIKE './%'
+  )
+  AND NOT (
+    p.path LIKE '/tmp/%/osqtool'
     AND p.uid > 499
     AND f.ctime = f.mtime
     AND f.uid = p.uid

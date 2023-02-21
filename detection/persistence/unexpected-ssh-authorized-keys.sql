@@ -21,9 +21,12 @@ SELECT file.path,
 FROM users
     JOIN file ON file.path = users.directory || "/.ssh/authorized_keys"
     JOIN hash ON file.path = hash.path
-WHERE file.uid != u_uid
-    OR file.uid < 500
-    OR (
-        file.path NOT LIKE '/home/%'
-        AND file.path NOT LIKE '/Users/%'
+WHERE file.size > 0
+    AND (
+        file.uid != u_uid
+        OR file.uid < 500
+        OR (
+            file.path NOT LIKE '/home/%'
+            AND file.path NOT LIKE '/Users/%'
+        )
     )

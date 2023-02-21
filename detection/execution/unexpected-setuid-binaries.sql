@@ -171,6 +171,8 @@ FROM
           '/sbin/chfn',
           '/sbin/chsh',
           '/sbin/crontab',
+          '/sbin/usernetctl',
+          '/usr/sbin/usernetctl',
           '/sbin/expiry',
           '/sbin/fusermount',
           '/sbin/fusermount3',

@@ -46,6 +46,7 @@ WHERE
     'systemd-udevd',
     'gdm-session-wor',
     'systemd-userwor',
+    'osqueryi',
     'fprintd',
     'systemd',
     'gpg-agent',

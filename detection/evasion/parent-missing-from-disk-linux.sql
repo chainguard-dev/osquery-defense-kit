@@ -54,6 +54,7 @@ WHERE
     '/usr/bin/dockerd',
     '/usr/bin/fusermount3',
     '/usr/bin/gnome-shell',
+    '/usr/sbin/sshd',
     '/usr/bin/tmux',
     '/usr/share/code/code',
     '/usr/bin/osqueryd',
