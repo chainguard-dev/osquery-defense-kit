@@ -9,12 +9,12 @@
 -- tags: persistent seldom filesystem systemd
 -- platform: linux
 SELECT --  description AS 'desc',
-  --  fragment_path AS path,
-  --  MAX(user, "root") AS effective_user,
-  --  following,
-  --  hash.sha256,
-  --  file.ctime,
-  -- file.size,
+  fragment_path AS path,
+  MAX(user, "root") AS effective_user,
+  following,
+  hash.sha256,
+  file.ctime,
+  file.size,
   CONCAT (
     id,
     ',',
