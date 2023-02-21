@@ -21,7 +21,7 @@ SELECT
   ((strftime('%s', 'now') - f.btime) / 86400) AS btime_age_days,
   h.sha256,
   f.uid,
-  m.path,
+  m.data,
   f.gid
 FROM
   processes p
@@ -54,6 +54,7 @@ WHERE
     '/snap/brackets/138/opt/brackets/Brackets',
     '/snap/brackets/138/opt/brackets/Brackets-node',
     '/usr/bin/i3blocks',
+    '/usr/bin/sshfs',
     '/usr/bin/xss-lock'
   )
   AND p.name NOT IN (

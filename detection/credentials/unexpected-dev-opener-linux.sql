@@ -173,6 +173,7 @@ WHERE
     '/dev/kmsg,k3s',
     '/dev/net/tun,openvpn',
     '/dev/kmsg,kubelet',
+    '/dev/mapper/control,multipathd',
     '/dev/kmsg,systemd',
     '/dev/kmsg,systemd-coredump',
     '/dev/kmsg,systemd-journald',

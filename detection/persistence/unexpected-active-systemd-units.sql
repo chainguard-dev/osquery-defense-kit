@@ -8,14 +8,13 @@
 --
 -- tags: persistent seldom filesystem systemd
 -- platform: linux
-SELECT
-  description AS 'desc',
-  fragment_path AS path,
-  MAX(user, "root") AS effective_user,
-  following,
-  hash.sha256,
-  file.ctime,
-  file.size,
+SELECT --  description AS 'desc',
+  --  fragment_path AS path,
+  --  MAX(user, "root") AS effective_user,
+  --  following,
+  --  hash.sha256,
+  --  file.ctime,
+  -- file.size,
   CONCAT (
     id,
     ',',
@@ -25,12 +24,10 @@ SELECT
     ',',
     (file.size / 225) * 225
   ) AS exception_key
-FROM
-  systemd_units
+FROM systemd_units
   LEFT JOIN hash ON systemd_units.fragment_path = hash.path
   LEFT JOIN file ON systemd_units.fragment_path = file.path
-WHERE
-  active_state != 'inactive'
+WHERE active_state != 'inactive'
   AND sub_state != 'plugged'
   AND sub_state != 'mounted'
   AND fragment_path != ''
@@ -80,6 +77,7 @@ WHERE
         'avahi-daemon.service,Avahi mDNS/DNS-SD Stack,,900',
         'avahi-daemon.socket,Avahi mDNS/DNS-SD Stack Activation Socket,,675',
         'basic.target,Basic System,,900',
+        'binfmt-support.service,Enable support for additional executable binary formats,,1125',
         'blk-availability.service,Availability of block devices,,225',
         "blockdev@dev-mapper-cryptdata.target,Block Device Preparation for /dev/mapper/cryptdata,,225",
         'blockdev@dev-mapper-cryptoswap.target,Block Device Preparation for /dev/mapper/cryptoswap,,225',
@@ -89,6 +87,13 @@ WHERE
         'bolt.service,Thunderbolt system service,,450',
         'chronyd.service,NTP client/server,,1350',
         "chrony.service,chrony, an NTP client/server,,1575",
+        'cloud-config.service,Apply the settings specified in cloud-config,,225',
+        'cloud-config.target,Cloud-config availability,,675',
+        'cloud-final.service,Execute cloud user/final scripts,,450',
+        'cloud-init-hotplugd.socket,cloud-init hotplug hook socket,,225',
+        'cloud-init-local.service,Initial cloud-init job (pre-networking),,450',
+        'cloud-init.service,Initial cloud-init job (metadata service crawler),,450',
+        'cloud-init.target,Cloud-init target,,450',
         'colord.service,Manage, Install and Generate Color Profiles,colord,225',
         "com.system76.PowerDaemon.service,System76 Power Daemon,,225",
         "com.system76.Scheduler.service,Automatically configure CPU scheduler for responsiveness on AC,,225",
@@ -160,6 +165,7 @@ WHERE
         'libvirtd.service,Virtualization daemon,,1800',
         'libvirtd.socket,Libvirt local socket,,225',
         'lightdm.service,Light Display Manager,,225',
+        'lima-guestagent.service,lima-guestagent,,0',
         'livesys-late.service,SYSV: Late init script for live image.,,450',
         'livesys.service,LSB: Init script for live image.,,450',
         'lm_sensors.service,Hardware Monitoring Sensors,,225',
@@ -187,6 +193,8 @@ WHERE
         'monitorix.service,Monitorix,,225',
         'motd-news.timer,Message of the Day,,0',
         'mount-pstore.service,mount-pstore.service,,1125',
+        'multipathd.service,Device-Mapper Multipath Device Controller,,675',
+        'multipathd.socket,multipathd control socket,,225',
         'multi-user.target,Multi-User System,,450',
         'nessusd.service,The Nessus Vulnerability Scanner,,675',
         'netcf-transaction.service,Rollback uncommitted netcf network config change transactions,,225',
@@ -222,6 +230,7 @@ WHERE
         'phpsessionclean.timer,Clean PHP session files every 30 mins,,0',
         'plocate-updatedb.service,Update the plocate database,,225',
         'plocate-updatedb.timer,Update the plocate database daily,,0',
+        'plymouth-quit.service,Terminate Plymouth Boot Screen,,0',
         'plymouth-quit.service,Terminate Plymouth Boot Screen,,225',
         'plymouth-quit-wait.service,Hold until boot process finishes up,,0',
         'plymouth-read-write.service,Tell Plymouth To Write Out Runtime Data,,225',
@@ -247,6 +256,7 @@ WHERE
         'rsyslog.service,System Logging Service,,225',
         'rsyslog.service,System Logging Service,,450',
         'rtkit-daemon.service,RealtimeKit Scheduling Policy Service,,900',
+        'serial-getty@ttyS0.service,Serial Getty on ttyS0,,1350',
         'setroubleshootd.service,SETroubleshoot daemon for processing new SELinux denial logs,setroubleshoot,225',
         'setvtrgb.service,Set console scheme,,225',
         'shadow.service,Verify integrity of password and group files,,900',
@@ -261,6 +271,8 @@ WHERE
         'snapd.seeded.service,Wait until snapd is fully seeded,,225',
         'snapd.service,Snap Daemon,,450',
         'snapd.socket,Socket activation for snappy daemon,,225',
+        'snap.lxd.daemon.unix.socket,Socket unix for snap application lxd.daemon,,225',
+        'snap.lxd.user-daemon.unix.socket,Socket unix for snap application lxd.user-daemon,,225',
         'snap.yubioath-desktop.pcscd.service,Service for snap application yubioath-desktop.pcscd,,450',
         'sockets.target,Socket Units,,225',
         'sound.target,Sound Card,,225',
@@ -268,6 +280,7 @@ WHERE
         'sshd.service,OpenSSH Daemon,,225',
         'sshd.service,OpenSSH server daemon,,225',
         'sshd.service,SSH Daemon,,1575',
+        'ssh.service,OpenBSD Secure Shell server,,450',
         'sssd-kcm.service,SSSD Kerberos Cache Manager,,225',
         'sssd-kcm.socket,SSSD Kerberos Cache Manager responder socket,,0',
         'swap.target,Swaps,,225',
@@ -308,6 +321,9 @@ WHERE
         'systemd-machined.service,Virtual Machine and Container Registration Service,,1125',
         'systemd-machined.service,Virtual Machine and Container Registration Service,,1350',
         'systemd-modules-load.service,Load Kernel Modules,,900',
+        'systemd-networkd.service,Network Configuration,systemd-network,2250',
+        'systemd-networkd.socket,Network Service Netlink Socket,,675',
+        'systemd-networkd-wait-online.service,Wait for Network to be Configured,,675',
         'systemd-network-generator.service,Generate network units from Kernel command line,,450',
         'systemd-network-generator.service,Generate network units from Kernel command line,,675',
         'systemd-oomd.service,Userspace Out-Of-Memory (OOM) Killer,systemd-oom,1575',
@@ -406,7 +422,6 @@ WHERE
         'zpool-trim.service,ZFS pools trim,,1125',
         'zpool-trim.timer,zpool-trim.timer,,0'
       )
-
       OR exception_key LIKE 'machine-qemu%.scope,Virtual Machine qemu%,,225'
       OR exception_key LIKE 'zfs-snapshot-%.timer,zfs-snapshot-%.timer,,0'
       OR exception_key LIKE 'zfs-snapshot-%.service,zfs-snapshot-%.service,,900'

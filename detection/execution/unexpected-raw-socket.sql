@@ -40,7 +40,9 @@ WHERE
   pop.family = 17 -- PF_PACKET
   AND p0.name NOT IN (
     'wpa_supplicant',
+    'systemd-network',
     'NetworkManager',
+    'dhclient',
     'dhcpcd',
     'tcpdump'
   )

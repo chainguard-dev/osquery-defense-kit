@@ -50,6 +50,7 @@ WHERE
         "^(/bin/|/app/|/usr/share/teams/resources/|/sbin/|/usr/bin/|/usr/lib/|/usr/share/spotify-client/|/usr/lib64/|/usr/libexec|/usr/sbin/|/usr/share/code/|/home/|/nix/store/|/opt/|/snap/|/var/lib/snapd/snap/|/tmp/go-build|/usr/local/)",
         1
       ) IS NULL -- Docker
+      AND NOT path LIKE '/tmp/%/osqtool'
       AND NOT cgroup_path LIKE '/system.slice/docker-%' -- Interactive terminal
       AND NOT (
         cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-Alacritty-%.scope'
