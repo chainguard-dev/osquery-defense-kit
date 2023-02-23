@@ -78,6 +78,8 @@ WHERE
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-core,0,system.slice,abrt-journal-core.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-oops,0,system.slice,abrt-oops.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-xorg,0,system.slice,abrt-xorg.service,0755',
+    'dhclient,/usr/sbin/dhclient,0,system.slice,networking.service,0755 p0_cgroup:/system.slice/networking.service',
+    'unattended-upgr,/usr/bin/python3.9,0,system.slice,unattended-upgrades.service,0755',
     'abrtd,/usr/sbin/abrtd,0,system.slice,abrtd.service,0755',
     'accounts-daemon,/nix/store/__VERSION__/libexec/accounts-daemon,0,system.slice,accounts-daemon.service,0555',
     'accounts-daemon,/usr/lib/accounts-daemon,0,system.slice,accounts-daemon.service,0755',
