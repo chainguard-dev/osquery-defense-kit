@@ -28,6 +28,7 @@ WHERE
   )
   AND file.filename NOT IN ('.', '..')
   AND exception_key NOT IN (
+    '/etc/ld.so.conf.d/zz_x32-biarch-compat.conf,0644,58,af55087d2769067a6a7c9069fd70f9ac2adb0e0ae29bfbd4e9df7504396c9bf2',
     '/etc/ld.so.conf.d/zz_i386-biarch-compat.conf,0644,56,4e3c617050427d51497a0e5969b0159421580cf5e7c9649e39f45b5e2fcb47b6',
     '/etc/ld.so.conf,0644,117,dad04a370e488aa85fb0a813a5c83cf6fd981ce01883fc59685447b092de84b5',
     '/etc/ld.so.conf,0644,28,239c865e4c0746a01f82b03d38d620853bab2a2ba8e81d6f5606c503e0ea379f',
