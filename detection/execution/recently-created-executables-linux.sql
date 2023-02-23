@@ -110,6 +110,7 @@ WHERE
     '/usr/bin/gnome-shell',
     '/usr/lib/gnome-shell-calendar-server',
     '/usr/lib/gdm-session-worker',
+    '/usr/bin/sudo',
     '/usr/lib/gdm-x-session',
     '/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3',
     '/usr/lib/libreoffice/program/oosplash',
@@ -161,6 +162,7 @@ WHERE
   AND NOT p.path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND NOT p.path LIKE '%/.vscode/extensions/%'
   AND NOT p.path LIKE '/tmp/terraform_%/terraform'
+  AND NOT p.path LIKE '/tmp/%/osqtool'
   AND NOT pp.path IN ('/usr/bin/gnome-shell') -- Filter out developers working on their own code
   AND NOT (
     p.path LIKE '/home/%'

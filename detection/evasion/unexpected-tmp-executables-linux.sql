@@ -74,6 +74,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '%/target/%'
           OR file.path LIKE '%/terraformer/%'
           OR file.path LIKE '%/tmp/epdf%'
+          OR file.path LIKE '/tmp/lima/%'
         )
       ) -- Nix
       AND NOT (

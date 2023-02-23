@@ -84,6 +84,7 @@ WHERE
     '18000,6,500,kourier',
     '22000,6,500,syncthing',
     '22,6,0,sshd',
+    '68,17,0,dhclient',
     '2379,6,500,etcd',
     '2380,6,500,etcd',
     '255,255,500,mtr-packet',

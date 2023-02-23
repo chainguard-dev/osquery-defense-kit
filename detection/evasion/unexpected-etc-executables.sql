@@ -125,6 +125,7 @@ WHERE
     '/etc/sysconfig/network-scripts',
     '/etc/security',
     '/etc/skel',
+    '/etc/network',
     '/etc/pki/tls/misc',
     '/etc/smartmontools',
     '/etc/ssl/certs',
@@ -148,6 +149,9 @@ WHERE
   )
   AND file.path NOT IN (
     '/etc/nftables.conf',
+    '/etc/sv/ssh/run',
+    '/etc/sv/ssh/finish',
+    '/etc/libpaper.d/texlive-base',
     '/etc/rmt',
     '/etc/grub2.cfg',
     '/etc/pki/tls/certs/renew-dummy-cert',
