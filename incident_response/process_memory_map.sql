@@ -1,23 +1,17 @@
 -- Retrieves the memory map per process
 -- platform: posix
 -- tags: postmortem
-SELECT
-  pid,
+SELECT pid,
   permissions,
-offset
-,
+  offset,
   inode,
   path,
   pseudo
-FROM
-  process_memory_map
-WHERE
-  path != ""
-GROUP BY
-  pid,
+FROM process_memory_map
+WHERE path != ""
+GROUP BY pid,
   permissions,
-offset
-,
+  offset,
   inode,
   path,
   pseudo;
