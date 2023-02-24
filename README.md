@@ -12,7 +12,37 @@ ODK (osquery-defense-kit) is unique in that the queries are designed to be used 
 
 At the moment, these queries are predominantly designed for execution on POSIX platforms (Linux & macOS). Pull requests to improve support on other platforms are fully welcome.
 
-## Organization
+## Requirements
+
+* osquery v5.7.0 or above
+* macOS or Linux
+* If you plan to do local development you will also need Go v1.20+ for [osqtool](https://github.com/chainguard-dev/osqtool)
+
+## Usage
+
+### Local Detection
+
+Run `make detect` for point-in-time detection. This will not detect as much as a production installation as it will not have access to historical events.
+
+### Production Detection
+
+Download the pack files for a release, and place them in your the `packs` stanza of your `osquery.conf` file. You can generate your own packs locally using `make packs`.
+
+### Local Data Collection for IR
+
+Run `make collect`. This is particularly useful for before/after analysis.
+
+### Local pack generation
+
+Run `make packs`
+
+For more control, you can invoke [osqtool](https://github.com/chainguard-dev/osqtool) directly, to override default intervals or exclude checks.
+
+### Local verification testing
+
+Run `make verify`
+
+## File Organization
 
 * `detection/` - Threat detection queries tuned for alert generation.
 * `policy/` - Security policy queries tuned for alert generation.
@@ -22,7 +52,9 @@ The detection queries are further divided up by [MITRE ATT&CK](https://attack.mi
 
 At release time, the queries are packed up in [osquery query pack](https://osquery.readthedocs.io/en/stable/deployment/configuration/#query-packs) format. See `Local Pack Generation` for information on how to generate your own packs at any time.
 
-## Detection on Linux Case Study: Shikitega (September 2022)
+## Case Studies
+
+### Linux: Shikitega (September 2022)
 
 <https://cybersecurity.att.com/blogs/labs-research/shikitega-new-stealthy-malware-targeting-linux>
 
@@ -58,7 +90,7 @@ Here is a partial list of what queries would have fired an alert based on these 
   * `persistence/unexpected-cron-entries.sql`
   * `execution/unexpected-executable-directory-linux.sql`
 
-## Detection on macOS Case Study: CloudMensis (April 2022)
+### macOS: CloudMensis (April 2022)
 
 <https://www.welivesecurity.com/2022/07/19/i-see-what-you-did-there-look-cloudmensis-macos-spyware/>
 
@@ -80,23 +112,14 @@ Here is a partial list of what stages would have been detected by particular que
   * `execution/exotic-command-events.sql`
   * `execution/unexpected-executable-directory-macos.sql`
 
-## Local pack generation
-
-Run `make packs`
-
-For more control, you can invoke [osqtool](https://github.com/chainguard-dev/osqtool) directly, to override default intervals or exclude checks.
-
-## Local testing
-
-Run `make verify`
 
 ## Policies
 
 ### Contributions
 
-Help is wanted! We support any new queries so long as they can be easily updated to address false positives.
+Help Wanted! We support any new queries so long as they can be easily updated to address false positives.
 
-Users may submit false positive exceptions for popular well-known software packages, so long as evidence is provided for the behavior.
+Users may submit false positive exceptions for popular well-known software packages, but may be asked to provide evidence for the behavior.
 
 ### Platform Support
 
