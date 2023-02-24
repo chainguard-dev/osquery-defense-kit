@@ -4,7 +4,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/chainguard-dev/osquery-defense-kit?include_prereleases)](https://github.com/chainguard-dev/osquery-defense-kit/releases/latest)
 [![stable](https://badges.github.io/stability-badges/dist/stable.svg)](https://github.com/badges/stability-badges)
 
-Production-ready detection & response queries for osquery
+Production-ready Detection & Incident Response query packs for osquery.
 
 ![osquery-defense-kit](images/logo-small.png?raw=true "osquery-defense-kit logo")
 
@@ -85,6 +85,10 @@ Here is a partial list of what stages would have been detected by particular que
 Run `make packs`
 
 For more control, you can invoke [osqtool](https://github.com/chainguard-dev/osqtool) directly, to override default intervals or exclude checks.
+
+## Local testing
+
+Run `make verify`
 
 ## Policies
 
