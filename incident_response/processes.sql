@@ -2,7 +2,8 @@
 --
 -- tags: postmortem
 -- platform: posix
-SELECT pid,
+SELECT
+  pid,
   name,
   path,
   cmdline,
@@ -13,7 +14,7 @@ SELECT pid,
   gid,
   euid,
   egid,
-  seuid,
+  suid,
   sgid,
   on_disk,
   start_time,
@@ -22,4 +23,5 @@ SELECT pid,
   threads,
   nice,
   cgroup_path
-FROM processes
+FROM
+  processes
