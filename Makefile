@@ -1,5 +1,6 @@
 ARCH ?= $(shell uname -m)
 COLLECT_DIR ?= "./out/$(shell hostname -s)-$(shell date +%Y-%m-%-d-%H-%M-%S)"
+SUDO ?= "sudo"
 
 out/osqtool-$(ARCH):
 	mkdir -p out
@@ -39,9 +40,9 @@ reformat-updates:
 collection: ./out/osqtool-$(ARCH)
 	mkdir -p $(COLLECT_DIR)
 	@echo "Saving output to: $(COLLECT_DIR)"
-	./out/osqtool-$(ARCH) run incident_response | tee $(COLLECT_DIR)/incident_response.txt
-	./out/osqtool-$(ARCH) run policy | tee $(COLLECT_DIR)/policy.txt
-	./out/osqtool-$(ARCH) run detection | tee $(COLLECT_DIR)/detection.txt
+	$(SUDO) ./out/osqtool-$(ARCH) run incident_response | tee $(COLLECT_DIR)/incident_response.txt
+	$(SUDO) ./out/osqtool-$(ARCH) run policy | tee $(COLLECT_DIR)/policy.txt
+	$(SUDO) ./out/osqtool-$(ARCH) run detection | tee $(COLLECT_DIR)/detection.txt
 
 all: out/odk-packs.zip
 
