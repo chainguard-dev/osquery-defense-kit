@@ -16,13 +16,18 @@ out/odk-policy.conf: out/osqtool-$(ARCH)  $(wildcard policy/*.sql)
 	mv out/.odk-policy.conf out/odk-policy.conf
 
 out/odk-incident-response.conf: out/osqtool-$(ARCH)  $(wildcard incident_response/*.sql)
-	./out/osqtool-$(ARCH) --verify pack incident_response/ > out/.odk-incident_response.conf
-	mv out/.odk-incident_response.conf out/odk-incident_response.conf
+	./out/osqtool-$(ARCH) --verify pack incident_response/ > out/.odk-incident-response.conf
+	mv out/.odk-incident-response.conf out/odk-incident_response.conf
 
-packs: out/odk-detection.conf out/odk-policy.conf out/odk-incident-response.conf
+# A privacy-aware variation of IR rules
+out/odk-incident-response-privacy.conf: out/osqtool-$(ARCH)  $(wildcard incident_response/*.sql)
+	./out/osqtool-$(ARCH) --exclude-tags=disabled,disabled-privacy pack incident_response/ > out/.odk-incident-response-privacy.conf
+	mv out/.odk-incident-response-privacy.conf out/odk-incident-response-privacy.conf
+
+packs: out/odk-detection.conf out/odk-policy.conf out/odk-incident-response.conf out/odk-incident-response-privacy.conf
 
 out/odk-packs.zip: packs
-	cd out && zip odk-packs.zip *.conf
+	cd out && rm -f .*.conf && zip odk-packs.zip *.conf
 
 .PHONY: reformat
 reformat:

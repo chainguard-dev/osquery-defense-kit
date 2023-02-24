@@ -1,6 +1,6 @@
 -- Retrieves currently running applications
 --
--- tags: postmortem often
+-- tags: postmortem disabled-privacy
 -- platform: darwin
 SELECT
   *
