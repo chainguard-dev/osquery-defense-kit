@@ -5,4 +5,4 @@
 SELECT
   *
 FROM
-  authorizations;
+  disk_events;

@@ -2,7 +2,11 @@
 --
 -- tags: postmortem
 -- platform: posix
-SELECT *
-FROM file
-    JOIN hash ON file.path = hash.path
-WHERE file.path LIKE "/dev/%%";
+SELECT
+  file.*,
+  magic.data
+FROM
+  file
+  JOIN magic ON file.path = magic.path
+WHERE
+  file.path LIKE "/dev/%%";
