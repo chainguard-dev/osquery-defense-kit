@@ -19,11 +19,7 @@ out/odk-incident-response.conf: out/osqtool-$(ARCH)  $(wildcard incident_respons
 	./out/osqtool-$(ARCH) --verify pack incident_response/ > out/.odk-incident_response.conf
 	mv out/.odk-incident_response.conf out/odk-incident_response.conf
 
-# An alternative rules file for configurations where the "wireless_networks" table is forbidden for querying
-out/odk-incident-response-without-wireless-networks.conf: out/osqtool-$(ARCH)
-	./out/osqtool-$(ARCH) --max-total-daily-duration=90m --verify --exclude wireless_networks_macos pack incident_response/ > out/odk-incident-response-without-wireless-networks.conf
-
-packs: out/odk-detection.conf out/odk-policy.conf out/odk-incident-response.conf out/odk-incident-response-no-wifi.conf
+packs: out/odk-detection.conf out/odk-policy.conf out/odk-incident-response.conf
 
 out/odk-packs.zip: packs
 	cd out && zip odk-packs.zip *.conf
@@ -36,7 +32,7 @@ reformat:
 reformat-updates:
 	git status -s | awk '{ print $$2 }' | grep ".sql" | perl -ne 'chomp; system("cp $$_ /tmp/fix.sql && npx sql-formatter -l sqlite /tmp/fix.sql > $$_");'
 
-.PHONY: collection
+.PHONY: collect
 collection: ./out/osqtool-$(ARCH)
 	mkdir -p $(COLLECT_DIR)
 	@echo "Saving output to: $(COLLECT_DIR)"
