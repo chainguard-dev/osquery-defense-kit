@@ -16,7 +16,7 @@ At the moment, these queries are predominantly designed for execution on POSIX p
 
 * `detection/` - Threat detection queries tuned for alert generation.
 * `policy/` - Security policy queries tuned for alert generation.
-* `response/` - Data collection to assist in responding to possible threats. Tuned for periodic evidence collection.
+* `incident_response/` - Data collection to assist in responding to possible threats. Tuned for periodic evidence collection.
 
 The detection queries are further divided up by [MITRE ATT&CK](https://attack.mitre.org/) tactics categories.
 
