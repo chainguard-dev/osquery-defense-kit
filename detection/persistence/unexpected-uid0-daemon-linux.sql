@@ -8,8 +8,7 @@
 --
 -- tags: persistent process state
 -- platform: linux
-SELECT
-  CONCAT (
+SELECT CONCAT (
     p0.name,
     ',',
     REPLACE(
@@ -58,8 +57,7 @@ SELECT
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM
-  processes p0
+FROM processes p0
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
@@ -67,8 +65,7 @@ FROM
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
-WHERE
-  p0.euid = 0
+WHERE p0.euid = 0
   AND p0.parent > 0
   AND p0.path != ""
   AND p0.start_time < (strftime('%s', 'now') - 900)
@@ -78,8 +75,6 @@ WHERE
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-core,0,system.slice,abrt-journal-core.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-oops,0,system.slice,abrt-oops.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-xorg,0,system.slice,abrt-xorg.service,0755',
-    'dhclient,/usr/sbin/dhclient,0,system.slice,networking.service,0755 p0_cgroup:/system.slice/networking.service',
-    'unattended-upgr,/usr/bin/python3.9,0,system.slice,unattended-upgrades.service,0755',
     'abrtd,/usr/sbin/abrtd,0,system.slice,abrtd.service,0755',
     'accounts-daemon,/nix/store/__VERSION__/libexec/accounts-daemon,0,system.slice,accounts-daemon.service,0555',
     'accounts-daemon,/usr/lib/accounts-daemon,0,system.slice,accounts-daemon.service,0755',
@@ -111,6 +106,7 @@ WHERE
     'cron,/usr/sbin/cron,0,system.slice,cron.service,0755',
     'cups-browsed,/usr/sbin/cups-browsed,0,system.slice,cups-browsed.service,0755',
     'cupsd,/usr/sbin/cupsd,0,system.slice,cups.service,0755',
+    'dhclient,/usr/sbin/dhclient,0,system.slice,networking.service,0755 p0_cgroup:/system.slice/networking.service',
     'dhcpcd,/nix/store/__VERSION__/bin/dhcpcd,0,system.slice,dhcpcd.service,0555',
     'dnf,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
     'dnsmasq,/usr/sbin/dnsmasq,0,system.slice,libvirtd.service,0755',
@@ -123,6 +119,7 @@ WHERE
     'firewalld,/usr/bin/python__VERSION__,0,system.slice,firewalld.service,0755',
     'fish,/usr/bin/fish,0,user.slice,user-1000.slice,0755',
     'flatpak-system-,/usr/libexec/flatpak-system-helper,0,system.slice,flatpak-system-helper.service,0755',
+    'flatpak-system-,/usr/lib/flatpak-system-helper,0,system.slice,flatpak-system-helper.service,0755',
     'fstrim,/usr/sbin/fstrim,0,system.slice,fstrim.service,0755',
     'fusermount3,/usr/bin/fusermount3,1000,user.slice,user-1000.slice,4755',
     'fusermount,/usr/bin/fusermount,1000,user.slice,user-1000.slice,4755',
@@ -213,6 +210,7 @@ WHERE
     'udisksd,/usr/libexec/udisks2/udisksd,0,system.slice,udisks2.service,0755',
     'udisksd,/usr/lib/udisks2/udisksd,0,system.slice,udisks2.service,0755',
     'unattended-upgr,/usr/bin/python3.10,0,system.slice,unattended-upgrades.service,0755',
+    'unattended-upgr,/usr/bin/python3.9,0,system.slice,unattended-upgrades.service,0755',
     'upowerd,/usr/libexec/upowerd,0,system.slice,upower.service,0755',
     'upowerd,/usr/lib/upowerd,0,system.slice,upower.service,0755',
     'uresourced,/usr/libexec/uresourced,0,system.slice,uresourced.service,0755',
@@ -229,5 +227,4 @@ WHERE
     'zfs,/nix/store/__VERSION__/bin/zfs,0,system.slice,znapzend.service,0555'
   )
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
-GROUP BY
-  p0.pid
+GROUP BY p0.pid

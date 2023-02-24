@@ -55,8 +55,10 @@ WHERE
     '/usr/lib/systemd/systemd-machined',
     '/usr/lib/upowerd',
     '/usr/bin/alacritty',
+    '/usr/bin/dash',
     '/usr/bin/bash',
     '/usr/bin/rpmbuild',
+    '/usr/bin/make',
     '/usr/bin/cargo',
     '/usr/bin/containerd',
     '/usr/bin/containerd-shim-runc-v2',
@@ -162,7 +164,10 @@ WHERE
   AND NOT p.path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND NOT p.path LIKE '%/.vscode/extensions/%'
   AND NOT p.path LIKE '/tmp/terraform_%/terraform'
-  AND NOT p.path LIKE '/tmp/%/osqtool'
+  AND NOT (
+    p.name IN ('osqtool-x86_64', 'osqtool-arm64')
+    AND p.cmdline LIKE './%'
+  )
   AND NOT pp.path IN ('/usr/bin/gnome-shell') -- Filter out developers working on their own code
   AND NOT (
     p.path LIKE '/home/%'
@@ -172,7 +177,7 @@ WHERE
     AND p.cmdline LIKE './%'
   )
   AND NOT (
-    p.path LIKE '/tmp/%/osqtool'
+    p.path LIKE '/tmp/%/osqtool-%'
     AND p.uid > 499
     AND f.ctime = f.mtime
     AND f.uid = p.uid

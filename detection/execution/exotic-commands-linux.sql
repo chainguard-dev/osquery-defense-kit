@@ -127,7 +127,8 @@ WHERE -- Known attack scripts
     OR INSTR(p0.cmdline, '%Socket.%') > 0 -- Keep the shell running, as in https://blog.aquasec.com/threat-alert-kinsing-malware-container-vulnerability
     OR (
       p0.cmdline LIKE '%tail -f /dev/null%'
-      AND p0.cgroup_path NOT LIKE '/system.slice/docker-%'
+      AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
+      AND NOT p1.pid == 0
     )
   )
   AND NOT p0.cmdline like '%socat UNIX-LISTEN:%com.discordapp%discord-ipc%'

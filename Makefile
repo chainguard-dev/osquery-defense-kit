@@ -8,15 +8,15 @@ out/osqtool-$(ARCH):
 	mv out/osqtool out/osqtool-$(ARCH)
 
 out/odk-detection.conf: out/osqtool-$(ARCH) $(wildcard detection/*.sql)
-	./out/osqtool-$(ARCH) --max-results=0 --max-total-daily-duration=3h45m --max-query-daily-duration=1.5h --verify pack detection/ > out/.odk-detection.conf
+	./out/osqtool-$(ARCH) --verify pack detection/ > out/.odk-detection.conf
 	mv out/.odk-detection.conf out/odk-detection.conf
 
 out/odk-policy.conf: out/osqtool-$(ARCH)  $(wildcard policy/*.sql)
-	./out/osqtool-$(ARCH) --max-results=0 --verify pack policy/ > out/.odk-policy.conf
+	./out/osqtool-$(ARCH) --verify pack policy/ > out/.odk-policy.conf
 	mv out/.odk-policy.conf out/odk-policy.conf
 
 out/odk-incident-response.conf: out/osqtool-$(ARCH)  $(wildcard incident_response/*.sql)
-	./out/osqtool-$(ARCH) --max-results=150000 --max-query-duration=8s --max-total-daily-duration=90m --verify pack incident_response/ > out/.odk-incident_response.conf
+	./out/osqtool-$(ARCH) --verify pack incident_response/ > out/.odk-incident_response.conf
 	mv out/.odk-incident_response.conf out/odk-incident_response.conf
 
 # An alternative rules file for configurations where the "wireless_networks" table is forbidden for querying
@@ -43,6 +43,12 @@ collection: ./out/osqtool-$(ARCH)
 	$(SUDO) ./out/osqtool-$(ARCH) run incident_response | tee $(COLLECT_DIR)/incident_response.txt
 	$(SUDO) ./out/osqtool-$(ARCH) run policy | tee $(COLLECT_DIR)/policy.txt
 	$(SUDO) ./out/osqtool-$(ARCH) run detection | tee $(COLLECT_DIR)/detection.txt
+
+.PHONY: verify
+verify: ./out/osqtool-$(ARCH)
+	$(SUDO) ./out/osqtool-$(ARCH) --max-results=150000 --max-query-duration=8s --max-total-daily-duration=90m verify incident_response
+	$(SUDO) ./out/osqtool-$(ARCH) --max-results=0 --max-query-duration=6s verify policy
+	$(SUDO) ./out/osqtool-$(ARCH) --max-results=0 --max-query-duration=6s --max-total-daily-duration=2h30m --max-query-daily-duration=1h verify detection
 
 all: out/odk-packs.zip
 

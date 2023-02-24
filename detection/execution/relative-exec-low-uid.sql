@@ -45,7 +45,7 @@ WHERE
     WHERE
       euid < 500
       AND cmdline LIKE './%'
-      AND NOT cmdline LIKE './out/osqtool %'
+      AND NOT cmdline LIKE './out/osqtool-% %'
       AND NOT cgroup_path LIKE '/system.slice/docker-%'
   )
 GROUP BY

@@ -1,5 +1,9 @@
 # osquery-defense-kit
 
+[![Actions Status](https://github.com/chainguard-dev/osquery-defense-kit/workflows/Verify/badge.svg)](https://github.com/chainguard-dev/osquery-defense-kit/actions)
+[![Latest Release](https://img.shields.io/github/v/release/chainguard-dev/osquery-defense-kit?include_prereleases)](https://github.com/chainguard-dev/osquery-defense-kit/releases/latest)
+[![stable](https://badges.github.io/stability-badges/dist/stable.svg)](https://github.com/badges/stability-badges)
+
 Production-ready detection & response queries for osquery
 
 ![osquery-defense-kit](images/logo-small.png?raw=true "osquery-defense-kit logo")
@@ -92,9 +96,9 @@ Users may submit false positive exceptions for popular well-known software packa
 
 ### Platform Support
 
-While originally focused on Linux and macOS, we support the addition of queries on any platform supported by osquery. 
+While originally focused on Linux and macOS, we support the addition of queries on any platform supported by osquery.
 
-In particular, we've been asked about Windows support: Chainguard doesn't have any Windows machines, but if you have Windows queries that you think would be useful and match our philosophy, we're more than willing to accept them! 
+In particular, we've been asked about Windows support: Chainguard doesn't have any Windows machines, but if you have Windows queries that you think would be useful and match our philosophy, we're more than willing to accept them!
 
 ### False Positives
 
