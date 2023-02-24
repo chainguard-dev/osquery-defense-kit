@@ -20,8 +20,8 @@ out/odk-incident-response.conf: out/osqtool-$(ARCH)  $(wildcard incident_respons
 	mv out/.odk-incident_response.conf out/odk-incident_response.conf
 
 # An alternative rules file for configurations where the "wireless_networks" table is forbidden for querying
-out/odk-incident-response-no-wifi.conf: out/osqtool-$(ARCH)
-	./out/osqtool --max-results=150000 --max-query-duration=8s --max-total-daily-duration=90m --verify --exclude wireless_networks_macos pack incident_response/ > out/odk-incident-response-no-wifi.conf
+out/odk-incident-response-without-wireless-networks.conf: out/osqtool-$(ARCH)
+	./out/osqtool-$(ARCH) --max-total-daily-duration=90m --verify --exclude wireless_networks_macos pack incident_response/ > out/odk-incident-response-without-wireless-networks.conf
 
 packs: out/odk-detection.conf out/odk-policy.conf out/odk-incident-response.conf out/odk-incident-response-no-wifi.conf
 
