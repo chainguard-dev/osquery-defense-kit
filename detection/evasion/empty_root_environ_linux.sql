@@ -48,6 +48,7 @@ WHERE
     'systemd-userwor',
     'osqueryi',
     'fprintd',
+    'sudo',
     'systemd',
     'gpg-agent',
     'systemd-userdbd',
