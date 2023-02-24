@@ -17,7 +17,7 @@ out/odk-policy.conf: out/osqtool-$(ARCH)  $(wildcard policy/*.sql)
 
 out/odk-incident-response.conf: out/osqtool-$(ARCH)  $(wildcard incident_response/*.sql)
 	./out/osqtool-$(ARCH) --verify pack incident_response/ > out/.odk-incident-response.conf
-	mv out/.odk-incident-response.conf out/odk-incident_response.conf
+	mv out/.odk-incident-response.conf out/odk-incident-response.conf
 
 # A privacy-aware variation of IR rules
 out/odk-incident-response-privacy.conf: out/osqtool-$(ARCH)  $(wildcard incident_response/*.sql)
@@ -37,8 +37,12 @@ reformat:
 reformat-updates:
 	git status -s | awk '{ print $$2 }' | grep ".sql" | perl -ne 'chomp; system("cp $$_ /tmp/fix.sql && npx sql-formatter -l sqlite /tmp/fix.sql > $$_");'
 
+.PHONY: detect
+detect: ./out/osqtool-$(ARCH)
+	$(SUDO) ./out/osqtool-$(ARCH) run detection
+
 .PHONY: collect
-collection: ./out/osqtool-$(ARCH)
+collect: ./out/osqtool-$(ARCH)
 	mkdir -p $(COLLECT_DIR)
 	@echo "Saving output to: $(COLLECT_DIR)"
 	$(SUDO) ./out/osqtool-$(ARCH) run incident_response | tee $(COLLECT_DIR)/incident_response.txt
