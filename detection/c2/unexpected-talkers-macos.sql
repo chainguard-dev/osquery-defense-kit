@@ -176,6 +176,7 @@ WHERE
     '443,6,0,Setup,com.adobe.acc.Setup,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,500,,,',
     '443,6,500,steampipe-plugin-aws.plugin,a.out,',
+    '443,6,500,Kindle,com.amazon.Lassen,TestFlight Beta Distribution',
     '443,6,500,Acrobat Update Helper,com.adobe.ARMDCHelper,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,500,apko,a.out,',
     '443,6,500,aws,37c466-aws,Developer ID Application: AMZN Mobile LLC (94KV3E626L)',

@@ -218,6 +218,7 @@ WHERE
   AND dir NOT LIKE '/private/var/folders/%/Contents/%'
   AND dir NOT LIKE '/private/var/folders/%/go-build%'
   AND dir NOT LIKE '/private/var/folders/%/GoLand'
+  AND dir NOT LIKE '/private/var/folders/%/d/Wrapper/%.app'
   AND dir NOT LIKE '~/%repo%'
   AND dir NOT LIKE '~/%sigstore%'
   AND dir NOT LIKE '%/.terraform/providers/%'

@@ -93,6 +93,10 @@ WHERE
       AND NOT path LIKE '/usr/local/Cellar/%'
       AND NOT path LIKE '/usr/sbin/%'
       AND NOT path LIKE '%/.vscode/extensions/%'
+      AND NOT (
+        path LIKE '/private/var/folders/%/d/Wrapper/%.app/%'
+        AND s.authority = 'TestFlight Beta Distribution'
+      )
   )
   AND f.ctime > 0
   AND (p0.start_time - MAX(f.ctime, f.btime)) < 180
