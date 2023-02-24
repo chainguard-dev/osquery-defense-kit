@@ -11,13 +11,15 @@
 -- tags: events process escalation
 -- platform: linux
 -- interval: 600
-SELECT file.mode AS p0_binary_mode,
+SELECT
+  file.mode AS p0_binary_mode,
   pe.cmdline_size AS p0_cmd_size,
   -- Child
   pe.path AS p0_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
   pe.cwd AS p0_cwd,
+  pe.euid AS p0_euid,
   pe.pid AS p0_pid,
   p.cgroup_path AS p0_cgroup,
   -- Parent
@@ -45,7 +47,8 @@ SELECT file.mode AS p0_binary_mode,
     '.*/(.*)',
     1
   ) AS p2_name
-FROM process_events pe
+FROM
+  process_events pe
   LEFT JOIN file ON pe.path = file.path
   LEFT JOIN processes p ON pe.pid = pe.pid -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
@@ -60,10 +63,14 @@ FROM process_events pe
   LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
-WHERE pe.pid IN (
-    SELECT pid
-    FROM process_events
-    WHERE time > (strftime('%s', 'now') -600)
+WHERE
+  pe.pid IN (
+    SELECT
+      pid
+    FROM
+      process_events
+    WHERE
+      time > (strftime('%s', 'now') -600)
       AND syscall = "execve"
       AND euid < 500
       AND (
@@ -122,4 +129,5 @@ WHERE pe.pid IN (
   )
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
   AND NOT p1.cgroup_path LIKE '/system.slice/docker-%'
-GROUP BY pe.pid
+GROUP BY
+  pe.pid

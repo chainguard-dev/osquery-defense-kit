@@ -9,6 +9,10 @@
 -- platform: posix
 -- tags: persistent filesystem state
 SELECT
+  f.mode,
+  f.uid,
+  f.gid,
+  f.ctime,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -67,6 +71,11 @@ WHERE
   )
   AND NOT (
     f.path LIKE '/Users/%/Library/Application Support/Code/User/globalStorage/grafana.vscode-jsonnet/bin/jsonnet-language-server'
+    AND f.mode = '0777'
+    AND f.uid > 500
+  )
+  AND NOT (
+    f.path LIKE '/Users/%/.vscode/extensions/sumneko.lua-%-darwin-arm64/server/bin/lua-language-server'
     AND f.mode = '0777'
     AND f.uid > 500
   )

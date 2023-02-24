@@ -83,7 +83,6 @@ WHERE
     '/Library/TeX/texbin',
     '/nix/store',
     '/nix/var/nix/profiles/default/bin',
-    '/node_modules/.bin',
     '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/gke-gcloud-auth-plugin',
     '/opt/usr/bin',
     '/opt/X11/bin',
@@ -161,6 +160,7 @@ WHERE
   AND homedir NOT LIKE '~/%/google-cloud-sdk/bin/%'
   AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
   AND homedir NOT LIKE '~/%/node_modules/.pnpm/%'
+  AND homedir NOT LIKE '~/%/node_modules/.bin/%'
   AND homedir NOT LIKE '~/.local/%/packages/%'
   AND homedir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
   AND homedir NOT LIKE '~/Library/Caches/%/org.sparkle-project.Sparkle/Launcher/%/Updater.app/Contents/MacOS'

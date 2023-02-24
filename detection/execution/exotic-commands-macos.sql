@@ -100,5 +100,6 @@ WHERE
     p0.cmdline LIKE '%sh -i'
     AND p1.cmdline LIKE '%pipenv shell'
   )
+  AND NOT p0_cmd IN ('pkill -f Jabra Direct')
 GROUP BY
   p0.pid;

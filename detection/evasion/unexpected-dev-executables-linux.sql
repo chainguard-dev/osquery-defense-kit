@@ -55,16 +55,16 @@ WHERE
     file.uid = 1000
     AND file.gid IN (100, 1000)
     AND file.mode IN ('0755', '0775')
-    AND magic.data IN (
-      'data',
-      'Applesoft BASIC program data, first line number 86',
-      'mc68k executable (shared)',
-      'OpenPGP Secret Key',
-      '',
-      'floppy image data (IBM SaveDskF, old)',
-      'DOS executable (COM)'
-    )
     AND file.path LIKE '/dev/shm/u1000-Shm_%'
+    AND (
+      magic.data NOT LIKE "%executable%"
+      OR magic.data IN (
+        'data',
+        'Applesoft BASIC program data, first line number 86',
+        'mc68k executable (shared)',
+        'DOS executable (COM)'
+      )
+    )
   )
   AND NOT (
     file.uid = 1000
@@ -72,6 +72,13 @@ WHERE
     AND file.mode IN ('0755', '0775')
     AND magic.data IS NULL
     AND file.path LIKE '/dev/shm/u1000-Shm_%'
+  )
+  AND NOT (
+    file.uid = 1000
+    AND file.gid IN (100, 1000)
+    AND file.mode IN ('0755', '0775')
+    AND file.path = '/dev/shm/u1000-ValveIPCSharedObj-Steam'
+    AND file.size > 2000000
   )
   AND NOT (
     file.uid = 1000

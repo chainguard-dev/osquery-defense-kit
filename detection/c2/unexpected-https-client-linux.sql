@@ -96,6 +96,7 @@ WHERE
     '500,apk,u,g,apk',
     '500,aws,0u,0g,aws',
     '500,bom,500u,500g,bom',
+    '500,act,0u,0g,act',
     '500,Brackets,0u,0g,Brackets',
     '500,brave,0u,0g,brave',
     '500,buildkitd,500u,500g,buildkitd',
@@ -192,11 +193,14 @@ WHERE
     '500,reporter-ureport,0u,0g,reporter-urepor',
     '500,rpi-imager,0u,0g,rpi-imager',
     '500,rustup,0u,0g,rustup',
+    '500,gitsign-credential-cache,500u,500g,gitsign-credent',
     '500,scoville,500u,500g,scoville',
     '500,signal-desktop,0u,0g,signal-desktop',
+    '500,kpromo,500u,500g,kpromo',
     '500,signal-desktop,u,g,signal-desktop',
     '500,slack,0u,0g,slack',
     '500,slack,u,g,slack',
+    '500,python.test,500u,500g,python.test',
     '500,slirp4netns,500u,500g,slirp4netns',
     '500,snap-store,0u,0g,snap-store',
     '500,spotify,0u,0g,spotify',
@@ -204,6 +208,7 @@ WHERE
     '500,spotify,u,g,spotify',
     '500,steam,500u,100g,steam',
     '500,steam,500u,500g,steam',
+    '500,qemu-system-x86_64,0u,0g,qemu-system-x86',
     '500,steamwebhelper,500u,100g,steamwebhelper',
     '500,steamwebhelper,500u,500g,steamwebhelper',
     '500,step,500u,500g,step',
@@ -214,11 +219,13 @@ WHERE
     '500,terraform,500u,500g,terraform',
     '500,thunderbird,0u,0g,thunderbird',
     '500,thunderbird,u,g,thunderbird',
+    '500,qemu-system-x86_64,0u,0g,qemu-system-x86',
     '500,todoist,0u,0g,todoist',
     '500,trivy,0u,0g,trivy',
     '500,trivy,500u,500g,trivy',
     '500,WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '500,wget,0u,0g,wget',
+    '500,limactl,0u,0g,limactl',
     '500,wolfictl,500u,500g,wolfictl',
     '500,WPILibInstaller,500u,500g,WPILibInstaller',
     '500,xmobar,0u,0g,xmobar',
@@ -241,7 +248,7 @@ WHERE
     AND s.state = 'ESTABLISHED'
   )
   AND NOT (
-    exception_key = '500,%,500u,500g,%'
+    exception_key LIKE '500,%,500u,500g,%'
     AND p.path LIKE '/tmp/go-build%/exe/%'
   )
   AND NOT (

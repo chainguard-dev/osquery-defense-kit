@@ -131,6 +131,8 @@ WHERE
     'obdev.at',
     'obsidian.md',
     'obsproject.com',
+    'posit.co',
+    'rectangleapp.com',
     'stclairsoft.s3.amazonaws.com',
     'store.steampowered.com',
     'tableplus.com',
@@ -139,7 +141,8 @@ WHERE
     'warp-releases.storage.googleapis.com',
     'wavebox.io',
     'www.google.com',
-    'www.messenger.com'
+    'www.messenger.com',
+    'zoom.us'
   )
   -- Yes, these are meant to be fairly broad.
   AND host NOT LIKE 'download%'

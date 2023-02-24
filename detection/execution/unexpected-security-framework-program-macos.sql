@@ -87,6 +87,7 @@ WHERE
     '500,cloud_sql_proxy,a.out,',
     '500,CopyClip,com.fiplab.clipboard,Apple Mac OS Application Signing',
     '500,cosign,a.out,',
+    '500,hugo,a.out,',
     '500,chainctl,a.out,',
     '500,cpu,cpu-555549441132dc6b7af538428ce3359ae94eab37,',
     '500,Divvy,com.mizage.Divvy,Apple Mac OS Application Signing',
@@ -103,6 +104,7 @@ WHERE
     '500,InternalFiltersXPC,com.apple.InternalFiltersXPC,Apple Mac OS Application Signing',
     '500,ipcserver,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '500,ipcserver.old,,',
+    '500,Bazecor Helper,,',
     '500,ko,a.out,',
     '500,kubectl,a.out,',
     '500,lua-language-server,lua-language-server,',
@@ -143,6 +145,6 @@ WHERE
   AND NOT exception_key LIKE '500,Runner.%,apphost-%,'
   AND NOT exception_key LIKE '500,kubectl.%,a.out,'
   AND NOT exception_key LIKE '500,rustlings,rustlings-%,'
-  AND NOT exception_key LIKE '500,rust-analyzer,rust-analyzer-%,'
+  AND NOT exception_key LIKE '500,rust-analyzer,rust_analyzer-%,'
 GROUP BY
   p0.pid

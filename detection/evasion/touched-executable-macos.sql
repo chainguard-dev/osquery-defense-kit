@@ -54,6 +54,7 @@ WHERE
     'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW)',
     'Developer ID Application: Bryan Jones (49EYHPJ4Q3)',
+    'Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     'Developer ID Application: CodeWeavers Inc. (9C6B7X7Z8E)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',

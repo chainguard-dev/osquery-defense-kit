@@ -126,6 +126,8 @@ WHERE
   AND parent_path NOT IN (
     '/Applications/Docker.app/Contents/MacOS/Docker',
     '/Applications/Docker.app/Contents/MacOS/install',
+    '/Applications/RStudio.app/Contents/Resources/app/bin/rsession-arm64',
+    '/Library/Application Support/Logitech.localized/LogiOptionsPlus/logioptionsplus_agent.app/Contents/MacOS/logioptionsplus_agent',
     '/Applications/Docker.app/Contents/Resources/bin/com.docker.cli',
     '/Applications/Docker.app/Contents/Resources/bin/docker-credential-desktop',
     '/Applications/IntelliJ IDEA.app/Contents/MacOS/idea',

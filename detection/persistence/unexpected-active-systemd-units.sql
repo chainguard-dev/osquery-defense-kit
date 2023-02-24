@@ -24,10 +24,12 @@ SELECT --  description AS 'desc',
     ',',
     (file.size / 225) * 225
   ) AS exception_key
-FROM systemd_units
+FROM
+  systemd_units
   LEFT JOIN hash ON systemd_units.fragment_path = hash.path
   LEFT JOIN file ON systemd_units.fragment_path = file.path
-WHERE active_state != 'inactive'
+WHERE
+  active_state != 'inactive'
   AND sub_state != 'plugged'
   AND sub_state != 'mounted'
   AND fragment_path != ''
@@ -69,6 +71,7 @@ WHERE active_state != 'inactive'
         'apt-daily.service,Daily apt download activities,,225',
         'apt-daily.timer,Daily apt download activities,,0',
         'apt-daily-upgrade.timer,Daily apt upgrade and clean activities,,0',
+        'archlinux-keyring-wkd-sync.service,Refresh existing keys of archlinux-keyring,,1000',
         'archlinux-keyring-wkd-sync.service,Refresh existing keys of archlinux-keyring,,900',
         'archlinux-keyring-wkd-sync.timer,Refresh existing PGP keys of archlinux-keyring regularly,,0',
         'atd.service,Deferred execution scheduler,,225',
@@ -144,6 +147,7 @@ WHERE active_state != 'inactive'
         'fwupd-refresh.service,Refresh fwupd metadata and update motd,fwupd-refresh,225',
         'fwupd-refresh.timer,Refresh fwupd metadata regularly,,0',
         'fwupd.service,Firmware update daemon,,450',
+        'gdm.service,GNOME Display Manager,,675',
         'gdm.service,GNOME Display Manager,,900',
         'geoclue.service,Location Lookup Service,geoclue,450',
         'getty-pre.target,Preparation for Logins,,450',
@@ -154,6 +158,7 @@ WHERE active_state != 'inactive'
         'iio-sensor-proxy.service,IIO Sensor Proxy service,,225',
         'import-state.service,Import network configuration from initramfs,,225',
         'integritysetup.target,Local Integrity Protected Volumes,,225',
+        'irqbalance.service,irqbalance daemon,,225',
         'irqbalance.service,irqbalance daemon,,450',
         'iscsid.socket,Open-iSCSI iscsid Socket,,0',
         'iscsiuio.socket,Open-iSCSI iscsiuio Socket,,0',
@@ -274,6 +279,7 @@ WHERE active_state != 'inactive'
         'slices.target,Slice Units,,450',
         'smartcard.target,Smart Card,,225',
         'smartd.service,Self Monitoring and Reporting Technology (SMART) Daemon,,225',
+        'smartd.service,Self Monitoring and Reporting Technology (SMART) Daemon,,450',
         'snapd.apparmor.service,Load AppArmor profiles managed internally by snapd,,675',
         'snapd.mounts-pre.target,Mounting snaps,,0',
         'snapd.mounts.target,Mounted snaps,,0',
@@ -300,6 +306,7 @@ WHERE active_state != 'inactive'
         'syslog.socket,Syslog Socket,,1350',
         'sysstat-collect.timer,Run system activity accounting tool every 10 minutes,,225',
         'sysstat.service,Resets System Activity Logs,root,225',
+        'sysstat.service,Resets System Activity Logs,root,450',
         'sysstat-summary.timer,Generate summary of yesterday''s process accounting,,225',
         'systemd-ask-password-console.path,Dispatch Password Requests to Console Directory Watch,,675',
         'systemd-ask-password-plymouth.path,Forward Password Requests to Plymouth Directory Watch,,225',
@@ -307,6 +314,7 @@ WHERE active_state != 'inactive'
         'systemd-ask-password-wall.path,Forward Password Requests to Wall Directory Watch,,450',
         'systemd-ask-password-wall.path,Forward Password Requests to Wall Directory Watch,,675',
         'systemd-binfmt.service,Set Up Additional Binary Formats,,1125',
+        'systemd-boot-random-seed.service,Update Boot Loader Random Seed,,900',
         'systemd-boot-update.service,Automatic Boot Loader Update,,675',
         'systemd-coredump.socket,Process Core Dump Socket,,450',
         "systemd-cryptsetup@cryptdata.service,Cryptography Setup for cryptdata,,900",
@@ -325,6 +333,7 @@ WHERE active_state != 'inactive'
         'systemd-journald-dev-log.socket,Journal Socket (/dev/log),,1125',
         'systemd-journald.service,Journal Service,,1800',
         'systemd-journald.service,Journal Service,,2025',
+        'systemd-journald.service,Journal Service,,2200',
         'systemd-journald.socket,Journal Socket,,900',
         'systemd-journal-flush.service,Flush Journal to Persistent Storage,,675',
         'systemd-localed.service,Locale Service,,1125',
@@ -340,6 +349,8 @@ WHERE active_state != 'inactive'
         'systemd-network-generator.service,Generate network units from Kernel command line,,675',
         'systemd-oomd.service,Userspace Out-Of-Memory (OOM) Killer,systemd-oom,1575',
         'systemd-oomd.socket,Userspace Out-Of-Memory (OOM) Killer Socket,,450',
+        'systemd-pcrmachine.service,TPM2 PCR Machine ID Measurement,,675',
+        'systemd-pcrmachine.service,TPM2 PCR Machine ID Measurement,,700',
         'systemd-pcrphase.service,TPM2 PCR Barrier (User),,675',
         'systemd-pcrphase-sysinit.service,TPM2 PCR Barrier (Initialization),,675',
         'systemd-random-seed.service,Load/Save OS Random Seed,,1125',
@@ -349,6 +360,7 @@ WHERE active_state != 'inactive'
         'systemd-rfkill.socket,Load/Save RF Kill Switch Status /dev/rfkill Watch,,675',
         'systemd-suspend.service,System Suspend,,450',
         'systemd-sysctl.service,Apply Kernel Variables,,675',
+        'systemd-sysusers.service,Create System Users,,1125',
         'systemd-sysusers.service,Create System Users,,675',
         'systemd-sysusers.service,Create System Users,,900',
         'systemd-timedated.service,Time & Date Service,,1125',

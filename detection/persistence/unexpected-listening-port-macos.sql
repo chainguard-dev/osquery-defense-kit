@@ -108,6 +108,7 @@ WHERE
     '53,17,65,mDNSResponder,Software Signing',
     '53,6,500,dnsmasq,',
     '53,6,65,mDNSResponder,Software Signing',
+    '28197,6,500,Stream Deck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     '546,17,0,configd,Software Signing',
     '547,17,500,dhcp6d,Software Signing',
     '5900,6,0,launchd,Software Signing',
@@ -118,6 +119,8 @@ WHERE
     '67,17,0,bootpd,Software Signing',
     '67,17,0,launchd,Software Signing',
     '68,17,0,configd,Software Signing',
+    '28197,6,500,Stream Deck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
+    '1834,6,500,Camera Hub,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     '7000,6,500,ControlCenter,Software Signing',
     '80,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '8770,6,500,sharingd,Software Signing',
@@ -181,8 +184,8 @@ WHERE
   AND NOT (
     (
       p.path = '/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent'
-     AND  lp.port = 3283
-     AND lp.protocol = 6
+      AND lp.port = 3283
+      AND lp.protocol = 6
     )
   )
 GROUP BY

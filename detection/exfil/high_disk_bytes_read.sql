@@ -53,6 +53,7 @@ WHERE
     'docker',
     'emacs',
     'firefox',
+    'osqueryi',
     'fish',
     'fleet_backend',
     'fsdaemon',

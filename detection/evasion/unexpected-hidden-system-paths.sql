@@ -132,6 +132,7 @@ WHERE
   AND file.path NOT LIKE '/tmp/.io.nwjs.%'
   AND file.path NOT LIKE '/tmp/.com.google.Chrome.%'
   AND file.path NOT LIKE '/tmp/.org.chromium.Chromium%'
+  AND file.path NOT LIKE '/var/run/.vfs_rsrc_streams_%/'
   AND file.path NOT LIKE '/tmp/.X1%-lock'
   AND file.path NOT LIKE '/usr/local/%/.keepme'
   AND file.path NOT LIKE '%/.build-id/'

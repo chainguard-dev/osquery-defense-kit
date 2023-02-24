@@ -117,7 +117,13 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       AND NOT (
         file.type = 'regular'
         AND size < 10
-      ) -- Common shell scripts
+      ) -- TODO: Remove this hardcoded entry after Apr 2023
+      AND NOT (
+        file.path = '/tmp/policy-tester'
+        AND file.uid = 501
+        AND file.gid = 20
+        AND file.size = 90921938
+      )
   )
   AND NOT (
     magic.data IS NOT NULL

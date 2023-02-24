@@ -37,6 +37,7 @@ WHERE
   AND f.path NOT LIKE '/usr/local/bin/%'
   AND f.path NOT LIKE '/usr/local/aws-cli/%/dist/aws'
   AND f.path NOT LIKE '/usr/local/kolide-k2/bin/%-updates/%'
+  AND f.path NOT LIKE '/tmp/go-build%'
   AND p.name != 'osqtool'
 GROUP by
   p.pid

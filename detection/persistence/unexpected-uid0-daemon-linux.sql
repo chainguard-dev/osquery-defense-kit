@@ -8,7 +8,8 @@
 --
 -- tags: persistent process state
 -- platform: linux
-SELECT CONCAT (
+SELECT
+  CONCAT (
     p0.name,
     ',',
     REPLACE(
@@ -57,7 +58,8 @@ SELECT CONCAT (
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM processes p0
+FROM
+  processes p0
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
@@ -65,13 +67,12 @@ FROM processes p0
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
-WHERE p0.euid = 0
+WHERE
+  p0.euid = 0
   AND p0.parent > 0
   AND p0.path != ""
   AND p0.start_time < (strftime('%s', 'now') - 900)
   AND exception_key NOT IN (
-    'abrt-dbus,/usr/sbin/abrt-dbus,0,system.slice,system-dbus\x2d:1.16\x2dorg.freedesktop.problems.slice,0755',
-    'abrt-dbus,/usr/sbin/abrt-dbus,0,system.slice,system-dbus\x2d:1.3\x2dorg.freedesktop.problems.slice,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-core,0,system.slice,abrt-journal-core.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-oops,0,system.slice,abrt-oops.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-xorg,0,system.slice,abrt-xorg.service,0755',
@@ -106,6 +107,7 @@ WHERE p0.euid = 0
     'cron,/usr/sbin/cron,0,system.slice,cron.service,0755',
     'cups-browsed,/usr/sbin/cups-browsed,0,system.slice,cups-browsed.service,0755',
     'cupsd,/usr/sbin/cupsd,0,system.slice,cups.service,0755',
+    'gdm-session-wor,/usr/libexec/gdm-session-worker,0,user.slice,user-42.slice,0755',
     'dhclient,/usr/sbin/dhclient,0,system.slice,networking.service,0755 p0_cgroup:/system.slice/networking.service',
     'dhcpcd,/nix/store/__VERSION__/bin/dhcpcd,0,system.slice,dhcpcd.service,0555',
     'dnf,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
@@ -122,6 +124,7 @@ WHERE p0.euid = 0
     'flatpak-system-,/usr/lib/flatpak-system-helper,0,system.slice,flatpak-system-helper.service,0755',
     'fstrim,/usr/sbin/fstrim,0,system.slice,fstrim.service,0755',
     'fusermount3,/usr/bin/fusermount3,1000,user.slice,user-1000.slice,4755',
+    'fusermount3,/usr/bin/fusermount3,127,user.slice,user-127.slice,4755',
     'fusermount,/usr/bin/fusermount,1000,user.slice,user-1000.slice,4755',
     'fwupd,/usr/libexec/fwupd/fwupd,0,system.slice,fwupd.service,0755',
     'fwupd,/usr/lib/fwupd/fwupd,0,system.slice,fwupd.service,0755',
@@ -185,6 +188,7 @@ WHERE p0.euid = 0
     'sshd,/usr/sbin/sshd,0,system.slice,sshd.service,0755',
     'sshd,/usr/sbin/sshd,0,system.slice,ssh.service,0755',
     'sshd,/usr/sbin/sshd,0,user.slice,user-1000.slice,0755',
+    'flatpak-system-,/usr/lib/flatpak-system-helper,0,system.slice,flatpak-system-helper.service,0755',
     'ssh,/nix/store/__VERSION__/bin/ssh,0,system.slice,znapzend.service,0555',
     'sssd_kcm,/usr/libexec/sssd/sssd_kcm,0,system.slice,sssd-kcm.service,0755',
     'sudo,/usr/bin/sudo,1000,user.slice,user-1000.slice,4111',
@@ -226,5 +230,7 @@ WHERE p0.euid = 0
     'zfs,/nix/store/__VERSION__/bin/zfs,0,system.slice,zfs-snapshot-hourly.service,0555',
     'zfs,/nix/store/__VERSION__/bin/zfs,0,system.slice,znapzend.service,0555'
   )
+  AND NOT exception_key LIKE 'abrt-dbus,/usr/sbin/abrt-dbus,0,system.slice,system-dbus%org.freedesktop.problems.slice,0755'
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
-GROUP BY p0.pid
+GROUP BY
+  p0.pid

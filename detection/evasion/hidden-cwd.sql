@@ -114,6 +114,7 @@ WHERE
     )
     OR exception_key LIKE '%sh,~/.Trash/%'
     OR exception_key LIKE '%sh,~/dev/%'
+    OR exception_key LIKE 'wineserver,/tmp/.wine-1000/server-%'
     OR dir IN (
       '~/.config',
       '~/.local/bin',

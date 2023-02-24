@@ -11,6 +11,7 @@ SELECT
   pe.path AS p0_path,
   s.authority AS p0_sauth,
   s.identifier AS p0_sid,
+  hash.sha256 AS p0_hash,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
   p.cwd AS p0_cwd,
@@ -40,9 +41,12 @@ SELECT
     '.*/(.*)',
     1
   ) AS p2_name
-FROM process_events pe
+FROM
+  process_events pe
   LEFT JOIN signature s ON pe.path = s.path
-  LEFT JOIN processes p ON pe.pid = p.pid -- Parents (via two paths)
+  LEFT JOIN processes p ON pe.pid = p.pid
+  LEFT JOIN hash ON pe.path = hash.path
+  -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
   LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
   LEFT JOIN process_events pe1 ON pe.parent = pe1.pid
@@ -55,10 +59,12 @@ FROM process_events pe
   LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
-WHERE pe.time > (strftime('%s', 'now') -900)
+WHERE
+  pe.time > (strftime('%s', 'now') -900)
   AND pe.status = 1
   AND pe.cmdline != ''
   AND pe.cmdline IS NOT NULL
-GROUP BY pe.euid,
+GROUP BY
+  pe.euid,
   pe.path,
   pe.cmdline
