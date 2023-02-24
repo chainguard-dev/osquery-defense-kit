@@ -44,6 +44,14 @@ collection: ./out/osqtool-$(ARCH)
 	$(SUDO) ./out/osqtool-$(ARCH) run policy | tee $(COLLECT_DIR)/policy.txt
 	$(SUDO) ./out/osqtool-$(ARCH) run detection | tee $(COLLECT_DIR)/detection.txt
 
+# Looser values for CI use
+.PHONY: verify-ci
+verify-ci: ./out/osqtool-$(ARCH)
+	$(SUDO) ./out/osqtool-$(ARCH) --max-results=150000 --max-query-duration=30s --max-total-daily-duration=90m verify incident_response
+	$(SUDO) ./out/osqtool-$(ARCH) --max-results=2 --max-query-duration=12s verify policy
+	$(SUDO) ./out/osqtool-$(ARCH) --max-results=15 --max-query-duration=12s --max-total-daily-duration=2h30m --max-query-daily-duration=1h verify detection
+
+# Local verification
 .PHONY: verify
 verify: ./out/osqtool-$(ARCH)
 	$(SUDO) ./out/osqtool-$(ARCH) --max-results=150000 --max-query-duration=15s --max-total-daily-duration=90m verify incident_response

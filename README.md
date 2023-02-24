@@ -1,6 +1,6 @@
 # osquery-defense-kit
 
-[![Actions Status](https://github.com/chainguard-dev/osquery-defense-kit/workflows/Verify/badge.svg)](https://github.com/chainguard-dev/osquery-defense-kit/actions)
+[![Actions Status](https://github.com/chainguard-dev/osquery-defense-kit/workflows/verify/badge.svg)](https://github.com/chainguard-dev/osquery-defense-kit/actions)
 [![Latest Release](https://img.shields.io/github/v/release/chainguard-dev/osquery-defense-kit?include_prereleases)](https://github.com/chainguard-dev/osquery-defense-kit/releases/latest)
 [![stable](https://badges.github.io/stability-badges/dist/stable.svg)](https://github.com/badges/stability-badges)
 
