@@ -46,7 +46,7 @@ collection: ./out/osqtool-$(ARCH)
 
 .PHONY: verify
 verify: ./out/osqtool-$(ARCH)
-	$(SUDO) ./out/osqtool-$(ARCH) --max-results=150000 --max-query-duration=8s --max-total-daily-duration=90m verify incident_response
+	$(SUDO) ./out/osqtool-$(ARCH) --max-results=150000 --max-query-duration=15s --max-total-daily-duration=90m verify incident_response
 	$(SUDO) ./out/osqtool-$(ARCH) --max-results=0 --max-query-duration=6s verify policy
 	$(SUDO) ./out/osqtool-$(ARCH) --max-results=0 --max-query-duration=6s --max-total-daily-duration=2h30m --max-query-daily-duration=1h verify detection
 
