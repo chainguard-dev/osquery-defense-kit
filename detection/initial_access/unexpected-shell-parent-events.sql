@@ -17,12 +17,14 @@ SELECT
   TRIM(pe.cmdline) AS p0_cmd,
   pe.cwd AS p0_cwd,
   pe.pid AS p0_pid,
+  pe.euid AS p0_euid,
   p.cgroup_path AS p0_cgroup,
   -- Parent
   pe.parent AS p1_pid,
   p1.cgroup_path AS p1_cgroup,
   TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
   COALESCE(p1.path, pe1.path) AS p1_path,
+  COALESCE(p1.euid, pe1.euid) AS p1_euid,
   COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
   REGEX_MATCH (COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
   -- Grandparent
@@ -270,6 +272,7 @@ WHERE
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings check %'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings get %'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings set %'
+    OR p0_cmd LIKE '/bin/bash /Users/%/homebrew/Library/Homebrew/shims/shared/curl %'
     OR p0_cmd LIKE '%gcloud config config-helper --format=json'
     OR p0_cmd LIKE '%gcloud config get-value%'
     OR p0_cmd LIKE '%sh -c ntia-checker %'

@@ -54,6 +54,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '%/bin/%'
           OR file.path LIKE '%/checkout/%'
           OR file.path LIKE '%/ci/%'
+          OR file.path LIKE '%/Rakefile'
           OR file.path LIKE '%/debug/%'
           OR file.path LIKE '%/dist/%'
           OR file.path LIKE '%/flow/%.npmzS_cacachezStmpzSgit-clone%'
@@ -74,7 +75,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '%/target/%'
           OR file.path LIKE '%/terraformer/%'
           OR file.path LIKE '%/tmp/epdf%'
-          OR file.path LIKE '/tmp/lima/%'
+          OR file.path LIKE '/tmp/lima/%/out/%'
         )
       ) -- Nix
       AND NOT (

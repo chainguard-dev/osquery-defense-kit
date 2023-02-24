@@ -88,6 +88,8 @@ WHERE
       AND NOT path LIKE '/Users/%/%.test'
       AND NOT path LIKE '/Users/%/Library/Developer/Xcode/UserData/Previews/Simulator Devices/%/data/Containers/Bundle/Application/%'
       AND NOT path LIKE '/Users/%/.local/share/nvim/mason/packages/%'
+      AND NOT path LIKE '/Users/%/node_modules/.pnpm/%'
+      AND NOT path LIKE '/Users/%/node_modules/.bin/%'
       AND NOT path LIKE '/usr/local/Cellar/%'
       AND NOT path LIKE '/usr/sbin/%'
       AND NOT path LIKE '%/.vscode/extensions/%'

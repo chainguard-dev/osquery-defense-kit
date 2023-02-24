@@ -178,7 +178,11 @@ WHERE
   )
   AND NOT (
     pe.path = '/usr/bin/mkfifo'
-    AND p0_cmd LIKE '%/org.gpgtools.log.%/fifo'
+    AND (
+      p0_cmd LIKE '%/org.gpgtools.log.%/fifo'
+      OR p0_cmd LIKE 'mkfifo -- /private/var/folders/%/T/gitstatus.POWERLEVEL9K.501.%.fifo'
+      OR p0_cmd LIKE 'mkfifo -- /var/folders/%/T//p10k.worker.501.%.fifo'
+    )
   )
   AND NOT p0_cmd IN ('lsmod')
   AND NOT p0_cmd LIKE 'dirname %history'

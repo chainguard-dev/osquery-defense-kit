@@ -82,6 +82,7 @@ WHERE
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
     'Developer ID Application: Objective-See, LLC (VBG97UB4TA)',
+    'Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',
     'Developer ID Application: Opal Camera Inc (97Z3HJWCRT)',
     'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'Developer ID Application: Parallels International GmbH (4C6364ACXT)',

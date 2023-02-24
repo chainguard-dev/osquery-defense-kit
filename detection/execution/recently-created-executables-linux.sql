@@ -15,7 +15,7 @@ SELECT
   p.parent,
   f.directory,
   f.ctime,
-  f.btime,
+  f.size,
   f.mtime,
   p.cgroup_path,
   p.start_time,
@@ -36,7 +36,7 @@ WHERE
   p.start_time > 0
   AND f.ctime > 0
   AND p.start_time > (strftime('%s', 'now') - 7200)
-  AND (p.start_time - MAX(f.ctime, f.btime)) < 180
+  AND (p.start_time - MAX(f.ctime, f.btime)) < 120
   AND p.start_time >= MAX(f.ctime, f.ctime)
   AND NOT f.directory IN ('/usr/lib/firefox', '/usr/local/kolide-k2/bin') -- Typically daemons or long-running desktop apps
   -- These are binaries that are known to get updated and subsequently executed
@@ -49,6 +49,10 @@ WHERE
     '/opt/google/chrome/nacl_helper',
     '/opt/Lens/chrome_crashpad_handler',
     '/opt/Lens/lens',
+    '/usr/lib/ibus/ibus-dconf',
+    '/usr/bin/limactl',
+    '/usr/lib/ibus/ibus-portal',
+    '/usr/lib/ibus/ibus-engine-simple',
     '/usr/bin/faked',
     '/usr/bin/appstreamcli',
     '/opt/sublime_text/sublime_text',
@@ -122,6 +126,8 @@ WHERE
     '/usr/lib/slack/slack',
     '/usr/lib/snapd/snapd',
     '/usr/lib/systemd/systemd',
+    '/bin/containerd-shim-runc-v2',
+    '/bin/containerd',
     '/usr/lib/systemd/systemd-journald',
     '/usr/lib/systemd/systemd-logind',
     '/usr/lib/systemd/systemd-oomd',
@@ -130,10 +136,12 @@ WHERE
     '/usr/lib/systemd/systemd-userdbd',
     '/usr/lib/systemd/systemd-userwork',
     '/usr/lib/tracker-extract-3',
+    '/usr/bin/gitsign-credential-cache',
     '/usr/lib/x86_64-linux-gnu/obs-plugins/obs-browser-page',
     '/usr/lib/xdg-desktop-portal-gtk',
     '/usr/lib/xf86-video-intel-backlight-helper',
     '/usr/local/bin/kind',
+    '/usr/bin/golangci-lint',
     '/usr/sbin/alsactl',
     '/usr/sbin/avahi-daemon',
     '/usr/sbin/chronyd',

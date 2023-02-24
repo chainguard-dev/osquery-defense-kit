@@ -143,6 +143,7 @@ WHERE
     '22,6,500,ssh,com.apple.openssh,Software Signing',
     '22,6,500,ssh,com.apple.ssh,Software Signing',
     '22,6,500,ssh,ssh,',
+    '9418,6,500,git,com.apple.git,Software Signing',
     '22,6,500,ssh,ssh-55554944fbf65684ab9b37c2bad3a27ef78b23f4,',
     '30004,6,500,java,net.java.openjdk.java,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '30011,6,500,java,net.java.openjdk.java,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
@@ -165,6 +166,8 @@ WHERE
     '443,6,0,launcher,com.kolide.agent,Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     '443,6,0,launcher,launcher,Developer ID Application: Kolide Inc (YZ3EM74M78)',
     '443,6,0,nessusd,nessusd,Developer ID Application: Tenable, Inc. (4B8J598M7U)',
+    '80,6,500,mconvert,a.out,',
+    '443,6,500,mconvert,a.out,',
     '443,6,0,com.paragon-software.extfsd,com.paragon-software.extfsd,Developer ID Application: Paragon Software GmbH (LSJ6YVK468)', -- update checks
     '443,6,0,com.paragon-software.ntfsd,com.paragon-software.ntfsd,Developer ID Application: Paragon Software GmbH (LSJ6YVK468)', -- update checks
     '443,6,0,nix,nix,',
@@ -182,6 +185,7 @@ WHERE
     '443,6,500,bom,,',
     '443,6,500,chainctl,,',
     '443,6,500,chainctl,a.out,',
+    '443,6,500,Transmit,com.panic.Transmit,Developer ID Application: Panic, Inc. (VE8FC488U5)',
     '443,6,0,launcher,launcher,Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     '443,6,500,chainctl,chainctl,',
     '443,6,500,trivy,,',

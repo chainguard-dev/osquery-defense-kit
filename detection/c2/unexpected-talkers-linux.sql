@@ -106,6 +106,7 @@ WHERE
     '5004,6,500,brave,0u,0g,brave',
     '5006,6,500,brave,0u,0g,brave',
     '500,htop,0u,0g,htop',
+    '80,6,500,qemu-system-x86_64,0u,0g,qemu-system-x86',
     '5228,6,500,chrome,0u,0g,chrome',
     '6443,6,500,kubectl,0u,0g,kubectl',
     '67,17,0,NetworkManager,0u,0g,NetworkManager',
@@ -161,6 +162,7 @@ WHERE
     '80,6,500,rpi-imager,0u,0g,rpi-imager',
     '80,6,500,signal-desktop,0u,0g,signal-desktop',
     '80,6,500,signal-desktop,u,g,signal-desktop',
+    '80,6,500,wine64-preloader,0u,0g,control.exe',
     '80,6,500,slirp4netns,500u,500g,slirp4netns',
     '80,6,500,spotify,0u,0g,spotify',
     '80,6,500,spotify-launcher,0u,0g,spotify-launche',
@@ -183,6 +185,7 @@ WHERE
     '8801,17,500,zoom,0u,0g,zoom',
     '8801,17,500,zoom.real,u,g,zoom.real',
     '88,6,500,syncthing,0u,0g,syncthing',
+    '465,6,500,thunderbird,0u,0g,thunderbird',
     '993,6,500,evolution,0u,0g,evolution',
     '993,6,500,thunderbird,0u,0g,thunderbird',
     '993,6,500,thunderbird,u,g,thunderbird',
@@ -203,6 +206,13 @@ WHERE
     AND p.euid > 500
   )
   AND NOT (
+    p.name = 'chrome'
+    AND f.filename = 'chrome'
+    AND s.remote_port > 1024
+    AND s.protocol = 6
+    AND p.euid > 500
+  )
+  AND NOT (
     p.name = 'steam'
     AND f.filename = 'steam'
     AND s.remote_port > 27000
@@ -212,7 +222,14 @@ WHERE
   AND NOT (
     p.name = 'chrome'
     AND f.filename = 'chrome'
-    AND s.remote_port > 5000
+    AND s.remote_port > 3000
+    AND s.protocol = 6
+    AND p.euid > 500
+  )
+  AND NOT (
+    p.name = 'firefox'
+    AND f.filename = 'firefox'
+    AND s.remote_port > 3000
     AND s.protocol = 6
     AND p.euid > 500
   )

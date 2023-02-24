@@ -84,7 +84,6 @@ WHERE
     '18000,6,500,kourier',
     '22000,6,500,syncthing',
     '22,6,0,sshd',
-    '68,17,0,dhclient',
     '2379,6,500,etcd',
     '2380,6,500,etcd',
     '255,255,500,mtr-packet',
@@ -128,6 +127,7 @@ WHERE
     '6379,6,500,redis-server',
     '6443,6,0,kube-apiserver',
     '67,17,500,dnsmasq',
+    '68,17,0,dhclient',
     '68,17,100,systemd-network',
     '68,17,500,dhcpcd',
     '7000,6,500,ControlCenter',
@@ -158,7 +158,8 @@ WHERE
     '9000,6,500,main',
     '9090,6,500,controlplane',
     '9153,6,0,coredns',
-    '9300,6,500,authentik-proxy'
+    '9300,6,500,authentik-proxy',
+    '9880,6,500,rootlesskit'
   )
   AND NOT (
     p.path LIKE '/ko-app/%'

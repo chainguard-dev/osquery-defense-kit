@@ -95,6 +95,7 @@ WHERE
     'name=MainThread,file=plugin-contain,500',
     'name=mount,file=ntfs-3g,0',
     'name=mysqld,file=mariadbd,500',
+    'name=(udev-worker),file=udevadm,0',
     'name=networkd-dispa,file=python3,0',
     'name=ninja,file=samu,500',
     'name=nix-daemon,file=nix,0',

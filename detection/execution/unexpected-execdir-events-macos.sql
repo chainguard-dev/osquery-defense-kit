@@ -84,6 +84,7 @@ WHERE
     '~/bin',
     '~/.cargo',
     '~/chainguard',
+    '~/dev',
     '~/code',
     '~/Code',
     '~/.config',
@@ -121,15 +122,17 @@ WHERE
     '/Library/Application Support/EcammLive',
     '/Library/Application Support/GPGTools',
     '~/Library/Application Support/JetBrains',
+    '~/Library/Caches/com.knollsoft.Rectangle',
     '~/Library/Caches/com.mimestream.Mimestream',
     '~/Library/Caches/snyk',
     '/Library/Developer/CommandLineTools',
-    '/Library/Plug-Ins/FxPlug',
     '~/Library/Developer/Xcode',
     '/Library/Google/GoogleSoftwareUpdate',
     '~/Library/Google/GoogleSoftwareUpdate',
+    '/Library/Plug-Ins/FxPlug',
     '/opt/homebrew/Caskroom',
     '/opt/homebrew/Cellar',
+    '/opt/homebrew/Library',
     '/usr/libexec/AssetCache',
     '/usr/libexec/rosetta',
     '/usr/local/Cellar',
@@ -167,6 +170,7 @@ WHERE
     '/sbin',
     '/usr/bin',
     '/usr/lib',
+    '/opt/homebrew/bin',
     '/usr/lib/bluetooth',
     '/usr/lib/cups/notifier',
     '/usr/libexec',
@@ -194,6 +198,8 @@ WHERE
   )
   -- Spotify
   AND pe.path NOT LIKE '/private/var/folders/%/T/sp_relauncher'
+  -- Sparkle updater
+  AND pe.path NOT LIKE '/Users/%/Library/Caches/%/org.sparkle-project.Sparkle/Launcher/%/Updater.app/Contents/MacOS/Updater'
   AND dir NOT LIKE '/Applications/%'
   AND dir NOT LIKE '~/%/bin'
   AND dir NOT LIKE '~/%/google-cloud-sdk/bin/%'
