@@ -26,7 +26,7 @@ Run `make detect` for point-in-time detection. This will not detect as much as a
 
 ### Production Detection
 
-Download the pack files for a release, and place them in your the `packs` stanza of your `osquery.conf` file. You can generate your own packs locally using `make packs`.
+Download a released query pack into a convenient location, and point to these files from the `packs` stanza of your `osquery.conf` file
 
 ### Local Data Collection for IR
 
@@ -34,9 +34,7 @@ Run `make collect`. This is particularly useful for before/after analysis.
 
 ### Local pack generation
 
-Run `make packs`
-
-For more control, you can invoke [osqtool](https://github.com/chainguard-dev/osqtool) directly, to override default intervals or exclude checks.
+Run `make packs`.  For more control, you can invoke [osqtool](https://github.com/chainguard-dev/osqtool) directly, to override default intervals or exclude checks.
 
 ### Local verification testing
 
