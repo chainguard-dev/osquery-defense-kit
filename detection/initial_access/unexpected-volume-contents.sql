@@ -80,6 +80,7 @@ WHERE
     '.disk_label_2x',
     '.DS_Store',
     '.file',
+    'LogiPresentation Installer.app',
     '.file-revisions-by-id',
     '._Id.txt',
     '.iotest',
@@ -95,6 +96,7 @@ WHERE
   )
   AND authority NOT IN (
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
+    'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)'
   ) -- Unsigned programs here
   AND trimpath NOT IN (

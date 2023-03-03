@@ -87,18 +87,19 @@ WHERE
   AND p1_path NOT IN (
     '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared',
     '/usr/libexec/PerfPowerServicesExtended',
+    '/System/Library/PrivateFrameworks/AOSKit.framework/Versions/A/XPCServices/com.apple.iCloudHelper.xpc/Contents/MacOS/com.apple.iCloudHelper',
     '/usr/bin/login',
     '/usr/bin/su',
     '/usr/bin/sudo',
+    '/usr/libexec/mdmclient',
     '/usr/local/bin/doas'
   )
   -- Exclude weird bad data we've seen due to badly recorded macOS parent/child relationships, fixable by reboot
-  AND NOT (
-    p0_cmd IN (
-      '/usr/sbin/cupsd -l',
-      '/usr/libexec/mdmclient daemon',
-      '/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared -s mdworker -c MDSImporterWorker -m com.apple.mdworker.shared'
-    )
+  AND NOT p0_cmd IN (
+    '/usr/sbin/cupsd -l',
+    '/usr/libexec/PerfPowerServicesExtended',
+    '/usr/libexec/mdmclient daemon',
+    '/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared -s mdworker -c MDSImporterWorker -m com.apple.mdworker.shared'
   )
   AND NOT (
     pe.euid = 262 -- core media helper id

@@ -93,13 +93,13 @@ WHERE
   AND exception_key NOT LIKE 'Opera Helper,77.111.247.%,53'
   AND p.name != 'nessusd'
   -- Local DNS servers and custom clients go here
+  -- Electron apps
+  AND p.path NOT LIKE '/Applications/%.app/Contents/MacOS/% Helper'
   AND p.path NOT IN (
-    '/usr/lib/systemd/systemd-resolved',
     '/Library/Nessus/run/sbin/nessusd',
-    '/usr/bin/apko',
     '/opt/google/chrome/chrome',
-    '/Applications/Slack.app/Contents/Frameworks/Slack Helper.app/Contents/MacOS/Slack Helper',
-    '/Applications/Spotify.app/Contents/Frameworks/Spotify Helper.app/Contents/MacOS/Spotify Helper'
+    '/usr/bin/apko',
+    '/usr/lib/systemd/systemd-resolved'
   )
   -- Chromium apps can send stray DNS packets
   AND p.path NOT LIKE '/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/%/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper'

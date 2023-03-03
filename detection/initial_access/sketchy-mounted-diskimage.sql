@@ -111,6 +111,7 @@ WHERE
       file.symlink = 1
       AND magic.data != 'symbolic link to /Applications'
       AND magic.data NOT LIKE 'symbolic link to /Users/%/My Drive'
+      AND magic.data NOT LIKE 'symbolic link to /Library/Application Support/Apple/Safari/SafariForWebKitDevelopment'
     )
   )
 GROUP BY

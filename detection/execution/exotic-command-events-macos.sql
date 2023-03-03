@@ -147,7 +147,11 @@ WHERE
   ) -- Things that could reasonably happen at boot.
   AND NOT (
     pe.path = '/usr/bin/mkfifo'
-    AND p0_cmd LIKE '%/org.gpgtools.log.%/fifo'
+    AND (
+      p0_cmd LIKE '%/org.gpgtools.log.%/fifo'
+      OR p0_cmd LIKE '/var/%/gitstatus.POWERLEVEL9K.%'
+      OR p0_cmd LIKE '/var/%/p10k.worker.%'
+    )
   )
   AND NOT (
     p0_cmd LIKE '%csrutil status'

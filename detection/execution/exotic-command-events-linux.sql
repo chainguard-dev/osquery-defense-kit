@@ -191,6 +191,8 @@ WHERE
   AND NOT p0_cmd LIKE 'modprobe -ab%'
   AND NOT p0_cmd LIKE 'modprobe --all%'
   AND NOT p0_cmd LIKE '%modprobe aufs'
+  AND NOT p0_cmd LIKE '%touch -r /tmp/cc%.o %'
+  AND NOT p0_cmd LIKE '%chmod -R 777 /app/%'
   AND NOT p0_cmd LIKE '%modprobe overlay'
   AND NOT p0_cmd LIKE '%modprobe nf_nat_netbios_ns'
   AND NOT p0_cmd LIKE '%modprobe -va%'
@@ -198,4 +200,5 @@ WHERE
   AND NOT p0_cmd LIKE 'tail /%history'
   AND NOT p0_cmd LIKE '%/usr/bin/cmake%Socket.cpp'
   AND NOT p0_cmd LIKE '%/usr/bin/cmake%Socket.h'
-  AND NOT p0_name IN ('cc1', 'compile', 'cmake', 'cc1plus')
+  AND NOT p0_name IN ('ar', 'cc1', 'compile', 'cmake', 'cc1plus')
+  AND NOT exception_key IN ('bash,500,ninja,bash')

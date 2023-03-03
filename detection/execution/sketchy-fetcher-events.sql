@@ -98,7 +98,8 @@ WHERE
       'se',
       'sh',
       'so',
-      'uk'
+      'uk',
+      'us'
     )
     -- Or if it matches weird keywords we've seen
     OR p.cmdline LIKE '%chmod%'

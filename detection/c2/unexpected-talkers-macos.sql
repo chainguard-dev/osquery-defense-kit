@@ -181,6 +181,7 @@ WHERE
     '443,6,500,apko,a.out,',
     '443,6,500,aws,37c466-aws,Developer ID Application: AMZN Mobile LLC (94KV3E626L)',
     '443,6,500,aws,e956a0-aws,Developer ID Application: AMZN Mobile LLC (94KV3E626L)',
+    '443,6,0,io.tailscale.ipn.macsys.network-extension,io.tailscale.ipn.macsys.network-extension,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     '443,6,500,bash,bash,',
     '443,6,500,BlockBlock Installer,com.objective-see.blockblock.installer,Developer ID Application: Objective-See, LLC (VBG97UB4TA)',
     '443,6,500,bom,,',

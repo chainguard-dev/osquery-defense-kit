@@ -34,32 +34,33 @@ WHERE
   AND p.parent NOT IN (0, 2)
   AND NOT p.path IS NULL
   AND p.name NOT IN (
+    '1Password-Keyri',
     'applydeltarpm',
     'bwrap',
     'crond',
     'cupsd',
     'dhcpcd',
-    '1Password-Keyri',
-    'modprobe',
     'dnf',
-    'gdm-x-session',
-    'systemd-udevd',
-    'gdm-session-wor',
-    'systemd-userwor',
-    'osqueryi',
     'fprintd',
+    'gdm-session-wor',
+    'gdm-x-session',
+    'gpg-agent',
+    'modprobe',
+    'nginx',
+    'osqueryi',
+    'realmd',
+    'sedispatch',
+    'ssh',
+    'sshd',
     'sudo',
     'systemd',
-    'gpg-agent',
+    'systemd-udevd',
     'systemd-userdbd',
-    'nginx',
-    'sshd',
+    'systemd-userwor',
     'zfs',
-    'ssh',
-    'sedispatch',
     'zypak-sandbox'
   )
-  AND NOT pp.name IN ('systemd-userdbd', 'crond')
+  AND NOT pp.name IN ('systemd-userdbd', 'crond', 'systemd')
   AND NOT (
     p.name LIKE 'systemd-%'
     AND p.parent = 1
