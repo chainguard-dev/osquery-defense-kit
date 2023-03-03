@@ -70,7 +70,10 @@ WHERE
       AND pp.path NOT LIKE '/opt/homebrew/Cellar/%'
       AND pp.path NOT LIKE '%google-cloud-sdk/.install/.backup%'
       AND pp.path NOT LIKE '/private/var/folders/%/T/PKInstallSandboxTrash/%.sandboxTrash/%'
-      AND pp.path != ""
-      AND pp.path != "/sbin/launchd"
+      AND pp.path NOT IN (
+        "",
+        "/sbin/launchd",
+        "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)"
+      )
       AND pp.on_disk != 1
   );

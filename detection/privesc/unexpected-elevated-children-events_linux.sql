@@ -13,7 +13,6 @@
 -- interval: 600
 SELECT
   file.mode AS p0_binary_mode,
-  pe.cmdline_size AS p0_cmd_size,
   -- Child
   pe.path AS p0_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,

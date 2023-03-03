@@ -89,6 +89,7 @@ WHERE
     -- I'm not too thrilled to have this as an exception, to be honest.
     'Developer ID Application: Private Internet Access, Inc. (5357M5NW9W)',
     'Developer ID Application: Sanford, L.P. (N3S6676K3E)',
+    'Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     'Software Signing'
   )
   AND NOT (

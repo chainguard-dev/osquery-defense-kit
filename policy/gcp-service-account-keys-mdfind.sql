@@ -14,7 +14,8 @@ FROM
   LEFT JOIN file ON mdfind.path = file.path
   LEFT JOIN users u ON file.uid = u.uid
   LEFT JOIN hash ON mdfind.path = hash.path
-  LEFT JOIN extended_attributes ea ON mdfind.path = ea.path AND ea.key = 'where_from'
+  LEFT JOIN extended_attributes ea ON mdfind.path = ea.path
+  AND ea.key = 'where_from'
   LEFT JOIN magic ON mdfind.path = magic.path
   LEFT JOIN signature ON mdfind.path = signature.path
 WHERE
@@ -22,6 +23,9 @@ WHERE
   AND file.filename LIKE "%-%-%.json"
   AND file.directory NOT LIKE '%/go/pkg/%'
   AND file.directory NOT LIKE '%/go/src/%'
+  AND NOT file.directory LIKE '%/aws-sdk/apis'
+  AND NOT file.directory LIKE '%/testdata/%'
+  AND NOT file.directory LIKE '%/schemas'
   AND file.directory NOT LIKE '/Users/%/Library/Application Support/%'
   AND file.directory NOT LIKE '%demo'
   AND file.size BETWEEN 2311 AND 2385
@@ -33,5 +37,6 @@ WHERE
     REPLACE(LOWER(TRIM(u.description)), " ", "-")
   ) == 1
   -- Common filenames that are non-controversial
-  AND file.filename NOT IN ('service-account-file.json')
-GROUP BY file.path
+  AND NOT file.filename IN ('service-account-file.json')
+GROUP BY
+  file.path

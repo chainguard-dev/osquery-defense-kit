@@ -110,7 +110,7 @@ WHERE
   AND NOT (
     pe.euid > 500
     AND p1_name = 'ruby'
-    AND p1_cmd LIKE '%/opt/homebrew/Library/Homebrew/brew.rb%'
+    AND p1_cmd LIKE '%/Homebrew/brew.rb%'
   )
   AND NOT (
     pe.euid > 500
