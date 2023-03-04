@@ -8,7 +8,7 @@ out/osqtool-$(ARCH):
 	mv out/osqtool out/osqtool-$(ARCH)
 
 out/odk-detection.conf: out/osqtool-$(ARCH) $(wildcard detection/*.sql)
-	./out/osqtool-$(ARCH) --verify pack detection/ > out/.odk-detection.conf
+	./out/osqtool-$(ARCH) --max-query-duration=8s --verify pack detection/ > out/.odk-detection.conf
 	mv out/.odk-detection.conf out/odk-detection.conf
 
 out/odk-policy.conf: out/osqtool-$(ARCH)  $(wildcard policy/*.sql)
@@ -16,7 +16,7 @@ out/odk-policy.conf: out/osqtool-$(ARCH)  $(wildcard policy/*.sql)
 	mv out/.odk-policy.conf out/odk-policy.conf
 
 out/odk-incident-response.conf: out/osqtool-$(ARCH)  $(wildcard incident_response/*.sql)
-	./out/osqtool-$(ARCH) --verify pack incident_response/ > out/.odk-incident-response.conf
+	./out/osqtool-$(ARCH)  --max-query-duration=12s --verify pack incident_response/ > out/.odk-incident-response.conf
 	mv out/.odk-incident-response.conf out/odk-incident-response.conf
 
 # A privacy-aware variation of IR rules
@@ -24,9 +24,12 @@ out/odk-incident-response-privacy.conf: out/osqtool-$(ARCH)  $(wildcard incident
 	./out/osqtool-$(ARCH) --exclude-tags=disabled,disabled-privacy pack incident_response/ > out/.odk-incident-response-privacy.conf
 	mv out/.odk-incident-response-privacy.conf out/odk-incident-response-privacy.conf
 
+out/osquery.conf:
+	cat osquery.conf | sed s/"out\/"/""/g > out/osquery.conf
+
 packs: out/odk-detection.conf out/odk-policy.conf out/odk-incident-response.conf out/odk-incident-response-privacy.conf
 
-out/odk-packs.zip: packs
+out/odk-packs.zip: packs out/osquery.conf
 	cd out && rm -f .*.conf && zip odk-packs.zip *.conf
 
 .PHONY: reformat
@@ -40,6 +43,14 @@ reformat-updates:
 .PHONY: detect
 detect: ./out/osqtool-$(ARCH)
 	$(SUDO) ./out/osqtool-$(ARCH) run detection
+
+.PHONY: run-detect-pack
+run-detect-pack: out/odk-detection.conf
+	$(SUDO) osqueryi --config_path osquery.conf --pack detection
+
+.PHONY: run-ir-pack
+run-ir-pack: out/odk-incident-response.conf
+	$(SUDO) osqueryi --config_path osquery.conf --pack incident-response
 
 .PHONY: collect
 collect: ./out/osqtool-$(ARCH)
