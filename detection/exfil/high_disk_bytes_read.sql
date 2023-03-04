@@ -96,6 +96,7 @@ WHERE
     '/usr/bin/udevadm',
     '/usr/libexec/aned',
     '/usr/libexec/coreduetd',
+    '/usr/libexec/diskmanagementd',
     '/usr/bin/update-notifier',
     '/usr/libexec/flatpak-system-helper',
     '/usr/libexec/logd',

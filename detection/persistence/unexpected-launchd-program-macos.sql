@@ -37,7 +37,8 @@ WHERE
     'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
     'Developer ID Application: Oracle America, Inc. (VB5E2TV963)',
     'Developer ID Application: Valve Corporation (MXGJJ98X76)',
-    'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)'
+    'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)',
+    'Software Signing'
   )
   AND program NOT IN ('/usr/local/MacGPG2/libexec/shutdown-gpg-agent')
   AND NOT (

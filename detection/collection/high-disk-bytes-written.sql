@@ -141,6 +141,7 @@ WHERE
     'rustup',
     'slack',
     'snyk',
+    'snyk-macos',
     'spotify',
     'staticcheck',
     'steam',

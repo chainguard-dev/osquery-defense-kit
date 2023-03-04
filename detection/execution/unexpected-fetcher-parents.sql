@@ -50,6 +50,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,500,bash,ShellLauncher',
     'curl,500,Slack,launchd',
     'curl,500,bash,zsh',
+    'curl,0,09-timezone,nm-dispatcher',
     'curl,500,env,env',
     'curl,500,fish,gnome-terminal-',
     'curl,500,Slack,launchd',

@@ -101,6 +101,7 @@ WHERE
     'netstat,500,IPNExtension,launchd',
     'pfctl,0,pia-daemon,launchd',
     'ifconfig,500,zsh,stable',
+    'netstat,0,io.tailscale.ipn.macsys.network-extension,launchd',
     'ifconfig,0,pia-openvpn,pia-daemon',
     'ifconfig,0,pia-openvpn,pia-daemon',
     'ifconfig,0,pia-daemon,launchd',

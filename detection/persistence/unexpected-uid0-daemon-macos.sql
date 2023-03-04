@@ -67,7 +67,6 @@ WHERE -- Focus on longer-running programs
         '/Library/Application Support/VMware/VMware Fusion/Services/Contents/Library/vmnet-natd',
         '/Library/Application Support/VMware/VMware Fusion/Services/Contents/Library/vmware-usbarbitrator',
         '/Applications/VMware Fusion.app/Contents/Library/vmware-vmx',
-
         '/bin/bash',
         '/usr/sbin/sshd',
         '/usr/libexec/trustdFileHelper',
@@ -91,6 +90,7 @@ WHERE -- Focus on longer-running programs
         '/Library/PrivilegedHelperTools/com.docker.vmnetd',
         '/Library/PrivilegedHelperTools/com.macpaw.CleanMyMac4.Agent',
         '/Library/PrivilegedHelperTools/keybase.Helper',
+        '/Library/SystemExtensions/CC9A335C-A6D0-4C87-B902-45EBDF4BFD85/com.google.one.NetworkExtension.systemextension/Contents/MacOS/com.google.one.NetworkExtension',
         '/Library/SystemExtensions/2DA71D8A-7905-4012-A7D5-0B246D5AA77B/at.obdev.littlesnitch.networkextension.systemextension/Contents/MacOS/at.obdev.littlesnitch.networkextension',
         '/opt/homebrew/Cellar/telepresence-arm64/2.7.6/bin/telepresence',
         '/sbin/launchd',

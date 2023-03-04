@@ -83,6 +83,7 @@ WHERE
     '143,6,500,thunderbird,u,g,thunderbird',
     '19305,6,500,firefox,0u,0g,firefox',
     '19305,6,500,firefox,0u,0g,.firefox-wrappe',
+    '1983,6,500,dleyna-renderer-service,0u,0g,dleyna-renderer',
     '22000,6,500,syncthing,0u,0g,syncthing',
     '22,6,0,ssh,0u,0g,ssh',
     '22,6,0,tailscaled,0u,0g,tailscaled',
@@ -103,16 +104,17 @@ WHERE
     '4070,6,500,spotify,u,g,spotify',
     '43,6,500,whois,0u,0g,whois',
     '4460,6,114,chronyd,0u,0g,chronyd',
+    '465,6,500,thunderbird,0u,0g,thunderbird',
     '5004,6,500,brave,0u,0g,brave',
     '5006,6,500,brave,0u,0g,brave',
     '500,htop,0u,0g,htop',
-    '80,6,500,qemu-system-x86_64,0u,0g,qemu-system-x86',
+    '500,syft,0u,0g,syft',
     '5228,6,500,chrome,0u,0g,chrome',
+    '587,6,500,thunderbird,u,g,thunderbird',
     '6443,6,500,kubectl,0u,0g,kubectl',
     '67,17,0,NetworkManager,0u,0g,NetworkManager',
     '8000,6,500,brave,0u,0g,brave',
     '8000,6,500,chrome,0u,0g,chrome',
-    '465,6,500,thunderbird,0u,0g,thunderbird',
     '8000,6,500,firefox,0u,0g,firefox',
     '80,6,0,applydeltarpm,0u,0g,applydeltarpm',
     '80,6,0,appstreamcli,0u,0g,appstreamcli',
@@ -159,10 +161,12 @@ WHERE
     '80,6,500,python3.10,0u,0g,aws',
     '80,6,500,python3.10,0u,0g,yum',
     '80,6,500,python3.11,0u,0g,abrt-action-ins',
+    '80,6,500,python3.11,0u,0g,dnf',
+    '80,6,500,qemu-system-x86_64,0u,0g,qemu-system-x86',
     '80,6,500,rpi-imager,0u,0g,rpi-imager',
     '80,6,500,signal-desktop,0u,0g,signal-desktop',
     '80,6,500,signal-desktop,u,g,signal-desktop',
-    '80,6,500,wine64-preloader,0u,0g,control.exe',
+    '80,6,500,slack,0u,0g,slack',
     '80,6,500,slirp4netns,500u,500g,slirp4netns',
     '80,6,500,spotify,0u,0g,spotify',
     '80,6,500,spotify-launcher,0u,0g,spotify-launche',
@@ -174,7 +178,9 @@ WHERE
     '80,6,500,thunderbird,0u,0g,thunderbird',
     '80,6,500,thunderbird,u,g,thunderbird',
     '80,6,500,WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
+    '80,6,500,wine64-preloader,0u,0g,control.exe',
     '80,6,500,zoom,0u,0g,zoom',
+    '80,6,500,zoom.real,u,g,zoom.real',
     '8080,6,500,brave,0u,0g,brave',
     '8080,6,500,chrome,0u,0g,chrome',
     '8080,6,500,firefox,0u,0g,firefox',
@@ -185,7 +191,7 @@ WHERE
     '8801,17,500,zoom,0u,0g,zoom',
     '8801,17,500,zoom.real,u,g,zoom.real',
     '88,6,500,syncthing,0u,0g,syncthing',
-    '465,6,500,thunderbird,0u,0g,thunderbird',
+    '9418,6,500,git,0u,0g,git',
     '993,6,500,evolution,0u,0g,evolution',
     '993,6,500,thunderbird,0u,0g,thunderbird',
     '993,6,500,thunderbird,u,g,thunderbird',
@@ -232,8 +238,7 @@ WHERE
     AND s.remote_port > 3000
     AND s.protocol = 6
     AND p.euid > 500
-  )
-  -- TODO: Move this to a custom override overlay, as it is extremely obscure (small ISP)
+  ) -- TODO: Move this to a custom override overlay, as it is extremely obscure (small ISP)
   AND NOT (
     exception_key = '32768,6,500,ssh,0u,0g,ssh'
     AND s.remote_port = 40022

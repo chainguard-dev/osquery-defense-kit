@@ -123,6 +123,7 @@ WHERE
     '/Library/Application Support/GPGTools',
     '~/Library/Application Support/JetBrains',
     '~/Library/Caches/com.knollsoft.Rectangle',
+    '~/Library/Application Support/zoom.us',
     '~/Library/Caches/com.mimestream.Mimestream',
     '~/Library/Caches/snyk',
     '/Library/Developer/CommandLineTools',
@@ -145,23 +146,25 @@ WHERE
     '~/code/bin',
     '~/Downloads/google-cloud-sdk/bin',
     '~/Downloads/protoc/bin',
-    '/Library/Audio/Plug-Ins/HAL/ACE.driver/Contents/Resources/aceagent.app/Contents/MacOS',
     '~/go/bin',
     '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
     '~/Library/Application Support/dev.warp.Warp-Stable',
     '/Library/Application Support/Logitech.localized/LogiOptionsPlus/logioptionsplus_agent.app/Contents/MacOS',
     '/Library/Application Support/Logitech.localized/Logitech Options.localized/LogiMgrUpdater.app/Contents/Resources',
+    '/Library/Audio/Plug-Ins/HAL/ACE.driver/Contents/Resources/aceagent.app/Contents/MacOS',
     '/Library/DropboxHelperTools/Dropbox_u501',
     '/Library/Filesystems/kbfuse.fs/Contents/Resources',
     '/Library/Frameworks/Python.framework/Versions/3.10/bin',
     '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers.app/Contents/MacOS',
     '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateAgent.app/Contents/MacOS',
+    '/Library/Image Capture/Devices/EPSON Scanner.app/Contents/MacOS',
     '/Library/Printers/DYMO/Utilities',
     '/Library/PrivilegedHelperTools',
     '/Library/TeX/texbin',
     '~/.local/bin',
     '~/.magefile',
     '/node_modules/.bin',
+    '/opt/homebrew/bin',
     '/opt/usr/bin',
     '/opt/X11/bin',
     '/opt/X11/libexec',
@@ -170,7 +173,6 @@ WHERE
     '/sbin',
     '/usr/bin',
     '/usr/lib',
-    '/opt/homebrew/bin',
     '/usr/lib/bluetooth',
     '/usr/lib/cups/notifier',
     '/usr/libexec',
@@ -211,6 +213,7 @@ WHERE
   AND dir NOT LIKE '/private/tmp/go-build%/exe'
   AND dir NOT LIKE '/private/tmp/KSInstallAction.%/Install Google Software Update.app/Contents/Helpers'
   AND dir NOT LIKE '/private/tmp/nix-build-%'
+  AND dir NOT LIKE '/Library/SystemExtensions/%-%/%.systemextension/Contents/MacOS'
   AND dir NOT LIKE '/private/tmp/PKInstallSandbox.%/Scripts/com.microsoft.OneDrive.%'
   AND dir NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%.xpc/Contents/MacOS'
   AND dir NOT LIKE '/private/var/folders/%/d/Wrapper/%.app/%'

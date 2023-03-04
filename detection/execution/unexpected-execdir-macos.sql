@@ -135,12 +135,13 @@ WHERE
   AND top3_homedir NOT IN (
     '~/Library/Application Support/BraveSoftware/',
     '~/Library/Application Support/com.elgato.StreamDeck/',
-    '~/Library/Application Support/Foxit Software/',
-    '~/Library/Caches/com.mimestream.Mimestream/',
     '/Library/Application Support/EcammLive',
-    '/Library/Developer/Xcode/',
+    '~/Library/Application Support/Foxit Software/',
+    '~/Library/Application Support/OpenLens',
+    '~/Library/Caches/com.mimestream.Mimestream/',
     '~/Library/Caches/com.sempliva.Tiles/',
     '~/Library/Caches/snyk/',
+    '/Library/Developer/Xcode/',
     '~/.terraform.d/plugin-cache/registry.terraform.io/'
   )
   AND dir NOT LIKE '/Applications/%'

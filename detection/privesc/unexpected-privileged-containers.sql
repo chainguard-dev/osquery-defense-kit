@@ -31,6 +31,7 @@ WHERE
     'distroless.dev/melange',
     'docker.io/rancher/k3s',
     'gcr.io/k8s-minikube/kicbase',
+    'ghcr.io/wolfi-dev/sdk',
     'kindest/node',
     'moby/buildkit',
     'wolfi'
