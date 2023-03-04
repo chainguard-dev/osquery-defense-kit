@@ -36,9 +36,10 @@ WHERE
   -- Jan 1st, 1980 (the source of many false positives)
   AND f.mtime > 315561600
   AND f.path NOT LIKE '/home/%/idea-IU-223.8214.52/%'
+  AND f.directory NOT LIKE '/Applications/%.app/Contents/MacOS'
+  AND f.directory NOT LIKE '/Applications/%.app/Contents/Frameworks/%/Resources'
+  AND f.directory NOT LIKE '/opt/homebrew/Cellar/%/bin'
   AND f.path NOT IN (
-    '/Applications/Divvy.app/Contents/MacOS/Divvy',
-    '/Applications/Emacs.app/Contents/MacOS/Emacs-x86_64-10_14',
     '/Applications/Gitter.app/Contents/Library/LoginItems/GitterHelperApp.app/Contents/MacOS/GitterHelperApp',
     '/Applications/Pandora.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/crashpad_handler',
     '/Applications/Skitch.app/Contents/Library/LoginItems/J8RPQ294UB.com.skitch.SkitchHelper.app/Contents/MacOS/J8RPQ294UB.com.skitch.SkitchHelper',
@@ -48,9 +49,6 @@ WHERE
     '/Library/Printers/Brother/Utilities/Server/USBAppControl.app/Contents/MacOS/USBAppControl',
     '/Library/Printers/Brother/Utilities/Server/USBserver.app/Contents/MacOS/USBserver',
     '/Library/Printers/Brother/Utilities/Server/WorkflowAppControl.app/Contents/MacOS/WorkflowAppControl',
-    '/opt/homebrew/Cellar/bash/5.1.16/bin/bash',
-    '/opt/homebrew/Cellar/kail/0.15.0/bin/kail',
-    '/opt/homebrew/Cellar/watch/3.3.16/bin/watch',
     '/snap/brackets/138/opt/brackets/Brackets',
     '/snap/brackets/138/opt/brackets/Brackets-node',
     '/usr/bin/i3blocks',
