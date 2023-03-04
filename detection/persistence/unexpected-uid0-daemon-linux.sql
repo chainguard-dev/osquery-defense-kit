@@ -108,7 +108,7 @@ WHERE
     'cron,/usr/sbin/cron,0,system.slice,cron.service,0755',
     'cups-browsed,/usr/sbin/cups-browsed,0,system.slice,cups-browsed.service,0755',
     'cupsd,/usr/sbin/cupsd,0,system.slice,cups.service,0755',
-    'dhclient,/usr/sbin/dhclient,0,system.slice,networking.service,0755 p0_cgroup:/system.slice/networking.service',
+    'dhclient,/usr/sbin/dhclient,0,system.slice,networking.service,0755',
     'dhcpcd,/nix/store/__VERSION__/bin/dhcpcd,0,system.slice,dhcpcd.service,0555',
     'dnf,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
     'dnsmasq,/usr/sbin/dnsmasq,0,system.slice,libvirtd.service,0755',
