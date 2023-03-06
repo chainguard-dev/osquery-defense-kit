@@ -119,7 +119,7 @@ WHERE
     '/var/run/.sim_diagnosticd_socket',
     '/var/run/.vfs_rsrc_streams_0x2b725bbfb94ba4ef0/',
     '/var/setup/.AppleSetupUser',
-    '/var/setup/.TemporaryItems',
+    '/var/setup/.TemporaryItems/',
     '/.vol/',
     '/.VolumeIcon.icns'
   )

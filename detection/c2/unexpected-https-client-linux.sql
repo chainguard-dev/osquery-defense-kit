@@ -135,6 +135,7 @@ WHERE
     '500,gitsign,0u,0g,gitsign',
     '500,gitsign,500u,0g,gitsign',
     '500,gitsign,500u,500g,gitsign',
+    '0,git-remote-http,0u,0g,git-remote-http',
     '500,gitsign-credential-cache,500u,500g,gitsign-credent',
     '500,gjs-console,0u,0g,org.gnome.Maps',
     '500,gnome-recipes,0u,0g,gnome-recipes',

@@ -96,6 +96,7 @@ WHERE
   )
   AND authority NOT IN (
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
+    'Developer ID Application: Canon Inc. (XE2XNRRXZ5)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)'
   ) -- Unsigned programs here

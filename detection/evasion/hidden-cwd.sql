@@ -85,6 +85,7 @@ WHERE
         'Code Helper'
       )
       AND NOT cgroup_path LIKE '/system.slice/docker-%'
+      AND NOT cgroup_path LIKE '/system.slice/system.slice:docker:%'
   )
   AND NOT (
     exception_key IN (
@@ -133,15 +134,13 @@ WHERE
     )
     OR top_dir IN ('~/Sync')
     OR dir LIKE '~/.%'
+    OR dir LIKE '%/.build'
     OR dir LIKE '~/code/%'
     OR dir LIKE '~/%/.config/nvim'
     OR dir LIKE '~/dev/%/dots/%/.config%'
-    OR dir LIKE '~/%/.git'
-    OR dir LIKE '/private/tmp/%/.git'
-    OR dir LIKE '/tmp/%/.git'
-    OR dir LIKE '~/%/.github%'
     OR dir LIKE '~/%/.docker%'
-    OR dir LIKE '~/%/.vercel%'
+    OR dir LIKE '~/%/.git'
+    OR dir LIKE '~/%/.github%'
     OR dir LIKE '~/%/github.com/%'
     OR dir LIKE '~/%google-cloud-sdk/.install/.backup%'
     OR dir LIKE '~/.gradle/%'
@@ -149,11 +148,14 @@ WHERE
     OR dir LIKE '~/%/.modcache/%'
     OR dir LIKE '~/%/node_modules/.pnpm/%'
     OR dir LIKE '/opt/homebrew/%/.cache/%'
+    OR dir LIKE '/private/tmp/%/.git'
     OR dir LIKE '~/%/src/%'
     OR dir LIKE '~/src/%'
     OR dir LIKE '~/%/.terraform%'
+    OR dir LIKE '/tmp/%/.git'
     OR dir LIKE '/tmp/%/.github/workflows'
     OR dir LIKE '/tmp/.mount_%'
+    OR dir LIKE '~/%/.vercel%'
     -- For sudo calls to other things
     OR (
       dir LIKE '/home/.terraform.d/%'

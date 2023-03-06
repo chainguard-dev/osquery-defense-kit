@@ -93,6 +93,10 @@ WHERE
   )
   AND NOT (
     pe.euid > 500
+    AND p0_cmd LIKE '%xattr -p com.apple.rootless /Users/%/Library/Containers/%'
+  )
+  AND NOT (
+    pe.euid > 500
     AND p0_cmd LIKE '%xattr -p com.apple.metadata:kMDItemAlternateNames %'
   )
   AND NOT (

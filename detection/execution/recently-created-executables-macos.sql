@@ -120,6 +120,7 @@ WHERE
     'Developer ID Application: GitHub (VEKTX9H2N7)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
     'Developer ID Application: GPGTools GmbH (PKV8ZPD836)',
+    'Developer ID Application: Canon Inc. (XE2XNRRXZ5)',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',

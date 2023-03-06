@@ -94,6 +94,8 @@ WHERE
     '/dev/fuse',
     '/dev/gpiochip',
     '/dev/hidraw',
+    '/dev/shm/pulse-shm-',
+    '/dev/md/ssdraid',
     '/dev/HID-SENSOR-e..auto',
     '/dev/hpet',
     '/dev/hugepages/',

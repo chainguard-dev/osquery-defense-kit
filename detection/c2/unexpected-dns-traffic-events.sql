@@ -95,10 +95,12 @@ WHERE
   -- Local DNS servers and custom clients go here
   -- Electron apps
   AND p.path NOT LIKE '/Applications/%.app/Contents/MacOS/% Helper'
+  AND p.path NOT LIKE '/Volumes/Google Chrome/%.app/Contents/MacOS/% Helper'
   AND p.path NOT IN (
     '/Library/Nessus/run/sbin/nessusd',
     '/opt/google/chrome/chrome',
     '/usr/bin/apko',
+    '/System/Volumes/Preboot/Cryptexes/Incoming/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking',
     '/usr/lib/systemd/systemd-resolved'
   )
   -- Chromium apps can send stray DNS packets

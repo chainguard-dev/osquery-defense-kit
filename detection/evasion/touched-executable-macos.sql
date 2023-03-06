@@ -86,6 +86,7 @@ WHERE
         '/Applications/Canon Utilities/Inkjet Extended Survey Program/Inkjet Extended Survey Program.app/Contents/MacOS/ESPController.app/Contents/Library/LoginItems/CanonIJExtendedSurveyLaunchAgent.app/Contents/MacOS/CanonIJExtendedSurveyLaunchAgent'
       )
       OR p.path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/%'
+      OR p.path LIKE '/private/var/folders/%/T/AppTranslocation/%/Contents/MacOS/%'
       OR p.path LIKE '/Applications/%.app/Contents/MacOS/%'
       OR p.path LIKE '/Applications/%.app/Contents/Frameworks/%/Versions/A/Resources/%'
       OR p.path LIKE '/opt/homebrew/Cellar/%/bin/%'

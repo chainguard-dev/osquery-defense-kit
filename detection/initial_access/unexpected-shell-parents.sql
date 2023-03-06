@@ -35,6 +35,7 @@ WHERE
   AND pp.name NOT IN (
     'abrt-handle-eve',
     'alacritty',
+    'anacron',
     'Alfred',
     'bash',
     'buildkit-runc',

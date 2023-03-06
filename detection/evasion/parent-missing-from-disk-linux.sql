@@ -51,6 +51,7 @@ WHERE
     '/opt/google/chrome/chrome',
     '/usr/bin/alacritty',
     '/usr/bin/doas',
+    '/usr/libexec/gdm-x-session',
     '/usr/bin/dockerd',
     '/usr/bin/fusermount3',
     '/usr/bin/gnome-shell',
