@@ -117,6 +117,7 @@ WHERE
     '500,osqueryd,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     '500,PrinterProxy,com.apple.print.PrinterProxy,',
     '500,BloomRPC Helper,,',
+    '500,melange-run,a.out,',
     '500,registry-redirect,a.out,',
     '500,Runner.Listener,apphost-55554944a938bab90f04347d83659c53dd1197d6,',
     '500,rust-analyzer,rust_analyzer-d11ae4e1bae4360d,',

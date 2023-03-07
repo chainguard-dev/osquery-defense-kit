@@ -51,6 +51,8 @@ WHERE
         'abrt-xorg.service,ABRT Xorg log watcher,,225',
         'accounts-daemon.service,Accounts Service,,1800',
         'accounts-daemon.service,Accounts Service,,675',
+        'gitsign.service,Keyless Git signing with Sigstore!,,900',
+        'supergfxd.service,SUPERGFX,,450',
         'acpid.path,ACPI Events Check,,0',
         'acpid.service,ACPI Daemon,,1125',
         'acpid.service,ACPI event daemon,,225',

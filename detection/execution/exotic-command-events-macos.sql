@@ -149,8 +149,8 @@ WHERE
     pe.path = '/usr/bin/mkfifo'
     AND (
       p0_cmd LIKE '%/org.gpgtools.log.%/fifo'
-      OR p0_cmd LIKE '/var/%/gitstatus.POWERLEVEL9K.%'
-      OR p0_cmd LIKE '/var/%/p10k.worker.%'
+      OR p0_cmd LIKE '%/var/%/gitstatus.POWERLEVEL9K.%'
+      OR p0_cmd LIKE '%/var/%/p10k.worker.%'
     )
   )
   AND NOT (

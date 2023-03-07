@@ -59,3 +59,7 @@ WHERE
     '/usr/local/bin/doas',
     '/Applications/VMware Fusion.app/Contents/Library/vmware-vmx'
   )
+  AND NOT (
+    p0.path LIKE '/var/folders/%/T/CanonOFI_TEMP/Data/Software/Install/UniversalInstaller.app/Contents/Frameworks/UIx.framework/Resources/relay'
+    AND s.authority = 'Developer ID Application: Canon Inc. (XE2XNRRXZ5)'
+  )

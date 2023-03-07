@@ -26,4 +26,4 @@ SELECT current_value AS value,
     current_value & 1 AS proprietary
 FROM system_controls
 WHERE name = "kernel.tainted"
-    AND current_value NOT IN (0, 512, 12289, 4097)
+    AND current_value NOT IN (0, 512, 12289, 12352, 4097)

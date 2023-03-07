@@ -76,6 +76,11 @@ WHERE
   AND s.remote_address NOT LIKE '::ffff:192.168.%'
   AND s.remote_address NOT LIKE 'fc00:%'
   AND p.path != ''
+  AND NOT (
+    s.remote_address LIKE '100.%'
+    AND s.local_address LIKE '100.%'
+    AND exception_key = '32768,6,74,sshd,0u,0g,sshd'
+  )
   AND NOT exception_key IN (
     '123,17,114,chronyd,0u,0g,chronyd',
     '123,17,500,chronyd,0u,0g,chronyd',
@@ -127,6 +132,7 @@ WHERE
     '80,6,0,find,0u,0g,find',
     '80,6,0,gawk,0u,0g,awk',
     '80,6,0,gpg,0u,0g,gpg',
+    '80,6,0,grep,0u,0g,grep',
     '80,6,0,kmod,0u,0g,depmod',
     '80,6,0,kubelet,u,g,kubelet',
     '80,6,0,ldconfig,0u,0g,ldconfig',

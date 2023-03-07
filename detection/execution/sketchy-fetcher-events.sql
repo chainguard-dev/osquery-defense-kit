@@ -179,6 +179,7 @@ WHERE
       addr IN (
         'releases.hashicorp.com',
         'github.com',
+        'cdn.zoom.us',
         'dl.enforce.dev'
       )
       -- Ignore local addresses (Docker development)
@@ -187,3 +188,4 @@ WHERE
       OR ip LIKE '192.168.%'
     )
   )
+  AND NOT p1_cmd LIKE '/usr/bin/bash /usr/bin/makepkg %'

@@ -20,7 +20,13 @@ FROM
   LEFT JOIN signature ON mdfind.path = signature.path
 WHERE
   mdfind.query = "kMDItemFSName == '*.json'"
-  AND file.filename LIKE "%-%-%.json"
+  AND (
+    file.filename LIKE "%-%-%.json"
+    OR file.filename LIKE 'sa%.json'
+    OR file.filename LIKE '%s%r%v%acc%t%json'
+    OR file.filename LIKE '%prod.json'
+    OR file.filename LIKE 'prod%.json'
+  )
   AND file.size BETWEEN 2311 AND 2385 -- Don't alert on tokens that begin with the username-, as they may be personal
   AND NOT INSTR(file.filename, CONCAT (u.username, "-")) == 1 -- Don't alert on tokens that begin with the users full name and a dash
   AND NOT INSTR(
@@ -29,15 +35,18 @@ WHERE
   ) == 1 -- Common locations of test or demo keys
   AND NOT file.directory LIKE '%/go/pkg/%'
   AND NOT file.directory LIKE '%/go/src/%'
+  AND NOT file.directory LIKE '%/pkg/mod/%'
   AND NOT file.directory LIKE '%/aws-sdk/apis'
   AND NOT file.directory LIKE '%/mock-infras/%'
-  AND NOT file.directory LIKE '%/testdata/%'
+  AND NOT file.directory LIKE '%/testdata%'
   AND NOT file.directory LIKE '%/schemas'
   AND NOT file.directory LIKE '/Users/%/Library/Application Support/%'
   AND NOT file.directory LIKE '%demo' -- Common filenames that are non-controversial
   AND NOT file.filename IN (
     'service-account-file.json',
     'redshift-2012-12-01.waiters2.json',
+    'update-all-transforms.json',
+    'update-arrayremove-multi.json',
     'organizations-2016-11-28.paginators.json'
   )
 GROUP BY

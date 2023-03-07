@@ -125,6 +125,7 @@ WHERE
     'gopls',
     'grype',
     'idea',
+    'melange-run',
     'Install',
     'java',
     'jetbrains-toolb',
