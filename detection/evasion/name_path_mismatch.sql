@@ -9,11 +9,12 @@
 -- tags: persistent process
 SELECT SUBSTR(
     COALESCE(
+      -- TODO: Fix to not require filename!
       REGEX_MATCH (f.filename, '(.*?)\W', 1),
       f.filename
     ),
     0,
-    5
+    6
   ) AS short_filename,
   COALESCE(REGEX_MATCH (p0.path, '.*/(.*)', 1), p0.path) AS basename,
   COALESCE(
@@ -82,6 +83,7 @@ WHERE p0.path != ""
     "thunderbird"
   )
   AND NOT exception_key IN (
+    "0,udevadm,systemd-udevd",
     "500,rootlesskit,exe",
     "500,systemd,(sd-pam)"
   )
