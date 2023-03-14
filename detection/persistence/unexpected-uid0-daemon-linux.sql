@@ -123,8 +123,6 @@ WHERE
     'flatpak-system-,/usr/lib/flatpak-system-helper,0,system.slice,flatpak-system-helper.service,0755',
     'fprintd,/usr/libexec/fprintd,0,system.slice,fprintd.service,0755',
     'fstrim,/usr/sbin/fstrim,0,system.slice,fstrim.service,0755',
-    'fusermount3,/usr/bin/fusermount3,1000,user.slice,user-1000.slice,4755',
-    'fusermount3,/usr/bin/fusermount3,127,user.slice,user-127.slice,4755',
     'fusermount,/usr/bin/fusermount,1000,user.slice,user-1000.slice,4755',
     'fwupd,/usr/libexec/fwupd/fwupd,0,system.slice,fwupd.service,0755',
     'fwupd,/usr/lib/fwupd/fwupd,0,system.slice,fwupd.service,0755',
@@ -234,6 +232,7 @@ WHERE
     'zfs,/nix/store/__VERSION__/bin/zfs,0,system.slice,znapzend.service,0555'
   )
   AND NOT exception_key LIKE 'abrt-dbus,/usr/sbin/abrt-dbus,0,system.slice,system-dbus%org.freedesktop.problems.slice,0755'
+  AND NOT exception_key LIKE 'fusermount3,/usr/bin/fusermount3,%,user.slice,user-%.slice,4755'
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY
   p0.pid

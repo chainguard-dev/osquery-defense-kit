@@ -185,5 +185,6 @@ WHERE
   -- Exclude processes running inside of Docker containers
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
   AND NOT p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
+  AND NOT p.cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/libpod-%'
 GROUP BY
   exception_key

@@ -25,6 +25,7 @@ SELECT
   p0_hash.sha256 AS p0_sha256,
   -- Parent
   p0.parent AS p1_pid,
+  p1.cgroup_path AS p1_cgroup,
   p1.path AS p1_path,
   p1.name AS p1_name,
   p1.cmdline AS p1_cmd,
@@ -77,11 +78,11 @@ WHERE
   ) -- These alerts were unfortunately useless - lots of spam on macOS
   AND NOT (
     p1.path LIKE '/app/%'
-    AND p0.cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/%'
+    AND p1.cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/%'
   )
-  AND p0.cgroup_path NOT LIKE '/system.slice/docker-%'
   AND p1.cgroup_path NOT LIKE '/system.slice/docker-%'
   AND p1.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
+  AND p1.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/libpod-%'
   AND p1.path NOT LIKE '/opt/homebrew/Cellar/%'
   AND p1.path NOT LIKE '/tmp/.mount_%/%'
   AND p1.path NOT LIKE '%google-cloud-sdk/.install/.backup%'

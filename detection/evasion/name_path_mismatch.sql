@@ -84,7 +84,10 @@ WHERE p0.path != ""
   )
   AND NOT exception_key IN (
     "0,udevadm,systemd-udevd",
+    "125,systemd,(sd-pam)",
     "500,rootlesskit,exe",
-    "500,systemd,(sd-pam)"
+    "500,rootlessport,exe",
+    "500,systemd,(sd-pam)",
+    "500,udevadm,systemd-udevd"
   )
 GROUP by exception_key

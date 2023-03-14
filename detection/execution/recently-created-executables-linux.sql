@@ -130,6 +130,7 @@ WHERE
     '/bin/containerd',
     '/usr/lib/systemd/systemd-journald',
     '/usr/lib/systemd/systemd-logind',
+    '/usr/lib/systemd/systemd-homed',
     '/usr/lib/systemd/systemd-oomd',
     '/usr/lib/systemd/systemd-resolved',
     '/usr/lib/systemd/systemd-timesyncd',

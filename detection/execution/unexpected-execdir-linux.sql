@@ -7,6 +7,7 @@
 -- platform: linux
 SELECT -- Child
   p0.pid AS p0_pid,
+  p0.cgroup_path AS p0_cgroup,
   p0.path AS p0_path,
   p0.name AS p0_name,
   p0.cmdline AS p0_cmd,
@@ -51,6 +52,8 @@ WHERE
         1
       ) IS NULL -- Docker
       AND NOT path LIKE '/tmp/%/osqtool'
+      AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
+      AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/libpod-%'
       AND NOT cgroup_path LIKE '/system.slice/docker-%' -- Interactive terminal
       AND NOT (
         cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-Alacritty-%.scope'

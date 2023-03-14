@@ -60,15 +60,15 @@ FROM
   LEFT JOIN processes p ON pe.pid = p.pid
   LEFT JOIN signature s ON pe.path = s.path
   -- Parents (via two paths)
-  LEFT JOIN processes p1 ON pe.parent = p1.pid
+  LEFT JOIN processes p1 ON pe.parent = p1.pid AND p1.start_time <= pe.start_time
   LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
-  LEFT JOIN process_events pe1 ON pe.parent = pe1.pid
+  LEFT JOIN process_events pe1 ON pe.parent = pe1.pid AND pe1.start_time <= pe.start_time
   AND pe1.cmdline != ''
   LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path
   LEFT JOIN signature pe_sig1 ON pe1.path = pe_sig1.path
   -- Grandparents (via 3 paths)
-  LEFT JOIN processes p1_p2 ON p1.parent = p1_p2.pid -- Current grandparent via parent processes
-  LEFT JOIN processes pe1_p2 ON pe1.parent = pe1_p2.pid -- Current grandparent via parent events
+  LEFT JOIN processes p1_p2 ON p1.parent = p1_p2.pid AND p1_p2.start_time <= p1.start_time
+  LEFT JOIN processes pe1_p2 ON pe1.parent = pe1_p2.pid AND pe1_p2.start_time <= pe1.start_time
   LEFT JOIN process_events pe1_pe2 ON pe1.parent = pe1_p2.pid
   AND pe1_pe2.cmdline != '' -- Past grandparent via parent events
   LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
