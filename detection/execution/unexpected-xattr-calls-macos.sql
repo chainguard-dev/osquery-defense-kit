@@ -83,6 +83,7 @@ WHERE
   AND p0_cmd NOT LIKE '%xattr -r -d com.apple.quarantine /Applications/%.app'
   AND p0_cmd NOT LIKE '%xattr -d com.apple.quarantine /Applications/%.app'
   AND p0_cmd NOT LIKE '%xattr -d com.apple.quarantine /Applications/%.app/%.xpc'
+  AND p0_cmd NOT LIKE '%xattr -d com.apple.FinderInfo /Applications/Parallels Desktop.app'
   AND NOT (
     pe.euid > 500
     AND p0_cmd LIKE '%xattr -l %'

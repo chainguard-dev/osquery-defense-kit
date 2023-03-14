@@ -22,6 +22,7 @@ SELECT
     '(~*/.*?/.*?/.*?)/',
     1
   ) AS top3_dir,
+  u.directory AS user_home_dir,
   -- Child
   pe.path AS p0_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
@@ -103,6 +104,7 @@ WHERE
     '~/proj',
     '~/projects',
     '~/Projects',
+    '~/workspace',
     '~/.provisio',
     '~/.pulumi',
     '~/.pyenv',
@@ -118,14 +120,15 @@ WHERE
     '/Library/Apple/System',
     '/Library/Application Support/Adobe',
     '~/Library/Application Support/BraveSoftware',
+    '/Library/Application Support/Canon_Inc_IC',
     '~/Library/Application Support/com.elgato.StreamDeck',
     '/Library/Application Support/EcammLive',
+    '~/Library/Application Support/Foxit Software',
     '/Library/Application Support/GPGTools',
     '~/Library/Application Support/JetBrains',
     '~/Library/Application Support/zoom.us',
     '~/Library/Caches/com.knollsoft.Rectangle',
     '~/Library/Caches/com.mimestream.Mimestream',
-    '/Library/Application Support/Canon_Inc_IC',
     '~/Library/Caches/snyk',
     '/Library/Developer/CommandLineTools',
     '~/Library/Developer/Xcode',
@@ -133,7 +136,6 @@ WHERE
     '~/Library/Google/GoogleSoftwareUpdate',
     '/Library/Java/JavaVirtualMachines',
     '/Library/Plug-Ins/FxPlug',
-    '~/Library/Application Support/Foxit Software',
     '/opt/homebrew/Caskroom',
     '/opt/homebrew/Cellar',
     '/opt/homebrew/Library',
@@ -141,6 +143,7 @@ WHERE
     '/usr/libexec/rosetta',
     '/usr/local/Cellar',
     '/usr/local/kolide-k2',
+    '/Volumes/Google Chrome/Google Chrome.app',
     '/Volumes/Slack/Slack.app'
   )
   AND dir NOT IN (

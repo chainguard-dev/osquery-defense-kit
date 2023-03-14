@@ -60,6 +60,7 @@ WHERE
     'usr/sbin/auditd',
     '/usr/bin/tmux',
     '/usr/share/code/code',
+    '/usr/libexec/gdm-wayland-session',
     '/usr/bin/osqueryd',
     '/usr/bin/sudo',
     '/usr/bin/yay',

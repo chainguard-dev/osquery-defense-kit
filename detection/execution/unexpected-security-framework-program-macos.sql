@@ -53,7 +53,7 @@ WHERE
     FROM
       processes
     WHERE
-      start_time < (strftime('%s', 'now') - 900)
+      start_time < (strftime('%s', 'now') - 3600)
       AND parent != 0
       -- Assume STP
       AND NOT path LIKE '/System/%'
@@ -82,6 +82,10 @@ WHERE
     '500,Bitwarden Helper (GPU),com.bitwarden.desktop.helper.GPU,Apple Mac OS Application Signing',
     '500,Bitwarden Helper (Renderer),com.bitwarden.desktop.helper.Renderer,Apple Mac OS Application Signing',
     '500,bufls,a.out,',
+    '500,stern,a.out,',
+    '500,registry,a.out,',
+    '500,mattermost,a.out,',
+    '500,plugin-darwin-arm64,a.out,',
     '500,testing,com.yourcompany.testing,', -- Xcode iPhone emulator
     '500,.cargo-wrapped,.cargo-wrapped,',
     '500,cloud_sql_proxy,a.out,',
@@ -105,6 +109,7 @@ WHERE
     '500,InternalFiltersXPC,com.apple.InternalFiltersXPC,Apple Mac OS Application Signing',
     '500,ipcserver,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '500,ipcserver.old,,',
+    '500,debug.test,a.out,',
     '500,Bazecor Helper,,',
     '500,ko,a.out,',
     '500,kubectl,a.out,',
@@ -118,6 +123,7 @@ WHERE
     '500,PrinterProxy,com.apple.print.PrinterProxy,',
     '500,BloomRPC Helper,,',
     '500,melange-run,a.out,',
+    '500,dlv,a.out,',
     '500,registry-redirect,a.out,',
     '500,Runner.Listener,apphost-55554944a938bab90f04347d83659c53dd1197d6,',
     '500,rust-analyzer,rust_analyzer-d11ae4e1bae4360d,',
@@ -143,6 +149,10 @@ WHERE
     '500,vim,vim,',
     '500,WinAppHelper,,',
     '500,WinAppHelper,WinAppHelper,'
+  )
+  AND NOT (
+    exception_key LIKE '500,%,a.out,'
+    AND p0.path LIKE '/private/var/folders%/T/go-build%/exe/%'
   )
   AND NOT exception_key LIKE '500,terraform-provider-%,a.out,'
   AND NOT exception_key LIKE '500,Runner.%,apphost-%,'

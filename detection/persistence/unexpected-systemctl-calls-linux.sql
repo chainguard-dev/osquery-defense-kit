@@ -73,6 +73,7 @@ WHERE
     'systemctl,0,,containerd-shim-runc-v2',
     'systemctl,0,dash,logrotate',
     'systemctl,0,pacman,pacman',
+    'systemctl,500,zsh,tmux',
     'systemctl,0,pacman,sudo',
     'systemctl,0,snapd,systemd',
     'systemctl,0,tailscaled,',

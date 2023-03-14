@@ -94,6 +94,7 @@ WHERE
         OR vol_name LIKE "%Update"
       )
       AND file.directory LIKE "/Volumes/%/Contents/MacOS"
+      AND signature.authority != "Logitech Inc. (QED4VVPZWA)"
     ) --   6. Volumes containing a hidden top-level folder or binary, such as yWnBJLaF (1302.app)
     OR (
       file.bsd_flags = "HIDDEN"

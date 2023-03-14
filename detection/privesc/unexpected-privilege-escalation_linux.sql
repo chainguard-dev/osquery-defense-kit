@@ -53,6 +53,7 @@ WHERE
       AND NOT path IN (
         '/bin/ps',
         '/usr/bin/doas',
+        '/usr/lib/xorg/Xorg',
         '/usr/bin/fusermount',
         '/usr/bin/fusermount3',
         '/usr/libexec/Xorg',

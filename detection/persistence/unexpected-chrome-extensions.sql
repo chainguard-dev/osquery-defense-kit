@@ -57,9 +57,7 @@ WHERE
     'false,,Google Drive,aghbiahbpaijignceidepookljebhfak', -- Deprecated Google Extension
     'false,,Google Photos,ncmjhecbjeaamljdfahankockkkdmedg', -- Deprecated Google Extension
     'false,julienv3@gmail.com,treasure-clicker,',
-    "true,Gareth Stephenson,My O'Reilly Downloader,deebiaolijlopiocielojiipnpnaldlk",
     'false,juverm@chainguard.dev,auto-close-gitsign,',
-    'true,,Jamstash,jccdpflnecheidefpofmlblgebobbloc',
     'false,,Trotto go links,nkeoojidblilnkcbbmfhaeebndapehjk',
     'false,,YouTube,agimnkijcaahngcdmfeangaknmldooml', -- Deprecated Google Extension
     'true,Adaware,Safe Torrent Scanner,aegnopegbbhjeeiganiajffnalhlkkjb',
@@ -98,6 +96,7 @@ WHERE
     'true,,CSS Scan,gieabiemggnpnminflinemaickipbebg',
     "true,Daniel Kladnik @ kiboke studio,I don't care about cookies,fihnjjcciajhdojfnbdddfaoknhalnja",
     'true,,Datanyze Chrome Extension,mlholfadgbpidekmhdibonbjhdmpmafd',
+    'true,,DealFinder by VoucherCodes,jhgicjdnnonfaedodemjjinbgcoeiajo',
     'true,,DEPRECATED Secure Shell App,pnhechapfaindjhompbnflcldabbghjo',
     'true,,Disconnect,jeoacafpbcihiomhlakheieifhpjdfeo',
     'true,,DuckDuckGo Privacy Essentials,bkdgflcldnnnapblkhphbgpggdiikppg',
@@ -109,6 +108,7 @@ WHERE
     'true,ExpressVPN,ExpressVPN: VPN proxy for a better internet,fgddmllnllkalaagkghckoinaemmogpe',
     'true,eyeo GmbH,Adblock Plus - free ad blocker,cfhdojbkjhnklbpkdaibdccddilifddb',
     'true,,Facebook Pixel Helper,fdgfkebogiimcoedlicjlajpkdmockpc',
+    "true,Gareth Stephenson,My O'Reilly Downloader,deebiaolijlopiocielojiipnpnaldlk",
     'true,,Github Absolute Dates,iepecohjelcmdnahbddleblfphbaheno',
     'true,,Google Analytics Parameter Stripper,jbgedkkfkohoehhkknnmlodlobbhafge',
     'true,,Google Docs Offline,ghbmnnjooekpmoecnnnilnnbdlolhkhi',
@@ -127,6 +127,7 @@ WHERE
     'true,,HTTPS Everywhere,gcbommkclmclpchllfjekcdonpmejbdp',
     'true,https://metamask.io,MetaMask,nkbihfbeogaeaoehlefnkodbefgpgknn',
     'true,James Anderson,LeechBlock NG,blaaajhemilngeeffpbfkdjjoefldkok',
+    'true,,Jamstash,jccdpflnecheidefpofmlblgebobbloc',
     'true,,Jitsi Meetings,kglhbbefdnlheedjiejgomgmfplipfeb',
     'true,,JSON Formatter,bcjindcccaagfpapjjmafapmmgkkhgoa',
     'true,,JSON Viewer Pro,eifflpmocdbdmepbjaopkkhbfmdgijcc',
@@ -169,6 +170,7 @@ WHERE
     'true,,RSS Subscription Extension (by Google),nlbjncdgjeocebhnmkbbbdekmmmcbfjd',
     'true,,Save to Google Drive,gmbmikajjgmnabiglmofipeabaddhgne',
     'true,,Save to Pocket,niloccemoadcdkdjlinkgdfekeahmflj',
+    'true,,Scraper,poegfpiagjgnenagjphgdklmgcpjaofi',
     'true,,Secure Shell,iodihamcpbpeioajjeobimgagajmlibd',
     'true,,Selenium IDE,mooikfkahbdckldjjndioackbalphokd',
     'true,,Send from Gmail (by Google),pgphcomnlaojlmmcjmiddhdapjpbgeoc',
@@ -200,6 +202,7 @@ WHERE
     'true,Wappalyzer,Wappalyzer - Technology profiler,gppongmhjkpfnbhagpmjfkannfbllamg',
     'true,,Windscribe - Free Proxy and Ad Blocker,hnmpcagpplmpfojmgmnngilcnanddlhb',
     'true,,WiseStamp email signature,pbcgnkmbeodkmiijjfnliicelkjfcldg',
+    'true,,writeGPT - ChatGPT Prompt Engineer Assistant,dflcdbibjghipieemcligeelbmackgco',
     'true,,Zoom Scheduler,kgjfgplpablkjnlkjmjdecgdpfankdle'
   )
 GROUP BY

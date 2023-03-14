@@ -199,6 +199,7 @@ WHERE
       '/bin/sh -c lsb_release -a --short',
       '/bin/sh -c ps ax -ww -o pid,ppid,uid,gid,args',
       '/bin/sh -c scutil --get ComputerName',
+      "/bin/sh -c defaults delete 'com.cisco.webexmeetingsapp'",
       '/bin/sh -c sysctl hw.model kern.osrelease',
       '/bin/sh /usr/bin/lsb_release -a',
       '/bin/sh /usr/bin/lsb_release -a --short',
@@ -243,6 +244,7 @@ WHERE
       'bash,0,kube-apiserver,containerd-shim-runc-v2',
       'bash,0,pia-daemon,launchd',
       'bash,0,udevadm,udevadm',
+      'sh,500,Meeting Center,launchd',
       'bash,500,com.docker.dev-envs,com.docker.backend',
       'bash,500,Foxit PDF Reader,launchd',
       'bash,500,gnome-session-binary,systemd',
@@ -274,6 +276,7 @@ WHERE
     OR p0_cmd LIKE '/bin/sh %/bin/gcloud%config config-helper%'
     OR p0_cmd LIKE '/bin/sh -c pkg-config %'
     OR p0_cmd LIKE '/bin/sh %/docker-credential-gcloud get'
+    OR p0_cmd LIKE '/bin/bash %git credential-osxkeychain get'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-open %'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings check %'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings get %'

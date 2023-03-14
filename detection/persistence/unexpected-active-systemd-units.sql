@@ -184,6 +184,7 @@ WHERE
         'livesys-late.service,SYSV: Late init script for live image.,,450',
         'livesys.service,LSB: Init script for live image.,,450',
         'lm_sensors.service,Hardware Monitoring Sensors,,225',
+        'lm-sensors.service,Initialize hardware monitoring sensors,,0',
         'lm_sensors.service,Initialize hardware monitoring sensors,,225',
         'local-fs-pre.target,Local File Systems (Pre),,225',
         'local-fs-pre.target,Preparation for Local File Systems,,450',

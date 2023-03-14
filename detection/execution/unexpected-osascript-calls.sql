@@ -83,6 +83,7 @@ WHERE
       p0_cmd IN ('osascript -e user locale of (get system info)')
       OR p0_cmd LIKE '%"CFBundleName" of property list file (app_path & ":Contents:Info.plist")'
       OR p0_cmd LIKE 'osascript -e set zoomStatus to "closed"%'
+      OR p0_cmd LIKE 'osascript -l JavaScript%com.elgato.StreamDeck%'
       OR p0_cmd LIKE 'osascript -e%tell application "System Preferences"%reveal anchor "shortcutsTab"%"com.apple.preference.keyboard"'
       OR p0_cmd LIKE 'osascript -e tell application "zoom.us"%'
       OR p0_cmd LIKE 'osascript -l JavaScript /tmp/PKInstallSandbox.%/Scripts/org.gpgtools.gpgmailloader.pkg.%/mailbundle-enabled.jxa -- GPGMailLoader.mailbundle'

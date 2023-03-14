@@ -116,7 +116,10 @@ WHERE
   )
   AND NOT (
     p0_name = 'polkit-agent-helper-1'
-    AND p1_path = '/usr/bin/gnome-shell'
+    AND p1_path IN (
+      '/usr/bin/gnome-shell',
+      '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1'
+    )
   )
   AND NOT (
     p0_name = 'fusermount3'
