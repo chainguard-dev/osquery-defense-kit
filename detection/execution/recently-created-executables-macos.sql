@@ -93,7 +93,8 @@ WHERE
       AND NOT path LIKE '/usr/local/Cellar/%'
       AND NOT path LIKE '/usr/local/kolide-k2/%'
       AND NOT path LIKE '%/.vscode/extensions/%'
-      GROUP BY path
+    GROUP BY
+      path
   )
   AND (p0.start_time - MAX(f.ctime, f.btime)) < 120
   AND f.ctime > 0
@@ -108,6 +109,8 @@ WHERE
     'Developer ID Application: CodeWeavers Inc. (9C6B7X7Z8E)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Objective-See, LLC (VBG97UB4TA)',
+    'Developer ID Application: Denver Technologies, Inc (2BBY89MBSN)',
+    'Developer ID Application: Parallels International GmbH (4C6364ACXT)',
     'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
@@ -145,9 +148,10 @@ WHERE
     AND p0.cmdline LIKE './%'
   )
   AND NOT (
-    p0.path LIKE '/Users/%/Library/Printers/EPSON%/Contents/MacOS/PrinterProxy'
+    p0.path LIKE '/Users/%/Library/Printers/%/Contents/MacOS/PrinterProxy'
     AND s.identifier = 'com.apple.print.PrinterProxy'
     AND s.authority = ''
+    AND p0.uid > 499
   )
 GROUP BY
   p0.pid

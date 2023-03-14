@@ -77,6 +77,11 @@ WHERE
     '.background',
     '.disk_label',
     '.keystone_install',
+    '.CFUserTextEncoding',
+    '.actrc',
+    '.angular-config.json',
+    '.bash_history',
+    '.bashrc',
     '.disk_label_2x',
     '.DS_Store',
     '.file',
@@ -103,6 +108,7 @@ WHERE
   AND trimpath NOT IN (
     '/Volumes/Google Chrome/.keystone_install',
     '/Volumes/Google Chrome Canary/.keystone_install',
+    '/Volumes/PMHOME_3601DL/PMH_INST.pkg',
     '/Volumes/Jabra Direct Setup/JabraDirectSetup.pkg'
   )
   AND trimpath NOT LIKE '/Volumes/JDK %/JDK %.pkg'

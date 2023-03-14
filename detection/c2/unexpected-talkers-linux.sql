@@ -79,7 +79,7 @@ WHERE
   AND NOT (
     s.remote_address LIKE '100.%'
     AND s.local_address LIKE '100.%'
-    AND exception_key = '32768,6,74,sshd,0u,0g,sshd'
+    AND exception_key = '32768,6,%,sshd,0u,0g,sshd'
   )
   AND NOT exception_key IN (
     '123,17,114,chronyd,0u,0g,chronyd',
@@ -94,6 +94,7 @@ WHERE
     '22,6,0,tailscaled,0u,0g,tailscaled',
     '22,6,500,cargo,0u,0g,cargo',
     '22,6,500,cargo,500u,500g,cargo',
+    '22,6,500,image-automation-controller,u,g,image-automatio',
     '22,6,500,netcat,0u,0g,nc',
     '22,6,500,ssh,0u,0g,ssh',
     '22,6,500,terraform,500u,500g,terraform',
@@ -101,6 +102,7 @@ WHERE
     '3000,6,500,chrome,0u,0g,chrome',
     '32768,6,0,tailscaled,0u,0g,tailscaled',
     '32768,6,500,ssh,0u,0g,ssh',
+    '3307,6,500,cloud_sql_proxy,0u,0g,cloud_sql_proxy',
     '3443,6,500,chrome,0u,0g,chrome',
     '3478,6,500,chrome,0u,0g,chrome',
     '3478,6,500,firefox,0u,0g,firefox',
@@ -144,6 +146,8 @@ WHERE
     '80,6,0,python3.10,0u,0g,yum',
     '80,6,0,python3.11,0u,0g,dnf',
     '80,6,0,python3.11,0u,0g,yum',
+    '80,6,0,python3.9,u,g,yum',
+    '80,6,0,systemd-hwdb,0u,0g,systemd-hwdb',
     '80,6,0,tailscaled,0u,0g,tailscaled',
     '80,6,0,.tailscaled-wrapped,0u,0g,.tailscaled-wra',
     '80,6,0,/usr/python2.7,u,g,yum',
@@ -161,6 +165,7 @@ WHERE
     '80,6,500,firefox,0u,0g,firefox',
     '80,6,500,firefox,0u,0g,.firefox-wrappe',
     '80,6,500,gnome-software,0u,0g,gnome-software',
+    '80,6,500,main,500u,500g,main',
     '80,6,500,mconvert,500u,500g,mconvert',
     '80,6,500,obs-browser-page,u,g,obs-browser-pag',
     '80,6,500,pacman,0u,0g,pacman',
@@ -238,7 +243,7 @@ WHERE
     AND s.protocol = 6
     AND p.euid > 500
   )
- AND NOT (
+  AND NOT (
     p.name = 'brave'
     AND f.filename = 'brave'
     AND s.remote_port > 3000

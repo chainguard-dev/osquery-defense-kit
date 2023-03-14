@@ -124,6 +124,7 @@ WHERE
     OR (
       INSTR(p0_cmd, 'history') > 0
       AND p0_cmd LIKE '%history'
+      AND p0_cmd NOT LIKE '% history'
     )
     OR p0_cmd LIKE '%echo%|%base64 --decode %|%'
     OR p0_cmd LIKE '%launchctl bootout%'
@@ -163,8 +164,12 @@ WHERE
       '/bin/launchctl bootout system/com.docker.socket',
       '/bin/rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
       'git history',
+      'chmod 0777 /Users/Shared/logitune',
       'nix profile history',
+      'helm history',
       'rm -f /tmp/mysql.sock',
+      'nc -h',
+      'nc -uv 8.8.8.8 53',
       '/Library/Apple/System/Library/StagedFrameworks/Safari/SafariShared.framework/XPCServices/com.apple.Safari.History.xpc/Contents/MacOS/com.apple.Safari.History',
       '/usr/bin/csrutil report',
       '/usr/bin/csrutil status',
@@ -179,6 +184,7 @@ WHERE
   AND NOT p0_cmd LIKE '-history%'
   AND NOT p0_cmd LIKE 'dirname %history'
   AND NOT p0_cmd LIKE '/bin/rm -f /tmp/periodic.%'
+  AND NOT p0_cmd LIKE '/bin/rm -f /tmp/nix-shell.%'
   AND NOT p0_cmd LIKE 'touch -r . /private/tmp/nix-build%'
   AND NOT p0_cmd LIKE '%GNU Libtool%touch -r%'
   AND NOT p0_cmd LIKE 'rm -f /tmp/locate%/_updatedb%'

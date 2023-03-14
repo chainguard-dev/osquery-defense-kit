@@ -99,6 +99,14 @@ WHERE
   )
   AND NOT (
     s.authority = ""
+    AND (
+      pe.path LIKE "/nix/store/%-nix-%/bin/nix-%"
+      OR pe.path LIKE "/private/var/folders/%/T/tmp.%/nix-installer"
+    )
+    AND p1.path = "/usr/bin/sudo"
+  )
+  AND NOT (
+    s.authority = ""
     AND p0_path LIKE "/opt/%/bin/socket_vmnet"
     AND p1_path IN ("/usr/bin/sudo", "/sbin/launchd")
   )

@@ -137,6 +137,7 @@ WHERE
     'gpg-agent,/usr/bin/gpg-agent,0,system.slice,packagekit.service,0755',
     'gpg-agent,/usr/bin/gpg-agent,0,user.slice,user-1000.slice,0755',
     'gssproxy,/usr/sbin/gssproxy,0,system.slice,gssproxy.service,0755',
+    'haproxy,/usr/sbin/haproxy,0,system.slice,haproxy.service,0755',
     'iio-sensor-prox,/usr/libexec/iio-sensor-proxy,0,system.slice,iio-sensor-proxy.service,0755',
     'irqbalance,/usr/sbin/irqbalance,0,system.slice,irqbalance.service,0755',
     'iwd,/usr/lib/iwd/iwd,0,system.slice,iwd.service,0755',

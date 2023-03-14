@@ -44,4 +44,4 @@ WHERE
     REPLACE(LOWER(TRIM(description)), " ", "-")
   ) == 1
   -- Common filenames that are non-controversial
-  AND NOT file.filename LIKE '%melange.rsa%'
+  AND NOT INSTR(file.filename, 'melange.rsa') > 0

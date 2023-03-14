@@ -125,12 +125,13 @@ WHERE
     'gopls',
     'grype',
     'idea',
-    'melange-run',
     'Install',
     'java',
     'jetbrains-toolb',
     'launcher',
     'limactl',
+    'melange-run',
+    'monorail',
     'nessusd',
     'ninja',
     'node',
@@ -150,6 +151,7 @@ WHERE
     'tracker-miner-f',
     'trivy',
     'trivy-db',
+    'unattended-upgr',
     'wineserver',
     'yum'
   )

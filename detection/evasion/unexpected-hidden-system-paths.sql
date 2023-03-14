@@ -82,6 +82,8 @@ WHERE
     '/tmp/.last_update_check.json',
     '/tmp/.last_survey_prompt.yaml',
     '/tmp/.Test-unix/',
+    '/tmp/.docker/',
+    '/tmp/.docker-tmp/',
     '/tmp/.vbox-t-ipc/',
     '/tmp/.X0-lock',
     '/tmp/.X11-unix/',

@@ -97,6 +97,7 @@ WHERE
     '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
     '~/Library/Application Support/dev.warp.Warp-Stable',
     '~/Library/Application Support/zoom.us/Plugins/aomhost.app/Contents/MacOS',
+    '~/.local/share/gh/extensions/gh-sbom',
     '~/.local/bin',
     '~/.magefile',
     '~/projects/go/bin'
@@ -140,6 +141,7 @@ WHERE
     '~/Library/Application Support/OpenLens',
     '~/Library/Caches/com.mimestream.Mimestream/',
     '~/Library/Caches/com.sempliva.Tiles/',
+    '~/Library/Caches/org.gpgtools.updater/',
     '~/Library/Caches/snyk/',
     '/Library/Developer/Xcode/',
     '~/.terraform.d/plugin-cache/registry.terraform.io/'

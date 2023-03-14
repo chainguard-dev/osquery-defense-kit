@@ -61,7 +61,12 @@ WHERE
     'zfs',
     'zypak-sandbox'
   )
-  AND NOT pp.name IN ('systemd-userdbd', 'crond', 'systemd')
+  AND NOT pp.name IN (
+    'systemd-userdbd',
+    'crond',
+    'systemd',
+    '(udev-worker)'
+  )
   AND NOT (
     p.name LIKE 'systemd-%'
     AND p.parent = 1
