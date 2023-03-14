@@ -241,6 +241,7 @@ FROM
           '/usr/bin/umount',
           '/usr/bin/vmware-user-suid-wrapper',
           '/usr/bin/vmware-user',
+          '/usr/libexec/libgtop_server2',
           '/usr/lib/mail-dotlock',
           '/usr/lib/xf86-video-intel-backlight-helper',
           '/usr/lib/Xorg.wrap',

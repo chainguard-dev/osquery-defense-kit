@@ -238,6 +238,13 @@ WHERE
     AND s.protocol = 6
     AND p.euid > 500
   )
+ AND NOT (
+    p.name = 'brave'
+    AND f.filename = 'brave'
+    AND s.remote_port > 3000
+    AND s.protocol = 6
+    AND p.euid > 500
+  )
   AND NOT (
     p.name = 'firefox'
     AND f.filename = 'firefox'
