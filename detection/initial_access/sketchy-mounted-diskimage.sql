@@ -73,7 +73,8 @@ WHERE
       AND signature.authority NOT IN (
         'Software Signing',
         'Developer ID Application: Atlassian Pty Ltd (UPXU4CQZ5P)',
-        'Developer ID Application: MacroMates Ltd. (45TL96F76G)'
+        'Developer ID Application: MacroMates Ltd. (45TL96F76G)',
+        'Developer ID Application: Logitech Inc. (QED4VVPZWA)'
       )
     ) -- Rule 3. App binaries with a numerical name, such as 2829030009 (Player_009.app)
     OR (
@@ -94,7 +95,7 @@ WHERE
         OR vol_name LIKE "%Update"
       )
       AND file.directory LIKE "/Volumes/%/Contents/MacOS"
-      AND signature.authority != "Logitech Inc. (QED4VVPZWA)"
+      AND signature.authority != "Developer ID Application: Logitech Inc. (QED4VVPZWA)"
     ) --   6. Volumes containing a hidden top-level folder or binary, such as yWnBJLaF (1302.app)
     OR (
       file.bsd_flags = "HIDDEN"
@@ -111,6 +112,7 @@ WHERE
     OR (
       file.symlink = 1
       AND magic.data != 'symbolic link to /Applications'
+      AND magic.data != 'symbolic link to /Applications/'
       AND magic.data NOT LIKE 'symbolic link to /Users/%/My Drive'
       AND magic.data NOT LIKE 'symbolic link to /Library/Application Support/Apple/Safari/SafariForWebKitDevelopment'
     )

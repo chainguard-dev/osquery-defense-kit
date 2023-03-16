@@ -64,7 +64,7 @@ WHERE
       AND NOT path LIKE '/usr/local/Cellar/%/bin/%'
       AND NOT (
         path LIKE '/Users/%/homebrew/Cellar/%'
-        AND name IN ('limactl', 'Python')
+        AND name IN ('limactl', 'Python', 'bash')
       )
       AND NOT (
         path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/com.elgato.cpu.sdPlugin/cpu'

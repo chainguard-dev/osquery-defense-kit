@@ -130,6 +130,7 @@ WHERE
     '/etc/smartmontools',
     '/etc/ssl/certs',
     '/etc/ssl/misc',
+    '/etc/vpl/vars.sh',
     '/etc/ssl/trust-source',
     '/etc/systemd/system',
     '/etc/systemd/system/graphical.target.wants',

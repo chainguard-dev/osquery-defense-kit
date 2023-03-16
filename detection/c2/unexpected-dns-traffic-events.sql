@@ -94,6 +94,7 @@ WHERE
   AND p.name != 'nessusd'
   -- Local DNS servers and custom clients go here
   -- Electron apps
+  AND p.path NOT LIKE '/private/var/folders/%/T/AppTranslocation/%/%.app/Contents/MacOS/% Helper'
   AND p.path NOT LIKE '/Applications/%.app/Contents/MacOS/% Helper'
   AND p.path NOT LIKE '/Volumes/Google Chrome/%.app/Contents/MacOS/% Helper'
   AND p.path NOT IN (

@@ -116,6 +116,7 @@ WHERE
     '53,6,500,dnsmasq',
     '5432,6,70,postgres',
     '546,17,500,dhcpcd',
+    '5355,6,500,systemd-resolve',
     '5556,6,500,dex',
     '5556,6,500,openshot-qt',
     '5558,6,500,dex',
