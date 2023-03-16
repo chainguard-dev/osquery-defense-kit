@@ -167,6 +167,7 @@ WHERE
     '80,6,500,gnome-software,0u,0g,gnome-software',
     '80,6,500,main,500u,500g,main',
     '80,6,500,mconvert,500u,500g,mconvert',
+    '80,6,500,melange,500u,500g,melange',
     '80,6,500,obs-browser-page,u,g,obs-browser-pag',
     '80,6,500,pacman,0u,0g,pacman',
     '80,6,500,python3.10,0u,0g,aws',

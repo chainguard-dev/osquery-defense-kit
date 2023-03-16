@@ -70,6 +70,7 @@ WHERE
     pe.cmdline LIKE '%chmod%777%'
     OR pe.cmdline LIKE '%chmod%700%'
     OR pe.cmdline LIKE '%chmod%755%'
+    OR pe.cmdline LIKE '%chmod +rwx%'
     OR pe.cmdline LIKE '%chmod +x%'
     OR pe.cmdline LIKE '%chmod u+x%'
   )

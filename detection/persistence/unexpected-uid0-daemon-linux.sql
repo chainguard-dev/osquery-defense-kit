@@ -22,6 +22,7 @@ SELECT
       "__VERSION__"
     ),
     ',',
+    -- This is intentionally not euid, as everything is euid 0
     p0.uid,
     ',',
     CONCAT (
@@ -176,6 +177,7 @@ WHERE
     'power-profiles-,/usr/lib/power-profiles-daemon,0,system.slice,power-profiles-daemon.service,0755',
     'pwrstatd,/usr/sbin/pwrstatd,0,system.slice,pwrstatd.service,0700',
     'rsyslogd,/usr/sbin/rsyslogd,0,system.slice,rsyslog.service,0755',
+    'runc,/usr/bin/runc,0,system.slice,docker.service,0755',
     'scdaemon,/usr/libexec/scdaemon,0,system.slice,packagekit.service,0755',
     'scdaemon,/usr/libexec/scdaemon,0,user.slice,user-1000.slice,0755',
     'sedispatch,/usr/sbin/sedispatch,0,system.slice,auditd.service,0755',

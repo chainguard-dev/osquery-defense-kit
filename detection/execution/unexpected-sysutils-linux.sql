@@ -5,8 +5,7 @@
 --
 -- platform: linux
 -- interval: 600
-SELECT
-  -- Child
+SELECT -- Child
   pe.path AS p0_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
@@ -46,14 +45,12 @@ SELECT
 FROM
   process_events pe,
   uptime
-  LEFT JOIN processes p ON pe.pid = p.pid
-  -- Parents (via two paths)
+  LEFT JOIN processes p ON pe.pid = p.pid -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
   LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
   LEFT JOIN process_events pe1 ON pe.parent = pe1.pid
   AND pe1.cmdline != ''
-  LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path
-  -- Grandparents (via 3 paths)
+  LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path -- Grandparents (via 3 paths)
   LEFT JOIN processes p1_p2 ON p1.parent = p1_p2.pid -- Current grandparent via parent processes
   LEFT JOIN processes pe1_p2 ON pe1.parent = pe1_p2.pid -- Current grandparent via parent events
   LEFT JOIN process_events pe1_pe2 ON pe1.parent = pe1_p2.pid
@@ -64,16 +61,23 @@ FROM
 WHERE
   pe.time > (strftime('%s', 'now') -600)
   AND pe.cmdline != ''
-  AND pe.path IN (
-    '/usr/bin/sysctl',
-    '/sbin/sysctl',
-    '/usr/sbin/sysctl',
-    '/usr/bin/chattr',
-    '/sbin/chattr',
-    '/usr/sbin/chattr',
-    '/usr/bin/setenforce',
-    '/sbin/setenforce',
-    '/usr/sbin/setenforce'
+  AND (
+    pe.path IN (
+      '/usr/bin/sysctl',
+      '/sbin/sysctl',
+      '/usr/sbin/sysctl',
+      '/usr/bin/chattr',
+      '/sbin/chattr',
+      '/usr/sbin/chattr',
+      '/usr/bin/setenforce',
+      '/sbin/setenforce',
+      '/usr/sbin/setenforce',
+      '/usr/bin/sqlite3'
+    ) -- Used by LaZagne, through the Platform library
+    OR (
+      pe.path IN ('/ur/bin/uname', '/bin/uname')
+      AND pe.cmdline LIKE '%uname -p'
+    )
   )
   AND p.parent > 0
 GROUP BY

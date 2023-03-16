@@ -43,6 +43,7 @@ WHERE
     'chezmoi',
     'clang-11',
     'code',
+    'abrt-action-per',
     'Code Helper (Renderer)',
     'Code - Insiders Helper (Renderer)',
     'collect2',

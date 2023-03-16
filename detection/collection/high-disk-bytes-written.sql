@@ -40,6 +40,7 @@ WHERE
     '/usr/bin/pacman',
     '/usr/bin/git',
     '/usr/bin/bash',
+    '/usr/bin/gnome-text-editor',
     '/usr/lib/baloo_file_extractor',
     '/usr/bin/bwrap',
     '/usr/bin/curl',
