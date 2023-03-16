@@ -105,7 +105,7 @@ WHERE
     OR p0_cmd LIKE '%iptables -P % ACCEPT%'
     OR p0_cmd LIKE '%iptables -F%'
     OR p0_cmd LIKE '%chattr -ia%'
-    OR p0_cmd LIKE '%chmod %777 %'
+    OR p0_cmd LIKE '%cat /dev/null%'
     OR (
       INSTR(p0_cmd, 'history') > 0
       AND p0_cmd LIKE '%history'
@@ -192,7 +192,6 @@ WHERE
   AND NOT p0_cmd LIKE 'modprobe --all%'
   AND NOT p0_cmd LIKE '%modprobe aufs'
   AND NOT p0_cmd LIKE '%touch -r /tmp/cc%.o %'
-  AND NOT p0_cmd LIKE '%chmod -R 777 /app/%'
   AND NOT p0_cmd LIKE '%modprobe overlay'
   AND NOT p0_cmd LIKE '%modprobe nf_nat_netbios_ns'
   AND NOT p0_cmd LIKE '%modprobe -va%'
