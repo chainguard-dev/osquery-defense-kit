@@ -22,7 +22,8 @@ SELECT
       "__VERSION__"
     ),
     ',',
-    p0.euid,
+    -- This is intentionally not euid, as everything is euid 0
+    p0.uid,
     ',',
     CONCAT (
       SPLIT (p0.cgroup_path, "/", 0),
