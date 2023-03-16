@@ -103,7 +103,7 @@ WHERE
     OR p0_name LIKE '%attack%' -- Unusual behaviors
     OR p0_cmd LIKE '%powershell%'
     OR p0_cmd LIKE '%chattr -ia%'
-    OR p0_cmd LIKE '%chmod%777 %'
+    OR p0_cmd LIKE '%cat /dev/null%'
     OR p0_cmd LIKE '%touch%acmr%'
     OR p0_cmd LIKE '%touch -r%'
     OR p0_cmd LIKE '%ld.so.preload%'
@@ -164,7 +164,6 @@ WHERE
       '/bin/launchctl bootout system/com.docker.socket',
       '/bin/rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
       'git history',
-      'chmod 0777 /Users/Shared/logitune',
       'nix profile history',
       'helm history',
       'rm -f /tmp/mysql.sock',
