@@ -155,6 +155,8 @@ WHERE
     '~/go/bin',
     '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
     '~/Library/Application Support/dev.warp.Warp-Stable',
+    '/Library/Application Support/Kandji/Kandji Menu/Kandji Menu.app/Contents/MacOS',
+    '/Library/Kandji/Kandji Agent.app/Contents/MacOS/',
     '/Library/Application Support/Logitech.localized/LogiOptionsPlus/logioptionsplus_agent.app/Contents/MacOS',
     '/Library/Application Support/Logitech.localized/Logitech Options.localized/LogiMgrUpdater.app/Contents/Resources',
     '/Library/Audio/Plug-Ins/HAL/ACE.driver/Contents/Resources',
