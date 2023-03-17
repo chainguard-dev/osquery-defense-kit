@@ -7,7 +7,7 @@
 --   * loads of them
 --
 -- tags: transient process events
--- platform: posix
+-- platform: darwin
 -- interval: 180
 SELECT
   IFNULL(REGEX_MATCH(TRIM(pe.cmdline), '.* (/.*)', 1), CONCAT(pe.cwd, '/', REGEX_MATCH(TRIM(pe.cmdline), '.* (.*)', 1))) AS f_path,
@@ -76,6 +76,8 @@ WHERE
   pe.pid IN (
     SELECT DISTINCT pid FROM process_events WHERE
     time > (strftime('%s', 'now') -180)
+    AND pe.status = 0
+    AND pe.parent > 0
     AND (
       cmdline LIKE '%chmod% 7%'
       OR cmdline LIKE '%chmod% +rwx%'
@@ -83,9 +85,6 @@ WHERE
       OR cmdline LIKE '%chmod% u+x%'
       OR cmdline LIKE '%chmod% a+x%'
     )
-    AND cmdline NOT LIKE 'chmod 777 /app/%'
-    AND cmdline NOT LIKE 'chmod 700 /tmp/apt-key-gpghome.%'
-    AND cmdline NOT LIKE 'chmod 700 /home/%/snap/%/%/.config'
     AND cmdline != 'chmod 0777 /Users/Shared/logitune'
   )
   AND f.type != 'directory'
