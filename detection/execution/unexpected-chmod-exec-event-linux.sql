@@ -7,10 +7,17 @@
 --   * loads of them
 --
 -- tags: transient process events
--- platform: posix
+-- platform: linux
 -- interval: 180
 SELECT
-  IFNULL(REGEX_MATCH(TRIM(pe.cmdline), '.* (/.*)', 1), CONCAT(pe.cwd, '/', REGEX_MATCH(TRIM(pe.cmdline), '.* (.*)', 1))) AS f_path,
+  IFNULL(
+    REGEX_MATCH (TRIM(pe.cmdline), '.* (/.*)', 1),
+    CONCAT (
+      pe.cwd,
+      '/',
+      REGEX_MATCH (TRIM(pe.cmdline), '.* (.*)', 1)
+    )
+  ) AS f_path,
   f.mode AS f_mode,
   f.type AS f_type,
   hash.sha256 AS f_hash,
@@ -20,7 +27,6 @@ SELECT
   TRIM(pe.cmdline) AS p0_cmd,
   pe.cwd AS p0_cwd,
   pe.pid AS p0_pid,
-  p.cgroup_path AS p0_cgroup,
   -- Parent
   pe.parent AS p1_pid,
   p1.cgroup_path AS p1_cgroup,
@@ -55,7 +61,14 @@ FROM
   process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid
   -- Wow, you can do that?
-  LEFT JOIN file f ON IFNULL(REGEX_MATCH(TRIM(pe.cmdline), '.* (/.*)', 1), CONCAT(pe.cwd, '/', REGEX_MATCH(TRIM(pe.cmdline), '.* (.*)', 1))) = f.path
+  LEFT JOIN file f ON IFNULL(
+    REGEX_MATCH (TRIM(pe.cmdline), '.* (/.*)', 1),
+    CONCAT (
+      pe.cwd,
+      '/',
+      REGEX_MATCH (TRIM(pe.cmdline), '.* (.*)', 1)
+    )
+  ) = f.path
   LEFT JOIN hash ON f.path = hash.path
   LEFT JOIN magic ON f.path = magic.path
   -- Parents (via two paths)
@@ -74,19 +87,29 @@ FROM
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
 WHERE
   pe.pid IN (
-    SELECT DISTINCT pid FROM process_events WHERE
-    time > (strftime('%s', 'now') -180)
-    AND (
-      cmdline LIKE '%chmod% 7%'
-      OR cmdline LIKE '%chmod% +rwx%'
-      OR cmdline LIKE '%chmod% +x%'
-      OR cmdline LIKE '%chmod% u+x%'
-      OR cmdline LIKE '%chmod% a+x%'
-    )
-    AND cmdline NOT LIKE 'chmod 777 /app/%'
-    AND cmdline NOT LIKE 'chmod 700 /tmp/apt-key-gpghome.%'
-    AND cmdline NOT LIKE 'chmod 700 /home/%/snap/%/%/.config'
-    AND cmdline != 'chmod 0777 /Users/Shared/logitune'
+    SELECT DISTINCT
+      pid
+    FROM
+      process_events
+    WHERE
+      time > (strftime('%s', 'now') -180)
+      AND pe.syscall = "execve"
+      AND (
+        cmdline LIKE '%chmod% 7%'
+        OR cmdline LIKE '%chmod% +rwx%'
+        OR cmdline LIKE '%chmod% +x%'
+        OR cmdline LIKE '%chmod% u+x%'
+        OR cmdline LIKE '%chmod% a+x%'
+      )
+      AND cmdline NOT LIKE 'chmod 777 /app/%'
+      AND cmdline NOT LIKE 'chmod 700 /tmp/apt-key-gpghome.%'
+      AND cmdline NOT LIKE 'chmod 700 /home/%/snap/%/%/.config'
   )
+  AND pe.syscall = "execve"
   AND f.type != 'directory'
-GROUP BY p0_pid
+  AND p1_cgroup NOT LIKE '/system.slice/docker-%'
+  AND p1_cgroup NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
+  AND p2_cgroup NOT LIKE '/system.slice/docker-%'
+  AND p2_cgroup NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
+GROUP BY
+  p0_pid
