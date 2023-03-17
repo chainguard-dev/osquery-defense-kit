@@ -283,7 +283,7 @@ WHERE
     '443,6,500,sample,com.apple.dt.SamplingTools.sample,Software Signing',
     '443,6,500,scorecard-darwin-amd64,,',
     '443,6,500,sdaudioswitch,sdaudioswitch,',
-    '443,6,500,sdaudioswitch,,'
+    '443,6,500,sdaudioswitch,,',
     '443,6,500,sdzoomplugin,,',
     '443,6,500,Signal Helper,org.whispersystems.signal-desktop.helper,Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR)',
     '443,6,500,Signal Helper (Renderer),org.whispersystems.signal-desktop.helper.Renderer,Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR)',
