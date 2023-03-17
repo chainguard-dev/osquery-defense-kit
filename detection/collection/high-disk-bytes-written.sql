@@ -5,33 +5,52 @@
 -- false positives:
 --   * Package managers
 --   * Backup software
+--   * Build tools
 --
 -- references:
 --   * https://attack.mitre.org/tactics/TA0009/ (Collection)
 --
 -- tags: transient process
 SELECT
-  p.name,
-  p.cgroup_path,
-  p.path,
-  p.pid,
-  p.cmdline,
-  p.on_disk,
-  p.parent,
-  p.start_time,
-  hash.sha256,
-  p.disk_bytes_written,
-  p.cwd,
-  (strftime('%s', 'now') - start_time) AS age,
-  disk_bytes_written / (strftime('%s', 'now') - start_time) AS bytes_per_second
+  -- WARNING: Writes to tmpfs are not reflected against this counter
+  p0.disk_bytes_written AS bytes_written,
+  (strftime('%s', 'now') - p0.start_time) AS age,
+  p0.disk_bytes_written / (strftime('%s', 'now') - p0.start_time) AS bytes_written_rate,
+  -- Child
+  p0.pid AS p0_pid,
+  p0.path AS p0_path,
+  p0.name AS p0_name,
+  p0.cgroup_path AS p0_cgroup,
+  p0.cmdline AS p0_cmd,
+  p0.cwd AS p0_cwd,
+  p0.euid AS p0_euid,
+  p0_hash.sha256 AS p0_sha256,
+  -- Parent
+  p0.parent AS p1_pid,
+  p1.path AS p1_path,
+  p1.name AS p1_name,
+  p1.euid AS p1_euid,
+  p1.cmdline AS p1_cmd,
+  p1_hash.sha256 AS p1_sha256,
+  -- Grandparent
+  p1.parent AS p2_pid,
+  p2.name AS p2_name,
+  p2.path AS p2_path,
+  p2.cmdline AS p2_cmd,
+  p2_hash.sha256 AS p2_sha256
 FROM
-  processes p
-  LEFT JOIN hash ON p.path = hash.path
+  processes p0
+  LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
+  LEFT JOIN processes p1 ON p0.parent = p1.pid
+  LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
+  LEFT JOIN processes p2 ON p1.parent = p2.pid
+  LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  bytes_per_second > 7500000
-  AND age > 30
-  AND pid > 2
-  AND p.path NOT IN (
+  -- On my Linux machine, creating a gzip archive clocks in at 6780210
+  bytes_written_rate > 4000000
+  AND age > 60
+  AND p0.pid > 2
+  AND p0.path NOT IN (
     '/bin/bash',
     '/bin-busybox',
     '/opt/homebrew/bin/qemu-system-aarch64',
@@ -67,41 +86,42 @@ WHERE
     '/usr/lib/flatpak-system-helper',
     '/usr/lib/systemd/systemd',
     '/usr/lib/systemd/systemd-journald',
+    '/opt/osquery/lib/osquery.app/Contents/MacOS/osqueryd',
     '/usr/sbin/screencapture'
   )
   AND NOT (
-    name LIKE 'jbd%/dm-%'
-    AND on_disk = -1
+    p0.name LIKE 'jbd%/dm-%'
+    AND p0.on_disk = -1
   )
   AND NOT (
-    name = 'bindfs'
-    AND cmdline LIKE 'bindfs -f -o fsname=%'
+    p0.name = 'bindfs'
+    AND p0.cmdline LIKE 'bindfs -f -o fsname=%'
   )
   AND NOT (
-    name = 'btrfs-transaction'
-    AND on_disk = -1
+    p0.name = 'btrfs-transaction'
+    AND p0.on_disk = -1
   )
   AND NOT (
-    name = 'kernel_task'
-    AND p.path = ''
-    AND parent IN (0, 1)
-    AND on_disk = -1
+    p0.name = 'kernel_task'
+    AND p0.path = ''
+    AND p0.parent IN (0, 1)
+    AND p0.on_disk = -1
   )
   AND NOT (
-    name = 'launchd'
-    AND p.path = '/sbin/launchd'
-    AND parent = 0
+    p0.name = 'launchd'
+    AND p0.path = '/sbin/launchd'
+    AND p0.parent = 0
   )
   AND NOT (
-    name = 'logd'
-    AND cmdline = '/usr/libexec/logd'
-    AND parent = 1
+    p0.name = 'logd'
+    AND p0.cmdline = '/usr/libexec/logd'
+    AND p0.parent = 1
   )
   AND NOT (
-    name = 'aptd'
-    AND cmdline = '/usr/bin/python3 /usr/sbin/aptd'
+    p0.name = 'aptd'
+    AND p0.cmdline = '/usr/bin/python3 /usr/sbin/aptd'
   )
-  AND NOT name IN (
+  AND NOT p0.name IN (
     'baloo_file_extr',
     'bwrap',
     'cargo',
@@ -131,6 +151,7 @@ WHERE
     'jetbrains-toolb',
     'launcher',
     'limactl',
+    'melange',
     'melange-run',
     'monorail',
     'nessusd',
@@ -156,14 +177,13 @@ WHERE
     'wineserver',
     'yum'
   )
-  AND p.path NOT LIKE '/Applications/%.app/Contents/%'
-  AND p.path NOT LIKE '/home/%/.local/share/Steam'
-  AND p.path NOT LIKE '/nix/store/%/bin/%sh'
-  AND p.path NOT LIKE '/nix/store/%/bin/nix'
-  AND p.path NOT LIKE '/System/Applications/%'
-  AND p.path NOT LIKE '/System/Library/%'
-  AND p.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
-  AND p.path NOT LIKE '/nix/store/%kolide-launcher-%/bin/launcher'
-  AND NOT cmdline LIKE '%/lib/gcloud.py components update'
-  AND NOT cgroup_path LIKE '/system.slice/docker-%'
-  AND NOT p.path = '/opt/osquery/lib/osquery.app/Contents/MacOS/osqueryd'
+  AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
+  AND p0.path NOT LIKE '/home/%/.local/share/Steam'
+  AND p0.path NOT LIKE '/nix/store/%/bin/%sh'
+  AND p0.path NOT LIKE '/nix/store/%/bin/nix'
+  AND p0.path NOT LIKE '/System/Applications/%'
+  AND p0.path NOT LIKE '/System/Library/%'
+  AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+  AND p0.path NOT LIKE '/nix/store/%kolide-launcher-%/bin/launcher'
+  AND NOT p0.cmdline LIKE '%/lib/gcloud.py components update'
+  AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
