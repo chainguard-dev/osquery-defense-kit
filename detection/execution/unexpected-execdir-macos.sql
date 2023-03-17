@@ -79,6 +79,8 @@ WHERE
     '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers.app/Contents/MacOS',
     '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateAgent.app/Contents/MacOS',
     '/Library/Printers/DYMO/Utilities',
+    '/Library/Kandji/Kandji Agent.app/Contents/MacOS/',
+    '/Library/Application Support/Kandji/Kandji Menu/Kandji Menu.app/Contents/MacOS',
     '/Library/PrivilegedHelperTools',
     '/Library/TeX/texbin',
     '/nix/store',

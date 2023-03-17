@@ -292,6 +292,7 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Keybase, Inc. (99229SGT5K)',
     'Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
+    'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: MacPaw Inc. (S8EX82NJP6)',
