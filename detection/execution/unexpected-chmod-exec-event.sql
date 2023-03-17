@@ -7,12 +7,16 @@
 --   * loads of them
 --
 -- tags: transient process events
--- platform: linux
--- interval: 300
+-- platform: posix
+-- interval: 180
 SELECT
+  IFNULL(REGEX_MATCH(TRIM(pe.cmdline), '.* (/.*)', 1), CONCAT(pe.cwd, '/', REGEX_MATCH(TRIM(pe.cmdline), '.* (.*)', 1))) AS f_path,
+  f.mode AS f_mode,
+  f.type AS f_type,
+  hash.sha256 AS f_hash,
+  magic.data AS f_magic,
   -- Child
   pe.path AS p0_path,
-  REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
   pe.cwd AS p0_cwd,
   pe.pid AS p0_pid,
@@ -50,6 +54,10 @@ SELECT
 FROM
   process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid
+  -- Wow, you can do that?
+  LEFT JOIN file f ON IFNULL(REGEX_MATCH(TRIM(pe.cmdline), '.* (/.*)', 1), CONCAT(pe.cwd, '/', REGEX_MATCH(TRIM(pe.cmdline), '.* (.*)', 1))) = f.path
+  LEFT JOIN hash ON f.path = hash.path
+  LEFT JOIN magic ON f.path = magic.path
   -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
   LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
@@ -65,15 +73,20 @@ FROM
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
 WHERE
-  pe.time > (strftime('%s', 'now') -300)
-  AND (
-    pe.cmdline LIKE '%chmod%777%'
-    OR pe.cmdline LIKE '%chmod%700%'
-    OR pe.cmdline LIKE '%chmod%755%'
-    OR pe.cmdline LIKE '%chmod +rwx%'
-    OR pe.cmdline LIKE '%chmod +x%'
-    OR pe.cmdline LIKE '%chmod u+x%'
+  pe.pid IN (
+    SELECT DISTINCT pid FROM process_events WHERE
+    time > (strftime('%s', 'now') -180)
+    AND (
+      cmdline LIKE '%chmod% 7%'
+      OR cmdline LIKE '%chmod% +rwx%'
+      OR cmdline LIKE '%chmod% +x%'
+      OR cmdline LIKE '%chmod% u+x%'
+      OR cmdline LIKE '%chmod% a+x%'
+    )
+    AND cmdline NOT LIKE 'chmod 777 /app/%'
+    AND cmdline NOT LIKE 'chmod 700 /tmp/apt-key-gpghome.%'
+    AND cmdline NOT LIKE 'chmod 700 /home/%/snap/firefox/%/.config'
+    AND cmdline != 'chmod 0777 /Users/Shared/logitune'
   )
-  AND p0_cmd NOT LIKE 'chmod 777 /app/%'
-  AND p0_cmd != 'chmod 0777 /Users/Shared/logitune'
+  AND f.type != 'directory'
 GROUP BY p0_pid
