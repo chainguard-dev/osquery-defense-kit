@@ -85,7 +85,7 @@ WHERE
     )
     AND cmdline NOT LIKE 'chmod 777 /app/%'
     AND cmdline NOT LIKE 'chmod 700 /tmp/apt-key-gpghome.%'
-    AND cmdline NOT LIKE 'chmod 700 /home/%/snap/firefox/%/.config'
+    AND cmdline NOT LIKE 'chmod 700 /home/%/snap/%/%/.config'
     AND cmdline != 'chmod 0777 /Users/Shared/logitune'
   )
   AND f.type != 'directory'
