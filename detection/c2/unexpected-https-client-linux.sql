@@ -216,6 +216,7 @@ WHERE protocol IN (6, 17)
     '500,signal-desktop,u,g,signal-desktop',
     '500,slack,0u,0g,slack',
     '500,slack,u,g,slack',
+    '500,k6,500u,500g,k6',
     '500,slirp4netns,0u,0g,slirp4netns',
     '500,slirp4netns,500u,500g,slirp4netns',
     '500,snap-store,0u,0g,snap-store',
