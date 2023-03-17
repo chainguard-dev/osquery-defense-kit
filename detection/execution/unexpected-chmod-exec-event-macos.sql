@@ -10,7 +10,14 @@
 -- platform: darwin
 -- interval: 180
 SELECT
-  IFNULL(REGEX_MATCH(TRIM(pe.cmdline), '.* (/.*)', 1), CONCAT(pe.cwd, '/', REGEX_MATCH(TRIM(pe.cmdline), '.* (.*)', 1))) AS f_path,
+  IFNULL(
+    REGEX_MATCH (TRIM(pe.cmdline), '.* (/.*)', 1),
+    CONCAT (
+      pe.cwd,
+      '/',
+      REGEX_MATCH (TRIM(pe.cmdline), '.* (.*)', 1)
+    )
+  ) AS f_path,
   f.mode AS f_mode,
   f.type AS f_type,
   hash.sha256 AS f_hash,
@@ -20,17 +27,14 @@ SELECT
   TRIM(pe.cmdline) AS p0_cmd,
   pe.cwd AS p0_cwd,
   pe.pid AS p0_pid,
-  p.cgroup_path AS p0_cgroup,
   -- Parent
   pe.parent AS p1_pid,
-  p1.cgroup_path AS p1_cgroup,
   TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
   COALESCE(p1.path, pe1.path) AS p1_path,
   COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
   REGEX_MATCH (COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
   -- Grandparent
   COALESCE(p1.parent, pe1.parent) AS p2_pid,
-  COALESCE(p1_p2.cgroup_path, pe1_p2.cgroup_path) AS p2_cgroup,
   TRIM(
     COALESCE(p1_p2.cmdline, pe1_p2.cmdline, pe1_pe2.cmdline)
   ) AS p2_cmd,
@@ -55,7 +59,14 @@ FROM
   process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid
   -- Wow, you can do that?
-  LEFT JOIN file f ON IFNULL(REGEX_MATCH(TRIM(pe.cmdline), '.* (/.*)', 1), CONCAT(pe.cwd, '/', REGEX_MATCH(TRIM(pe.cmdline), '.* (.*)', 1))) = f.path
+  LEFT JOIN file f ON IFNULL(
+    REGEX_MATCH (TRIM(pe.cmdline), '.* (/.*)', 1),
+    CONCAT (
+      pe.cwd,
+      '/',
+      REGEX_MATCH (TRIM(pe.cmdline), '.* (.*)', 1)
+    )
+  ) = f.path
   LEFT JOIN hash ON f.path = hash.path
   LEFT JOIN magic ON f.path = magic.path
   -- Parents (via two paths)
@@ -74,18 +85,23 @@ FROM
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
 WHERE
   pe.pid IN (
-    SELECT DISTINCT pid FROM process_events WHERE
-    time > (strftime('%s', 'now') -180)
-    AND pe.status = 0
-    AND pe.parent > 0
-    AND (
-      cmdline LIKE '%chmod% 7%'
-      OR cmdline LIKE '%chmod% +rwx%'
-      OR cmdline LIKE '%chmod% +x%'
-      OR cmdline LIKE '%chmod% u+x%'
-      OR cmdline LIKE '%chmod% a+x%'
-    )
-    AND cmdline != 'chmod 0777 /Users/Shared/logitune'
+    SELECT DISTINCT
+      pid
+    FROM
+      process_events
+    WHERE
+      time > (strftime('%s', 'now') -180)
+      AND pe.status = 0
+      AND pe.parent > 0
+      AND (
+        cmdline LIKE '%chmod% 7%'
+        OR cmdline LIKE '%chmod% +rwx%'
+        OR cmdline LIKE '%chmod% +x%'
+        OR cmdline LIKE '%chmod% u+x%'
+        OR cmdline LIKE '%chmod% a+x%'
+      )
+      AND cmdline != 'chmod 0777 /Users/Shared/logitune'
   )
   AND f.type != 'directory'
-GROUP BY p0_pid
+GROUP BY
+  p0_pid
