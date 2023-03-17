@@ -102,15 +102,16 @@ WHERE
     OR p0_name LIKE '%pwn%'
     OR p0_name LIKE '%attack%' -- Unusual behaviors
     OR p0_cmd LIKE '%powershell%'
-    OR p0_cmd LIKE '%chattr -ia%'
-    OR p0_cmd LIKE '%cat /dev/null%'
+    OR p0_cmd LIKE '%chattr -i%'
+    OR p0.cmdline LIKE '%dd if=/dev/%'
+    OR p0_cmd LIKE '%cat /dev/null >%'
+    OR p0_cmd LIKE '%truncate -s0 %'
     OR p0_cmd LIKE '%touch%acmr%'
     OR p0_cmd LIKE '%touch -r%'
     OR p0_cmd LIKE '%ld.so.preload%'
     OR p0_cmd LIKE '%urllib.urlopen%'
     OR p0_cmd LIKE '%nohup%tmp%'
     OR p0_cmd LIKE '%killall Terminal%'
-    OR p0_cmd LIKE '%iptables stop'
     OR (
       pe.euid = 0
       AND (

@@ -195,6 +195,7 @@ WHERE protocol IN (6, 17)
     '500,pacman,0u,0g,pacman',
     '500,php8.1,0u,0g,php',
     '500,pingsender,0u,0g,pingsender',
+    '500,packer-plugin-proxmox_v1.1.2_x5.0_linux_amd64,500u,500g,packer-plugin-p',
     '500,promoter,500u,500g,promoter',
     '500,publish-release,500u,500g,publish-release',
     '500,python3,0u,0g,python3',

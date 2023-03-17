@@ -91,6 +91,7 @@ WHERE
         INSTR(p.cmdline, '%Socket.%') > 0
         AND NOT p.name IN ('cc1', 'compile', 'cmake', 'cc1plus')
       )
+      OR p.cmdline LIKE '%dd if=/dev/%'
   )
   AND NOT (
     p0.cmdline LIKE '%UserKnownHostsFile=/dev/null%'

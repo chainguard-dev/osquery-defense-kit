@@ -119,6 +119,7 @@ WHERE
   AND host NOT IN (
     'balsamiq.com',
     'brave.com',
+    'rancherdesktop.io',
     'discord.com',
     'dl.discordapp.net',
     'dl.google.com',

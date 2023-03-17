@@ -45,6 +45,7 @@ WHERE
   AND NOT p.path IN (
     '',
     '/opt/google/chrome/chrome',
+    '/usr/bin/packer',
     '/opt/google/chrome/chrome_crashpad_handler',
     '/opt/google/chrome/nacl_helper',
     '/usr/bin/gnome-software',

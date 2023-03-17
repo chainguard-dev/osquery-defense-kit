@@ -102,10 +102,14 @@ WHERE
     OR p0_name LIKE '%attack%'
     -- Unusual behaviors
     OR p0_cmd LIKE '%ufw disable%'
+    OR p0_cmd LIKE '%iptables stop'
+    OR p0_cmd LIKE '%setenforce 0'
     OR p0_cmd LIKE '%iptables -P % ACCEPT%'
     OR p0_cmd LIKE '%iptables -F%'
-    OR p0_cmd LIKE '%chattr -ia%'
-    OR p0_cmd LIKE '%cat /dev/null%'
+    OR p0_cmd LIKE '%chattr -i%'
+    OR p0_cmd LIKE '%dd if=/dev/%'
+    OR p0_cmd LIKE '%cat /dev/null >%'
+    OR p0_cmd LIKE '%truncate -s0 %'
     OR (
       INSTR(p0_cmd, 'history') > 0
       AND p0_cmd LIKE '%history'
@@ -116,7 +120,6 @@ WHERE
     OR p0_cmd LIKE '%ld.so.preload%'
     OR p0_cmd LIKE '%urllib.urlopen%'
     OR p0_cmd LIKE '%nohup%tmp%'
-    OR p0_cmd LIKE '%iptables stop'
     OR p0_cmd LIKE '%systemctl stop firewalld%'
     OR p0_cmd LIKE '%systemctl disable firewalld%'
     OR p0_cmd LIKE '%pkill -f%'
@@ -197,7 +200,6 @@ WHERE
   AND NOT p0_cmd LIKE '%modprobe -va%'
   AND NOT p0_cmd LIKE 'pkill -f cut -c3%'
   AND NOT p0_cmd LIKE 'tail /%history'
-  AND NOT p0_cmd LIKE '%/usr/bin/cmake%Socket.cpp'
-  AND NOT p0_cmd LIKE '%/usr/bin/cmake%Socket.h'
+  AND NOT p0_cmd LIKE '%/usr/bin/cmake%Socket%'
   AND NOT p0_name IN ('ar', 'cc1', 'compile', 'cmake', 'cc1plus')
   AND NOT exception_key IN ('bash,500,ninja,bash')
