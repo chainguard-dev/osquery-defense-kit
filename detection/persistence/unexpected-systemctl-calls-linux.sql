@@ -94,6 +94,7 @@ WHERE
     'systemctl is-enabled systemd-rfkill.service',
     'systemctl is-enabled systemd-rfkill.socket',
     'systemctl is-enabled tlp.service',
+    'systemctl restart NetworkManager.service',
     'systemctl kill -s HUP rsyslog.service',
     'systemctl -p LoadState show cups.service',
     'systemctl -q is-enabled whoopsie',

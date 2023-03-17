@@ -81,11 +81,11 @@ WHERE -- Known attack scripts
     OR p0.cmdline LIKE '%traitor%'
     OR p0.cmdline LIKE '%msfvenom%' -- Unusual behaviors
     OR p0.cmdline LIKE '%ufw disable%'
+    OR p0.cmdline LIKE '%dd if=/dev/%'
     OR p0.cmdline LIKE '%iptables -P % ACCEPT%'
     OR p0.cmdline LIKE '%iptables -F%'
     OR p0.cmdline LIKE '%chattr -ia%'
     OR p0.cmdline LIKE '%chflags uchg%'
-    OR p0.cmdline LIKE '%chmod 777 %'
     OR p0.cmdline LIKE '%bpftool%'
     OR p0.cmdline LIKE '%touch%acmr%'
     OR p0.cmdline LIKE '%ld.so.preload%'
