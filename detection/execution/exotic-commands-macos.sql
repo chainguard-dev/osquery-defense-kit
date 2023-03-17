@@ -94,12 +94,12 @@ WHERE
       OR p.cmdline LIKE '%dd if=/dev/%'
   )
   AND NOT (
-    p0.cmdline LIKE '%UserKnownHostsFile=/dev/null%'
+    p0_cmd LIKE '%UserKnownHostsFile=/dev/null%'
     AND p1.name == 'limactl'
   )
   AND NOT (
-    p0.cmdline LIKE '%sh -i'
-    AND p1.cmdline LIKE '%pipenv shell'
+    p0_cmd LIKE '%sh -i'
+    AND p1_cmd LIKE '%pipenv shell'
   )
   AND NOT p0_cmd IN ('pkill -f Jabra Direct')
 GROUP BY
