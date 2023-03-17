@@ -28,8 +28,6 @@ WHERE
   )
   AND file.filename NOT IN ('.', '..')
   AND exception_key NOT IN (
-    '/etc/ld.so.conf.d/zz_x32-biarch-compat.conf,0644,58,af55087d2769067a6a7c9069fd70f9ac2adb0e0ae29bfbd4e9df7504396c9bf2',
-    '/etc/ld.so.conf.d/zz_i386-biarch-compat.conf,0644,56,4e3c617050427d51497a0e5969b0159421580cf5e7c9649e39f45b5e2fcb47b6',
     '/etc/ld.so.conf,0644,117,dad04a370e488aa85fb0a813a5c83cf6fd981ce01883fc59685447b092de84b5',
     '/etc/ld.so.conf,0644,28,239c865e4c0746a01f82b03d38d620853bab2a2ba8e81d6f5606c503e0ea379f',
     '/etc/ld.so.conf,0644,34,d4b198c463418b493208485def26a6f4c57279467b9dfa491b70433cedb602e8',
@@ -42,6 +40,10 @@ WHERE
     '/etc/ld.so.conf.d/fakeroot-x86_64-linux-gnu.conf,0644,38,af7edc777dd224bade078ba540538444db69856533c02e18a7f9fbbdd23bd181',
     '/etc/ld.so.conf.d/gds-11-8.conf,0644,46,2b48cb0abd03ff1d8926eca02a71540f4ee00ebccad5515e4d28a542dae8438a',
     '/etc/ld.so.conf.d/i386-linux-gnu.conf,0644,168,023231b8d6d21a7f4b1a59b875576604395041c814c0fd640d4a1d3d29455e6a',
+    '/etc/ld.so.conf.d/intel-oneapi-compiler-dpcpp-cpp-runtime.conf,0644,92,c4f62f0bfed45e548755c60b5e012e79c9062bb2a993c041db661951eb994476',
+    '/etc/ld.so.conf.d/intel-oneapi-compiler-shared-runtime.conf,0644,157,0b4a1c81fcab2d345f99e0187f29cf28f085ae67bf42c86d7b509c06b345186e',
+    '/etc/ld.so.conf.d/intel-oneapi-openmp.conf,0644,155,76736fa4deb3f3f4a7a96a068eb01b610faf9492814d47d36b3acbc1b4fb9fd3',
+    '/etc/ld.so.conf.d/intel-oneapi-tbb.conf,0644,48,ab4d154371df8bf81c4fd8f079137994c5c9a60f43bef4132e6ffcbfbb08e99d',
     '/etc/ld.so.conf.d/kernel-3.10.0-1160.83.1.el7.x86_64.conf,0444,63,37cb41e22b4cb69bb7b8652111c59d3d07b6522ac1f4a635e794ca7eaf411dd7',
     '/etc/ld.so.conf.d/kernel-3.10.0-1160.el7.x86_64.conf,0444,63,37cb41e22b4cb69bb7b8652111c59d3d07b6522ac1f4a635e794ca7eaf411dd7',
     '/etc/ld.so.conf.d/lib32-glibc.conf,0644,11,c27424154a6096ae32c0824b785e05de6acef33d9224fd6147d1936be9b4962b',
@@ -54,5 +56,7 @@ WHERE
     '/etc/ld.so.conf.d/perf.conf,0644,14,c67f871bdc72182dc75c160b16ca3b5371fdab76a27199a29f14b52a5aed1d3f',
     '/etc/ld.so.conf.d/pipewire-jack-x86_64.conf,0644,30,cf4cb69feaa8ec8b99558c4e1123518831b3c56488981cbc34a662fe218ef221',
     '/etc/ld.so.conf.d/tix-x86_64.conf,0644,18,b2ef4843990ded5fd96e417fc08027a785fac59bd70eca6a26dd7b057542273a',
-    '/etc/ld.so.conf.d/x86_64-linux-gnu.conf,0644,100,f03e4740e6922b4f4a1181cd696b52f62f9f10d003740a8940f7121795c59c98'
+    '/etc/ld.so.conf.d/x86_64-linux-gnu.conf,0644,100,f03e4740e6922b4f4a1181cd696b52f62f9f10d003740a8940f7121795c59c98',
+    '/etc/ld.so.conf.d/zz_i386-biarch-compat.conf,0644,56,4e3c617050427d51497a0e5969b0159421580cf5e7c9649e39f45b5e2fcb47b6',
+    '/etc/ld.so.conf.d/zz_x32-biarch-compat.conf,0644,58,af55087d2769067a6a7c9069fd70f9ac2adb0e0ae29bfbd4e9df7504396c9bf2'
   )
