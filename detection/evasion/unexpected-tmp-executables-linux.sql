@@ -68,6 +68,9 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '%/kots/%'
           OR file.path LIKE "%/lib/%.so"
           OR file.path LIKE "%/lib/%.so.%"
+          OR file.path LIKE "%/melange%"
+          OR file.path LIKE "%/bin/busybox"
+          OR file.path LIKE "%/bin/bash"
           OR file.path LIKE '%/pdf-tools/%'
           OR file.path LIKE '%-release%/%'
           OR file.path LIKE '%/site-packages/markupsafe/_speedups.cpython-%'
@@ -144,6 +147,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         "JSON data"
       )
       OR magic.data LIKE "Unicode text%"
+      OR magic.data LIKE "ELF 64-bit LSB shared object,%"
       OR magic.data LIKE "gzip compressed data%" -- Exotic platforms
       OR magic.data LIKE 'ELF 64-bit MSB pie executable, IBM S/390%'
       OR magic.data LIKE 'ELF 32-bit LSB pie executable, ARM, EABI5%'

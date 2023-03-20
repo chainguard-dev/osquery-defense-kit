@@ -187,6 +187,7 @@ WHERE
     '80,6,500,steam,500u,500g,steam',
     '80,6,500,steamwebhelper,500u,500g,steamwebhelper',
     '80,6,500,terraform,500u,500g,terraform',
+    '80,6,500,terraform,0u,0g,terraform',
     '80,6,500,thunderbird,0u,0g,thunderbird',
     '80,6,500,thunderbird,u,g,thunderbird',
     '80,6,500,WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
@@ -195,10 +196,12 @@ WHERE
     '80,6,500,zoom.real,u,g,zoom.real',
     '8080,6,500,brave,0u,0g,brave',
     '8080,6,500,chrome,0u,0g,chrome',
+    '32768,17,500,traceroute,0u,0g,traceroute',
     '8080,6,500,firefox,0u,0g,firefox',
     '8080,6,500,python3.11,0u,0g,speedtest-cli',
     '8080,6,500,speedtest,500u,500g,speedtest',
     '8443,6,500,chrome,0u,0g,chrome',
+    '587,6,500,thunderbird,0u,0g,thunderbird',
     '8443,6,500,firefox,0u,0g,firefox',
     '8801,17,500,zoom,0u,0g,zoom',
     '8801,17,500,zoom.real,u,g,zoom.real',
@@ -209,6 +212,7 @@ WHERE
     '993,6,500,thunderbird,u,g,thunderbird',
     '9999,6,500,firefox,0u,0g,firefox'
   )
+  AND NOT exception_key LIKE '80,6,500,ZwiftAppMetal,ZwiftAppMetal-%,'
   AND NOT (
     p.name = 'java'
     AND p.cmdline LIKE '/home/%/.local/share/JetBrains/Toolbox/%'

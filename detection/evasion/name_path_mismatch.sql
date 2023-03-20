@@ -89,6 +89,8 @@ WHERE
     "0,udevadm,systemd-udevd",
     "125,systemd,(sd-pam)",
     "42,systemd,(sd-pam)",
+    "120,systemd,(sd-pam)",
+    "127,systemd,(sd-pam)",
     "0,udevadm,(udev-worker)",
     "500,plugin-container,MainThread",
     "500,gjs-console,gnome-character",

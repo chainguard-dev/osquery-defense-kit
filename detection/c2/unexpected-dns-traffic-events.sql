@@ -101,6 +101,7 @@ WHERE
     '/Library/Nessus/run/sbin/nessusd',
     '/opt/google/chrome/chrome',
     '/usr/bin/apko',
+    '/sbin/apk',
     '/System/Volumes/Preboot/Cryptexes/Incoming/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking',
     '/usr/lib/systemd/systemd-resolved'
   )

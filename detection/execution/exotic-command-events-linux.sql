@@ -187,7 +187,7 @@ WHERE
       OR p0_cmd LIKE 'mkfifo -- /var/folders/%/T//p10k.worker.501.%.fifo'
     )
   )
-  AND NOT p0_cmd IN ('lsmod')
+  AND NOT p0_cmd IN ('lsmod', 'dd if=/dev/stdin conv=unblock cbs=79')
   AND NOT p0_cmd LIKE 'dirname %history'
   AND NOT p0_cmd LIKE 'find . -executable -type f -name %grep -l GNU Libtool%touch -r%'
   AND NOT p0_cmd LIKE 'modinfo -k%'

@@ -61,6 +61,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '%/dist/%'
           OR file.path LIKE '%/etc/network/if-up.d/%'
           OR file.path LIKE '%/flow/%.npmzS_cacachezStmpzSgit-clone%'
+          OR file.path LIKE '/tmp/GoLand/___Test%.test'
           OR file.path LIKE '%/git/%'
           OR file.path LIKE '%/github/%'
           OR file.path LIKE '%/go.%.sum'

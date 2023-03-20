@@ -285,6 +285,7 @@ WHERE
     '443,6,500,sdaudioswitch,sdaudioswitch,',
     '443,6,500,sdaudioswitch,,',
     '443,6,500,sdzoomplugin,,',
+    '443,6,307,curl,curl,',
     '443,6,500,Signal Helper,org.whispersystems.signal-desktop.helper,Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR)',
     '443,6,500,Signal Helper (Renderer),org.whispersystems.signal-desktop.helper.Renderer,Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR)',
     '443,6,500,Signal,org.whispersystems.signal-desktop,Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR)',
@@ -304,6 +305,7 @@ WHERE
     '443,6,500,trivy,a.out,',
     '443,6,500,TwitchStudioStreamDeck,TwitchStudioStreamDeck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     '443,6,500,vegeta,a.out,',
+    '443,6,0,kandji-daemon,kandji-daemon,Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
     '443,6,500,vim,vim,',
     '443,6,500,wolfictl,a.out,',
     '443,6,500,zoom.us,us.zoom.xos,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
@@ -325,9 +327,9 @@ WHERE
     '9418,6,500,git,com.apple.git,Software Signing'
   )
   AND NOT exception_key LIKE '443,6,500,java,com.oracle.java.%.java,Developer ID Application: Oracle America, Inc. (VB5E2TV963)'
-  -- Steam uses ports in the 27xxx range
   AND NOT exception_key LIKE '27%,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)'
-  -- There are many signing hashes for git
+  AND NOT exception_key LIKE '443,6,500,ZwiftAppMetal,ZwiftAppMetal-%,%'
+  AND NOT exception_key LIKE '80,6,500,ZwiftAppMetal,ZwiftAppMetal-%,%'
   AND NOT exception_key LIKE '443,6,500,git-remote-http,git-remote-http-%'
   AND NOT exception_key LIKE '443,6,500,cargo,cargo-%'
   -- aws

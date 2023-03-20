@@ -7,8 +7,7 @@
 --   * Almost unlimited: any extension that isn't on your whitelist
 --
 -- tags: persistent seldom browser
-SELECT
-  name,
+SELECT name,
   profile,
   chrome_extensions.description AS 'descr',
   persistent AS persists,
@@ -29,13 +28,11 @@ SELECT
     identifier
   ) AS exception_key,
   hash.sha256
-FROM
-  users
+FROM users
   CROSS JOIN chrome_extensions USING (uid)
   LEFT JOIN file ON chrome_extensions.path = file.path
   LEFT JOIN hash ON chrome_extensions.path = hash.path
-WHERE
-  (
+WHERE (
     -- These extensions need the most review.
     from_webstore != 'true'
     OR perms LIKE '%google.com%'
@@ -49,17 +46,18 @@ WHERE
   )
   AND enabled = 1
   AND exception_key NOT IN (
+    -- Deprecated Google Extension
     'false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,',
     'false,,base64 encode or decode selected text,',
-    'false,,Google Chat,chfbpgnooceecdoohagngmjnndbbaeip', -- Deprecated Google Extension
-    'false,,Google Chat,mdpkiolbdkhdjpekfbkbmhigcaggjagi', -- Deprecated Google Extension
-    'false,,Google Cloud,gmdcbpephenfeelhagpbceidhdbobfpk', -- Deprecated Google Extension
-    'false,,Google Drive,aghbiahbpaijignceidepookljebhfak', -- Deprecated Google Extension
-    'false,,Google Photos,ncmjhecbjeaamljdfahankockkkdmedg', -- Deprecated Google Extension
+    'false,,Google Chat,chfbpgnooceecdoohagngmjnndbbaeip',
+    'false,,Google Chat,mdpkiolbdkhdjpekfbkbmhigcaggjagi',
+    'false,,Google Cloud,gmdcbpephenfeelhagpbceidhdbobfpk',
+    'false,,Google Drive,aghbiahbpaijignceidepookljebhfak',
+    'false,,Google Photos,ncmjhecbjeaamljdfahankockkkdmedg',
     'false,julienv3@gmail.com,treasure-clicker,',
     'false,juverm@chainguard.dev,auto-close-gitsign,',
     'false,,Trotto go links,nkeoojidblilnkcbbmfhaeebndapehjk',
-    'false,,YouTube,agimnkijcaahngcdmfeangaknmldooml', -- Deprecated Google Extension
+    'false,,YouTube,agimnkijcaahngcdmfeangaknmldooml',
     'true,Adaware,Safe Torrent Scanner,aegnopegbbhjeeiganiajffnalhlkkjb',
     'true,,Adblock for Youtube™,cmedhionkhpnakcndndgjdbohmhepckk',
     'true,Adblock, Inc.,AdBlock — best ad blocker,gighmmpiobklfepjocnamgkkbiglidom',
@@ -180,6 +178,7 @@ WHERE
     'true,,Simple Tab Sorter,cgfpgnepljlgenjclbekbjdlgcodfmjp',
     'true,,Slack,jeogkiiogjbmhklcnbgkdcjoioegiknm',
     'true,,SSH for Google Cloud Platform,ojilllmhjhibplnppnamldakhpmdnibd',
+    'true,stefanXO,Tab Manager Plus for Chrome,cnkdjjdmfiffagllbiiilooaoofcoeff',
     'true,,Super Dark Mode,nlgphodeccebbcnkgmokeegopgpnjfkc',
     'true,,Superhuman,dcgcnpooblobhncpnddnhoendgbnglpn',
     'true,,Tabli,igeehkedfibbnhbfponhjjplpkeomghi',
@@ -205,5 +204,4 @@ WHERE
     'true,,writeGPT - ChatGPT Prompt Engineer Assistant,dflcdbibjghipieemcligeelbmackgco',
     'true,,Zoom Scheduler,kgjfgplpablkjnlkjmjdecgdpfankdle'
   )
-GROUP BY
-  exception_key
+GROUP BY exception_key

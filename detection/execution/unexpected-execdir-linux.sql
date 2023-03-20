@@ -48,7 +48,7 @@ WHERE
       AND path != ""
       AND REGEX_MATCH (
         path,
-        "^(/bin/|/app/|/usr/share/teams/resources/|/sbin/|/usr/bin/|/usr/lib/|/usr/share/spotify-client/|/usr/lib64/|/usr/libexec|/usr/sbin/|/usr/share/code/|/home/|/nix/store/|/opt/|/snap/|/var/lib/snapd/snap/|/tmp/go-build|/usr/local/)",
+        "^(/bin/|/app/|/usr/share/teams/resources/|/home/build/|/sbin/|/usr/bin/|/usr/lib/|/usr/share/spotify-client/|/usr/lib64/|/usr/libexec|/usr/sbin/|/usr/share/code/|/home/|/nix/store/|/opt/|/snap/|/var/lib/snapd/snap/|/tmp/go-build|/usr/local/)",
         1
       ) IS NULL -- Docker
       AND NOT path LIKE '/tmp/%/osqtool'

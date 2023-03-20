@@ -45,7 +45,6 @@ WHERE
     'gdm-session-wor',
     'gdm-x-session',
     'gpg-agent',
-    'Xorg',
     'modprobe',
     'nginx',
     'osqueryi',
@@ -58,6 +57,8 @@ WHERE
     'systemd-udevd',
     'systemd-userdbd',
     'systemd-userwor',
+    '(udev-worker)',
+    'Xorg',
     'zfs',
     'zypak-sandbox'
   )

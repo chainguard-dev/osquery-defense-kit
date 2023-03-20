@@ -147,6 +147,7 @@ WHERE
         'fstrim.service,Discard unused blocks on filesystems from /etc/fstab,,225',
         'fstrim.timer,Discard unused blocks once a week,,225',
         'fwupd-refresh.service,Refresh fwupd metadata and update motd,fwupd-refresh,225',
+        'fwupd-refresh.service,Refresh fwupd metadata and update motd,fwupd-refresh,450',
         'fwupd-refresh.timer,Refresh fwupd metadata regularly,,0',
         'fwupd.service,Firmware update daemon,,450',
         'gdm.service,GNOME Display Manager,,675',
