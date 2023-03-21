@@ -36,7 +36,7 @@ WHERE
   p.start_time > 0
   AND f.ctime > 0
   AND p.start_time > (strftime('%s', 'now') - 7200)
-  AND (p.start_time - MAX(f.ctime, f.btime)) < 90
+  AND (p.start_time - MAX(f.ctime, f.btime)) < 45
   AND p.start_time >= MAX(f.ctime, f.ctime)
   AND NOT f.directory IN ('/usr/lib/firefox', '/usr/local/kolide-k2/bin') -- Typically daemons or long-running desktop apps
   -- These are binaries that are known to get updated and subsequently executed
@@ -141,6 +141,7 @@ WHERE
     '/usr/lib/systemd/systemd-timesyncd',
     '/usr/lib/systemd/systemd-userdbd',
     '/usr/lib/systemd/systemd-userwork',
+    '/usr/sbin/sshd',
     '/usr/lib/tracker-extract-3',
     '/usr/bin/gitsign-credential-cache',
     '/usr/libexec/gnome-shell-calendar-server',
@@ -148,6 +149,7 @@ WHERE
     '/usr/lib/xdg-desktop-portal-gtk',
     '/usr/libexec/accounts-daemon',
     '/usr/bin/gnome-calendar',
+    '/usr/bin/ssh-agent',
     '/usr/lib/xf86-video-intel-backlight-helper',
     '/usr/local/bin/kind',
     '/usr/libexec/flatpak-system-helper',

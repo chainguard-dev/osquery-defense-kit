@@ -154,7 +154,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
     )
   )
   AND NOT (
-    file.size < 50000
+    file.size < 65000
     AND file.uid > 500
     AND file.filename LIKE "%.%"
     AND extension IN (

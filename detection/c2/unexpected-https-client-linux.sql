@@ -212,6 +212,7 @@ WHERE protocol IN (6, 17)
     '500,rpi-imager,0u,0g,rpi-imager',
     '500,rustup,0u,0g,rustup',
     '500,scoville,500u,500g,scoville',
+    '500,chainctl,500u,500g,docker-credenti',
     '500,signal-desktop,0u,0g,signal-desktop',
     '500,signal-desktop,u,g,signal-desktop',
     '500,slack,0u,0g,slack',

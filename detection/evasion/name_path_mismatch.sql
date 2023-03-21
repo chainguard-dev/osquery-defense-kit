@@ -99,5 +99,6 @@ WHERE
     "500,systemd,(sd-pam)",
     "500,udevadm,systemd-udevd"
   )
+  AND NOT p0.path IN ('/usr/lib/systemd/systemd')
 GROUP by
   exception_key

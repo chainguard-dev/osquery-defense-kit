@@ -115,6 +115,7 @@ WHERE
     '/usr/libexec/coreduetd',
     '/usr/libexec/diskmanagementd',
     '/usr/bin/update-notifier',
+    '/System/Volumes/Preboot/Cryptexes/Incoming/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent',
     '/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/XPCServices/com.apple.Safari.BrowserDataImportingService.xpc/Contents/MacOS/com.apple.Safari.BrowserDataImportingService',
     '/usr/libexec/flatpak-system-helper',
     '/usr/libexec/logd',

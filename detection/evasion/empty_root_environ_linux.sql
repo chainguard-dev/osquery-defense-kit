@@ -66,6 +66,7 @@ WHERE
     'systemd-userdbd',
     'crond',
     'systemd',
+    'systemd-udevd',
     '(udev-worker)'
   )
   AND NOT (
