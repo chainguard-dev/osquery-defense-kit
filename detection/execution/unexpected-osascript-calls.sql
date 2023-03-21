@@ -9,7 +9,7 @@
 -- false positives:
 --   * none observed, but they are expected
 --
--- interval: 900
+-- interval: 300
 -- platform: darwin
 -- tags: process events
 SELECT
@@ -73,14 +73,21 @@ FROM
   LEFT JOIN signature pe1_pe2_sig ON pe1_pe2.path = pe1_pe2_sig.path
 WHERE
   pe.path IN ('/usr/bin/osascript', '/usr/bin/osacompile')
-  AND pe.time > (strftime('%s', 'now') -900)
+  AND pe.time > (strftime('%s', 'now') -300)
   AND pe.cmdline != ''
   -- Only include successful executions: On macOS, process_events includes unsuccessful path lookups!
   AND pe.status = 0
   AND NOT (
     pe.euid > 500
     AND (
-      p0_cmd IN ('osascript -e user locale of (get system info)')
+      p0_cmd IN (
+        'osascript -e user locale of (get system info)',
+        'osascript -e tell application "Finder" to reveal application file id "com.garmin.renu.client"',
+        'osascript ./ExpressLoginItem.scpt',
+        'osascript -e get POSIX path of (path to application id "com.garmin.LifetimeMapUpdate")',
+        'osascript -e get POSIX path of (path to application id "com.garmin.expressfit")',
+        'osascript -e get POSIX path of (path to application id "com.garmin.antagent")'
+      )
       OR p0_cmd LIKE '%"CFBundleName" of property list file (app_path & ":Contents:Info.plist")'
       OR p0_cmd LIKE 'osascript -e set zoomStatus to "closed"%'
       OR p0_cmd LIKE 'osascript -l JavaScript%com.elgato.StreamDeck%'

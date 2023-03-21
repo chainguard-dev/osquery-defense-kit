@@ -36,7 +36,7 @@ WHERE
   p.start_time > 0
   AND f.ctime > 0
   AND p.start_time > (strftime('%s', 'now') - 7200)
-  AND (p.start_time - MAX(f.ctime, f.btime)) < 90
+  AND (p.start_time - MAX(f.ctime, f.btime)) < 45
   AND p.start_time >= MAX(f.ctime, f.ctime)
   AND NOT f.directory IN ('/usr/lib/firefox', '/usr/local/kolide-k2/bin') -- Typically daemons or long-running desktop apps
   -- These are binaries that are known to get updated and subsequently executed
@@ -141,12 +141,18 @@ WHERE
     '/usr/lib/systemd/systemd-timesyncd',
     '/usr/lib/systemd/systemd-userdbd',
     '/usr/lib/systemd/systemd-userwork',
+    '/usr/sbin/sshd',
     '/usr/lib/tracker-extract-3',
     '/usr/bin/gitsign-credential-cache',
+    '/usr/libexec/gnome-shell-calendar-server',
     '/usr/lib/x86_64-linux-gnu/obs-plugins/obs-browser-page',
     '/usr/lib/xdg-desktop-portal-gtk',
+    '/usr/libexec/accounts-daemon',
+    '/usr/bin/gnome-calendar',
+    '/usr/bin/ssh-agent',
     '/usr/lib/xf86-video-intel-backlight-helper',
     '/usr/local/bin/kind',
+    '/usr/libexec/flatpak-system-helper',
     '/usr/bin/golangci-lint',
     '/usr/sbin/alsactl',
     '/usr/sbin/avahi-daemon',
@@ -161,23 +167,24 @@ WHERE
     '/usr/share/spotify-client/spotify',
     '/usr/share/teams/team'
   )
-  AND NOT p.path LIKE '/tmp/go-build%'
   AND NOT p.path LIKE '/home/%/bin/%'
+  AND NOT p.path LIKE '/home/%/.local/share/JetBrains/Toolbox/apps/%'
+  AND NOT p.path LIKE '/home/%/.local/share/nvim/mason/packages/%'
+  AND NOT p.path LIKE '/home/%/.local/share/Steam/ubuntu12_64/%'
+  AND NOT p.path LIKE '/home/%/node_modules/.bin/%'
+  AND NOT p.path LIKE '/home/%/Projects/%'
   AND NOT p.path LIKE '/home/%/terraform-provider-%'
   AND NOT p.path LIKE '/home/%/%.test'
-  AND NOT p.path LIKE '/home/%/Projects/%'
-  AND NOT p.path LIKE '/home/%/.local/share/nvim/mason/packages/%'
-  AND NOT p.path LIKE '/home/%/node_modules/.bin/%'
   AND NOT p.path LIKE '/nix/store/%/bin/%'
   AND NOT p.path LIKE '/nix/store/%/libexec/%'
-  AND NOT p.path LIKE '/usr/local/bin/%'
   AND NOT p.path LIKE '/opt/%'
+  AND NOT p.path LIKE '/tmp/go-build%'
+  AND NOT p.path LIKE '/tmp/terraform_%/terraform'
   AND NOT p.path LIKE '/tmp/tmp.%/%/bin/%'
+  AND NOT p.path LIKE '/usr/local/bin/%'
   AND NOT p.path LIKE '/usr/local/Cellar/%'
-  AND NOT p.path LIKE '/home/%/.local/share/Steam/ubuntu12_64/%'
   AND NOT p.path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND NOT p.path LIKE '%/.vscode/extensions/%'
-  AND NOT p.path LIKE '/tmp/terraform_%/terraform'
   AND NOT (
     p.name IN ('osqtool-x86_64', 'osqtool-arm64')
     AND p.cmdline LIKE './%'

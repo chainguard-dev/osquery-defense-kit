@@ -80,6 +80,11 @@ WHERE
     AND f.uid > 500
   )
   AND NOT (
+    f.path LIKE '/Users/%/Library/Application Support/Zwift/ZwiftAppMetal'
+    AND f.mode = '0777'
+    AND f.uid > 500
+  )
+  AND NOT (
     f.path = '/usr/bin/sudo'
     AND f.mode = '4111'
     AND f.uid = 0

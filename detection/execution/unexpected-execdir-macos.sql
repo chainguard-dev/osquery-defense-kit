@@ -141,6 +141,7 @@ WHERE
     '/Library/Application Support/EcammLive',
     '~/Library/Application Support/Foxit Software/',
     '~/Library/Application Support/OpenLens',
+    '~/Library/Application Support/Zwift/',
     '~/Library/Caches/com.mimestream.Mimestream/',
     '~/Library/Caches/com.sempliva.Tiles/',
     '~/Library/Caches/org.gpgtools.updater/',

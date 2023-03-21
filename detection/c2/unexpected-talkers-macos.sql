@@ -168,6 +168,7 @@ WHERE
     '443,6,0,Install,com.adobe.cc.Install,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,0,Install,com.adobe.Install,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,0,io.tailscale.ipn.macsys.network-extension,io.tailscale.ipn.macsys.network-extension,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
+    '443,6,0,kandji-daemon,kandji-daemon,Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
     '443,6,0,launcher,com.kolide.agent,Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     '443,6,0,launcher,launcher,Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     '443,6,0,launcher,launcher,Developer ID Application: Kolide Inc (YZ3EM74M78)',
@@ -175,6 +176,7 @@ WHERE
     '443,6,0,nix,nix,',
     '443,6,0,OneDrivePkgTelemetry,com.microsoft.OneDrivePkgTelemetry,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,6,0,Setup,com.adobe.acc.Setup,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+    '443,6,307,curl,curl,',
     '443,6,500,,,',
     '443,6,500,Acrobat Update Helper,com.adobe.ARMDCHelper,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,500,Amazon Photos Installer,com.amazon.clouddrive.mac.installer,Developer ID Application: AMZN Mobile LLC (94KV3E626L)',
@@ -282,8 +284,8 @@ WHERE
     '443,6,500,release-notes,a.out,',
     '443,6,500,sample,com.apple.dt.SamplingTools.sample,Software Signing',
     '443,6,500,scorecard-darwin-amd64,,',
-    '443,6,500,sdaudioswitch,sdaudioswitch,',
     '443,6,500,sdaudioswitch,,',
+    '443,6,500,sdaudioswitch,sdaudioswitch,',
     '443,6,500,sdzoomplugin,,',
     '443,6,500,Signal Helper,org.whispersystems.signal-desktop.helper,Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR)',
     '443,6,500,Signal Helper (Renderer),org.whispersystems.signal-desktop.helper.Renderer,Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR)',
@@ -325,9 +327,9 @@ WHERE
     '9418,6,500,git,com.apple.git,Software Signing'
   )
   AND NOT exception_key LIKE '443,6,500,java,com.oracle.java.%.java,Developer ID Application: Oracle America, Inc. (VB5E2TV963)'
-  -- Steam uses ports in the 27xxx range
   AND NOT exception_key LIKE '27%,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)'
-  -- There are many signing hashes for git
+  AND NOT exception_key LIKE '443,6,500,ZwiftAppMetal,ZwiftAppMetal-%,%'
+  AND NOT exception_key LIKE '80,6,500,ZwiftAppMetal,ZwiftAppMetal-%,%'
   AND NOT exception_key LIKE '443,6,500,git-remote-http,git-remote-http-%'
   AND NOT exception_key LIKE '443,6,500,cargo,cargo-%'
   -- aws

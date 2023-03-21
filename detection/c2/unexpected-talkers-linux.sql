@@ -100,6 +100,7 @@ WHERE
     '22,6,500,terraform,500u,500g,terraform',
     '3000,6,500,brave,0u,0g,brave',
     '3000,6,500,chrome,0u,0g,chrome',
+    '32768,17,500,traceroute,0u,0g,traceroute',
     '32768,6,0,tailscaled,0u,0g,tailscaled',
     '32768,6,500,ssh,0u,0g,ssh',
     '3307,6,500,cloud_sql_proxy,0u,0g,cloud_sql_proxy',
@@ -110,6 +111,7 @@ WHERE
     '4070,6,500,spotify,500u,500g,spotify',
     '4070,6,500,spotify,u,g,spotify',
     '43,6,500,whois,0u,0g,whois',
+    '444,6,500,firefox,0u,0g,firefox',
     '4460,6,114,chronyd,0u,0g,chronyd',
     '465,6,500,thunderbird,0u,0g,thunderbird',
     '5004,6,500,brave,0u,0g,brave',
@@ -117,6 +119,7 @@ WHERE
     '500,htop,0u,0g,htop',
     '500,syft,0u,0g,syft',
     '5228,6,500,chrome,0u,0g,chrome',
+    '587,6,500,thunderbird,0u,0g,thunderbird',
     '587,6,500,thunderbird,u,g,thunderbird',
     '6443,6,500,kubectl,0u,0g,kubectl',
     '67,17,0,NetworkManager,0u,0g,NetworkManager',
@@ -186,6 +189,7 @@ WHERE
     '80,6,500,steam,500u,100g,steam',
     '80,6,500,steam,500u,500g,steam',
     '80,6,500,steamwebhelper,500u,500g,steamwebhelper',
+    '80,6,500,terraform,0u,0g,terraform',
     '80,6,500,terraform,500u,500g,terraform',
     '80,6,500,thunderbird,0u,0g,thunderbird',
     '80,6,500,thunderbird,u,g,thunderbird',
@@ -208,7 +212,9 @@ WHERE
     '993,6,500,thunderbird,0u,0g,thunderbird',
     '993,6,500,thunderbird,u,g,thunderbird',
     '9999,6,500,firefox,0u,0g,firefox'
+
   )
+  AND NOT exception_key LIKE '80,6,500,ZwiftAppMetal,ZwiftAppMetal-%,'
   AND NOT (
     p.name = 'java'
     AND p.cmdline LIKE '/home/%/.local/share/JetBrains/Toolbox/%'

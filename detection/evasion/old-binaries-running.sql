@@ -65,6 +65,8 @@ WHERE
     'Pandora Helper',
     'dlv'
   )
+  AND p.cgroup_path NOT LIKE '/system.slice/docker-%'
+  AND p.cgroup_path NOT LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
 GROUP BY
   p.pid,
   p.path

@@ -10,8 +10,7 @@
 -- tags: events process escalation
 -- platform: darwin
 -- interval: 300
-SELECT
-  -- Child
+SELECT -- Child
   pe.path AS p0_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
@@ -54,12 +53,10 @@ SELECT
     '.*/(.*)',
     1
   ) AS exception_key
-FROM
-  process_events pe,
+FROM process_events pe,
   uptime
   LEFT JOIN processes p ON pe.pid = p.pid
-  LEFT JOIN signature s ON pe.path = s.path
-  -- Parents (via two paths)
+  LEFT JOIN signature s ON pe.path = s.path -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
   AND p1.start_time <= pe.time
   LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
@@ -67,8 +64,7 @@ FROM
   AND pe1.time <= pe.time
   AND pe1.cmdline != ''
   LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path
-  LEFT JOIN signature pe_sig1 ON pe1.path = pe_sig1.path
-  -- Grandparents (via 3 paths)
+  LEFT JOIN signature pe_sig1 ON pe1.path = pe_sig1.path -- Grandparents (via 3 paths)
   LEFT JOIN processes p1_p2 ON p1.parent = p1_p2.pid
   AND p1_p2.start_time <= p1.start_time
   LEFT JOIN processes pe1_p2 ON pe1.parent = pe1_p2.pid
@@ -81,8 +77,7 @@ FROM
   LEFT JOIN signature p1_p2_sig ON p1_p2.path = p1_p2_sig.path
   LEFT JOIN signature pe1_p2_sig ON pe1_p2.path = pe1_p2_sig.path
   LEFT JOIN signature pe1_pe2_sig ON pe1_pe2.path = pe1_pe2_sig.path
-WHERE
-  pe.time > (strftime('%s', 'now') -300)
+WHERE pe.time > (strftime('%s', 'now') -300)
   AND p0_euid < p1_euid
   AND pe.status = 0
   AND pe.parent > 0
@@ -97,8 +92,7 @@ WHERE
     '/usr/bin/sudo',
     '/usr/libexec/mdmclient',
     '/usr/local/bin/doas'
-  )
-  -- Exclude weird bad data we've seen due to badly recorded macOS parent/child relationships, fixable by reboot
+  ) -- Exclude weird bad data we've seen due to badly recorded macOS parent/child relationships, fixable by reboot
   AND NOT p0_cmd IN (
     '/usr/sbin/cupsd -l',
     '/usr/sbin/cfprefsd agent',
@@ -106,7 +100,10 @@ WHERE
     '/usr/libexec/mdmclient daemon',
     '/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared -s mdworker -c MDSImporterWorker -m com.apple.mdworker.shared'
   )
-  AND NOT exception_key IN ('containermanagerd,262,com.docker.backend,Docker')
+  AND NOT exception_key IN (
+    'containermanagerd,262,com.docker.backend,Docker',
+    'SCHelper,0,com.docker.backend,Docker'
+  )
   AND NOT (
     pe.euid = 262 -- core media helper id
     AND pe.path = '/System/Library/Frameworks/CoreMediaIO.framework/Versions/A/Resources/AppleCamera.plugin/Contents/Resources/AppleCameraAssistant'

@@ -217,6 +217,7 @@ WHERE
   AND pe.path NOT LIKE '/Users/%/Library/Caches/%/org.sparkle-project.Sparkle/Launcher/%/Updater.app/Contents/MacOS/Updater'
   AND dir NOT LIKE '/Applications/%'
   AND dir NOT LIKE '~/%/bin'
+  AND dir NOT LIKE '/opt/%/bin'
   AND dir NOT LIKE '~/%/google-cloud-sdk/bin/%'
   AND dir NOT LIKE '~/Library/Caches/ms-playwright/%'
   AND dir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
