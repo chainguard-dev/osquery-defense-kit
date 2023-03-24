@@ -54,6 +54,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         AND (
           file.path LIKE '%/go-build%'
           OR file.path LIKE '%/bin/%'
+          OR file.path LIKE '/tmp/%ctl'
           OR file.path LIKE '%/CCLBS/%'
           OR file.path LIKE '%/checkout/%'
           OR file.path LIKE '%/ci/%'

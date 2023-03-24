@@ -83,6 +83,7 @@ WHERE
     '/Library/Application Support/Kandji/Kandji Menu/Kandji Menu.app/Contents/MacOS',
     '/Library/PrivilegedHelperTools',
     '/Library/TeX/texbin',
+    '/usr/local/aws-cli',
     '/nix/store',
     '/nix/var/nix/profiles/default/bin',
     '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/gke-gcloud-auth-plugin',

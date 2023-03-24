@@ -191,6 +191,7 @@ WHERE
     '443,6,500,chainctl,chainctl,',
     '443,6,500,chainctl_darwin_arm64,a.out,',
     '443,6,500,chainctl_Darwin_arm64,a.out,',
+    '443,6,500,cilium,,',
     '443,6,500,civo,a.out,',
     '443,6,500,cloud_sql_proxy,a.out,',
     '443,6,500,Code Helper,com.microsoft.VSCode.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
@@ -325,6 +326,7 @@ WHERE
     '80,6,500,webhook.test,a.out,',
     '8801,17,500,zoom.us,us.zoom.xos,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     '9418,6,500,git,com.apple.git,Software Signing'
+
   )
   AND NOT exception_key LIKE '443,6,500,java,com.oracle.java.%.java,Developer ID Application: Oracle America, Inc. (VB5E2TV963)'
   AND NOT exception_key LIKE '27%,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)'
