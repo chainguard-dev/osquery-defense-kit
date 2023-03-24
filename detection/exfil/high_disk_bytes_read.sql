@@ -104,8 +104,8 @@ WHERE
     'wineserver',
     'yay',
     'ykman-gui',
-    'zsh'
-    'ZwiftAppMetal',
+    'zsh',
+    'ZwiftAppMetal'
   )
   AND NOT p0.path IN (
     '/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/XPCServices/com.apple.Safari.BrowserDataImportingService.xpc/Contents/MacOS/com.apple.Safari.BrowserDataImportingService',
