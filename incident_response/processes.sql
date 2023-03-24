@@ -1,6 +1,6 @@
 -- Currently running programs, only the columns that are not constantly changing
 --
--- tags: postmortem
+-- tags: postmortem often
 -- platform: posix
 SELECT
   pid,

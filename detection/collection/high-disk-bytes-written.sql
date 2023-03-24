@@ -48,7 +48,7 @@ FROM
 WHERE
   -- On my Linux machine, creating a gzip archive clocks in at 6780210
   bytes_written_rate > 4000000
-  AND age > 60
+  AND age > 180
   AND p0.pid > 2
   AND p0.path NOT IN (
     '/bin/bash',

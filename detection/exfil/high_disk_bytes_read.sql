@@ -47,8 +47,8 @@ FROM
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
   -- On my Linux machine, tarring up a home directory clocks in at 2,800,000 - 4,986,722
-  bytes_read_rate > 2250000
-  AND age > 60
+  bytes_read_rate > 2500000
+  AND age > 180
   AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p0.path NOT LIKE '/System/Library/%'
   AND p0.path NOT LIKE '/System/Applications/%'
@@ -65,6 +65,7 @@ WHERE
     'com.apple.NRD.UpdateBrainService',
     'docker',
     'emacs',
+    'electron',
     'firefox',
     'osqueryi',
     'fish',
@@ -87,6 +88,7 @@ WHERE
     'nessusd',
     'melange',
     'nix',
+    'tilt',
     'nix-daemon',
     'nvim',
     'osqueryd',

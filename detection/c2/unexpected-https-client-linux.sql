@@ -206,6 +206,7 @@ WHERE protocol IN (6, 17)
     '500,python3.11,0u,0g,protonvpn',
     '500,python3.11,0u,0g,prowler',
     '500,python3,500u,500g,python3',
+    '500,cilium,500u,123g,cilium',
     '500,python.test,500u,500g,python.test',
     '500,qemu-system-x86_64,0u,0g,qemu-system-x86',
     '500,reporter-ureport,0u,0g,reporter-urepor',
