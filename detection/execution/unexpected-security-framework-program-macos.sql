@@ -105,6 +105,7 @@ WHERE
     '500,gopls,a.out,',
     '500,gopls,gopls,',
     '500,dive,a.out,',
+    '500,snyk-ls_darwin_arm64,a.out,',
     '500,gpg-agent,gpg-agent,',
     '500,InternalFiltersXPC,com.apple.InternalFiltersXPC,Apple Mac OS Application Signing',
     '500,ipcserver,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
