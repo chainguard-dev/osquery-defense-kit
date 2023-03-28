@@ -106,6 +106,7 @@ WHERE
         "com.system76.Scheduler.service,Automatically configure CPU scheduler for responsiveness on AC,,225",
         'console-setup.service,Set console font and keymap,,225',
         'containerd.service,containerd container runtime,,1125',
+        'containerd.service,containerd container runtime,,1350',
         'crond.service,Command Scheduler,,225',
         'cronie.service,Periodic Command Scheduler,,0',
         'cron.service,Regular background program processing daemon,,225',
