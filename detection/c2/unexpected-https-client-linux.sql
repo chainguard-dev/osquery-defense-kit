@@ -260,6 +260,10 @@ WHERE protocol IN (6, 17)
   AND NOT exception_key LIKE '500,cosign-%,500u,500g,cosign-%'
   AND NOT exception_key LIKE '500,terraform-provider-%,500u,500g,terraform-provi' -- stay weird, NixOS (Fastly nix mirror)
   AND NOT (
+    p.path = '/usr/bin/mage'
+    AND p.cmdline LIKE '/home/%/.magefile/%'
+  )
+  AND NOT (
     pp.cmdline = '/run/current-system/sw/bin/bash'
     AND p.path LIKE '/nix/store/%'
     AND s.remote_address LIKE '151.101.%'

@@ -162,6 +162,7 @@ WHERE
   )
   AND NOT path_exception IN (
     '/dev/autofs,systemd',
+    '/dev/video,guvcview',
     '/dev/cpu/0/msr,nvidia-powerd',
     '/dev/fb,Xorg',
     '/dev/hidraw,chrome',

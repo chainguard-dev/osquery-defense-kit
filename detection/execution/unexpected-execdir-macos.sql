@@ -97,6 +97,7 @@ WHERE
     '~/code/bin',
     '~/Downloads/google-cloud-sdk/bin',
     '~/go/bin',
+    '~/Library/Application Support/sourcegraph-sp/',
     '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
     '~/Library/Application Support/dev.warp.Warp-Stable',
     '~/Library/Application Support/zoom.us/Plugins/aomhost.app/Contents/MacOS',

@@ -137,6 +137,7 @@ WHERE
     '/Applications/Parallels Desktop.app/Contents/MacOS/Parallels Service',
     '/Applications/Parallels Desktop.app/Contents/MacOS/prl_update_helper',
     '/Applications/RStudio.app/Contents/Resources/app/bin/rsession-arm64',
+    '/Applications/Amazon Photos.app/Contents/MacOS/Amazon Photos',
     '/bin/dash',
     '/bin/sh',
     '/Library/Application Support/Logitech.localized/LogiOptionsPlus/logioptionsplus_agent.app/Contents/MacOS/logioptionsplus_agent',

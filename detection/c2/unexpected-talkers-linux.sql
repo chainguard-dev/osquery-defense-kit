@@ -102,6 +102,7 @@ WHERE
     '3000,6,500,chrome,0u,0g,chrome',
     '32768,17,500,traceroute,0u,0g,traceroute',
     '32768,6,0,tailscaled,0u,0g,tailscaled',
+    '80,6,500,spotify,500u,500g,spotify',
     '32768,6,500,ssh,0u,0g,ssh',
     '3307,6,500,cloud_sql_proxy,0u,0g,cloud_sql_proxy',
     '3443,6,500,chrome,0u,0g,chrome',
