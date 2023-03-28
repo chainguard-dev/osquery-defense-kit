@@ -101,7 +101,6 @@ WHERE
     OR p0_cmd LIKE '%chrome%-load-extension%' -- Known attack scripts
     OR p0_name LIKE '%pwn%'
     OR p0_name LIKE '%attack%' -- Unusual behaviors
-    OR p0_cmd LIKE '%powershell%'
     OR p0_cmd LIKE '%chattr -i%'
     OR p0_cmd LIKE '%dd if=/dev/%'
     OR p0_cmd LIKE '%cat /dev/null >%'

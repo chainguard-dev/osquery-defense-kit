@@ -171,6 +171,7 @@ WHERE
   AND NOT p.path LIKE '/home/%/.local/share/JetBrains/Toolbox/apps/%'
   AND NOT p.path LIKE '/home/%/.local/share/nvim/mason/packages/%'
   AND NOT p.path LIKE '/home/%/.local/share/Steam/ubuntu12_64/%'
+  AND NOT p.path LIKE '/home/%/.rustup/toolchains/%/libexec/%'
   AND NOT p.path LIKE '/home/%/node_modules/.bin/%'
   AND NOT p.path LIKE '/home/%/Projects/%'
   AND NOT p.path LIKE '/home/%/terraform-provider-%'
