@@ -170,6 +170,7 @@ WHERE
       'nc -h',
       'nc -uv 8.8.8.8 53',
       'nix profile history',
+      'dd if=/dev/stdin conv=unblock cbs=79',
       'rm -f /tmp/mysql.sock',
       'sh -c launchctl bootout system "/Library/LaunchDaemons/com.ecamm.EcammAudioXPCHelper.plist"',
       '/usr/bin/csrutil report',

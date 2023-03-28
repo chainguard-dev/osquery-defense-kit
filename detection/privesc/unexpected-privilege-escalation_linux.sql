@@ -52,15 +52,16 @@ WHERE
       euid < uid
       AND NOT path IN (
         '/bin/ps',
+        '/opt/1Password/1password',
         '/usr/bin/doas',
-        '/usr/lib/xorg/Xorg',
         '/usr/bin/fusermount',
         '/usr/bin/fusermount3',
-        '/usr/libexec/Xorg',
         '/usr/bin/login',
         '/usr/bin/su',
         '/usr/bin/sudo',
-        '/usr/bin/top'
+        '/usr/bin/top',
+        '/usr/libexec/Xorg',
+        '/usr/lib/xorg/Xorg'
       ) -- doas may be in the process of being upgraded
       AND NOT path LIKE '/nix/store/%/bin/sudo'
       AND NOT path LIKE '/nix/store/%/bin/dhcpcd'

@@ -117,6 +117,7 @@ WHERE
     'zsa.io'
   )
   AND host NOT IN (
+    'arc.net',
     'balsamiq.com',
     'brave.com',
     'discord.com',

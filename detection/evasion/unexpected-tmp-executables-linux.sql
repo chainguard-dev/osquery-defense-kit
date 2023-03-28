@@ -80,7 +80,18 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '%/tmp/epdf%'
           OR file.path LIKE '/tmp/lima/%/out/%'
         )
-      ) -- Nix
+      )
+      AND NOT (
+          file.path LIKE "%/lib/%.so"
+          OR file.path LIKE "%/lib/%.so.%"
+          OR file.path LIKE "%/lib64/%.so.%"
+          OR file.path LIKE "%/lib64/%.so"
+          OR file.path LIKE "%/melange%"
+          OR file.path LIKE "%/sbin/%"
+          OR file.path LIKE "%/bin/busybox"
+          OR file.path LIKE "%/bin/bash"
+      )
+      -- Nix
       AND NOT (
         file.directory LIKE '/tmp/tmp%'
         AND gid = 0
@@ -144,6 +155,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
     AND (
       magic.data IN (
         "POSIX shell script, ASCII text executable",
+        "libtool library file, ASCII text",
         "JSON data"
       )
       OR magic.data LIKE "Unicode text%"
@@ -151,6 +163,18 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       OR magic.data LIKE "gzip compressed data%" -- Exotic platforms
       OR magic.data LIKE 'ELF 64-bit MSB pie executable, IBM S/390%'
       OR magic.data LIKE 'ELF 32-bit LSB pie executable, ARM, EABI5%'
+      OR magic.data LIKE 'symbolic link to %'
+    )
+  )
+  AND NOT (
+    file.uid = 0
+    AND magic.data IS NOT NULL
+    AND (
+      magic.data LIKE 'symbolic link to %'
+      OR magic.data IN (
+        "ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-musl-x86_64.so.1, stripped",
+        "libtool library file, ASCII text"
+      )
     )
   )
   AND NOT (
