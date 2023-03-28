@@ -141,6 +141,7 @@ WHERE
     OR dir LIKE '/tmp/%/.github/workflows'
     OR dir LIKE '%/.build'
     OR dir LIKE '%/.git'
+    OR dir LIKE '%/.github/%'
     OR dir LIKE '%/.github'
     OR dir LIKE '/home/build/.cache%'
     OR dir LIKE '~/.%'
