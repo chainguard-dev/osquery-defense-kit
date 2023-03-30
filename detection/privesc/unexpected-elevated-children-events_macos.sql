@@ -53,7 +53,8 @@ SELECT -- Child
     '.*/(.*)',
     1
   ) AS exception_key
-FROM process_events pe,
+FROM
+  process_events pe,
   uptime
   LEFT JOIN processes p ON pe.pid = p.pid
   LEFT JOIN signature s ON pe.path = s.path -- Parents (via two paths)
@@ -77,7 +78,8 @@ FROM process_events pe,
   LEFT JOIN signature p1_p2_sig ON p1_p2.path = p1_p2_sig.path
   LEFT JOIN signature pe1_p2_sig ON pe1_p2.path = pe1_p2_sig.path
   LEFT JOIN signature pe1_pe2_sig ON pe1_pe2.path = pe1_pe2_sig.path
-WHERE pe.time > (strftime('%s', 'now') -300)
+WHERE
+  pe.time > (strftime('%s', 'now') -300)
   AND p0_euid < p1_euid
   AND pe.status = 0
   AND pe.parent > 0
@@ -96,6 +98,9 @@ WHERE pe.time > (strftime('%s', 'now') -300)
   AND NOT p0_cmd IN (
     '/usr/sbin/cupsd -l',
     '/usr/sbin/cfprefsd agent',
+    '/System/Library/CoreServices/iconservicesd',
+    '/System/Library/PrivateFrameworks/InstallCoordination.framework/Support/installcoordinationd',
+    '/System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd',
     '/usr/libexec/PerfPowerServicesExtended',
     '/usr/libexec/mdmclient daemon',
     '/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared -s mdworker -c MDSImporterWorker -m com.apple.mdworker.shared'

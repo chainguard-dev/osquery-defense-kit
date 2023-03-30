@@ -206,4 +206,4 @@ WHERE
   AND NOT p0_cmd LIKE 'tail /%history'
   AND NOT p0_cmd LIKE '%/usr/bin/cmake%Socket%'
   AND NOT p0_name IN ('ar', 'cc1', 'compile', 'cmake', 'cc1plus')
-  AND NOT exception_key IN ('bash,500,ninja,bash')
+  AND NOT exception_key IN ('bash,500,ninja,bash', 'ls,500,zsh,alacritty')

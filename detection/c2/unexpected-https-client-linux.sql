@@ -8,7 +8,8 @@
 --
 -- tags: transient state net often
 -- platform: linux
-SELECT s.remote_address,
+SELECT
+  s.remote_address,
   p.name,
   p.cgroup_path,
   p.path,
@@ -33,12 +34,14 @@ SELECT s.remote_address,
     'g,',
     p.name
   ) AS exception_key
-FROM process_open_sockets s
+FROM
+  process_open_sockets s
   LEFT JOIN processes p ON s.pid = p.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN file f ON p.path = f.path
   LEFT JOIN hash ON p.path = hash.path
-WHERE protocol IN (6, 17)
+WHERE
+  protocol IN (6, 17)
   AND s.remote_port = 443
   AND s.remote_address NOT IN ('127.0.0.1', '::ffff:127.0.0.1', '::1')
   AND s.remote_address NOT LIKE 'fe80:%'
@@ -108,7 +111,9 @@ WHERE protocol IN (6, 17)
     '500,chainctl,500u,100g,chainctl',
     '500,chainctl,500u,493g,chainctl',
     '500,chainctl,500u,500g,chainctl',
+    '500,chainctl,500u,500g,docker-credenti',
     '500,chrome,0u,0g,chrome',
+    '500,cilium,500u,123g,cilium',
     '500,cloud_sql_proxy,0u,0g,cloud_sql_proxy',
     '500,code,0u,0g,code',
     '500,code,500u,500g,code',
@@ -136,6 +141,7 @@ WHERE protocol IN (6, 17)
     '500,gh,0u,0g,gh',
     '500,git,0u,0g,git',
     '500,git-remote-http,0u,0g,git-remote-http',
+    '500,git-remote-http,u,g,git-remote-http',
     '500,gitsign,0u,0g,gitsign',
     '500,gitsign,500u,0g,gitsign',
     '500,gitsign,500u,500g,gitsign',
@@ -147,6 +153,7 @@ WHERE protocol IN (6, 17)
     '500,go,0u,0g,go',
     '500,go,500u,500g,go',
     '500,goa-daemon,0u,0g,goa-daemon',
+    '500,___go_build_main_go,500u,500g,___go_build_mai',
     '500,go,u,g,go',
     '500,grafana,u,g,grafana',
     '500,grype,0u,0g,grype',
@@ -164,6 +171,7 @@ WHERE protocol IN (6, 17)
     '500,java,u,g,java',
     '500,jcef_helper,500u,500g,jcef_helper',
     '500,jetbrains-toolbox,u,g,jetbrains-toolb',
+    '500,k6,500u,500g,k6',
     '500,kbfsfuse,0u,0g,kbfsfuse',
     '500,keybase,0u,0g,keybase',
     '500,Keybase,0u,0g,Keybase',
@@ -192,10 +200,11 @@ WHERE protocol IN (6, 17)
     '500,obs-ffmpeg-mux,u,g,obs-ffmpeg-mux',
     '500,obsidian,u,g,obsidian',
     '500,obs,u,g,obs',
+    '500,op,0u,500g,op',
+    '500,packer-plugin-proxmox_v1.1.2_x5.0_linux_amd64,500u,500g,packer-plugin-p',
     '500,pacman,0u,0g,pacman',
     '500,php8.1,0u,0g,php',
     '500,pingsender,0u,0g,pingsender',
-    '500,packer-plugin-proxmox_v1.1.2_x5.0_linux_amd64,500u,500g,packer-plugin-p',
     '500,promoter,500u,500g,promoter',
     '500,publish-release,500u,500g,publish-release',
     '500,python3,0u,0g,python3',
@@ -206,26 +215,21 @@ WHERE protocol IN (6, 17)
     '500,python3.11,0u,0g,protonvpn',
     '500,python3.11,0u,0g,prowler',
     '500,python3,500u,500g,python3',
-    '500,cilium,500u,123g,cilium',
     '500,python.test,500u,500g,python.test',
     '500,qemu-system-x86_64,0u,0g,qemu-system-x86',
     '500,reporter-ureport,0u,0g,reporter-urepor',
     '500,rpi-imager,0u,0g,rpi-imager',
     '500,rustup,0u,0g,rustup',
     '500,scoville,500u,500g,scoville',
-    '500,chainctl,500u,500g,docker-credenti',
     '500,signal-desktop,0u,0g,signal-desktop',
     '500,signal-desktop,u,g,signal-desktop',
     '500,slack,0u,0g,slack',
     '500,slack,u,g,slack',
-    '500,k6,500u,500g,k6',
     '500,slirp4netns,0u,0g,slirp4netns',
-    '500,terraform-ls,500u,500g,terraform-ls',
     '500,slirp4netns,500u,500g,slirp4netns',
     '500,snap-store,0u,0g,snap-store',
     '500,spotify,0u,0g,spotify',
     '500,spotify,500u,500g,spotify',
-    '500,stern,500u,500g,stern',
     '500,spotify,u,g,spotify',
     '500,steam,500u,100g,steam',
     '500,steam,500u,500g,steam',
@@ -233,10 +237,12 @@ WHERE protocol IN (6, 17)
     '500,steamwebhelper,500u,500g,steamwebhelper',
     '500,step,500u,500g,step',
     '500,step-cli,0u,0g,step',
+    '500,stern,500u,500g,stern',
     '500,syncthing,0u,0g,syncthing',
     '500,teams,0u,0g,teams',
     '500,terraform,0u,0g,terraform',
     '500,terraform,500u,500g,terraform',
+    '500,terraform-ls,500u,500g,terraform-ls',
     '500,thunderbird,0u,0g,thunderbird',
     '500,thunderbird,u,g,thunderbird',
     '500,tilt,500u,500g,tilt',
@@ -280,4 +286,5 @@ WHERE protocol IN (6, 17)
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
   AND NOT p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%' -- Tests
   AND NOT p.path LIKE '/tmp/go-build%.test'
-GROUP BY p.cmdline
+GROUP BY
+  p.cmdline

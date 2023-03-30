@@ -164,6 +164,8 @@ WHERE
       '/bin/launchctl bootout system/com.docker.socket',
       '/bin/rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
       'git history',
+      'dd if=/dev/urandom bs=15 count=1 status=none',
+      'launchctl bootout gui/501/com.grammarly.ProjectLlama.UninstallAgent',
       'helm history',
       '/Library/Apple/System/Library/StagedFrameworks/Safari/SafariShared.framework/XPCServices/com.apple.Safari.History.xpc/Contents/MacOS/com.apple.Safari.History',
       'nc -h',
@@ -196,3 +198,4 @@ WHERE
   AND NOT p0_cmd LIKE '%find /Applications/LogiTuneInstaller.app -type d -exec chmod 777 {}%'
   AND NOT p0_cmd LIKE '/bin/rm -f /tmp/com.adobe.%.updater/%'
   AND NOT p0_name IN ('cc1', 'compile')
+  AND NOT exception_key = 'dd,500,zsh,login'

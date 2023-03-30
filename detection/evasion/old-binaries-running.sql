@@ -53,6 +53,7 @@ WHERE
     '/snap/brackets/138/opt/brackets/Brackets-node',
     '/usr/bin/i3blocks',
     '/usr/bin/sshfs',
+    '/usr/local/bin/dive',
     '/usr/bin/xss-lock'
   )
   AND p.name NOT IN (

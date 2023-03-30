@@ -222,6 +222,8 @@ WHERE
   AND path_exception NOT LIKE '/dev/shm/u1000-Shm_%,bash'
   -- lvmdbusd
   AND path_exception NOT LIKE '/dev/shm/pym-%python3.%'
+  -- celery
+  AND path_exception NOT LIKE '/dev/shm/pymp-%,python3.%'
   AND NOT (
     pof.path LIKE '/dev/bus/usb/%'
     AND p0.name IN (

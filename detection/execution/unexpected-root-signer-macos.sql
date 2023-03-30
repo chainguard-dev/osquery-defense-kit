@@ -77,7 +77,7 @@ WHERE
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
     'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
     'Developer ID Application: Keybase, Inc. (99229SGT5K)',
-    'Developer ID Application: Kolide, Inc (X98UFR7HA3)' ,
+    'Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Mersive Technologies (63B5A5WDNG)',
@@ -115,6 +115,11 @@ WHERE
     s.authority = ""
     AND p0_path LIKE "/opt/homebrew/Cellar/mariadb/%/bin/mariadbd"
     AND p0_cmd LIKE "/opt/homebrew/opt/mariadb/bin/mariadbd %"
+  )
+  AND NOT (
+    s.authority = ""
+    AND p0_path LIKE "/opt/homebrew/Cellar/tailscale/%/bin/tailscaled"
+    AND p0_cmd LIKE "/opt/homebrew/Cellar/tailscale/%/bin/tailscaled %"
   )
   AND NOT (
     s.authority = "Developer ID Application: Node.js Foundation (HX7739G8FX)"

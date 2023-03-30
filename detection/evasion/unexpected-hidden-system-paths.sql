@@ -114,6 +114,7 @@ WHERE
     '/var/setup/.TemporaryItems',
     '/var/.Parallels_swap/',
     '/var/.pwd_cache',
+    '/var/root/.lesshst',
     '/var/root/.bash_history',
     '/var/root/.bash_profile',
     '/var/root/.cache/',
@@ -148,6 +149,8 @@ WHERE
   AND file.path NOT LIKE '%/.build-id/'
   AND file.path NOT LIKE '%/.dwz/'
   AND file.path NOT LIKE '%/.updated'
+  AND file.filename NOT LIKE '.%.swo'
+  AND file.filename NOT LIKE '.%.swp'
   AND file.path NOT LIKE '%/google-cloud-sdk/.install/'
   AND NOT (
     type = 'regular'

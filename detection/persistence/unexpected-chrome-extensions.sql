@@ -7,7 +7,8 @@
 --   * Almost unlimited: any extension that isn't on your whitelist
 --
 -- tags: persistent seldom browser
-SELECT name,
+SELECT
+  name,
   profile,
   chrome_extensions.description AS 'descr',
   persistent AS persists,
@@ -28,11 +29,13 @@ SELECT name,
     identifier
   ) AS exception_key,
   hash.sha256
-FROM users
+FROM
+  users
   CROSS JOIN chrome_extensions USING (uid)
   LEFT JOIN file ON chrome_extensions.path = file.path
   LEFT JOIN hash ON chrome_extensions.path = hash.path
-WHERE (
+WHERE
+  (
     -- These extensions need the most review.
     from_webstore != 'true'
     OR perms LIKE '%google.com%'
@@ -49,6 +52,7 @@ WHERE (
     -- Deprecated Google Extension
     'false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,',
     'false,,base64 encode or decode selected text,',
+    'false,,NVD Cleaner,',
     'false,,Google Chat,chfbpgnooceecdoohagngmjnndbbaeip',
     'false,,Google Chat,mdpkiolbdkhdjpekfbkbmhigcaggjagi',
     'false,,Google Cloud,gmdcbpephenfeelhagpbceidhdbobfpk',
@@ -204,4 +208,5 @@ WHERE (
     'true,,writeGPT - ChatGPT Prompt Engineer Assistant,dflcdbibjghipieemcligeelbmackgco',
     'true,,Zoom Scheduler,kgjfgplpablkjnlkjmjdecgdpfankdle'
   )
-GROUP BY exception_key
+GROUP BY
+  exception_key

@@ -190,6 +190,7 @@ WHERE
     '/dev/tty',
     '/dev/ttyACM',
     '/dev/ttyprintk',
+    '/dev/ttyUSB',
     '/dev/ttyS',
     '/dev/udmabuf',
     '/dev/uhid',

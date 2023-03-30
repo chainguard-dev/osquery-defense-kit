@@ -67,6 +67,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '%/ko/%'
           OR file.path LIKE '%/kots/%'
           OR file.path LIKE "%/lib/%.so"
+          OR file.path LIKE '/tmp/GoLand/___go_build_%_go'
           OR file.path LIKE "%/lib/%.so.%"
           OR file.path LIKE "%/melange%"
           OR file.path LIKE "%/bin/busybox"
@@ -82,14 +83,14 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         )
       )
       AND NOT (
-          file.path LIKE "%/lib/%.so"
-          OR file.path LIKE "%/lib/%.so.%"
-          OR file.path LIKE "%/lib64/%.so.%"
-          OR file.path LIKE "%/lib64/%.so"
-          OR file.path LIKE "%/melange%"
-          OR file.path LIKE "%/sbin/%"
-          OR file.path LIKE "%/bin/busybox"
-          OR file.path LIKE "%/bin/bash"
+        file.path LIKE "%/lib/%.so"
+        OR file.path LIKE "%/lib/%.so.%"
+        OR file.path LIKE "%/lib64/%.so.%"
+        OR file.path LIKE "%/lib64/%.so"
+        OR file.path LIKE "%/melange%"
+        OR file.path LIKE "%/sbin/%"
+        OR file.path LIKE "%/bin/busybox"
+        OR file.path LIKE "%/bin/bash"
       )
       -- Nix
       AND NOT (

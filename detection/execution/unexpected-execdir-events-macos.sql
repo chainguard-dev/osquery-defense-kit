@@ -129,6 +129,7 @@ WHERE
     '~/Library/Application Support/zoom.us',
     '~/Library/Caches/com.knollsoft.Rectangle',
     '~/Library/Caches/com.mimestream.Mimestream',
+    '~/Library/Application Support/com.grammarly.ProjectLlama',
     '~/Library/Caches/snyk',
     '/Library/Developer/CommandLineTools',
     '~/Library/Developer/Xcode',
@@ -238,6 +239,8 @@ WHERE
   AND dir NOT LIKE '/private/var/folders/%/GoLand'
   AND dir NOT LIKE '/private/var/folders/%/d/Wrapper/%.app'
   AND dir NOT LIKE '~/%repo%'
+  -- When running code as root
+  AND dir NOT LIKE '/Users/%/go/bin'
   AND dir NOT LIKE '~/%sigstore%'
   AND dir NOT LIKE '%/.terraform/providers/%'
   AND dir NOT LIKE '/Volumes/com.getdropbox.dropbox-%' -- These signers can run from wherever the hell they want.
