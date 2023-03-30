@@ -33,14 +33,14 @@ WHERE
   ) -- We should also use uid for making decisions here
   AND NOT (
     file.uid > 499
-    AND (
-      file.path NOT LIKE '/dev/shm/.com.google.%'
+    AND NOT (
+      file.path LIKE '/dev/shm/.com.google.%'
       OR file.path LIKE '/dev/shm/.org.chromium.%'
       OR file.path LIKE '/dev/shm/wayland.mozilla.%'
       OR file.path LIKE '/dev/shm/shm-%-%-%'
-      OR file.path LIKE 'pulse-shm-%'
-      OR file.path LIKE 'u1000-Shm%'
-      OR file.path LIKE 'u1000-Valve%'
+      OR file.path LIKE '/dev/shm/pulse-shm-%'
+      OR file.path LIKE '/dev/shm/u1000-Shm%'
+      OR file.path LIKE '/dev/shm/u1000-Valve%'
       OR file.path LIKE '/dev/shm/jack_db%'
     )
   )

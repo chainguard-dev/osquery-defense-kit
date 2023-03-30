@@ -102,7 +102,6 @@ WHERE
     '3000,6,500,chrome,0u,0g,chrome',
     '32768,17,500,traceroute,0u,0g,traceroute',
     '32768,6,0,tailscaled,0u,0g,tailscaled',
-    '80,6,500,spotify,500u,500g,spotify',
     '32768,6,500,ssh,0u,0g,ssh',
     '3307,6,500,cloud_sql_proxy,0u,0g,cloud_sql_proxy',
     '3443,6,500,chrome,0u,0g,chrome',
@@ -185,6 +184,7 @@ WHERE
     '80,6,500,slack,0u,0g,slack',
     '80,6,500,slirp4netns,500u,500g,slirp4netns',
     '80,6,500,spotify,0u,0g,spotify',
+    '80,6,500,spotify,500u,500g,spotify',
     '80,6,500,spotify-launcher,0u,0g,spotify-launche',
     '80,6,500,spotify,u,g,spotify',
     '80,6,500,steam,500u,100g,steam',
@@ -213,9 +213,8 @@ WHERE
     '993,6,500,thunderbird,0u,0g,thunderbird',
     '993,6,500,thunderbird,u,g,thunderbird',
     '9999,6,500,firefox,0u,0g,firefox'
-
   )
-  AND NOT exception_key LIKE '80,6,500,ZwiftAppMetal,ZwiftAppMetal-%,'
+  AND NOT exception_key LIKE '80,6,500,terraform_1.1.5,500u,500g,terraform'
   AND NOT (
     p.name = 'java'
     AND p.cmdline LIKE '/home/%/.local/share/JetBrains/Toolbox/%'

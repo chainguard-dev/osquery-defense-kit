@@ -73,6 +73,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '%/kots/%'
           OR file.path LIKE '/tmp/%/AdobePIM.dylib'
           OR file.path LIKE "%/lib/%.so"
+          OR file.path LIKE '/tmp/melange%'
           OR file.path LIKE "%/lib/%.so.%"
           OR file.path LIKE '%/pdf-tools/%'
           OR file.path LIKE '%/Photoshop Installer.app/Contents/%'

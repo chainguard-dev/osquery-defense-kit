@@ -57,7 +57,7 @@ WHERE
     FROM
       processes p
       -- NOTE: This is an expensive join on macOS
-      JOIN processes pp ON p.parent = pp.parent
+      JOIN processes pp ON p.parent = pp.pid
     WHERE
       p.parent NOT IN (0, 1, 2)
       AND p.path != ""

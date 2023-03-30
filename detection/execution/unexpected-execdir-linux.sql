@@ -46,12 +46,29 @@ WHERE
     WHERE
       pid > 1
       AND path != ""
-      AND REGEX_MATCH (
-        path,
-        "^(/bin/|/app/|/usr/share/teams/resources/|/home/build/|/sbin/|/usr/bin/|/usr/lib/|/usr/share/spotify-client/|/usr/lib64/|/usr/libexec|/usr/sbin/|/usr/share/code/|/home/|/nix/store/|/opt/|/snap/|/var/lib/snapd/snap/|/tmp/go-build|/usr/local/)",
-        1
-      ) IS NULL -- Docker
+      AND INSTR(path, "/bin") != 1
+      AND INSTR(path, "/sbin/") != 1
+      AND INSTR(path, "/usr/bin/") != 1
+      AND INSTR(path, "/usr/lib/") != 1
+      AND INSTR(path, "/usr/lib64/") != 1
+      AND INSTR(path, "/usr/libexec") != 1
+      AND INSTR(path, "/usr/sbin/") != 1
+      AND INSTR(path, "/usr/x86_64-pc-linux-gnu/bin") != 1
+      AND INSTR(path, "/home/") != 1
+      AND INSTR(path, "/nix/") != 1
+      AND INSTR(path, "/opt/") != 1
+      AND INSTR(path, "/snap/") != 1
+      AND INSTR(path, "/var/lib/snapd/") != 1
+      AND INSTR(path, "/usr/share/spotify") != 1
+      AND INSTR(path, "/usr/share/code/") != 1
+      AND INSTR(path, "/usr/local/") != 1
+      AND INSTR(path, "/tmp/go-build") != 1
+      AND INSTR(path, "/app/") != 1
+      AND INSTR(path, "/ko-app") != 1
+      AND INSTR(path, "/usr/share/teams/") != 1
+      AND INSTR(path, "/.terraform/") > 0
       AND NOT path LIKE '/tmp/%/osqtool'
+      AND NOT path LIKE '/tmp/GoLand/___go_build_%_go'
       AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
       AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/libpod-%'
       AND NOT cgroup_path LIKE '/system.slice/docker-%' -- Interactive terminal

@@ -89,6 +89,7 @@ WHERE
     '.bash_history',
     '.bashrc',
     '.disk_label_2x',
+    '.pdfbox.cache',
     '.DS_Store',
     '.file',
     'LogiPresentation Installer.app',
@@ -121,3 +122,4 @@ WHERE
   )
   AND trimpath NOT LIKE '/Volumes/JDK %/JDK %.pkg'
   AND trimpath NOT LIKE '/Volumes/mysql-shell-%/mysql-shell-%.pkg'
+  AND magic.data NOT LIKE 'ASCII text%'

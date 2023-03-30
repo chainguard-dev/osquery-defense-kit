@@ -44,6 +44,7 @@ SELECT
   -- Parent
   p0.parent AS p1_pid,
   p1.path AS p1_path,
+  p1.cgroup_path AS p1_cgroup,
   p1.name AS p1_name,
   p1_f.mode AS p1_mode,
   p1.euid AS p1_euid,
@@ -102,7 +103,9 @@ WHERE
       'fish,~/.local/share',
       'fish,~/.Trash',
       'git,~/.local/share',
+      'java,/home/build/.gradle',
       'java,~/.gradle/daemon',
+      'java,/home/build/.kotlin',
       'java,~/.local/share',
       'make,~/.cache/yay',
       'makepkg,~/.cache/yay',
@@ -116,6 +119,7 @@ WHERE
     OR exception_key LIKE '%sh,~/.Trash/%'
     OR exception_key LIKE '%sh,~/dev/%'
     OR exception_key LIKE 'wineserver,/tmp/.wine-1000/server-%'
+    OR exception_key LIKE 'java,/.gradle/%'
     OR dir IN (
       '~/.config',
       '~/.local/bin',
@@ -141,6 +145,7 @@ WHERE
     OR dir LIKE '/tmp/%/.github/workflows'
     OR dir LIKE '%/.build'
     OR dir LIKE '%/.git'
+    OR dir LIKE '%/.gradle'
     OR dir LIKE '%/.github/%'
     OR dir LIKE '%/.github'
     OR dir LIKE '/home/build/.cache%'
@@ -148,6 +153,7 @@ WHERE
     OR dir LIKE '~/.gradle/%'
     OR dir LIKE '~/%/.config/nvim'
     OR dir LIKE '~/%/.docker%'
+    OR dir LIKE '/.gradle/%'
     OR dir LIKE '~/%/.modcache/%'
     OR dir LIKE '~/%/.terraform%'
     OR dir LIKE '~/%/.vercel%'

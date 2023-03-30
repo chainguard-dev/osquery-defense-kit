@@ -146,6 +146,7 @@ WHERE
     '/usr/bin/gitsign-credential-cache',
     '/usr/libexec/gnome-shell-calendar-server',
     '/usr/lib/x86_64-linux-gnu/obs-plugins/obs-browser-page',
+    '/usr/sbin/semodule',
     '/usr/lib/xdg-desktop-portal-gtk',
     '/usr/libexec/accounts-daemon',
     '/usr/bin/gnome-calendar',
@@ -155,6 +156,7 @@ WHERE
     '/usr/libexec/flatpak-system-helper',
     '/usr/bin/golangci-lint',
     '/usr/sbin/alsactl',
+    '/usr/lib/docker/cli-plugins/docker-compose',
     '/usr/sbin/avahi-daemon',
     '/usr/sbin/chronyd',
     '/usr/sbin/cupsd',
@@ -172,6 +174,8 @@ WHERE
   AND NOT p.path LIKE '/home/%/.local/share/nvim/mason/packages/%'
   AND NOT p.path LIKE '/home/%/.local/share/Steam/ubuntu12_64/%'
   AND NOT p.path LIKE '/home/%/.rustup/toolchains/%/libexec/%'
+  AND NOT p.path LIKE '/home/%/jbr/lib/jcef_helper'
+  AND NOT p.path LIKE '/home/%/jbr/bin/java'
   AND NOT p.path LIKE '/home/%/node_modules/.bin/%'
   AND NOT p.path LIKE '/home/%/Projects/%'
   AND NOT p.path LIKE '/home/%/terraform-provider-%'

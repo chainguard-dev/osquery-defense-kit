@@ -92,6 +92,7 @@ WHERE
     "120,systemd,(sd-pam)",
     "127,systemd,(sd-pam)",
     "0,udevadm,(udev-worker)",
+    "500,pyrogenesis,main",
     "500,plugin-container,MainThread",
     "500,gjs-console,gnome-character",
     "500,rootlesskit,exe",
