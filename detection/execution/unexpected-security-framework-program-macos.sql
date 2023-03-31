@@ -149,6 +149,7 @@ WHERE
     '500,Todoist Helper (Renderer),com.todoist.mac.Todoist.helper.Renderer,Apple Mac OS Application Signing',
     '500,TwitchStudioStreamDeck,TwitchStudioStreamDeck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     '500,vim,,',
+    '500,go,a.out,',
     '500,vim,vim,',
     '500,WinAppHelper,,',
     '500,WinAppHelper,WinAppHelper,'
@@ -157,6 +158,7 @@ WHERE
     exception_key LIKE '500,%,a.out,'
     AND p0.path LIKE '/private/var/folders%/T/go-build%/exe/%'
   )
+  AND NOT exception_key LIKE '500,___Test%.test,a.out,'
   AND NOT exception_key LIKE '500,terraform-provider-%,a.out,'
   AND NOT exception_key LIKE '500,Runner.%,apphost-%,'
   AND NOT exception_key LIKE '500,kubectl.%,a.out,'

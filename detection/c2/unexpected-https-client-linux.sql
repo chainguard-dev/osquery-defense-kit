@@ -91,6 +91,7 @@ WHERE
     '0,.tailscaled-wrapped,0u,0g,.tailscaled-wra',
     '105,http,0u,0g,https',
     '106,geoclue,0u,0g,geoclue',
+    '129,fwupdmgr,0u,0g,fwupdmgr',
     '500,1password,0u,0g,1password',
     '500,abrt-action-generate-core-backtrace,0u,0g,abrt-action-gen',
     '500,act,0u,0g,act',

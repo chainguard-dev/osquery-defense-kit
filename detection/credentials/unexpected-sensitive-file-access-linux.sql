@@ -73,6 +73,7 @@ WHERE
     OR pof.path LIKE '/home/%/.config/mozilla/firefox%'
     OR pof.path LIKE '/home/%/.aws%'
   )
+  AND NOT p.cmdline LIKE 'less %id_rsa.pub'
   AND NOT (
     file_uid == process_uid
     AND exception_key IN (
