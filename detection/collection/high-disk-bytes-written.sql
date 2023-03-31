@@ -129,6 +129,7 @@ WHERE
     'Cisco WebEx Start',
     'com.apple.MobileSoftwareUpdate.UpdateBrainService',
     'com.apple.NRD.UpdateBrainService',
+    'code',
     'containerd',
     'containerd-',
     'containerd-shim',

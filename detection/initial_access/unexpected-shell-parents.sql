@@ -194,6 +194,7 @@ WHERE
   )
   AND NOT p.cmdline LIKE '/bin/sh %/bin/docker-credential-gcloud get'
   AND NOT parent_path LIKE '/private/var/folders/%/T/go-build%.test'
+  AND NOT parent_path LIKE '/private/tmp/PKInstallSandbox.%/tmp/Python/Python3.framework/Versions/%/Resources/Python.app/Contents/MacOS/Python'
   AND NOT p.cmdline LIKE '%/Library/Apple/System/Library/InstallerSandboxes%'
   AND NOT p.cmdline LIKE '%gcloud config config-helper%'
   AND NOT p.cmdline LIKE '%hugo/hugo server%'

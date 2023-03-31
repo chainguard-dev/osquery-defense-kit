@@ -65,6 +65,7 @@ WHERE p0.euid = 0
         'flatpak-system-,/usr/libexec/flatpak-system-helper,0,system.slice,flatpak-system-helper.service,0755',
         'fwupd,/usr/libexec/fwupd/fwupd,0,system.slice,fwupd.service,0755',
         'fwupd,/usr/lib/fwupd/fwupd,0,system.slice,fwupd.service,0755',
+        'yum,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
         'NetworkManager,/usr/bin/NetworkManager,0,system.slice,NetworkManager.service,0755',
         'NetworkManager,/usr/sbin/NetworkManager,0,system.slice,NetworkManager.service,0755',
         'packagekitd,/usr/libexec/packagekitd,0,system.slice,packagekit.service,0755'
