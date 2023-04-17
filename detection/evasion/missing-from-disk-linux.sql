@@ -45,6 +45,7 @@ WHERE
   )
   -- This is truly a missing program, not just one that has been updated with a new binary.
   AND file.inode IS NULL
+  AND p.path != '/bpfilter_umh'
   -- Snap packages?
   AND p.path NOT LIKE '/tmp/.mount_%'
   AND p.path NOT LIKE '/home/%/.cache/yay/1password-cli/pkg/1password-cli/usr/bin/op'

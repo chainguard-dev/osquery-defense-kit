@@ -142,7 +142,7 @@ WHERE
       AND NOT p1_name IN ('sh', 'java')
       AND NOT p1_cmd LIKE "%pipenv shell"
     )
-    OR p0_cmd LIKE '%socat%'
+    OR p0_cmd LIKE 'socat %'
     OR p0_cmd LIKE '%SOCK_STREAM%'
     OR INSTR(p0_cmd, 'Socket.') > 0
   ) -- Things that could reasonably happen at boot.

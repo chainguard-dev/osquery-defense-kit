@@ -67,7 +67,7 @@ WHERE
     OR (
       file.mode LIKE "%7%"
       AND file.type != 'directory'
-      AND REGEX_MATCH (file.filename, '([a-z]+[A-Z]+[a-z]+[A-Z])', 1) != ""
+      AND REGEX_MATCH (file.filename, '([a-z]+[A-Z][A-Z]+[a-z]+)', 1) != ""
       AND magic.data LIKE "%executable%"
       -- Some people do weird things!
       AND signature.authority NOT IN (

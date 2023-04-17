@@ -116,6 +116,7 @@ WHERE
     'zoom.us',
     'zsa.io'
   )
+  -- NOTE: Do not put all of storage.googleapis.com or similarly generic hosts here
   AND host NOT IN (
     'arc.net',
     'balsamiq.com',
@@ -171,5 +172,6 @@ WHERE
       OR file.filename LIKE '%WhatsApp.dmg'
     )
   )
+  AND ea.value NOT LIKE 'https://storage.googleapis.com/copilot-mac-releases/%'
 GROUP BY
   ea.value

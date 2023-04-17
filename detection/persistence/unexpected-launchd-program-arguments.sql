@@ -44,6 +44,7 @@ WHERE
     'Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',
+    'Developer ID Application: X-Rite, Incorporated (2K7GT73B4R)',
     'Developer ID Application: MacPaw Inc. (S8EX82NJP6)',
     'Developer ID Application: Mersive Technologies (63B5A5WDNG)',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',

@@ -126,3 +126,4 @@ WHERE
     AND p0_name = "node"
     AND p1_name IN ("vim", "nvim")
   )
+  AND NOT p0_path LIKE '/usr/local/Cellar/htop/%/bin/htop'

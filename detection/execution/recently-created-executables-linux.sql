@@ -6,43 +6,49 @@
 -- tags: transient process state often
 -- platform: linux
 SELECT
-  p.pid,
-  p.path,
-  p.name,
-  p.cmdline,
-  p.cwd,
-  p.euid,
-  p.parent,
-  f.directory,
   f.ctime,
-  f.size,
   f.mtime,
-  p.cgroup_path,
-  p.start_time,
-  pp.path AS parent_path,
-  pp.name AS parent_name,
-  pp.cmdline AS parent_cmdline,
-  pp.cwd AS parent_cwd,
-  pp.euid AS parent_euid,
-  ch.sha256 AS child_sha256,
-  ph.sha256 AS parent_sha256
+  -- Child
+  p0.pid AS p0_pid,
+  p0.path AS p0_path,
+  p0.name AS p0_name,
+  p0.cmdline AS p0_cmd,
+  p0.cwd AS p0_cwd,
+  p0.cgroup_path AS p0_cgroup,
+  p0.euid AS p0_euid,
+  p0_hash.sha256 AS p0_sha256,
+  -- Parent
+  p0.parent AS p1_pid,
+  p1.path AS p1_path,
+  p1.name AS p1_name,
+  p1.euid AS p1_euid,
+  p1.cmdline AS p1_cmd,
+  p1_hash.sha256 AS p1_sha256,
+  -- Grandparent
+  p1.parent AS p2_pid,
+  p2.name AS p2_name,
+  p2.path AS p2_path,
+  p2.cmdline AS p2_cmd,
+  p2_hash.sha256 AS p2_sha256
 FROM
-  processes p
-  LEFT JOIN file f ON p.path = f.path
-  LEFT JOIN processes pp ON p.parent = pp.pid
-  LEFT JOIN hash AS ch ON p.path = ch.path
-  LEFT JOIN hash AS ph ON pp.path = ph.path
+  processes p0
+  LEFT JOIN file f ON p0.path = f.path  
+  LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
+  LEFT JOIN processes p1 ON p0.parent = p1.pid
+  LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
+  LEFT JOIN processes p2 ON p1.parent = p2.pid
+  LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  p.start_time > 0
+  p0.start_time > 0
   AND f.ctime > 0
-  AND p.start_time > (strftime('%s', 'now') - 7200)
-  AND (p.start_time - MAX(f.ctime, f.btime)) < 45
-  AND p.start_time >= MAX(f.ctime, f.ctime)
+  AND p0.start_time > (strftime('%s', 'now') - 7200)
+  AND (p0.start_time - MAX(f.ctime, f.btime)) < 45
+  AND p0.start_time >= MAX(f.ctime, f.ctime)
   AND NOT f.directory IN ('/usr/lib/firefox', '/usr/local/kolide-k2/bin') -- Typically daemons or long-running desktop apps
   -- These are binaries that are known to get updated and subsequently executed
   --
   -- What I would give for osquery to support binary signature verification on Linux
-  AND NOT p.path IN (
+  AND NOT p0.path IN (
     '',
     '/opt/google/chrome/chrome',
     '/usr/bin/packer',
@@ -54,6 +60,7 @@ WHERE
     '/usr/lib/ibus/ibus-dconf',
     '/usr/bin/limactl',
     '/usr/lib/ibus/ibus-portal',
+    '/usr/libexec/gstreamer-1.0/gst-plugin-scanner',
     '/usr/lib/ibus/ibus-engine-simple',
     '/usr/bin/faked',
     '/usr/bin/appstreamcli',
@@ -169,51 +176,52 @@ WHERE
     '/usr/share/spotify-client/spotify',
     '/usr/share/teams/team'
   )
-  AND NOT p.path LIKE '/home/%/bin/%'
-  AND NOT p.path LIKE '/home/%/.local/share/JetBrains/Toolbox/apps/%'
-  AND NOT p.path LIKE '/home/%/.local/share/nvim/mason/packages/%'
-  AND NOT p.path LIKE '/home/%/.local/share/Steam/ubuntu12_64/%'
-  AND NOT p.path LIKE '/home/%/.rustup/toolchains/%/libexec/%'
-  AND NOT p.path LIKE '/home/%/jbr/lib/jcef_helper'
-  AND NOT p.path LIKE '/home/%/jbr/bin/java'
-  AND NOT p.path LIKE '/home/%/node_modules/.bin/%'
-  AND NOT p.path LIKE '/home/%/Projects/%'
-  AND NOT p.path LIKE '/home/%/terraform-provider-%'
-  AND NOT p.path LIKE '/home/%/%.test'
-  AND NOT p.path LIKE '/nix/store/%/bin/%'
-  AND NOT p.path LIKE '/nix/store/%/libexec/%'
-  AND NOT p.path LIKE '/opt/%'
-  AND NOT p.path LIKE '/tmp/go-build%'
-  AND NOT p.path LIKE '/tmp/terraform_%/terraform'
-  AND NOT p.path LIKE '/tmp/tmp.%/%/bin/%'
-  AND NOT p.path LIKE '/usr/local/bin/%'
-  AND NOT p.path LIKE '/usr/local/Cellar/%'
-  AND NOT p.path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
-  AND NOT p.path LIKE '%/.vscode/extensions/%'
+  AND NOT p0.path LIKE '/home/%/bin/%'
+  AND NOT p0.path LIKE '/home/%/.local/share/JetBrains/Toolbox/apps/%'
+  AND NOT p0.path LIKE '/home/%/.local/share/nvim/mason/packages/%'
+  AND NOT p0.path LIKE '/home/%/.local/share/Steam/ubuntu12_64/%'
+  AND NOT p0.path LIKE '/home/%/.rustup/toolchains/%/libexec/%'
+  AND NOT p0.path LIKE '/home/%/jbr/lib/jcef_helper'
+  AND NOT p0.path LIKE '/home/%/jbr/bin/java'
+  AND NOT p0.path LIKE '/home/%/node_modules/.bin/%'
+  AND NOT p0.path LIKE '/home/%/Projects/%'
+  AND NOT p0.path LIKE '/home/%/terraform-provider-%'
+  AND NOT p0.path LIKE '/home/%/%.test'
+  AND NOT p0.path LIKE '/nix/store/%/bin/%'
+  AND NOT p0.path LIKE '/nix/store/%/libexec/%'
+  AND NOT p0.path LIKE '/opt/%'
+  AND NOT p0.path LIKE '/tmp/go-build%'
+  AND NOT p0.path LIKE '/tmp/terraform_%/terraform'
+  AND NOT p0.path LIKE '/tmp/tmp0.%/%/bin/%'
+  AND NOT p0.path LIKE '/usr/local/bin/%'
+  AND NOT p0.path LIKE '/usr/local/Cellar/%'
+  AND NOT p0.path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+  AND NOT p0.path LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/launcher'
+  AND NOT p0.path LIKE '%/.vscode/extensions/%'
   AND NOT (
-    p.name IN ('osqtool-x86_64', 'osqtool-arm64')
-    AND p.cmdline LIKE './%'
+    p0.name IN ('osqtool-x86_64', 'osqtool-arm64')
+    AND p0.cmdline LIKE './%'
   )
-  AND NOT pp.path IN ('/usr/bin/gnome-shell') -- Filter out developers working on their own code
+  AND NOT p1.path IN ('/usr/bin/gnome-shell') -- Filter out developers working on their own code
   AND NOT (
-    p.path LIKE '/home/%'
-    AND p.uid > 499
+    p0.path LIKE '/home/%'
+    AND p0.uid > 499
     AND f.ctime = f.mtime
-    AND f.uid = p.uid
-    AND p.cmdline LIKE './%'
-  )
-  AND NOT (
-    p.path LIKE '/tmp/%/osqtool-%'
-    AND p.uid > 499
-    AND f.ctime = f.mtime
-    AND f.uid = p.uid
-    AND p.cmdline LIKE './%'
+    AND f.uid = p0.uid
+    AND p0.cmdline LIKE './%'
   )
   AND NOT (
-    p.path LIKE '/home/%/.magefile/%'
-    AND p.uid > 499
+    p0.path LIKE '/tmp/%/osqtool-%'
+    AND p0.uid > 499
     AND f.ctime = f.mtime
-    AND f.uid = p.uid
+    AND f.uid = p0.uid
+    AND p0.cmdline LIKE './%'
+  )
+  AND NOT (
+    p0.path LIKE '/home/%/.magefile/%'
+    AND p0.uid > 499
+    AND f.ctime = f.mtime
+    AND f.uid = p0.uid
   )
 GROUP BY
-  p.pid
+  p0.pid

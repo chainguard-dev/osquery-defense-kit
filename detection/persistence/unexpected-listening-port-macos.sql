@@ -70,6 +70,7 @@ WHERE
     '2112,6,500,rekor-server,',
     '2112,6,500,timestamp-server,',
     '22000,6,500,syncthing,',
+    '22000,6,500,syncthing,Developer ID Application: Jakob Borg (LQE5SYM783)',
     '22,6,0,launchd,Software Signing',
     '24678,6,500,node,',
     '28197,6,500,Stream Deck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',

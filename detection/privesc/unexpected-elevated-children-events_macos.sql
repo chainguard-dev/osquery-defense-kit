@@ -107,6 +107,7 @@ WHERE
   )
   AND NOT exception_key IN (
     'containermanagerd,262,com.docker.backend,Docker',
+    'sysextd,0,LogiTune,launchd',
     'SCHelper,0,com.docker.backend,Docker'
   )
   AND NOT (
