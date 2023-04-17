@@ -76,6 +76,7 @@ WHERE
       AND NOT path LIKE '/Users/%/bin/%'
       AND NOT path LIKE '/Users/%/code/%'
       AND NOT path LIKE '/Users/%/dev/%'
+      AND NOT path LIKE '/Users/%/Library/Application Support/snyk-ls/snyk-ls_darwin_%'
       AND NOT path LIKE '/Users/%/Library/Application Support/%/Contents/MacOS/%'
       AND NOT path LIKE '/Users/%/Library/Application Support/iTerm2/iTermServer-%'
       AND NOT path LIKE '/Users/%/Library/Caches/%/Contents/MacOS/%'

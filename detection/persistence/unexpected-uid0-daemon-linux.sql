@@ -219,6 +219,7 @@ WHERE
     'tailscaled,/usr/sbin/tailscaled,0,system.slice,tailscaled.service,0755',
     '.tailscaled-wra,/nix/store/__VERSION__/bin/.tailscaled-wrapped,0,system.slice,tailscaled.service,0555',
     'thermald,/usr/sbin/thermald,0,system.slice,thermald.service,0755',
+    'udisksd,/nix/store/__VERSION__/libexec/udisks2/udisksd,0,system.slice,udisks2.service,0555',
     'udisksd,/usr/libexec/udisks2/udisksd,0,system.slice,udisks2.service,0755',
     'udisksd,/usr/lib/udisks2/udisksd,0,system.slice,udisks2.service,0755',
     'unattended-upgr,/usr/bin/python3.10,0,system.slice,unattended-upgrades.service,0755',

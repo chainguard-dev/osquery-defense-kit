@@ -66,6 +66,7 @@ WHERE
   AND s.remote_address NOT LIKE 'fe80:%'
   AND s.remote_address NOT LIKE '127.%'
   AND s.remote_address NOT LIKE '192.168.%'
+  AND s.remote_address NOT LIKE '100.7%'
   AND s.remote_address NOT LIKE '172.1%'
   AND s.remote_address NOT LIKE '172.2%'
   AND s.remote_address NOT LIKE '172.30.%'

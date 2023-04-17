@@ -152,7 +152,6 @@ WHERE
       p0_cmd LIKE '%sh -i'
       AND NOT p1_name IN ('sh', 'java')
     )
-    OR p0_cmd LIKE '%socat%'
     OR p0_cmd LIKE '%SOCK_STREAM%'
     OR INSTR(p0_cmd, 'Socket.') > 0
     OR (

@@ -79,7 +79,7 @@ WHERE
       ) != "" -- suspicious things
       OR REGEX_MATCH (
         p.cmdline,
-        "(UserKnownHostsFile=/dev/null|ransom|malware|plant|fsockopen|openssl.*quiet|pty.spawn|socat|SOCK_STREAM)",
+        "(UserKnownHostsFile=/dev/null|ransom|malware|plant|fsockopen|openssl.*quiet|pty.spawn|SOCK_STREAM)",
         1
       ) != "" -- Crypto miners
       OR REGEX_MATCH (

@@ -122,11 +122,11 @@ WHERE -- Known attack scripts
       AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
       AND NOT p0.cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
     )
-    OR p0.cmdline LIKE '%socat '
     OR p0.cmdline LIKE '%SOCK_STREAM%'
     OR INSTR(p0.cmdline, '%Socket.%') > 0 -- Keep the shell running, as in https://blog.aquasec.com/threat-alert-kinsing-malware-container-vulnerability
     OR (
       p0.cmdline LIKE '%tail -f /dev/null%'
+      AND NOT p0.cmdline LIKE 'docker run%'
       AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
       AND NOT p1.pid == 0
     )

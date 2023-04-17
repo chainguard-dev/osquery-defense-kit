@@ -23,7 +23,9 @@ SELECT
     1
   ) AS top3_dir,
   u.directory AS user_home_dir,
-  -- Child
+  s.identifier AS s_id,
+  s.authority AS s_auth,
+    -- Child
   pe.path AS p0_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
@@ -119,9 +121,11 @@ WHERE
   AND top3_dir NOT IN (
     '/Library/Apple/System',
     '/Library/Application Support/Adobe',
+    '~/Library/Caches/Cypress',
     '~/Library/Application Support/BraveSoftware',
     '/Library/Application Support/Canon_Inc_IC',
     '~/Library/Application Support/com.elgato.StreamDeck',
+    '~/Library/Application Support/com.grammarly.ProjectLlama',
     '/Library/Application Support/EcammLive',
     '~/Library/Application Support/Foxit Software',
     '/Library/Application Support/GPGTools',
@@ -129,7 +133,7 @@ WHERE
     '~/Library/Application Support/zoom.us',
     '~/Library/Caches/com.knollsoft.Rectangle',
     '~/Library/Caches/com.mimestream.Mimestream',
-    '~/Library/Application Support/com.grammarly.ProjectLlama',
+    '~/Library/Caches/JetBrains',
     '~/Library/Caches/snyk',
     '/Library/Developer/CommandLineTools',
     '~/Library/Developer/Xcode',
@@ -149,9 +153,18 @@ WHERE
   )
   AND dir NOT IN (
     '/bin',
+    '~/bin',
+    '~/code/bin',
+    '~/Downloads/google-cloud-sdk/bin',
+    '~/Downloads/protoc/bin',
+    '~/go/bin',
+    '/Library/Printers/EPSON/InkjetPrinter2/Filter/commandtoescp.app/Contents/MacOS',
+    '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
+    '~/Library/Application Support/dev.warp.Warp-Stable',
     '/Library/Application Support/Kandji/Kandji Menu/Kandji Menu.app/Contents/MacOS',
     '/Library/Application Support/Logitech.localized/LogiOptionsPlus/logioptionsplus_agent.app/Contents/MacOS',
     '/Library/Application Support/Logitech.localized/Logitech Options.localized/LogiMgrUpdater.app/Contents/Resources',
+    '/Library/Application Support/X-Rite/Frameworks/XRiteDevice.framework/Versions/B/Resources/XRD Software Update.app/Contents/MacOS',
     '/Library/Audio/Plug-Ins/HAL/ACE.driver/Contents/Resources',
     '/Library/Audio/Plug-Ins/HAL/ACE.driver/Contents/Resources/aceagent.app/Contents/MacOS',
     '/Library/DropboxHelperTools/Dropbox_u501',
@@ -165,42 +178,38 @@ WHERE
     '/Library/Printers/Brother/Utilities/Server/NETserver.app/Contents/MacOS',
     '/Library/Printers/Brother/Utilities/Server/USBAppControl.app/Contents/MacOS',
     '/Library/Printers/Brother/Utilities/Server/WorkflowAppControl.app/Contents/MacOS',
+    '/Library/Printers/Brother/Filter/rastertobrother2300.bundle/Contents/MacOS',
     '/Library/Printers/DYMO/Utilities',
     '/Library/PrivilegedHelperTools',
     '/Library/TeX/texbin',
+    '~/.local/bin',
+    '~/.magefile',
     '/node_modules/.bin',
     '/opt/homebrew/bin',
+    '/opt/osquery/lib/osquery.app/Contents/MacOS',
     '/opt/usr/bin',
     '/opt/X11/bin',
     '/opt/X11/libexec',
+    '~/projects/go/bin',
     '/run/current-system/sw/bin',
     '/sbin',
     '/usr/bin',
     '/usr/lib',
     '/usr/lib/bluetooth',
     '/usr/lib/cups/notifier',
-    '/usr/lib/fwupd',
-    '/usr/lib/ibus',
-    '/usr/lib/system',
+    '/usr/libexec/cups/backend',
     '/usr/libexec',
     '/usr/libexec/ApplicationFirewall',
     '/usr/libexec/AssetCache',
     '/usr/libexec/firmwarecheckers',
     '/usr/libexec/firmwarecheckers/eficheck',
     '/usr/libexec/rosetta',
+    '/usr/lib/fwupd',
+    '/usr/lib/ibus',
+    '/usr/lib/system',
     '/usr/local/bin',
     '/usr/local/MacGPG2/bin',
-    '/usr/sbin',
-    '~/.local/bin',
-    '~/.magefile',
-    '~/bin',
-    '~/code/bin',
-    '~/Downloads/google-cloud-sdk/bin',
-    '~/Downloads/protoc/bin',
-    '~/go/bin',
-    '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
-    '~/Library/Application Support/dev.warp.Warp-Stable',
-    '~/projects/go/bin'
+    '/usr/sbin'
   ) -- Locally built executables
   AND NOT (
     s.identifier = 'a.out'
@@ -234,6 +243,7 @@ WHERE
   AND dir NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%.xpc/Contents/MacOS'
   AND dir NOT LIKE '/private/var/folders/%/d/Wrapper/%.app/%'
   AND dir NOT LIKE '/private/var/folders/%/bin'
+  AND dir NOT LIKE '/private/var/kolide-k2/k2device.kolide.com/updates/osqueryd/%'
   AND dir NOT LIKE '/private/var/folders/%/Contents/%'
   AND dir NOT LIKE '/private/var/folders/%/go-build%'
   AND dir NOT LIKE '/private/var/folders/%/GoLand'
