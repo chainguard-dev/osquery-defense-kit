@@ -174,6 +174,7 @@ WHERE
     p0.name = ""
     AND p1.name = "nvim"
   )
+  AND NOT p0_cmd LIKE '%/gcloud.py components update'
   AND NOT (p0.path LIKE '/home/%/Apps/PhpStorm%/jbr/bin/java')
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY

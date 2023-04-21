@@ -62,6 +62,7 @@ WHERE
     '/dev/cdrom',
     '/dev/char/',
     '/dev/char/:',
+    '/dev/cec',
     '/dev/console',
     '/dev/core',
     '/dev/cpu/',

@@ -278,6 +278,7 @@ WHERE
     OR p0_cmd LIKE '/bin/bash /usr/bin/xdg-settings check %'
     OR p0_cmd LIKE '/bin/bash /usr/local/Homebrew/%'
     OR p0_cmd LIKE '/bin/sh %/bin/gcloud%config config-helper%'
+    OR p0_cmd LIKE '/bin/sh %/google-cloud-sdk/bin/gcloud config get project'
     OR p0_cmd LIKE '/bin/sh -c pkg-config %'
     OR p0_cmd LIKE '/bin/sh %/docker-credential-gcloud get'
     OR p0_cmd LIKE '/bin/bash %git credential-osxkeychain get'
@@ -291,6 +292,7 @@ WHERE
     OR p0_cmd LIKE '%sh -c ntia-checker %'
     OR p0_cmd LIKE '%/google-chrome% --flag-switches-begin % --product-version'
     OR p1_cmd LIKE '%/bin/pipenv shell'
+    OR p1_cmd LIKE '/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -W1 --disable=gems,rubyopt -- /Users/%/homebrew/Library/Homebrew/build.rb%'
     OR p1_cmd LIKE 'gcloud% auth%login%'
     OR p1_cmd LIKE '/%google-cloud-sdk/lib/gcloud.py%'
     OR (

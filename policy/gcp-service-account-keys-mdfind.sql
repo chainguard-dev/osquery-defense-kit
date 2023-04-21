@@ -44,6 +44,7 @@ WHERE
     REPLACE(LOWER(TRIM(u.description)), " ", "-")
   ) == 1
   -- Common locations of test or demo keys
+  AND NOT file.path = '/Users/Shared/LGHUB/keys.json'
   AND NOT file.directory LIKE '%/pkg/%'
   AND NOT file.directory LIKE '%/go/src/%'
   AND NOT file.directory LIKE '%/pkg/mod/%'
@@ -82,6 +83,7 @@ WHERE
     '81bce2313cd00ffc42303fbf7c08e4d068fccc9c0076867903ef94616d795e12',
     '4b4be8c1bc7e3bc7ea1f02932a024466db5faf3eaad885cf31ac7383484b1b1c',
     'af1a2f8e9d581bb1504e3d8801d15d962fdf12ee7ebcf2bb9c475c8b92da6472',
+    'bc4c0ad21d79fea9050e75e80f13dd54bfdc867236342ede901d15d815f31988',
     '6e55f3eccad59a615189c82cbcbd1133ce94509f7c5d42e3e7fbd00e65f0731f',
     '11ffc5141b4b0071c0796914deef68d012c4f4c289931c5587fe89d7d6dca0a1',
     '6e55f3eccad59a615189c82cbcbd1133ce94509f7c5d42e3e7fbd00e65f0731f',

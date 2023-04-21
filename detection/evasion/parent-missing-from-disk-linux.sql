@@ -62,6 +62,7 @@ WHERE
     '/usr/bin/kitty',
     '/usr/bin/tmux',
     '/usr/share/code/code',
+    '/opt/brave.com/brave/brave',
     '/usr/libexec/gdm-wayland-session',
     '/usr/bin/osqueryd',
     '/usr/bin/sudo',

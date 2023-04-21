@@ -92,6 +92,7 @@ WHERE
     '3000,6,500,grafana-server',
     '3000,6,500,node',
     '32768,6,0,tailscaled',
+    '32768,6,500,java',
     '32768,6,0,.tailscaled-wra',
     '32768,6,500,com.docker.backend',
     '32768,6,500,dleyna-renderer',

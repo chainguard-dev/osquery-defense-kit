@@ -162,6 +162,7 @@ WHERE
     '443,17,500,Slack Helper,,',
     '443,17,500,Slack Helper,com.tinyspeck.slackmacgap.helper,Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
     '443,6,0,Adobe Installer,com.adobe.AAMHelper,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+    '443,6,0,AGSService,com.adobe.ags,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,0,com.apple.MobileSoftwareUpdate.UpdateBrainService,com.apple.MobileSoftwareUpdate.UpdateBrainService,Software Signing',
     '443,6,0,com.apple.NRD.UpdateBrainService,com.apple.NRD.UpdateBrainService,Software Signing',
     '443,6,0,com.google.one.NetworkExtension,com.google.one.NetworkExtension,Developer ID Application: Google LLC (EQHXZ8M8AV)',
@@ -176,7 +177,6 @@ WHERE
     '443,6,0,launcher,launcher,Developer ID Application: Kolide Inc (YZ3EM74M78)',
     '443,6,0,nessusd,nessusd,Developer ID Application: Tenable, Inc. (4B8J598M7U)',
     '443,6,0,nix,nix,',
-    '80,6,500,Code Helper (Plugin),com.github.Electron.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,6,0,OneDrivePkgTelemetry,com.microsoft.OneDrivePkgTelemetry,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '443,6,0,Setup,com.adobe.acc.Setup,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,307,curl,curl,',
@@ -184,7 +184,6 @@ WHERE
     '443,6,500,Acrobat Update Helper,com.adobe.ARMDCHelper,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,500,Amazon Photos Installer,com.amazon.clouddrive.mac.installer,Developer ID Application: AMZN Mobile LLC (94KV3E626L)',
     '443,6,500,apko,a.out,',
-    '443,6,0,AGSService,com.adobe.ags,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,500,aws,37c466-aws,Developer ID Application: AMZN Mobile LLC (94KV3E626L)',
     '443,6,500,aws,e956a0-aws,Developer ID Application: AMZN Mobile LLC (94KV3E626L)',
     '443,6,500,bash,bash,',
@@ -248,6 +247,7 @@ WHERE
     '443,6,500,gvproxy,a.out,',
     '443,6,500,helm,,',
     '443,6,500,helm,a.out,',
+    '443,6,500,hugo,a.out,',
     '443,6,500,Install,com.adobe.cc.Install,Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     '443,6,500,istioctl,a.out,',
     '443,6,500,java,net.java.openjdk.java,Developer ID Application: Eclipse Foundation, Inc. (JCDTMS22B4)',
@@ -277,7 +277,6 @@ WHERE
     '443,6,500,policy-tester,a.out,',
     '443,6,500,prober,a.out,',
     '443,6,500,provisio,,',
-    '443,6,500,hugo,a.out,',
     '443,6,500,pulumi-resource-gcp,a.out,',
     '443,6,500,pulumi-resource-github,a.out,',
     '443,6,500,python2.7,python2.7,',
@@ -289,6 +288,7 @@ WHERE
     '443,6,500,Reflect,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     '443,6,500,Reflect Helper,app.reflect.ReflectDesktop,Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     '443,6,500,release-notes,a.out,',
+    '443,6,500,rumble,a.out,',
     '443,6,500,sample,com.apple.dt.SamplingTools.sample,Software Signing',
     '443,6,500,scorecard-darwin-amd64,,',
     '443,6,500,sdaudioswitch,,',
@@ -300,8 +300,8 @@ WHERE
     '443,6,500,Slack Helper,,',
     '443,6,500,Slack Helper,com.tinyspeck.slackmacgap.helper,Apple Mac OS Application Signing',
     '443,6,500,Slack Helper,com.tinyspeck.slackmacgap.helper,Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
-    '443,6,500,snyk,snyk_darwin_amd64,Developer ID Application: Snyk Limited (97QYW7LHSF)',
     '443,6,500,snyk-ls_darwin_arm64,a.out,',
+    '443,6,500,snyk,snyk_darwin_amd64,Developer ID Application: Snyk Limited (97QYW7LHSF)',
     '443,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '443,6,500,steampipe-plugin-aws.plugin,a.out,',
     '443,6,500,step,step,',
@@ -327,12 +327,14 @@ WHERE
     '6000,6,500,ssh,ssh-55554944fbf65684ab9b37c2bad3a27ef78b23f4,',
     '80,6,0,com.apple.MobileSoftwareUpdate.UpdateBrainService,com.apple.MobileSoftwareUpdate.UpdateBrainService,Software Signing',
     '80,6,0,com.google.one.NetworkExtension,com.google.one.NetworkExtension,Developer ID Application: Google LLC (EQHXZ8M8AV)',
+    '80,6,500,Code Helper (Plugin),com.github.Electron.helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '80,6,500,curl,com.apple.curl,Software Signing',
     '80,6,500,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV)',
     '80,6,500,mconvert,a.out,',
     '80,6,500,ngrok,darwin_amd64,Developer ID Application: ngrok LLC (TEX8MHRDQ9)',
     '80,6,500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '80,6,500,webhook.test,a.out,',
+    '443,6,500,cloud-sql-proxy,a.out,',
     '8801,17,500,zoom.us,us.zoom.xos,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     '9418,6,500,git,com.apple.git,Software Signing'
   )
@@ -342,6 +344,8 @@ WHERE
   AND NOT exception_key LIKE '80,6,500,ZwiftAppMetal,ZwiftAppMetal-%,%'
   AND NOT exception_key LIKE '443,6,500,git-remote-http,git-remote-http-%'
   AND NOT exception_key LIKE '443,6,500,cargo,cargo-%'
+  -- JetBrains
+  AND NOT exception_key LIKE '443,6,500,___%_%,a.out,'
   -- aws
   AND NOT exception_key LIKE '443,6,500,aws,%-aws,Developer ID Application: AMZN Mobile LLC (94KV3E626L)'
   -- Github actions-runner

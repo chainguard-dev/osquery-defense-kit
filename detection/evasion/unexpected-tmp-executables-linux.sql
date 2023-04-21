@@ -157,6 +157,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       magic.data IN (
         "POSIX shell script, ASCII text executable",
         "libtool library file, ASCII text",
+        "ASCII text",
         "JSON data"
       )
       OR magic.data LIKE "Unicode text%"
