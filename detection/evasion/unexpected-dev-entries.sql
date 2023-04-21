@@ -41,6 +41,7 @@ WHERE
       OR file.path LIKE '/dev/shm/pulse-shm-%'
       OR file.path LIKE '/dev/shm/u1000-Shm%'
       OR file.path LIKE '/dev/shm/u1000-Valve%'
+      OR file.path LIKE '/dev/shm/aomshm.%'
       OR file.path LIKE '/dev/shm/jack_db%'
     )
   )

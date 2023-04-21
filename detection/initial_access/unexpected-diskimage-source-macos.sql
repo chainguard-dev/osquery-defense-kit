@@ -119,6 +119,7 @@ WHERE
   -- NOTE: Do not put all of storage.googleapis.com or similarly generic hosts here
   AND host NOT IN (
     'arc.net',
+    'adoptium.net',
     'balsamiq.com',
     'brave.com',
     'discord.com',

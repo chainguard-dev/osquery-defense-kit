@@ -76,6 +76,7 @@ WHERE
     'curl,500,bash,zsh',
     'curl,500,env,env',
     'curl,500,fish,gnome-terminal-',
+    'curl,500,bash,yay',
     'curl,500,ruby,zsh',
     'curl,500,ShellLauncher,',
     'curl,500,ShellLauncher,login',

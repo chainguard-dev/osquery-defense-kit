@@ -49,6 +49,7 @@ WHERE
   AND file.filename NOT NULL
   AND exception_key NOT IN (
     ',a.out,/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/kubectl,501',
+    'Apple Mac OS Application Signing,com.anydo.mac,/Applications/Anydo.app/,0',
     'Apple Mac OS Application Signing,com.apple.garageband10,/Applications/GarageBand.app/,0',
     'Apple Mac OS Application Signing,com.utmapp.QEMULauncher,/Applications/UTM.app/Contents/XPCServices/QEMUHelper.xpc/Contents/MacOS/QEMULauncher.app/,0',
     'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
@@ -61,6 +62,7 @@ WHERE
     'Developer ID Application: Bohemian Coding (WUGMZZ5K46),com.bohemiancoding.SketchMirrorHelper,/Applications/Sketch.app/Contents/XPCServices/SketchMirrorHelper.xpc/,501',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW),com.brother.utility.WorkflowAppControlServer,/Library/Printers/Brother/Utilities/Server/WorkflowAppControl.app/,0',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5),com.elgato.WaveLink,/Applications/WaveLink.app/,0',
+    'Developer ID Application: Cypress.Io, Inc. (7D655LWGLY),com.electron.cypress,/Users/garrying/Library/Caches/Cypress/12.9.0/Cypress.app/,501',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK),com.getdropbox.dropbox,/Applications/Dropbox.app/,501',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland,/Applications/GoLand.app/,501',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.pycharm,/Applications/PyCharm.app/,501',
@@ -72,7 +74,6 @@ WHERE
     'Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),com.vng.zalo,/Applications/Zalo.app/,501',
     'Developer ID Application: Voicemod Sociedad Limitada. (S2MC4XQDSM),net.voicemod.desktop,/Applications/Voicemod.app/,0',
     ',dnsmasq,/opt/homebrew/Cellar/dnsmasq/2.88/sbin/dnsmasq,0',
-    'Developer ID Application: Cypress.Io, Inc. (7D655LWGLY),com.electron.cypress,/Users/garrying/Library/Caches/Cypress/12.9.0/Cypress.app/,501',
     ',iodined-55554944d1ffcb236a84363d9b667be6a1742a17,/usr/local/sbin/iodined,501',
     ',java,/opt/homebrew/Cellar/openjdk/19/libexec/openjdk.jdk/Contents/Home/bin/java,501',
     ',org.python.python,/opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/Resources/Python.app/,501',
@@ -86,7 +87,6 @@ WHERE
     'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0',
     '/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/',
     ',,/usr/local/sbin/iodined,501'
-
   )
   AND NOT exception_key LIKE ',a.out,/opt/homebrew/Cellar/podman/%/libexec/podman/gvproxy,501'
   AND NOT exception_key LIKE ',a.out,/private/var/folders/%/T/GoLand/%,501'

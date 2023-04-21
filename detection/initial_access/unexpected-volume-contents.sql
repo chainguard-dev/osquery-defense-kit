@@ -83,6 +83,7 @@ WHERE
     '.angular-config.json',
     '.mysql_history',
     '.lesshst',
+    'pve-installer.squashfs',
     '.gitconfig',
     '.flyrc',
     '.dbshell',

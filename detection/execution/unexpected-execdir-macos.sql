@@ -144,6 +144,7 @@ WHERE
     '/Library/Application Support/EcammLive',
     '~/Library/Application Support/Foxit Software/',
     '~/Library/Application Support/JetBrains/',
+    '~/Library/Caches/JetBrains/',
     '~/Library/Application Support/OpenLens',
     '~/Library/Application Support/sourcegraph-sp/',
     '~/Library/Application Support/Zwift/',

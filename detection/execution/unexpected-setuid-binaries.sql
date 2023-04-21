@@ -231,6 +231,7 @@ FROM
           '/sbin/mullvad-exclude',
           '/bin/mullvad-exclude',
           '/usr/bin/su',
+          '/usr/local/bin/doas',
           '/usr/bin/sudo',
           '/usr/bin/sudoedit',
           '/usr/bin/keybase-redirector',
