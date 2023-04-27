@@ -71,6 +71,7 @@ WHERE
   AND NOT exception_key IN (
     'systemctl,0,apt-helper,',
     'systemctl,0,,containerd-shim-runc-v2',
+    'systemctl,0,kubeadm,containerd-shim-runc-v2',
     'systemctl,0,dash,logrotate',
     'systemctl,0,pacman,pacman',
     'systemctl,500,zsh,tmux',
