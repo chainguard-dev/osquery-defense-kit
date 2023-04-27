@@ -44,6 +44,7 @@ WHERE
     '/Applications/Pandora.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/crashpad_handler',
     '/Applications/Skitch.app/Contents/Library/LoginItems/J8RPQ294UB.com.skitch.SkitchHelper.app/Contents/MacOS/J8RPQ294UB.com.skitch.SkitchHelper',
     '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService',
+    '/Library/Printers/Brother/Utilities/BrStatusMonitor.app/Contents/MacOS/BrStatusMonitor',
     '/Library/Printers/Brother/Utilities/Server/LOGINserver.app/Contents/MacOS/LOGINserver',
     '/Library/Printers/Brother/Utilities/Server/NETserver.app/Contents/MacOS/NETserver',
     '/Library/Printers/Brother/Utilities/Server/USBAppControl.app/Contents/MacOS/USBAppControl',
@@ -53,8 +54,8 @@ WHERE
     '/snap/brackets/138/opt/brackets/Brackets-node',
     '/usr/bin/i3blocks',
     '/usr/bin/sshfs',
-    '/usr/local/bin/dive',
-    '/usr/bin/xss-lock'
+    '/usr/bin/xss-lock',
+    '/usr/local/bin/dive'
   )
   AND p.name NOT IN (
     'buildkitd',
