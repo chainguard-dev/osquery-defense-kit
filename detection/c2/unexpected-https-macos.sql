@@ -15,10 +15,6 @@ SELECT
   CONCAT (
     MIN(p0.euid, 500),
     ',',
-    pos.protocol,
-    ',',
-    MIN(pos.remote_port, 32768),
-    ',',
     REGEX_MATCH (p0.path, '.*/(.*?)$', 1),
     ',',
     p0.name,
@@ -61,12 +57,9 @@ FROM
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN signature s ON p0.path = s.path
 WHERE
-  pos.protocol > 0
-  AND NOT (
-    pos.remote_port IN (53, 443)
-    AND pos.protocol IN (6, 17)
-  )
-  AND pos.remote_address NOT IN ('0.0.0.0', '127.0.0.1', '::ffff:127.0.0.1', '::1', '::')
+  pos.protocol IN (6, 17)
+  AND pos.remote_port = 443
+  AND pos.remote_address NOT IN ('127.0.0.1', '::ffff:127.0.0.1', '::1')
   AND pos.remote_address NOT LIKE 'fe80:%'
   AND pos.remote_address NOT LIKE '127.%'
   AND pos.remote_address NOT LIKE '192.168.%'
@@ -79,28 +72,39 @@ WHERE
   AND pos.remote_address NOT LIKE '::ffff:10.%'
   AND pos.remote_address NOT LIKE 'fc00:%'
   AND pos.state != 'LISTEN' -- Ignore most common application paths
+  AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p0.path NOT LIKE '/Library/Apple/System/Library/%'
   AND p0.path NOT LIKE '/Library/Application Support/%/Contents/%'
   AND p0.path NOT LIKE '/System/Applications/%'
   AND p0.path NOT LIKE '/System/Library/%'
+  AND p0.path NOT LIKE '/Users/%/Library/%.app/Contents/MacOS/%'
+  AND p0.path NOT LIKE '/Users/%/code/%'
+  AND p0.path NOT LIKE '/Users/%/src/%'
+  AND p0.path NOT LIKE '/Users/%/bin/%'
   AND p0.path NOT LIKE '/System/%'
+  AND p0.path NOT LIKE '/opt/homebrew/Cellar/%/bin/%'
   AND p0.path NOT LIKE '/usr/libexec/%'
   AND p0.path NOT LIKE '/usr/sbin/%'
+  AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/%'
+  AND p0.path NOT LIKE '/private/var/folders/%/go-build%/%'  
   -- Apple programs running from weird places, like the UpdateBrainService
   AND NOT (
     s.identifier LIKE 'com.apple.%'
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
-    '500,6,22,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
-    '500,6,4070,Spotify,Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
-    '500,6,5001,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
-    '500,6,5228,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
-    '500,6,8009,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
-    '500,6,80,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
-    '500,6,80,IPNExtension,IPNExtension,Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension',
-    '500,6,993,Mimestream,Mimestream,Developer ID Application: Mimestream, LLC (P2759L65T8),com.mimestream.Mimestream',
-    '500,6,993,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird'
+    '500,Ecamm Live Stream Deck Plugin,Ecamm Live Stream Deck Plugin,Developer ID Application: Ecamm Network, LLC (5EJH68M642),Ecamm Live Stream Deck Plugin',
+    '500,melange,melange,,a.out',
+    '500,Reflect Helper,Reflect Helper,Developer ID Application: Reflect App, LLC (789ULN5MZB),app.reflect.ReflectDesktop',
+    '500,TwitchStudioStreamDeck,TwitchStudioStreamDeck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5),TwitchStudioStreamDeck',
+    '500,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos'
+  )    
+  AND NOT p0.path LIKE '/private/var/folders/%/T/GoLand/%'
+  -- theScore and other iPhone apps
+  AND NOT (
+    s.authority = 'Apple iPhone OS Application Signing'
+    AND p0.cwd = '/'
+    AND p0.path = '/private/var/folders/%/Wrapper/%.app/%'
   )
 GROUP BY
   p0.cmdline
