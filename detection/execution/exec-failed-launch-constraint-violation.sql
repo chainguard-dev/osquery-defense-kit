@@ -64,6 +64,7 @@ WHERE
   AND pe.status = 1
   AND pe.cmdline != ''
   AND pe.cmdline IS NOT NULL
+  AND p0_cmd != '/opt/homebrew/opt/tailscale/bin/tailscaled'
 GROUP BY
   pe.euid,
   pe.path,

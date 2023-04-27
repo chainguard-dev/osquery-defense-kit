@@ -312,6 +312,7 @@ WHERE
     '443,6,500,Transmit,com.panic.Transmit,Developer ID Application: Panic, Inc. (VE8FC488U5)',
     '443,6,500,trivy,,',
     '443,6,500,trivy,a.out,',
+    '443,6,500,Ecamm Live Stream Deck Plugin,Ecamm Live Stream Deck Plugin,Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     '443,6,500,TwitchStudioStreamDeck,TwitchStudioStreamDeck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     '443,6,500,vegeta,a.out,',
     '443,6,500,vim,vim,',

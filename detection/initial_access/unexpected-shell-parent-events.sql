@@ -259,6 +259,7 @@ WHERE
       'dash,0,kube-proxy,containerd-shim-runc-v2',
       'dash,0,run-parts,dash',
       'dash,0,snapd,systemd',
+      'dash,0,dpkg,python3.10',
       'sh,0,auditd,launchd',
       'sh,500,cloud_sql_proxy,zsh',
       'sh,500,docs,zsh',

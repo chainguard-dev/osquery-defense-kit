@@ -48,6 +48,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,302,bash,nix',
     'curl,303,bash,nix',
     'curl,305,bash,nix',
+    'curl,500,nvim,nvim',
     'curl,307,bash,nix',
     'curl,500,bash,bash',
     'curl,500,bash,fakeroot',
