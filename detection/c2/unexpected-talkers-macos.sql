@@ -109,7 +109,9 @@ WHERE
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
+    '500,17,8801,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos',
     '500,6,19305,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
+ --   '500,6,2083,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
     '500,6,22067,syncthing,syncthing,,syncthing',
     '500,6,22,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
     '500,6,22,ssh,ssh,,',
@@ -124,11 +126,16 @@ WHERE
     '500,6,7878,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
     '500,6,8009,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
     '500,6,8009,Spotify Helper,Spotify Helper,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
+    '500,6,80,Arc Helper,Arc Helper,Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.browser.helper',
+    '500,6,80,Code Helper (Plugin),Code Helper (Plugin),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
+    '500,6,80,Code - Insiders Helper (Plugin),Code - Insiders Helper (Plugin),Developer ID Application: Microsoft Corporation',
     '500,6,80,firefox,firefox,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefox',
     '500,6,80,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
     '500,6,80,IPNExtension,IPNExtension,Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension',
     '500,6,80,Spotify,Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
+    '500,6,80,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
     '500,6,8443,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
+    '500,6,8888,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
     '500,6,993,Mimestream,Mimestream,Developer ID Application: Mimestream, LLC (P2759L65T8),com.mimestream.Mimestream',
     '500,6,993,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird'
   )
