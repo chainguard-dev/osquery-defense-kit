@@ -170,6 +170,7 @@ WHERE
   AND NOT exception_key LIKE '500,terraform-provider-%,a.out,'
   AND NOT exception_key LIKE '500,Runner.%,apphost-%,'
   AND NOT exception_key LIKE '500,kubectl.%,a.out,'
+  AND NOT exception_key LIKE '500,marksman-macos,marksman-%,'
   AND NOT exception_key LIKE '500,rustlings,rustlings-%,'
   AND NOT exception_key LIKE '500,rust-analyzer,rust_analyzer-%,'
 GROUP BY

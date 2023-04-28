@@ -119,6 +119,7 @@ WHERE
     p0_name = 'polkit-agent-helper-1'
     AND p1_path IN (
       '/usr/bin/gnome-shell',
+      '/usr/lib/gvfsd',
       '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1'
     )
   )
