@@ -97,6 +97,7 @@ WHERE
     '500,crane,a.out,',
     '500,debug.test,a.out,',
     '500,dive,a.out,',
+    '500,bash,bash,',
     '500,Divvy,com.mizage.Divvy,Apple Mac OS Application Signing',
     '500,dlv,a.out,',
     '500,Duckly,Electron,',
