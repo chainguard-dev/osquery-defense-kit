@@ -27,6 +27,22 @@ SELECT
     ',',
     s.identifier
   ) AS exception_key,  
+  CONCAT (
+    MIN(p0.euid, 500),
+    ',',
+    pos.protocol,
+    ',',
+    MIN(pos.remote_port, 32768),
+    ',',
+    REGEX_MATCH (p0.path, '.*/(.*?)$', 1),
+    ',',
+    p0.name,
+    ',',
+    MIN(f.uid, 500),
+    'u,',
+    MIN(f.gid, 500),
+    'g,'
+  ) AS unsigned_exception_key,    
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -78,6 +94,7 @@ WHERE
   AND pos.remote_address NOT LIKE '10.%'
   AND pos.remote_address NOT LIKE '::ffff:10.%'
   AND pos.remote_address NOT LIKE 'fc00:%'
+  AND pos.remote_address NOT LIKE 'fdfd:%'
   AND pos.state != 'LISTEN' -- Ignore most common application paths
   AND p0.path NOT LIKE '/Library/Apple/System/Library/%'
   AND p0.path NOT LIKE '/Library/Application Support/%/Contents/%'
@@ -92,13 +109,26 @@ WHERE
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
+    '500,6,19305,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
+    '500,6,22067,syncthing,syncthing,,syncthing',
     '500,6,22,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
+    '500,6,22,ssh,ssh,,',
+    '500,6,32000,Spotify Helper,Spotify Helper,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
+    '500,6,32069,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
+    '500,6,32236,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
+    '500,6,32768,IPNExtension,IPNExtension,Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension',
     '500,6,4070,Spotify,Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
     '500,6,5001,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
+    '500,6,5091,ZoomPhone,ZoomPhone,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.ZoomPhone',
     '500,6,5228,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
+    '500,6,7878,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
     '500,6,8009,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
+    '500,6,8009,Spotify Helper,Spotify Helper,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
+    '500,6,80,firefox,firefox,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefox',
     '500,6,80,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
     '500,6,80,IPNExtension,IPNExtension,Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension',
+    '500,6,80,Spotify,Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
+    '500,6,8443,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
     '500,6,993,Mimestream,Mimestream,Developer ID Application: Mimestream, LLC (P2759L65T8),com.mimestream.Mimestream',
     '500,6,993,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird'
   )

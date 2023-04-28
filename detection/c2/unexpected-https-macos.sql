@@ -23,6 +23,18 @@ SELECT
     ',',
     s.identifier
   ) AS exception_key,  
+  CONCAT (
+    MIN(p0.euid, 500),
+    ',',
+    REGEX_MATCH (p0.path, '.*/(.*?)$', 1),
+    ',',
+    p0.name,
+    ',',
+    MIN(f.uid, 500),
+    'u,',
+    MIN(f.gid, 500),
+    'g,'
+  ) AS unsigned_exception_key,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -70,6 +82,7 @@ WHERE
   AND pos.remote_address NOT LIKE '::ffff:172.%'
   AND pos.remote_address NOT LIKE '10.%'
   AND pos.remote_address NOT LIKE '::ffff:10.%'
+  AND pos.remote_address NOT LIKE 'fdfd:%'
   AND pos.remote_address NOT LIKE 'fc00:%'
   AND pos.state != 'LISTEN' -- Ignore most common application paths
   AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
@@ -93,13 +106,24 @@ WHERE
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
+    '500,bash,bash,,bash',
+    '500,Code Helper,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode.helper',
     '500,Ecamm Live Stream Deck Plugin,Ecamm Live Stream Deck Plugin,Developer ID Application: Ecamm Network, LLC (5EJH68M642),Ecamm Live Stream Deck Plugin',
+    '500,git-remote-http,git-remote-http,,git-remote-http-55554944748a32c47cdc35cfa7f071bb69a39ce4',
+    '500,grype,grype,Developer ID Application: ANCHORE, INC. (9MJHKYX5AT),grype',
     '500,melange,melange,,a.out',
+    '500,old,old,Developer ID Application: Denver Technologies, Inc (2BBY89MBSN),dev.warp.Warp-Stable',
     '500,Reflect Helper,Reflect Helper,Developer ID Application: Reflect App, LLC (789ULN5MZB),app.reflect.ReflectDesktop',
+    '500,snyk-ls_darwin_arm64,snyk-ls_darwin_arm64,,a.out',
+    '500,syncthing,syncthing,,syncthing',
     '500,TwitchStudioStreamDeck,TwitchStudioStreamDeck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5),TwitchStudioStreamDeck',
     '500,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos'
   )    
   AND NOT p0.path LIKE '/private/var/folders/%/T/GoLand/%'
+  AND NOT (
+    exception_key = '500,Python,Python,,org.python.python'
+    AND p0_cmd LIKE '%/gcloud.py%'
+  )
   -- theScore and other iPhone apps
   AND NOT (
     s.authority = 'Apple iPhone OS Application Signing'

@@ -46,8 +46,7 @@ WHERE
     AND magic.data LIKE 'POSIX shell script%'
   )
   AND p.path NOT LIKE '/private/var/folders/%/T/iTerm2-scrip%sh'
-  AND p.path NOT LIKE '/home/%/.local/share/Steam/ubuntu12_32/reaper'
-  AND p.path NOT LIKE '/home/%/.local/share/Steam/steamapps/common/SteamLinuxRuntime_soldier/pressure-vessel/libexec/steam-runtime-tools-0/i386-linux-gnu-inspect-library'
+  AND p.path NOT LIKE '/home/%/.local/share/Steam/%'
   -- Removes a false-positive we've seen on Linux, generated through 'runc init'
   AND NOT (
     p.path = "/"
