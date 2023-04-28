@@ -109,14 +109,12 @@ WHERE
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
+    '500,17,8801,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos',
     '500,6,19305,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
  --   '500,6,2083,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
---    '500,6,2083,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
     '500,6,22067,syncthing,syncthing,,syncthing',
     '500,6,22,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
     '500,6,22,ssh,ssh,,',
-    '500,6,5091,ZoomPhone,ZoomPhone,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.ZoomPhone',
-    '500,17,8801,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos',
     '500,6,32000,Spotify Helper,Spotify Helper,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
     '500,6,32069,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
     '500,6,32236,Google Chrome Helper,Google Chrome Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
