@@ -43,5 +43,8 @@ WHERE
     filename,
     REPLACE(LOWER(TRIM(description)), " ", "-")
   ) == 1
-  -- Demo key
-  AND NOT hash.sha256 = "c7d6bac8e942511e25973889ac38656d4d46f68044650d694721017fda23716e"
+  -- Demo keys
+  AND NOT hash.sha256 IN (
+    "c7d6bac8e942511e25973889ac38656d4d46f68044650d694721017fda23716e",
+    "bd5f4c01ebb5636b94584ee4ae42514b27d371859f7344f6aa5a37332ee714ba"
+  )
