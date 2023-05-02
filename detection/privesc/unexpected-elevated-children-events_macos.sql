@@ -108,6 +108,10 @@ WHERE
   AND NOT exception_key IN (
     'containermanagerd,262,com.docker.backend,Docker',
     'sysextd,0,LogiTune,launchd',
+    'biometrickitd,0,LogiTune,launchd',
+    'amfid,0,com.docker.backend,Docker',
+    'dprivacyd,0,com.docker.backend,Docker',
+    'com.apple.geod,262,com.docker.backend,Docker',
     'SCHelper,0,com.docker.backend,Docker'
   )
   AND NOT (

@@ -93,7 +93,8 @@ WHERE
   )
   AND NOT p0_cmd LIKE '/usr/libexec/security_authtrampoline /Library/Application Support/Adobe/Adobe Desktop Common/ElevationManager/Adobe Installer auth%'
   AND NOT p1_path IN (
-    '/Applications/LogiTune.app/Contents/MacOS/LogiTune'
+    '/Applications/LogiTune.app/Contents/MacOS/LogiTune',
+    '/Applications/Alfred 5.app/Contents/Preferences/Alfred Preferences.app/Contents/MacOS/Alfred Preferences'
   )
 GROUP BY
   pe.pid

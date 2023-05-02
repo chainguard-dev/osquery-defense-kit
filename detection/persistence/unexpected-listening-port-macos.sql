@@ -73,6 +73,7 @@ WHERE
     '22000,6,500,syncthing,Developer ID Application: Jakob Borg (LQE5SYM783)',
     '22,6,0,launchd,Software Signing',
     '24678,6,500,node,',
+    '5454,6,0,xrdd,Developer ID Application: X-Rite, Incorporated (2K7GT73B4R)',
     '28197,6,500,Stream Deck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     '2968,6,500,EEventManager,Developer ID Application: Seiko Epson Corporation (TXAEAV5RN4)',
     '33060,6,74,mysqld,Developer ID Application: Oracle America, Inc. (VB5E2TV963)',

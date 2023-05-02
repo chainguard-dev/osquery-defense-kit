@@ -10,6 +10,8 @@ SELECT
   f.btime,
   f.mtime,
   p0.start_time,
+  s.authority AS s_auth,
+  s.identifier AS s_id,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,

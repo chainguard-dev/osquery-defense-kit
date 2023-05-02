@@ -101,7 +101,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
   AND NOT (
     p.euid > 500
     AND parent_name = 'ruby'
-    AND parent_cmd LIKE '%/opt/homebrew/Library/Homebrew/brew.rb%'
+    AND parent_cmd LIKE '%/Library/Homebrew/brew.rb%'
   )
   AND NOT (
     p.euid > 500
@@ -123,5 +123,6 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     AND parent_name = 'ruby'
     AND p.cmdline LIKE '/usr/bin/curl --disable --cookie /dev/null --globoff --show-error --user-agent Homebrew/%'
   )
+  AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY
   p.pid

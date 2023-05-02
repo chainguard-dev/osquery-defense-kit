@@ -75,6 +75,7 @@ WHERE
     '0,git-remote-http,0u,0g,git-remote-http',
     '0,kmod,0u,0g,depmod',
     '0,launcher,0u,0g,launcher',
+    '500,fulcio,500u,500g,fulcio',
     '0,launcher,500u,500g,launcher',
     '0,ldconfig,0u,0g,ldconfig',
     '0,nessusd,0u,0g,nessusd',
@@ -134,6 +135,7 @@ WHERE
     '500,Discord,u,g,Discord',
     '500,docker,0u,0g,docker',
     '500,eksctl,0u,0g,eksctl',
+    '500,copilot-agent-linux,500u,500g,copilot-agent-l',
     '500,eksctl,500u,500g,eksctl',
     '500,electron,0u,0g,electron',
     '500,evolution-addressbook-factory,0u,0g,evolution-addre',
@@ -291,6 +293,7 @@ WHERE
     AND p.cmdline = 'curl --fail https://ipinfo.io/timezone'
   ) -- Exclude processes running inside of containers
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
+  AND NOT p.cgroup_path LIKE '/system.slice/system.slice:docker:%'
   AND NOT p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%' -- Tests
   AND NOT p.path LIKE '/tmp/go-build%.test'
 GROUP BY

@@ -95,6 +95,7 @@ WHERE
     '500,cosign,a.out,',
     '500,cpu,cpu-555549441132dc6b7af538428ce3359ae94eab37,',
     '500,crane,a.out,',
+    '500,gitsign,a.out,',
     '500,debug.test,a.out,',
     '500,dive,a.out,',
     '500,bash,bash,',
@@ -165,6 +166,10 @@ WHERE
   AND NOT (
     exception_key LIKE '500,%,a.out,'
     AND p0.path LIKE '/private/var/folders%/T/go-build%/exe/%'
+  )
+  AND NOT (
+    exception_key LIKE '500,python3.%,%,'
+    AND p0.path LIKE '/opt/homebrew/%/bin/python'
   )
   AND NOT exception_key LIKE '500,___Test%.test,a.out,'
   AND NOT exception_key LIKE '500,terraform-provider-%,a.out,'

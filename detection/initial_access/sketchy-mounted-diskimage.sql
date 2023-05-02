@@ -63,6 +63,7 @@ WHERE
       AND file.mode LIKE "%7%"
       AND file.type != 'directory'
       AND magic.data LIKE '%script%'
+      AND signature.identifier != 'net.snowflake.snowsql'
     ) -- Rule 2. App binaries that have mixed-caps names such as LYwjtu0sc3XqkNVbQe_gM4YiRpmgUpRIew or yWnBJLaF (AdobeFlashPlayer_567.app)
     OR (
       file.mode LIKE "%7%"
