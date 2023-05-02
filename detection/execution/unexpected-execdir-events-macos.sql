@@ -134,6 +134,7 @@ WHERE
     '~/Library/Caches/com.knollsoft.Rectangle',
     '~/Library/Caches/com.mimestream.Mimestream',
     '~/Library/Caches/JetBrains',
+    '~/.wdm/drivers/chromedriver',
     '~/Library/Caches/snyk',
     '/Library/Developer/CommandLineTools',
     '~/Library/Developer/Xcode',

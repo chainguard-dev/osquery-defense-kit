@@ -38,6 +38,7 @@ WHERE
     '/usr/lib/udev/rules.d/60-rfkill.rules',
     '/usr/lib/udev/rules.d/61-accelerometer.rules',
     '/usr/lib/udev/rules.d/61-mutter.rules',
+    '/usr/lib/udev/rules.d/90-usb-microbit.rules',
     '/usr/lib/udev/rules.d/66-saned.rules',
     '/usr/lib/udev/rules.d/70-hypervfcopy.rules',
     '/usr/lib/udev/rules.d/70-hypervkvp.rules',

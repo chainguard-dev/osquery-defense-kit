@@ -258,6 +258,7 @@ WHERE
     '500,todoist,0u,0g,todoist',
     '500,trivy,0u,0g,trivy',
     '500,trivy,500u,500g,trivy',
+    '500,wine64-preloader,500u,500g,Root.exe',
     '500,WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '500,wget,0u,0g,wget',
     '500,wolfictl,500u,500g,wolfictl',
@@ -278,12 +279,7 @@ WHERE
     p.path = '/usr/bin/mage'
     AND p.cmdline LIKE '/home/%/.magefile/%'
   )
-  AND NOT (
-    pp.cmdline = '/run/current-system/sw/bin/bash'
-    AND p.path LIKE '/nix/store/%'
-    AND s.remote_address LIKE '151.101.%'
-    AND s.state = 'ESTABLISHED'
-  )
+  AND NOT p.path LIKE '/nix/store/%/bin/%'
   AND NOT (
     exception_key LIKE '500,%,500u,500g,%'
     AND p.path LIKE '/tmp/go-build%/exe/%'

@@ -112,8 +112,8 @@ WHERE pos.protocol > 0
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
+    "500,17,8801,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos",
     '500,17,8801,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos',
-    '500,6,22067,syncthing,syncthing,,syncthing',
     '500,6,22,Cyberduck,Cyberduck,Developer ID Application: David Kocher (G69SCX94XU),ch.sudo.cyberduck',
     '500,6,22,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
     '500,6,32000,Spotify Helper,Spotify Helper,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
@@ -123,14 +123,14 @@ WHERE pos.protocol > 0
     '500,6,8009,Spotify Helper,Spotify Helper,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
     '500,6,80,Arc Helper,Arc Helper,Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.browser.helper',
     '500,6,80,Code Helper (Plugin),Code Helper (Plugin),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
-    '500,6,80,Code - Insiders Helper (Plugin),Code - Insiders Helper (Plugin),Developer ID Application: Microsoft Corporation',
-    '500,6,80,launcher-Helper,launcher-Helper,Developer ID Application: Mojang AB (HR992ZEAE6),com.mojang.mclauncher.helper',
     '500,6,80,Code - Insiders Helper (Plugin),Code - Insiders Helper (Plugin),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
+    '500,6,80,com.docker.backend,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
     '500,6,80,Creative Cloud UI Helper,Creative Cloud UI Helper,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.acc.HEXHelper',
     '500,6,80,firefox,firefox,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefox',
     '500,6,80,IPNExtension,IPNExtension,Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension',
     '500,6,80,Jabra Direct,Jabra Direct,Developer ID Application: GN Audio AS (55LV32M29R),com.jabra.directonline',
     '500,6,80,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV),ksfetch',
+    '500,6,80,launcher-Helper,launcher-Helper,Developer ID Application: Mojang AB (HR992ZEAE6),com.mojang.mclauncher.helper',
     '500,6,80,Snagit 2023,Snagit 2023,Developer ID Application: TechSmith Corporation (7TQL462TU8),com.TechSmith.Snagit2023',
     '500,6,80,SnagitHelper2020,SnagitHelper2020,Apple Mac OS Application Signing,com.techsmith.snagit.capturehelper2020',
     '500,6,80,Spotify,Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
@@ -140,8 +140,13 @@ WHERE pos.protocol > 0
   ) -- Useful for unsigned binaries
   AND NOT alt_exception_key IN (
     '500,6,22,ssh,ssh,500u,20g',
+    '500,6,80,copilot-agent-macos-arm64,copilot-agent-macos-arm64,500u,20g',
     '500,6,22,ssh,ssh,500u,80g',
     '500,6,3307,cloud-sql-proxy,cloud-sql-proxy,500u,20g'
+  )
+  AND NOT (
+    exception_key LIKE '500,6,%,syncthing,syncthing,,syncthing'
+    AND remote_port > 1024
   )
   AND NOT (
     alt_exception_key = '500,6,80,main,main,500u,20g'

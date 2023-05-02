@@ -143,6 +143,7 @@ WHERE
     '/dev/shm,gopls',
     '/dev/shm,hl2_linux',
     '/dev/shm,java',
+    '/dev/shm,Tabletop Simulator.x86_64',
     '/dev/shm,jcef_helper',
     '/dev/shm,Melvor Idle',
     '/dev/shm,reaper',

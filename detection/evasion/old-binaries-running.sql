@@ -54,6 +54,7 @@ WHERE
     '/snap/brackets/138/opt/brackets/Brackets-node',
     '/usr/bin/i3blocks',
     '/usr/bin/sshfs',
+    '/usr/bin/xclip',
     '/usr/bin/xss-lock',
     '/usr/local/bin/dive'
   )
