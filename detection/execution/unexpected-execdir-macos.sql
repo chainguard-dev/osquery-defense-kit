@@ -96,6 +96,7 @@ WHERE
     '~/bin',
     '~/code/bin',
     '~/Downloads/google-cloud-sdk/bin',
+    '~/Library/Application Support/minecraft/launcher/launcher.bundle/Contents/Frameworks/launcher-Helper (Renderer).app/Contents/MacOS',
     '~/go/bin',
     '~/Library/Application Support/sourcegraph-sp/',
     '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',

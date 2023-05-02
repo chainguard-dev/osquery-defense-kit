@@ -134,6 +134,7 @@ WHERE
     '80,6,0,bash,0u,0g,sh',
     '80,6,0,bash,0u,0g,update-ca-trust',
     '80,6,0,cp,0u,0g,cp',
+    '80,6,500,mediawriter,u,g,mediawriter',
     '80,6,0,fc-cache,0u,0g,fc-cache',
     '80,6,0,find,0u,0g,find',
     '80,6,0,gawk,0u,0g,awk',

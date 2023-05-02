@@ -179,6 +179,7 @@ WHERE
   AND NOT p0.path LIKE '/home/%/bin/%'
   AND NOT p0.path LIKE '/home/%/.local/share/JetBrains/Toolbox/apps/%'
   AND NOT p0.path LIKE '/home/%/.local/share/nvim/mason/packages/%'
+  AND NOT p0.path LIKE '/home/%/.cache/JetBrains/%/GoLand/___%'
   AND NOT p0.path LIKE '/home/%/.local/share/Steam/ubuntu12_64/%'
   AND NOT p0.path LIKE '/home/%/.rustup/toolchains/%/libexec/%'
   AND NOT p0.path LIKE '/home/%/jbr/lib/jcef_helper'

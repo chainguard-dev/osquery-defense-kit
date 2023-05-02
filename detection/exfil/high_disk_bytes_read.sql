@@ -72,6 +72,7 @@ WHERE
     'go',
     'golangci-lint',
     'GoogleSoftwareUpdateAgent',
+    'mediawriter',
     'gopls',
     'grype',
     'java',
@@ -140,10 +141,7 @@ WHERE
     p0.name = 'jetbrains-toolb'
     AND p0.path LIKE '/tmp/.mount_jet%/jetbrains-toolbox'
   )
-  AND NOT (
-    p0.name = 'com.apple.MobileSoftwareUpdate.UpdateBrainService'
-    AND p0.path LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/com.apple.MobileSoftwareUpdate.UpdateBrainService.%.xpc/Contents/MacOS/com.apple.MobileSoftwareUpdate.UpdateBrainService'
-  )
+  AND NOT p0.path LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%com.apple.MobileSoftwareUpdate.UpdateBrainService.%.xpc/Contents/MacOS/com.apple.MobileSoftwareUpdate.UpdateBrainService'
   AND NOT (
     p0.name = 'FindMy'
     AND p0.path = '/System/Applications/FindMy.app/Contents/MacOS/FindMy'

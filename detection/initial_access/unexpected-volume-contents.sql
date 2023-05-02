@@ -93,6 +93,7 @@ WHERE
     '.pdfbox.cache',
     '.DS_Store',
     '.file',
+    'UFRII_LT_LIPS_LX_Installer.pkg',
     'LogiPresentation Installer.app',
     '.file-revisions-by-id',
     '._Id.txt',

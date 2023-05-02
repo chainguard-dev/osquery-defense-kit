@@ -101,6 +101,7 @@ WHERE
       'dirhelper,/private/var/folders',
       'Electron,~/.vscode/extensions',
       'fish,~/.local/share',
+      'rustc,/home/build/.cargo',
       'fish,~/.Trash',
       'git,~/.local/share',
       'java,/home/build/.gradle',
