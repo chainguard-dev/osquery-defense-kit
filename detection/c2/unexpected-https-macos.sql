@@ -108,6 +108,7 @@ WHERE
   AND NOT exception_key IN (
     '500,bash,bash,,bash',
     '500,cloud_sql_proxy,cloud_sql_proxy,,a.out',
+    '0,Setup,Setup,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.acc.Setup',
     '500,Code Helper,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode.helper',
     '500,Code Helper (Plugin),Code Helper (Plugin),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
     '500,Code Helper (Renderer),Code Helper (Renderer),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
@@ -149,6 +150,11 @@ WHERE
     s.authority = 'Apple iPhone OS Application Signing'
     AND p0.cwd = '/'
     AND p0.path = '/private/var/folders/%/Wrapper/%.app/%'
+  )
+  -- nix socket inheritance
+  AND NOT (
+    p0.path LIKE '/nix/store/%/bin/%'
+    AND p1.path LIKE '/nix/store/%/bin/%'
   )
 GROUP BY
   p0.cmdline

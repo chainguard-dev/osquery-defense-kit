@@ -60,7 +60,7 @@ FROM
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  p0.path != ""
+  p0.path != ''
   AND NOT p0.name == basename
   AND NOT (
     LENGTH(basename) > 1
@@ -75,31 +75,32 @@ WHERE
     AND INSTR(LOWER(p0.name), LOWER(short_filename)) > 0
   ) -- Extremely common and unpredictable process name setters
   AND NOT base_letters IN (
-    "bash",
-    "dash",
-    "electron",
-    "firefox",
-    "node",
-    "perl",
-    "python",
-    "ruby",
-    "thunderbird"
+    'bash',
+    'dash',
+    'electron',
+    'firefox',
+    'node',
+    'perl',
+    'python',
+    'ruby',
+    'thunderbird'
   )
   AND NOT exception_key IN (
-    "0,udevadm,systemd-udevd",
-    "125,systemd,(sd-pam)",
-    "42,systemd,(sd-pam)",
-    "500,vim.basic,vi",
-    "120,systemd,(sd-pam)",
-    "127,systemd,(sd-pam)",
-    "0,udevadm,(udev-worker)",
-    "500,pyrogenesis,main",
-    "500,plugin-container,MainThread",
-    "500,gjs-console,gnome-character",
-    "500,rootlesskit,exe",
-    "500,rootlessport,exe",
-    "500,systemd,(sd-pam)",
-    "500,udevadm,systemd-udevd"
+    '0,udevadm,systemd-udevd',
+    '0,udevadm,(udev-worker)',
+    '120,systemd,(sd-pam)',
+    '125,systemd,(sd-pam)',
+    '127,systemd,(sd-pam)',
+    '42,systemd,(sd-pam)',
+    '500,coreutils,tail',
+    '500,gjs-console,gnome-character',
+    '500,plugin-container,MainThread',
+    '500,pyrogenesis,main',
+    '500,rootlesskit,exe',
+    '500,rootlessport,exe',
+    '500,systemd,(sd-pam)',
+    '500,udevadm,systemd-udevd'
+    '500,vim.basic,vi',
   )
   AND NOT p0.path IN ('/usr/lib/systemd/systemd')
 GROUP by

@@ -81,6 +81,7 @@ WHERE
       AND NOT path LIKE '/Users/%/Library/Application Support/%/Contents/MacOS/%'
       AND NOT path LIKE '/Users/%/Library/Application Support/iTerm2/iTermServer-%'
       AND NOT path LIKE '/Users/%/Library/Application Support/snyk-ls/snyk-ls_darwin_%'
+      AND NOT path LIKE '/Users/%/Library/Application Support/Zed/languages/%'
       AND NOT path LIKE '/Users/%/Library/Caches/%/Contents/MacOS/%'
       AND NOT PATH LIKE '/Users/%/Library/Caches/JetBrains/GoLand2023.1/tmp/GoLand/___%'
       AND NOT path LIKE '/Users/%/Library/Caches/snyk/%/snyk-macos'
