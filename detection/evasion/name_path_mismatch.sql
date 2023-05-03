@@ -99,8 +99,8 @@ WHERE
     '500,rootlesskit,exe',
     '500,rootlessport,exe',
     '500,systemd,(sd-pam)',
-    '500,udevadm,systemd-udevd'
-    '500,vim.basic,vi',
+    '500,udevadm,systemd-udevd',
+    '500,vim.basic,vi'
   )
   AND NOT p0.path IN ('/usr/lib/systemd/systemd')
 GROUP by
