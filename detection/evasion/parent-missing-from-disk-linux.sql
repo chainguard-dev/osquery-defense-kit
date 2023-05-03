@@ -65,11 +65,11 @@ WHERE
     '/usr/libexec/gdm-wayland-session',
     '/usr/libexec/gdm-x-session',
     '/usr/libexec/gnome-terminal-server',
-    '/usr/lib/systemd/systemd'
+    '/usr/lib/systemd/systemd',
     '/usr/sbin/auditd',
     '/usr/sbin/gdm3',
     '/usr/sbin/sshd',
-    '/usr/share/code/code',
+    '/usr/share/code/code'
   ) -- long-running launchers
   AND NOT p1.name IN (
     'lightdm',
