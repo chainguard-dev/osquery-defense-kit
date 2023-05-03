@@ -77,6 +77,7 @@ WHERE
   AND exception_key NOT IN (
     '0,nix,nix,',
     '0,osqueryd,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
+    '500,bash,bash,',
     '500,bash,com.apple.bash,Software Signing',
     '500,Bazecor Helper,,',
     '500,Bitwarden,com.bitwarden.desktop,Apple Mac OS Application Signing',
@@ -95,11 +96,8 @@ WHERE
     '500,cosign,a.out,',
     '500,cpu,cpu-555549441132dc6b7af538428ce3359ae94eab37,',
     '500,crane,a.out,',
-    '500,gitsign,a.out,',
     '500,debug.test,a.out,',
     '500,dive,a.out,',
-    '500,Grammarly for Safari,com.grammarly.safari.extension,Apple Mac OS Application Signing',
-    '500,bash,bash,',
     '500,Divvy,com.mizage.Divvy,Apple Mac OS Application Signing',
     '500,dlv,a.out,',
     '500,Duckly,Electron,',
@@ -111,12 +109,14 @@ WHERE
     '500,fake,a.out,',
     '500,Final Cut Pro,com.apple.FinalCut,Apple Mac OS Application Signing',
     '500,git,git,',
+    '500,gitsign,a.out,',
     '500,gitsign-credential-cache,a.out,',
     '500,GitterHelperApp,com.troupe.gitter.mac.GitterHelperApp,Developer ID Application: Troupe Technology Limited (A86QBWJ43W)',
     '500,go,a.out,',
     '500,gopls,a.out,',
     '500,gopls,gopls,',
     '500,gpg-agent,gpg-agent,',
+    '500,Grammarly for Safari,com.grammarly.safari.extension,Apple Mac OS Application Signing',
     '500,hugo,a.out,',
     '500,InternalFiltersXPC,com.apple.InternalFiltersXPC,Apple Mac OS Application Signing',
     '500,ipcserver,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
@@ -148,6 +148,7 @@ WHERE
     '500,Slack Helper (Plugin),com.tinyspeck.slackmacgap.helper,Apple Mac OS Application Signing',
     '500,Slack Helper (Renderer),com.tinyspeck.slackmacgap.helper,Apple Mac OS Application Signing',
     '500,snyk-ls_darwin_arm64,a.out,',
+    '500,ssh,ssh,',
     '500,Steam Helper,com.valvesoftware.steam.helper,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '500,stern,a.out,',
@@ -171,6 +172,10 @@ WHERE
   AND NOT (
     exception_key LIKE '500,python3.%,%,'
     AND p0.path LIKE '/opt/homebrew/%/bin/python'
+  )
+  AND NOT (
+    exception_Key LIKE '500,%,a.out,'
+    AND p0.path LIKE '/Users/%/go/bin/%'
   )
   AND NOT exception_key LIKE '500,___Test%.test,a.out,'
   AND NOT exception_key LIKE '500,terraform-provider-%,a.out,'

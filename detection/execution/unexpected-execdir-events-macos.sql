@@ -158,6 +158,7 @@ WHERE
     '~/code/bin',
     '~/Downloads/google-cloud-sdk/bin',
     '~/Downloads/protoc/bin',
+    '/Volumes/Grammarly/Grammarly Installer.app/Contents/MacOS',
     '~/go/bin',
     '/Library/Printers/Brother/Utilities/Server/LOGINserver.app/Contents/MacOS',
     '~/Library/Application Support/minecraft/launcher/launcher.bundle/Contents/Frameworks/launcher-Helper (GPU).app/Contents/MacOS',

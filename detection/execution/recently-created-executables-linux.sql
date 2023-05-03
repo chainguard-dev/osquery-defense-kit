@@ -75,6 +75,7 @@ WHERE
     '/usr/bin/make',
     '/usr/bin/cargo',
     '/usr/bin/containerd',
+    '/usr/libexec/power-profiles-daemon',
     '/usr/bin/containerd-shim-runc-v2',
     '/usr/bin/docker',
     '/usr/bin/dockerd',
@@ -177,6 +178,7 @@ WHERE
     '/usr/share/teams/team'
   )
   AND NOT p0.path LIKE '/home/%/bin/%'
+  AND NOT p0.path LIKE '/home/%/git/%'
   AND NOT p0.path LIKE '/home/%/.local/share/JetBrains/Toolbox/apps/%'
   AND NOT p0.path LIKE '/home/%/.local/share/nvim/mason/packages/%'
   AND NOT p0.path LIKE '/home/%/.cache/JetBrains/%/GoLand/___%'

@@ -33,6 +33,8 @@ WHERE
     'gcr.io/k8s-minikube/kicbase',
     'ghcr.io/wolfi-dev/sdk',
     'kindest/node',
+    -- blame k3d/k3s for this
+    'docker.io/library/registry',
     'moby/buildkit',
     'wolfi'
   )

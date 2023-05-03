@@ -189,6 +189,7 @@ WHERE
     'sh,/nix/store/__VERSION__/bin/bash,0,system.slice,znapzend.service,0555',
     'smartd,/usr/sbin/smartd,0,system.slice,smartd.service,0755',
     'snapd,/snap/snapd/__VERSION__/usr/lib/snapd/snapd,0,system.slice,snapd.service,0755',
+    'snapd,/usr/libexec/snapd/snapd,0,system.slice,snapd.service,0755',
     'snapd,/usr/lib/snapd/snapd,0,system.slice,snapd.service,0755',
     'sshd,/nix/store/__VERSION__/bin/sshd,0,system.slice,sshd.service,0555',
     'sshd,/nix/store/__VERSION__/bin/sshd,0,user.slice,user-1000.slice,0555',
