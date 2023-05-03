@@ -1,7 +1,8 @@
--- Unexpected calls to sysctl (event-based)
+-- Unexpected calls to macOS system utilities (event-based)
 --
 -- refs:
 --   * https://attack.mitre.org/techniques/T1497/001/ (Virtualization/Sandbox Evasion: System Checks)
+--   * https://www.sentinelone.com/blog/atomic-stealer-threat-actor-spawns-second-variant-of-macos-malware-sold-on-telegram/
 --
 -- platform: darwin
 -- interval: 900
@@ -73,6 +74,7 @@ WHERE
   AND pe.status == 0
   AND pe.path IN (
     '/usr/sbin/sysctl',
+    '/usr/bin/security',
     '/usr/libexec/security_authtrampoline',
     '/usr/bin/openssl',
     '/usr/bin/uuidgen',
