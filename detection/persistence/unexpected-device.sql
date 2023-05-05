@@ -172,6 +172,7 @@ WHERE
     '/dev/shm/libpod_rootless_lock_',
     '/dev/shm/pulse-shm-',
     '/dev/shm/aomshm.b.',
+    '/dev/shm/aomshm.c.',
     '/dev/shm/i-log-',
     '/dev/snapshot',
     '/dev/snd/',

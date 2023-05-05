@@ -88,7 +88,9 @@ WHERE
   AND NOT exception_key IN (
     '0,udevadm,systemd-udevd',
     '0,udevadm,(udev-worker)',
+    '500,netcat,nc',
     '120,systemd,(sd-pam)',
+    '500,busybox,sh',
     '125,systemd,(sd-pam)',
     '127,systemd,(sd-pam)',
     '42,systemd,(sd-pam)',
@@ -103,5 +105,6 @@ WHERE
     '500,vim.basic,vi'
   )
   AND NOT p0.path IN ('/usr/lib/systemd/systemd')
+  AND NOT p0_cgroup LIKE '/system.slice/docker-%'
 GROUP by
   exception_key

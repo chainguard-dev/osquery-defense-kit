@@ -115,6 +115,7 @@ WHERE
     'terminator',
     'test2json',
     'tmux',
+    'qcalc',
     'tmux:server',
     'update-notifier',
     'vi',
