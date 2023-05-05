@@ -112,6 +112,7 @@ WHERE pos.protocol > 0
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
+    '0,6,80,prl_naptd,prl_naptd,Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',
     '500,17,8801,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos',
     '500,6,22,Cyberduck,Cyberduck,Developer ID Application: David Kocher (G69SCX94XU),ch.sudo.cyberduck',
     '500,6,22,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
@@ -120,7 +121,6 @@ WHERE pos.protocol > 0
     '500,6,4070,Spotify,Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
     '500,6,5091,ZoomPhone,ZoomPhone,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.ZoomPhone',
     '500,6,5228,Clay,Clay,Developer ID Application: Clay Software, Inc. (C68GA48KN3),com.clay.mac',
-    '0,6,80,prl_naptd,prl_naptd,Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',
     '500,6,8009,Spotify Helper,Spotify Helper,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
     '500,6,80,Arc Helper,Arc Helper,Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.browser.helper',
     '500,6,80,Code Helper (Plugin),Code Helper (Plugin),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
@@ -135,6 +135,7 @@ WHERE pos.protocol > 0
     '500,6,80,Signal Helper (Renderer),Signal Helper (Renderer),Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR),org.whispersystems.signal-desktop.helper.Renderer',
     '500,6,80,Snagit 2023,Snagit 2023,Developer ID Application: TechSmith Corporation (7TQL462TU8),com.TechSmith.Snagit2023',
     '500,6,80,SnagitHelper2020,SnagitHelper2020,Apple Mac OS Application Signing,com.techsmith.snagit.capturehelper2020',
+    '500,6,80,SnagitHelper2023,SnagitHelper2023,Developer ID Application: TechSmith Corporation (7TQL462TU8),com.techsmith.snagit.capturehelper2023',
     '500,6,80,Spotify,Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
     '500,6,80,Telegram,Telegram,Apple Mac OS Application Signing,ru.keepcoder.Telegram',
     '500,6,80,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',

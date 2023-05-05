@@ -89,6 +89,8 @@ WHERE p0.pid IN (
         '~/Library/Caches/JetBrains/',
         '~/Library/Caches/org.gpgtools.updater/',
         '~/Library/Caches/snyk/',
+        '~/projects/go/src/',
+        '~/Library/Caches/company.thebrowser.Browser/',
         '/Library/Developer/Xcode/',
         '~/.terraform.d/plugin-cache/registry.terraform.io/'
       )
@@ -106,6 +108,8 @@ WHERE p0.pid IN (
       )
       OR dir LIKE '~/%/node_modules/.bin/%'
       OR f.path LIKE '%go-build%'
+      OR f.path LIKE '~/%/src/%.test'
+      OR f.path LIKE '~/%/pkg/%.test'
       OR f.path LIKE '/private/tmp/%/Creative Cloud Installer.app/Contents/MacOS/Install'
       OR f.path LIKE '/private/tmp/go-%'
       OR f.path LIKE '/private/tmp/nix-build-%'
@@ -162,5 +166,10 @@ WHERE p0.pid IN (
     AND f.ctime = f.mtime
     AND f.uid = p0.uid
     AND p0.cmdline LIKE './%'
+  )
+  AND NOT (
+    s.authority != ""
+    AND s.identifier = 'org.sparkle-project.Sparkle.Updater'
+    AND top3_dir LIKE '~/Library/Caches/%'
   )
 GROUP BY p0.pid
