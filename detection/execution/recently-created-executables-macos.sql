@@ -104,6 +104,7 @@ WHERE p0.pid IN (
         '~/.magefile',
         '~/projects/go/bin'
       )
+      OR dir LIKE '~/%/node_modules/.bin/%'
       OR f.path LIKE '%go-build%'
       OR f.path LIKE '/private/tmp/%/Creative Cloud Installer.app/Contents/MacOS/Install'
       OR f.path LIKE '/private/tmp/go-%'

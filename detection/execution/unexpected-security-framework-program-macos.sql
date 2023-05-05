@@ -152,6 +152,7 @@ WHERE
     '500,Steam Helper,com.valvesoftware.steam.helper,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '500,steam_osx,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '500,stern,a.out,',
+    '500,Grammarly Safari Extension,com.grammarly.safari.extension.ext2,Apple Mac OS Application Signing',
     '500,syncthing,syncthing,',
     '500,Telegram,ru.keepcoder.Telegram,Apple Mac OS Application Signing',
     '500,testing,com.yourcompany.testing,', -- Xcode iPhone emulator
