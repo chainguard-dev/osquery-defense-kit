@@ -158,5 +158,12 @@ WHERE
     AND s.authority = ''
     AND p0.uid > 499
   )
+  -- Arc
+  AND NOT (
+    p0.path LIKE '/Users/%/Library/Caches/%/org.sparkle-project.Sparkle/Launcher/%'
+    AND s.identifier = 'org.sparkle-project.Sparkle.Updater'
+    AND s.authority != ''
+    AND p0.uid > 499
+  )
 GROUP BY
   p0.pid

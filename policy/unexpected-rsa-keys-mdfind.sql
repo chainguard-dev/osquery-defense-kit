@@ -29,5 +29,5 @@ WHERE
     REPLACE(LOWER(TRIM(description)), " ", "-")
   ) == 1
   -- Common filenames that are non-controversial
-
+  AND NOT file.filename LIKE '%example.com.pem.rsa'
 GROUP BY file.path

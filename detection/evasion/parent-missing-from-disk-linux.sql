@@ -58,6 +58,8 @@ WHERE
     '/usr/bin/fusermount3',
     '/usr/bin/gnome-shell',
     '/usr/sbin/sshd',
+    '/usr/lib/gnome-session-binary',
+    '/usr/lib/xdg-document-portal',
     '/usr/sbin/auditd',
     '/usr/bin/kitty',
     '/usr/bin/tmux',

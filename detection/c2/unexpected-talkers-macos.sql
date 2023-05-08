@@ -112,7 +112,6 @@ WHERE pos.protocol > 0
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
-    "500,17,8801,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos",
     '500,17,8801,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos',
     '500,6,22,Cyberduck,Cyberduck,Developer ID Application: David Kocher (G69SCX94XU),ch.sudo.cyberduck',
     '500,6,22,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
@@ -131,22 +130,28 @@ WHERE pos.protocol > 0
     '500,6,80,Jabra Direct,Jabra Direct,Developer ID Application: GN Audio AS (55LV32M29R),com.jabra.directonline',
     '500,6,80,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV),ksfetch',
     '500,6,80,launcher-Helper,launcher-Helper,Developer ID Application: Mojang AB (HR992ZEAE6),com.mojang.mclauncher.helper',
+    '500,6,80,Snagit 2020,Snagit 2020,Apple Mac OS Application Signing,com.TechSmith.Snagit2020',
     '500,6,80,Snagit 2023,Snagit 2023,Developer ID Application: TechSmith Corporation (7TQL462TU8),com.TechSmith.Snagit2023',
     '500,6,80,SnagitHelper2020,SnagitHelper2020,Apple Mac OS Application Signing,com.techsmith.snagit.capturehelper2020',
     '500,6,80,Spotify,Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
     '500,6,80,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
+    '500,6,999,Opera Helper,Opera Helper,Developer ID Application: Opera Software AS (A2P9LX4JPN),com.operasoftware.Opera.helper',
     '500,6,993,Mimestream,Mimestream,Developer ID Application: Mimestream, LLC (P2759L65T8),com.mimestream.Mimestream',
     '500,6,993,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird'
   ) -- Useful for unsigned binaries
   AND NOT alt_exception_key IN (
+    '500,6,22,ssh,ssh,500u,0g',
     '500,6,22,ssh,ssh,500u,20g',
-    '500,6,80,copilot-agent-macos-arm64,copilot-agent-macos-arm64,500u,20g',
     '500,6,22,ssh,ssh,500u,80g',
-    '500,6,3307,cloud-sql-proxy,cloud-sql-proxy,500u,20g'
+    '500,6,3307,cloud-sql-proxy,cloud-sql-proxy,500u,20g',
+    '500,6,80,copilot-agent-macos-arm64,copilot-agent-macos-arm64,500u,20g'
   )
   AND NOT (
-    exception_key LIKE '500,6,%,syncthing,syncthing,,syncthing'
-    AND remote_port > 1024
+    alt_exception_key LIKE '500,6,%,syncthing,syncthing,0u,500g'
+    AND (
+      remote_port > 1024
+      OR remote_port IN (110, 993, 999)
+    )
   )
   AND NOT (
     alt_exception_key = '500,6,80,main,main,500u,20g'
@@ -154,7 +159,7 @@ WHERE pos.protocol > 0
   ) -- Known Web Browsers
   AND NOT (
     (
-      pos.remote_port = 80
+      pos.remote_port IN (80,999)
       OR pos.remote_port > 5000
     )
     AND id_exception_key IN (
@@ -164,6 +169,7 @@ WHERE pos.protocol > 0
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefox',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefoxdeveloperedition',
       'Developer ID Application: Opera Software AS (A2P9LX4JPN),com.operasoftware.Opera.helper',
+      'Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
       'Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.browser.helper'
     )
   )

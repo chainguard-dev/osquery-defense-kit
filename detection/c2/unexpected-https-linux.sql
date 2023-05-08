@@ -89,6 +89,7 @@ WHERE
     '0,python3.11,0u,0g,dnf',
     '0,python3.11,0u,0g,dnf-automatic',
     '0,python3.11,0u,0g,yum',
+    '0,gtk4-update-icon-cache,0u,0g,gtk-update-icon',
     '0,rpi-imager,0u,0g,rpi-imager',
     '0,snapd,0u,0g,snapd',
     '0,tailscaled,0u,0g,tailscaled',
