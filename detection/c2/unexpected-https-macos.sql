@@ -22,7 +22,7 @@ SELECT
     s.authority,
     ',',
     s.identifier
-  ) AS exception_key,  
+  ) AS exception_key,
   CONCAT (
     MIN(p0.euid, 500),
     ',',
@@ -99,7 +99,7 @@ WHERE
   AND p0.path NOT LIKE '/usr/libexec/%'
   AND p0.path NOT LIKE '/usr/sbin/%'
   AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/%'
-  AND p0.path NOT LIKE '/private/var/folders/%/go-build%/%'  
+  AND p0.path NOT LIKE '/private/var/folders/%/go-build%/%'
   -- Apple programs running from weird places, like the UpdateBrainService
   AND NOT (
     s.identifier LIKE 'com.apple.%'

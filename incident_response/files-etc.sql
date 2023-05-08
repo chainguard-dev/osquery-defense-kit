@@ -2,7 +2,10 @@
 --
 -- tags: postmortem
 -- platform: posix
-SELECT *
-FROM file
-    JOIN hash ON file.path = hash.path
-WHERE file.path LIKE "/etc/%%";
+SELECT
+  *
+FROM
+  file
+  JOIN hash ON file.path = hash.path
+WHERE
+  file.path LIKE "/etc/%%";

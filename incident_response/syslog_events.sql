@@ -2,4 +2,7 @@
 --
 -- tags: postmortem
 -- platform: linux
-SELECT * FROM syslog_events;
+SELECT
+  *
+FROM
+  syslog_events;

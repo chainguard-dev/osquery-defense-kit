@@ -1,5 +1,4 @@
 -- Return basic kernel information
-
 -- tags: postmortem
 SELECT
   *

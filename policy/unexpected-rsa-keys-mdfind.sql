@@ -14,7 +14,8 @@ FROM
   LEFT JOIN file ON mdfind.path = file.path
   LEFT JOIN users u ON file.uid = u.uid
   LEFT JOIN hash ON mdfind.path = hash.path
-  LEFT JOIN extended_attributes ea ON mdfind.path = ea.path AND ea.key = 'where_from'
+  LEFT JOIN extended_attributes ea ON mdfind.path = ea.path
+  AND ea.key = 'where_from'
   LEFT JOIN magic ON mdfind.path = magic.path
   LEFT JOIN signature ON mdfind.path = signature.path
 WHERE
@@ -30,4 +31,5 @@ WHERE
   ) == 1
   -- Common filenames that are non-controversial
   AND NOT file.filename LIKE '%example.com%'
-GROUP BY file.path
+GROUP BY
+  file.path

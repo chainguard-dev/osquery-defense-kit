@@ -2,4 +2,7 @@
 --
 -- tags: postmortem
 -- platform: posix
-SELECT * FROM system_controls;
+SELECT
+  *
+FROM
+  system_controls;

@@ -2,6 +2,8 @@
 --
 -- tags: postmortem
 -- platform: posix
-SELECT firefox_addons.*
-FROM users
-    JOIN firefox_addons ON users.uid = firefox_addons.uid;
+SELECT
+  firefox_addons.*
+FROM
+  users
+  JOIN firefox_addons ON users.uid = firefox_addons.uid;

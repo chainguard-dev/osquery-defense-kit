@@ -5,7 +5,8 @@
 --
 -- tags: transient process state often
 -- platform: darwin
-SELECT f.ctime,
+SELECT
+  f.ctime,
   f.btime,
   f.mtime,
   p0.start_time,
@@ -41,7 +42,8 @@ SELECT f.ctime,
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM processes p0
+FROM
+  processes p0
   LEFT JOIN signature s ON p0.path = s.path
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN users u ON f.uid = u.uid
@@ -50,10 +52,14 @@ FROM processes p0
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
-WHERE p0.pid IN (
-    SELECT pid
-    FROM processes
-    WHERE start_time > 0
+WHERE
+  p0.pid IN (
+    SELECT
+      pid
+    FROM
+      processes
+    WHERE
+      start_time > 0
       AND start_time > (strftime('%s', 'now') - 7200)
       AND pid > 0
       AND path != ""

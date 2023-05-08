@@ -49,4 +49,5 @@ WHERE
     AND program_identifier IN ('com.apple.ln', 'com.apple.link')
     AND program_arguments LIKE '/bin/ln -s -f /Users/%/run/docker.sock /var/run/docker.sock'
   )
-  GROUP BY l.path
+GROUP BY
+  l.path

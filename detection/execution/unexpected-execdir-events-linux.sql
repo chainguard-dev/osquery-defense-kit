@@ -41,7 +41,8 @@ SELECT -- Child
     '.*/(.*)',
     1
   ) AS p2_name
-FROM process_events pe
+FROM
+  process_events pe
   LEFT JOIN processes p ON pe.pid = pe.pid -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
   LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
@@ -55,10 +56,14 @@ FROM process_events pe
   LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
-WHERE pe.pid IN (
-    SELECT pid
-    FROM process_events
-    WHERE time > (strftime('%s', 'now') -300)
+WHERE
+  pe.pid IN (
+    SELECT
+      pid
+    FROM
+      process_events
+    WHERE
+      time > (strftime('%s', 'now') -300)
       AND (
         INSTR(path, "/bin") != 1
         AND INSTR(path, "/sbin/") != 1
@@ -82,7 +87,8 @@ WHERE pe.pid IN (
         AND INSTR(path, "/.terraform/") > 0
       )
       AND syscall = "execve" -- REGEX_MATCH performed terribly. INSTR and LIKE are very very close.
-    GROUP BY path
+    GROUP BY
+      path
   )
   AND pe.time > (strftime('%s', 'now') -300)
   AND pe.syscall = "execve"
@@ -90,4 +96,5 @@ WHERE pe.pid IN (
   AND p.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
   AND p1.cgroup_path NOT LIKE '/system.slice/docker-%'
   AND p1.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
-GROUP BY pe.pid
+GROUP BY
+  pe.pid

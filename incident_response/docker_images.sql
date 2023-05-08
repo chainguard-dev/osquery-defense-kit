@@ -2,4 +2,7 @@
 --
 -- tags: postmortem
 -- platform: linux
-SELECT * FROM docker_images;
+SELECT
+  *
+FROM
+  docker_images;

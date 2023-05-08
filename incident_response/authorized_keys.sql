@@ -2,4 +2,8 @@
 --
 -- tags: postmortem
 -- platform: posix
-SELECT authorized_keys.* FROM users JOIN authorized_keys ON users.uid = authorized_keys.uid;
+SELECT
+  authorized_keys.*
+FROM
+  users
+  JOIN authorized_keys ON users.uid = authorized_keys.uid;

@@ -2,4 +2,7 @@
 --
 -- tags: postmortem
 -- platform: linux
-SELECT * FROM socket_events;
+SELECT
+  *
+FROM
+  socket_events;
