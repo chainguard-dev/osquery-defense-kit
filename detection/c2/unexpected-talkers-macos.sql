@@ -153,7 +153,7 @@ WHERE
     '500,6,22,ssh,ssh,500u,20g',
     '500,6,22,ssh,ssh,500u,80g',
     '500,6,3307,cloud_sql_proxy,cloud_sql_proxy,0u,0g',
-    '500,6,3307,cloud-sql-proxy,cloud-sql-proxy,500u,20g' '500,6,3307,cloud-sql-proxy,cloud-sql-proxy,500u,20g',
+    '500,6,3307,cloud-sql-proxy,cloud-sql-proxy,500u,20g',
     '500,6,80,copilot-agent-macos-arm64,copilot-agent-macos-arm64,500u,20g'
   )
   AND NOT (
