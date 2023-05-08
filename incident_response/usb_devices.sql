@@ -2,4 +2,7 @@
 --
 -- tags: postmortem
 -- platform: posix
-SELECT * FROM usb_devices;
+SELECT
+  *
+FROM
+  usb_devices;

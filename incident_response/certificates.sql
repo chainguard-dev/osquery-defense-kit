@@ -2,4 +2,7 @@
 --
 -- tags: postmortem
 -- platform: posix
-SELECT * FROM certificates;
+SELECT
+  *
+FROM
+  certificates;

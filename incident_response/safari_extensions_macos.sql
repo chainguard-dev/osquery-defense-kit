@@ -2,6 +2,8 @@
 --
 -- tags: postmortem
 -- platform: darwin
-SELECT safari_extensions.*
-FROM users
-    JOIN safari_extensions ON users.uid = safari_extensions.uid;
+SELECT
+  safari_extensions.*
+FROM
+  users
+  JOIN safari_extensions ON users.uid = safari_extensions.uid;

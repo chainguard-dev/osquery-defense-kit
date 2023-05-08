@@ -2,4 +2,7 @@
 --
 -- tags: postmortem
 -- platform: linux
-SELECT * FROM selinux_events;
+SELECT
+  *
+FROM
+  selinux_events;

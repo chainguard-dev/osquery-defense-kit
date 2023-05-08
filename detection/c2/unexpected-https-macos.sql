@@ -22,7 +22,7 @@ SELECT
     s.authority,
     ',',
     s.identifier
-  ) AS exception_key,  
+  ) AS exception_key,
   CONCAT (
     MIN(p0.euid, 500),
     ',',
@@ -99,7 +99,7 @@ WHERE
   AND p0.path NOT LIKE '/usr/libexec/%'
   AND p0.path NOT LIKE '/usr/sbin/%'
   AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/%'
-  AND p0.path NOT LIKE '/private/var/folders/%/go-build%/%'  
+  AND p0.path NOT LIKE '/private/var/folders/%/go-build%/%'
   -- Apple programs running from weird places, like the UpdateBrainService
   AND NOT (
     s.identifier LIKE 'com.apple.%'
@@ -118,13 +118,16 @@ WHERE
     '500,go,go,Developer ID Application: Google LLC (EQHXZ8M8AV),org.golang.go',
     '500,grype,grype,Developer ID Application: ANCHORE, INC. (9MJHKYX5AT),grype',
     '500,melange,melange,,a.out',
+    '500,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV),ksfetch',
     '500,node,node,Developer ID Application: Node.js Foundation (HX7739G8FX),node',
     '500,old,old,Developer ID Application: Denver Technologies, Inc (2BBY89MBSN),dev.warp.Warp-Stable',
     '500,op,op,Developer ID Application: AgileBits Inc. (2BUA8C4S2C),com.1password.op',
     '500,Paintbrush,Paintbrush,Developer ID Application: Michael Schreiber (G966ML7VBG),com.soggywaffles.paintbrush',
+    '500,PlexMobile,PlexMobile,Apple iPhone OS Application Signing,com.plexapp.plex',
     '500,Reflect Helper,Reflect Helper,Developer ID Application: Reflect App, LLC (789ULN5MZB),app.reflect.ReflectDesktop',
     '500,Reflect,Reflect,Developer ID Application: Reflect App, LLC (789ULN5MZB),app.reflect.ReflectDesktop',
     '500,sdaudioswitch,sdaudioswitch,,sdaudioswitch',
+    '500,IterableRichNotifications,IterableRichNotifications,Apple iPhone OS Application Signing,com.plexapp.plex.IterableRichNotifications',
     '500,snyk-ls_darwin_arm64,snyk-ls_darwin_arm64,,a.out',
     '500,syncthing,syncthing,,syncthing',
     '500,Transmit,Transmit,Developer ID Application: Panic, Inc. (VE8FC488U5),com.panic.Transmit',
@@ -134,6 +137,9 @@ WHERE
   AND NOT alt_exception_key IN (
     '500,apko,apko,0u,0g',
     '500,cpu,cpu,500u,20g',
+    '500,cosign,cosign,0u,500g',
+    '500,vim,vim,0u,500g',
+    '500,crane,crane,0u,500g',
     '500,sdaudioswitch,sdaudioswitch,500u,20g',
     '500,sdzoomplugin,sdzoomplugin,500u,20g'
   )
@@ -144,6 +150,8 @@ WHERE
     AND (
       p0_cmd LIKE '%/gcloud.py%'
       OR p0_cmd LIKE '%pip install%'
+      OR p0_cmd LIKE '%googlecloudsdk/core/metrics_reporter.py%'
+      OR p0_cmd LIKE '%/bin/aws%'
     )
   )
   -- theScore and other iPhone apps

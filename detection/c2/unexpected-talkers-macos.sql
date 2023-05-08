@@ -5,7 +5,8 @@
 --
 -- tags: transient state net often
 -- platform: macos
-SELECT pos.protocol,
+SELECT
+  pos.protocol,
   pos.local_port,
   pos.remote_port,
   pos.remote_address,
@@ -66,7 +67,8 @@ SELECT pos.protocol,
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM process_open_sockets pos
+FROM
+  process_open_sockets pos
   LEFT JOIN processes p0 ON pos.pid = p0.pid
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
@@ -75,7 +77,8 @@ FROM process_open_sockets pos
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN signature s ON p0.path = s.path
-WHERE pos.protocol > 0
+WHERE
+  pos.protocol > 0
   AND NOT (
     pos.remote_port IN (53, 443)
     AND pos.protocol IN (6, 17)
@@ -133,6 +136,7 @@ WHERE pos.protocol > 0
     '500,6,80,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV),ksfetch',
     '500,6,80,launcher-Helper,launcher-Helper,Developer ID Application: Mojang AB (HR992ZEAE6),com.mojang.mclauncher.helper',
     '500,6,80,Signal Helper (Renderer),Signal Helper (Renderer),Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR),org.whispersystems.signal-desktop.helper.Renderer',
+    '500,6,80,Snagit 2020,Snagit 2020,Apple Mac OS Application Signing,com.TechSmith.Snagit2020',
     '500,6,80,Snagit 2023,Snagit 2023,Developer ID Application: TechSmith Corporation (7TQL462TU8),com.TechSmith.Snagit2023',
     '500,6,80,SnagitHelper2020,SnagitHelper2020,Apple Mac OS Application Signing,com.techsmith.snagit.capturehelper2020',
     '500,6,80,SnagitHelper2023,SnagitHelper2023,Developer ID Application: TechSmith Corporation (7TQL462TU8),com.techsmith.snagit.capturehelper2023',
@@ -144,16 +148,20 @@ WHERE pos.protocol > 0
     '500,6,993,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird'
   ) -- Useful for unsigned binaries
   AND NOT alt_exception_key IN (
-    '500,6,22,ssh,ssh,500u,20g',
-    '500,6,80,copilot-agent-macos-arm64,copilot-agent-macos-arm64,500u,20g',
-    '500,6,22,ssh,ssh,500u,80g',
     '500,6,22,ssh,ssh,0u,500g',
+    '500,6,22,ssh,ssh,500u,0g',
+    '500,6,22,ssh,ssh,500u,20g',
+    '500,6,22,ssh,ssh,500u,80g',
     '500,6,3307,cloud_sql_proxy,cloud_sql_proxy,0u,0g',
-    '500,6,3307,cloud-sql-proxy,cloud-sql-proxy,500u,20g'
+    '500,6,3307,cloud-sql-proxy,cloud-sql-proxy,500u,20g',
+    '500,6,80,copilot-agent-macos-arm64,copilot-agent-macos-arm64,500u,20g'
   )
   AND NOT (
-    exception_key LIKE '500,6,%,syncthing,syncthing,,syncthing'
-    AND remote_port > 1024
+    alt_exception_key LIKE '500,6,%,syncthing,syncthing,0u,500g'
+    AND (
+      remote_port > 1024
+      OR remote_port IN (110, 993, 999)
+    )
   )
   AND NOT (
     exception_key LIKE '500,6,%,syncthing,syncthing,Developer ID Application: Jakob Borg (LQE5SYM783),syncthing'
@@ -165,8 +173,8 @@ WHERE pos.protocol > 0
   ) -- Known Web Browsers
   AND NOT (
     (
-      pos.remote_port = 80
-      OR pos.remote_port > 3400
+      pos.remote_port IN (80, 999)
+      OR pos.remote_port > 3000
     )
     AND id_exception_key IN (
       'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.helper',
@@ -175,7 +183,9 @@ WHERE pos.protocol > 0
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefox',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefoxdeveloperedition',
       'Developer ID Application: Opera Software AS (A2P9LX4JPN),com.operasoftware.Opera.helper',
+      'Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
       'Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.browser.helper'
     )
   )
-GROUP BY p0.cmdline
+GROUP BY
+  p0.cmdline

@@ -2,4 +2,7 @@
 --
 -- tags: postmortem
 -- platform: linux
-SELECT * FROM user_events;
+SELECT
+  *
+FROM
+  user_events;

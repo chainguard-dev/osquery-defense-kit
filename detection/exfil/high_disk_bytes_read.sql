@@ -70,10 +70,10 @@ WHERE
     'fleet_backend',
     'fsdaemon',
     'fsnotifier',
+    'gnome-software',
     'go',
     'golangci-lint',
     'GoogleSoftwareUpdateAgent',
-    'mediawriter',
     'gopls',
     'grype',
     'java',
@@ -83,6 +83,7 @@ WHERE
     'kue',
     'launcher',
     'LogiFacecamService',
+    'mediawriter',
     'melange',
     'nautilus',
     'nessusd',
@@ -117,6 +118,7 @@ WHERE
     '/usr/bin/darktable',
     '/usr/bin/dockerd',
     '/usr/bin/gnome-shell',
+    '/usr/bin/gnome-software',
     '/usr/bin/udevadm',
     '/usr/bin/update-notifier',
     '/usr/lib64/electron/electron',
@@ -175,7 +177,9 @@ WHERE
     AND p1.name = "nvim"
   )
   AND NOT p0_cmd LIKE '%/gcloud.py components update'
-  AND NOT (p0.path LIKE '/home/%/Apps/PhpStorm%/jbr/bin/java')
+  AND NOT (
+    p0.path LIKE '/home/%/Apps/PhpStorm%/jbr/bin/java'
+  )
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY
   p0.pid

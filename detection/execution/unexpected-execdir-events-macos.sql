@@ -25,7 +25,7 @@ SELECT
   u.directory AS user_home_dir,
   s.identifier AS s_id,
   s.authority AS s_auth,
-    -- Child
+  -- Child
   pe.path AS p0_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,

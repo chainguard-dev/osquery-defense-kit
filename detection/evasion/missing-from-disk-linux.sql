@@ -49,3 +49,4 @@ WHERE
   -- Snap packages?
   AND p.path NOT LIKE '/tmp/.mount_%'
   AND p.path NOT LIKE '/home/%/.cache/yay/1password-cli/pkg/1password-cli/usr/bin/op'
+  AND p.path NOT IN ('/usr/bin/python3.10')
