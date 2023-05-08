@@ -57,6 +57,7 @@ WHERE
   AND p0.name NOT IN (
     'bash',
     'bwrap',
+    'cargo',
     'chrome',
     'clamscan',
     'code',
@@ -113,6 +114,7 @@ WHERE
     '/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/XPCServices/com.apple.Safari.BrowserDataImportingService.xpc/Contents/MacOS/com.apple.Safari.BrowserDataImportingService',
     '/System/Volumes/Preboot/Cryptexes/Incoming/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent',
     '/usr/bin/apt',
+    '/app/libexec/mediawriter/helper',
     '/usr/bin/darktable',
     '/usr/bin/dockerd',
     '/usr/bin/gnome-shell',

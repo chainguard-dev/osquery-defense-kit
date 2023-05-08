@@ -190,6 +190,7 @@ WHERE
     '/dev/media,pipewire',
     '/dev/media,wireplumber',
     '/dev/net/tun,openvpn',
+    '/dev/net/tun,qemu-system-x86_64',
     '/dev/net/tun,slirp4netns',
     '/dev/shm/envoy_shared_memory_1,envoy',
     '/dev/tpmrm,launcher',

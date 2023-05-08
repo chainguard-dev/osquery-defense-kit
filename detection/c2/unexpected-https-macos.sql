@@ -106,6 +106,7 @@ WHERE
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
+    '0,Setup,Setup,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.acc.Setup',
     '500,bash,bash,,bash',
     '500,cloud_sql_proxy,cloud_sql_proxy,,a.out',
     '500,Code Helper,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode.helper',
@@ -134,6 +135,7 @@ WHERE
     '500,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos'
   )
   AND NOT alt_exception_key IN (
+    '500,apko,apko,0u,0g',
     '500,cpu,cpu,500u,20g',
     '500,cosign,cosign,0u,500g',
     '500,vim,vim,0u,500g',
@@ -141,7 +143,7 @@ WHERE
     '500,sdaudioswitch,sdaudioswitch,500u,20g',
     '500,sdzoomplugin,sdzoomplugin,500u,20g'
   )
-  AND NOT alt_exception_key LIKE '500,terraform-provider-google-%,terraform-provider-google-%,500u,20g'
+  AND NOT alt_exception_key LIKE '500,terraform-provider-%,terraform-provider-%,500u,20g'
   AND NOT p0.path LIKE '/private/var/folders/%/T/GoLand/%'
   AND NOT (
     exception_key = '500,Python,Python,,org.python.python'
@@ -157,6 +159,11 @@ WHERE
     s.authority = 'Apple iPhone OS Application Signing'
     AND p0.cwd = '/'
     AND p0.path = '/private/var/folders/%/Wrapper/%.app/%'
+  )
+  -- nix socket inheritance
+  AND NOT (
+    p0.path LIKE '/nix/store/%/bin/%'
+    AND p1.path LIKE '/nix/store/%/bin/%'
   )
 GROUP BY
   p0.cmdline

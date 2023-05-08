@@ -186,6 +186,7 @@ WHERE
       OR addr NOT LIKE '%.%'
       OR ip LIKE '172.2%'
       OR ip LIKE '192.168.%'
+      OR ip LIKE '127.%'
     )
   )
   AND NOT p1_cmd LIKE '/usr/bin/bash /usr/bin/makepkg %'

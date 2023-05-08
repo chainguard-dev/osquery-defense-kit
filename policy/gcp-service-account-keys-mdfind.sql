@@ -71,8 +71,10 @@ WHERE
   AND NOT file.filename LIKE '%latest%'
   AND NOT file.filename LIKE '%2022%'
   AND NOT file.filename LIKE '%2023%'
+  AND NOT file.filename LIKE 'host-project-%'
   AND NOT file.filename LIKE '%spdx%'
   AND NOT file.filename LIKE '%-v1%'
+  AND NOT file.filename LIKE 'libopenblas-%'
   -- Well known demo keys
   AND NOT hash.sha256 IN (
     '11ffc5141b4b0071c0796914deef68d012c4f4c289931c5587fe89d7d6dca0a1',
@@ -87,6 +89,7 @@ WHERE
     'b68896dc8e8c23ade371cf8b5c9d25853d81b4cfa5baa2bc0200d9242a903d80',
     'bc4c0ad21d79fea9050e75e80f13dd54bfdc867236342ede901d15d815f31988',
     'cea85342377ef1bce115629c3d9d3ec405964a43545805c9f7ace98940aa0be2',
+    'a0f925d91d2ae1d38c13305572b2bf027e09f39e8bea575d55e8fcd5f3bf8b32',
     'ef2c928c69403e023a332002d8c5c430e1022850b12f834563f6aec111d99f14'
   )
 GROUP BY

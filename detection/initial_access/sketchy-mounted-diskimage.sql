@@ -106,6 +106,8 @@ WHERE
         OR file.mode LIKE "%1%"
       )
       AND file.filename NOT IN ('.Trashes', '.background')
+      -- Brother Printer Utilities
+      AND f != '/Volumes/brotherwdswML_nonPanel/MacResources'
       AND file.filename NOT LIKE '%.previous'
       AND file.filename NOT LIKE '%.interrupted'
       AND file.filename NOT LIKE '%.backup'

@@ -170,6 +170,7 @@ WHERE
       '/Library/Apple/System/Library/StagedFrameworks/Safari/SafariShared.framework/XPCServices/com.apple.Safari.History.xpc/Contents/MacOS/com.apple.Safari.History',
       'nc -h',
       'nc -uv 8.8.8.8 53',
+      'nc localhost 8080 -vz',
       'nix profile history',
       'dd if=/dev/stdin conv=unblock cbs=79',
       'rm -f /tmp/mysql.sock',

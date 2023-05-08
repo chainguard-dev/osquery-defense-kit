@@ -92,6 +92,7 @@ WHERE
     '/sbin/runlevel',
     'systemctl is-active systemd-resolved.service',
     'systemctl restart reflector.service',
+    'systemctl stop libvirtd.service',
     'systemctl is-enabled power-profiles-daemon.service',
     'systemctl is-enabled snapd.apparmor',
     'systemctl is-enabled systemd-rfkill.service',
