@@ -8,8 +8,7 @@
 --
 -- platform: posix
 -- tags: persistent filesystem state
-SELECT
-  file.path,
+SELECT file.path,
   file.inode,
   file.directory,
   uid,
@@ -22,12 +21,10 @@ SELECT
   size,
   hash.sha256,
   magic.data
-FROM
-  file
+FROM file
   LEFT JOIN hash ON file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE
-  (
+WHERE (
     file.path LIKE '/lib/.%'
     OR file.path LIKE '/.%'
     OR file.path LIKE '/bin/%/.%'
@@ -67,28 +64,37 @@ WHERE
     '/etc/selinux/.config_backup',
     '/etc/skel/.mozilla/',
     '/.file',
+    '/.lesshst',
     '/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
+    '/tmp/.accounts-agent/',
+    '/tmp/.audio-agent/',
     '/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
+    '/tmp/.content-agent/',
     '/tmp/._contentbarrier_installed',
+    '/tmp/.docker/',
+    '/tmp/.docker-tmp/',
     '/tmp/.dotnet/',
     '/tmp/.dracula-tmux-data',
     '/tmp/.dracula-tmux-weather.lock',
     '/tmp/.DS_Store',
+    '/tmp/.eos-update-notifier.log',
+    '/tmp/.featureflags-agent/',
     '/tmp/.font-unix/',
     '/tmp/.go-version',
     '/tmp/.ICE-unix/',
+    '/tmp/.last_survey_prompt.yaml',
+    '/tmp/.last_update_check.json',
+    '/tmp/.metrics-agent/',
+    '/tmp/.settings-agent/',
     '/tmp/.terraform/',
     '/tmp/.terraform.lock.hcl',
-    '/tmp/.last_update_check.json',
-    '/tmp/.last_survey_prompt.yaml',
     '/tmp/.Test-unix/',
-    '/tmp/.docker/',
-    '/tmp/.docker-tmp/',
+    '/tmp/.ui-agent/',
+    '/tmp/.updater-agent/',
     '/tmp/.vbox-t-ipc/',
     '/tmp/.X0-lock',
     '/tmp/.X11-unix/',
     '/tmp/.X1-lock',
-    '/tmp/.eos-update-notifier.log',
     '/tmp/.X2-lock',
     '/tmp/.XIM-unix/',
     '/usr/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
@@ -97,29 +103,20 @@ WHERE
     '/var/db/.com.apple.iokit.graphics',
     '/var/db/.GKRearmTimer',
     '/var/db/.LastGKApp',
-    '/tmp/.accounts-agent/',
-    '/tmp/.content-agent/',
-    '/tmp/.audio-agent/',
-    '/tmp/.ui-agent/',
-    '/tmp/.featureflags-agent/',
-    '/tmp/.settings-agent/',
-    '/tmp/.metrics-agent/',
-    '/tmp/.updater-agent/',
     '/var/db/.LastGKReject',
     '/var/db/.MASManifest',
     '/var/db/.SoftwareUpdateOptions',
     '/var/db/.StagedAppleUpgrade',
     '/var/db/.SystemPolicy-default',
     '/var/.ntw_cache',
-    '/var/setup/.TemporaryItems',
     '/var/.Parallels_swap/',
     '/var/.pwd_cache',
-    '/var/root/.lesshst',
     '/var/root/.bash_history',
     '/var/root/.bash_profile',
     '/var/root/.cache/',
     '/var/root/.CFUserTextEncoding',
     '/var/root/.forward',
+    '/var/root/.lesshst',
     '/var/root/.nix-channels',
     '/var/root/.nix-defexpr/',
     '/var/root/.nix-profile/',
@@ -130,6 +127,7 @@ WHERE
     '/var/run/.sim_diagnosticd_socket',
     '/var/run/.vfs_rsrc_streams_0x2b725bbfb94ba4ef0/',
     '/var/setup/.AppleSetupUser',
+    '/var/setup/.TemporaryItems',
     '/var/setup/.TemporaryItems/',
     '/.vol/',
     '/.VolumeIcon.icns'
@@ -169,8 +167,7 @@ WHERE
     AND file.gid = 0
     AND file.mode IN ('0755', '0700')
     AND file.size < 4
-  )
-  -- Ecamm Live
+  ) -- Ecamm Live
   AND NOT (
     file.path LIKE "/tmp/.elive%"
     AND file.size < 7

@@ -142,6 +142,7 @@ WHERE
     AND (
       p0_cmd LIKE '%/gcloud.py%'
       OR p0_cmd LIKE '%pip install%'
+      OR p0_cmd LIKE '%googlecloudsdk/core/metrics_reporter.py%'
     )
   )
   -- theScore and other iPhone apps
