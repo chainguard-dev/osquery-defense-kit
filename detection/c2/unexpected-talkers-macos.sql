@@ -117,6 +117,7 @@ WHERE
   AND NOT exception_key IN (
     '0,6,80,prl_naptd,prl_naptd,Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',
     '500,17,8801,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos',
+    '500,17,9000,Meeting Center,Meeting Center,Developer ID Application: Cisco (DE8Y96K9QP),com.webex.meetingmanager',
     '500,6,22,Cyberduck,Cyberduck,Developer ID Application: David Kocher (G69SCX94XU),ch.sudo.cyberduck',
     '500,6,22,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
     '500,6,32000,Spotify Helper,Spotify Helper,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
@@ -133,8 +134,10 @@ WHERE
     '500,6,80,firefox,firefox,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefox',
     '500,6,80,IPNExtension,IPNExtension,Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension',
     '500,6,80,Jabra Direct,Jabra Direct,Developer ID Application: GN Audio AS (55LV32M29R),com.jabra.directonline',
+    '500,6,80,KakaoTalk,KakaoTalk,Apple Mac OS Application Signing,com.kakao.KakaoTalkMac',
     '500,6,80,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV),ksfetch',
     '500,6,80,launcher-Helper,launcher-Helper,Developer ID Application: Mojang AB (HR992ZEAE6),com.mojang.mclauncher.helper',
+    '500,6,80,node,node,Developer ID Application: Node.js Foundation (HX7739G8FX),node',
     '500,6,80,Signal Helper (Renderer),Signal Helper (Renderer),Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR),org.whispersystems.signal-desktop.helper.Renderer',
     '500,6,80,Snagit 2020,Snagit 2020,Apple Mac OS Application Signing,com.TechSmith.Snagit2020',
     '500,6,80,Snagit 2023,Snagit 2023,Developer ID Application: TechSmith Corporation (7TQL462TU8),com.TechSmith.Snagit2023',
@@ -152,20 +155,18 @@ WHERE
     '500,6,22,ssh,ssh,500u,0g',
     '500,6,22,ssh,ssh,500u,20g',
     '500,6,22,ssh,ssh,500u,80g',
+    '500,6,80,qemu-system-aarch64,qemu-system-aarch64,500u,80g',
     '500,6,3307,cloud_sql_proxy,cloud_sql_proxy,0u,0g',
     '500,6,3307,cloud-sql-proxy,cloud-sql-proxy,500u,20g',
     '500,6,80,copilot-agent-macos-arm64,copilot-agent-macos-arm64,500u,20g'
   )
   AND NOT (
     alt_exception_key LIKE '500,6,%,syncthing,syncthing,0u,500g'
-    AND (
-      remote_port > 1024
-      OR remote_port IN (110, 993, 999)
-    )
+    AND remote_port > 79
   )
   AND NOT (
     exception_key LIKE '500,6,%,syncthing,syncthing,Developer ID Application: Jakob Borg (LQE5SYM783),syncthing'
-    AND remote_port > 1024
+    AND remote_port > 79
   )
   AND NOT (
     alt_exception_key = '500,6,80,main,main,500u,20g'

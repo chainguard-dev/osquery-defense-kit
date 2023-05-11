@@ -3,7 +3,7 @@
 -- references:
 --   * https://www.sandflysecurity.com/blog/bpfdoor-an-evasive-linux-backdoor-technical-analysis/
 --
--- tags: persistent state daemon process
+-- tags: persistent state daemon process seldom
 -- platform: darwin
 -- interval: 600
 SELECT

@@ -211,6 +211,7 @@ WHERE
     'true,Wappalyzer,Wappalyzer - Technology profiler,gppongmhjkpfnbhagpmjfkannfbllamg',
     'true,,WAVE Evaluation Tool,jbbplnpkjmmeebjpijfedlgcdilocofh',
     'true,,Windscribe - Free Proxy and Ad Blocker,hnmpcagpplmpfojmgmnngilcnanddlhb',
+    'true,,Wisdolia,ciknpklcipibmfbgjmdmfdfalklfdlne',
     'true,,WiseStamp email signature,pbcgnkmbeodkmiijjfnliicelkjfcldg',
     'true,,writeGPT - ChatGPT Prompt Engineer Assistant,dflcdbibjghipieemcligeelbmackgco',
     'true,,Yesware Sales Engagement,gkjnkapjmjfpipfcccnjbjcbgdnahpjp',

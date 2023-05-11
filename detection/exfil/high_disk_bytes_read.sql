@@ -133,6 +133,7 @@ WHERE
     '/usr/libexec/signpost_reporter',
     '/usr/libexec/syspolicyd',
     '/usr/libexec/tracker-miner-fs-3',
+    '/usr/libexec/tracker-extract-3',
     '/usr/lib/systemd/systemd',
     '/usr/sbin/spindump',
     '/usr/sbin/systemstats'
@@ -144,6 +145,10 @@ WHERE
   AND NOT (
     p0.name = 'jetbrains-toolb'
     AND p0.path LIKE '/tmp/.mount_jet%/jetbrains-toolbox'
+  )
+  AND NOT (
+    p0.name LIKE 'gopls_%'
+    AND p0.path LIKE '%gopls/gopls%'
   )
   AND NOT p0.path LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%com.apple.MobileSoftwareUpdate.UpdateBrainService.%.xpc/Contents/MacOS/com.apple.MobileSoftwareUpdate.UpdateBrainService'
   AND NOT (

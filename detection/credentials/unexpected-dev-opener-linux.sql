@@ -213,6 +213,7 @@ WHERE
     '/dev/video,obs',
     '/dev/video,obs-ffmpeg-mux',
     '/dev/video,pipewire',
+    '/dev/video,signal-desktop',
     '/dev/video,slack',
     '/dev/video,vlc',
     '/dev/video,wireplumber',

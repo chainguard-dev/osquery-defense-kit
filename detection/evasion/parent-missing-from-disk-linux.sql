@@ -76,6 +76,7 @@ WHERE
   AND NOT p1.name IN (
     'lightdm',
     'nvim',
+    'sh',
     'gnome-shell',
     'fish',
     'bash',

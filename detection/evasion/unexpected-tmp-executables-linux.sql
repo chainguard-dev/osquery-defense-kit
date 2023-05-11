@@ -69,6 +69,9 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE "%/lib/%.so"
           OR file.path LIKE '/tmp/GoLand/___go_build_%_go'
           OR file.path LIKE "%/lib/%.so.%"
+          OR file.path LIKE '%/configure'
+          OR file.path LIKE '%integration_test%'
+          OR file.path LIKE '%test_script'
           OR file.path LIKE "%/melange%"
           OR file.path LIKE "%/bin/busybox"
           OR file.path LIKE "%/bin/bash"

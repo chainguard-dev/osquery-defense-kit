@@ -171,8 +171,6 @@ WHERE
     '/dev/shm/',
     '/dev/shm/libpod_rootless_lock_',
     '/dev/shm/pulse-shm-',
-    '/dev/shm/aomshm.b.',
-    '/dev/shm/aomshm.c.',
     '/dev/shm/i-log-',
     '/dev/snapshot',
     '/dev/snd/',
@@ -241,7 +239,8 @@ WHERE
     '/dev/zvol/rpool'
   )
   AND NOT path LIKE '/dev/mapper/%'
+  AND NOT path LIKE '/dev/shm/sem.rpc%'
+  AND NOT path LIKE '/dev/mqueue/us.zoom.aom.%'
+  AND NOT path LIKE '/dev/shm/aomshm.%'
   AND NOT path LIKE '/dev/shm/u%-Shm_%'
   AND NOT path LIKE '/dev/shm/u%-ValveIPC%'
-  AND NOT path LIKE '/dev/shm/aomshm.%.'
-  AND NOT path LIKE '/dev/mqueue/us.zoom.aom.%'

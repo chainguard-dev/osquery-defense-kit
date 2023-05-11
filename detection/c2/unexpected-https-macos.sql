@@ -117,8 +117,9 @@ WHERE
     '500,git-remote-http,git-remote-http,,git-remote-http-55554944748a32c47cdc35cfa7f071bb69a39ce4',
     '500,go,go,Developer ID Application: Google LLC (EQHXZ8M8AV),org.golang.go',
     '500,grype,grype,Developer ID Application: ANCHORE, INC. (9MJHKYX5AT),grype',
-    '500,melange,melange,,a.out',
+    '500,IterableRichNotifications,IterableRichNotifications,Apple iPhone OS Application Signing,com.plexapp.plex.IterableRichNotifications',
     '500,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV),ksfetch',
+    '500,melange,melange,,a.out',
     '500,node,node,Developer ID Application: Node.js Foundation (HX7739G8FX),node',
     '500,old,old,Developer ID Application: Denver Technologies, Inc (2BBY89MBSN),dev.warp.Warp-Stable',
     '500,op,op,Developer ID Application: AgileBits Inc. (2BUA8C4S2C),com.1password.op',
@@ -127,17 +128,21 @@ WHERE
     '500,Reflect Helper,Reflect Helper,Developer ID Application: Reflect App, LLC (789ULN5MZB),app.reflect.ReflectDesktop',
     '500,Reflect,Reflect,Developer ID Application: Reflect App, LLC (789ULN5MZB),app.reflect.ReflectDesktop',
     '500,sdaudioswitch,sdaudioswitch,,sdaudioswitch',
-    '500,IterableRichNotifications,IterableRichNotifications,Apple iPhone OS Application Signing,com.plexapp.plex.IterableRichNotifications',
     '500,snyk-ls_darwin_arm64,snyk-ls_darwin_arm64,,a.out',
     '500,syncthing,syncthing,,syncthing',
+    '500,terraform,terraform,Developer ID Application: Hashicorp, Inc. (D38WU7D763),terraform',
     '500,Transmit,Transmit,Developer ID Application: Panic, Inc. (VE8FC488U5),com.panic.Transmit',
     '500,TwitchStudioStreamDeck,TwitchStudioStreamDeck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5),TwitchStudioStreamDeck',
     '500,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos'
   )
   AND NOT alt_exception_key IN (
     '500,apko,apko,0u,0g',
+    '500,chainlink,chainlink,500u,20g',
     '500,cpu,cpu,500u,20g',
     '500,cosign,cosign,0u,500g',
+    '500,crane,crane,500u,80g',
+    '500,go,go,500u,80g',
+    '500,git-remote-http,git-remote-http,500u,80g',
     '500,vim,vim,0u,500g',
     '500,crane,crane,0u,500g',
     '500,sdaudioswitch,sdaudioswitch,500u,20g',
@@ -146,7 +151,7 @@ WHERE
   AND NOT alt_exception_key LIKE '500,terraform-provider-%,terraform-provider-%,500u,20g'
   AND NOT p0.path LIKE '/private/var/folders/%/T/GoLand/%'
   AND NOT (
-    exception_key = '500,Python,Python,,org.python.python'
+    exception_key IN ('500,Python,Python,,org.python.python', '500,Python,Python,,Python')
     AND (
       p0_cmd LIKE '%/gcloud.py%'
       OR p0_cmd LIKE '%pip install%'

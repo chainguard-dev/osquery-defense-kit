@@ -44,6 +44,7 @@ WHERE
     'FirstBootAfterUpdate',
     'FirstBootCleanupHandled',
     'hdiejectd.pid',
+    'kdc.pid',
     'prl_disp_service.pid',
     'prl_naptd.pid',
     'prl_watchdog-ebdba5702a20.pid',
