@@ -281,6 +281,7 @@ WHERE -- Focus on longer-running programs
       )
       AND NOT path LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
       AND NOT path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+      AND NOT path LIKE '/usr/local/Cellar/htop/%/bin/htop'
     GROUP BY
       path
   )

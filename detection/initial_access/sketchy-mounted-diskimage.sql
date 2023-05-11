@@ -64,6 +64,7 @@ WHERE
       AND file.type != 'directory'
       AND magic.data LIKE '%script%'
       AND signature.identifier != 'net.snowflake.snowsql'
+      AND signature.authority NOT IN ('Developer ID Application: Allen Bai (97DN42T837)')
     ) -- Rule 2. App binaries that have mixed-caps names such as LYwjtu0sc3XqkNVbQe_gM4YiRpmgUpRIew or yWnBJLaF (AdobeFlashPlayer_567.app)
     OR (
       file.mode LIKE "%7%"
@@ -105,7 +106,7 @@ WHERE
         OR file.mode LIKE "%5%"
         OR file.mode LIKE "%1%"
       )
-      AND file.filename NOT IN ('.Trashes', '.background')
+      AND file.filename NOT IN ('.Trashes', '.background', '.VolumeIcon.icns')
       -- Brother Printer Utilities
       AND f != '/Volumes/brotherwdswML_nonPanel/MacResources'
       AND file.filename NOT LIKE '%.previous'

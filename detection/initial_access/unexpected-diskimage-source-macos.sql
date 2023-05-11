@@ -106,6 +106,7 @@ WHERE
     'ubuntu.com',
     'umd.edu',
     'usa.canon.com',
+    'uubyte.com',
     'vc.logitech.com',
     'virtualbox.org',
     'warp.dev',

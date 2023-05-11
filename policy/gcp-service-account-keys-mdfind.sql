@@ -44,7 +44,8 @@ WHERE
     REPLACE(LOWER(TRIM(u.description)), " ", "-")
   ) == 1
   -- Common locations of test or demo keys
-  AND NOT file.path = '/Users/Shared/LGHUB/keys.json'
+  AND NOT file.filename = 'keys.json'
+  AND NOT file.directory = "/Users/Shared/LGHUB"
   AND NOT file.directory LIKE '%/pkg/%'
   AND NOT file.directory LIKE '%/go/src/%'
   AND NOT file.directory LIKE '%/pkg/mod/%'
