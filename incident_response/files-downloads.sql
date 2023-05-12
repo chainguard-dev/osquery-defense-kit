@@ -11,5 +11,5 @@ FROM
   LEFT JOIN magic ON file.path = magic.path
   LEFT JOIN hash ON file.path = hash.path
 WHERE
-  file.path LIKE "/home/%/Downloads/%%"
-  OR file.path LIKE "/Users/%/Downloads/%%"
+  file.path LIKE "/home/%/Downloads/%"
+  OR file.path LIKE "/Users/%/Downloads/%"

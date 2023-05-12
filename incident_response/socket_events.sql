@@ -6,5 +6,5 @@
 SELECT
   *
 FROM
-  socket_events;
+  socket_events
 WHERE time > (strftime('%s', 'now') -600)
