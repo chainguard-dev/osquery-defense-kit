@@ -32,6 +32,7 @@ WHERE
     '/Library/DropboxHelperTools/Dropbox_u501/dbkextd',
     '/opt/1Password/1Password-BrowserSupport',
     '/opt/1Password/1Password-KeyringHelper',
+    '/opt/google/chrome/chrome-sandbox',
     '/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent',
     '/usr/bin/doas',
     '/usr/bin/fusermount',
@@ -44,7 +45,9 @@ WHERE
     '/usr/bin/su',
     '/usr/bin/sudo',
     '/usr/bin/top',
+    '/usr/lib/electron/chrome-sandbox',
     '/usr/lib/polkit-1/polkit-agent-helper-1',
+    '/usr/lib/slack/chrome-sandbox',
     '/usr/lib/xf86-video-intel-backlight-helper',
     '/usr/lib/Xorg.wrap',
     '/usr/sbin/traceroute'

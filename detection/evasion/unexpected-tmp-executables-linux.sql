@@ -90,6 +90,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         OR file.path LIKE "%/lib/%.so.%"
         OR file.path LIKE "%/lib64/%.so.%"
         OR file.path LIKE "%/lib64/%.so"
+        OR file.path LIKE '/tmp/staged-updates%launcher'
         OR file.path LIKE "%/melange%"
         OR file.path LIKE "%/sbin/%"
         OR file.path LIKE "%/bin/busybox"
