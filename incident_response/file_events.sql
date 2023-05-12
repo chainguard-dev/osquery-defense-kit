@@ -2,7 +2,7 @@
 --
 -- tags: postmortem
 -- platform: posix
-SELECT
-  *
-FROM
-  file_events;
+-- interval: 900
+SELECT *
+FROM file_events
+WHERE time > (strftime('%s', 'now') -900)
