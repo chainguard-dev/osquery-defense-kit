@@ -1,7 +1,7 @@
 -- Return the list of open pipes per process
 --
 -- tags: postmortem
--- platform: posix
+-- platform: macos
 SELECT
   p.path AS p_path,
   p.name AS p_name,

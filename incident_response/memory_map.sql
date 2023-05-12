@@ -1,7 +1,7 @@
 -- Returns the OS memory region map.
 --
 -- tags: postmortem
--- platform: posix
+-- platform: linux
 SELECT
   *
 FROM

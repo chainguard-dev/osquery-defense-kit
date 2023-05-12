@@ -1,7 +1,7 @@
 -- Return shared memory info
 --
 -- tags: postmortem
--- platform: posix
+-- platform: linux
 SELECT
   shm.*,
   p.name AS p_name,
