@@ -73,15 +73,16 @@ WHERE
   AND pe.cmdline IS NOT NULL
   AND pe.status == 0
   AND pe.path IN (
-    '/usr/sbin/sysctl',
-    '/usr/bin/security',
-    '/usr/libexec/security_authtrampoline',
-    '/usr/bin/openssl',
-    '/usr/bin/uuidgen',
+    '/usr/bin/dscl',
     '/usr/bin/funzip',
-    '/usr/sbin/ioreg',
+    '/usr/bin/openssl',
+    '/usr/bin/security',
     '/usr/bin/sqlite3',
-    '/usr/bin/sw_vers'
+    '/usr/bin/sw_vers',
+    '/usr/bin/uuidgen',
+    '/usr/libexec/security_authtrampoline',
+    '/usr/sbin/ioreg',
+    '/usr/sbin/sysctl'
   )
   AND p.parent > 0
   AND NOT p0_cmd IN (
