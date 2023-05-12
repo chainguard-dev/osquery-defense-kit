@@ -1,7 +1,7 @@
 -- Returns information about running processes(non-hidden only)
 --
 -- tags: postmortem
--- platform: linux
+-- platform: posix
 SELECT
   GROUP_CONCAT(processes.pid) AS processes,
   GROUP_CONCAT(processes.name) AS names,

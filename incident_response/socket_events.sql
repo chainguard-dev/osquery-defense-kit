@@ -1,7 +1,7 @@
 -- Return the list of socket events
 --
 -- tags: postmortem
--- platform: linux
+-- platform: posix
 SELECT
   *
 FROM
