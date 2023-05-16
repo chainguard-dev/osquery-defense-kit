@@ -43,6 +43,7 @@ WHERE
     'haproxy.pid',
     "lightdm.pid",
     'mcelog.pid',
+    'nvidia-powerd.pid',
     'motd',
     'nvidia_runtimepm_enabled',
     'nvidia_runtimepm_supported',

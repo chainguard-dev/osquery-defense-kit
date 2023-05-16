@@ -44,6 +44,7 @@ WHERE
     'FirstBootAfterUpdate',
     'FirstBootCleanupHandled',
     'hdiejectd.pid',
+    'signpost_reporter_running',
     'kdc.pid',
     'prl_disp_service.pid',
     'prl_naptd.pid',
