@@ -14,6 +14,7 @@ SELECT
   hash.sha256 AS p0_hash,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
+  pe.time AS p0_time,
   p.cwd AS p0_cwd,
   pe.pid AS p0_pid,
   pe.euid AS p0_euid,

@@ -13,6 +13,7 @@ SELECT
   TRIM(pe.cmdline) AS p0_cmd,
   pe.cwd AS p0_cwd,
   pe.pid AS p0_pid,
+  pe.time AS p0_time,
   pe.euid AS p0_euid,
   s.authority AS p0_authority,
   -- Parent

@@ -5,7 +5,12 @@
 SELECT DISTINCT
   pof.pid,
   pof.path,
+  pof.fd,
   p.name,
+  p.start_time,
+  p.euid,
+  p.parent,
+  p.uid,
   p.cmdline
 FROM
   process_open_files pof

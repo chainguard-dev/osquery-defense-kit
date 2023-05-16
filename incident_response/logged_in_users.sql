@@ -7,6 +7,7 @@ SELECT
   p.name,
   p.cmdline,
   p.cwd,
+  p.start_time,
   p.root
 FROM
   logged_in_users liu,

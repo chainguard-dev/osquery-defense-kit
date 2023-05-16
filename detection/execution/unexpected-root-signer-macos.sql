@@ -1,6 +1,7 @@
 -- Programs running as root from unusual signers on macOS
 --
 -- platform: darwin
+-- interval: 900
 -- tags: transient seldom process state
 -- Canonical example of including process parents from process_events
 SELECT
@@ -8,6 +9,7 @@ SELECT
   REGEX_MATCH (p.path, '(/.*?/.*?)/', 1) AS top_dir,
   -- Child
   pe.path AS p0_path,
+  pe.time,
   s.authority AS p0_sauth,
   s.identifier AS p0_sid,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
@@ -60,6 +62,7 @@ FROM
 WHERE
   -- query optimization: Exclude SIP protected directories
   p.euid = 0
+  AND pe.time > (strftime('%s', 'now') -900)
   AND top_dir NOT IN (
     '/Library/Apple',
     '/System/Library',

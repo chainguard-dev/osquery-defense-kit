@@ -12,6 +12,7 @@ SELECT
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
   pe.cwd AS p0_cwd,
+  pe.time AS p0_time,
   pe.pid AS p0_pid,
   pe.euid AS p0_euid,
   s.authority AS p0_authority,
