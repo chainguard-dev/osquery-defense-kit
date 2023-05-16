@@ -150,8 +150,8 @@ WHERE
     '/usr/local/Cellar',
     '/usr/local/kolide-k2',
     '/Volumes/Google Chrome/Google Chrome.app',
-    '/Volumes/Slack/Slack.app'
-    '~/.wdm/drivers/chromedriver',
+    '/Volumes/Slack/Slack.app',
+    '~/.wdm/drivers/chromedriver'
   )
   AND dir NOT IN (
     '/bin',
