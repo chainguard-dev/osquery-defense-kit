@@ -156,6 +156,7 @@ WHERE
       p0_cmd LIKE '%/gcloud.py%'
       OR p0_cmd LIKE '%pip install%'
       OR p0_cmd LIKE '%googlecloudsdk/core/metrics_reporter.py%'
+      OR p0_cmd LIKE '%/main.py'
       OR p0_cmd LIKE '%/bin/aws%'
     )
   )

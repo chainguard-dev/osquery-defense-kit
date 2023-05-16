@@ -121,7 +121,6 @@ WHERE
   AND top3_dir NOT IN (
     '/Library/Apple/System',
     '/Library/Application Support/Adobe',
-    '~/Library/Caches/Cypress',
     '~/Library/Application Support/BraveSoftware',
     '/Library/Application Support/Canon_Inc_IC',
     '~/Library/Application Support/com.elgato.StreamDeck',
@@ -133,8 +132,8 @@ WHERE
     '~/Library/Application Support/zoom.us',
     '~/Library/Caches/com.knollsoft.Rectangle',
     '~/Library/Caches/com.mimestream.Mimestream',
+    '~/Library/Caches/Cypress',
     '~/Library/Caches/JetBrains',
-    '~/.wdm/drivers/chromedriver',
     '~/Library/Caches/snyk',
     '/Library/Developer/CommandLineTools',
     '~/Library/Developer/Xcode',
@@ -145,12 +144,14 @@ WHERE
     '/opt/homebrew/Caskroom',
     '/opt/homebrew/Cellar',
     '/opt/homebrew/Library',
+    '/private/var/kolide-k2',
     '/usr/libexec/AssetCache',
     '/usr/libexec/rosetta',
     '/usr/local/Cellar',
     '/usr/local/kolide-k2',
     '/Volumes/Google Chrome/Google Chrome.app',
-    '/Volumes/Slack/Slack.app'
+    '/Volumes/Slack/Slack.app',
+    '~/.wdm/drivers/chromedriver'
   )
   AND dir NOT IN (
     '/bin',
