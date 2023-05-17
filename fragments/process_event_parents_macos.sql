@@ -2,6 +2,7 @@
 SELECT
   -- Child
   pe.path AS p0_path,
+  pe.time AS p0_time,
   s.authority AS p0_sauth,
   s.identifier AS p0_sid,
   hash.sha256 AS p0_hash,

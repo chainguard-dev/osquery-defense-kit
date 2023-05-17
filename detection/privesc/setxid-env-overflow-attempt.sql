@@ -15,6 +15,7 @@
 SELECT
   file.mode AS p0_binary_mode,
   pe.env AS p0_env,
+  pe.time AS p0_time,
   pe.env_size AS p0_env_size,
   -- Child
   pe.path AS p0_path,
