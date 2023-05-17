@@ -190,8 +190,11 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
     AND file.filename LIKE "%.%"
     AND extension IN (
       'adoc',
+      'api',
+      'authn',
       'bat',
       'erb',
+      'iam',
       'java',
       'js',
       'json',
@@ -202,6 +205,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       'pl',
       'py',
       'rb',
+      'registry',
       'script',
       'sh',
       'strings',

@@ -97,9 +97,11 @@ WHERE
   AND NOT homedir IN (
     '~/bin',
     '~/code/bin',
+    '~/Library/Application Support/snyk-ls',
     '~/Downloads/google-cloud-sdk/bin',
     '~/Library/Application Support/minecraft/launcher/launcher.bundle/Contents/Frameworks/launcher-Helper (Renderer).app/Contents/MacOS',
     '~/go/bin',
+    '~/.cache/gitstatus',
     '~/Library/Application Support/sourcegraph-sp/',
     '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
     '~/Library/Application Support/dev.warp.Warp-Stable',

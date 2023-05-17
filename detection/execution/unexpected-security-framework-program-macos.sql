@@ -136,12 +136,15 @@ WHERE
     '500,melange-run,a.out,',
     '500,osqueryd,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     '500,plugin-darwin-arm64,a.out,',
+    '500,tflint,a.out,',
     '500,PrinterProxy,com.apple.print.PrinterProxy,',
     '500,registry,a.out,',
     '500,registry-redirect,a.out,',
+    '500,tflint-ruleset-google,a.out,',
     '500,Runner.Listener,apphost-55554944a938bab90f04347d83659c53dd1197d6,',
     '500,rust-analyzer,rust_analyzer-d11ae4e1bae4360d,',
     '500,scdaemon,scdaemon,',
+    '500,tflint-ruleset-aws,a.out,',
     '500,sdaudioswitch,,',
     '500,sdaudioswitch,sdaudioswitch,',
     '500,sdzoomplugin,,',
@@ -173,6 +176,10 @@ WHERE
     exception_key LIKE '500,%,a.out,'
     AND p0.path LIKE '/private/var/folders%/T/go-build%/exe/%'
   )
+  AND NOT (
+    exception_key LIKE '500,tflint%,a.out,'
+    AND p0.path LIKE '/Users/%/.tflint.d/%'
+  )  
   AND NOT (
     exception_key LIKE '500,python3.%,%,'
     AND p0.path LIKE '/opt/homebrew/%/bin/python'

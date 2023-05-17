@@ -17,6 +17,7 @@ FROM
       p.pid,
       p.name,
       p.cmdline AS cmd,
+      p.start_time,
       p.cwd,
       cp.name AS child_name,
       cp.cmdline AS child_cmd,
@@ -48,4 +49,6 @@ WHERE
   )
   AND child_name IS NOT NULL
   AND child_name NOT IN ('', 'zfs')
+  AND child_cmd NOT LIKE '%osquery-defense-kit%make verify'
+  AND grandchild_cmd NOT LIKE '%osquery-defense-kit%make verify'
   AND cmd != 'sshd: docker@notty'

@@ -15,8 +15,9 @@ SELECT
   uid,
   gid,
   mode,
+  atime,
+  btime,
   mtime,
-  ((strftime('%s', 'now') - file.ctime) / 86400) AS mtime_age_days,
   ctime,
   type,
   size,
@@ -66,6 +67,7 @@ WHERE
     '/etc/.resolv.conf.systemd-resolved.bak',
     '/etc/selinux/.config_backup',
     '/etc/skel/.mozilla/',
+    '/etc/.#sudoers',
     '/.file',
     '/.lesshst',
     '/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
@@ -132,6 +134,7 @@ WHERE
     '/var/setup/.AppleSetupUser',
     '/var/setup/.TemporaryItems',
     '/var/setup/.TemporaryItems/',
+    '/var/tmp/.ses.bak',
     '/.vol/',
     '/.VolumeIcon.icns'
   )

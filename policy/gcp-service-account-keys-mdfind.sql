@@ -5,7 +5,9 @@
 SELECT
   file.path,
   file.size,
-  datetime(file.btime, 'unixepoch') AS file_created,
+  file.btime,
+  file.ctime,
+  file.mtime,
   magic.data,
   hash.sha256,
   u.username,

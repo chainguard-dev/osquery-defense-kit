@@ -8,16 +8,18 @@
 --
 -- tags: persistent filesystem state
 -- platform: posix
-SELECT
-    CONCAT(
+SELECT CONCAT(
         MIN(p0.euid, 500),
         ',',
         COALESCE(REGEX_MATCH (p0.path, '.*/(.*)', 1), p0.path),
         ',',
-        REGEX_MATCH (
-            REPLACE(pof.path, u.directory, '~'),
-            '(.*)/.*',
-            1
+        COALESCE(
+            REGEX_MATCH (
+                REPLACE(pof.path, u.directory, '~'),
+                '(.*)/.*',
+                1
+            ),
+            REPLACE(pof.path, u.directory, '~')
         )
     ) AS exception_key,
     pof.path AS lock,
@@ -48,16 +50,22 @@ WHERE pof.path LIKE "%.lock"
         '500,bridge-gui,~/Library/Application Support/protonmail/bridge-v3/sentry_cache',
         '500,bridge-gui,~/Library/Caches/protonmail/bridge-v3',
         '500,bridge,~/Library/Application Support/protonmail/bridge-v3/sentry_cache',
+        '500,Stream Deck,~/Library/Application Support/com.elgato.StreamDeck/Sentry',
         '500,bridge,~/Library/Caches/protonmail/bridge-v3',
+        '500,Craft,~/Library/Containers/com.lukilabs.lukiapp/Data/Library/Application Support/com.lukilabs.lukiapp',
         '500,buildkitd,~/.local/share/buildkit',
         '500,com.docker.backend,~/Library/Containers/com.docker.docker',
         '500,photolibraryd,~/Library/Photos/Libraries/Syndication.photoslibrary/database',
-        '500,photolibraryd,~/Pictures/Photos Library.photoslibrary/database'
+        '500,photolibraryd,~/Pictures/Photos Library.photoslibrary/database',
+        '500,reMarkable,~/Library/Application Support/remarkable/desktop'
     )
     AND NOT exception_key LIKE '500,com.apple.Virtualization.VirtualMachine,~/%'
     AND NOT exception_key LIKE '500,com.apple.Virtualization.VirtualMachine,/private/var/folders/%'
     AND NOT exception_key LIKE '500,lua-language-server,~/%'
+    AND NOT exception_key LIKE '0,prl_disp_service,/Users/%/Parallels/%/vm.lock'
     AND NOT exception_key LIKE '500,iTermServer-%,~/Library/Application Support/iTerm2'
     AND NOT exception_key LIKE '500,%,/private/var/folders/%/T/Sentry_StreamDeck'
+    AND NOT exception_key LIKE '500,gnome-software,/var/tmp/flatpak-cache-%'
+    AND NOT exception_key LIKE '500,com.docker.backend,/private/var/folders/%/go/pkg/mod/cache/%'
 GROUP BY p0.path,
     pof.path

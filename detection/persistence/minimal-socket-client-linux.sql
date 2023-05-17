@@ -43,6 +43,7 @@ WHERE p.pid IN (
                 '/usr/bin/i3blocks'
             )
             AND name NOT IN ('chrome_crashpad', 'dhcpcd', 'Brackets-node')
+        GROUP BY processes.path
     )
     AND pmm.path LIKE "%.so.%"
 GROUP BY pos.pid -- libc.so, ld-linux
