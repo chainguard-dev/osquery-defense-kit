@@ -80,5 +80,6 @@ WHERE
     'virtlogd,/usr/bin/virtlogd,0,system.slice,virtlogd.service,0755',
     'yum,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755'
   )
+  AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY
   p0.pid

@@ -5,8 +5,7 @@
 --
 -- tags: transient state net often
 -- platform: macos
-SELECT
-  pos.protocol,
+SELECT pos.protocol,
   pos.local_port,
   pos.remote_port,
   pos.remote_address,
@@ -58,8 +57,7 @@ SELECT
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM
-  process_open_sockets pos
+FROM process_open_sockets pos
   LEFT JOIN processes p0 ON pos.pid = p0.pid
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
@@ -68,8 +66,7 @@ FROM
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN signature s ON p0.path = s.path
-WHERE
-  pos.protocol IN (6, 17)
+WHERE pos.protocol IN (6, 17)
   AND pos.remote_port = 443
   AND pos.remote_address NOT IN ('127.0.0.1', '::ffff:127.0.0.1', '::1')
   AND pos.remote_address NOT LIKE 'fe80:%'
@@ -98,14 +95,14 @@ WHERE
   AND p0.path NOT LIKE '/opt/homebrew/Cellar/%/bin/%'
   AND p0.path NOT LIKE '/usr/libexec/%'
   AND p0.path NOT LIKE '/usr/sbin/%'
-  AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/%'
-  AND p0.path NOT LIKE '/private/var/folders/%/go-build%/%'
-  -- Apple programs running from weird places, like the UpdateBrainService
+  AND p0.path NOT LIKE '/usr/local/kolide-k2/%'
+  AND p0.path NOT LIKE '/private/var/folders/%/go-build%/%' -- Apple programs running from weird places, like the UpdateBrainService
   AND NOT (
     s.identifier LIKE 'com.apple.%'
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
+    '0,launcher,launcher,Developer ID Application: Kolide, Inc (X98UFR7HA3),com.kolide.agent',
     '0,Setup,Setup,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.acc.Setup',
     '500,bash,bash,,bash',
     '500,cloud_sql_proxy,cloud_sql_proxy,,a.out',
@@ -151,7 +148,10 @@ WHERE
   AND NOT alt_exception_key LIKE '500,terraform-provider-%,terraform-provider-%,500u,20g'
   AND NOT p0.path LIKE '/private/var/folders/%/T/GoLand/%'
   AND NOT (
-    exception_key IN ('500,Python,Python,,org.python.python', '500,Python,Python,,Python')
+    exception_key IN (
+      '500,Python,Python,,org.python.python',
+      '500,Python,Python,,Python'
+    )
     AND (
       p0_cmd LIKE '%/gcloud.py%'
       OR p0_cmd LIKE '%pip install%'
@@ -159,17 +159,14 @@ WHERE
       OR p0_cmd LIKE '%/main.py'
       OR p0_cmd LIKE '%/bin/aws%'
     )
-  )
-  -- theScore and other iPhone apps
+  ) -- theScore and other iPhone apps
   AND NOT (
     s.authority = 'Apple iPhone OS Application Signing'
     AND p0.cwd = '/'
     AND p0.path = '/private/var/folders/%/Wrapper/%.app/%'
-  )
-  -- nix socket inheritance
+  ) -- nix socket inheritance
   AND NOT (
     p0.path LIKE '/nix/store/%/bin/%'
     AND p1.path LIKE '/nix/store/%/bin/%'
   )
-GROUP BY
-  p0.cmdline
+GROUP BY p0.cmdline
