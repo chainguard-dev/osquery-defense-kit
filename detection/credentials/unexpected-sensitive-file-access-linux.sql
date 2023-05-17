@@ -15,6 +15,7 @@ SELECT
   f.uid AS file_uid,
   p.cwd AS cwd,
   p.euid,
+  p.start_time,
   p.uid AS process_uid,
   p.name AS program_name,
   p.cmdline AS cmdline,

@@ -7,6 +7,7 @@
 -- interval: 600
 SELECT -- Child
   pe.path AS p0_path,
+  pe.time AS p0_time,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
   pe.cwd AS p0_cwd,

@@ -85,6 +85,7 @@ WHERE -- Focus on longer-running programs
         '/Library/SystemExtensions/2DA71D8A-7905-4012-A7D5-0B246D5AA77B/at.obdev.littlesnitch.networkextension.systemextension/Contents/MacOS/at.obdev.littlesnitch.networkextension',
         '/Library/SystemExtensions/CC9A335C-A6D0-4C87-B902-45EBDF4BFD85/com.google.one.NetworkExtension.systemextension/Contents/MacOS/com.google.one.NetworkExtension',
         '/Library/SystemExtensions/0FDB5206-860F-465C-B4D3-D6A0F43F4302/com.google.one.NetworkExtension.systemextension/Contents/MacOS/com.google.one.NetworkExtension',
+        '/Library/SystemExtensions/4D1BF33A-9817-45D7-A242-8C39810C7F11/com.redcanary.agent.securityextension.systemextension/Contents/MacOS/com.redcanary.agent.securityextension',
         '/opt/homebrew/Cellar/telepresence-arm64/2.7.6/bin/telepresence',
         '/opt/socket_vmnet/bin/socket_vmnet',
         '/sbin/launchd',

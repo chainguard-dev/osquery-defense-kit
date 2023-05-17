@@ -11,15 +11,28 @@
 -- platform: darwin
 -- tags: filesystem events
 SELECT
-  REGEX_MATCH (REPLACE(pe.path, u.directory, '~'), '(.*)/', 1) AS dir,
-  REGEX_MATCH (
+  COALESCE(
+    REGEX_MATCH (REPLACE(pe.path, u.directory, '~'), '(.*)/', 1),
+    pe.path
+  ) AS dir,
+  COALESCE(
+    REGEX_MATCH (
+      REPLACE(pe.path, u.directory, '~'),
+      '(~*/.*?)/',
+      1
+    ),
     REPLACE(pe.path, u.directory, '~'),
-    '(~*/.*?)/',
+    '(.*)/',
     1
   ) AS top1_dir,
-  REGEX_MATCH (
+  COALESCE(
+    REGEX_MATCH (
+      REPLACE(pe.path, u.directory, '~'),
+      '(~*/.*?/.*?/.*?)/',
+      1
+    ),
     REPLACE(pe.path, u.directory, '~'),
-    '(~*/.*?/.*?/.*?)/',
+    '(.*)/',
     1
   ) AS top3_dir,
   u.directory AS user_home_dir,
@@ -27,7 +40,7 @@ SELECT
   s.authority AS s_auth,
   -- Child
   pe.path AS p0_path,
-  REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
+  COALESCE(REGEX_MATCH (pe.path, '.*/(.*)', 1), pe.path) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
   pe.time AS p0_time,
   -- pe.cwd is NULL on macOS
@@ -228,10 +241,8 @@ WHERE
     AND dir LIKE '~/%'
     AND p1_name IN ('fish', 'sh', 'bash', 'zsh')
     AND p.cmdline LIKE './%'
-  )
-  -- Spotify
-  AND pe.path NOT LIKE '/private/var/folders/%/T/sp_relauncher'
-  -- Sparkle updater
+  ) -- Spotify
+  AND pe.path NOT LIKE '/private/var/folders/%/T/sp_relauncher' -- Sparkle updater
   AND pe.path NOT LIKE '/Users/%/Library/Caches/%/org.sparkle-project.Sparkle/Launcher/%/Updater.app/Contents/MacOS/Updater'
   AND dir NOT LIKE '/Applications/%'
   AND dir NOT LIKE '~/%/bin'
@@ -256,8 +267,7 @@ WHERE
   AND dir NOT LIKE '/private/var/folders/%/go-build%'
   AND dir NOT LIKE '/private/var/folders/%/GoLand'
   AND dir NOT LIKE '/private/var/folders/%/d/Wrapper/%.app'
-  AND dir NOT LIKE '~/%repo%'
-  -- When running code as root
+  AND dir NOT LIKE '~/%repo%' -- When running code as root
   AND dir NOT LIKE '/Users/%/go/bin'
   AND dir NOT LIKE '~/%sigstore%'
   AND dir NOT LIKE '%/.terraform/providers/%'

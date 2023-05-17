@@ -2,6 +2,7 @@
 --
 -- tags: postmortem
 -- platform: posix
+-- interval: 3600
 SELECT
   file.*,
   magic.data,
@@ -11,5 +12,12 @@ FROM
   LEFT JOIN magic ON file.path = magic.path
   LEFT JOIN hash ON file.path = hash.path
 WHERE
-  file.path LIKE "/home/%/Downloads/%"
-  OR file.path LIKE "/Users/%/Downloads/%"
+  (
+    file.path LIKE "/home/%/Downloads/%"
+    OR file.path LIKE "/Users/%/Downloads/%"
+  )
+  AND (
+    mtime > (strftime('%s', 'now') -3600)
+    OR ctime > (strftime('%s', 'now') -3600)
+    OR btime > (strftime('%s', 'now') -3600)
+  )

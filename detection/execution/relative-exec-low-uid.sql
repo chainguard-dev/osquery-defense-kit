@@ -10,12 +10,14 @@ SELECT -- Child
   p0.path AS p0_path,
   p0.name AS p0_name,
   p0.cmdline AS p0_cmd,
+  p0.start_time AS p0_start,
   p0.cwd AS p0_cwd,
   p0.euid AS p0_euid,
   p0_hash.sha256 AS p0_sha256,
   -- Parent
   p0.parent AS p1_pid,
   p1.path AS p1_path,
+  p1.start_time AS p1_start,
   p1.name AS p1_name,
   p1_f.mode AS p1_mode,
   p1.euid AS p1_euid,
@@ -24,6 +26,7 @@ SELECT -- Child
   -- Grandparent
   p1.parent AS p2_pid,
   p2.name AS p2_name,
+  p2.start_time AS p2_start,
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256

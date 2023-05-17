@@ -9,6 +9,7 @@ SELECT
   p.path,
   p.cmdline,
   file.size,
+  p.start_time,
   file.mode,
   file.type,
   p.cwd,

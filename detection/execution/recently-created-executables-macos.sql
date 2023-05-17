@@ -3,7 +3,8 @@
 -- false-positives:
 --   * many
 --
--- tags: transient process state often
+-- tags: transient process state
+-- interval: 900
 -- platform: darwin
 SELECT
   f.ctime,
@@ -13,14 +14,15 @@ SELECT
   s.authority AS s_auth,
   s.identifier AS s_id,
   REPLACE(f.directory, u.directory, '~') AS dir,
-  REGEX_MATCH (
+  COALESCE(REGEX_MATCH (
     REPLACE(f.directory, u.directory, '~'),
     '(~/.*?/.*?/.*?/)',
     1
-  ) AS top3_dir,
+  ), REPLACE(f.directory, u.directory, '~')) AS top3_dir,
   REPLACE(f.path, u.directory, '~') AS homepath,
   -- Child
   p0.pid AS p0_pid,
+  p0.start_time AS p0_start,
   p0.path AS p0_path,
   s.authority AS p0_sauth,
   s.identifier AS p0_sid,
@@ -31,6 +33,7 @@ SELECT
   p0_hash.sha256 AS p0_sha256,
   -- Parent
   p0.parent AS p1_pid,
+  p1.start_time AS p1_start,
   p1.path AS p1_path,
   p1.name AS p1_name,
   p1.euid AS p1_euid,
@@ -39,6 +42,7 @@ SELECT
   -- Grandparent
   p1.parent AS p2_pid,
   p2.name AS p2_name,
+  p2.start_time AS p2_start,
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
@@ -70,7 +74,7 @@ WHERE
       AND NOT path LIKE '/System/%'
       AND NOT path LIKE '/usr/local/kolide-k2/bin/%'
   )
-  AND (p0.start_time - MAX(f.ctime, f.btime)) < 90
+  AND (p0.start_time - MAX(f.ctime, f.btime)) < 60
   AND f.ctime > 0
   AND NOT (
     p0.euid > 499
@@ -173,6 +177,10 @@ WHERE
     AND f.ctime = f.mtime
     AND f.uid = p0.uid
     AND p0.cmdline LIKE './%'
+    AND p0.path NOT LIKE '%Library%'
+    AND p0.path NOT LIKE '%/.%'
+    AND p0.path NOT LIKE '%Cache%'
+
   )
   -- Arc
   AND NOT (

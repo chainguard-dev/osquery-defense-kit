@@ -32,6 +32,7 @@ SELECT
   ) AS exception_key,
   -- Child
   p0.pid AS p0_pid,
+  p0.start_time AS p0_start,
   p0.path AS p0_path,
   p0.name AS p0_name,
   p0.cmdline AS p0_cmd,
@@ -42,6 +43,7 @@ SELECT
   -- Parent
   p0.parent AS p1_pid,
   p1.path AS p1_path,
+  p1.start_time AS p1_start,
   p1.name AS p1_name,
   p1.euid AS p1_euid,
   p1.cmdline AS p1_cmd,

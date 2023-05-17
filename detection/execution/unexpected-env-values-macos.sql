@@ -5,7 +5,7 @@
 --
 -- WARNING: This query is known to require a higher than average wall time.
 --
--- interval: 30
+-- interval: 60
 -- platform: darwin
 SELECT
   key,
@@ -23,7 +23,7 @@ FROM
   LEFT JOIN process_envs pe ON p.pid = pe.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
 WHERE -- This time should match the interval
-  p.start_time > (strftime('%s', 'now') - 20)
+  p.start_time > (strftime('%s', 'now') - 60)
   AND (
     key = 'HISTFILE'
     AND NOT VALUE LIKE '/Users/%/.%_history'

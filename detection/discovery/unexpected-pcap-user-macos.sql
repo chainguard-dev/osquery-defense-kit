@@ -39,20 +39,27 @@ FROM
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  p0.euid = 0
+  p0.pid IN (
+    SELECT pid FROM processes WHERE
+      euid = 0
+      AND path NOT LIKE '/System/%'
+      AND path NOT LIKE '/Library/Apple/%'
+      AND path NOT LIKE '/usr/libexec/%'
+      AND path NOT LIKE '/usr/sbin/%'
+      AND path NOT LIKE '/sbin/%'
+      AND path NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%'
+      AND path NOT LIKE '/usr/bin/%'
+      AND path NOT LIKE '/nix/store/%/bin/nix'
+      AND path NOT LIKE '/opt/homebrew/Cellar/vim/%/bin/vim'
+      AND path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+      AND path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
+      AND path NOT LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
+      AND path NOT LIKE '/usr/local/Cellar/htop/%/bin/htop'
+      AND path != '/opt/socket_vmnet/bin/socket_vmnet'
+  )
+
   AND pmm.path LIKE '%libpcap%'
   -- These are all protected directories
-  AND p0.path NOT LIKE '/System/%'
-  AND p0.path NOT LIKE '/usr/libexec/%'
-  AND p0.path NOT LIKE '/usr/sbin/%'
-  AND p0.path NOT LIKE '/usr/bin/%'
-  AND p0.path NOT LIKE '/nix/store/%/bin/nix'
-  AND p0.path NOT LIKE '/opt/homebrew/Cellar/vim/%/bin/vim'
-  AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
-  AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
-  AND p0.path NOT LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
-  AND p0.path NOT LIKE '/usr/local/Cellar/htop/%/bin/htop'
-  AND p0.path != '/opt/socket_vmnet/bin/socket_vmnet'
   AND NOT s.authority IN (
     'Software Signing',
     'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
