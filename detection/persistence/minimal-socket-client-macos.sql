@@ -25,6 +25,8 @@ SELECT
     pos.state,
     GROUP_CONCAT(pmm.path) AS libs,
     COUNT(DISTINCT pmm.path) AS lib_count,
+    -- Normally we would use signatures for exceptions, but it was triggering
+    -- an unusual performance issue in osquery.
     CONCAT(
         MIN(p.euid, 500),
         ',',
@@ -57,13 +59,19 @@ WHERE
             AND processes.path NOT LIKE '/nix/store/%/bin/nix'
             AND processes.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
             AND processes.path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
-            AND processes.start_time > (strftime('%s', 'now') -604800)
-            AND processes.resident_size < 200000000
+            -- AND processes.start_time > (strftime('%s', 'now') -604800)
+            -- AND processes.resident_size < 200000000
         GROUP BY
             processes.path
     )
     AND pmm.path LIKE "%.dylib"
-    AND exception_key NOT IN ()
+    AND exception_key NOT IN (
+        '500,Todoist,/Applications/Todoist.app/Contents/MacOS/Todoist',
+        '500,Slack,/Applications/Slack.app/Contents/MacOS/Slack',
+        '500,Slack Helper (Renderer),/Applications/Slack.app/Contents/Frameworks/Slack Helper (Renderer).app/Contents/MacOS/Slack Helper (Renderer)',
+        '500,Snagit 2020,/Applications/Snagit 2020.app/Contents/MacOS/Snagit 2020',
+        '500,SnagitHelper2020,/Applications/Snagit 2020.app/Contents/Library/LoginItems/SnagitHelper2020.app/Contents/MacOS/SnagitHelper2020'
+    )
 GROUP BY
     pos.pid
 HAVING
