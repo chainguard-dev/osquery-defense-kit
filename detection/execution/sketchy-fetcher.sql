@@ -11,6 +11,7 @@ SELECT
   p.path,
   p.name,
   p.cmdline,
+  p.start_time,
   REGEX_MATCH (p.cmdline, '(\w+:\/\/.*)\b', 1) AS url,
   REGEX_MATCH (p.cmdline, '//(\d+\.\d+\.\d+\.\d+)[:/]', 1) AS ip,
   REGEX_MATCH (p.cmdline, ':(\d+)', 1) AS port,

@@ -7,7 +7,7 @@
 -- related:
 --   * unexpected-privilege-escalation-events.sql
 --
--- tags: transient rapid state process escalation
+-- tags: transient state process escalation
 -- platform: darwin
 SELECT
   s.authority AS p0_auth,

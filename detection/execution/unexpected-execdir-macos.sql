@@ -8,13 +8,13 @@
 -- platform: darwin
 -- tags: transient seldom process filesystem state
 SELECT DISTINCT
-  REGEX_MATCH (p0.path, '(.*)/', 1) AS dir,
+  COALESCE(REGEX_MATCH (p0.path, '(.*)/', 1), p0.path) AS dir,
   REPLACE(f.directory, u.directory, '~') AS homedir,
-  REGEX_MATCH (
+  COALESCE(REGEX_MATCH (
     REPLACE(f.directory, u.directory, '~'),
     '(~/.*?/.*?/.*?/)',
     1
-  ) AS top3_homedir,
+  ), REPLACE(f.directory, u.directory, '~')) AS top3_homedir,
   REGEX_MATCH (
     REPLACE(f.directory, u.directory, '~'),
     '(~/.*?/)',
@@ -24,6 +24,7 @@ SELECT DISTINCT
   s.identifier AS p0_id,
   -- Child
   p0.pid AS p0_pid,
+  p0.start_time AS p0_start,
   p0.path AS p0_path,
   p0.name AS p0_name,
   p0.cmdline AS p0_cmd,
@@ -32,6 +33,7 @@ SELECT DISTINCT
   p0_hash.sha256 AS p0_sha256,
   -- Parent
   p0.parent AS p1_pid,
+  p1.start_time AS p1_start,
   p1.path AS p1_path,
   p1.name AS p1_name,
   p1_f.mode AS p1_mode,
@@ -71,7 +73,7 @@ WHERE
     GROUP BY
       path
   )
-  AND dir NOT IN (
+  AND NOT dir IN (
     '/Library/Application Support/Logitech.localized/Logitech Options.localized/LogiMgrUpdater.app/Contents/Resources',
     '/Library/DropboxHelperTools/Dropbox_u501',
     '/Library/Filesystems/kbfuse.fs/Contents/Resources',
@@ -92,7 +94,7 @@ WHERE
     '/opt/X11/libexec',
     '/run/current-system/sw/bin'
   )
-  AND homedir NOT IN (
+  AND NOT homedir IN (
     '~/bin',
     '~/code/bin',
     '~/Downloads/google-cloud-sdk/bin',
@@ -107,7 +109,7 @@ WHERE
     '~/.magefile',
     '~/projects/go/bin'
   )
-  AND top_homedir NOT IN (
+  AND NOT top_homedir IN (
     '~/Applications/',
     '~/Applications (Parallels)/',
     '~/bin/',
@@ -122,8 +124,6 @@ WHERE
     '~/google-cloud-sdk/',
     '~/homebrew/',
     '~/.kuberlr/',
-    -- '~/Library/',
-    -- '~/.local/',
     '~/Parallels/',
     '~/proj/',
     '~/projects/',
@@ -138,7 +138,7 @@ WHERE
     '~/.vscode/',
     '~/.vs-kubernetes/'
   )
-  AND top3_homedir NOT IN (
+  AND NOT top3_homedir IN (
     '~/Library/Application Support/BraveSoftware/',
     '~/Library/Application Support/com.elgato.StreamDeck/',
     '~/Library/Application Support/duckly/',
@@ -212,4 +212,8 @@ WHERE
     s.identifier = "a.out"
     AND homedir LIKE '~/%'
     AND p1.name LIKE '%sh'
+    AND p2.name = 'login'
+    AND p0.path NOT LIKE '%/Cache%'
+    AND p0.path NOT LIKE '%/Library/%'
+    AND p0.path NOT LIKE '%/.%'
   )
