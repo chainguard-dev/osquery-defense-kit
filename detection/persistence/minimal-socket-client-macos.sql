@@ -23,7 +23,7 @@ SELECT
     p.cgroup_path,
     p.path,
     pos.state,
-    GROUP_CONCAT(pmm.path) AS libs,
+    GROUP_CONCAT(DISTINCT pmm.path) AS libs,
     COUNT(DISTINCT pmm.path) AS lib_count,
     -- Normally we would use signatures for exceptions, but it was triggering
     -- an unusual performance issue in osquery.
@@ -68,6 +68,7 @@ WHERE
     AND exception_key NOT IN (
         '500,Todoist,/Applications/Todoist.app/Contents/MacOS/Todoist',
         '500,Slack,/Applications/Slack.app/Contents/MacOS/Slack',
+        '500,WhatsApp Helper (GPU),/Applications/WhatsApp.app/Contents/Frameworks/WhatsApp Helper (GPU).app/Contents/MacOS/WhatsApp Helper (GPU)',
         '500,Slack Helper (Renderer),/Applications/Slack.app/Contents/Frameworks/Slack Helper (Renderer).app/Contents/MacOS/Slack Helper (Renderer)',
         '500,Snagit 2020,/Applications/Snagit 2020.app/Contents/MacOS/Snagit 2020',
         '500,SnagitHelper2020,/Applications/Snagit 2020.app/Contents/Library/LoginItems/SnagitHelper2020.app/Contents/MacOS/SnagitHelper2020'

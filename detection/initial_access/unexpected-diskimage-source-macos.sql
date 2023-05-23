@@ -123,6 +123,7 @@ WHERE
     'adoptium.net',
     'balsamiq.com',
     'brave.com',
+    'cron.com',
     'discord.com',
     'dl.discordapp.net',
     'dl.google.com',

@@ -55,6 +55,7 @@ WHERE
     '/usr/bin/doas',
     '/usr/bin/dockerd',
     '/usr/bin/fusermount3',
+    '/usr/libexec/at-spi-bus-launcher',
     '/usr/bin/gnome-shell',
     '/usr/bin/ibus-daemon',
     '/usr/bin/kitty',

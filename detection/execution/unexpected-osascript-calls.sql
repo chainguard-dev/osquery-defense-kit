@@ -112,6 +112,11 @@ WHERE
     )
   )
   -- The following apply to all uids
-  AND NOT p0_cmd = 'osascript -e user locale of (get system info)'
+  AND NOT p0_cmd IN (
+    'osascript -e do shell script "/bin/rm -Rf /opt/vagrant /usr/local/bin/vagrant" with administrator privileges',
+    'osascript -e user locale of (get system info)',
+    '/usr/bin/osascript -e do shell script "/bin/rm -Rf /opt/vagrant /usr/local/bin/vagrant" with administrator privileges
+  )
+
 GROUP BY
   pe.pid

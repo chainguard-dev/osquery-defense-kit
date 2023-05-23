@@ -6,8 +6,8 @@
 -- tags: transient process state often
 -- platform: linux
 SELECT
-  f.ctime,
-  f.mtime,
+  f.ctime AS p0_ctime,
+  f.mtime AS p0_mtime,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -53,8 +53,11 @@ WHERE
   -- What I would give for osquery to support binary signature verification on Linux
   AND NOT p0.path IN (
     '',
+    '/usr/sbin/irqbalance',
     '/opt/google/chrome/chrome',
     '/usr/bin/packer',
+    '/usr/bin/cmake',
+    '/usr/sbin/cups-browsed',
     '/opt/google/chrome/chrome_crashpad_handler',
     '/opt/google/chrome/nacl_helper',
     '/usr/bin/gnome-software',
@@ -209,6 +212,9 @@ WHERE
     AND p0.cmdline LIKE './%'
   )
   AND NOT p1.path IN ('/usr/bin/gnome-shell') -- Filter out developers working on their own code
+  AND NOT p1.name = 'makepkg'
+  AND NOT p2.path = '/usr/bin/yay'
+  AND NOT p2.cmdline LIKE '/usr/bin/yay %'
   AND NOT (
     p0.path LIKE '/home/%'
     AND p0.uid > 499
