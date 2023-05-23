@@ -102,15 +102,19 @@ WHERE pos.protocol IN (6, 17)
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
+    '0,com.google.one.NetworkExtension,com.google.one.NetworkExtension,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.one.NetworkExtension',
     '0,launcher,launcher,Developer ID Application: Kolide, Inc (X98UFR7HA3),com.kolide.agent',
     '0,Setup,Setup,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.acc.Setup',
     '500,bash,bash,,bash',
+    '0,EdgeUpdater,EdgeUpdater,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.EdgeUpdater',
     '500,cloud_sql_proxy,cloud_sql_proxy,,a.out',
+    '500,ngrok,ngrok,Developer ID Application: ngrok LLC (TEX8MHRDQ9),darwin_amd64',
     '500,Code Helper,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode.helper',
     '500,Code Helper (Plugin),Code Helper (Plugin),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
     '500,Code Helper (Renderer),Code Helper (Renderer),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
     '500,Ecamm Live Stream Deck Plugin,Ecamm Live Stream Deck Plugin,Developer ID Application: Ecamm Network, LLC (5EJH68M642),Ecamm Live Stream Deck Plugin',
     '500,Electron,Electron,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode',
+    '500,Fleet,~/Library/Caches/JetBrains/Fleet',
     '500,git-remote-http,git-remote-http,,git-remote-http-55554944748a32c47cdc35cfa7f071bb69a39ce4',
     '500,go,go,Developer ID Application: Google LLC (EQHXZ8M8AV),org.golang.go',
     '500,grype,grype,Developer ID Application: ANCHORE, INC. (9MJHKYX5AT),grype',
@@ -126,6 +130,7 @@ WHERE pos.protocol IN (6, 17)
     '500,Reflect,Reflect,Developer ID Application: Reflect App, LLC (789ULN5MZB),app.reflect.ReflectDesktop',
     '500,sdaudioswitch,sdaudioswitch,,sdaudioswitch',
     '500,snyk-ls_darwin_arm64,snyk-ls_darwin_arm64,,a.out',
+    '500,steam_osx,steam_osx,Developer ID Application: Valve Corporation (MXGJJ98X76),com.valvesoftware.steam',
     '500,syncthing,syncthing,,syncthing',
     '500,terraform,terraform,Developer ID Application: Hashicorp, Inc. (D38WU7D763),terraform',
     '500,Transmit,Transmit,Developer ID Application: Panic, Inc. (VE8FC488U5),com.panic.Transmit',
@@ -137,7 +142,9 @@ WHERE pos.protocol IN (6, 17)
     '500,chainlink,chainlink,500u,20g',
     '500,cpu,cpu,500u,20g',
     '500,cosign,cosign,0u,500g',
+    '500,chainctl,chainctl,500u,20g',
     '500,crane,crane,500u,80g',
+    '500,pulumi-resource-gcp,pulumi-resource-gcp,500u,20g',
     '500,go,go,500u,80g',
     '500,git-remote-http,git-remote-http,500u,80g',
     '500,vim,vim,0u,500g',
@@ -148,6 +155,11 @@ WHERE pos.protocol IN (6, 17)
   AND NOT alt_exception_key LIKE '500,terraform-provider-%,terraform-provider-%,500u,20g'
   AND NOT p0.path LIKE '/private/var/folders/%/T/GoLand/%'
   AND NOT (
+    exception_key = '500,Python,Python,,org.python.python'
+    AND p0_cmd LIKE '% main.py'
+    AND p0_cwd LIKE "%/neko"
+  )
+  AND NOT (
     exception_key IN (
       '500,Python,Python,,org.python.python',
       '500,Python,Python,,Python'
@@ -156,7 +168,6 @@ WHERE pos.protocol IN (6, 17)
       p0_cmd LIKE '%/gcloud.py%'
       OR p0_cmd LIKE '%pip install%'
       OR p0_cmd LIKE '%googlecloudsdk/core/metrics_reporter.py%'
-      OR p0_cmd LIKE '%/main.py'
       OR p0_cmd LIKE '%/bin/aws%'
     )
   ) -- theScore and other iPhone apps

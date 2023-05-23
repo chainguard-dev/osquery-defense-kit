@@ -109,6 +109,7 @@ WHERE
         '~/bin',
         '~/code/bin',
         '~/go/bin',
+        '~/Library/Application Support/snyk-ls',
         '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
         '~/Library/Application Support/dev.warp.Warp-Stable',
         '~/Library/Application Support/zoom.us/Plugins/aomhost.app/Contents/MacOS',
@@ -118,6 +119,7 @@ WHERE
         '~/projects/go/bin'
       )
       OR dir LIKE '~/%/node_modules/.bin/%'
+      OR dir LIKE '~/%/node_modules/esbuild%/bin'
       OR f.path LIKE '%go-build%'
       OR f.path LIKE '~/%/src/%.test'
       OR f.path LIKE '~/%/pkg/%.test'

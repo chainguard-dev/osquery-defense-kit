@@ -26,8 +26,7 @@ SELECT
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
 FROM
-  process_open_sockets pop
-  LEFT JOIN processes p0 ON pop.pid = p0.pid
+  processes p0
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path

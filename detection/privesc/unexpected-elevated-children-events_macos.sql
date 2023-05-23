@@ -107,16 +107,19 @@ WHERE
     '/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared -s mdworker -c MDSImporterWorker -m com.apple.mdworker.shared'
   )
   AND NOT exception_key IN (
-    'containermanagerd,262,com.docker.backend,Docker',
-    'sysextd,0,LogiTune,launchd',
-    'CAReportingService,0,LogiTune,launchd',
-    'biometrickitd,0,LogiTune,launchd',
-    'suhelperd,0,LogiTune,launchd',
-    'com.apple.AccountPolicyHelper,0,LogiTune,launchd',
     'amfid,0,com.docker.backend,Docker',
-    'dprivacyd,0,com.docker.backend,Docker',
+    'biometrickitd,0,LogiTune,launchd',
+    'bioutil,0,callservicesd,launchd',
+    'CAReportingService,0,LogiTune,launchd',
+    'com.apple.AccountPolicyHelper,0,LogiTune,launchd',
     'com.apple.geod,262,com.docker.backend,Docker',
-    'SCHelper,0,com.docker.backend,Docker'
+    'com.apple.WebKit.WebContent,200,zsh,Emacs-arm64-11',
+    'containermanagerd,262,com.docker.backend,Docker',
+    'dprivacyd,0,com.docker.backend,Docker',
+    'SCHelper,0,com.docker.backend,Docker',
+    'suhelperd,0,LogiTune,launchd',
+    'sysextd,0,LogiTune,launchd',
+    'system_profiler,0,callservicesd,launchd'
   )
   AND NOT (
     pe.euid = 262 -- core media helper id

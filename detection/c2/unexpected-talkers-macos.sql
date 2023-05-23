@@ -116,6 +116,8 @@ WHERE
   )
   AND NOT exception_key IN (
     '0,6,80,prl_naptd,prl_naptd,Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',
+    '500,6,4318,Code Helper (Plugin),Code Helper (Plugin),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
+    '500,6,5223,KakaoTalk,KakaoTalk,Apple Mac OS Application Signing,com.kakao.KakaoTalkMac',
     '500,17,8801,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos',
     '500,17,9000,Meeting Center,Meeting Center,Developer ID Application: Cisco (DE8Y96K9QP),com.webex.meetingmanager',
     '500,6,22,Cyberduck,Cyberduck,Developer ID Application: David Kocher (G69SCX94XU),ch.sudo.cyberduck',
@@ -139,27 +141,31 @@ WHERE
     '500,6,80,launcher-Helper,launcher-Helper,Developer ID Application: Mojang AB (HR992ZEAE6),com.mojang.mclauncher.helper',
     '500,6,80,node,node,Developer ID Application: Node.js Foundation (HX7739G8FX),node',
     '500,6,80,Signal Helper (Renderer),Signal Helper (Renderer),Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR),org.whispersystems.signal-desktop.helper.Renderer',
+    '500,6,80,Slack Helper,Slack Helper,Apple Mac OS Application Signing,com.tinyspeck.slackmacgap.helper',
     '500,6,80,Snagit 2020,Snagit 2020,Apple Mac OS Application Signing,com.TechSmith.Snagit2020',
     '500,6,80,Snagit 2023,Snagit 2023,Developer ID Application: TechSmith Corporation (7TQL462TU8),com.TechSmith.Snagit2023',
     '500,6,80,SnagitHelper2020,SnagitHelper2020,Apple Mac OS Application Signing,com.techsmith.snagit.capturehelper2020',
     '500,6,80,SnagitHelper2023,SnagitHelper2023,Developer ID Application: TechSmith Corporation (7TQL462TU8),com.techsmith.snagit.capturehelper2023',
     '500,6,80,Spotify,Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
+    '500,6,80,steam_osx,steam_osx,Developer ID Application: Valve Corporation (MXGJJ98X76),com.valvesoftware.steam',
     '500,6,80,Telegram,Telegram,Apple Mac OS Application Signing,ru.keepcoder.Telegram',
+    '500,6,80,WhatsApp,WhatsApp,Developer ID Application: WhatsApp Inc. (57T9237FN3),WhatsApp',
     '500,6,80,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
     '500,6,80,Twitter,Twitter,Apple Mac OS Application Signing,maccatalyst.com.atebits.Tweetie2',
     '500,6,993,Mimestream,Mimestream,Developer ID Application: Mimestream, LLC (P2759L65T8),com.mimestream.Mimestream',
     '500,6,993,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird'
   ) -- Useful for unsigned binaries
   AND NOT alt_exception_key IN (
+    '500,6,80,firefox,firefox,500u,20g',
     '500,6,22,ssh,ssh,0u,500g',
     '500,6,22,ssh,ssh,500u,0g',
     '500,6,22,ssh,ssh,500u,20g',
     '500,6,22,ssh,ssh,500u,80g',
-    '500,6,80,qemu-system-aarch64,qemu-system-aarch64,500u,80g',
     '500,6,3307,cloud_sql_proxy,cloud_sql_proxy,0u,0g',
-    '500,6,3307,cloud_sql_proxy,cloud_sql_proxy,500u,20g',
     '500,6,3307,cloud-sql-proxy,cloud-sql-proxy,500u,20g',
-    '500,6,80,copilot-agent-macos-arm64,copilot-agent-macos-arm64,500u,20g'
+    '500,6,3307,cloud_sql_proxy,cloud_sql_proxy,500u,20g',
+    '500,6,80,copilot-agent-macos-arm64,copilot-agent-macos-arm64,500u,20g',
+    '500,6,80,qemu-system-aarch64,qemu-system-aarch64,500u,80g'
   )
   AND NOT (
     alt_exception_key LIKE '500,6,%,syncthing,syncthing,0u,500g'
@@ -179,6 +185,7 @@ WHERE
       OR pos.remote_port > 3000
     )
     AND id_exception_key IN (
+      'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
       'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.helper',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.edgemac.helper',

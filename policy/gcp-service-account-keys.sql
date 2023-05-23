@@ -4,6 +4,7 @@
 -- platform: posix
 SELECT
   file.path,
+  file.filename,
   file.type,
   file.size,
   file.mtime,
@@ -48,6 +49,5 @@ WHERE
   AND NOT file.filename LIKE 'ulabs-%'
   AND NOT hash.sha256 IN (
     "c7d6bac8e942511e25973889ac38656d4d46f68044650d694721017fda23716e",
-    "bd5f4c01ebb5636b94584ee4ae42514b27d371859f7344f6aa5a37332ee714ba",
     "bd5f4c01ebb5636b94584ee4ae42514b27d371859f7344f6aa5a37332ee714ba"
   )

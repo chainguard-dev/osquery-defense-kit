@@ -40,6 +40,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
   child_name IN ('curl', 'wget', 'ftp', 'tftp') -- And not a regular local user
   AND NOT exception_key IN (
     'curl,0,09-timezone,nm-dispatcher',
+    'curl,0,sh,qualys-cloud-ag',
     'curl,0,build.sh,buildkit-runc',
     'curl,0,nm-dispatcher,',
     'curl,0,nm-dispatcher,nm-dispatcher',
