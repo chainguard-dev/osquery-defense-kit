@@ -14,11 +14,14 @@ SELECT
   s.authority AS s_auth,
   s.identifier AS s_id,
   REPLACE(f.directory, u.directory, '~') AS dir,
-  COALESCE(REGEX_MATCH (
-    REPLACE(f.directory, u.directory, '~'),
-    '(~/.*?/.*?/.*?/)',
-    1
-  ), REPLACE(f.directory, u.directory, '~')) AS top3_dir,
+  COALESCE(
+    REGEX_MATCH (
+      REPLACE(f.directory, u.directory, '~'),
+      '(~/.*?/.*?/.*?/)',
+      1
+    ),
+    REPLACE(f.directory, u.directory, '~')
+  ) AS top3_dir,
   REPLACE(f.path, u.directory, '~') AS homepath,
   -- Child
   p0.pid AS p0_pid,
@@ -109,14 +112,15 @@ WHERE
         '~/bin',
         '~/code/bin',
         '~/go/bin',
-        '~/Library/Application Support/snyk-ls',
         '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
         '~/Library/Application Support/dev.warp.Warp-Stable',
+        '~/Library/Application Support/snyk-ls',
         '~/Library/Application Support/zoom.us/Plugins/aomhost.app/Contents/MacOS',
         '~/.local/bin',
         '~/.local/share/gh/extensions/gh-sbom',
         '~/.magefile',
-        '~/projects/go/bin'
+        '~/projects/go/bin',
+        '/usr/local/kolide-k2/Kolide.app/Contents/MacOS'
       )
       OR dir LIKE '~/%/node_modules/.bin/%'
       OR dir LIKE '~/%/node_modules/esbuild%/bin'
@@ -158,6 +162,7 @@ WHERE
     'Developer ID Application: GPGTools GmbH (PKV8ZPD836)',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
+    'Developer ID Application: Azul Systems, Inc. (TDTHCUPYFR)',
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Michael Jones (YD6LEYT6WZ)',
@@ -184,7 +189,6 @@ WHERE
     AND p0.path NOT LIKE '%Library%'
     AND p0.path NOT LIKE '%/.%'
     AND p0.path NOT LIKE '%Cache%'
-
   )
   -- Arc
   AND NOT (

@@ -288,6 +288,7 @@ WHERE -- Focus on longer-running programs
   )
   AND NOT s.authority IN (
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+    'Developer ID Application: Creative Labs Pte. Ltd. (5Q3552844F)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',

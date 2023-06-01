@@ -141,6 +141,7 @@ WHERE
     'obsproject.com',
     'posit.co',
     'proton.me',
+    'mnvoip.mm.fcix.net',
     'rancherdesktop.io',
     'rectangleapp.com',
     'stclairsoft.s3.amazonaws.com',

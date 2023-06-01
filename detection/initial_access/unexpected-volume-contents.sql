@@ -112,6 +112,7 @@ WHERE
   AND authority NOT IN (
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
     'Developer ID Application: Canon Inc. (XE2XNRRXZ5)',
+    'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)'
   ) -- Unsigned programs here
@@ -123,6 +124,7 @@ WHERE
     '/Volumes/Jabra Direct Setup/JabraDirectSetup.pkg'
   )
   AND trimpath NOT LIKE '/Volumes/JDK %/JDK %.pkg'
+  AND trimpath NOT LIKE '/Volumes/Google Earth Pro%/Install Google Earth Pro%.pkg'
   AND trimpath NOT LIKE '/Volumes/mysql-shell-%/mysql-shell-%.pkg'
   AND magic.data NOT LIKE 'ASCII text%'
   AND NOT (

@@ -132,6 +132,11 @@ WHERE
     p0_name IN ('dash', 'pkexec')
     AND p1_path = '/usr/bin/update-notifier'
   )
+  -- A bizarro persistent false-positive from an Arch linux host
+  AND NOT (
+    p.cgroup_path = "/init.scope"
+    AND p1.cgroup_path != "/init.scope"
+  )
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
   AND NOT p1.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY

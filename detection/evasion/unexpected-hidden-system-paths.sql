@@ -71,6 +71,7 @@ WHERE
     '/.file',
     '/.lesshst',
     '/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
+    '/.mozilla',
     '/tmp/.accounts-agent/',
     '/tmp/.audio-agent/',
     '/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
@@ -146,6 +147,7 @@ WHERE
   AND file.path NOT LIKE '/tmp/.%.gcode'
   AND file.path NOT LIKE '/tmp/.vbox-%-ipc/'
   AND file.path NOT LIKE '/tmp/.io.nwjs.%'
+  AND file.path NOT LIKE '/tmp/.xfsm-ICE-%'
   AND file.path NOT LIKE '/tmp/.com.google.Chrome.%'
   AND file.path NOT LIKE '/tmp/.org.chromium.Chromium%'
   AND file.path NOT LIKE '/var/run/.vfs_rsrc_streams_%/'
