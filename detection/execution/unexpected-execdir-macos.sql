@@ -10,11 +10,14 @@
 SELECT DISTINCT
   COALESCE(REGEX_MATCH (p0.path, '(.*)/', 1), p0.path) AS dir,
   REPLACE(f.directory, u.directory, '~') AS homedir,
-  COALESCE(REGEX_MATCH (
-    REPLACE(f.directory, u.directory, '~'),
-    '(~/.*?/.*?/.*?/)',
-    1
-  ), REPLACE(f.directory, u.directory, '~')) AS top3_homedir,
+  COALESCE(
+    REGEX_MATCH (
+      REPLACE(f.directory, u.directory, '~'),
+      '(~/.*?/.*?/.*?/)',
+      1
+    ),
+    REPLACE(f.directory, u.directory, '~')
+  ) AS top3_homedir,
   REGEX_MATCH (
     REPLACE(f.directory, u.directory, '~'),
     '(~/.*?/)',
@@ -144,6 +147,7 @@ WHERE
     '~/Library/Application Support/BraveSoftware/',
     '~/Library/Application Support/com.elgato.StreamDeck/',
     '~/Library/Application Support/duckly/',
+    '~/Library/Application Support/Code/',
     '/Library/Application Support/EcammLive',
     '~/Library/Application Support/Foxit Software/',
     '~/Library/Application Support/JetBrains/',

@@ -31,5 +31,6 @@ WHERE
   ) == 1
   -- Common filenames that are non-controversial
   AND NOT file.filename LIKE '%example.com%'
+  AND NOT file.path LIKE "%/testdata/%"
 GROUP BY
   file.path

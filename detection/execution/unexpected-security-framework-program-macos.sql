@@ -162,6 +162,7 @@ WHERE
     '500,stern,a.out,',
     '500,Grammarly Safari Extension,com.grammarly.safari.extension.ext2,Apple Mac OS Application Signing',
     '500,syncthing,syncthing,',
+    '500,OOPProResRawService,com.apple.videoapps.OOPProResRawService,Apple Mac OS Application Signing',
     '500,Telegram,ru.keepcoder.Telegram,Apple Mac OS Application Signing',
     '500,testing,com.yourcompany.testing,', -- Xcode iPhone emulator
     '500,Todoist,com.todoist.mac.Todoist,Apple Mac OS Application Signing',
@@ -171,6 +172,7 @@ WHERE
     '500,TwitchStudioStreamDeck,TwitchStudioStreamDeck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     '500,vim,,',
     '500,vim,vim,',
+    '500,esbuild,,',
     '500,WinAppHelper,,',
     '500,WinAppHelper,WinAppHelper,'
   )
@@ -181,7 +183,7 @@ WHERE
   AND NOT (
     exception_key LIKE '500,tflint%,a.out,'
     AND p0.path LIKE '/Users/%/.tflint.d/%'
-  )  
+  )
   AND NOT (
     exception_key LIKE '500,python3.%,%,'
     AND p0.path LIKE '/opt/homebrew/%/bin/python'

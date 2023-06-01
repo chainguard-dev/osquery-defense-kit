@@ -71,6 +71,7 @@ WHERE
     'fwupd,/usr/libexec/fwupd/fwupd,0,system.slice,fwupd.service,0755',
     'zed,/nix/store/__VERSION__/bin/zed,0,system.slice,zfs-zed.service,0555',
     'fwupd,/usr/lib/fwupd/fwupd,0,system.slice,fwupd.service,0755',
+    'dnf,/usr/bin/python__VERSION__,0,system.slice,dnf-makecache.service,0755',
     'dnf,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
     'libvirtd,/usr/bin/libvirtd,0,system.slice,libvirtd.service,0755',
     'NetworkManager,/usr/bin/NetworkManager,0,system.slice,NetworkManager.service,0755',

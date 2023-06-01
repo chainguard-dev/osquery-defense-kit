@@ -5,7 +5,8 @@
 --
 -- tags: transient state net often
 -- platform: macos
-SELECT pos.protocol,
+SELECT
+  pos.protocol,
   pos.local_port,
   pos.remote_port,
   pos.remote_address,
@@ -57,7 +58,8 @@ SELECT pos.protocol,
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM process_open_sockets pos
+FROM
+  process_open_sockets pos
   LEFT JOIN processes p0 ON pos.pid = p0.pid
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
@@ -66,7 +68,8 @@ FROM process_open_sockets pos
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN signature s ON p0.path = s.path
-WHERE pos.protocol IN (6, 17)
+WHERE
+  pos.protocol IN (6, 17)
   AND pos.remote_port = 443
   AND pos.remote_address NOT IN ('127.0.0.1', '::ffff:127.0.0.1', '::1')
   AND pos.remote_address NOT LIKE 'fe80:%'
@@ -115,6 +118,7 @@ WHERE pos.protocol IN (6, 17)
     '500,Ecamm Live Stream Deck Plugin,Ecamm Live Stream Deck Plugin,Developer ID Application: Ecamm Network, LLC (5EJH68M642),Ecamm Live Stream Deck Plugin',
     '500,Electron,Electron,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode',
     '500,Fleet,~/Library/Caches/JetBrains/Fleet',
+    '500,chrome_crashpad_handler,chrome_crashpad_handler,Developer ID Application: Microsoft Corporation (UBF8T346G9),chrome_crashpad_handler',
     '500,git-remote-http,git-remote-http,,git-remote-http-55554944748a32c47cdc35cfa7f071bb69a39ce4',
     '500,go,go,Developer ID Application: Google LLC (EQHXZ8M8AV),org.golang.go',
     '500,grype,grype,Developer ID Application: ANCHORE, INC. (9MJHKYX5AT),grype',
@@ -139,18 +143,22 @@ WHERE pos.protocol IN (6, 17)
   )
   AND NOT alt_exception_key IN (
     '500,apko,apko,0u,0g',
-    '500,chainlink,chainlink,500u,20g',
-    '500,cpu,cpu,500u,20g',
-    '500,cosign,cosign,0u,500g',
+    '500,apko,apko,500u,20g',
+    '500,chainctl,chainctl,0u,0g',
     '500,chainctl,chainctl,500u,20g',
-    '500,crane,crane,500u,80g',
-    '500,pulumi-resource-gcp,pulumi-resource-gcp,500u,20g',
-    '500,go,go,500u,80g',
-    '500,git-remote-http,git-remote-http,500u,80g',
-    '500,vim,vim,0u,500g',
+    '500,chainlink,chainlink,500u,20g',
+    '500,cosign,cosign,0u,500g',
+    '500,cpu,cpu,500u,20g',
     '500,crane,crane,0u,500g',
+    '500,crane,crane,500u,80g',
+    '500,git-remote-http,git-remote-http,500u,20g',
+    '500,git-remote-http,git-remote-http,500u,80g',
+    '500,gitsign,gitsign,500u,20g',
+    '500,go,go,500u,80g',
+    '500,pulumi-resource-gcp,pulumi-resource-gcp,500u,20g',
     '500,sdaudioswitch,sdaudioswitch,500u,20g',
-    '500,sdzoomplugin,sdzoomplugin,500u,20g'
+    '500,sdzoomplugin,sdzoomplugin,500u,20g',
+    '500,vim,vim,0u,500g'
   )
   AND NOT alt_exception_key LIKE '500,terraform-provider-%,terraform-provider-%,500u,20g'
   AND NOT p0.path LIKE '/private/var/folders/%/T/GoLand/%'
@@ -180,4 +188,5 @@ WHERE pos.protocol IN (6, 17)
     p0.path LIKE '/nix/store/%/bin/%'
     AND p1.path LIKE '/nix/store/%/bin/%'
   )
-GROUP BY p0.cmdline
+GROUP BY
+  p0.cmdline

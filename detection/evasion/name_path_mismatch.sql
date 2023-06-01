@@ -104,6 +104,10 @@ WHERE
     '500,udevadm,systemd-udevd',
     '500,vim.basic,vi'
   )
+  AND NOT (
+    p0.path = '/usr/lib/xfce4/panel/wrapper-2.0'
+    AND exception_key LIKE '500,wrapper-2.0,panel-%'
+  )
   AND NOT p0.path IN ('/usr/lib/systemd/systemd')
   AND NOT p0_cgroup LIKE '/system.slice/docker-%'
 GROUP by

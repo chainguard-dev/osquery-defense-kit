@@ -171,6 +171,8 @@ WHERE
     'nm-openvpn-serv,/usr/libexec/nm-openvpn-service,0,system.slice,NetworkManager.service,0755',
     'nvidia-powerd,/usr/bin/nvidia-powerd,0,system.slice,nvidia-powerd.service,0755',
     'osqueryd,/nix/store/__VERSION__/bin/osqueryd,0,system.slice,kolide-launcher.service,0555',
+    'orbit,/opt/orbit/bin/orbit/linux/stable/orbit,0,system.slice,orbit.service,0755',
+    'osqueryd,/opt/orbit/bin/osqueryd/linux/stable/osqueryd,0,system.slice,orbit.service,0755',
     'osqueryd,/usr/local/kolide-k2/bin/osqueryd-updates/__VERSION__/osqueryd,0,system.slice,launcher.kolide-k2.service,0755',
     'osquery-extensi,/nix/store/__VERSION__/bin/osquery-extension.ext,0,system.slice,kolide-launcher.service,0555',
     'osqueryi,/usr/bin/osqueryd,0,user.slice,user-1000.slice,0755',

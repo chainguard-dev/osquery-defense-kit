@@ -139,6 +139,7 @@ WHERE
     '8834,6,0,nessusd,Developer ID Application: Tenable, Inc. (4B8J598M7U)',
     '8834,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '88,6,0,kdc,Software Signing',
+    '8888,6,500,otel-desktop-viewer,',
     '9101,6,500,github_actions_exporter,'
   )
   AND NOT (
