@@ -258,6 +258,7 @@ WHERE
       'bash,500,Private Internet Access,launchd',
       'bash,500,steam,bash',
       'bash,500,xdg-desktop-portal,systemd',
+      'dash,0,dpkg,apt',
       'dash,0,anacron,systemd',
       'dash,0,dpkg,python3.10',
       'dash,0,kindnetd,containerd-shim-runc-v2',

@@ -178,6 +178,7 @@ WHERE
     '~/Downloads/google-cloud-sdk/bin',
     '~/Downloads/protoc/bin',
     '~/go/bin',
+    '~/Library/Application Support/Alfred/Assistant',
     '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
     '~/Library/Application Support/dev.warp.Warp-Stable',
     '/Library/Application Support/Kandji/Kandji Menu/Kandji Menu.app/Contents/MacOS',
@@ -278,9 +279,11 @@ WHERE
   AND dir NOT LIKE '~/%sigstore%'
   AND dir NOT LIKE '%/.terraform/providers/%'
   AND dir NOT LIKE '/Volumes/com.getdropbox.dropbox-%' -- These signers can run from wherever the hell they want.
+  AND s.identifier != 'org.sparkle-project.Sparkle.Autoupdate'
   AND s.authority NOT IN (
     'Apple iPhone OS Application Signing',
     'Apple Mac OS Application Signing',
+    'Developer ID Application: reMarkable AS (4FFUD2H2F6)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Cisco (DE8Y96K9QP)',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW)',

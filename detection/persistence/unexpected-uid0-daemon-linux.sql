@@ -72,12 +72,13 @@ WHERE
   p0.euid = 0
   AND p0.parent > 0
   AND p0.path != ""
-  AND p0.start_time < (strftime('%s', 'now') - 900)
+  AND p0.start_time < (strftime('%s', 'now') - 1200)
   AND exception_key NOT IN (
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-core,0,system.slice,abrt-journal-core.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-oops,0,system.slice,abrt-oops.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-xorg,0,system.slice,abrt-xorg.service,0755',
     'abrtd,/usr/sbin/abrtd,0,system.slice,abrtd.service,0755',
+    'sudo,/usr/bin/sudo,1000,user.slice,user-1000.slice,4755',
     'accounts-daemon,/nix/store/__VERSION__/libexec/accounts-daemon,0,system.slice,accounts-daemon.service,0555',
     'accounts-daemon,/usr/lib/accounts-daemon,0,system.slice,accounts-daemon.service,0755',
     'accounts-daemon,/usr/libexec/accounts-daemon,0,system.slice,accounts-daemon.service,0755',

@@ -56,6 +56,7 @@ WHERE
     'Alfred',
     'anacron',
     'bash',
+    'git-remote-http',
     'buildkit-runc',
     'build-script-build',
     'chezmoi',
