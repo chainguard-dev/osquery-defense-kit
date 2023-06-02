@@ -66,6 +66,7 @@ WHERE
     '200,softwareupdated,/private~/SplunkHistory',
     '500,Opera,~/Library/Application Support/com.operasoftware.Opera',
     '500,com.docker.build,~/.docker/desktop-build',
+    '500,pipewire,/run/user/1000',
     '500,Ecamm Live Stream Deck Plugin,~/Library/Application Support/com.elgato.StreamDeck/Sentry',
     '500,Beeper,~/Library/Application Support/Beeper/EventStore',
     '500,bridge-gui,~/Library/Application Support/protonmail/bridge-v3/sentry_cache',
