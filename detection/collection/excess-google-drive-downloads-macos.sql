@@ -23,4 +23,4 @@ WHERE
   AND MAX(file.btime, file.ctime, file.mtime) > (strftime('%s', 'now') -604800) 
 -- "GROUP BY" should be unnecessary, but Kolide seems to require it
 GROUP BY ea.key
-HAVING total_size > (100*1024*1024) OR num_downloads > 5
+HAVING total_size > (100*1024*1024) OR num_downloads > 4
