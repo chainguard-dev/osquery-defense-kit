@@ -54,13 +54,18 @@ WHERE -- This time should match the interval
     pe.key = 'LD_PRELOAD'
     AND NOT pe.value = ''
     AND NOT p0.path LIKE '%/firefox'
-    AND NOT pe.value IN ('libfakeroot.so', '/usr/local/lib/libmimalloc.so')
+    AND NOT pe.value IN (
+      'libfakeroot.so',
+      '/usr/local/lib/libmimalloc.so',
+      '/usr/lib/libjemalloc.so'
+    )
     AND NOT pe.value LIKE ':/home/%/.local/share/Steam'
     AND NOT pe.value LIKE ':/home/%/.var/app/com.valvesoftware.Steam/%'
     AND NOT pe.value LIKE ':/home/%/.local/share/Steam/ubuntu%/gameoverlayrenderer.so:/home/%/.local/share/Steam/ubuntu%/gameoverlayrenderer.so'
     AND NOT pe.value LIKE ':/snap/%'
     AND NOT pe.value LIKE '/app/bin/%'
     AND NOT pe.value LIKE 'libmozsandbox.so%'
+    AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
   )
   -- setuid
   OR (

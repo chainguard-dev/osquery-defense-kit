@@ -113,6 +113,7 @@ WHERE
     '500,Final Cut Pro,com.apple.FinalCut,Apple Mac OS Application Signing',
     '500,git,git,',
     '500,gitsign,a.out,',
+    '500,ko,,',
     '500,gitsign-credential-cache,a.out,',
     '500,GitterHelperApp,com.troupe.gitter.mac.GitterHelperApp,Developer ID Application: Troupe Technology Limited (A86QBWJ43W)',
     '500,go,a.out,',

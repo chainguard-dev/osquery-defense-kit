@@ -111,6 +111,7 @@ WHERE
     '500,bash,bash,,bash',
     '0,EdgeUpdater,EdgeUpdater,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.EdgeUpdater',
     '500,cloud_sql_proxy,cloud_sql_proxy,,a.out',
+    '500,Install Spotify,Install Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.installer',
     '500,ngrok,ngrok,Developer ID Application: ngrok LLC (TEX8MHRDQ9),darwin_amd64',
     '500,Code Helper,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode.helper',
     '500,Code Helper (Plugin),Code Helper (Plugin),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
@@ -148,6 +149,9 @@ WHERE
     '500,chainctl,chainctl,500u,20g',
     '500,chainlink,chainlink,500u,20g',
     '500,cosign,cosign,0u,500g',
+    '500,wolfictl,wolfictl,500u,20g',
+    '500,cosign,cosign,500u,20g',
+    '500,cilium,cilium,500u,123g',
     '500,cpu,cpu,500u,20g',
     '500,crane,crane,0u,500g',
     '500,crane,crane,500u,80g',
@@ -170,13 +174,15 @@ WHERE
   AND NOT (
     exception_key IN (
       '500,Python,Python,,org.python.python',
-      '500,Python,Python,,Python'
+      '500,Python,Python,,Python',
+      '500,Python,Python,,'
     )
     AND (
       p0_cmd LIKE '%/gcloud.py%'
       OR p0_cmd LIKE '%pip install%'
       OR p0_cmd LIKE '%googlecloudsdk/core/metrics_reporter.py%'
       OR p0_cmd LIKE '%/bin/aws%'
+      OR p0_cmd LIKE "%/gsutil/gsutil %"
     )
   ) -- theScore and other iPhone apps
   AND NOT (

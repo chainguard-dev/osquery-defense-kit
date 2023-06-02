@@ -56,7 +56,7 @@ FROM
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
   pof.path LIKE "%.lock"
-  AND pof.path NOT LIKE "/run/user/%/%.lock"
+  AND NOT pof.path NOT LIKE "/run/user/%/%.lock"
   AND NOT p0.path LIKE '/System/%'
   AND NOT exception_key IN (
     '0,com.apple.MobileSoftwareUpdate.CryptegraftService,/private/var/db/softwareupdate/SplunkHistory',
@@ -64,6 +64,7 @@ WHERE
     '500,flyctl,~/.fly',
     '500,iMovie,~/Movies/iMovie Library.imovielibrary',
     '200,softwareupdated,/private~/SplunkHistory',
+    '500,Opera,~/Library/Application Support/com.operasoftware.Opera',
     '500,com.docker.build,~/.docker/desktop-build',
     '500,Ecamm Live Stream Deck Plugin,~/Library/Application Support/com.elgato.StreamDeck/Sentry',
     '500,Beeper,~/Library/Application Support/Beeper/EventStore',
@@ -86,6 +87,8 @@ WHERE
   )
   AND NOT exception_key LIKE '500,com.apple.Virtualization.VirtualMachine,~/%'
   AND NOT exception_key LIKE '500,iMovie,%.imovielibrary'
+  AND NOT exception_key LIKE '500,go,~/go/pkg/mod/cache/download/%'
+  AND NOT exception_key LIKE '500,remindd,/private/var/folders/%/T/.AddressBookLocks'
   AND NOT exception_key LIKE '500,com.apple.Virtualization.VirtualMachine,/private/var/folders/%'
   AND NOT exception_key LIKE '500,lua-language-server,~/%'
   AND NOT exception_key LIKE '500,ykman-gui,/private/var/folders/%/T'

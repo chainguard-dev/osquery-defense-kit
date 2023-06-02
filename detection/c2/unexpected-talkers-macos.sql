@@ -150,6 +150,7 @@ WHERE
     '500,6,80,Telegram,Telegram,Apple Mac OS Application Signing,ru.keepcoder.Telegram',
     '500,6,80,WhatsApp,WhatsApp,Developer ID Application: WhatsApp Inc. (57T9237FN3),WhatsApp',
     '500,6,80,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
+    '500,6,22,Transmit,Transmit,Developer ID Application: Panic, Inc. (VE8FC488U5),com.panic.Transmit',
     '500,6,80,Twitter,Twitter,Apple Mac OS Application Signing,maccatalyst.com.atebits.Tweetie2',
     '500,6,993,Mimestream,Mimestream,Developer ID Application: Mimestream, LLC (P2759L65T8),com.mimestream.Mimestream',
     '500,6,993,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird'

@@ -116,6 +116,7 @@ WHERE
     '/usr/lib/systemd/systemd --user',
     '/bin/sh -c /usr/bin/pkexec /usr/share/apport/apport-gtk'
   )
+  AND NOT p0_cmd = '/usr/bin/pkexec /usr/lib/update-notifier/package-system-locked'
   AND NOT (
     p0_name = 'polkit-agent-helper-1'
     AND p1_path IN (
@@ -131,8 +132,7 @@ WHERE
   AND NOT (
     p0_name IN ('dash', 'pkexec')
     AND p1_path = '/usr/bin/update-notifier'
-  )
-  -- A bizarro persistent false-positive from an Arch linux host
+  ) -- A bizarro persistent false-positive from an Arch linux host
   AND NOT (
     p.cgroup_path = "/init.scope"
     AND p1.cgroup_path != "/init.scope"

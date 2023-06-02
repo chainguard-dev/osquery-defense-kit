@@ -38,6 +38,7 @@ WHERE
   AND file.btime > (strftime('%s', 'now') -86400)
   AND domain NOT IN (
     'adobe.com',
+    'vmware.com',
     'akmedia.digidesign.com',
     'alfredapp.com',
     'android.com',

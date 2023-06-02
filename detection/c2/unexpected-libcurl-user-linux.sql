@@ -69,6 +69,7 @@ WHERE
   AND NOT exception_key IN (
     'flatpak-system-,/usr/libexec/flatpak-system-helper,0,system.slice,flatpak-system-helper.service,0755',
     'fwupd,/usr/libexec/fwupd/fwupd,0,system.slice,fwupd.service,0755',
+    'zfs,/nix/store/__VERSION__/bin/zfs,0,system.slice,zfs-snapshot-frequent.service,0555',
     'zed,/nix/store/__VERSION__/bin/zed,0,system.slice,zfs-zed.service,0555',
     'fwupd,/usr/lib/fwupd/fwupd,0,system.slice,fwupd.service,0755',
     'dnf,/usr/bin/python__VERSION__,0,system.slice,dnf-makecache.service,0755',

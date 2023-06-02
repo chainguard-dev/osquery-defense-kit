@@ -71,7 +71,7 @@ WHERE
     '/.file',
     '/.lesshst',
     '/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
-    '/.mozilla',
+    '/.mozilla/',
     '/tmp/.accounts-agent/',
     '/tmp/.audio-agent/',
     '/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',

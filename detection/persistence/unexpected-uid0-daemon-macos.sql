@@ -298,6 +298,7 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
     'Developer ID Application: Keybase, Inc. (99229SGT5K)',
     'Developer ID Application: Kolide, Inc (X98UFR7HA3)',
+    'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: MacPaw Inc. (S8EX82NJP6)',
