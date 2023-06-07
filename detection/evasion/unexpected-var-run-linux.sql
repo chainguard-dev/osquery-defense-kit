@@ -33,6 +33,7 @@ WHERE
     'apcupsd.pid',
     'apport.lock',
     'atd.pid',
+    'unattended-upgrades.pid',
     "auditd.pid",
     "crond.pid",
     'crond.reboot',
