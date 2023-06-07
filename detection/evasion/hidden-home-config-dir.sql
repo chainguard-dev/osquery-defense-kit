@@ -24,7 +24,8 @@ FROM
   LEFT JOIN magic ON file.path = magic.path
 WHERE
   (
-    file.path LIKE '/home/%/.config/%%/.%/%'
+    file.path LIKE "/home/%/.config/.%"
+    OR file.path LIKE '/home/%/.config/%%/.%/%'
     OR file.path LIKE '/home/%/.config/.%/%'
     OR file.path LIKE '/home/%/.config/%%/.%/.%'
     OR file.path LIKE '/root/.config/%%/.%/%'
@@ -36,3 +37,4 @@ WHERE
   AND file.path NOT LIKE '%/./%'
   AND file.path NOT LIKE '/root/.debug/.build-id/%'
   AND file.path NOT LIKE '/home/%/.config/%/.git%'
+  AND file.path NOT LIKE '/home/%/.config/.gsd-keyboard.settings-ported'
