@@ -35,6 +35,7 @@ WHERE
   AND NOT p.path IS NULL
   AND p.name NOT IN (
     '1Password-Keyri',
+    'abrt-handle-eve',
     'applydeltarpm',
     'bwrap',
     'crond',

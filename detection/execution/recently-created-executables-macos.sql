@@ -124,8 +124,7 @@ WHERE
         '~/projects/go/bin',
         '/usr/local/kolide-k2/Kolide.app/Contents/MacOS'
       )
-      OR dir LIKE '~/%/node_modules/.bin/%'
-      OR dir LIKE '~/%/node_modules/esbuild%/bin'
+      OR dir LIKE '~/%/node_modules/%bin'
       OR f.path LIKE '%go-build%'
       OR f.path LIKE '~/%/src/%.test'
       OR f.path LIKE '~/%/pkg/%.test'

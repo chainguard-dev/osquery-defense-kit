@@ -65,7 +65,8 @@ WHERE
       AND magic.data LIKE '%script%'
       AND signature.identifier != 'net.snowflake.snowsql'
       AND signature.authority NOT IN (
-        'Developer ID Application: Allen Bai (97DN42T837)'
+        'Developer ID Application: Allen Bai (97DN42T837)',
+        'Developer ID Application: Galvanix (5BRAQAFB8B)'
       )
     ) -- Rule 2. App binaries that have mixed-caps names such as LYwjtu0sc3XqkNVbQe_gM4YiRpmgUpRIew or yWnBJLaF (AdobeFlashPlayer_567.app)
     OR (
@@ -118,6 +119,7 @@ WHERE
       AND f != '/Volumes/brotherwdswML_nonPanel/MacResources'
       AND file.filename NOT LIKE '%.previous'
       AND file.filename NOT LIKE '%.interrupted'
+      AND signature.authority != 'Developer ID Application: Google LLC (EQHXZ8M8AV)'
       AND file.filename NOT LIKE '%.backup'
     ) --   7. Volumes containing a top-level symlink to something other than /Applications, such as yWnBJLaF (1302.app)
     OR (
@@ -125,6 +127,8 @@ WHERE
       AND magic.data != 'symbolic link to /Applications'
       AND magic.data != 'symbolic link to /Applications/'
       AND magic.data != 'symbolic link to .'
+      -- emacs
+      AND magic.data != 'symbolic link to bin-x86%'
       AND magic.data NOT LIKE 'symbolic link to /Users/%/My Drive'
       AND magic.data NOT LIKE 'symbolic link to /Library/Application Support/Apple/Safari/SafariForWebKitDevelopment'
     )

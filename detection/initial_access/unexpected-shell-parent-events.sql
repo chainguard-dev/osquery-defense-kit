@@ -251,6 +251,7 @@ WHERE
       'bash,500,Foxit PDF Reader,launchd',
       'bash,500,script,bash',
       'bash,500,docker-builder,bash',
+      'bash,500,Hyprland,gdm-wayland-session',
       'bash,500,gnome-session-binary,systemd',
       'bash,500,gpg-agent,launchd',
       'bash,500,lazygit,nvim',

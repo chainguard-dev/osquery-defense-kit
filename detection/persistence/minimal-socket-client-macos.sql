@@ -61,14 +61,19 @@ WHERE
   AND pmm.path LIKE "%.dylib"
   AND exception_key NOT IN (
     '500,Slack,/Applications/Slack.app/Contents/MacOS/Slack',
+    '500,J8RPQ294UB.com.skitch.SkitchHelper,/Applications/Skitch.app/Contents/Library/LoginItems/J8RPQ294UB.com.skitch.SkitchHelper.app/Contents/MacOS/J8RPQ294UB.com.skitch.SkitchHelper',
     '500,Slack Helper (GPU),/Applications/Slack.app/Contents/Frameworks/Slack Helper (GPU).app/Contents/MacOS/Slack Helper (GPU)',
     '500,Slack Helper (Renderer),/Applications/Slack.app/Contents/Frameworks/Slack Helper (Renderer).app/Contents/MacOS/Slack Helper (Renderer)',
     '500,Snagit 2020,/Applications/Snagit 2020.app/Contents/MacOS/Snagit 2020',
-    '500,MacVim,/opt/homebrew/Cellar/macvim/9.0.1276/MacVim.app/Contents/MacOS/MacVim',
+    '500,Revolt Helper (GPU),/Applications/Revolt.app/Contents/Frameworks/Revolt Helper (GPU).app/Contents/MacOS/Revolt Helper (GPU)',
+    '500,Revolt,/Applications/Revolt.app/Contents/MacOS/Revolt',
+    '500,Steam Helper,/Users/kaniini/Library/Application Support/Steam/Steam.AppBundle/Steam/Contents/MacOS/Frameworks/Steam Helper.app/Contents/MacOS/Steam Helper',
     '500,SnagitHelper2020,/Applications/Snagit 2020.app/Contents/Library/LoginItems/SnagitHelper2020.app/Contents/MacOS/SnagitHelper2020',
     '500,Todoist,/Applications/Todoist.app/Contents/MacOS/Todoist',
     '500,WhatsApp Helper (GPU),/Applications/WhatsApp.app/Contents/Frameworks/WhatsApp Helper (GPU).app/Contents/MacOS/WhatsApp Helper (GPU)'
   )
+  AND exception_key NOT LIKE '500,MacVim,/%/MacVim.app/Contents/MacOS/MacVim'
+
 GROUP BY
   pos.pid
 HAVING

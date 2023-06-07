@@ -175,6 +175,7 @@ WHERE
     'syft',
     'tracker-miner-f',
     'trivy',
+    'wolfictl',
     'trivy-db',
     'unattended-upgr',
     'wineserver',

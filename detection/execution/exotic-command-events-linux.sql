@@ -9,8 +9,7 @@
 -- tags: transient process events
 -- platform: linux
 -- interval: 300
-SELECT
-  -- Child
+SELECT -- Child
   pe.path AS p0_path,
   pe.time AS p0_time,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
@@ -48,19 +47,16 @@ SELECT
     '.*/(.*)',
     1
   ) AS exception_key
-FROM
-  process_events pe,
+FROM process_events pe,
   uptime
-  LEFT JOIN processes p ON pe.pid = p.pid
-  -- Parents (via two paths)
+  LEFT JOIN processes p ON pe.pid = p.pid -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
   AND p1.start_time <= pe.time
   LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
   LEFT JOIN process_events pe1 ON pe.parent = pe1.pid
   AND pe1.time <= pe.time
   AND pe1.cmdline != ''
-  LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path
-  -- Grandparents (via 3 paths)
+  LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path -- Grandparents (via 3 paths)
   LEFT JOIN processes p1_p2 ON p1.parent = p1_p2.pid -- Current grandparent via parent processes
   AND p1_p2.start_time <= p1.start_time
   LEFT JOIN processes pe1_p2 ON pe1.parent = pe1_p2.pid -- Current grandparent via parent events
@@ -70,8 +66,7 @@ FROM
   LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
-WHERE
-  pe.time > (strftime('%s', 'now') -300)
+WHERE pe.time > (strftime('%s', 'now') -300)
   AND pe.cmdline != ''
   AND (
     p0_name IN (
@@ -99,13 +94,10 @@ WHERE
       'msfvenom',
       'nc',
       'socat'
-    )
-    -- Chrome Stealer
-    OR p0_cmd LIKE '%chrome%-load-extension%'
-    -- Known attack scripts
+    ) -- Chrome Stealer
+    OR p0_cmd LIKE '%chrome%-load-extension%' -- Known attack scripts
     OR p0_name LIKE '%pwn%'
-    OR p0_name LIKE '%attack%'
-    -- Unusual behaviors
+    OR p0_name LIKE '%attack%' -- Unusual behaviors
     OR p0_cmd LIKE '%ufw disable%'
     OR p0_cmd LIKE '%iptables stop'
     OR p0_cmd LIKE '%setenforce 0'
@@ -135,15 +127,12 @@ WHERE
     OR p0_cmd LIKE '%rm -rf /boot%'
     OR p0_cmd LIKE '%nohup /bin/bash%'
     OR p0_cmd LIKE '%echo%|%base64 --decode %|%'
-    OR p0_cmd LIKE '%UserKnownHostsFile=/dev/null%'
-    -- Crypto miners
+    OR p0_cmd LIKE '%UserKnownHostsFile=/dev/null%' -- Crypto miners
     OR p0_cmd LIKE '%monero%'
     OR p0_cmd LIKE '%nanopool%'
     OR p0_cmd LIKE '%nicehash%'
-    OR p0_cmd LIKE '%stratum%'
-    -- Random keywords
-    OR p0_cmd LIKE '%ransom%'
-    -- Reverse shells
+    OR p0_cmd LIKE '%stratum%' -- Random keywords
+    OR p0_cmd LIKE '%ransom%' -- Reverse shells
     OR p0_cmd LIKE '%/dev/tcp/%'
     OR p0_cmd LIKE '%/dev/udp/%'
     OR p0_cmd LIKE '%fsockopen%'
@@ -206,4 +195,8 @@ WHERE
   AND NOT p0_cmd LIKE 'tail /%history'
   AND NOT p0_cmd LIKE '%/usr/bin/cmake%Socket%'
   AND NOT p0_name IN ('ar', 'cc1', 'compile', 'cmake', 'cc1plus')
-  AND NOT exception_key IN ('bash,500,ninja,bash', 'ls,500,zsh,alacritty')
+  AND NOT exception_key IN (
+    'bash,500,ninja,bash',
+    'ls,500,zsh,alacritty',
+    'bash,0,bash,containerd-shim-runc-v2'
+  )

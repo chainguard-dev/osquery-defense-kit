@@ -143,6 +143,7 @@ WHERE
     'xargs',
     'xcrun',
     'xfce4-terminal',
+    'xfce4-session',
     'yum',
     'zellij',
     'zsh'

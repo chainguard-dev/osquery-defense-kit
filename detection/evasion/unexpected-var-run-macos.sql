@@ -45,6 +45,7 @@ WHERE
     'FirstBootAfterUpdate',
     'FirstBootCleanupHandled',
     'hdiejectd.pid',
+    'installd.commit.pid',
     'kdc.pid',
     'prl_disp_service.pid',
     'prl_naptd.pid',
