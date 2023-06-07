@@ -7,8 +7,7 @@
 --   * Almost unlimited: any extension that isn't on your whitelist
 --
 -- tags: persistent seldom browser
-SELECT
-  name,
+SELECT name,
   profile,
   chrome_extensions.description AS 'descr',
   persistent AS persists,
@@ -29,13 +28,11 @@ SELECT
     identifier
   ) AS exception_key,
   hash.sha256
-FROM
-  users
+FROM users
   CROSS JOIN chrome_extensions USING (uid)
   LEFT JOIN file ON chrome_extensions.path = file.path
   LEFT JOIN hash ON chrome_extensions.path = hash.path
-WHERE
-  (
+WHERE (
     -- These extensions need the most review.
     from_webstore != 'true'
     OR perms LIKE '%google.com%'
@@ -52,6 +49,7 @@ WHERE
     -- Deprecated Google Extension
     'false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,',
     'false,,base64 encode or decode selected text,',
+    'false,,Edge relevant text changes,jmjflgjpcpepeafmmgdpfkogkghcpiha',
     'false,,Google Chat,chfbpgnooceecdoohagngmjnndbbaeip',
     'false,,Google Chat,mdpkiolbdkhdjpekfbkbmhigcaggjagi',
     'false,,Google Cloud,gmdcbpephenfeelhagpbceidhdbobfpk',
@@ -62,11 +60,9 @@ WHERE
     'false,,NVD Cleaner,',
     'false,,Trotto go links,nkeoojidblilnkcbbmfhaeebndapehjk',
     'false,,YouTube,agimnkijcaahngcdmfeangaknmldooml',
-    'true,Benjamin Hollis,JSONView,gmegofmjomhknnokphhckolhcffdaihd',
     'true,,Acorns Earn,facncfnojagdpibmijfjdmhkklabakgd',
     'true,Adaware,Safe Torrent Scanner,aegnopegbbhjeeiganiajffnalhlkkjb',
     'true,,Adblock for Youtube™,cmedhionkhpnakcndndgjdbohmhepckk',
-    'false,,Edge relevant text changes,jmjflgjpcpepeafmmgdpfkogkghcpiha',
     'true,Adblock, Inc.,AdBlock — best ad blocker,gighmmpiobklfepjocnamgkkbiglidom',
     'true,,Add to Amazon Wish List,ciagpekplgpbepdgggflgmahnjgiaced',
     'true,,Adobe Acrobat: PDF edit, convert, sign tools,efaidnbmnnnibpcajpcglclefindmkaj',
@@ -77,6 +73,7 @@ WHERE
     'true,,Application Launcher For Drive (by Google),lmjegmlicamnimmfhcmpkclmigmmcbeh',
     'true,,Bardeen - automate manual work,ihhkmalpkhkoedlmcnilbbhhbhnicjga',
     'true,,Bardeen - automate workflows with one click,ihhkmalpkhkoedlmcnilbbhhbhnicjga',
+    'true,Benjamin Hollis,JSONView,gmegofmjomhknnokphhckolhcffdaihd',
     'true,BetaFish,AdBlock — best ad blocker,gighmmpiobklfepjocnamgkkbiglidom',
     'true,,Bionic Reading,kdfkejelgkdjgfoolngegkhkiecmlflj',
     'true,Bitwarden Inc.,Bitwarden - Free Password Manager,nngceckbapebfimnlniiiahkandclblb',
@@ -96,8 +93,10 @@ WHERE
     'true,,Cloud9,nbdmccoknlfggadpfkmcpnamfnbkmkcp',
     'true,,Cloud Vision,nblmokgbialjjgfhfofbgfcghhbkejac',
     'true,,coLaboratory Notebook,pianggobfjcgeihlmfhfgkfalopndooo',
+    'true,,Refined GitHub,hlepfoohegkhhmjieoechaddaejaokhf',
     'true,,ColorPick Eyedropper,ohcpnigalekghcmgcdcenkpelffpdolg',
     'true,,Copper CRM for Gmail,hpfmedbkgaakgagknibnonpkimkibkla',
+    'true,,Copper CRM for Gmail™,hpfmedbkgaakgagknibnonpkimkibkla',
     'true,,CSS Scan,gieabiemggnpnminflinemaickipbebg',
     "true,Daniel Kladnik @ kiboke studio,I don't care about cookies,fihnjjcciajhdojfnbdddfaoknhalnja",
     'true,,Datanyze Chrome Extension,mlholfadgbpidekmhdibonbjhdmpmafd',
@@ -220,5 +219,4 @@ WHERE
     'true,,ZoomInfo Engage Chrome Extension,mnbjlpbmllanehlpbgilmbjgocpmcijp',
     'true,,Zoom Scheduler,kgjfgplpablkjnlkjmjdecgdpfankdle'
   )
-GROUP BY
-  exception_key
+GROUP BY exception_key

@@ -87,18 +87,21 @@ WHERE
   AND pe.cmdline != ''
   AND pe.cmdline IS NOT NULL
   AND p1_path NOT IN (
+    '/Applications/LogiTune.app/Contents/MacOS/LogiTune',
     '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared',
-    '/usr/libexec/PerfPowerServicesExtended',
     '/System/Library/PrivateFrameworks/AOSKit.framework/Versions/A/XPCServices/com.apple.iCloudHelper.xpc/Contents/MacOS/com.apple.iCloudHelper',
+    '/Library/Apple/System/Library/CoreServices/XProtect.app/Contents/XPCServices/XProtectPluginService.xpc/Contents/MacOS/XProtectPluginService',
     '/usr/bin/login',
     '/usr/bin/su',
     '/usr/bin/sudo',
     '/usr/libexec/mdmclient',
+    '/usr/libexec/PerfPowerServicesExtended',
     '/usr/local/bin/doas'
   ) -- Exclude weird bad data we've seen due to badly recorded macOS parent/child relationships, fixable by reboot
   AND NOT p0_cmd IN (
     '/usr/sbin/cupsd -l',
     '/usr/sbin/cfprefsd agent',
+    '/usr/libexec/wifip2pd',
     '/System/Library/CoreServices/iconservicesd',
     '/System/Library/PrivateFrameworks/InstallCoordination.framework/Support/installcoordinationd',
     '/System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd',
@@ -110,6 +113,7 @@ WHERE
     'amfid,0,com.docker.backend,Docker',
     'biometrickitd,0,LogiTune,launchd',
     'bioutil,0,callservicesd,launchd',
+    'trustd,205,trustd,launchd',
     'CAReportingService,0,LogiTune,launchd',
     'com.apple.AccountPolicyHelper,0,LogiTune,launchd',
     'com.apple.geod,262,com.docker.backend,Docker',

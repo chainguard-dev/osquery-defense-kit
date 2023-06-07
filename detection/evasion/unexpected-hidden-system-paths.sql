@@ -74,6 +74,7 @@ WHERE
     '/.mozilla/',
     '/tmp/.accounts-agent/',
     '/tmp/.audio-agent/',
+    '/var/root/.docker',
     '/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
     '/tmp/.content-agent/',
     '/tmp/._contentbarrier_installed',

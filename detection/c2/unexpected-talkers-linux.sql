@@ -84,6 +84,8 @@ WHERE
   )
   AND NOT exception_key IN (
     '123,17,114,chronyd,0u,0g,chronyd',
+    '80,6,0,pdftex,0u,0g,pdftex',
+    '80,6,0,sort,0u,0g,sort',
     '123,17,500,chronyd,0u,0g,chronyd',
     '143,6,500,thunderbird,0u,0g,thunderbird',
     '143,6,500,thunderbird,u,g,thunderbird',

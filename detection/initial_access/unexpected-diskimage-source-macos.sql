@@ -38,7 +38,6 @@ WHERE
   AND file.btime > (strftime('%s', 'now') -86400)
   AND domain NOT IN (
     'adobe.com',
-    'vmware.com',
     'akmedia.digidesign.com',
     'alfredapp.com',
     'android.com',
@@ -95,6 +94,7 @@ WHERE
     'pqrs.org',
     'prusa3d.com',
     'remarkable.com',
+    'rewind.ai',
     'securew2.com',
     'signal.org',
     'skype.com',
@@ -110,6 +110,7 @@ WHERE
     'uubyte.com',
     'vc.logitech.com',
     'virtualbox.org',
+    'vmware.com',
     'warp.dev',
     'webex.com',
     'whatsapp.com',
@@ -127,6 +128,7 @@ WHERE
     'cron.com',
     'discord.com',
     'dl.discordapp.net',
+    'flipperzero.one',
     'dl.google.com',
     'duckduckgo.com',
     'dygma.com',

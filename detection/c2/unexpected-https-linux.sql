@@ -270,6 +270,7 @@ WHERE
     '500,firefox-bin,u,g,firefox-bin',
     '500,WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '500,wget,0u,0g,wget',
+    '0,make,0u,0g,make',
     '500,wine64-preloader,500u,500g,Root.exe',
     '500,wolfictl,500u,500g,wolfictl',
     '0,orbit,0u,0g,orbit',
@@ -286,6 +287,15 @@ WHERE
   AND NOT exception_key LIKE '500,node,0u,0g,npm install %'
   AND NOT exception_key LIKE '500,cosign-%,500u,500g,cosign-%'
   AND NOT exception_key LIKE '500,terraform-provider-%,500u,500g,terraform-provi'
+  AND NOT (
+    exception_key LIKE '500,python3%,0u,0g,python3'
+    AND (
+      p.cmdline LIKE '%/gcloud.py %'
+      OR p.cwd LIKE "/home/%/dev/%"
+      OR p.cwd LIKE "/home/%/src/%"
+      OR p.cwd LIKE "/home/%/github/%"
+    )
+  )
   -- JetBrains
   AND NOT exception_key LIKE '500,___1go_build_%,500u,500g,___1go_build_%'
   AND NOT (

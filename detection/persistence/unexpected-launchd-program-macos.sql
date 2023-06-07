@@ -31,6 +31,7 @@ WHERE
   AND program IS NOT NULL
   AND program_authority NOT IN (
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+    'Developer ID Application: Creative Labs Pte. Ltd. (5Q3552844F)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',

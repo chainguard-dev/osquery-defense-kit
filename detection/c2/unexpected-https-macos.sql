@@ -183,6 +183,8 @@ WHERE
       OR p0_cmd LIKE '%googlecloudsdk/core/metrics_reporter.py%'
       OR p0_cmd LIKE '%/bin/aws%'
       OR p0_cmd LIKE "%/gsutil/gsutil %"
+      OR p0_cwd LIKE "/Users/%/github/%"
+      OR p0_cwd LIKE "/Users/%/src/%"
     )
   ) -- theScore and other iPhone apps
   AND NOT (

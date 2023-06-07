@@ -67,13 +67,11 @@ WHERE
   p0.euid = 0
   AND pmm.path LIKE '%libcurl%'
   AND NOT exception_key IN (
-    'flatpak-system-,/usr/libexec/flatpak-system-helper,0,system.slice,flatpak-system-helper.service,0755',
-    'fwupd,/usr/libexec/fwupd/fwupd,0,system.slice,fwupd.service,0755',
-    'zfs,/nix/store/__VERSION__/bin/zfs,0,system.slice,zfs-snapshot-frequent.service,0555',
-    'zed,/nix/store/__VERSION__/bin/zed,0,system.slice,zfs-zed.service,0555',
-    'fwupd,/usr/lib/fwupd/fwupd,0,system.slice,fwupd.service,0755',
     'dnf,/usr/bin/python__VERSION__,0,system.slice,dnf-makecache.service,0755',
     'dnf,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
+    'flatpak-system-,/usr/libexec/flatpak-system-helper,0,system.slice,flatpak-system-helper.service,0755',
+    'fwupd,/usr/libexec/fwupd/fwupd,0,system.slice,fwupd.service,0755',
+    'fwupd,/usr/lib/fwupd/fwupd,0,system.slice,fwupd.service,0755',
     'libvirtd,/usr/bin/libvirtd,0,system.slice,libvirtd.service,0755',
     'NetworkManager,/usr/bin/NetworkManager,0,system.slice,NetworkManager.service,0755',
     'NetworkManager,/usr/sbin/NetworkManager,0,system.slice,NetworkManager.service,0755',
@@ -81,7 +79,10 @@ WHERE
     'packagekitd,/usr/libexec/packagekitd,0,system.slice,packagekit.service,0755',
     'pacman,/usr/bin/pacman,0,user.slice,user-1000.slice,0755',
     'virtlogd,/usr/bin/virtlogd,0,system.slice,virtlogd.service,0755',
-    'yum,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755'
+    'virtqemud,/usr/sbin/virtqemud,0,system.slice,virtqemud.service,0755',
+    'yum,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
+    'zed,/nix/store/__VERSION__/bin/zed,0,system.slice,zfs-zed.service,0555',
+    'zfs,/nix/store/__VERSION__/bin/zfs,0,system.slice,zfs-snapshot-frequent.service,0555'
   )
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY
