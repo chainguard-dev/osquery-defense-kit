@@ -53,8 +53,7 @@ WHERE
       AND processes.path NOT LIKE '/nix/store/%/bin/nix'
       AND processes.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
       AND processes.path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
-      -- AND processes.start_time > (strftime('%s', 'now') -604800)
-      -- AND processes.resident_size < 200000000
+      AND processes.start_time < (strftime('%s', 'now') -600)
     GROUP BY
       processes.path
   )

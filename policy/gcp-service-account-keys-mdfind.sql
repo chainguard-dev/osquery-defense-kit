@@ -1,6 +1,9 @@
 -- Indicative of stored GCP service account keys just sitting around unencrypted
 --
--- tags: persistent state filesystem
+-- * False positives:
+--   * Keys exported for non-production purposes
+--
+-- tags: persistent state filesystem disabled
 -- platform: darwin
 SELECT
   file.path,

@@ -115,6 +115,7 @@ WHERE
     'bioutil,0,callservicesd,launchd',
     'trustd,205,trustd,launchd',
     'CAReportingService,0,LogiTune,launchd',
+    'efilogin-helper,0,containermanagerd,launchd',
     'com.apple.AccountPolicyHelper,0,LogiTune,launchd',
     'com.apple.geod,262,com.docker.backend,Docker',
     'com.apple.WebKit.WebContent,200,zsh,Emacs-arm64-11',

@@ -120,6 +120,7 @@ WHERE
     '~/bin/',
     '~/.cargo/',
     '~/code/',
+    '~/.Trash/',
     '~/Code/',
     '~/.steampipe/',
     '~/.config/',

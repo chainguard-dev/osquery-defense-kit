@@ -3,7 +3,10 @@
 -- false positives:
 --   * developers building code out of /tmp
 --
--- tags: persistent
+-- NOTE:
+--   * This is currently disabled by default due to the high number of false positives
+-- 
+-- tags: persistent disabled
 -- platform: linux
 SELECT DISTINCT
   file.path,

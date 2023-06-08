@@ -140,6 +140,7 @@ WHERE
     '80,6,0,cp,0u,0g,cp',
     '80,6,0,fc-cache,0u,0g,fc-cache',
     '80,6,0,find,0u,0g,find',
+    '80,6,500,java,u,g,java',
     '80,6,0,gawk,0u,0g,awk',
     '80,6,0,gpg,0u,0g,gpg',
     '80,6,0,grep,0u,0g,grep',
