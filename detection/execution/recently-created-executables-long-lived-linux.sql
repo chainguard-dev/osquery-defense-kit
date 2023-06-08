@@ -44,7 +44,7 @@ FROM
 WHERE
   p0.start_time > 0
   AND f.ctime > 0
-  AND p0.start_time > (strftime('%s', 'now') - 7200)
+  AND p0.start_time > (strftime('%s', 'now') - 86400)
   AND (p0.start_time - MAX(f.ctime, f.btime)) < 45
   AND p0.start_time >= MAX(f.ctime, f.ctime)
   AND NOT f.directory IN ('/usr/lib/firefox', '/usr/local/kolide-k2/bin') -- Typically daemons or long-running desktop apps

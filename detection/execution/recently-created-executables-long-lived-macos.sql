@@ -3,8 +3,7 @@
 -- false-positives:
 --   * many
 --
--- tags: transient process state
--- interval: 900
+-- tags: process state
 -- platform: darwin
 SELECT
   f.ctime,
@@ -67,7 +66,7 @@ WHERE
       processes
     WHERE
       start_time > 0
-      AND start_time > (strftime('%s', 'now') - 7200)
+      AND start_time > (strftime('%s', 'now') - 86400)
       AND pid > 0
       AND path != ""
       AND NOT path LIKE '/Applications/%'
@@ -163,7 +162,9 @@ WHERE
     'Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     'Developer ID Application: GPGTools GmbH (PKV8ZPD836)',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
+    'Developer ID Application: SteelSeries (6WGL6CHFH2)',
     'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
+    'Developer ID Application: Mojang AB (HR992ZEAE6)',
     'Developer ID Application: Azul Systems, Inc. (TDTHCUPYFR)',
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',

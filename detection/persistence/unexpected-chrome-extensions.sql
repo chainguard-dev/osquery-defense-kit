@@ -47,6 +47,7 @@ WHERE (
   AND enabled = 1
   AND exception_key NOT IN (
     -- Deprecated Google Extension
+    'false,AgileBits,1Password – Password Manager,dppgmdbiimibapkepcbdbmkaabgiofem',
     'false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,',
     'false,,base64 encode or decode selected text,',
     'false,,Edge relevant text changes,jmjflgjpcpepeafmmgdpfkogkghcpiha',
@@ -93,7 +94,6 @@ WHERE (
     'true,,Cloud9,nbdmccoknlfggadpfkmcpnamfnbkmkcp',
     'true,,Cloud Vision,nblmokgbialjjgfhfofbgfcghhbkejac',
     'true,,coLaboratory Notebook,pianggobfjcgeihlmfhfgkfalopndooo',
-    'true,,Refined GitHub,hlepfoohegkhhmjieoechaddaejaokhf',
     'true,,ColorPick Eyedropper,ohcpnigalekghcmgcdcenkpelffpdolg',
     'true,,Copper CRM for Gmail,hpfmedbkgaakgagknibnonpkimkibkla',
     'true,,Copper CRM for Gmail™,hpfmedbkgaakgagknibnonpkimkibkla',
@@ -173,6 +173,7 @@ WHERE (
     'true,,Reader Mode,llimhhconnjiflfimocjggfjdlmlhblm',
     'true,,Readwise Highlighter,jjhefcfhmnkfeepcpnilbbkaadhngkbi',
     'true,Reddit Enhancement Suite contributors,Reddit Enhancement Suite,kbmfpngjjgdllneeigpgjifpgocmfgmb',
+    'true,,Refined GitHub,hlepfoohegkhhmjieoechaddaejaokhf',
     'true,,RetailMeNot Deal Finder™️,jjfblogammkiefalfpafidabbnamoknm',
     'true,,RSS Subscription Extension (by Google),nlbjncdgjeocebhnmkbbbdekmmmcbfjd',
     'true,,Save to Google Drive,gmbmikajjgmnabiglmofipeabaddhgne',

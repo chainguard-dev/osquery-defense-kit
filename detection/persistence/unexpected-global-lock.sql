@@ -6,7 +6,7 @@
 -- references:
 --   * https://www.deepinstinct.com/blog/bpfdoor-malware-evolves-stealthy-sniffing-backdoor-ups-its-game
 --
--- tags: persistent filesystem state
+-- tags: persistent filesystem state seldom
 -- platform: posix
 SELECT *,
     CONCAT(

@@ -1,7 +1,7 @@
 -- Find programs that use the Security Framework on macOS - popular among malware authors
 --
 -- platform: darwin
--- tags: persistent state process
+-- tags: persistent state process seldom
 SELECT
   s.authority,
   s.identifier,
@@ -56,7 +56,7 @@ WHERE
     FROM
       processes
     WHERE
-      start_time < (strftime('%s', 'now') - 600)
+      start_time < (strftime('%s', 'now') - 1200)
       AND parent != 0
       -- Assume STP
       AND NOT path LIKE '/System/%'
@@ -195,6 +195,7 @@ WHERE
   )
   AND NOT exception_key LIKE '500,terraform-provider-cosign_%,,'
   AND NOT exception_key LIKE '500,___Test%.test,a.out,'
+  AND NOT exception_key LIKE '500,zellij,zellij%,'
   AND NOT exception_key LIKE '500,gopls_%,a.out,'
   AND NOT exception_key LIKE '500,terraform-provider-%,a.out,'
   AND NOT exception_key LIKE '500,Runner.%,apphost-%,'

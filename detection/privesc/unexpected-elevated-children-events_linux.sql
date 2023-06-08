@@ -1,6 +1,5 @@
 -- Find processes that run with a lower effective UID than their parent (event-based)
 --
---
 -- references:
 --   * https://attack.mitre.org/techniques/T1548/001/ (Setuid and Setgid)
 --   * https://cybersecurity.att.com/blogs/labs-research/shikitega-new-stealthy-malware-targeting-linux
@@ -8,7 +7,10 @@
 -- related:
 --   * unexpected-privilege-escalation.sql
 --
--- tags: events process escalation
+-- False positives:
+--   * On some hosts this ocassionally gets the parenting relationship confused
+--
+-- tags: events process escalation disabled
 -- platform: linux
 -- interval: 600
 SELECT

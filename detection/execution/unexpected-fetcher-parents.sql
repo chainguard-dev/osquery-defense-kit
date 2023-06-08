@@ -84,6 +84,8 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
       'login',
       'roxterm',
       'tmux',
+      'stable',
+      'old',
       'tmux:server',
       'wezterm-gui',
       'zsh'

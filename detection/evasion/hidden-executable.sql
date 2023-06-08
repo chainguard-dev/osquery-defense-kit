@@ -41,7 +41,7 @@ WHERE
   (
     p0.name LIKE '.%'
     OR f.filename LIKE '.%'
-    OR f.directory LIKE '.%'
+    OR f.directory LIKE '%/.%'
   )
   AND NOT f.path LIKE '/nix/store/%/%-wrapped'
   AND NOT (
