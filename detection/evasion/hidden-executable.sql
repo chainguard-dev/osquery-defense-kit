@@ -6,6 +6,7 @@
 -- tags: transient
 -- platform: posix
 SELECT
+  f.directory,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -43,8 +44,23 @@ WHERE
     OR f.filename LIKE '.%'
     OR f.directory LIKE '%/.%'
   )
+  AND NOT f.directory LIKE '%/.bin'
+  AND NOT f.directory LIKE '%/.bin-unwrapped'
+  AND NOT f.directory LIKE '%/.cargo/bin'
+  AND NOT f.directory LIKE '%/.config/nvm/%/bin'
+  AND NOT f.directory LIKE '%/.local/%'
+  AND NOT f.directory LIKE '%/node_modules/.bin/%'
+  AND NOT f.directory LIKE '%/.nvm/versions/%/bin'
+  AND NOT f.directory LIKE '%/.pnpm/%'
+  AND NOT f.directory LIKE '%/.rustup/%'
+  AND NOT f.directory LIKE '%/.terraform'
+  AND NOT f.directory LIKE '%/.terraform/%'
+  AND NOT f.directory LIKE '%/.vscode/extensions/%'
+  AND NOT f.directory LIKE '%/.vscode-insiders/extensions/%'
+  AND NOT f.path LIKE '/home/%/.config/bluejeans-v2/BluejeansHelper'
   AND NOT f.path LIKE '/nix/store/%/%-wrapped'
   AND NOT (
     f.path LIKE '/nix/store/%'
     AND p0.name LIKE '%-wrappe%'
   )
+GROUP BY f.path
