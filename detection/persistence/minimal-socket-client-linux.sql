@@ -31,10 +31,8 @@ FROM processes p0
     JOIN process_open_sockets pos ON p0.pid = pos.pid
     JOIN process_memory_map pmm ON p0.pid = pmm.pid
     LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
-WHERE
-    pos.family != 1
-    AND pos.pid > 0
-    AND pos.state != 'LISTEN'
+WHERE p0.path != '' -- optimization: focus on longer running processes
+    AND p0.start_time < (strftime('%s', 'now') - 900)
     AND p0.path NOT IN (
         '/usr/bin/containerd',
         '/usr/bin/fusermount3',
@@ -48,7 +46,10 @@ WHERE
         '/usr/lib/electron/chrome-sandbox',
         '/usr/bin/i3blocks'
     )
-    AND p0.name NOT IN ('chrome_crashpad', 'dhcpcd', 'Brackets-node')
+    AND p0.name NOT IN ('chrome_crashpad', 'dhcpcd', 'Brackets-node') -- optimization: minimalistic daemons typically only run 1 pid per path
+    AND pos.family != 1
+    AND pos.pid > 0
+    AND pos.state != 'LISTEN'
     AND pmm.path LIKE "%.so.%"
 GROUP BY pos.pid -- libc.so, ld-linux
 HAVING lib_count IN (1, 2)
