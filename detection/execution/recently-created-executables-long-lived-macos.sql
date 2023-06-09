@@ -66,7 +66,7 @@ WHERE
       processes
     WHERE
       start_time > 0
-      AND start_time > (strftime('%s', 'now') - 1800)
+      AND start_time > (strftime('%s', 'now') - 43200)
       AND pid > 0
       AND path != ""
       AND NOT path LIKE '/Applications/%'
@@ -175,6 +175,7 @@ WHERE
     'Developer ID Application: Opal Camera Inc (97Z3HJWCRT)',
     'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'Developer ID Application: Parallels International GmbH (4C6364ACXT)',
+    'Developer ID Application: SteelSeries (6WGL6CHFH2)',
     'Developer ID Application: RescueTime, Inc (FSY4RB8H39)',
     'Developer ID Application: Seiko Epson Corporation (TXAEAV5RN4)',
     'Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
