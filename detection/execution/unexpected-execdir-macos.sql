@@ -100,15 +100,9 @@ WHERE
   AND NOT homedir IN (
     '~/bin',
     '~/code/bin',
-    '~/Library/Application Support/snyk-ls',
     '~/Downloads/google-cloud-sdk/bin',
-    '~/Library/Application Support/minecraft/launcher/launcher.bundle/Contents/Frameworks/launcher-Helper (Renderer).app/Contents/MacOS',
     '~/go/bin',
     '~/.cache/gitstatus',
-    '~/Library/Application Support/sourcegraph-sp/',
-    '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
-    '~/Library/Application Support/dev.warp.Warp-Stable',
-    '~/Library/Application Support/zoom.us/Plugins/aomhost.app/Contents/MacOS',
     '~/.local/share/gh/extensions/gh-sbom',
     '~/.local/bin',
     '~/.magefile',
@@ -145,17 +139,7 @@ WHERE
     '~/.vs-kubernetes/'
   )
   AND NOT top3_homedir IN (
-    '~/Library/Application Support/BraveSoftware/',
-    '~/Library/Application Support/com.elgato.StreamDeck/',
-    '~/Library/Application Support/duckly/',
-    '~/Library/Application Support/Code/',
     '/Library/Application Support/EcammLive',
-    '~/Library/Application Support/Foxit Software/',
-    '~/Library/Application Support/JetBrains/',
-    '~/Library/Application Support/OpenLens',
-    '~/Library/Application Support/sourcegraph-sp/',
-    '~/Library/Application Support/Zed/',
-    '~/Library/Application Support/Zwift/',
     '~/Library/Caches/com.mimestream.Mimestream/',
     '~/Library/Caches/com.sempliva.Tiles/',
     '~/Library/Caches/JetBrains/',
@@ -185,7 +169,7 @@ WHERE
   AND homedir NOT LIKE '~/.local/%/packages/%'
   AND homedir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
   AND homedir NOT LIKE '~/Library/Caches/%/org.sparkle-project.Sparkle/Launcher/%/Updater.app/Contents/MacOS'
-  AND homedir NOT LIKE '~/Library/Application Support/cloud-code/bin/versions/%'
+  AND homedir NOT LIKE '~/Library/Application Support/%'
   AND s.authority NOT IN (
     'Apple iPhone OS Application Signing',
     'Apple Mac OS Application Signing',
