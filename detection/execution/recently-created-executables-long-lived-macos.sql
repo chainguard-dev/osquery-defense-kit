@@ -1,9 +1,9 @@
--- Programs who were recently added to disk, based on btime/ctime
+-- Long-running programs who were recently added to disk, based on btime/ctime
 --
 -- false-positives:
 --   * many
 --
--- tags: process state
+-- tags: transient process state
 -- platform: darwin
 SELECT
   f.ctime,
@@ -66,7 +66,7 @@ WHERE
       processes
     WHERE
       start_time > 0
-      AND start_time > (strftime('%s', 'now') - 86400)
+      AND start_time > (strftime('%s', 'now') - 1800)
       AND pid > 0
       AND path != ""
       AND NOT path LIKE '/Applications/%'
