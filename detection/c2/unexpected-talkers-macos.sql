@@ -190,6 +190,7 @@ WHERE
     AND id_exception_key IN (
       'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
       'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.helper',
+      'Developer ID Application: Microsoft Corporation (UBF8T346G9),net.java.openjdk.java',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
       'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
       'Developer ID Application: Vladimir Prelovac (TFVG979488),com.apple.WebKit.Networking',
