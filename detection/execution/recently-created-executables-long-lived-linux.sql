@@ -1,9 +1,9 @@
--- Programs who were recently added to disk, based on btime/ctime
+-- Long-running programs who were recently added to disk, based on btime/ctime
 --
 -- false-positives:
 --   * many
 --
--- tags: transient process state often
+-- tags: transient process state
 -- platform: linux
 SELECT
   f.ctime AS p0_ctime,
@@ -44,7 +44,7 @@ FROM
 WHERE
   p0.start_time > 0
   AND f.ctime > 0
-  AND p0.start_time > (strftime('%s', 'now') - 86400)
+  AND p0.start_time > (strftime('%s', 'now') - 1800)
   AND (p0.start_time - MAX(f.ctime, f.btime)) < 45
   AND p0.start_time >= MAX(f.ctime, f.ctime)
   AND NOT f.directory IN ('/usr/lib/firefox', '/usr/local/kolide-k2/bin') -- Typically daemons or long-running desktop apps
