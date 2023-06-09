@@ -31,13 +31,14 @@ WHERE
   AND program IS NOT NULL
   AND program_authority NOT IN (
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+    'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Creative Labs Pte. Ltd. (5Q3552844F)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
+    'Developer ID Application: Louis Pontoise (QXD7GW8FHY)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
-    'Developer ID Application: Louis Pontoise (QXD7GW8FHY)',
     'Developer ID Application: Oracle America, Inc. (VB5E2TV963)',
     'Developer ID Application: Valve Corporation (MXGJJ98X76)',
     'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)',
