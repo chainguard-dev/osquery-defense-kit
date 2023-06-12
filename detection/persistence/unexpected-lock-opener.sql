@@ -61,6 +61,7 @@ WHERE
   AND NOT exception_key IN (
     '0,com.apple.MobileSoftwareUpdate.CryptegraftService,/private/var/db/softwareupdate/SplunkHistory',
     '0,snapd,/var/lib/snapd',
+    '120,gnome-shell,/run/user/120',
     '200,NRDUpdated,/private~/SplunkHistory',
     '200,softwareupdated,/private~/SplunkHistory',
     '500,Adobe Premiere Pro 2023,~/Library/Caches/Adobe/Premiere Pro/23.0/SentryIO-db',

@@ -150,6 +150,7 @@ WHERE
     'grype',
     'idea',
     'Install',
+    'terraform-provider-apko',
     'java',
     'jetbrains-toolb',
     'launcher',

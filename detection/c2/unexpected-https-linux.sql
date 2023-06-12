@@ -160,6 +160,7 @@ WHERE
     '500,gnome-recipes,0u,0g,gnome-recipes',
     '500,gnome-shell,0u,0g,gnome-shell',
     '500,gnome-software,0u,0g,gnome-software',
+    '0,go,0u,0g,go',
     '500,go,0u,0g,go',
     '500,go,500u,500g,go',
     '500,goa-daemon,0u,0g,goa-daemon',

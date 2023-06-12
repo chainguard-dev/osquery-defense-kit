@@ -198,6 +198,7 @@ WHERE
     '80,6,500,spotify-launcher,0u,0g,spotify-launche',
     '80,6,500,spotify,u,g,spotify',
     '80,6,500,steam,500u,100g,steam',
+    '80,6,500,java,0u,0g,java',
     '80,6,500,steam,500u,500g,steam',
     '80,6,500,steamwebhelper,500u,500g,steamwebhelper',
     '80,6,500,terraform,0u,0g,terraform',
@@ -270,6 +271,12 @@ WHERE
   AND NOT (
     exception_key = '32768,6,500,ssh,0u,0g,ssh'
     AND s.remote_port = 40022
+  )
+  -- Qualys
+  AND NOT (
+    exception_key = '80,6,0,curl,0u,0g,curl'
+    AND p.cgroup_path = '/system.slice/qualys-cloud-agent.service'
+    AND child_cmd LIKE ' curl -sS -H Metadata:true http://169.254.169.254/metadata/instance%'
   )
   AND NOT (
     s.remote_port = 80

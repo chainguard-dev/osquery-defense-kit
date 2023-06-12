@@ -294,6 +294,7 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     'Developer ID Application: Foxit Corporation (8GN47HTP75)',
     'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',
+    'Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
     'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
     'Developer ID Application: Keybase, Inc. (99229SGT5K)',

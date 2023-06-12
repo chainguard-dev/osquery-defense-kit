@@ -185,7 +185,7 @@ WHERE
   AND NOT (
     (
       pos.remote_port IN (80, 999)
-      OR pos.remote_port > 3000
+      OR pos.remote_port > 1024
     )
     AND id_exception_key IN (
       'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',

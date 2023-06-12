@@ -7,7 +7,7 @@
 -- related:
 --   * unexpected-privilege-escalation.sql
 --
--- tags: events process escalation
+-- tags: events process escalation disabled
 -- platform: darwin
 -- interval: 300
 SELECT -- Child
@@ -113,6 +113,7 @@ WHERE
     'amfid,0,com.docker.backend,Docker',
     'biometrickitd,0,LogiTune,launchd',
     'bioutil,0,callservicesd,launchd',
+    'com.apple.geod,0,fmfd,launchd',
     'trustd,205,trustd,launchd',
     'CAReportingService,0,LogiTune,launchd',
     'efilogin-helper,0,containermanagerd,launchd',

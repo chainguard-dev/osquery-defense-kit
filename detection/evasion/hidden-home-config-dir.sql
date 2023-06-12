@@ -38,3 +38,4 @@ WHERE
   AND file.path NOT LIKE '/root/.debug/.build-id/%'
   AND file.path NOT LIKE '/home/%/.config/%/.git%'
   AND file.path NOT LIKE '/home/%/.config/.gsd-keyboard.settings-ported'
+  AND file.path NOT LIKE '/home/%/.config/.org.chromium.Chromium.%'
