@@ -49,6 +49,7 @@ WHERE
     'mov',
     'mp3',
     'mp4',
+    'Dockerfile',
     'mpeg',
     'mpg',
     'ods',

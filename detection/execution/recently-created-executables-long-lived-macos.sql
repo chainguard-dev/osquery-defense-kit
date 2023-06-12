@@ -194,6 +194,10 @@ WHERE
     AND p0.path NOT LIKE '%/.%'
     AND p0.path NOT LIKE '%Cache%'
   )
+  AND NOT homepath LIKE '~/%/terraform-provider-%'
+  AND NOT homepath LIKE '~/src/%'
+  AND NOT homepath LIKE '~/github/%'
+  AND NOT homepath LIKE '~/go/src/%'
   -- Arc
   AND NOT (
     p0.path LIKE '/Users/%/Library/Caches/%/org.sparkle-project.Sparkle/Launcher/%'
