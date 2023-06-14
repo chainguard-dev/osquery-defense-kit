@@ -52,6 +52,7 @@ WHERE
   AND NOT f.directory LIKE '%/.local/%'
   AND NOT f.directory LIKE '%/node_modules/.bin/%'
   AND NOT f.directory LIKE '%/.nvm/versions/%/bin'
+  AND NOT f.directory LIKE '%/.goenv/%/bin'
   AND NOT f.directory LIKE '%/.pnpm/%'
   AND NOT f.directory LIKE '%/.rustup/%'
   AND NOT f.directory LIKE '%/.terraform'
@@ -64,4 +65,5 @@ WHERE
     f.path LIKE '/nix/store/%'
     AND p0.name LIKE '%-wrappe%'
   )
-GROUP BY f.path
+GROUP BY
+  f.path

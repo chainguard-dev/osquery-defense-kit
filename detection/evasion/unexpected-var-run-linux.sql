@@ -32,6 +32,7 @@ WHERE
     'alsactl.pid',
     'apcupsd.pid',
     'apport.lock',
+    'dnf-metadata.lock',
     'atd.pid',
     'unattended-upgrades.pid',
     "auditd.pid",

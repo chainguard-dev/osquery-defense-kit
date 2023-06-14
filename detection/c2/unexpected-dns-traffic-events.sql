@@ -73,6 +73,10 @@ WHERE
   AND exception_key NOT IN (
     'coredns,0.0.0.0,53',
     'syncthing,46.162.192.181,53',
+    'Socket Process,8.8.8.8,53',
+    'Signal Helper (Renderer),8.8.8.8,53',
+    'plugin-container,8.8.8.8,53',
+    'WhatsApp,1.1.1.1,53',
     'AssetCacheLocatorService,0.0.0.0,53'
   )
   -- Local DNS servers and custom clients go here

@@ -47,6 +47,7 @@ WHERE
     '/etc/ld.so.conf.d/intel-oneapi-compiler-shared-runtime.conf,0644,157,0b4a1c81fcab2d345f99e0187f29cf28f085ae67bf42c86d7b509c06b345186e',
     '/etc/ld.so.conf.d/intel-oneapi-compiler-shared-runtime.conf,0644,92,c4f62f0bfed45e548755c60b5e012e79c9062bb2a993c041db661951eb994476',
     '/etc/ld.so.conf.d/intel-oneapi-compiler-shared-runtime-libs.conf,0644,65,0e9c472578fe009314f02ab64613fc41114f4d07cfd3a805191a5b755d780a43',
+    '/etc/ld.so.conf.d/intel-oneapi-openmp.conf,0644,155,160358af96f4a1a92e624fa84a1776d45c1a2c4695c8b96070374f6d66bf6061',
     '/etc/ld.so.conf.d/intel-oneapi-openmp.conf,0644,155,76736fa4deb3f3f4a7a96a068eb01b610faf9492814d47d36b3acbc1b4fb9fd3',
     '/etc/ld.so.conf.d/intel-oneapi-tbb.conf,0644,48,ab4d154371df8bf81c4fd8f079137994c5c9a60f43bef4132e6ffcbfbb08e99d',
     '/etc/ld.so.conf.d/kernel-3.10.0-1160.83.1.el7.x86_64.conf,0444,63,37cb41e22b4cb69bb7b8652111c59d3d07b6522ac1f4a635e794ca7eaf411dd7',

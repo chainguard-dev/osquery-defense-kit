@@ -41,6 +41,7 @@ WHERE
     '/usr/bin/login',
     '/usr/bin/mount',
     '/usr/bin/op',
+    '/opt/zoom/cef/chrome-sandbox',
     '/usr/bin/ssh-agent',
     '/usr/bin/su',
     '/usr/bin/sudo',

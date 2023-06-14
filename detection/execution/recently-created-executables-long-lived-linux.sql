@@ -207,6 +207,7 @@ WHERE
   AND NOT p0.path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND NOT p0.path LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/launcher'
   AND NOT p0.path LIKE '%/.vscode/extensions/%'
+  AND NOT p0.path LIKE '%/.local/share/spotify-launcher/install/usr/%'
   AND NOT (
     p0.name IN ('osqtool-x86_64', 'osqtool-arm64')
     AND p0.cmdline LIKE './%'
