@@ -194,6 +194,7 @@ WHERE
     'sh -c -- exec-bin node_modules/.bin/hugo/hugo server',
     '/bin/sh -c ioreg -rd1 -c IOPlatformExpertDevice',
     '/bin/sh -c sysctl hw.model kern.osrelease',
+    'sh -c hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo',
     '/bin/bash -c ioreg -l -w 0 | grep SecureInput',
     "sh -c acpi -b | grep -v 'unavailable'",
     'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null',
@@ -223,7 +224,7 @@ WHERE
   AND NOT p0.cmdline LIKE '%gcloud config config-helper%'
   AND NOT p0.cmdline LIKE '%hugo/hugo server%'
   AND NOT p1.cmdline LIKE '/Applications/Warp.app/%'
-  AND NOT p1.cmdline = 'npm run start'
+  AND NOT p1.cmdline IN ('npm run start', 'npm install')
   AND NOT p1.cmdline LIKE '%brew.rb%'
   AND NOT p1.cmdline LIKE '%/Homebrew/build.rb%'
   AND NOT p1.cmdline LIKE '%Code Helper%'

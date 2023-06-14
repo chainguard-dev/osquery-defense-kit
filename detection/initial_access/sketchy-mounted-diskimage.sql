@@ -100,7 +100,10 @@ WHERE
         OR vol_name LIKE "%Update"
       )
       AND file.directory LIKE "/Volumes/%/Contents/MacOS"
-      AND signature.authority != "Developer ID Application: Logitech Inc. (QED4VVPZWA)"
+      AND signature.authority NOT IN (
+        "Developer ID Application: Logitech Inc. (QED4VVPZWA)",
+        "Developer ID Application: VideoLAN (75GAHG3SZQ)"
+      )
     ) --   6. Volumes containing a hidden top-level folder or binary, such as yWnBJLaF (1302.app)
     OR (
       file.bsd_flags = "HIDDEN"

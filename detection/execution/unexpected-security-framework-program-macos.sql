@@ -194,6 +194,7 @@ WHERE
     AND p0.path LIKE '/Users/%/go/bin/%'
   )
   AND NOT exception_key LIKE '500,terraform-provider-cosign_%,,'
+  AND NOT exception_key LIKE '500,rust-analyzer-aarch64-apple-darwin,rust_analyzer-%,'
   AND NOT exception_key LIKE '500,___Test%.test,a.out,'
   AND NOT exception_key LIKE '500,zellij,zellij%,'
   AND NOT exception_key LIKE '500,gopls_%,a.out,'

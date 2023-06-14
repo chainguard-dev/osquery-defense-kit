@@ -144,6 +144,7 @@ WHERE
     OR dir LIKE '/tmp/.mount_%'
     OR dir LIKE '/tmp/%/.git'
     OR dir LIKE '/tmp/%/.github/workflows'
+    OR dir LIKE '~/%/.terragrunt-cache/%'
     OR dir LIKE '%/.build'
     OR dir LIKE '%/.git'
     OR dir LIKE '%/.gradle'

@@ -109,6 +109,7 @@ WHERE
     'vim',
     'wineserver',
     'yay',
+    'yum',
     'ykman-gui',
     'zsh',
     'ZwiftAppMetal'

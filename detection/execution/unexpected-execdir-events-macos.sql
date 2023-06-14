@@ -298,6 +298,7 @@ WHERE
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     'Developer ID Application: Figma, Inc. (T8RA8NE3B7)',
     'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
+    'Developer ID Application: Snyk Limited (97QYW7LHSF)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
     'Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
