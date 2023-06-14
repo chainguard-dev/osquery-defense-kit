@@ -7,8 +7,7 @@
 --   * Almost unlimited: any extension that isn't on your whitelist
 --
 -- tags: persistent seldom browser
-SELECT
-  name,
+SELECT name,
   profile,
   chrome_extensions.description AS 'descr',
   persistent AS persists,
@@ -29,29 +28,43 @@ SELECT
     identifier
   ) AS exception_key,
   hash.sha256
-FROM
-  users
+FROM users
   CROSS JOIN chrome_extensions USING (uid)
   LEFT JOIN file ON chrome_extensions.path = file.path
   LEFT JOIN hash ON chrome_extensions.path = hash.path
-WHERE
-  (
-    -- These extensions need the most review.
-    from_webstore != 'true'
-    OR perms LIKE '%google.com%'
-    OR perms LIKE '%chainguard%'
-    OR perms LIKE '%github.com%'
-    OR perms LIKE '%clipboardWrite%'
-    OR perms LIKE '%<all_urls>%'
-    OR perms LIKE '%tabs%'
-    OR perms LIKE '%cookies%'
-    OR perms LIKE '%://*/%'
+WHERE state = 1
+  AND (
+    (
+      from_webstore != 'true'
+      AND (
+        perms LIKE "%nativeMessaging%"
+        OR perms LIKE '%bookmarks%'
+        OR perms LIKE "%pageCapture%"
+        OR perms LIKE "%session%" -- Sigstore
+        OR perms LIKE "%http%"
+        OR perms LIKE "%webRequest%"
+      )
+    )
+    OR (
+      perms LIKE '%://*/%'
+      OR perms LIKE '%<all_urls>%'
+      OR perms LIKE '%clipboardRead%'
+      OR perms LIKE '%cookies%'
+      OR perms LIKE '%coinbase%'
+      OR perms LIKE '%blockchain%'
+      OR perms LIKE '%debugger%'
+      OR perms LIKE '%declarativeNetRequestFeedback%'
+      OR perms LIKE '%desktopCapture%'
+      OR perms LIKE '%github.com%'
+      OR perms LIKE '%google.com%'
+      OR perms LIKE "%history%"
+      OR perms LIKE "%nativeMessaging%"
+      OR perms LIKE "%proxy%"
+      OR perms LIKE "%webAuthenticationProxy%"
+    )
   )
-  AND enabled = 1
-  AND exception_key NOT IN (
-    -- Deprecated Google Extension
+  AND NOT exception_key IN (
     'false,AgileBits,1Password – Password Manager,dppgmdbiimibapkepcbdbmkaabgiofem',
-    'false,,Sigstore close post-auth tabs,',
     'false,Anthony Feddersen - Chainguard, Inc.,Chainguard On-Call Chrome Extension,',
     'false,,base64 encode or decode selected text,',
     'false,,Edge relevant text changes,jmjflgjpcpepeafmmgdpfkogkghcpiha',
@@ -62,7 +75,7 @@ WHERE
     'false,,Google Photos,ncmjhecbjeaamljdfahankockkkdmedg',
     'false,julienv3@gmail.com,treasure-clicker,',
     'false,juverm@chainguard.dev,auto-close-gitsign,',
-    'false,,NVD Cleaner,',
+    'false,,Sigstore close post-auth tabs,',
     'false,,Trotto go links,nkeoojidblilnkcbbmfhaeebndapehjk',
     'false,,YouTube,agimnkijcaahngcdmfeangaknmldooml',
     'true,,Acorns Earn,facncfnojagdpibmijfjdmhkklabakgd',
@@ -82,18 +95,22 @@ WHERE
     'true,BetaFish,AdBlock — best ad blocker,gighmmpiobklfepjocnamgkkbiglidom',
     'true,,Bionic Reading,kdfkejelgkdjgfoolngegkhkiecmlflj',
     'true,Bitwarden Inc.,Bitwarden - Free Password Manager,nngceckbapebfimnlniiiahkandclblb',
+    'true,,BlockSite: Block Websites & Stay Focused,eiimnmioipafcokbfikbljfdeojpcgbh',
     'true,,BrowserStack Local,mfiddfehmfdojjfdpfngagldgaaafcfo',
     'true,CAD Team,Cookie AutoDelete,fhcgjolkccmbidfldomjliifgaodjagh',
     'true,,Canvas Blocker - Fingerprint Protect,nomnklagbgmgghhjidfhnoelnjfndfpd',
     'true,,Capital One Shopping: Add to Chrome for Free,nenlahapcbofgnanklpelkaejcehkggg',
     'true,,Caret,fljalecfjciodhpcledpamjachpmelml',
+    'true,,Chrome Capture - Gif & Screenshot tool,ggaabchcecdbomdcnbahdfddfikjmphe',
     'true,chromeos-recovery-tool-admin@google.com,Chromebook Recovery Utility,jndclpdbaamdhonoechobihbbiimdgai',
     'true,,Chrome RDP for Google Cloud Platform,mpbbnannobiobpnfblimoapbephgifkm',
     'true,,Chrome Remote Desktop,inomeogfingihgjfjlpeplalcfajhgai',
     'true,,Chrome Web Store Payments,nmmhkkegccagdldgiimedpiccmgmieda',
+    'true,,Cisco Webex Extension,jlhmfgmfgeifomenelglieieghnjghma',
     'true,,Clear Cache,cppjkneekbjaeellbfkmgnhonkkjfpdn',
     'true,,ClickUp: Tasks, Screenshots, Email, Time,pliibjocnfmkagafnbkfcimonlnlpghj',
     'true,,Clockify Time Tracker,pmjeegjhjdlccodhacdgbgfagbpmccpe',
+    'true,Clockwise Inc.,Clockwise: AI Calendar & Scheduling Assistant,hjcneejoopafkkibfbcaeoldpjjiamog',
     'true,Clockwise Inc.,Clockwise: Team Time & Calendar Management,hjcneejoopafkkibfbcaeoldpjjiamog',
     'true,,Cloud9,nbdmccoknlfggadpfkmcpnamfnbkmkcp',
     'true,,Cloud Vision,nblmokgbialjjgfhfofbgfcghhbkejac',
@@ -101,6 +118,8 @@ WHERE
     'true,,ColorPick Eyedropper,ohcpnigalekghcmgcdcenkpelffpdolg',
     'true,,Copper CRM for Gmail,hpfmedbkgaakgagknibnonpkimkibkla',
     'true,,Copper CRM for Gmail™,hpfmedbkgaakgagknibnonpkimkibkla',
+    'true,,crouton integration,gcpneefbbnfalgjniomfjknbcgkbijom',
+    'true,Crowdcast, Inc.,Crowdcast Screensharing,kgmadhplahebfoiijgloflhakfjlkbpb',
     'true,,CSS Scan,gieabiemggnpnminflinemaickipbebg',
     "true,Daniel Kladnik @ kiboke studio,I don't care about cookies,fihnjjcciajhdojfnbdddfaoknhalnja",
     'true,,Datanyze Chrome Extension,mlholfadgbpidekmhdibonbjhdmpmafd',
@@ -114,11 +133,15 @@ WHERE
     'true,,Eno® from Capital One®,clmkdohmabikagpnhjmgacbclihgmdje',
     'true,,Espruino Web IDE,bleoifhkdalbjfbobjackfdifdneehpo',
     'true,,Event Merge for Google Calendar™,idehaflielbgpaokehlhidbjlehlfcep',
+    'true,Evernote,Evernote Web Clipper,pioclpoplcdbaefihamjohnefbikjilc',
     'true,ExpressVPN,ExpressVPN: VPN proxy for a better internet,fgddmllnllkalaagkghckoinaemmogpe',
     'true,eyeo GmbH,Adblock Plus - free ad blocker,cfhdojbkjhnklbpkdaibdccddilifddb',
     'true,,Facebook Pixel Helper,fdgfkebogiimcoedlicjlajpkdmockpc',
+    'true,Federico Brigante,GitHub Issue Link Status,nbiddhncecgemgccalnoanpnenalmkic',
+    'true,,FoxyProxy Basic,dookpfaalaaappcdneeahomimbllocnb',
     "true,Gareth Stephenson,My O'Reilly Downloader,deebiaolijlopiocielojiipnpnaldlk",
     'true,,Github Absolute Dates,iepecohjelcmdnahbddleblfphbaheno',
+    'true,,GitHub Red Alert,kmiekjkmkbhbnlempjkaombjjcfhdnfe',
     'true,,Google Analytics Parameter Stripper,jbgedkkfkohoehhkknnmlodlobbhafge',
     'true,,Google Docs Offline,ghbmnnjooekpmoecnnnilnnbdlolhkhi',
     'true,,Google Drive,apdfllckaahabafndbhieahigkjlhalf',
@@ -129,12 +152,15 @@ WHERE
     'true,,Google Optimize,bhdplaindhdkiflmbfbciehdccfhegci',
     'true,,Google Play Books,mmimngoggfoobjdlefbcabngfnmieonb',
     'true,,Grammarly: Grammar Checker and Writing App,kbfnbcaeplbcioakkpcpgfkobkghlhen',
+    'true,,Gravit Designer,pdagghjnpkeagmlbilmjmclfhjeaapaa',
     'true,,GSConnect,jfnifeihccihocjbfcfhicmmgpjicaec',
     'true,Guilherme Nascimento,Prevent Duplicate Tabs,eednccpckdkpojaiemedoejdngappaag',
     'true,,Honey: Automatic Coupons & Cash Back,bmnlcjabgnpnenekpadlanbbkooimhnj',
     'true,,Honey: Automatic Coupons & Rewards,bmnlcjabgnpnenekpadlanbbkooimhnj',
     'true,,HTTPS Everywhere,gcbommkclmclpchllfjekcdonpmejbdp',
     'true,https://metamask.io,MetaMask,nkbihfbeogaeaoehlefnkodbefgpgknn',
+    'true,,iCloud Bookmarks,fkepacicchenbjecpbpbclokcabebhah',
+    'true,,Instapaper,ldjkgaaoikpmhmkelcgkgacicjfbofhh',
     'true,James Anderson,LeechBlock NG,blaaajhemilngeeffpbfkdjjoefldkok',
     'true,,Jamstash,jccdpflnecheidefpofmlblgebobbloc',
     'true,,Jitsi Meetings,kglhbbefdnlheedjiejgomgmfplipfeb',
@@ -156,7 +182,9 @@ WHERE
     'true,,NoScript,doojmbjmlfjjnbmnoijecmcbfeoakpjm',
     'true,,Notion Web Clipper,knheggckgoiihginacbkhaalnibhilkk',
     'true,,Office Editing for Docs, Sheets & Slides,gbkeegbaiigmenfmjfclcdgdpimamgkj',
+    'true,,Office - Enable Copy and Paste,ifbmcpbgkhlpfcodhjhdbllhiaomkdej',
     'true,,Okta Browser Plugin,glnpjglilkicbckjpbgcfkogebgllemb',
+    'true,,OneLogin for Google Chrome,ioalpmibngobedobkmbhgmadaphocjdn',
     'true,,OneTab,chphlpgkkbolifaimnlloiipkdnihall',
     'true,Opera Norway AS,Opera AI Prompts,mljbnbeedpkgakdchcmfapkjhfcogaoc',
     'true,Opera Software AS,Rich Hints Agent,enegjkbbakeegngfapepobipndnebkdk',
@@ -170,6 +198,7 @@ WHERE
     'true,,Postman,fhbjgbiflinjbdggehcddcbncdddomop',
     'true,,Privacy Badger,pkehgijcmpdhfbdbbnkijodmdjhbjlgp',
     'true,,Private Internet Access,jplnlifepflhkbkgonidnobkakhmpnmh',
+    'true,Pushbullet,Pushbullet,chlffgpmiacpedhhbkiomidkjlcfhogd',
     'true,,QuillBot for Chrome,iidnbdjijdkbmajdffnidomddglmieko',
     'true,Rakuten,Rakuten: Get Cash Back For Shopping,chhjbpecpncaggjpdakmflnfcopglcmi',
     'true,Raymond Hill & contributors,uBlock Origin,cjpalhdlnbpafiamejdnhcphjbkeiagm',
@@ -189,8 +218,10 @@ WHERE
     'true,,Sendspark Video and Screen Recorder,blimjkpadkhcpmkeboeknjcmiaogbkph',
     'true,,Send to Kindle for Google Chrome™,cgdjpilhipecahhcilnafpblkieebhea',
     'true,,Session Buddy,edacconmaakjimmfgnblocblbcdcpbko',
+    'true,,Set Character Encoding,bpojelgakakmcfmjfilgdlmhefphglae',
     'true,,Shodan,jjalcfnidlmpjhdfepjhjbhnhkbgleap',
     'true,,Simple Tab Sorter,cgfpgnepljlgenjclbekbjdlgcodfmjp',
+    'true,,Skype Calling,blakpkgjpemejpbmfiglncklihnhjkij',
     'true,,Slack,jeogkiiogjbmhklcnbgkdcjoioegiknm',
     'true,,SSH for Google Cloud Platform,ojilllmhjhibplnppnamldakhpmdnibd',
     'true,stefanXO,Tab Manager Plus for Chrome,cnkdjjdmfiffagllbiiilooaoofcoeff',
@@ -199,6 +230,7 @@ WHERE
     'true,,Tabli,igeehkedfibbnhbfponhjjplpkeomghi',
     'true,,Tab Wrangler,egnjhciaieeiiohknchakcodbpgjnchh',
     'true,,Tag Assistant Legacy (by Google),kejbdjndbnbjgmefkgdddjlbokphdefk',
+    'true,,Tampermonkey BETA,gcalenpjmijncebpfijmoaglllgpjagf',
     'true,Thomas Rientjes,Decentraleyes,ldpochfccmkkmhdbclfhpagapcfdljkj',
     'true,,TickTick - Todo & Task List,diankknpkndanachmlckaikddgcehkod',
     'true,,Todoist for Chrome,jldhpllghnbhlbpcmnajkpdmadaolakh',
@@ -210,6 +242,7 @@ WHERE
     'true,,Universal Video Downloader,cogmkaeijeflocngklepoknelfjpdjng',
     'true,,User-Agent Switcher for Chrome,djflhoibgkdhkhhcedjiklpkjnoahfmg',
     'true,,Utime,kpcibgnngaaabebmcabmkocdokepdaki',
+    'true,,VidyoWebConnector,mmedphfiemffkinodeemalghecnicmnh',
     'true,,Vimcal,akopimcimmdmklcmegcflfidpfegngke',
     'true,Vimeo,Vimeo Record - Screen & Webcam Recorder,ejfmffkmeigkphomnpabpdabfddeadcb',
     'true,,Vimium,dbepggeogbaibhgnhhndojpepiihcmeb',
@@ -221,8 +254,9 @@ WHERE
     'true,,WiseStamp email signature,pbcgnkmbeodkmiijjfnliicelkjfcldg',
     'true,,writeGPT - ChatGPT Prompt Engineer Assistant,dflcdbibjghipieemcligeelbmackgco',
     'true,,Yesware Sales Engagement,gkjnkapjmjfpipfcccnjbjcbgdnahpjp',
+    'true,Yuri Konotopov <ykonotopov@gnome.org>,GNOME Shell integration,gphhapmejobijbbhgpjhcjognlahblep',
+    'true,,Zoom,hmbjbjdpkobdjplfobhljndfdfdipjhg',
     'true,,ZoomInfo Engage Chrome Extension,mnbjlpbmllanehlpbgilmbjgocpmcijp',
     'true,,Zoom Scheduler,kgjfgplpablkjnlkjmjdecgdpfankdle'
   )
-GROUP BY
-  exception_key
+GROUP BY exception_key
