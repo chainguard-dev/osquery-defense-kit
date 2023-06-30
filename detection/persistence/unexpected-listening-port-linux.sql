@@ -165,6 +165,7 @@ WHERE
     '8834,6,0,nessusd',
     '9000,6,500,authentik-proxy',
     '9000,6,500,main',
+    '8001,6,500,__debug_bin,',
     '9090,6,500,controlplane',
     '9153,6,0,coredns',
     '9300,6,500,authentik-proxy',

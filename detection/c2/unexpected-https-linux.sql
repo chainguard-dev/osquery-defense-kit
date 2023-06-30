@@ -165,6 +165,7 @@ WHERE
     '500,code,u,g,code',
     '500,go,500u,500g,go',
     '500,goa-daemon,0u,0g,goa-daemon',
+    '500,TJPP8_Vulkan,500u,500g,TJPP8_Vulkan',
     '500,___go_build_main_go,500u,500g,___go_build_mai',
     '500,go,u,g,go',
     '500,grafana,u,g,grafana',

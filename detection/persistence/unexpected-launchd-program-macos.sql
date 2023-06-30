@@ -33,6 +33,7 @@ WHERE
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Creative Labs Pte. Ltd. (5Q3552844F)',
+    'Developer ID Application: Hercules Labs Inc. (B8PC799ZGU)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',

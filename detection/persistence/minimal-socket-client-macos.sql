@@ -64,6 +64,7 @@ WHERE
     '500,Slack Helper (GPU),/Applications/Slack.app/Contents/Frameworks/Slack Helper (GPU).app/Contents/MacOS/Slack Helper (GPU)',
     '500,Slack Helper (Renderer),/Applications/Slack.app/Contents/Frameworks/Slack Helper (Renderer).app/Contents/MacOS/Slack Helper (Renderer)',
     '500,Snagit 2020,/Applications/Snagit 2020.app/Contents/MacOS/Snagit 2020',
+    '500,Bitwarden,/Applications/Bitwarden.app/Contents/MacOS/Bitwarden',
     '500,Revolt Helper (GPU),/Applications/Revolt.app/Contents/Frameworks/Revolt Helper (GPU).app/Contents/MacOS/Revolt Helper (GPU)',
     '500,Revolt,/Applications/Revolt.app/Contents/MacOS/Revolt',
     '500,Steam Helper,/Users/kaniini/Library/Application Support/Steam/Steam.AppBundle/Steam/Contents/MacOS/Frameworks/Steam Helper.app/Contents/MacOS/Steam Helper',
@@ -72,8 +73,9 @@ WHERE
     '500,WhatsApp Helper (GPU),/Applications/WhatsApp.app/Contents/Frameworks/WhatsApp Helper (GPU).app/Contents/MacOS/WhatsApp Helper (GPU)'
   )
   AND exception_key NOT LIKE '500,MacVim,/%/MacVim.app/Contents/MacOS/MacVim'
-
 GROUP BY
   pos.pid
 HAVING
   lib_count IN (1, 2)
+  AND libs NOT LIKE '/Applications/%/Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib,/usr/lib/libobjc-trampolines.dylib'
+

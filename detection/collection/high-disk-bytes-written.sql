@@ -156,6 +156,7 @@ WHERE
     'launcher',
     'limactl',
     'melange',
+    'steam_osx',
     'melange-run',
     'monorail',
     'nessusd',

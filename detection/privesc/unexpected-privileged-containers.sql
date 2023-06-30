@@ -26,6 +26,7 @@ WHERE
   privileged = 1
   AND image_name NOT IN (
     'cgr.dev/chainguard/melange',
+    'cgr.dev/chainguard/apko',
     'cgr.dev/chainguard/sdk',
     'cgr.dev/chainguard/wolfi-base',
     'distroless.dev/melange',
