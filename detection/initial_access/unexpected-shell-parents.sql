@@ -192,6 +192,7 @@ WHERE
   AND NOT p0.cmdline IN (
     -- npm run server
     'sh -c -- exec-bin node_modules/.bin/hugo/hugo server',
+    'sh -c /usr/bin/defaults write us.zoom.xos NSQuitAlwaysKeepsWindows -bool false',
     '/bin/sh -c ioreg -rd1 -c IOPlatformExpertDevice',
     '/bin/sh -c sysctl hw.model kern.osrelease',
     'sh -c hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo',

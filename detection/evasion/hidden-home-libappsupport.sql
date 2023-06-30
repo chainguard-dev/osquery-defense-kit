@@ -51,7 +51,7 @@ WHERE
     '~/Library/Application Support/Jabra Direct',
     '~/Library/Application Support/discord',
     '~/Library/Application Support/Keybase',
-    ' ~/Library/Application Support/1Password',
+    '~/Library/Application Support/1Password',
     '~/Library/Application Support/com.intelliscapesolutions.caffeine',
     '~/Library/Application Support/com.psiexams.psi-bridge-secure-browser',
     '~/Library/Application Support/GitHub Desktop',

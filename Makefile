@@ -72,7 +72,7 @@ verify-ci: ./out/osqtool-$(ARCH)
 verify: ./out/osqtool-$(ARCH)
 	$(SUDO) ./out/osqtool-$(ARCH) --max-results=150000 --max-query-duration=10s --max-total-daily-duration=15m verify incident_response
 	$(SUDO) ./out/osqtool-$(ARCH) --max-results=0 --max-query-duration=6s --max-total-daily-duration=10m verify policy
-	$(SUDO) ./out/osqtool-$(ARCH) --max-results=0 --max-query-duration=12s --max-total-daily-duration=2h --max-query-daily-duration=1h verify detection
+	$(SUDO) ./out/osqtool-$(ARCH) --max-results=0 --max-query-duration=12s --max-total-daily-duration=2h30m --max-query-daily-duration=1h verify detection
 
 all: out/odk-packs.zip
 

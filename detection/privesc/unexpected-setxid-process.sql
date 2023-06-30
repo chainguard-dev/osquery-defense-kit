@@ -46,6 +46,7 @@ WHERE
     '/usr/bin/su',
     '/usr/bin/sudo',
     '/usr/bin/top',
+    '/usr/lib/electron22/chrome-sandbox',
     '/usr/lib/electron/chrome-sandbox',
     '/usr/lib/polkit-1/polkit-agent-helper-1',
     '/usr/lib/slack/chrome-sandbox',

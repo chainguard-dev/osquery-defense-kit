@@ -57,6 +57,8 @@ WHERE
   AND NOT f.directory LIKE '%/.rustup/%'
   AND NOT f.directory LIKE '%/.terraform'
   AND NOT f.directory LIKE '%/.terraform/%'
+  AND NOT f.directory LIKE '%/.tflint.d/%'
+  AND NOT f.directory LIKE '%/.vs-kubernetes/%'
   AND NOT f.directory LIKE '%/.vscode/extensions/%'
   AND NOT f.directory LIKE '%/.vscode-insiders/extensions/%'
   AND NOT f.path LIKE '/home/%/.config/bluejeans-v2/BluejeansHelper'

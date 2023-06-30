@@ -101,6 +101,7 @@ WHERE
   AND NOT exception_key IN (
     'netstat,500,IPNExtension,launchd',
     'pfctl,0,pia-daemon,launchd',
+    'netstat,500,coresymbolicationd,launchd',
     'ifconfig,500,zsh,stable',
     'netstat,0,io.tailscale.ipn.macsys.network-extension,launchd',
     'ifconfig,0,pia-openvpn,pia-daemon',

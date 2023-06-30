@@ -59,6 +59,7 @@ WHERE
     '/usr/bin/gnome-shell',
     '/usr/bin/ibus-daemon',
     '/usr/bin/kitty',
+    '/usr/lib/electron22/electron',
     '/usr/bin/osqueryd',
     '/usr/bin/sudo',
     '/usr/bin/tmux',
@@ -77,6 +78,7 @@ WHERE
   AND NOT p1.name IN (
     'lightdm',
     'nvim',
+    'electron',
     'sh',
     'gnome-shell',
     'fish',

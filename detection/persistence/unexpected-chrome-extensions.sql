@@ -228,6 +228,7 @@ WHERE state = 1
     'true,,Super Dark Mode,nlgphodeccebbcnkgmokeegopgpnjfkc',
     'true,,Superhuman,dcgcnpooblobhncpnddnhoendgbnglpn',
     'true,,Tabli,igeehkedfibbnhbfponhjjplpkeomghi',
+    'true,,axe DevTools - Web Accessibility Testing,lhdoppojpmngadmnindnejefpokejbdd',
     'true,,Tab Wrangler,egnjhciaieeiiohknchakcodbpgjnchh',
     'true,,Tag Assistant Legacy (by Google),kejbdjndbnbjgmefkgdddjlbokphdefk',
     'true,,Tampermonkey BETA,gcalenpjmijncebpfijmoaglllgpjagf',

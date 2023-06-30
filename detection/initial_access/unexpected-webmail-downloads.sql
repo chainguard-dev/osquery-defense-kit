@@ -67,6 +67,7 @@ WHERE
     'tif',
     'tiff',
     'txt',
+    'yaml',
     'wav',
     'xls',
     'xlsm',

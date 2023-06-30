@@ -43,6 +43,7 @@ WHERE
       OR file.path LIKE '/dev/shm/u1000-Valve%'
       OR file.path LIKE '/dev/shm/aomshm.%'
       OR file.path LIKE '/dev/shm/jack_db%'
+      OR file.path IN ('/dev/shm/libpod_lock')
     )
   )
   AND file.path NOT LIKE '/dev/shm/lttng-ust-wait-%'

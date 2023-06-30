@@ -238,7 +238,7 @@ WHERE
   AND NOT (
     p.name = 'syncthing'
     AND f.filename = 'syncthing'
-    AND s.remote_port > 1024
+    AND s.remote_port > 900
     AND s.protocol = 6
     AND p.euid > 500
   )
@@ -253,21 +253,21 @@ WHERE
     p.name = 'steam'
     AND f.filename = 'steam'
     AND s.remote_port > 27000
-    AND s.protocol = 6
+    AND s.protocol IN (6,17)
     AND p.euid > 500
   )
   AND NOT (
     p.name = 'brave'
     AND f.filename = 'brave'
     AND s.remote_port > 3000
-    AND s.protocol = 6
+    AND s.protocol IN (6,17)
     AND p.euid > 500
   )
   AND NOT (
     p.name = 'firefox'
     AND f.filename = 'firefox'
     AND s.remote_port > 3000
-    AND s.protocol = 6
+    AND s.protocol IN (6,17)
     AND p.euid > 500
   ) -- TODO: Move this to a custom override overlay, as it is extremely obscure (small ISP)
   AND NOT (

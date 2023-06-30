@@ -105,8 +105,11 @@ WHERE
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
+    '0,AGSService,AGSService,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.ags',
     '0,com.google.one.NetworkExtension,com.google.one.NetworkExtension,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.one.NetworkExtension',
     '0,EdgeUpdater,EdgeUpdater,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.EdgeUpdater',
+    '0,Install,Install,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.Install',
+    '0,kandji-daemon,kandji-daemon,Developer ID Application: Kandji, Inc. (P3FGV63VK7),kandji-daemon',
     '0,kandji-parameter-agent,kandji-parameter-agent,Developer ID Application: Kandji, Inc. (P3FGV63VK7),kandji-parameter-agent',
     '0,launcher,launcher,Developer ID Application: Kolide, Inc (X98UFR7HA3),com.kolide.agent',
     '0,multipassd,multipassd,Developer ID Application: Canonical Group Limited (X4QN7LTP59),com.canonical.multipass.multipassd',
@@ -139,12 +142,14 @@ WHERE
     '500,sdaudioswitch,sdaudioswitch,,sdaudioswitch',
     '500,snyk-ls_darwin_arm64,snyk-ls_darwin_arm64,,a.out',
     '500,steam_osx,steam_osx,Developer ID Application: Valve Corporation (MXGJJ98X76),com.valvesoftware.steam',
+    '500,SteelSeriesGG,SteelSeriesGG,Developer ID Application: SteelSeries (6WGL6CHFH2),SteelSeriesGG',
     '500,syncthing,syncthing,,syncthing',
     '500,terraform,terraform,Developer ID Application: Hashicorp, Inc. (D38WU7D763),terraform',
     '500,Transmit,Transmit,Developer ID Application: Panic, Inc. (VE8FC488U5),com.panic.Transmit',
     '500,TwitchStudioStreamDeck,TwitchStudioStreamDeck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5),TwitchStudioStreamDeck',
     '500,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos'
   )
+  AND NOT exception_key LIKE '500,tor-%-darwin-brave-%,tor-%-darwin-brave-%,Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),tor-%-darwin-brave-%'
   AND NOT alt_exception_key IN (
     '500,apko,apko,0u,0g',
     '500,.man-wrapped,.man-wrapped,0u,500g',
@@ -156,6 +161,7 @@ WHERE
     '500,chainctl,chainctl,500u,20g',
     '500,chainlink,chainlink,500u,20g',
     '500,aws,aws,0u,0g',
+    '500,gh-dash,gh-dash,500u,20g',
     '500,cosign,cosign,0u,500g',
     '500,wolfictl,wolfictl,500u,20g',
     '500,cosign,cosign,500u,20g',
@@ -183,7 +189,8 @@ WHERE
     exception_key IN (
       '500,Python,Python,,org.python.python',
       '500,Python,Python,,Python',
-      '500,Python,Python,,'
+      '500,Python,Python,,',
+      '500,Python,Python,Developer ID Application: Ned Deily (DJ3H93M7VJ),org.python.python'
     )
     AND (
       p0_cmd LIKE '%/gcloud.py%'

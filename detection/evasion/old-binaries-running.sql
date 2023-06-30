@@ -62,6 +62,7 @@ WHERE
     'buildkitd',
     'kail',
     'kail',
+    'Android File Transfer Agent',
     'BluejeansHelper',
     'J8RPQ294UB.com.skitch.SkitchHelper',
     'Pandora',
