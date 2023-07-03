@@ -4,7 +4,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/chainguard-dev/osquery-defense-kit?include_prereleases)](https://github.com/chainguard-dev/osquery-defense-kit/releases/latest)
 [![stable](https://badges.github.io/stability-badges/dist/stable.svg)](https://github.com/badges/stability-badges)
 
-osquery queries for Detection & Incident Response, containing 220+ production-ready queries.
+osquery queries for Detection & Incident Response, containing 250+ production-ready queries.
 
 ![osquery-defense-kit](images/logo-small.png?raw=true "osquery-defense-kit logo")
 
