@@ -76,16 +76,17 @@ WHERE
     '/usr/share/code/code'
   ) -- long-running launchers
   AND NOT p1.name IN (
+    'bash',
+    'dnf',
+    'electron',
+    'fish',
+    'gnome-shell',
+    'kubelet',
+    'kube-proxy',
     'lightdm',
     'nvim',
-    'electron',
     'sh',
-    'gnome-shell',
-    'fish',
-    'bash',
-    'slack',
-    'kube-proxy',
-    'kubelet'
+    'slack'
   ) -- These alerts were unfortunately useless - lots of spam on macOS
   AND NOT (
     p1.path LIKE '/app/%'

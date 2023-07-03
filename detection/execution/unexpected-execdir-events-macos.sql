@@ -138,6 +138,7 @@ WHERE
     '~/Library/Application Support/BraveSoftware',
     '/Library/Application Support/Canon_Inc_IC',
     '~/.docker/cli-plugins/docker-sbom',
+    '/Library/Application Support/com.canonical.multipass',
     '~/.docker/cli-plugins',
     '~/Library/Application Support/minecraft',
     '~/Library/Application Support/com.elgato.StreamDeck',
@@ -270,6 +271,7 @@ WHERE
   AND dir NOT LIKE '/private/tmp/go-build%/exe'
   AND dir NOT LIKE '/private/tmp/KSInstallAction.%/Install Google Software Update.app/Contents/Helpers'
   AND dir NOT LIKE '/private/tmp/nix-build-%'
+  AND dir NOT LIKE '/private/var/folders/%/T/cargo-install%'
   AND dir NOT LIKE '/private/tmp/PKInstallSandbox.%/Scripts/com.microsoft.OneDrive.%'
   AND dir NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%.xpc/Contents/MacOS'
   AND dir NOT LIKE '/private/var/folders/%/bin'
@@ -286,23 +288,21 @@ WHERE
   AND s.authority NOT IN (
     'Apple iPhone OS Application Signing',
     'Apple Mac OS Application Signing',
-    'Developer ID Application: reMarkable AS (4FFUD2H2F6)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
-    'Developer ID Application: Cisco (DE8Y96K9QP)',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW)',
+    'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
+    'Developer ID Application: Cisco (DE8Y96K9QP)',
     'Developer ID Application: CodeWeavers Inc. (9C6B7X7Z8E)',
-    'Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
-    'Developer ID Application: Mojang AB (HR992ZEAE6)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     'Developer ID Application: Figma, Inc. (T8RA8NE3B7)',
     'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
-    'Developer ID Application: Snyk Limited (97QYW7LHSF)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
     'Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
+    'Developer ID Application: Mojang AB (HR992ZEAE6)',
     'Developer ID Application: Ned Deily (DJ3H93M7VJ)',
     -- ^-- Python
     'Developer ID Application: Node.js Foundation (HX7739G8FX)',
@@ -310,6 +310,9 @@ WHERE
     'Developer ID Application: Objective-See, LLC (VBG97UB4TA)',
     'Developer ID Application: Opal Camera Inc (97Z3HJWCRT)',
     'Developer ID Application: Oracle America, Inc. (VB5E2TV963)',
+    'Developer ID Application: reMarkable AS (4FFUD2H2F6)',
+    'Developer ID Application: Snyk Limited (97QYW7LHSF)',
+    'Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
     'Developer ID Application: TablePlus Inc (3X57WP8E8V)',
     'Developer ID Application: Tenable, Inc. (4B8J598M7U)',
     'Developer ID Application: Valve Corporation (MXGJJ98X76)',

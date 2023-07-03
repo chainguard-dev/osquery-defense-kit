@@ -38,12 +38,12 @@ WHERE
   AND file.btime > (strftime('%s', 'now') -86400)
   AND domain NOT IN (
     'adobe.com',
-    'asana.com',
     'akmedia.digidesign.com',
     'alfredapp.com',
     'android.com',
     'apple.com',
     'arc.net',
+    'asana.com',
     'balena.io',
     'balsamiq.com',
     'brave.com',
@@ -94,8 +94,10 @@ WHERE
     'osuosl.org',
     'pqrs.org',
     'prusa3d.com',
+    'amazon.com',
     'remarkable.com',
     'rewind.ai',
+    's3.amazonaws.com',
     'securew2.com',
     'signal.org',
     'skype.com',
@@ -123,6 +125,7 @@ WHERE
   -- NOTE: Do not put all of storage.googleapis.com or similarly generic hosts here
   AND host NOT IN (
     'arc.net',
+    'presenting.app',
     'adoptium.net',
     'balsamiq.com',
     'brave.com',
@@ -162,6 +165,7 @@ WHERE
   -- Yes, these are meant to be fairly broad.
   AND host NOT LIKE 'download%'
   AND host NOT LIKE 'cdn%'
+  AND host NOT LIKE '%.cdn.%.com'
   AND host NOT LIKE '%.edu'
   AND host NOT LIKE 'github-production-release-asset-%.s3.amazonaws.com'
   AND host NOT LIKE '%.org'

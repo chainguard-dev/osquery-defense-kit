@@ -115,17 +115,16 @@ WHERE
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
+    '0,6,5228,prl_naptd,prl_naptd,Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',
     '0,6,80,prl_naptd,prl_naptd,Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',
     '500,17,123,Garmin Express,Garmin Express,Developer ID Application: Garmin International (72ES32VZUA),com.garmin.renu.client',
     '500,17,68,com.docker.backend,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
     '500,17,8801,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos',
     '500,17,9000,Meeting Center,Meeting Center,Developer ID Application: Cisco (DE8Y96K9QP),com.webex.meetingmanager',
     '500,6,22,Cyberduck,Cyberduck,Developer ID Application: David Kocher (G69SCX94XU),ch.sudo.cyberduck',
-    '500,6,80,Wavebox Helper,Wavebox Helper,Developer ID Application: Bookry Ltd (4259LE8SU5),com.bookry.wavebox.helper',
     '500,6,22,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
     '500,6,22,Transmit,Transmit,Developer ID Application: Panic, Inc. (VE8FC488U5),com.panic.Transmit',
     '500,6,2869,Spotify,Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
-    '500,6,80,Brackets,Brackets,Developer ID Application: CORE.AI SCIENTIFIC TECHNOLOGIES PRIVATE LIMITED (8F632A866K),io.brackets.appshell',
     '500,6,32000,Spotify Helper,Spotify Helper,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
     '500,6,32400,PlexMobile,PlexMobile,Apple iPhone OS Application Signing,com.plexapp.plex',
     '500,6,32768,IPNExtension,IPNExtension,Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension',
@@ -137,6 +136,7 @@ WHERE
     '500,6,5228,Clay,Clay,Developer ID Application: Clay Software, Inc. (C68GA48KN3),com.clay.mac',
     '500,6,8009,Spotify Helper,Spotify Helper,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
     '500,6,80,Arc Helper,Arc Helper,Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.browser.helper',
+    '500,6,80,Brackets,Brackets,Developer ID Application: CORE.AI SCIENTIFIC TECHNOLOGIES PRIVATE LIMITED (8F632A866K),io.brackets.appshell',
     '500,6,80,CEPHtmlEngine Helper,CEPHtmlEngine Helper,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.cep.CEPHtmlEngine Helper',
     '500,6,80,Code Helper (Plugin),Code Helper (Plugin),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
     '500,6,80,Code - Insiders Helper (Plugin),Code - Insiders Helper (Plugin),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
@@ -159,6 +159,7 @@ WHERE
     '500,6,80,Telegram,Telegram,Apple Mac OS Application Signing,ru.keepcoder.Telegram',
     '500,6,80,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
     '500,6,80,Twitter,Twitter,Apple Mac OS Application Signing,maccatalyst.com.atebits.Tweetie2',
+    '500,6,80,Wavebox Helper,Wavebox Helper,Developer ID Application: Bookry Ltd (4259LE8SU5),com.bookry.wavebox.helper',
     '500,6,80,WhatsApp,WhatsApp,Developer ID Application: WhatsApp Inc. (57T9237FN3),WhatsApp',
     '500,6,993,Mimestream,Mimestream,Developer ID Application: Mimestream, LLC (P2759L65T8),com.mimestream.Mimestream',
     '500,6,993,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird'
@@ -194,19 +195,19 @@ WHERE
       OR pos.remote_port > 1024
     )
     AND id_exception_key IN (
-      'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
+      'Developer ID Application: Bookry Ltd (4259LE8SU5),com.bookry.wavebox.helper',
       'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.helper',
-      'Developer ID Application: Microsoft Corporation (UBF8T346G9),net.java.openjdk.java',
-      'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
       'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
-      'Developer ID Application: Vladimir Prelovac (TFVG979488),com.apple.WebKit.Networking',
-      'Developer ID Application: Valve Corporation (MXGJJ98X76),com.valvesoftware.steam',
+      'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.edgemac.helper',
+      'Developer ID Application: Microsoft Corporation (UBF8T346G9),net.java.openjdk.java',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefox',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefoxdeveloperedition',
       'Developer ID Application: Opera Software AS (A2P9LX4JPN),com.operasoftware.Opera.helper',
       'Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
-      'Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.browser.helper'
+      'Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.browser.helper',
+      'Developer ID Application: Valve Corporation (MXGJJ98X76),com.valvesoftware.steam',
+      'Developer ID Application: Vladimir Prelovac (TFVG979488),com.apple.WebKit.Networking'
     )
   )
 GROUP BY
