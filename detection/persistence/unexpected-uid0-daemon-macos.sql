@@ -280,9 +280,14 @@ WHERE -- Focus on longer-running programs
         '/usr/sbin/systemstats',
         '/usr/sbin/WirelessRadioManagerd'
       )
+      AND NOT path LIKE '/nix/store/%-nix-%/bin/nix'
+      AND NOT path LIKE '/opt/homebrew/Cellar/htop/%/bin/htop'
+      AND NOT path LIKE '/opt/homebrew/Cellar/btop/%/bin/btop'
+      AND NOT path LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
+      AND NOT path LIKE '/usr/local/Cellar/htop/%/bin/htop'
+      AND NOT path LIKE '/usr/local/Cellar/btop/%/bin/btop'
       AND NOT path LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
       AND NOT path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
-      AND NOT path LIKE '/usr/local/Cellar/htop/%/bin/htop'
     GROUP BY
       path
   )
@@ -314,14 +319,6 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Tenable, Inc. (4B8J598M7U)',
     'Developer ID Application: X-Rite, Incorporated (2K7GT73B4R)',
     'Software Signing'
-  )
-  AND NOT (
-    p0.path LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
-    AND s.identifier = 'socket_vmnet'
-  )
-  AND NOT (
-    p0.path LIKE '/nix/store/%-nix-%/bin/nix'
-    AND s.identifier = 'nix'
   )
   AND NOT (
     p0.path = '/Library/Printers/DYMO/Utilities/pnpd'

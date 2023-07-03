@@ -128,13 +128,17 @@ WHERE
     ) --   7. Volumes containing a top-level symlink to something other than /Applications, such as yWnBJLaF (1302.app)
     OR (
       file.symlink = 1
-      AND magic.data != 'symbolic link to /Applications'
-      AND magic.data != 'symbolic link to /Applications/'
-      AND magic.data != 'symbolic link to .'
+      AND magic.data NOT IN (
+        '/Library/Application Support/Apple/Safari/SafariForWebKitDevelopment',
+        'symbolic link to .',
+        'symbolic link to /Applications',
+        'symbolic link to /Applications/',
+        'symbolic link to ../Resources/public',
+        'symbolic link to steam_osx'
+      )
       -- emacs
-      AND magic.data != 'symbolic link to bin-x86%'
+      AND magic.data NOT LIKE 'symbolic link to bin-x86%'
       AND magic.data NOT LIKE 'symbolic link to /Users/%/My Drive'
-      AND magic.data NOT LIKE 'symbolic link to /Library/Application Support/Apple/Safari/SafariForWebKitDevelopment'
     )
   )
 GROUP BY
