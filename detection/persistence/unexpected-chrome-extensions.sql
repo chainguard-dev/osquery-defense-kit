@@ -63,6 +63,7 @@ WHERE state = 1
       OR perms LIKE "%nativeMessaging%"
       OR perms LIKE "%proxy%"
       OR perms LIKE "%webAuthenticationProxy%"
+      OR perms LIKE "%management%"
     )
   )
   AND NOT exception_key IN (
