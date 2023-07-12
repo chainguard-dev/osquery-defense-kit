@@ -125,6 +125,7 @@ WHERE
     '500,InternalFiltersXPC,com.apple.InternalFiltersXPC,Apple Mac OS Application Signing',
     '500,ipcserver,com.valvesoftware.steam,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '500,ipcserver.old,,',
+    '0,velociraptor,a.out',
     '500,ko,a.out,',
     '500,kubectl,a.out,',
     '500,lua-language-server,lua-language-server,',
