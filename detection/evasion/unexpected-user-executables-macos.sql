@@ -2,6 +2,8 @@
 --
 -- references:
 --   * https://www.elastic.co/security-labs/inital-research-of-jokerspy
+--   * https://www.elastic.co/security-labs/DPRK-strikes-using-a-new-variant-of-rustbucket
+--
 -- false positives:
 --   * none known
 --
