@@ -181,8 +181,8 @@ WHERE
     '500,pulumi-resource-gcp,pulumi-resource-gcp,500u,20g',
     '500,sdaudioswitch,sdaudioswitch,500u,20g',
     '500,sdzoomplugin,sdzoomplugin,500u,20g',
-    '500,vim,vim,0u,500g'
-    '500,wolfictl,wolfictl,500u,20g',
+    '500,vim,vim,0u,500g',
+    '500,wolfictl,wolfictl,500u,20g'
   )
   AND NOT alt_exception_key LIKE '500,terraform-provider-%,terraform-provider-%,500u,20g'
   AND NOT p0.path LIKE '/private/var/folders/%/T/GoLand/%'
