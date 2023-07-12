@@ -77,6 +77,7 @@ WHERE
   pe.path IN (
     '/sbin/ifconfig',
     '/usr/sbin/netstat',
+    '/usr/bin/nscurl',
     '/sbin/pfctl',
     '/usr/libexec/ApplicationFirewall/socketfilterfw'
   )
