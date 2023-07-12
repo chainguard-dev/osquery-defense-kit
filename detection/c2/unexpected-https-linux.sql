@@ -62,6 +62,7 @@ WHERE
     '0,bash,0u,0g,bash',
     '0,bash,0u,0g,mkinitcpio',
     '0,bash,0u,0g,sh',
+    '0,velociraptor,0u,0g,velociraptor_cl',
     '0,chainctl,0u,0g,chainctl',
     '0,cmake,u,g,cmake',
     '0,containerd,u,g,containerd',
