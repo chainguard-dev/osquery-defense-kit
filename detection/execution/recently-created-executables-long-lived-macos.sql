@@ -75,6 +75,7 @@ WHERE
       AND NOT path LIKE '/opt/homebrew/%'
       AND NOT path LIKE '/System/%'
       AND NOT path LIKE '/usr/local/kolide-k2/bin/%'
+      AND NOT path LIKE '%/cloud_sql_proxy'
   )
   AND (p0.start_time - MAX(f.ctime, f.btime)) < 60
   AND f.ctime > 0
@@ -204,6 +205,10 @@ WHERE
     AND s.identifier = 'org.sparkle-project.Sparkle.Updater'
     AND s.authority != ''
     AND p0.uid > 499
+  )
+  AND NOT (
+    p0.path = '/Library/PrivilegedHelperTools/com.macpaw.CleanMyMac4.Agent'
+    AND s_auth = 'Developer ID Application: MacPaw Inc. (S8EX82NJP6)'
   )
 GROUP BY
   p0.pid

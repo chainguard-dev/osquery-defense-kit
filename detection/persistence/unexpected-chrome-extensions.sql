@@ -152,6 +152,7 @@ WHERE state = 1
     'true,,Honey: Automatic Coupons & Rewards,bmnlcjabgnpnenekpadlanbbkooimhnj',
     'true,,HTTPS Everywhere,gcbommkclmclpchllfjekcdonpmejbdp',
     'true,https://metamask.io,MetaMask,nkbihfbeogaeaoehlefnkodbefgpgknn',
+    'true,,HubSpot Sales,oiiaigjnkhngdbnoookogelabohpglmd',
     'true,,IBA Opt-out (by Google),gbiekjoijknlhijdjbaadobpkdhmoebb',
     'true,,iCloud Bookmarks,fkepacicchenbjecpbpbclokcabebhah',
     'true,,Instapaper,ldjkgaaoikpmhmkelcgkgacicjfbofhh',
@@ -253,6 +254,7 @@ WHERE state = 1
     'true,,Zoom,hmbjbjdpkobdjplfobhljndfdfdipjhg',
     'true,,ZoomInfo Engage Chrome Extension,mnbjlpbmllanehlpbgilmbjgocpmcijp',
     'true,,Zoom Scheduler,kgjfgplpablkjnlkjmjdecgdpfankdle'
+
   )
   AND NOT (
     exception_key = 'false,AgileBits,1Password – Password Manager,dppgmdbiimibapkepcbdbmkaabgiofem'

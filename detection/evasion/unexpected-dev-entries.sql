@@ -8,8 +8,7 @@
 --
 -- tags: persistent state filesystem
 -- platform: posix
-SELECT
-  file.path,
+SELECT file.path,
   file.type,
   file.size,
   file.mtime,
@@ -18,12 +17,10 @@ SELECT
   file.gid,
   hash.sha256,
   magic.data
-FROM
-  file
+FROM file
   LEFT JOIN hash ON file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE
-  (
+WHERE (
     file.path LIKE '/dev/shm/%%'
     OR file.path LIKE '/dev/%/.%'
     OR file.path LIKE '/dev/.%'
@@ -43,7 +40,6 @@ WHERE
       OR file.path LIKE '/dev/shm/u1000-Valve%'
       OR file.path LIKE '/dev/shm/aomshm.%'
       OR file.path LIKE '/dev/shm/jack_db%'
-      OR file.path IN ('/dev/shm/libpod_lock')
     )
   )
   AND file.path NOT LIKE '/dev/shm/lttng-ust-wait-%'
@@ -51,4 +47,4 @@ WHERE
   AND file.path NOT LIKE '/dev/shm/libpod_rootless_lock_%'
   AND file.path NOT LIKE '%/../%'
   AND file.path NOT LIKE '%/./%'
-  AND file.path NOT IN ('/dev/.mdadm/')
+  AND file.path NOT IN ('/dev/.mdadm/', '/dev/shm/libpod_lock')

@@ -53,30 +53,30 @@ WHERE
   AND p0.path NOT IN (
     '/bin/bash',
     '/bin-busybox',
+    '/Library/Application Support/Adobe/Adobe Desktop Common/HDBox/Setup',
     '/opt/homebrew/bin/qemu-system-aarch64',
+    '/opt/osquery/lib/osquery.app/Contents/MacOS/osqueryd',
     '/usr/bin/apt',
     '/usr/bin/aptd',
-    '/usr/bin/pacman',
-    '/usr/bin/git',
     '/usr/bin/bash',
-    '/usr/bin/gnome-text-editor',
-    '/usr/lib/baloo_file_extractor',
     '/usr/bin/bwrap',
     '/usr/bin/curl',
     '/usr/bin/darktable',
     '/usr/bin/dockerd',
     '/usr/bin/fish',
+    '/usr/bin/git',
     '/usr/bin/gnome-shell',
     '/usr/bin/gnome-software',
+    '/usr/bin/gnome-text-editor',
     '/usr/bin/make',
     '/usr/bin/melange',
+    '/usr/bin/pacman',
     '/usr/bin/qemu-system-x86_64',
     '/usr/bin/yay',
     '/usr/bin/zsh',
     '/usr/lib64/thunderbird/thunderbird',
+    '/usr/lib/baloo_file_extractor',
     '/usr/libexec/coreduetd',
-    '/usr/share/spotify-client/spotify',
-    '/Library/Application Support/Adobe/Adobe Desktop Common/HDBox/Setup',
     '/usr/libexec/flatpak-system-helper',
     '/usr/libexec/logd_helper',
     '/usr/libexec/packagekitd',
@@ -84,10 +84,11 @@ WHERE
     '/usr/libexec/secd',
     '/usr/libexec/sharingd',
     '/usr/lib/flatpak-system-helper',
+    '/usr/lib/snapd/snapd',
     '/usr/lib/systemd/systemd',
     '/usr/lib/systemd/systemd-journald',
-    '/opt/osquery/lib/osquery.app/Contents/MacOS/osqueryd',
-    '/usr/sbin/screencapture'
+    '/usr/sbin/screencapture',
+    '/usr/share/spotify-client/spotify'
   )
   AND NOT (
     p0.name LIKE 'jbd%/dm-%'
@@ -189,6 +190,7 @@ WHERE
   AND p0.path NOT LIKE '/nix/store/%/bin/%sh'
   AND p0.path NOT LIKE '/nix/store/%/bin/nix'
   AND p0.path NOT LIKE '/System/Applications/%'
+  AND NOT p0.path LIKE "%/terraform-provider-%"
   AND p0.path NOT LIKE '/System/Library/%'
   AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND p0.path NOT LIKE '/nix/store/%kolide-launcher-%/bin/launcher'

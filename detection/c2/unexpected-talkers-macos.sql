@@ -165,16 +165,17 @@ WHERE
     '500,6,993,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird'
   ) -- Useful for unsigned binaries
   AND NOT alt_exception_key IN (
-    '500,6,80,firefox,firefox,500u,20g',
+    '0,6,80,tailscaled,tailscaled,500u,80g',
     '500,6,22,ssh,ssh,0u,500g',
-    '500,6,80,chainlink,chainlink,500u,20g',
     '500,6,22,ssh,ssh,500u,0g',
     '500,6,22,ssh,ssh,500u,20g',
     '500,6,22,ssh,ssh,500u,80g',
     '500,6,3307,cloud_sql_proxy,cloud_sql_proxy,0u,0g',
     '500,6,3307,cloud-sql-proxy,cloud-sql-proxy,500u,20g',
     '500,6,3307,cloud_sql_proxy,cloud_sql_proxy,500u,20g',
+    '500,6,80,chainlink,chainlink,500u,20g',
     '500,6,80,copilot-agent-macos-arm64,copilot-agent-macos-arm64,500u,20g',
+    '500,6,80,firefox,firefox,500u,20g',
     '500,6,80,qemu-system-aarch64,qemu-system-aarch64,500u,80g'
   )
   AND NOT (

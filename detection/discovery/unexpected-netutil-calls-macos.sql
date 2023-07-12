@@ -102,6 +102,7 @@ WHERE
   AND NOT exception_key IN (
     'netstat,500,IPNExtension,launchd',
     'pfctl,0,pia-daemon,launchd',
+    'netstat,500,AccountSubscriber,launchd',
     'netstat,500,coresymbolicationd,launchd',
     'ifconfig,500,zsh,stable',
     'netstat,0,io.tailscale.ipn.macsys.network-extension,launchd',
@@ -112,5 +113,6 @@ WHERE
     'pfctl,0,bash,pia-daemon'
   )
   AND p1_cmd NOT IN ('/bin/sh /etc/periodic/daily/420.status-network')
+  AND p1_authority != 'Software Signing'
 GROUP BY
   pe.pid

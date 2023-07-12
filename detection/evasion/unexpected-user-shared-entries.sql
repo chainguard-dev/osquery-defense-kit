@@ -46,7 +46,9 @@ WHERE
       '/Users/Shared/.BetaEnrollmentData.plist',
       '/Users/Shared/.betamigrated',
       '/Users/Shared/.DS_Store',
+      '/Users/Shared/.ks.intego_metrics_2.pli',
       '/Users/Shared/.localized',
+      '/Users/Shared/CleanMyMac X/.licence',
       '/Users/Shared/LogiTuneInstallerStarted.txt',
       '/Users/Shared/.NSVolumeHeap',
       '/Users/Shared/.SeedEnrollment.plist'
