@@ -56,7 +56,7 @@ WHERE
       AND path NOT LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
       AND path NOT LIKE '/usr/local/Cellar/htop/%/bin/htop'
       AND path NOT LIKE '/opt/homebrew/Cellar/btop/%/bin/btop'
-      AND path != '/opt/socket_vmnet/bin/socket_vmnet'
+      AND path NOT IN ('/opt/socket_vmnet/bin/socket_vmnet', '/usr/local/sbin/velociraptor')
   )
 
   AND pmm.path LIKE '%libpcap%'

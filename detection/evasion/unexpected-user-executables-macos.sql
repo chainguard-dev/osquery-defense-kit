@@ -42,7 +42,8 @@ FROM
   LEFT JOIN users u ON f.uid = u.uid
   LEFT JOIN magic ON f.path = magic.path
   LEFT JOIN signature ON f.path = signature.path
-WHERE -- Optimization: don't join things until we have a whittled down list of files
+WHERE
+  -- Optimization: don't join things until we have a whittled down list of files
   f.path IN (
     SELECT DISTINCT
       path
@@ -50,39 +51,54 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       file
     WHERE
       (
-        file.path LIKE '/Users/Shared/%%'
-        OR file.path LIKE '/Users/%/Library/%%'
-        OR file.path LIKE '/Users/%/Public/%%'
-        OR file.path LIKE '/Users/%/Photos/%%'
-        OR file.path LIKE '/Users/Shared/.%/%%'
-        OR file.path LIKE '/Users/%/Library/.%/%%'
-        OR file.path LIKE '/Users/%/Public/.%/%%'
-        OR file.path LIKE '/Users/%/Photos/.%/%%'
-        OR file.path LIKE '/Users/%/.%/%%'
-      ) -- Prevent weird recursion
-      AND NOT file.path LIKE '%/../%'
-      AND NOT file.path LIKE '%/./%' -- Exclude very temporary files
-      AND NOT file.directory LIKE '/Users/%/Library/Mobile Documents/com~apple~shoebox/%'
-      AND NOT file.directory LIKE '/Users/%/Library/Containers/%'
-      AND NOT file.directory LIKE '/Users/%/.Trash'
-      AND NOT file.directory LIKE '/Users/%/Library/Daemon Containers/%/Data/Downloads'
-      AND NOT file.directory LIKE '/Users/Shared/LGHUB/depots/%'
-      AND NOT file.directory LIKE '/Users/Shared/LogiOptionsPlus/depots/%'
-      AND NOT file.directory LIKE '/Users/%/Library/Application Support/AutoFirma/certutil'
-      AND NOT file.directory LIKE '/Users/%/Library/Caches/chainctl'
-      AND NOT file.directory IN (
+        directory = '/Users/Shared/'
+        OR directory LIKE '/Users/Shared/%'
+        OR directory LIKE '/Users/Shared/.%'
+        OR directory LIKE '/Users/%/Library'
+        OR directory LIKE '/Users/%/Library/%'
+        OR directory LIKE '/Users/%/Library/%/.%'
+        OR directory LIKE '/Users/%/Library/%/%'
+        OR directory LIKE '/Users/%/Library/.%'
+        OR directory LIKE '/Users/%/Public'
+        OR directory LIKE '/Users/%/Public/%'
+        OR directory LIKE '/Users/%/Public/.%'
+        OR directory LIKE '/Users/%/Photos'
+        OR directory LIKE '/Users/%/Photos/%'
+        OR directory LIKE '/Users/%/Photos/.%'
+        OR directory LIKE '/Users/%/.%'
+        OR directory LIKE '/Users/%/.%/%'
+      )
+      AND (
+        type = 'regular'
+        AND size > 32
+        AND (
+          mode LIKE '%7%'
+          OR mode LIKE '%5%'
+          OR mode LIKE '%1%'
+        )
+      )
+      -- Prevent weird recursion
+      AND NOT path LIKE '%/../%'
+      AND NOT path LIKE '%/./%' -- Exclude very temporary files
+      AND NOT directory LIKE '/Users/%/Library/Mobile Documents/com~apple~shoebox/%'
+      AND NOT directory LIKE '/Users/%/Library/Containers/%'
+      AND NOT directory LIKE '/Users/%/.Trash/'
+      AND NOT directory LIKE '/Users/%/.go/bin/'
+      AND NOT directory LIKE '/Users/%/.bin/'
+      AND NOT directory LIKE '/Users/%/.local/bin/'
+      AND NOT directory LIKE '/Users/%/.cargo/bin/'
+      AND NOT directory LIKE '/Users/%/.vim/backup/'
+      AND NOT directory LIKE '/Users/%/Library/Daemon Containers/%'
+      AND NOT directory LIKE '/Users/Shared/LGHUB/depots/%'
+      AND NOT directory LIKE '/Users/Shared/LogiOptionsPlus/depots/%'
+      AND NOT directory LIKE '/Users/%/Library/Application Support/AutoFirma/certutil'
+      AND NOT directory LIKE '/Users/%/Library/Caches/chainctl'
+      AND NOT directory IN (
         '/Users/Shared/LogiOptionsPlus/cache',
         '/Users/Shared/logitune',
         '/Users/Shared/Red Giant/Uninstall'
       )
       AND NOT (strftime('%s', 'now') - ctime) < 60 -- Only executable files
-      AND file.type = 'regular'
-      AND file.size > 32
-      AND (
-        file.mode LIKE '%7%'
-        or file.mode LIKE '%5%'
-        or file.mode LIKE '%1%'
-      )
   )
   AND (
     magic.data IS NULL

@@ -105,16 +105,19 @@ WHERE
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
+    '0,nessusd,nessusd,Developer ID Application: Tenable, Inc. (4B8J598M7U),nessusd',
     '0,AGSService,AGSService,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.ags',
     '0,com.google.one.NetworkExtension,com.google.one.NetworkExtension,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.one.NetworkExtension',
     '0,EdgeUpdater,EdgeUpdater,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.EdgeUpdater',
     '0,Install,Install,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.Install',
     '0,kandji-daemon,kandji-daemon,Developer ID Application: Kandji, Inc. (P3FGV63VK7),kandji-daemon',
+    '0,kandji-library-manager,kandji-library-manager,Developer ID Application: Kandji, Inc. (P3FGV63VK7),kandji-library-manager',
     '0,kandji-parameter-agent,kandji-parameter-agent,Developer ID Application: Kandji, Inc. (P3FGV63VK7),kandji-parameter-agent',
     '0,launcher,launcher,Developer ID Application: Kolide, Inc (X98UFR7HA3),com.kolide.agent',
     '0,multipassd,multipassd,Developer ID Application: Canonical Group Limited (X4QN7LTP59),com.canonical.multipass.multipassd',
     '0,Setup,Setup,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.acc.Setup',
     '500,bash,bash,,bash',
+    '500,Java Updater,Java Updater,Developer ID Application: Oracle America, Inc. (VB5E2TV963),com.oracle.java.Java-Updater',
     '500,chrome_crashpad_handler,chrome_crashpad_handler,Developer ID Application: Microsoft Corporation (UBF8T346G9),chrome_crashpad_handler',
     '500,cloud_sql_proxy,cloud_sql_proxy,,a.out',
     '500,Code Helper,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode.helper',
@@ -142,6 +145,7 @@ WHERE
     '500,sdaudioswitch,sdaudioswitch,,sdaudioswitch',
     '500,snyk-ls_darwin_arm64,snyk-ls_darwin_arm64,,a.out',
     '500,steam_osx,steam_osx,Developer ID Application: Valve Corporation (MXGJJ98X76),com.valvesoftware.steam',
+    '500,SteelSeriesEngine,SteelSeriesEngine,Developer ID Application: SteelSeries (6WGL6CHFH2),SteelSeriesEngine',
     '500,SteelSeriesGG,SteelSeriesGG,Developer ID Application: SteelSeries (6WGL6CHFH2),SteelSeriesGG',
     '500,syncthing,syncthing,,syncthing',
     '500,terraform,terraform,Developer ID Application: Hashicorp, Inc. (D38WU7D763),terraform',
@@ -151,32 +155,34 @@ WHERE
   )
   AND NOT exception_key LIKE '500,tor-%-darwin-brave-%,tor-%-darwin-brave-%,Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),tor-%-darwin-brave-%'
   AND NOT alt_exception_key IN (
+    '0,velociraptor,velociraptor,0u,80g',
+    '0,velociraptor,velociraptor,0u,0g',
     '500,apko,apko,0u,0g',
-    '500,.man-wrapped,.man-wrapped,0u,500g',
     '500,apko,apko,500u,20g',
+    '500,aws,aws,0u,0g',
     '500,cargo,cargo,500u,80g',
-    '500,cosign,cosign,500u,80g',
     '500,chainctl,chainctl,0u,0g',
-    '500,git,git,0u,500g',
     '500,chainctl,chainctl,500u,20g',
     '500,chainlink,chainlink,500u,20g',
-    '500,aws,aws,0u,0g',
-    '500,gh-dash,gh-dash,500u,20g',
-    '500,cosign,cosign,0u,500g',
-    '500,wolfictl,wolfictl,500u,20g',
-    '500,cosign,cosign,500u,20g',
     '500,cilium,cilium,500u,123g',
+    '500,cosign,cosign,0u,500g',
+    '500,cosign,cosign,500u,20g',
+    '500,cosign,cosign,500u,80g',
     '500,cpu,cpu,500u,20g',
     '500,crane,crane,0u,500g',
     '500,crane,crane,500u,80g',
+    '500,gh-dash,gh-dash,500u,20g',
+    '500,git,git,0u,500g',
     '500,git-remote-http,git-remote-http,500u,20g',
     '500,git-remote-http,git-remote-http,500u,80g',
     '500,gitsign,gitsign,500u,20g',
     '500,go,go,500u,80g',
+    '500,.man-wrapped,.man-wrapped,0u,500g',
     '500,pulumi-resource-gcp,pulumi-resource-gcp,500u,20g',
     '500,sdaudioswitch,sdaudioswitch,500u,20g',
     '500,sdzoomplugin,sdzoomplugin,500u,20g',
-    '500,vim,vim,0u,500g'
+    '500,vim,vim,0u,500g',
+    '500,wolfictl,wolfictl,500u,20g'
   )
   AND NOT alt_exception_key LIKE '500,terraform-provider-%,terraform-provider-%,500u,20g'
   AND NOT p0.path LIKE '/private/var/folders/%/T/GoLand/%'

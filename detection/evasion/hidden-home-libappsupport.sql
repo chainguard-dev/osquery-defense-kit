@@ -60,6 +60,7 @@ WHERE
     '~/Library/Application Support/DropboxElectron',
     '~/Library/Application Support/GitHub Desktop',
     '~/Library/Application Support/Jabra Direct',
+    '~/Library/Application Support/CleanMyMac X Menu',
     '~/Library/Application Support/Keybase',
     '~/Library/Application Support/Lens',
     '~/Library/Application Support/lghub',

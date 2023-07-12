@@ -49,4 +49,4 @@ FROM process_open_sockets pos
     LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE pos.fd < 3
     AND pos.family != 1
-    AND p0.path NOT IN ('/usr/libexec/bootpd', '/usr/local/bin/velociraptor')
+    AND p0.path NOT IN ('/usr/libexec/bootpd', '/usr/local/bin/velociraptor', '/Applications/NetSpot.app/Contents/MacOS/NetSpot')

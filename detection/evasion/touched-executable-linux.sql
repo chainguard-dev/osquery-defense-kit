@@ -30,7 +30,10 @@ FROM
 WHERE
   f.ctime = f.mtime
   AND p.path != '/'
-  AND f.path != '/opt/google/endpoint-verification/bin/apihelper'
+  AND f.path NOT IN (
+    '/opt/google/endpoint-verification/bin/apihelper',
+    '/usr/bin/melange'
+  )
   AND f.path NOT LIKE '/home/%'
   AND f.path NOT LIKE '/snap/%'
   AND f.path NOT LIKE '/tmp/go-build%/exe/%'
