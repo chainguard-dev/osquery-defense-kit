@@ -41,5 +41,6 @@ WHERE (
         '0,0,/var/run/dnf-metadata.lock,regular,0644',
         '0,0,/var/run/apport.lock,regular,0600',
         '74,0,/tmp/mysql.sock.lock,regular,0600',
-        '74,0,/tmp/mysqlx.sock.lock,regular,0600'
+        '74,0,/tmp/mysqlx.sock.lock,regular,0600',
+        '500,1001,/tmp/nwg-dock.lock,regular,0600'
     )
