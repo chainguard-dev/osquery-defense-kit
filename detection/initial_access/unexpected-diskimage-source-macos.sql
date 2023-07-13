@@ -128,6 +128,7 @@ WHERE
     'presenting.app',
     'adoptium.net',
     'balsamiq.com',
+    'bearly.ai',
     'brave.com',
     'cron.com',
     'discord.com',

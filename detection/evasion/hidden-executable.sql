@@ -47,6 +47,7 @@ WHERE
   AND NOT f.directory LIKE '%/.bin'
   AND NOT f.directory LIKE '%/.bin-unwrapped'
   AND NOT f.directory LIKE '%/.cargo/bin'
+  AND NOT f.directory LIKE '%/.fig/bin'
   AND NOT f.directory LIKE '%/.config/nvm/%/bin'
   AND NOT f.directory LIKE '%/.provisio/bin/%'
   AND NOT f.directory LIKE '%/.local/%'

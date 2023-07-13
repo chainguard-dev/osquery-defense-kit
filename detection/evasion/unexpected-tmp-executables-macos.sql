@@ -92,7 +92,10 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
             'goreleaser'
           )
         )
-      ) -- Nix
+      )
+      -- Melange
+      AND NOT file.directory LIKE '/tmp/melange-guest-%'
+       -- Nix
       AND NOT (
         file.directory LIKE '/tmp/tmp%'
         AND gid = 0

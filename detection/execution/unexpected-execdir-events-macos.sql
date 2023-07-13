@@ -223,6 +223,7 @@ WHERE
     '/opt/X11/libexec',
     '~/projects/go/bin',
     '/run/current-system/sw/bin',
+    '/tmp/bin',
     '/sbin',
     '/usr/bin',
     '/usr/lib',
@@ -270,6 +271,7 @@ WHERE
   AND dir NOT LIKE '/opt/%/bin'
   AND dir NOT LIKE '/private/tmp/%.app/Contents/MacOS'
   AND dir NOT LIKE '/private/tmp/go-build%/exe'
+  AND dir NOT LIKE '%/go/bin'
   AND dir NOT LIKE '/private/tmp/KSInstallAction.%/Install Google Software Update.app/Contents/Helpers'
   AND dir NOT LIKE '/private/tmp/nix-build-%'
   AND dir NOT LIKE '/private/var/folders/%/T/cargo-install%'
