@@ -80,23 +80,24 @@ WHERE
       -- Prevent weird recursion
       AND NOT path LIKE '%/../%'
       AND NOT path LIKE '%/./%' -- Exclude very temporary files
-      AND NOT directory LIKE '/Users/%/Library/Mobile Documents/com~apple~shoebox/%'
-      AND NOT directory LIKE '/Users/%/Library/Containers/%'
-      AND NOT directory LIKE '/Users/%/.Trash/'
-      AND NOT directory LIKE '/Users/%/.go/bin/'
       AND NOT directory LIKE '/Users/%/.bin/'
-      AND NOT directory LIKE '/Users/%/.local/bin/'
       AND NOT directory LIKE '/Users/%/.cargo/bin/'
-      AND NOT directory LIKE '/Users/%/.vim/backup/'
+      AND NOT directory LIKE '/Users/%/.go/bin/'
+      AND NOT directory LIKE '/Users/%/Library/Application Support/AutoFirma/certutil/'
+      AND NOT directory LIKE '/Users/%/Library/Caches/chainctl/'
+      AND NOT directory LIKE '/Users/%/Library/Containers/%'
       AND NOT directory LIKE '/Users/%/Library/Daemon Containers/%'
+      AND NOT directory LIKE '/Users/%/Library/Mobile Documents/com~apple~shoebox/%'
+      AND NOT directory LIKE '/Users/%/.local/bin/'
+      AND NOT directory LIKE '/Users/%/.minikube/bin/'
       AND NOT directory LIKE '/Users/Shared/LGHUB/depots/%'
       AND NOT directory LIKE '/Users/Shared/LogiOptionsPlus/depots/%'
-      AND NOT directory LIKE '/Users/%/Library/Application Support/AutoFirma/certutil'
-      AND NOT directory LIKE '/Users/%/Library/Caches/chainctl'
+      AND NOT directory LIKE '/Users/%/.Trash/%'
+      AND NOT directory LIKE '/Users/%/.vim/backup/'
       AND NOT directory IN (
-        '/Users/Shared/LogiOptionsPlus/cache',
-        '/Users/Shared/logitune',
-        '/Users/Shared/Red Giant/Uninstall'
+        '/Users/Shared/LogiOptionsPlus/cache/',
+        '/Users/Shared/logitune/',
+        '/Users/Shared/Red Giant/Uninstall/'
       )
       AND NOT (strftime('%s', 'now') - ctime) < 60 -- Only executable files
   )
@@ -112,6 +113,39 @@ WHERE
   AND NOT (
     magic.data IS NOT NULL
     AND magic.data LIKE "0420 Alliant virtual executable%"
+  )
+  AND NOT homedir LIKE '~/%/bin'
+  AND NOT homedir LIKE '~/%/shims'
+  AND NOT homedir LIKE '~/%/plugins'
+  AND NOT homedir IN (
+    '~/.bin',
+    '~/.fzf',
+    '~/.fzf/bin',
+    '~/.venv/bin',
+    '~/.fig/bin',
+    '~/.zed/gopls',
+    '~/.config/kn',
+    '~/.asdf/shims',
+    '~/.amplify/bin',
+    '~/.emacs.d/backups',
+    '~/.rbenv/shims',
+    '~/.config/nvim.bak',
+    '~/.bazel/bin',
+    '~/.pulumi-dev/bin',
+    '~/.gvm/bin',
+    '~/.emacs.d.bak/bin',
+    '~/.docker/cli-plugins',
+    '~/.zsh_snap/zsh-autocomplete',
+    '~/.cache/gitstatus',
+    '~/.wrangler/bin',
+    '~/.provisio',
+    '~/.pyenv/shims',
+    '~/Library/ApplicationSupport/iTerm2',
+    '~/.kn/plugins',
+    '~/.kuberlr/darwin-amd64',
+    '/Users/Shared/logitune',
+    '~/.oh-my-zsh/tools',
+    '~/Library/Dropbox/DropboxMacUpdate.app/Contents/MacOS'
   )
   AND NOT top2_homedir IN (
     '~/Library/Application Support',
@@ -131,11 +165,6 @@ WHERE
     '~/Library/Caches',
     '~/.magefile',
     '~/.nvm'
-  )
-  AND NOT homedir IN (
-    '~/.bin',
-    '~/.fzf',
-    '~/Library/Dropbox/DropboxMacUpdate.app/Contents/MacOS'
   )
 GROUP BY
   f.path

@@ -49,7 +49,9 @@ WHERE
   AND extension NOT IN (
     '1',
     '2',
+    'basic',
     'real',
+    'AppImage',
     'ext'
   )
   AND NOT basename LIKE 'python3.%'

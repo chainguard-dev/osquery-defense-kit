@@ -132,6 +132,7 @@ WHERE
     '500,6,4318,Code Helper (Plugin),Code Helper (Plugin),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
     '500,6,5091,ZoomPhone,ZoomPhone,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.ZoomPhone',
     '500,6,5222,Telegram,Telegram,Apple Mac OS Application Signing,ru.keepcoder.Telegram',
+    '500,6,5053,bridge,bridge,Developer ID Application: Proton Technologies AG (6UN54H93QT),bridge',
     '500,6,5223,KakaoTalk,KakaoTalk,Apple Mac OS Application Signing,com.kakao.KakaoTalkMac',
     '500,6,5228,Clay,Clay,Developer ID Application: Clay Software, Inc. (C68GA48KN3),com.clay.mac',
     '500,6,8009,Spotify Helper,Spotify Helper,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',

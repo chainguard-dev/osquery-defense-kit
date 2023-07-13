@@ -49,8 +49,10 @@ WHERE
   AND file.filename NOT NULL
   AND exception_key NOT IN (
     ',a.out,/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/kubectl,501',
+    ',a.out,/opt/homebrew/Cellar/go/1.20.4/libexec/pkg/tool/darwin_arm64/trace,501',
     'Apple Mac OS Application Signing,com.anydo.mac,/Applications/Anydo.app/,0',
     'Apple Mac OS Application Signing,com.apple.garageband10,/Applications/GarageBand.app/,0',
+    'Apple Mac OS Application Signing,com.joeallen.teleprompter.mac,/Applications/Teleprompter.app/,0',
     'Apple Mac OS Application Signing,com.utmapp.QEMULauncher,/Applications/UTM.app/Contents/XPCServices/QEMUHelper.xpc/Contents/MacOS/QEMULauncher.app/,0',
     'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
     ',,/Applications/Google%20Chrome.app/,',
@@ -58,6 +60,7 @@ WHERE
     ',,/Applications/ProtonMail%20Bridge.app/,',
     ',,/Applications/Visual%20Studio%20Code.app/,',
     ',,/Applications/Visual%20Studio%20Code.app/Contents/Frameworks/Code%20Helper.app/,',
+    'Developer ID Application: Bearly Inc (NK6K4BACCF),com.bearly.app,/Applications/Bearly.app/,501',
     'Developer ID Application: Bohemian Coding (WUGMZZ5K46),com.bohemiancoding.sketch3,/Applications/Sketch.app/,501',
     'Developer ID Application: Bohemian Coding (WUGMZZ5K46),com.bohemiancoding.SketchMirrorHelper,/Applications/Sketch.app/Contents/XPCServices/SketchMirrorHelper.xpc/,501',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW),com.brother.utility.WorkflowAppControlServer,/Library/Printers/Brother/Utilities/Server/WorkflowAppControl.app/,0',
@@ -66,7 +69,6 @@ WHERE
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK),com.getdropbox.dropbox,/Applications/Dropbox.app/,501',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland,/Applications/GoLand.app/,501',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.pycharm,/Applications/PyCharm.app/,501',
-    'Apple Mac OS Application Signing,com.joeallen.teleprompter.mac,/Applications/Teleprompter.app/,0',
     'Developer ID Application: Opentest, Inc. (QGD2ZPXZZG),com.loom.desktop,/Applications/Loom.app/,501',
     'Developer ID Application: RescueTime, Inc (FSY4RB8H39),com.rescuetime.RescueTime,/Applications/RescueTime.app/,0',
     'Developer ID Application: Sonos, Inc. (2G4LW83Q3E),com.sonos.macController,/Applications/Sonos.app/,501',
@@ -75,7 +77,6 @@ WHERE
     'Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),com.vng.zalo,/Applications/Zalo.app/,501',
     'Developer ID Application: Voicemod Sociedad Limitada. (S2MC4XQDSM),net.voicemod.desktop,/Applications/Voicemod.app/,0',
     ',dnsmasq,/opt/homebrew/Cellar/dnsmasq/2.88/sbin/dnsmasq,0',
-    ',a.out,/opt/homebrew/Cellar/go/1.20.4/libexec/pkg/tool/darwin_arm64/trace,501',
     ',iodined-55554944d1ffcb236a84363d9b667be6a1742a17,/usr/local/sbin/iodined,501',
     ',java,/opt/homebrew/Cellar/openjdk/19/libexec/openjdk.jdk/Contents/Home/bin/java,501',
     ',org.python.python,/opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/Resources/Python.app/,501',
@@ -117,6 +118,10 @@ WHERE
     AND ae.path LIKE '/nix/store/%-syncthing-%/bin/syncthing'
   )
   AND NOT (
+    signature.identifier = 'nix'
+    AND ae.path LIKE '/nix/store/%-nix-%/bin/nix'
+  )  
+  AND NOT (
     ae.path LIKE '/Users/%/Library/Application%20Support/Steam/Steam.AppBundle/Steam/'
   )
   AND NOT (
@@ -135,6 +140,10 @@ WHERE
       OR file.directory LIKE '/Users/%/bin'
       OR file.directory LIKE '/Users/%/code/%'
       OR file.directory LIKE '/Users/%/src/%'
+      OR file.directory LIKE '/Users/%/gh/%'
+      OR file.directory LIKE '/Users/%/debug/%'
+      OR file.directory LIKE '/Users/%/target/%'
+      OR file.directory LIKE '/Users/%/tmp/%'
       OR file.directory LIKE '/Users/%/sigstore/%'
       OR file.directory LIKE '/Users/%/node_modules/.bin/%'
       OR file.directory LIKE '/Users/%/git/%'

@@ -107,6 +107,7 @@ WHERE
   )
   AND NOT exception_key IN (
     'system_profiler,500,Google Drive,launchd',
+    'system_profiler,500,bash,launchd',
     'system_profiler,0,launcher,launchd'
   )
   AND NOT p0_cmd LIKE '/usr/libexec/security_authtrampoline /Library/Application Support/Adobe/Adobe Desktop Common/ElevationManager/Adobe Installer auth%'
