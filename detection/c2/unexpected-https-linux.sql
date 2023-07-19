@@ -156,6 +156,7 @@ WHERE
     '500,fulcio,500u,500g,fulcio',
     '500,geoclue,0u,0g,geoclue',
     '500,gh,0u,0g,gh',
+    '500,beeper,u,g,beeper',
     '500,git,0u,0g,git',
     '500,git-remote-http,0u,0g,git-remote-http',
     '500,git-remote-http,u,g,git-remote-http',
@@ -166,6 +167,7 @@ WHERE
     '500,gjs-console,0u,0g,org.gnome.Maps',
     '500,gnome-recipes,0u,0g,gnome-recipes',
     '500,gnome-shell,0u,0g,gnome-shell',
+    '500,chrome,u,g,chrome',
     '500,gnome-software,0u,0g,gnome-software',
     '500,go,0u,0g,go',
     '500,go,500u,500g,go',
@@ -234,6 +236,7 @@ WHERE
     '500,python3.10,0u,0g,python',
     '500,python3.10,0u,0g,python3',
     '500,python3.11,0u,0g,aws',
+    '500,python3.11,0u,0g,dnf',
     '500,python3.11,0u,0g,gnome-abrt',
     '500,python3.11,0u,0g,protonvpn',
     '500,python3.11,0u,0g,prowler',
@@ -283,9 +286,7 @@ WHERE
     '500,yay,0u,0g,yay',
     '500,zdup,500u,500g,zdup',
     '500,zoom,0u,0g,zoom',
-    '500,zoom.real,u,g,zoom.real',
-    '80,6,500,python3.11,0u,0g,yum',
-    '88,6,500,syncthing,0u,0g,syncthing'
+    '500,zoom.real,u,g,zoom.real'
   ) -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '500,node,0u,0g,npm exec %'
   AND NOT exception_key LIKE '500,node,0u,0g,npm install %'
@@ -299,8 +300,7 @@ WHERE
       OR p.cwd LIKE "/home/%/src/%"
       OR p.cwd LIKE "/home/%/github/%"
     )
-  )
-  -- JetBrains
+  ) -- JetBrains
   AND NOT exception_key LIKE '500,___1go_build_%,500u,500g,___1go_build_%'
   AND NOT (
     p.path = '/usr/bin/mage'

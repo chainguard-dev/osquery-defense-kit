@@ -52,6 +52,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,303,bash,nix',
     'curl,305,bash,nix',
     'curl,307,bash,nix',
+    'curl,500,nwg-panel,systemd',
     'curl,500,bash,bash',
     'curl,500,bash,fakeroot',
     'curl,500,bash,fish',
@@ -95,7 +96,8 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
   )
   AND NOT p.cmdline IN (
     'curl -s -6 https://api.serhiy.io/v1/stats/ip',
-    'curl -s -4 https://api.serhiy.io/v1/stats/ip'
+    'curl -s -4 https://api.serhiy.io/v1/stats/ip',
+    'curl https://wttr.in/?format=1 -s'
   )
   AND NOT parent_name IN ('yay')
   AND NOT p.cmdline LIKE 'curl -s https://support-sp.apple.com/sp/product%'

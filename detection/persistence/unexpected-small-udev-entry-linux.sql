@@ -30,15 +30,14 @@ WHERE
   file.path LIKE '/usr/lib/udev/rules.d/%'
   AND file.size < 180
   AND file.path NOT IN (
+    '/usr/lib/udev/rules.d/20-crystalhd.rules',
     '/usr/lib/udev/rules.d/40-redhat-disable-dell-ir-camera.rules',
     '/usr/lib/udev/rules.d/50-apport.rules',
     '/usr/lib/udev/rules.d/60-drm.rules',
     '/usr/lib/udev/rules.d/60-net.rules',
-    '/usr/lib/udev/rules.d/99-lxd-agent.rules',
     '/usr/lib/udev/rules.d/60-rfkill.rules',
     '/usr/lib/udev/rules.d/61-accelerometer.rules',
     '/usr/lib/udev/rules.d/61-mutter.rules',
-    '/usr/lib/udev/rules.d/90-usb-microbit.rules',
     '/usr/lib/udev/rules.d/66-saned.rules',
     '/usr/lib/udev/rules.d/70-hypervfcopy.rules',
     '/usr/lib/udev/rules.d/70-hypervkvp.rules',
@@ -56,6 +55,7 @@ WHERE
     '/usr/lib/udev/rules.d/85-regulatory.rules',
     '/usr/lib/udev/rules.d/90-daxctl-device.rules',
     '/usr/lib/udev/rules.d/90-rdma-umad.rules',
+    '/usr/lib/udev/rules.d/90-usb-microbit.rules',
     '/usr/lib/udev/rules.d/90-wireshark-usbmon.rules',
     '/usr/lib/udev/rules.d/91-drm-modeset.rules',
     '/usr/lib/udev/rules.d/95-udev-late.rules',
@@ -65,6 +65,7 @@ WHERE
     '/usr/lib/udev/rules.d/99-fuse3.rules',
     '/usr/lib/udev/rules.d/99-fuse.rules',
     '/usr/lib/udev/rules.d/99-libsane1.rules',
+    '/usr/lib/udev/rules.d/99-lxd-agent.rules',
     '/usr/lib/udev/rules.d/99-nfs.rules',
     '/usr/lib/udev/rules.d/99-qemu-guest-agent.rules'
   )

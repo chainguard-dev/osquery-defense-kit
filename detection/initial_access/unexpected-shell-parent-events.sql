@@ -312,6 +312,10 @@ WHERE
       exception_key = 'sh,500,ruby,zsh'
       AND p1_cmd LIKE '%brew.rb'
     )
+    OR (
+      exception_key = 'sh,500,ruby,ruby'
+      AND p1_cmd LIKE '%homebrew%'
+    )
     OR p1_cmd LIKE '%Python /opt/homebrew/bin/aws configure sso'
     OR p2_cmd LIKE '/bin/bash /usr/local/bin/brew%'
     OR p2_cmd LIKE '/usr/bin/python3 -m py_compile %'

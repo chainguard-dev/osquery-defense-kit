@@ -70,6 +70,11 @@ WHERE
     AND f.uid > 500
   )
   AND NOT (
+    f.path LIKE '/Users/%/.local/bin/%'
+    AND f.mode = '0777'
+    AND f.uid > 500
+  )
+  AND NOT (
     f.path LIKE '/Users/%/Library/Application Support/Code/User/globalStorage/grafana.vscode-jsonnet/bin/jsonnet-language-server'
     AND f.mode = '0777'
     AND f.uid > 500

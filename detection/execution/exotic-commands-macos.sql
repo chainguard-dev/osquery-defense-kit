@@ -98,6 +98,10 @@ WHERE
     AND p1.name == 'limactl'
   )
   AND NOT (
+    p0_cmd LIKE '%UserKnownHostsFile=/dev/null%'
+    AND p0_cmd LIKE '%@localhost'
+  )
+  AND NOT (
     p0_cmd LIKE '%sh -i'
     AND p1_cmd LIKE '%pipenv shell'
   )

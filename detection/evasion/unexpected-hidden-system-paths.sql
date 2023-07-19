@@ -108,6 +108,7 @@ WHERE
     '/var/db/.AppleInstallType.plist',
     '/var/db/.AppleUpgrade',
     '/var/db/.com.apple.iokit.graphics',
+    '/var/db/.com.intego.netupdate.serviceId',
     '/var/db/.GKRearmTimer',
     '/var/db/.LastGKApp',
     '/var/db/.LastGKReject',

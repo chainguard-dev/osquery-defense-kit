@@ -61,6 +61,7 @@ WHERE
     '/usr/bin/kitty',
     '/usr/lib/electron22/electron',
     '/usr/bin/osqueryd',
+    '/usr/libexec/gvfsd',
     '/usr/bin/sudo',
     '/usr/bin/tmux',
     '/usr/bin/yay',

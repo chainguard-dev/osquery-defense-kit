@@ -114,6 +114,10 @@ WHERE
     magic.data IS NOT NULL
     AND magic.data LIKE "0420 Alliant virtual executable%"
   )
+  AND NOT (
+    magic.data IS NOT NULL
+    AND magic.data LIKE "%shell script%"
+  )
   AND NOT homedir LIKE '~/%/bin'
   AND NOT homedir LIKE '~/%/shims'
   AND NOT homedir LIKE '~/%/plugins'

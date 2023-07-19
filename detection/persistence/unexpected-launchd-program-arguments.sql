@@ -77,6 +77,7 @@ WHERE
     '/opt/homebrew/opt/yubikey-agent/bin/yubikey-agent -l /opt/homebrew/var/run/yubikey-agent.sock',
     '/usr/local/MacGPG2/libexec/fixGpgHome'
   )
+  AND program_arguments NOT LIKE '/opt/homebrew/opt/mongodb-community%/bin/mongod --config /opt/homebrew/etc/mongod.conf'
   AND program_arguments NOT LIKE '/Users/%/Library/Application Support/com.grammarly.ProjectLlama/Scripts/Grammarly Uninstaller'
   AND program_arguments NOT LIKE '/Users/%/Library/Application Support/com.grammarly.ProjectLlama/Scripts/post-uninstall.sh'
   AND program_arguments NOT LIKE '%/mysqld_safe --datadir=%'
