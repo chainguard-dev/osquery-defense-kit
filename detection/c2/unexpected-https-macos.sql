@@ -105,7 +105,6 @@ WHERE
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
-    '0,nessusd,nessusd,Developer ID Application: Tenable, Inc. (4B8J598M7U),nessusd',
     '0,AGSService,AGSService,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.ags',
     '0,com.google.one.NetworkExtension,com.google.one.NetworkExtension,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.one.NetworkExtension',
     '0,EdgeUpdater,EdgeUpdater,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.EdgeUpdater',
@@ -114,10 +113,12 @@ WHERE
     '0,kandji-library-manager,kandji-library-manager,Developer ID Application: Kandji, Inc. (P3FGV63VK7),kandji-library-manager',
     '0,kandji-parameter-agent,kandji-parameter-agent,Developer ID Application: Kandji, Inc. (P3FGV63VK7),kandji-parameter-agent',
     '0,launcher,launcher,Developer ID Application: Kolide, Inc (X98UFR7HA3),com.kolide.agent',
+    '0,logioptionsplus_installer,logioptionsplus_installer,Developer ID Application: Logitech Inc. (QED4VVPZWA),com.logi.optionsplus.installer',
     '0,multipassd,multipassd,Developer ID Application: Canonical Group Limited (X4QN7LTP59),com.canonical.multipass.multipassd',
+    '0,nessusd,nessusd,Developer ID Application: Tenable, Inc. (4B8J598M7U),nessusd',
     '0,Setup,Setup,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.acc.Setup',
+    '500,Elgato Capture Device Utility,Elgato Capture Device Utility,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5),com.elgato.CaptureDeviceUtility',
     '500,bash,bash,,bash',
-    '500,Java Updater,Java Updater,Developer ID Application: Oracle America, Inc. (VB5E2TV963),com.oracle.java.Java-Updater',
     '500,chrome_crashpad_handler,chrome_crashpad_handler,Developer ID Application: Microsoft Corporation (UBF8T346G9),chrome_crashpad_handler',
     '500,cloud_sql_proxy,cloud_sql_proxy,,a.out',
     '500,Code Helper,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode.helper',
@@ -129,8 +130,10 @@ WHERE
     '500,git-remote-http,git-remote-http,,git-remote-http-55554944748a32c47cdc35cfa7f071bb69a39ce4',
     '500,go,go,Developer ID Application: Google LLC (EQHXZ8M8AV),org.golang.go',
     '500,grype,grype,Developer ID Application: ANCHORE, INC. (9MJHKYX5AT),grype',
+    '500,OneDriveStandaloneUpdater,OneDriveStandaloneUpdater,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.OneDriveStandaloneUpdater',
     '500,Install Spotify,Install Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.installer',
     '500,IterableRichNotifications,IterableRichNotifications,Apple iPhone OS Application Signing,com.plexapp.plex.IterableRichNotifications',
+    '500,Java Updater,Java Updater,Developer ID Application: Oracle America, Inc. (VB5E2TV963),com.oracle.java.Java-Updater',
     '500,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV),ksfetch',
     '500,melange,melange,,a.out',
     '500,ngrok,ngrok,Developer ID Application: ngrok LLC (TEX8MHRDQ9),a.out',
@@ -200,6 +203,7 @@ WHERE
     )
     AND (
       p0_cmd LIKE '%/gcloud.py%'
+      OR p0_cmd LIKE '%/google-cloud-sdk/bin/%'
       OR p0_cmd LIKE '%pip install%'
       OR p0_cmd LIKE '%googlecloudsdk/core/metrics_reporter.py%'
       OR p0_cmd LIKE '%/bin/aws%'

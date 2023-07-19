@@ -44,6 +44,7 @@ WHERE
     '/etc/console-setup',
     '/etc/cron.daily',
     '/etc/cron.hourly',
+    '/etc/mc',
     '/etc/cron.monthly',
     '/etc/cron.weekly',
     '/etc/dhcp/dhclient.d',

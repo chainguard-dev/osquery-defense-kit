@@ -59,6 +59,7 @@ WHERE
     '~/Library/Application Support/com.tinyapp.TablePlus',
     '~/Library/Application Support/discord',
     '~/Library/Application Support/Docker Desktop',
+    '~/Library/Application Support/BetterTouchTool',
     '~/Library/Application Support/DropboxElectron',
     '~/Library/Application Support/GitHub Desktop',
     '~/Library/Application Support/Jabra Direct',
@@ -77,6 +78,7 @@ WHERE
     '~/Library/Application Support/.settings'
   )
   AND NOT homepath LIKE '~/Library/Application Support/.syssettings%'
+  AND NOT magic.data = 'XML 1.0 document, ASCII text'
   -- Capture One
   AND NOT (
     file.mode = "0666"

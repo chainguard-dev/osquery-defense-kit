@@ -19,7 +19,6 @@ SELECT
   -- pe.cwd is NULL on macOS
   p.cwd AS p0_cwd,
   pe.pid AS p0_pid,
-  pe.euid AS p0_euid,
   -- Parent
   pe.parent AS p1_pid,
   TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
@@ -82,6 +81,7 @@ WHERE
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
+    'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Foxit Corporation (8GN47HTP75)',
     'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
@@ -98,6 +98,7 @@ WHERE
     'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'Developer ID Application: Parallels International GmbH (4C6364ACXT)',
     'Developer ID Application: Private Internet Access, Inc. (5357M5NW9W)',
+    'Developer ID Application: Rogue Amoeba Software, LLC (7266XEXAPM)',
     'Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',
     'Developer ID Application: Sanford, L.P. (N3S6676K3E)',
     'Developer ID Application: Tailscale Inc. (W5364U7YZB)',

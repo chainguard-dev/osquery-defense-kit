@@ -189,6 +189,7 @@ WHERE
     '80,6,500,python3.10,0u,0g,yum',
     '80,6,500,python3.11,0u,0g,abrt-action-ins',
     '80,6,500,python3.11,0u,0g,dnf',
+    '80,6,500,python3.11,0u,0g,yum',
     '80,6,500,qemu-system-x86_64,0u,0g,qemu-system-x86',
     '80,6,500,rpi-imager,0u,0g,rpi-imager',
     '80,6,500,signal-desktop,0u,0g,signal-desktop',
@@ -253,21 +254,21 @@ WHERE
     p.name = 'steam'
     AND f.filename = 'steam'
     AND s.remote_port > 27000
-    AND s.protocol IN (6,17)
+    AND s.protocol IN (6, 17)
     AND p.euid > 500
   )
   AND NOT (
     p.name = 'brave'
     AND f.filename = 'brave'
     AND s.remote_port > 3000
-    AND s.protocol IN (6,17)
+    AND s.protocol IN (6, 17)
     AND p.euid > 500
   )
   AND NOT (
     p.name = 'firefox'
     AND f.filename = 'firefox'
     AND s.remote_port > 3000
-    AND s.protocol IN (6,17)
+    AND s.protocol IN (6, 17)
     AND p.euid > 500
   ) -- TODO: Move this to a custom override overlay, as it is extremely obscure (small ISP)
   AND NOT (

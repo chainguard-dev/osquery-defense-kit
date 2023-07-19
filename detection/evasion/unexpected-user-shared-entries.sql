@@ -40,13 +40,14 @@ WHERE
   )
   AND NOT (
     file.type = 'directory'
+    OR file.size = 0
     OR file.path LIKE '%/../%'
     OR file.path LIKE '%/./%'
     OR file.path IN (
       '/Users/Shared/.BetaEnrollmentData.plist',
       '/Users/Shared/.betamigrated',
       '/Users/Shared/.DS_Store',
-      '/Users/Shared/.ks.intego_metrics_2.pli',
+      '/Users/Shared/.ks.intego_metrics_2.plist',
       '/Users/Shared/.localized',
       '/Users/Shared/CleanMyMac X/.licence',
       '/Users/Shared/LogiTuneInstallerStarted.txt',
@@ -59,6 +60,8 @@ WHERE
       '/Users/Shared/AdobeGCInfo',
       '/Users/Shared/Audiority',
       '/Users/Shared/Canon_Inc_IC',
+      '/Users/Shared/CleanMyMac X',
+      '/Users/Shared/CleanMyMac X Menu',
       '/Users/Shared/LGHUB',
       '/Users/Shared/logi',
       '/Users/Shared/LogioptionsPlus',

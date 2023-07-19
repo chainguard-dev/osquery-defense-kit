@@ -74,9 +74,9 @@ WHERE
     '500,WhatsApp Helper (GPU),/Applications/WhatsApp.app/Contents/Frameworks/WhatsApp Helper (GPU).app/Contents/MacOS/WhatsApp Helper (GPU)'
   )
   AND exception_key NOT LIKE '500,MacVim,/%/MacVim.app/Contents/MacOS/MacVim'
+  AND exception_key NOT LIKE '500,PrinterProxy,/Users/%/Library/Printers/Brother %.app/Contents/MacOS/PrinterProxy'
 GROUP BY
   pos.pid
 HAVING
   lib_count IN (1, 2)
   AND libs NOT LIKE '/Applications/%/Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib,/usr/lib/libobjc-trampolines.dylib'
-

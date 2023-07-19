@@ -7,7 +7,8 @@
 --   * Almost unlimited: any extension that isn't on your whitelist
 --
 -- tags: persistent seldom browser
-SELECT name,
+SELECT
+  name,
   profile,
   chrome_extensions.description AS 'descr',
   persistent AS persists,
@@ -30,11 +31,13 @@ SELECT name,
     identifier
   ) AS exception_key,
   hash.sha256
-FROM users
+FROM
+  users
   CROSS JOIN chrome_extensions USING (uid)
   LEFT JOIN file ON chrome_extensions.path = file.path
   LEFT JOIN hash ON chrome_extensions.path = hash.path
-WHERE state = 1
+WHERE
+  state = 1
   AND (
     (
       from_webstore != 'true'
@@ -184,6 +187,7 @@ WHERE state = 1
     'true,Opera Norway AS,Opera AI Prompts,mljbnbeedpkgakdchcmfapkjhfcogaoc',
     'true,Opera Software AS,Rich Hints Agent,enegjkbbakeegngfapepobipndnebkdk',
     'true,,Outbrain Pixel Tracker,daebadnaphbiobojnpgcenlkgpihmbdc',
+    'true,,Outreach Everywhere,chmpifjjfpeodjljjadlobceoiflhdid',
     'true,,Page Analytics (by Google),fnbdnhhicmebfgdgglcdacdapkcihcoh',
     'true,,Password Alert,noondiphcddnnabmjcihcjfbhfklnnep',
     'true,Pawel Psztyc,Advanced REST client,hgmloofddffdnphfgcellkdfbfbjeloo',
@@ -254,10 +258,10 @@ WHERE state = 1
     'true,,Zoom,hmbjbjdpkobdjplfobhljndfdfdipjhg',
     'true,,ZoomInfo Engage Chrome Extension,mnbjlpbmllanehlpbgilmbjgocpmcijp',
     'true,,Zoom Scheduler,kgjfgplpablkjnlkjmjdecgdpfankdle'
-
   )
   AND NOT (
     exception_key = 'false,AgileBits,1Password – Password Manager,dppgmdbiimibapkepcbdbmkaabgiofem'
     AND chrome_extensions.path LIKE '%/Microsoft Edge/%'
   )
-GROUP BY exception_key
+GROUP BY
+  exception_key
