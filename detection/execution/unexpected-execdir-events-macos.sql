@@ -257,6 +257,7 @@ WHERE
     AND p.cmdline LIKE './%'
   ) -- Spotify
   AND pe.path NOT LIKE '/private/var/folders/%/T/sp_relauncher' -- Sparkle updater
+  AND pe.path NOT LIKE '/private/tmp%/cloud_sql_proxy'
   AND pe.path NOT LIKE '/Users/%/Library/Caches/%/org.sparkle-project.Sparkle/Launcher/%/Updater.app/Contents/MacOS/Updater'
   AND dir NOT LIKE '/Applications/%'
   AND dir NOT LIKE '~/%/bin'

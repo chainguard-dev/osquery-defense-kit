@@ -75,6 +75,8 @@ WHERE
     'go',
     'golangci-lint',
     'GoogleSoftwareUpdateAgent',
+    'com.apple.MobileSoftwareUpdate.UpdateBrainService',
+    'UpdateBrainService',
     'gopls',
     'grype',
     'java',
