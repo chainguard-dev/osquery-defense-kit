@@ -109,6 +109,7 @@ WHERE
   AND p0.path NOT LIKE '/System/Library/%'
   AND p0.path NOT LIKE '/System/%'
   AND p0.path NOT LIKE '/usr/libexec/%'
+  AND p0.path NOT LIKE '/Users/%/go/bin/%'
   AND p0.path NOT LIKE '/usr/sbin/%' -- Apple programs running from weird places, like the UpdateBrainService
   AND NOT (
     s.identifier LIKE 'com.apple.%'

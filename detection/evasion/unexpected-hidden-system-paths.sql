@@ -117,6 +117,7 @@ WHERE
     '/var/db/.StagedAppleUpgrade',
     '/var/db/.SystemPolicy-default',
     '/var/.ntw_cache',
+    '/tmp/.SIGN.RSA.chainguard-enterprise.rsa.pub',
     '/var/.Parallels_swap/',
     '/var/.pwd_cache',
     '/var/root/.bash_history',

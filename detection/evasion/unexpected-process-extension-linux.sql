@@ -49,6 +49,7 @@ WHERE
   AND extension NOT IN (
     '1',
     '2',
+    'bin',
     'basic',
     'real',
     'AppImage',
