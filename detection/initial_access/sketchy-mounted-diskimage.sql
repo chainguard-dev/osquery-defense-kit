@@ -66,6 +66,7 @@ WHERE
       AND signature.identifier != 'net.snowflake.snowsql'
       AND signature.authority NOT IN (
         'Developer ID Application: Allen Bai (97DN42T837)',
+        'Developer ID Application: BlueStack Systems, Inc. (QX5T8D6EDU)',
         'Developer ID Application: Galvanix (5BRAQAFB8B)'
       )
     ) -- Rule 2. App binaries that have mixed-caps names such as LYwjtu0sc3XqkNVbQe_gM4YiRpmgUpRIew or yWnBJLaF (AdobeFlashPlayer_567.app)

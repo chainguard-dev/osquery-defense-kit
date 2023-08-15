@@ -8,7 +8,6 @@
 --
 -- tags: persistent process state
 -- platform: linux
-
 SELECT
   -- Child
   p0.pid AS p0_pid,
@@ -49,6 +48,30 @@ WHERE
   AND extension NOT IN (
     '1',
     '2',
+    '3',
+    '4',
+    '5',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
+    '24',
+    '25',
+    '26',
+    '27',
+    '28',
+    '29',
+    '30',
     'bin',
     'basic',
     'real',
@@ -56,4 +79,4 @@ WHERE
     'ext'
   )
   AND NOT basename LIKE 'python3.%'
-  AND NOT basename LIKE 'python2.%'  
+  AND NOT basename LIKE 'python2.%'

@@ -70,19 +70,20 @@ WHERE
   AND pe.cmdline != ''
   AND pe.time > (strftime('%s', 'now') -300)
   AND NOT exception_key IN (
-    'systemctl,0,apt-helper,',
     'systemctl,0,,containerd-shim-runc-v2',
-    'systemctl,0,kubeadm,containerd-shim-runc-v2',
+    'systemctl,0,apt-helper,',
+    'systemctl,0,bash,pacman',
     'systemctl,0,dash,logrotate',
+    'systemctl,0,kubeadm,containerd-shim-runc-v2',
     'systemctl,0,pacman,pacman',
-    'systemctl,500,zsh,tmux',
     'systemctl,0,pacman,sudo',
     'systemctl,0,snapd,systemd',
     'systemctl,0,tailscaled,',
     'systemctl,127,snap,systemd',
     'systemctl,500,bash,gnome-terminal-server',
     'systemctl,500,snap,systemd',
-    'systemctl,500,systemd,'
+    'systemctl,500,systemd,',
+    'systemctl,500,zsh,tmux'
   )
   AND NOT p0_cmd IN (
     '/bin/systemctl is-enabled -q whoopsie.path',

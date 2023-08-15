@@ -85,11 +85,13 @@ WHERE
   )
   -- Local DNS servers and custom clients go here
   AND p.path NOT IN (
-    '/usr/lib/systemd/systemd-resolved',
-    '/usr/sbin/mDNSResponder',
     '/Applications/Slack.app/Contents/Frameworks/Slack Helper.app/Contents/MacOS/Slack Helper',
+    '/Applications/Spotify.app/Contents/Frameworks/Spotify Helper.app/Contents/MacOS/Spotify Helper',
+    '/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/Contents/MacOS/IPNExtension',
     '/System/Volumes/Preboot/Cryptexes/Incoming/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking',
-    '/Applications/Spotify.app/Contents/Frameworks/Spotify Helper.app/Contents/MacOS/Spotify Helper'
+    '/usr/bin/tailscaled',
+    '/usr/lib/systemd/systemd-resolved',
+    '/usr/sbin/mDNSResponder'
   )
   AND p.path NOT LIKE '/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/%/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper'
   -- Workaround for the GROUP_CONCAT subselect adding a blank ent
