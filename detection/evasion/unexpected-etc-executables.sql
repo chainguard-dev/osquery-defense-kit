@@ -149,25 +149,26 @@ WHERE
     '/etc/zfs/zpool.d'
   )
   AND file.path NOT IN (
-    '/etc/nftables.conf',
-    '/etc/sv/ssh/run',
-    '/etc/sv/ssh/finish',
-    '/etc/libpaper.d/texlive-base',
-    '/etc/vpl/vars.sh',
-    '/etc/rmt',
-    '/etc/grub2.cfg',
-    '/etc/pki/tls/certs/renew-dummy-cert',
-    '/etc/pki/tls/certs/make-dummy-cert',
-    '/etc/shutdown.sh',
-    '/etc/pwrstatd.conf',
-    '/etc/hibernate.sh',
+    '/etc/cloud/clean.d/99-installer',
     '/etc/grub2-efi.cfg',
+    '/etc/grub2.cfg',
+    '/etc/hibernate.sh',
+    '/etc/libpaper.d/texlive-base',
+    '/etc/nftables.conf',
+    '/etc/opt/chrome/native-messaging-hosts/com.google.endpoint_verification.api_helper.json',
     '/etc/paths.d/100-rvictl',
+    '/etc/pki/tls/certs/make-dummy-cert',
+    '/etc/pki/tls/certs/renew-dummy-cert',
     '/etc/profile',
-    '/etc/sudoers.d/lima',
+    '/etc/pwrstatd.conf',
     '/etc/qemu-ifdown',
     '/etc/qemu-ifup',
-    '/etc/opt/chrome/native-messaging-hosts/com.google.endpoint_verification.api_helper.json'
+    '/etc/rmt',
+    '/etc/shutdown.sh',
+    '/etc/sudoers.d/lima',
+    '/etc/sv/ssh/finish',
+    '/etc/sv/ssh/run',
+    '/etc/vpl/vars.sh'
   )
   -- Nix (on macOS) -- actually a symbolic link
   AND file.path NOT LIKE '/etc/profiles/per-user/%/bin/%'

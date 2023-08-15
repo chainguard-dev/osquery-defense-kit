@@ -84,6 +84,7 @@ WHERE
     '.mysql_history',
     '.lesshst',
     'pve-installer.squashfs',
+    'KBFS_NOT_RUNNING',
     '.gitconfig',
     '.flyrc',
     '.dbshell',
@@ -110,11 +111,12 @@ WHERE
     '.VolumeIcon.icns'
   )
   AND authority NOT IN (
-    'Developer ID Application: Google LLC (EQHXZ8M8AV)',
+    'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+    'Developer ID Application: BlueStack Systems, Inc. (QX5T8D6EDU)',
     'Developer ID Application: Canon Inc. (XE2XNRRXZ5)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
-    'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
-    'Developer ID Application: Adobe Inc. (JQ525L2MZD)'
+    'Developer ID Application: Google LLC (EQHXZ8M8AV)',
+    'Developer ID Application: Logitech Inc. (QED4VVPZWA)'
   ) -- Unsigned programs here
   AND trimpath NOT IN (
     '/Volumes/Google Chrome/.keystone_install',

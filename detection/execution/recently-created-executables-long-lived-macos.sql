@@ -128,6 +128,8 @@ WHERE
       OR f.path LIKE '%go-build%'
       OR f.path LIKE '~/%/src/%.test'
       OR f.path LIKE '~/%/pkg/%.test'
+      OR f.path LIKE '~/%/gopls'
+      OR f.path LIKE '~/go/%/bin'
       OR f.path LIKE '/private/tmp/%/Creative Cloud Installer.app/Contents/MacOS/Install'
       OR f.path LIKE '/private/tmp/go-%'
       OR f.path LIKE '/private/tmp/nix-build-%'

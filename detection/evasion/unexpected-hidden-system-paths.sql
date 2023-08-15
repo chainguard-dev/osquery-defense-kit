@@ -68,6 +68,7 @@ WHERE
     '/etc/selinux/.config_backup',
     '/etc/skel/.mozilla/',
     '/etc/.#sudoers',
+    '/tmp/.searcher.tmp/',
     '/.file',
     '/.lesshst',
     '/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',

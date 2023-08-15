@@ -204,5 +204,6 @@ WHERE
   AND NOT exception_key IN (
     'dd,500,zsh,login',
     'git,500,zsh,goland',
+    'sh,0,Ecamm Live,launchd',
     'cat,500,zsh,login'
   )

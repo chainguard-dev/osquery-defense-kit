@@ -127,6 +127,7 @@ WHERE
     '~/.fzf/bin',
     '~/.venv/bin',
     '~/.fig/bin',
+    '~/.zsh_snap/zsh-snap',
     '~/.zed/gopls',
     '~/.config/kn',
     '~/.asdf/shims',
