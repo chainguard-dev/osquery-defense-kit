@@ -224,7 +224,7 @@ WHERE
     '/dev/vgubuntu/root',
     '/dev/vgubuntu/swap_',
     '/dev/vhci',
-    '/dev/disk/by-dname'
+    '/dev/disk/by-dname',
     '/dev/vhost-net',
     '/dev/vhost-vsock',
     '/dev/video',
@@ -241,7 +241,6 @@ WHERE
     '/dev/zram',
     '/dev/zvol/',
     '/dev/zvol/rpool'
-
   )
   AND NOT path LIKE '/dev/mapper/%'
   AND NOT path LIKE '/dev/shm/sem.rpc%'

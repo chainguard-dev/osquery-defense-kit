@@ -53,7 +53,7 @@ WHERE
     ',,/Applications/ProtonMail%20Bridge.app/,',
     ',,/Applications/Visual%20Studio%20Code.app/,',
     ',,/Applications/Visual%20Studio%20Code.app/Contents/Frameworks/Code%20Helper.app/,',
-    ',,/usr/local/sbin/iodined,501'
+    ',,/usr/local/sbin/iodined,501',
     ',a.out,/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/kubectl,501',
     ',a.out,/opt/homebrew/Cellar/go/1.20.4/libexec/pkg/tool/darwin_arm64/trace,501',
     ',dnsmasq,/opt/homebrew/Cellar/dnsmasq/2.88/sbin/dnsmasq,0',
@@ -91,8 +91,7 @@ WHERE
     'Software Signing,com.apple.controlcenter,/System/Library/CoreServices/ControlCenter.app/,0',
     'Software Signing,com.apple.nc,/usr/bin/nc,0',
     'Software Signing,com.apple.python3,/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
-    'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0',
-
+    'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0'
   )
   AND NOT exception_key LIKE ',a.out,/opt/homebrew/Cellar/podman/%/libexec/podman/gvproxy,501'
   AND NOT exception_key LIKE ',a.out,/private/var/folders/%/T/GoLand/%,501'
@@ -123,7 +122,7 @@ WHERE
   AND NOT (
     signature.identifier = 'nix'
     AND ae.path LIKE '/nix/store/%-nix-%/bin/nix'
-  )  
+  )
   AND NOT (
     ae.path LIKE '/Users/%/Library/Application%20Support/Steam/Steam.AppBundle/Steam/'
   )

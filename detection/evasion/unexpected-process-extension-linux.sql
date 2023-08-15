@@ -8,7 +8,6 @@
 --
 -- tags: persistent process state
 -- platform: linux
-
 SELECT
   -- Child
   p0.pid AS p0_pid,
@@ -80,4 +79,4 @@ WHERE
     'ext'
   )
   AND NOT basename LIKE 'python3.%'
-  AND NOT basename LIKE 'python2.%'  
+  AND NOT basename LIKE 'python2.%'

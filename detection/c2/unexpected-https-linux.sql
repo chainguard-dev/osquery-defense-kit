@@ -288,7 +288,6 @@ WHERE
     '500,zdup,500u,500g,zdup',
     '500,zoom,0u,0g,zoom',
     '500,zoom.real,u,g,zoom.real'
-
   ) -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '500,node,0u,0g,npm exec %'
   AND NOT exception_key LIKE '500,node,0u,0g,npm install %'

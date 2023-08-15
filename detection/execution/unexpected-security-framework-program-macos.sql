@@ -122,7 +122,7 @@ WHERE
     '500,Todoist,com.todoist.mac.Todoist,Apple Mac OS Application Signing',
     '500,TwitchStudioStreamDeck,TwitchStudioStreamDeck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     '500,WinAppHelper,,',
-    '500,WinAppHelper,WinAppHelper,'
+    '500,WinAppHelper,WinAppHelper,',
     '500,bash,bash,',
     '500,bash,com.apple.bash,Software Signing',
     '500,bufls,a.out,',

@@ -156,7 +156,6 @@ WHERE
     '500,syncthing,syncthing,,syncthing',
     '500,terraform,terraform,Developer ID Application: Hashicorp, Inc. (D38WU7D763),terraform',
     '500,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos'
-
   )
   AND NOT exception_key LIKE '500,tor-%-darwin-brave-%,tor-%-darwin-brave-%,Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),tor-%-darwin-brave-%'
   AND NOT alt_exception_key IN (

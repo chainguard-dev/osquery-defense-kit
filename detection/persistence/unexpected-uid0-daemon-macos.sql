@@ -267,7 +267,7 @@ WHERE -- Focus on longer-running programs
         '/usr/sbin/BTLEServer',
         '/usr/sbin/BlueTool',
         '/usr/sbin/KernelEventAgent',
-        '/usr/sbin/WirelessRadioManagerd'
+        '/usr/sbin/WirelessRadioManagerd',
         '/usr/sbin/aslmanager',
         '/usr/sbin/audioclocksyncd',
         '/usr/sbin/auditd',
@@ -282,8 +282,7 @@ WHERE -- Focus on longer-running programs
         '/usr/sbin/sshd',
         '/usr/sbin/syslogd',
         '/usr/sbin/systemsoundserverd',
-        '/usr/sbin/systemstats',
-
+        '/usr/sbin/systemstats'
       )
       AND NOT path LIKE '/nix/store/%-nix-%/bin/nix'
       AND NOT path LIKE '/opt/homebrew/Cellar/htop/%/bin/htop'

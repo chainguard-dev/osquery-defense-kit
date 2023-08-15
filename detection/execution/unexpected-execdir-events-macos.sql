@@ -203,7 +203,7 @@ WHERE
     '/Library/Printers/EPSON/InkjetPrinter2/Filter/commandtoescp.app/Contents/MacOS',
     '/Library/PrivilegedHelperTools',
     '/Library/TeX/texbin',
-    '/Volumes/Grammarly/Grammarly Installer.app/Contents/MacOS'
+    '/Volumes/Grammarly/Grammarly Installer.app/Contents/MacOS',
     '/bin',
     '/node_modules/.bin',
     '/opt/X11/bin',
@@ -247,8 +247,7 @@ WHERE
     '~/code/bin',
     '~/go/bin',
     '~/melange',
-    '~/projects/go/bin',
-
+    '~/projects/go/bin'
   ) -- Locally built executables
   AND NOT (
     s.identifier = 'a.out'

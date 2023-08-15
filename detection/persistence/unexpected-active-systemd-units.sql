@@ -15,13 +15,7 @@ SELECT --  description AS 'desc',
   hash.sha256,
   file.ctime,
   file.size,
-  CONCAT (
-    id,
-    ',',
-    description,
-    ',',
-    user
-  ) AS exception_key
+  CONCAT (id, ',', description, ',', user) AS exception_key
 FROM
   systemd_units
   LEFT JOIN hash ON systemd_units.fragment_path = hash.path
@@ -374,7 +368,6 @@ WHERE
         'znapzend.service,ZnapZend - ZFS Backup System,root',
         'zpool-trim.service,ZFS pools trim,',
         'zpool-trim.timer,zpool-trim.timer,'
-
       )
       OR exception_key LIKE 'machine-qemu%.scope,Virtual Machine qemu%,'
       OR exception_key LIKE 'zfs-snapshot-%.timer,zfs-snapshot-%.timer,'
