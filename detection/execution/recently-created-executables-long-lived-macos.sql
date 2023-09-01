@@ -190,7 +190,7 @@ WHERE
     'Software Signing'
   )
   AND NOT (
-    s.id = "com.apple.print.PrinterProxy"
+    s.identifier = "com.apple.print.PrinterProxy"
     AND p0.path LIKE "/Users/%/Library/Printers/%/Contents/MacOS/PrinterProxy"
     AND p0.uid > 499
   )

@@ -9,7 +9,7 @@
 --   * disk images downloaded from a location not in the exception list
 --
 -- platform: darwin
--- tags: persistent filesystem spotlight
+-- tags: persistent filesystem spotlight often
 SELECT
   file.path,
   file.size,
@@ -130,6 +130,7 @@ WHERE
     'arc.net',
     'presenting.app',
     'adoptium.net',
+    'mimestream.com',
     'balsamiq.com',
     'bearly.ai',
     'brave.com',

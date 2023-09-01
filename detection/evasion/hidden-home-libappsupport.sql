@@ -82,10 +82,10 @@ WHERE
   -- Capture One
   AND NOT (
     file.mode = "0666"
-    AND size > 2000
+    AND size > 1200
     AND size < 4000
     AND REGEX_MATCH (
-      ".085520434CB685DE008C8DBAB6A46215",
+      file.filename,
       "^(\.[0-9A-Z]{32})$",
       0
     ) != ""

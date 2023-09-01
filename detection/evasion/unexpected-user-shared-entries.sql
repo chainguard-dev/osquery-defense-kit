@@ -50,6 +50,7 @@ WHERE
       '/Users/Shared/.DS_Store',
       '/Users/Shared/.ks.intego_metrics_2.plist',
       '/Users/Shared/.localized',
+      '/Users/Shared/.userfonts.cachedb',
       '/Users/Shared/CleanMyMac X/.licence',
       '/Users/Shared/LogiTuneInstallerStarted.txt',
       '/Users/Shared/.NSVolumeHeap',
