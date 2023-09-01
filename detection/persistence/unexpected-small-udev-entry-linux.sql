@@ -32,7 +32,9 @@ WHERE
   AND file.path NOT IN (
     '/usr/lib/udev/rules.d/20-crystalhd.rules',
     '/usr/lib/udev/rules.d/40-redhat-disable-dell-ir-camera.rules',
+    '/usr/lib/udev/rules.d/45-i2c-tools.rules',
     '/usr/lib/udev/rules.d/50-apport.rules',
+    '/usr/lib/udev/rules.d/60-ddcutil.rules',
     '/usr/lib/udev/rules.d/60-drm.rules',
     '/usr/lib/udev/rules.d/60-net.rules',
     '/usr/lib/udev/rules.d/60-rfkill.rules',

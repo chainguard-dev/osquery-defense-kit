@@ -71,43 +71,44 @@ WHERE
   AND basename NOT IN (
     '.',
     '..',
+    '.actrc',
+    '.angular-config.json',
     '._.apdisk',
     '.apdisk',
     '._AUTORUN.INF',
     '.background',
     '.background.png',
-    '.disk_label',
-    '.keystone_install',
-    '.CFUserTextEncoding',
-    '.actrc',
-    '.angular-config.json',
-    '.mysql_history',
-    '.lesshst',
-    'pve-installer.squashfs',
-    '.gitconfig',
-    '.flyrc',
-    '.dbshell',
+    '.background.tiff',
     '.bash_history',
     '.bashrc',
+    '.CFUserTextEncoding',
+    '.dbshell',
+    '.disk_label',
     '.disk_label_2x',
-    '.pdfbox.cache',
     '.DS_Store',
     '.file',
-    'UFRII_LT_LIPS_LX_Installer.pkg',
-    'LogiPresentation Installer.app',
     '.file-revisions-by-id',
+    '.flyrc',
+    '.gitconfig',
     '._Id.txt',
     '.iotest',
+    '.keystone_install',
+    '.lesshst',
+    'LogiPresentation Installer.app',
     '.metadata_never_index_unless_rootfs',
+    '.mysql_history',
+    '.pdfbox.cache',
+    'pve-installer.squashfs',
     'Seagate Dashboard Installer.exe',
     '.shortcut-targets-by-id',
     '._.TemporaryItems',
     '.TemporaryItems',
     '._.Trashes',
-    '.zsh_history',
     '.Trashes',
+    'UFRII_LT_LIPS_LX_Installer.pkg',
     '.vol',
-    '.VolumeIcon.icns'
+    '.VolumeIcon.icns',
+    '.zsh_history'
   )
   AND authority NOT IN (
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
@@ -128,6 +129,7 @@ WHERE
   AND trimpath NOT LIKE '/Volumes/JDK %/JDK %.pkg'
   AND trimpath NOT LIKE '/Volumes/Google Earth Pro%/Install Google Earth Pro%.pkg'
   AND trimpath NOT LIKE '/Volumes/mysql-shell-%/mysql-shell-%.pkg'
+  AND trimpath NOT LIKE '/Volumes/Blackmagic DaVinci Resolve/Install Resolve %.pkg'
   AND magic.data NOT LIKE 'ASCII text%'
   AND NOT (
     magic.data = 'AppleDouble encoded Macintosh file'

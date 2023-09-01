@@ -92,7 +92,10 @@ WHERE
     '/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/',
     ',,/usr/local/sbin/iodined,501'
   )
+  AND NOT exception_key LIKE ',a.out,/Users/%/dev/%,501'
+  AND NOT exception_key LIKE ',org.python.python,/opt/homebrew/Cellar/python@%/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/,501'
   AND NOT exception_key LIKE ',a.out,/opt/homebrew/Cellar/podman/%/libexec/podman/gvproxy,501'
+  AND NOT exception_key LIKE ',net.java.openjdk.java,/opt/homebrew/Cellar/openjdk/%/libexec/openjdk.jdk/Contents/Home/bin/java,501'
   AND NOT exception_key LIKE ',a.out,/private/var/folders/%/T/GoLand/%,501'
   AND NOT exception_key LIKE ',a.out,/Users/%/GolandProjects/documentation-code-examples/debuggingTutorial/myApp,501'
   AND NOT exception_key LIKE ',node,/opt/homebrew/Cellar/nvm/%/versions/node/v%/bin/node,501'
@@ -120,7 +123,7 @@ WHERE
   AND NOT (
     signature.identifier = 'nix'
     AND ae.path LIKE '/nix/store/%-nix-%/bin/nix'
-  )  
+  )
   AND NOT (
     ae.path LIKE '/Users/%/Library/Application%20Support/Steam/Steam.AppBundle/Steam/'
   )

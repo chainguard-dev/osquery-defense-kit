@@ -31,6 +31,7 @@ WHERE
     'cgr.dev/chainguard/wolfi-base',
     'distroless.dev/melange',
     'docker.io/rancher/k3s',
+    'cgr.dev/chainguard-private/python',
     'gcr.io/k8s-minikube/kicbase',
     'ghcr.io/wolfi-dev/sdk',
     'kindest/node',

@@ -15,13 +15,7 @@ SELECT --  description AS 'desc',
   hash.sha256,
   file.ctime,
   file.size,
-  CONCAT (
-    id,
-    ',',
-    description,
-    ',',
-    user
-  ) AS exception_key
+  CONCAT (id, ',', description, ',', user) AS exception_key
 FROM
   systemd_units
   LEFT JOIN hash ON systemd_units.fragment_path = hash.path
@@ -213,6 +207,7 @@ WHERE
         'plymouth-read-write.service,Tell Plymouth To Write Out Runtime Data,',
         'plymouth-start.service,Show Plymouth Boot Screen,',
         'polkit.service,Authorization Manager,',
+        'polkit.service,Authorization Manager,polkitd',
         'power-profiles-daemon.service,Power Profiles daemon,',
         'proc-sys-fs-binfmt_misc.automount,Arbitrary Executable File Formats File System Automount Point,',
         'pwrstatd.service,The monitor UPS software.,',
@@ -230,6 +225,7 @@ WHERE
         'rpc-statd-notify.service,Notify NFS peers of a restart,',
         'rsyslog.service,System Logging Service,',
         'rtkit-daemon.service,RealtimeKit Scheduling Policy Service,',
+        'sddm.service,Simple Desktop Display Manager,',
         'serial-getty@ttyS0.service,Serial Getty on ttyS0,',
         'setroubleshootd.service,SETroubleshoot daemon for processing new SELinux denial logs,setroubleshoot',
         'setvtrgb.service,Set console scheme,',
@@ -267,6 +263,7 @@ WHERE
         'systemd-cryptsetup@cryptoswap.service,Cryptography Setup for cryptoswap,',
         'systemd-cryptsetup@cryptswap.service,Cryptography Setup for cryptswap,',
         'systemd-fsckd.socket,fsck to fsckd communication Socket,',
+        'systemd-fsck-root.service,File System Check on Root Device,',
         'systemd-growfs@-.service,Grow File System on /,',
         'systemd-homed-activate.service,Home Area Activation,',
         'systemd-homed.service,Home Area Manager,',
@@ -317,6 +314,7 @@ WHERE
         'systemd-userdbd.socket,User Database Manager Socket,',
         'systemd-user-sessions.service,Permit User Sessions,',
         'systemd-vconsole-setup.service,Setup Virtual Console,',
+        'systemd-vconsole-setup.service,Virtual Console Setup,',
         'system.slice,System Slice,',
         'tailscaled.service,Tailscale node agent,',
         'thermald.service,Thermal Daemon Service,',

@@ -297,6 +297,7 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Creative Labs Pte. Ltd. (5Q3552844F)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
+    'Developer ID Application: OPENVPN TECHNOLOGIES, INC. (ACV7L3WCD8)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     'Developer ID Application: Foxit Corporation (8GN47HTP75)',
     'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',

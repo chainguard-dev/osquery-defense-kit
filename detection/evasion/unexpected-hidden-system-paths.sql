@@ -74,6 +74,7 @@ WHERE
     '/.mozilla/',
     '/tmp/.accounts-agent/',
     '/tmp/.audio-agent/',
+    '/tmp/.SIGN.RSA..local-melange.rsa.pub',
     '/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
     '/tmp/.content-agent/',
     '/tmp/._contentbarrier_installed',
@@ -148,6 +149,7 @@ WHERE
   AND file.path NOT LIKE '/%bin/bootstrapping/.default_components'
   AND file.path NOT LIKE '/tmp/.#%'
   AND file.path NOT LIKE '/tmp/.lark_cache_%'
+  AND file.path NOT LIKE '/tmp/.cdx.json%'
   AND file.path NOT LIKE '/tmp/.wine-%'
   AND file.path NOT LIKE '/tmp/.%.gcode'
   AND file.path NOT LIKE '/tmp/.vbox-%-ipc/'

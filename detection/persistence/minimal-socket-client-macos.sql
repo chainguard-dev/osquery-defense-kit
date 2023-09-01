@@ -69,12 +69,12 @@ WHERE
     '500,Slack Helper (Renderer),/Applications/Slack.app/Contents/Frameworks/Slack Helper (Renderer).app/Contents/MacOS/Slack Helper (Renderer)',
     '500,Snagit 2020,/Applications/Snagit 2020.app/Contents/MacOS/Snagit 2020',
     '500,SnagitHelper2020,/Applications/Snagit 2020.app/Contents/Library/LoginItems/SnagitHelper2020.app/Contents/MacOS/SnagitHelper2020',
-    '500,Steam Helper,/Users/kaniini/Library/Application Support/Steam/Steam.AppBundle/Steam/Contents/MacOS/Frameworks/Steam Helper.app/Contents/MacOS/Steam Helper',
     '500,Todoist,/Applications/Todoist.app/Contents/MacOS/Todoist',
     '500,WhatsApp Helper (GPU),/Applications/WhatsApp.app/Contents/Frameworks/WhatsApp Helper (GPU).app/Contents/MacOS/WhatsApp Helper (GPU)'
   )
   AND exception_key NOT LIKE '500,MacVim,/%/MacVim.app/Contents/MacOS/MacVim'
   AND exception_key NOT LIKE '500,PrinterProxy,/Users/%/Library/Printers/Brother %.app/Contents/MacOS/PrinterProxy'
+  AND exception_key NOT LIKE '500,Steam Helper,/Users/%/Library/Application Support/Steam/Steam.AppBundle/Steam/Contents/MacOS/Frameworks/Steam Helper.app/Contents/MacOS/Steam Helper'
 GROUP BY
   pos.pid
 HAVING

@@ -46,6 +46,7 @@ WHERE
     OR file.path IN (
       '/Users/Shared/.BetaEnrollmentData.plist',
       '/Users/Shared/.betamigrated',
+      '/Users/Shared/.com.intego.reporting.plist',
       '/Users/Shared/.DS_Store',
       '/Users/Shared/.ks.intego_metrics_2.plist',
       '/Users/Shared/.localized',
@@ -59,6 +60,7 @@ WHERE
       '/Users/Shared/AdobeGCData',
       '/Users/Shared/AdobeGCInfo',
       '/Users/Shared/Audiority',
+      '/Users/Shared/UnrealEngine',
       '/Users/Shared/Canon_Inc_IC',
       '/Users/Shared/CleanMyMac X',
       '/Users/Shared/CleanMyMac X Menu',

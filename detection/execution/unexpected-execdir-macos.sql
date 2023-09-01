@@ -140,6 +140,7 @@ WHERE
     '~/Library/Caches/com.mimestream.Mimestream/',
     '~/Library/Caches/com.sempliva.Tiles/',
     '~/Library/Caches/JetBrains/',
+    '~/Library/Caches/Cypress/',
     '~/Library/Caches/org.gpgtools.updater/',
     '~/Library/Caches/snyk/',
     '/Library/Developer/Xcode/',

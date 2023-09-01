@@ -39,6 +39,7 @@ WHERE
     '~/Library/Accessibility/.com.apple.RTTTranscripts_SUPPORT/_EXTERNAL_DATA',
     '~/Library/Finance/.finance_cloud_SUPPORT/_EXTERNAL_DATA',
     '~/Library/Finance/.finance_local_SUPPORT/_EXTERNAL_DATA',
+    '~/Library/Preferences/.wrangler',
     '~/Library/Group Containers/.SiriTodayViewExtension/Library',
     '~/Library/Group Containers/.SiriTodayViewExtension',
     '~/Library/Saved Searches/.DockTags',

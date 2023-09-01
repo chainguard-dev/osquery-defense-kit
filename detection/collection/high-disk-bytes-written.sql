@@ -57,6 +57,7 @@ WHERE
     '/opt/homebrew/bin/qemu-system-aarch64',
     '/opt/osquery/lib/osquery.app/Contents/MacOS/osqueryd',
     '/usr/bin/apt',
+    '/usr/lib/baloo_file',
     '/usr/bin/aptd',
     '/usr/bin/bash',
     '/usr/bin/bwrap',

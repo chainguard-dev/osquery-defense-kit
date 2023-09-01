@@ -87,15 +87,12 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '/tmp/com.apple.installer%'
           OR file.path LIKE '%/tmp/epdf%'
           OR file.path LIKE '/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%'
-          OR file.filename IN (
-            'mysqld_exporter',
-            'goreleaser'
-          )
+          OR file.filename IN ('mysqld_exporter', 'goreleaser')
         )
       )
       -- Melange
       AND NOT file.directory LIKE '/tmp/melange-guest-%'
-       -- Nix
+      -- Nix
       AND NOT (
         file.directory LIKE '/tmp/tmp%'
         AND gid = 0
@@ -156,6 +153,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         AND file.uid > 500
         AND extension IN (
           'adoc',
+          'md',
           'bat',
           'java',
           'js',

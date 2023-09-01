@@ -106,6 +106,7 @@ WHERE
   )
   AND NOT exception_key IN (
     '0,AGSService,AGSService,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.ags',
+    '0,com.fortinet.forticlient.macos.vpn.nwextension,com.fortinet.forticlient.macos.vpn.nwextension,Developer ID Application: Fortinet, Inc (AH4XFXJ7DK),com.fortinet.forticlient.macos.vpn.nwextension',
     '0,com.google.one.NetworkExtension,com.google.one.NetworkExtension,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.one.NetworkExtension',
     '0,EdgeUpdater,EdgeUpdater,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.EdgeUpdater',
     '0,Install,Install,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.Install',
@@ -117,7 +118,6 @@ WHERE
     '0,multipassd,multipassd,Developer ID Application: Canonical Group Limited (X4QN7LTP59),com.canonical.multipass.multipassd',
     '0,nessusd,nessusd,Developer ID Application: Tenable, Inc. (4B8J598M7U),nessusd',
     '0,Setup,Setup,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.acc.Setup',
-    '500,Elgato Capture Device Utility,Elgato Capture Device Utility,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5),com.elgato.CaptureDeviceUtility',
     '500,bash,bash,,bash',
     '500,chrome_crashpad_handler,chrome_crashpad_handler,Developer ID Application: Microsoft Corporation (UBF8T346G9),chrome_crashpad_handler',
     '500,cloud_sql_proxy,cloud_sql_proxy,,a.out',
@@ -126,20 +126,22 @@ WHERE
     '500,Code Helper (Renderer),Code Helper (Renderer),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
     '500,Ecamm Live Stream Deck Plugin,Ecamm Live Stream Deck Plugin,Developer ID Application: Ecamm Network, LLC (5EJH68M642),Ecamm Live Stream Deck Plugin',
     '500,Electron,Electron,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode',
+    '500,Elgato Capture Device Utility,Elgato Capture Device Utility,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5),com.elgato.CaptureDeviceUtility',
     '500,Fleet,~/Library/Caches/JetBrains/Fleet',
     '500,git-remote-http,git-remote-http,,git-remote-http-55554944748a32c47cdc35cfa7f071bb69a39ce4',
     '500,go,go,Developer ID Application: Google LLC (EQHXZ8M8AV),org.golang.go',
     '500,grype,grype,Developer ID Application: ANCHORE, INC. (9MJHKYX5AT),grype',
-    '500,OneDriveStandaloneUpdater,OneDriveStandaloneUpdater,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.OneDriveStandaloneUpdater',
     '500,Install Spotify,Install Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.installer',
     '500,IterableRichNotifications,IterableRichNotifications,Apple iPhone OS Application Signing,com.plexapp.plex.IterableRichNotifications',
     '500,Java Updater,Java Updater,Developer ID Application: Oracle America, Inc. (VB5E2TV963),com.oracle.java.Java-Updater',
+    '500,Kindle,Kindle,TestFlight Beta Distribution,com.amazon.Lassen',
     '500,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV),ksfetch',
     '500,melange,melange,,a.out',
     '500,ngrok,ngrok,Developer ID Application: ngrok LLC (TEX8MHRDQ9),a.out',
     '500,ngrok,ngrok,Developer ID Application: ngrok LLC (TEX8MHRDQ9),darwin_amd64',
     '500,node,node,Developer ID Application: Node.js Foundation (HX7739G8FX),node',
     '500,old,old,Developer ID Application: Denver Technologies, Inc (2BBY89MBSN),dev.warp.Warp-Stable',
+    '500,OneDriveStandaloneUpdater,OneDriveStandaloneUpdater,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.OneDriveStandaloneUpdater',
     '500,op,op,Developer ID Application: AgileBits Inc. (2BUA8C4S2C),com.1password.op',
     '500,Paintbrush,Paintbrush,Developer ID Application: Michael Schreiber (G966ML7VBG),com.soggywaffles.paintbrush',
     '500,PlexMobile,PlexMobile,Apple iPhone OS Application Signing,com.plexapp.plex',
@@ -158,8 +160,8 @@ WHERE
   )
   AND NOT exception_key LIKE '500,tor-%-darwin-brave-%,tor-%-darwin-brave-%,Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),tor-%-darwin-brave-%'
   AND NOT alt_exception_key IN (
-    '0,velociraptor,velociraptor,0u,80g',
     '0,velociraptor,velociraptor,0u,0g',
+    '0,velociraptor,velociraptor,0u,80g',
     '500,apko,apko,0u,0g',
     '500,apko,apko,500u,20g',
     '500,aws,aws,0u,0g',
@@ -168,6 +170,7 @@ WHERE
     '500,chainctl,chainctl,500u,20g',
     '500,chainlink,chainlink,500u,20g',
     '500,cilium,cilium,500u,123g',
+    '500,cloud-sql-proxy,cloud-sql-proxy,500u,20g',
     '500,cosign,cosign,0u,500g',
     '500,cosign,cosign,500u,20g',
     '500,cosign,cosign,500u,80g',
@@ -181,6 +184,7 @@ WHERE
     '500,gitsign,gitsign,500u,20g',
     '500,go,go,500u,80g',
     '500,.man-wrapped,.man-wrapped,0u,500g',
+    '500,pprof,pprof,500u,80g',
     '500,pulumi-resource-gcp,pulumi-resource-gcp,500u,20g',
     '500,sdaudioswitch,sdaudioswitch,500u,20g',
     '500,sdzoomplugin,sdzoomplugin,500u,20g',
@@ -204,6 +208,7 @@ WHERE
     AND (
       p0_cmd LIKE '%/gcloud.py%'
       OR p0_cmd LIKE '%/google-cloud-sdk/bin/%'
+      OR p0_cmd LIKE '%/google-cloud-sdk/platform/%'
       OR p0_cmd LIKE '%pip install%'
       OR p0_cmd LIKE '%googlecloudsdk/core/metrics_reporter.py%'
       OR p0_cmd LIKE '%/bin/aws%'

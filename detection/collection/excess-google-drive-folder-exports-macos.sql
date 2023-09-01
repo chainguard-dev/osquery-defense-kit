@@ -18,6 +18,11 @@ WHERE
   mdfind.query = "kMDItemWhereFroms == 'https://*-drive-data-export.googleusercontent.com*' AND 'kMDItemFSCreationDate >= $time.now(-604800)'"
   -- this seems excessive, but I was having issues with kMDItemFSCreationDate not filtering appropriately
   AND MAX(file.btime, file.ctime, file.mtime) > (strftime('%s', 'now') -604800)
--- "GROUP BY" should be unnecessary, but Kolide seems to require it
-GROUP BY ea.key  
-HAVING total_size > (100*1024*1024) OR num_exports > 1
+  -- "GROUP BY" should be unnecessary, but Kolide seems to require it
+GROUP BY
+  ea.key
+HAVING
+  total_size > (100 * 1024 * 1024)
+  OR num_exports > 1
+ORDER BY
+  file.path ASC

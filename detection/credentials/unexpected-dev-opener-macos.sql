@@ -86,6 +86,7 @@ WHERE
     '/dev/console,launchd_sim,Software Signing,com.apple.xpc.launchd',
     '/dev/console,launchd,Software Signing,com.apple.xpc.launchd',
     '/dev/cu.BLTH,bluetoothd,Software Signing,com.apple.bluetoothd',
+    '/dev/console,dbeaver,Developer ID Application: DBeaver Corporation (42B6MDKMW8),org.jkiss.dbeaver.core.product',
     '/dev/io8log,airportd,Software Signing,com.apple.airport.airportd',
     '/dev/io8log,ControlCenter,Software Signing,com.apple.controlcenter',
     '/dev/io8logmt,airportd,Software Signing,com.apple.airport.airportd',
