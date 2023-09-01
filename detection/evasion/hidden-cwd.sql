@@ -79,6 +79,7 @@ WHERE
         'vim',
         'find',
         'nvim',
+        'terraform',
         'code',
         'updatedb',
         'git',
@@ -143,6 +144,7 @@ WHERE
     OR dir LIKE '/private/tmp/%/.git'
     OR dir LIKE '/tmp/.mount_%'
     OR dir LIKE '/tmp/%/.git'
+    OR dir LIKE '~/%/.tests/%'
     OR dir LIKE '/tmp/%/.github/workflows'
     OR dir LIKE '~/%/.terragrunt-cache/%'
     OR dir LIKE '%/.build'

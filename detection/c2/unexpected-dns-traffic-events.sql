@@ -80,6 +80,8 @@ WHERE
     'Meeting Center,8.8.8.8,53',
     'signal-desktop,8.8.8.8,53',
     'slack,8.8.8.8,53',
+    'EpicWebHelper,8.8.4.4,53',
+    'EpicWebHelper,8.8.8.8,53',
     'Signal Helper (Renderer),8.8.8.8,53',
     'plugin-container,8.8.8.8,53',
     'WhatsApp,1.1.1.1,53',

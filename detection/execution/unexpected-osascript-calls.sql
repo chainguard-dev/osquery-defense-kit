@@ -110,6 +110,10 @@ WHERE
         p1_authority = 'Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM)'
         AND p0_cmd = 'osascript -ss'
       )
+      OR (
+        p1_authority = 'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)'
+        AND p0_cmd = 'osascript'
+      )
     )
   )
   -- The following apply to all uids
