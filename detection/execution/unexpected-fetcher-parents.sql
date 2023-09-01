@@ -60,6 +60,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,500,bash,ShellLauncher',
     'curl,500,bash,zsh',
     'curl,500,env,env',
+    'curl,500,zsh,Emacs-arm64-11',
     'curl,500,eos-connection-,eos-update-noti',
     'curl,500,fish,gnome-terminal-',
     'curl,500,launchd,kernel_task',

@@ -121,7 +121,9 @@ WHERE
     '/dev/mapper/',
     '/dev/mapper/control',
     '/dev/mcelog',
+    '/dev/mmcblk',
     '/dev/md',
+    '/dev/libmtp--.',
     '/dev/md/',
     '/dev/md/ssdraid',
     '/dev/md/ssraid',
@@ -249,3 +251,4 @@ WHERE
   AND NOT path LIKE '/dev/shm/u%-Shm_%'
   AND NOT path LIKE '/dev/shm/.com.google.Chrome.%'
   AND NOT path LIKE '/dev/shm/u%-ValveIPC%'
+  AND NOT path LIKE '/dev/%-vg/%-lv'

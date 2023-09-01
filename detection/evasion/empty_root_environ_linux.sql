@@ -50,6 +50,7 @@ WHERE
     'nginx',
     'osqueryi',
     'realmd',
+    'dbus-daemon',
     'sedispatch',
     'ssh',
     'sshd',

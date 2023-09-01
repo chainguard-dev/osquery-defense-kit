@@ -82,6 +82,7 @@ WHERE
     '/dev/auditsessions,securityd,Software Signing,com.apple.securityd',
     '/dev/autofs,automountd,Software Signing,com.apple.automountd',
     '/dev/bpf,airportd,Software Signing,com.apple.airport.airportd',
+    '/dev/console,dbeaver,Developer ID Application: DBeaver Corporation (42B6MDKMW8),org.jkiss.dbeaver.core.product',
     '/dev/console,kernelmanagerd,Software Signing,com.apple.kernelmanagerd',
     '/dev/console,launchd,Software Signing,com.apple.xpc.launchd',
     '/dev/console,launchd_sim,Software Signing,com.apple.xpc.launchd',

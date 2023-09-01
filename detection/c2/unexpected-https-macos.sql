@@ -109,6 +109,7 @@ WHERE
     '0,EdgeUpdater,EdgeUpdater,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.EdgeUpdater',
     '0,Install,Install,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.Install',
     '0,Setup,Setup,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.acc.Setup',
+    '0,com.fortinet.forticlient.macos.vpn.nwextension,com.fortinet.forticlient.macos.vpn.nwextension,Developer ID Application: Fortinet, Inc (AH4XFXJ7DK),com.fortinet.forticlient.macos.vpn.nwextension',
     '0,com.google.one.NetworkExtension,com.google.one.NetworkExtension,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.one.NetworkExtension',
     '0,kandji-daemon,kandji-daemon,Developer ID Application: Kandji, Inc. (P3FGV63VK7),kandji-daemon',
     '0,kandji-library-manager,kandji-library-manager,Developer ID Application: Kandji, Inc. (P3FGV63VK7),kandji-library-manager',
@@ -128,6 +129,7 @@ WHERE
     '500,Install Spotify,Install Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.installer',
     '500,IterableRichNotifications,IterableRichNotifications,Apple iPhone OS Application Signing,com.plexapp.plex.IterableRichNotifications',
     '500,Java Updater,Java Updater,Developer ID Application: Oracle America, Inc. (VB5E2TV963),com.oracle.java.Java-Updater',
+    '500,Kindle,Kindle,TestFlight Beta Distribution,com.amazon.Lassen',
     '500,OneDriveStandaloneUpdater,OneDriveStandaloneUpdater,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.OneDriveStandaloneUpdater',
     '500,Paintbrush,Paintbrush,Developer ID Application: Michael Schreiber (G966ML7VBG),com.soggywaffles.paintbrush',
     '500,PlexMobile,PlexMobile,Apple iPhone OS Application Signing,com.plexapp.plex',
@@ -159,8 +161,8 @@ WHERE
   )
   AND NOT exception_key LIKE '500,tor-%-darwin-brave-%,tor-%-darwin-brave-%,Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),tor-%-darwin-brave-%'
   AND NOT alt_exception_key IN (
-    '0,velociraptor,velociraptor,0u,80g',
     '0,velociraptor,velociraptor,0u,0g',
+    '0,velociraptor,velociraptor,0u,80g',
     '500,apko,apko,0u,0g',
     '500,apko,apko,500u,20g',
     '500,aws,aws,0u,0g',
@@ -169,6 +171,7 @@ WHERE
     '500,chainctl,chainctl,500u,20g',
     '500,chainlink,chainlink,500u,20g',
     '500,cilium,cilium,500u,123g',
+    '500,cloud-sql-proxy,cloud-sql-proxy,500u,20g',
     '500,cosign,cosign,0u,500g',
     '500,cosign,cosign,500u,20g',
     '500,cosign,cosign,500u,80g',
@@ -182,6 +185,7 @@ WHERE
     '500,gitsign,gitsign,500u,20g',
     '500,go,go,500u,80g',
     '500,.man-wrapped,.man-wrapped,0u,500g',
+    '500,pprof,pprof,500u,80g',
     '500,pulumi-resource-gcp,pulumi-resource-gcp,500u,20g',
     '500,sdaudioswitch,sdaudioswitch,500u,20g',
     '500,sdzoomplugin,sdzoomplugin,500u,20g',
@@ -205,6 +209,7 @@ WHERE
     AND (
       p0_cmd LIKE '%/gcloud.py%'
       OR p0_cmd LIKE '%/google-cloud-sdk/bin/%'
+      OR p0_cmd LIKE '%/google-cloud-sdk/platform/%'
       OR p0_cmd LIKE '%pip install%'
       OR p0_cmd LIKE '%googlecloudsdk/core/metrics_reporter.py%'
       OR p0_cmd LIKE '%/bin/aws%'

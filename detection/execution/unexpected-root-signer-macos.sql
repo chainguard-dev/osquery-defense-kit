@@ -78,10 +78,11 @@ WHERE
   )
   AND s.authority NOT IN (
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+    'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
-    'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
+    'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK)',
     'Developer ID Application: Foxit Corporation (8GN47HTP75)',
     'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',

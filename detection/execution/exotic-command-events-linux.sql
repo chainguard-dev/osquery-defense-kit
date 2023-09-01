@@ -47,7 +47,8 @@ SELECT -- Child
     '.*/(.*)',
     1
   ) AS exception_key
-FROM process_events pe,
+FROM
+  process_events pe,
   uptime
   LEFT JOIN processes p ON pe.pid = p.pid -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
@@ -66,7 +67,8 @@ FROM process_events pe,
   LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
   LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
   LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
-WHERE pe.time > (strftime('%s', 'now') -300)
+WHERE
+  pe.time > (strftime('%s', 'now') -300)
   AND pe.cmdline != ''
   AND (
     p0_name IN (
@@ -176,8 +178,7 @@ WHERE pe.time > (strftime('%s', 'now') -300)
     pe.path = '/usr/bin/mkfifo'
     AND (
       p0_cmd LIKE '%/org.gpgtools.log.%/fifo'
-      OR p0_cmd LIKE 'mkfifo -- /private/var/folders/%/T/gitstatus.POWERLEVEL9K.501.%.fifo'
-      OR p0_cmd LIKE 'mkfifo -- /var/folders/%/T//p10k.worker.501.%.fifo'
+      OR p0_cmd LIKE 'mkfifo -- %/gitstatus.POWERLEVEL9K%.fifo'
     )
   )
   AND NOT p0_cmd IN ('lsmod', 'dd if=/dev/stdin conv=unblock cbs=79')

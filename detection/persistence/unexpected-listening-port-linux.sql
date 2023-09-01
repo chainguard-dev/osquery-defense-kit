@@ -161,6 +161,8 @@ WHERE
     '53,17,500,coredns',
     '8081,6,500,main',
     '6443,6,500,kube-apiserver',
+    '24800,6,500,synergy-core',
+    '24802,6,500,synergy-service',
     '8181,6,500,coredns',
     '8834,6,0,nessusd',
     '9000,6,500,authentik-proxy',

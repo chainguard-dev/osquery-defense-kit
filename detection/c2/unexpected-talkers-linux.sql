@@ -165,6 +165,7 @@ WHERE
     '80,6,0,zstd,0u,0g,zstd',
     '80,6,100,http,0u,0g,http',
     '80,6,105,http,0u,0g,http',
+    '80,6,42,http,0u,0g,http',
     '80,6,500,aws-iam-authenticator,0u,0g,aws-iam-authent',
     '80,6,500,brave,0u,0g,brave',
     '80,6,500,chrome,0u,0g,chrome',
@@ -232,6 +233,13 @@ WHERE
   AND NOT (
     p.name = 'java'
     AND p.cmdline LIKE '/home/%/.local/share/JetBrains/Toolbox/%'
+    AND s.remote_port > 1024
+    AND s.protocol = 6
+    AND p.euid > 500
+  )
+  AND NOT (
+    p.name = 'java'
+    AND p.cmdline LIKE '/home/%/PhpStorm%'
     AND s.remote_port > 1024
     AND s.protocol = 6
     AND p.euid > 500

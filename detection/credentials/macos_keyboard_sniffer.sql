@@ -66,11 +66,11 @@ WHERE
     'lghub_agent,com.logi.ghub.agent,Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'logioptionsplus_agent,com.logi.cp-dev-mgr,Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'MonitorControl,me.guillaumeb.MonitorControl,Developer ID Application: Joni Van Roost (CYC8C8R4K9)',
+    'osqueryd,io.osquery.agent,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'Rocket,net.matthewpalmer.Rocket,Developer ID Application: Matthew Palmer (Z4JV2M65MH)',
     'skhd,skhd,',
-    'Rocket,net.matthewpalmer.Rocket,Developer ID Application: Matthew Palmer (Z4JV2M65MH)',
-    'TextExpander,com.smileonmymac.textexpander,Developer ID Application: SmileOnMyMac, LLC (7PKJ6G4DXL)',
-    'osqueryd,io.osquery.agent,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)'
+    'synergy-core,synergy-core,Developer ID Application: Symless Ltd (4HX897Y6GJ)',
+    'TextExpander,com.smileonmymac.textexpander,Developer ID Application: SmileOnMyMac, LLC (7PKJ6G4DXL)'
   )
 GROUP BY
   p0.path

@@ -87,10 +87,13 @@ WHERE
     '0,pacman,0u,0g,pacman',
     '0,python3.10,0u,0g,dnf',
     '0,python3.10,0u,0g,dnf-automatic',
+    '500,synergy,0u,0g,synergy',
     '0,python3.10,0u,0g,yum',
     '0,python3.11,0u,0g,dnf',
     '0,python3.11,0u,0g,dnf-automatic',
     '0,python3.11,0u,0g,yum',
+    '0,yay,0u,0g,yay',
+    '500,kioslave5,0u,0g,kioslave5',
     '0,rpi-imager,0u,0g,rpi-imager',
     '0,snapd,0u,0g,snapd',
     '0,systemctl,0u,0g,systemctl',
@@ -291,6 +294,7 @@ WHERE
   ) -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '500,node,0u,0g,npm exec %'
   AND NOT exception_key LIKE '500,node,0u,0g,npm install %'
+  AND NOT exception_key LIKE '500,python3.%,0u,0g,pip'
   AND NOT exception_key LIKE '500,cosign-%,500u,500g,cosign-%'
   AND NOT exception_key LIKE '500,terraform-provider-%,500u,500g,terraform-provi'
   AND NOT (

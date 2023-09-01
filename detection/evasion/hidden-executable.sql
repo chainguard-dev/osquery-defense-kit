@@ -59,6 +59,8 @@ WHERE
   AND NOT f.directory LIKE '%/.rustup/%'
   AND NOT f.directory LIKE '%/.terraform'
   AND NOT f.directory LIKE '%/.terraform/%'
+  AND NOT f.directory LIKE '%/.docker/cli-plugins'
+  AND NOT f.directory LIKE '%/.cursor/%'
   AND NOT f.directory LIKE '%/.tflint.d/%'
   AND NOT f.directory LIKE '%/.vs-kubernetes/%'
   AND NOT f.directory LIKE '%/.vscode/extensions/%'

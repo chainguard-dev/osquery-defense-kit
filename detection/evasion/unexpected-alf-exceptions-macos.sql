@@ -93,7 +93,10 @@ WHERE
     'Software Signing,com.apple.python3,/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
     'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0'
   )
+  AND NOT exception_key LIKE ',a.out,/Users/%/dev/%,501'
+  AND NOT exception_key LIKE ',org.python.python,/opt/homebrew/Cellar/python@%/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/,501'
   AND NOT exception_key LIKE ',a.out,/opt/homebrew/Cellar/podman/%/libexec/podman/gvproxy,501'
+  AND NOT exception_key LIKE ',net.java.openjdk.java,/opt/homebrew/Cellar/openjdk/%/libexec/openjdk.jdk/Contents/Home/bin/java,501'
   AND NOT exception_key LIKE ',a.out,/private/var/folders/%/T/GoLand/%,501'
   AND NOT exception_key LIKE ',a.out,/Users/%/GolandProjects/documentation-code-examples/debuggingTutorial/myApp,501'
   AND NOT exception_key LIKE ',node,/opt/homebrew/Cellar/nvm/%/versions/node/v%/bin/node,501'

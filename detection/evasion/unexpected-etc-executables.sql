@@ -92,6 +92,7 @@ WHERE
     '/etc/periodic/daily',
     '/etc/periodic/monthly',
     '/etc/periodic/weekly',
+    '/etc/cloud/clean.d/99-installer-use-networkmanager',
     '/etc/pinentry',
     '/etc/pm/sleep.d',
     '/etc/pop-os/update-motd.d',

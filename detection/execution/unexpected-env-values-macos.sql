@@ -39,6 +39,7 @@ WHERE -- This time should match the interval
     key = 'DYLD_INSERT_LIBRARIES' -- actively exploited on programs which disable library security
     AND NOT pe.value = '/System/Library/PrivateFrameworks/PreviewsInjection.framework/PreviewsInjection'
     AND NOT pe.value LIKE '/opt/homebrew/Cellar/r/4.%/lib/R/lib/libR.dylib'
+    AND NOT pe.value LIKE '%/libsamply_mac_preload.dylib'
   )
   OR (
     key = 'DYLD_FRAMEWORK_PATH' -- sort of obsolete, but may affect SIP abusers

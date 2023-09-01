@@ -141,6 +141,7 @@ WHERE
     '~/Library/Caches/com.sempliva.Tiles/',
     '~/Library/Services/UE4EditorServices.app/',
     '~/Library/Caches/JetBrains/',
+    '~/Library/Caches/Cypress/',
     '~/Library/Caches/org.gpgtools.updater/',
     '~/Library/Caches/snyk/',
     '/Library/Developer/Xcode/',

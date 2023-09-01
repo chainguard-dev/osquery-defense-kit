@@ -126,6 +126,8 @@ WHERE
     '500,bash,bash,',
     '500,bash,com.apple.bash,Software Signing',
     '500,bufls,a.out,',
+    '500,timestamp-server,a.out,',
+    '500,docker,a.out,',
     '500,chainctl,a.out,',
     '500,cloud-sql-proxy,a.out,',
     '500,cloud-sql-proxy.darwin.arm64,a.out,',
@@ -135,7 +137,10 @@ WHERE
     '500,cpu,cpu-555549441132dc6b7af538428ce3359ae94eab37,',
     '500,crane,a.out,',
     '500,debug.test,a.out,',
+    '500,gke-gcloud-auth-plugin,a.out,',
     '500,dive,a.out,',
+    '500,monday.com Helper (Renderer),com.monday.desktop.helper.Renderer,Apple Mac OS Application Signing',
+    '500,Divvy,com.mizage.Divvy,Apple Mac OS Application Signing',
     '500,dlv,a.out,',
     '500,epdfinfo,epdfinfo,',
     '500,esbuild,,',
@@ -202,6 +207,7 @@ WHERE
   AND NOT exception_key LIKE '500,rust-analyzer-aarch64-apple-darwin,rust_analyzer-%,'
   AND NOT exception_key LIKE '500,___Test%.test,a.out,'
   AND NOT exception_key LIKE '500,zellij,zellij%,'
+  AND NOT exception_key LIKE '500,samply,samply-%,'
   AND NOT exception_key LIKE '500,gopls_%,a.out,'
   AND NOT exception_key LIKE '500,terraform-provider-%,a.out,'
   AND NOT exception_key LIKE '500,Runner.%,apphost-%,'
