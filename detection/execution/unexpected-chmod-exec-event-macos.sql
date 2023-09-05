@@ -8,7 +8,7 @@
 --
 -- tags: transient process events
 -- platform: darwin
--- interval: 180
+-- interval: 300
 SELECT
   IFNULL(
     REGEX_MATCH (TRIM(pe.cmdline), '.* (/.*)', 1),
@@ -90,9 +90,9 @@ WHERE
     FROM
       process_events
     WHERE
-      time > (strftime('%s', 'now') -180)
-      AND pe.status = 0
-      AND pe.parent > 0
+      time > (strftime('%s', 'now') -300)
+      AND status = 0
+      AND parent > 0
       AND (
         cmdline LIKE '%chmod% 7%'
         OR cmdline LIKE '%chmod% +rwx%'
@@ -102,6 +102,8 @@ WHERE
       )
       AND cmdline != 'chmod 0777 /Users/Shared/logitune'
   )
+  AND pe.time > (strftime('%s', 'now') -300)
+  AND pe.syscall = "execve"
   AND f.type != 'directory'
 GROUP BY
   p0_pid
