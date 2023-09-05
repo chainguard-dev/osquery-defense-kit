@@ -8,7 +8,7 @@
 --
 -- tags: transient process events
 -- platform: linux
--- interval: 180
+-- interval: 300
 SELECT
   IFNULL(
     REGEX_MATCH (TRIM(pe.cmdline), '.* (/.*)', 1),
@@ -92,8 +92,8 @@ WHERE
     FROM
       process_events
     WHERE
-      time > (strftime('%s', 'now') -180)
-      AND pe.syscall = "execve"
+      time > (strftime('%s', 'now') -300)
+      AND syscall = "execve"
       AND (
         cmdline LIKE '%chmod% 7%'
         OR cmdline LIKE '%chmod% +rwx%'
@@ -105,6 +105,7 @@ WHERE
       AND cmdline NOT LIKE 'chmod 700 /tmp/apt-key-gpghome.%'
       AND cmdline NOT LIKE 'chmod 700 /home/%/snap/%/%/.config'
   )
+  AND pe.time > (strftime('%s', 'now') -300)
   AND pe.syscall = "execve"
   AND f.type != 'directory'
   AND p1_cgroup NOT LIKE '/system.slice/docker-%'
