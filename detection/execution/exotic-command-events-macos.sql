@@ -128,6 +128,7 @@ WHERE
       AND p0_cmd NOT LIKE '% history'
     )
     OR p0_cmd LIKE '%echo%|%base64 --decode %|%'
+    OR p0_cmd LIKE '%echo%|%base64 -d %|%'
     OR p0_cmd LIKE '%launchctl bootout%'
     OR p0_cmd LIKE '%chflags uchg%'
     OR (
