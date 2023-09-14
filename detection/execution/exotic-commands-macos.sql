@@ -106,5 +106,7 @@ WHERE
     AND p1_cmd LIKE '%pipenv shell'
   )
   AND NOT p0_cmd IN ('pkill -f Jabra Direct')
+  AND NOT p0_cmd LIKE "%dd if=/dev/stdin conv=unblock cbs=79"
+  AND NOT p1_path LIKE '/Applications/Emacs.app/Contents/MacOS/Emacs-arm64-%'
 GROUP BY
   p0.pid;

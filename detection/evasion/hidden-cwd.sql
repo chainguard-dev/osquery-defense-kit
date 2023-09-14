@@ -152,6 +152,7 @@ WHERE
     OR dir LIKE '%/.gradle'
     OR dir LIKE '%/.github/%'
     OR dir LIKE '%/.github'
+    OR dir LIKE '%/.venv'
     OR dir LIKE '/home/build/.cache%'
     OR dir LIKE '~/.%'
     OR dir LIKE '~/.gradle/%'

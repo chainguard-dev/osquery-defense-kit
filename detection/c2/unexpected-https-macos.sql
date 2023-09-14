@@ -175,6 +175,7 @@ WHERE
     '500,cosign,cosign,0u,500g',
     '500,cosign,cosign,500u,20g',
     '500,cosign,cosign,500u,80g',
+    '500,git-credential-osxkeychain,git-credential-osxkeychain,500u,80g',
     '500,cpu,cpu,500u,20g',
     '500,crane,crane,0u,500g',
     '500,crane,crane,500u,80g',

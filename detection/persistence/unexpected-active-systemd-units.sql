@@ -49,6 +49,7 @@ WHERE
         'abrt-journal-core.service,Creates ABRT problems from coredumpctl messages,',
         'abrt-oops.service,ABRT kernel log watcher,',
         'abrt-xorg.service,ABRT Xorg log watcher,',
+        'swap.img.swap,/swap.img,',
         'abrtd.service,ABRT Automated Bug Reporting Tool,',
         'abrtd.service,ABRT Daemon,',
         'accounts-daemon.service,Accounts Service,',
