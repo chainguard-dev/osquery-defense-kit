@@ -77,6 +77,7 @@ WHERE
     'com.docker.backend,8.8.8.8,53',
     'ZoomPhone,8.8.8.8,53',
     'ZaloCall,8.8.8.8,53',
+    'Telegram,8.8.8.8,53',
     'Meeting Center,8.8.8.8,53',
     'signal-desktop,8.8.8.8,53',
     'slack,8.8.8.8,53',

@@ -107,6 +107,7 @@ WHERE
     'bluetoothd,/usr/lib/bluetooth/bluetoothd,0,system.slice,bluetooth.service,0755',
     'bluetoothd,/usr/libexec/bluetooth/bluetoothd,0,system.slice,bluetooth.service,0755',
     'boltd,/usr/lib/boltd,0,system.slice,bolt.service,0755',
+    'lightdm,/nix/store/__VERSION__/bin/lightdm,0,user.slice,user-78.slice,0555',
     'boltd,/usr/libexec/boltd,0,system.slice,bolt.service,0755',
     'bpfilter_umh,/bpfilter_umh,0,,,',
     'chainctl,/usr/local/bin/chainctl,0,user.slice,user-1000.slice,0755',

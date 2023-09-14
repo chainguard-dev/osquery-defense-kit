@@ -52,6 +52,7 @@ WHERE
     '/opt/brave.com/brave/brave',
     '/opt/google/chrome/chrome',
     '/usr/bin/alacritty',
+    '/usr/bin/roxterm',
     '/usr/bin/doas',
     '/usr/bin/dockerd',
     '/usr/bin/fusermount3',

@@ -55,6 +55,7 @@ WHERE
   AND NOT f.directory LIKE '%/.nvm/versions/%/bin'
   AND NOT f.directory LIKE '%/.goenv/%/bin'
   AND NOT f.directory LIKE '%/.pnpm/%'
+  AND NOT f.directory LIKE '%/.yardstick/%'
   AND NOT f.directory LIKE '%/.go/bin'
   AND NOT f.directory LIKE '%/.rustup/%'
   AND NOT f.directory LIKE '%/.terraform'

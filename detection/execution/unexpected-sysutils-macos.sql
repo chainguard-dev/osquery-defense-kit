@@ -108,6 +108,7 @@ WHERE
   AND NOT exception_key IN (
     'system_profiler,500,Google Drive,launchd',
     'system_profiler,500,bash,launchd',
+    'system_profiler,500,steam_osx,launchd',
     'system_profiler,500,bash,logioptionsplus_agent',
     'system_profiler,0,launcher,launchd'
   )

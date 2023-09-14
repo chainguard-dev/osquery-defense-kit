@@ -125,6 +125,7 @@ WHERE
     '500,17,9000,Meeting Center,Meeting Center,Developer ID Application: Cisco (DE8Y96K9QP),com.webex.meetingmanager',
     '500,6,22,Cyberduck,Cyberduck,Developer ID Application: David Kocher (G69SCX94XU),ch.sudo.cyberduck',
     '500,6,22,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
+    '500,6,8080,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
     '500,6,22,Transmit,Transmit,Developer ID Application: Panic, Inc. (VE8FC488U5),com.panic.Transmit',
     '500,6,2869,Spotify,Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
     '500,6,32000,Spotify Helper,Spotify Helper,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
@@ -191,6 +192,11 @@ WHERE
   AND NOT (
     alt_exception_key LIKE '500,6,%,syncthing,syncthing,0u,500g'
     AND remote_port > 79
+  )
+  AND NOT (
+    alt_exception_key LIKE '500,6,%,nuclei,nuclei,500u,80g'
+    AND remote_port > 20
+    AND remote_port < 32000
   )
   AND NOT (
     exception_key LIKE '500,6,%,syncthing,syncthing,Developer ID Application: Jakob Borg (LQE5SYM783),syncthing'

@@ -262,6 +262,7 @@ WHERE
     '500,slirp4netns,500u,500g,slirp4netns',
     '500,snap-store,0u,0g,snap-store',
     '500,spotify,0u,0g,spotify',
+    '500,chrome_crashpad_handler,0u,0g,chrome_crashpad',
     '500,spotify,500u,500g,spotify',
     '500,spotify,u,g,spotify',
     '500,steam,500u,100g,steam',
