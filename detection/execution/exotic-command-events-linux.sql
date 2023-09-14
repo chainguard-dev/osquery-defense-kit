@@ -129,6 +129,8 @@ WHERE
     OR p0_cmd LIKE '%rm -rf /boot%'
     OR p0_cmd LIKE '%nohup /bin/bash%'
     OR p0_cmd LIKE '%echo%|%base64 --decode %|%'
+    OR p0_cmd LIKE '%echo%|%base64 -d %|%'
+    OR p0_cmd LIKE '%@reboot%crontab%'
     OR p0_cmd LIKE '%UserKnownHostsFile=/dev/null%' -- Crypto miners
     OR p0_cmd LIKE '%monero%'
     OR p0_cmd LIKE '%nanopool%'
