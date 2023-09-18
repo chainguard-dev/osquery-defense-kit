@@ -1,12 +1,6 @@
 -- Find unexpected executables in temp directories, often used by malware droppers
---
--- false positives:
---   * developers building code out of /tmp
---
--- NOTE:
---   * This is currently disabled by default due to the high number of false positives
 -- 
--- tags: persistent disabled
+-- tags: persistent
 -- platform: linux
 SELECT DISTINCT
   file.path,
@@ -33,12 +27,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
     WHERE
       (
         file.directory = '/tmp'
-        OR file.directory LIKE '/tmp/%'
-        OR file.directory LIKE '/tmp/%/%'
-        OR file.directory LIKE '/tmp/%/.%'
         OR file.directory LIKE '/tmp/.%'
-        OR file.directory LIKE '/tmp/.%/%'
-        or file.directory LIKE '/tmp/.%/.%'
       ) -- Prevent weird recursion
       AND NOT file.directory LIKE '%/../%'
       AND NOT file.directory LIKE '%/./%' -- Exclude very temporary files
