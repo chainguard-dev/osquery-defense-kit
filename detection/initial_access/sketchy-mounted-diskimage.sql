@@ -44,6 +44,7 @@ WHERE
       OR file.directory LIKE mounts.path || "/%.app/Contents/MacOS/"
       OR file.directory LIKE mounts.path || "/%.app/Contents/Resources/"
       OR file.directory LIKE mounts.path || "/%/%.app/Contents/MacOS/"
+      OR file.directory LIKE mounts.path || "/%/%.app/Contents/Library/LaunchServices"
       OR file.directory LIKE mounts.path || "/%/%.app/Contents/Resources/"
     WHERE
       model = 'Disk Image'
@@ -99,6 +100,7 @@ WHERE
 
         -- The rest are synced with sketchy-download-names
         OR vol_name LIKE "%.app%"
+        OR vol_name LIKE "%AnyDesk%"
         OR vol_name LIKE "%Advertising%"
         OR vol_name LIKE "%agreement%"
         OR vol_name LIKE "%animated%"
