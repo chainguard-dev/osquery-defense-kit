@@ -103,9 +103,6 @@ WHERE
       p0.cmdline LIKE '%UserKnownHostsFile=/dev/null%'
       AND NOT p1.name = 'limactl'
     ) -- Crypto miners
-    OR p0.cmdline LIKE '%c3pool%'
-    OR p0.cmdline LIKE '%cryptonight%'
-    OR p0.cmdline LIKE '%f2pool%'
     OR p0.cmdline LIKE '%hashrate%'
     OR p0.cmdline LIKE '%hashvault%'
     OR p0.cmdline LIKE '%minerd%'
