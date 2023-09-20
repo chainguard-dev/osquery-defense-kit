@@ -187,7 +187,6 @@ WHERE
     )
   )
   AND NOT p0_cmd IN ('lsmod', 'dd if=/dev/stdin conv=unblock cbs=79')
-  AND NOT p0_cmd LIKE 'dirname %history'
   AND NOT p0_cmd LIKE 'find . -executable -type f -name %grep -l GNU Libtool%touch -r%'
   AND NOT p0_cmd LIKE 'modinfo -k%'
   AND NOT p0_cmd LIKE 'modprobe -ab%'
@@ -198,9 +197,6 @@ WHERE
   AND NOT p0_cmd LIKE '%modprobe nf_nat_netbios_ns'
   AND NOT p0_cmd LIKE '%modprobe -va%'
   AND NOT p0_cmd LIKE 'pkill -f cut -c3%'
-  AND NOT p0_cmd LIKE '%nc -h%'
-  AND NOT p0_cmd LIKE '%socat%kwallet%socket'
-  AND NOT p0_cmd LIKE 'tail /%history'
   AND NOT p0_cmd LIKE '%/usr/bin/cmake%Socket%'
   AND NOT p0_name IN ('ar', 'cc1', 'compile', 'cmake', 'cc1plus')
   AND NOT exception_key IN (
