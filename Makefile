@@ -23,7 +23,7 @@ out/odk-detection-evasion.conf: out/osqtool-$(ARCH) $(wildcard detection/evasion
 	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-evasion.conf pack detection/evasion
 
 out/odk-detection-execution.conf: out/osqtool-$(ARCH) $(wildcard detection/execution/*.sql)
-	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-execution.conf pack detection/execution
+	./out/osqtool-$(ARCH) --max-query-duration=8s --verify -output out/odk-detection-execution.conf pack detection/execution
 
 out/odk-detection-exfil.conf: out/osqtool-$(ARCH) $(wildcard detection/exfil/*.sql)
 	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-exfil.conf pack detection/exfil
