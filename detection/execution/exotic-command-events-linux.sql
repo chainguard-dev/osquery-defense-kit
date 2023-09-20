@@ -120,13 +120,11 @@ WHERE
     OR p0_cmd LIKE '%ld.so.preload%'
     OR p0_cmd LIKE '%urllib.urlopen%'
     OR p0_cmd LIKE '%nohup%tmp%'
-    OR p0_cmd LIKE '%.ssh/%'
-    OR p0_cmd LIKE '%tar%.local/share%'
+    OR p0_cmd LIKE '%tar % .%'
+    OR p0_cmd LIKE '%tar %/.%'
     OR p0_cmd LIKE '%.config%gcloud%'
     OR p0_cmd LIKE '%.aws/%'
-    OR p0_cmd LIKE '%.mozilla%firefox%'
     OR p0_cmd LIKE '%.config/%chrome%'
-    OR p0_cmd LIKE '%tar%.config%'
     OR p0_cmd LIKE '%systemctl stop firewalld%'
     OR p0_cmd LIKE '%systemctl disable firewalld%'
     OR p0_cmd LIKE '%pkill -f%'
@@ -134,19 +132,15 @@ WHERE
       p0_cmd LIKE '%xargs kill -9%'
       AND pe.euid = 0
     )
-    OR p0_cmd LIKE '%rm -rf /boot%'
     OR p0_cmd LIKE '%nohup /bin/bash%'
-    OR p0_cmd LIKE '%echo%|%base64 --decode %|%'
-    OR p0_cmd LIKE '%echo%|%base64 -d %|%'
+    OR p0_cmd LIKE '%echo%|%base64%-d% %|%'
     OR p0_cmd LIKE '%@reboot%crontab%'
     OR p0_cmd LIKE '%UserKnownHostsFile=/dev/null%' -- Crypto miners
     OR p0_cmd LIKE '%monero%'
     OR p0_cmd LIKE '%nanopool%'
     OR p0_cmd LIKE '%nicehash%'
-    OR p0_cmd LIKE '%stratum%' -- Random keywords
-    OR p0_cmd LIKE '%ransom%' -- Reverse shells
-    OR p0_cmd LIKE '%/dev/tcp/%'
-    OR p0_cmd LIKE '%/dev/udp/%'
+    OR p0_cmd LIKE '%stratum%'
+    OR p0_cmd LIKE '%/dev/%cp/%'
     OR p0_cmd LIKE '%fsockopen%'
     OR p0_cmd LIKE '%openssl%quiet%'
     OR p0_cmd LIKE '%pty.spawn%'
