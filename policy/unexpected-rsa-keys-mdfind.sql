@@ -31,6 +31,9 @@ WHERE
   ) == 1
   -- Common filenames that are non-controversial
   AND NOT file.filename LIKE '%example.com%'
+  AND NOT file.filename LIKE 'local-%.rsa'
+  AND NOT file.filename LIKE 'test-%.rsa'
+  AND NOT file.filename LIKE 'demo-%.rsa'
   AND NOT file.path LIKE "%/testdata/%"
 GROUP BY
   file.path

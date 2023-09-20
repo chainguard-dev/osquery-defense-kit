@@ -302,6 +302,8 @@ WHERE
     exception_key LIKE '500,python3%,0u,0g,python3'
     AND (
       p.cmdline LIKE '%/gcloud.py %'
+      OR p.cmdline LIKE "%pip install%"
+      OR p.cmdline LIKE "%pip download%"
       OR p.cwd LIKE "/home/%/dev/%"
       OR p.cwd LIKE "/home/%/src/%"
       OR p.cwd LIKE "/home/%/github/%"

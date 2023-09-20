@@ -95,6 +95,7 @@ WHERE
   AND pos.remote_address NOT LIKE '192.168.%'
   AND pos.remote_address NOT LIKE '172.1%'
   AND pos.remote_address NOT LIKE '172.2%'
+  AND pos.remote_address NOT LIKE '169.254.%'
   AND pos.remote_address NOT LIKE '172.30.%'
   AND pos.remote_address NOT LIKE '172.31.%'
   AND pos.remote_address NOT LIKE '::ffff:172.%'
@@ -121,9 +122,11 @@ WHERE
     '0,6,80,prl_naptd,prl_naptd,Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',
     '500,17,123,Garmin Express,Garmin Express,Developer ID Application: Garmin International (72ES32VZUA),com.garmin.renu.client',
     '500,17,68,com.docker.backend,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
+    '500,6,80,Mem Helper,Mem Helper,Developer ID Application: Kevin Moody (9ZLK8RSRVN),org.memlabs.Mem.helper',
     '500,17,8801,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos',
     '500,17,9000,Meeting Center,Meeting Center,Developer ID Application: Cisco (DE8Y96K9QP),com.webex.meetingmanager',
     '500,6,22,Cyberduck,Cyberduck,Developer ID Application: David Kocher (G69SCX94XU),ch.sudo.cyberduck',
+    '500,17,32768,Luna Display,Luna Display,Developer ID Application: Astro HQ LLC (8356ZZ8Y5K),com.astro-hq.LunaDisplayMac',
     '500,6,22,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
     '500,6,8080,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
     '500,6,22,Transmit,Transmit,Developer ID Application: Panic, Inc. (VE8FC488U5),com.panic.Transmit',
@@ -215,6 +218,8 @@ WHERE
       'Developer ID Application: Bookry Ltd (4259LE8SU5),com.bookry.wavebox.helper',
       'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.helper',
       'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
+      'Apple Mac OS Application Signing,com.microsoft.OneDrive-mac',
+      'Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL),com.tinyspeck.slackmacgap.helper',
       'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.EpicGamesLauncher',
       'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK),fctupdate',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',

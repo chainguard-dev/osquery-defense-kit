@@ -29,6 +29,7 @@ WHERE
       mdfind.query = 'kMDItemFSName == ''*tenant*'' && kMDItemTextContent == ''CREATE TABLE'''
     )
   )
+  AND f.path NOT LIKE '%mysql-test/suite/%'
   AND f.path NOT LIKE '%.json'
   AND f.path NOT LIKE '%.log'
   AND f.size > 32768

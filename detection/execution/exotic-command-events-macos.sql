@@ -198,12 +198,15 @@ WHERE
   AND NOT p0_cmd LIKE 'rm -f /tmp/insttmp_%'
   AND NOT p0_cmd LIKE '%nc localhost%'
   AND NOT p0_cmd LIKE '/bin/cp %history%sessions/%'
+  AND NOT p0_cmd LIKE '%ssh %/lima/%'
   AND NOT p0_cmd LIKE 'touch -r /tmp/KSInstallAction.%'
   AND NOT p0_cmd LIKE '%find /Applications/LogiTuneInstaller.app -type d -exec chmod 777 {}%'
   AND NOT p0_cmd LIKE '/bin/rm -f /tmp/com.adobe.%.updater/%'
   AND NOT p0_name IN ('cc1', 'compile')
   AND NOT exception_key IN (
     'dd,500,zsh,login',
+    'ssh,500,limactl.ventura,launchd',
+    'git,500,zsh,login',
     'git,500,zsh,goland',
     'sh,0,Ecamm Live,launchd',
     'cat,500,zsh,login'

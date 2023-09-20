@@ -50,6 +50,7 @@ WHERE
   bytes_written_rate > 4000000
   AND age > 180
   AND p0.pid > 2
+  AND p0.parent != 2
   AND p0.path NOT IN (
     '/bin/bash',
     '/bin-busybox',

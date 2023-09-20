@@ -189,6 +189,7 @@ WHERE
     AND (
       p0_cmd LIKE '%/org.gpgtools.log.%/fifo'
       OR p0_cmd LIKE 'mkfifo -- %/gitstatus.POWERLEVEL9K%.fifo'
+      OR p0_cmd LIKE '%/p10k.%'
     )
   )
   AND NOT p0_cmd IN ('lsmod', 'dd if=/dev/stdin conv=unblock cbs=79')
@@ -203,11 +204,14 @@ WHERE
   AND NOT p0_cmd LIKE '%modprobe nf_nat_netbios_ns'
   AND NOT p0_cmd LIKE '%modprobe -va%'
   AND NOT p0_cmd LIKE 'pkill -f cut -c3%'
+  AND NOT p0_cmd LIKE '%nc -h%'
+  AND NOT p0_cmd LIKE '%socat%kwallet%socket'
   AND NOT p0_cmd LIKE 'tail /%history'
   AND NOT p0_cmd LIKE '%/usr/bin/cmake%Socket%'
   AND NOT p0_name IN ('ar', 'cc1', 'compile', 'cmake', 'cc1plus')
   AND NOT exception_key IN (
     'bash,500,ninja,bash',
     'ls,500,zsh,alacritty',
+    'nc,500,fish,konsole',
     'bash,0,bash,containerd-shim-runc-v2'
   )

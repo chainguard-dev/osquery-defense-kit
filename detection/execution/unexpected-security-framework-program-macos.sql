@@ -207,6 +207,7 @@ WHERE
   AND NOT exception_key LIKE '500,rust-analyzer-aarch64-apple-darwin,rust_analyzer-%,'
   AND NOT exception_key LIKE '500,___Test%.test,a.out,'
   AND NOT exception_key LIKE '500,zellij,zellij%,'
+  AND NOT exception_key LIKE '500,copilot-agent-macos-%,copilot-agent-macos-%,'
   AND NOT exception_key LIKE '500,samply,samply-%,'
   AND NOT exception_key LIKE '500,gopls_%,a.out,'
   AND NOT exception_key LIKE '500,terraform-provider-%,a.out,'

@@ -44,6 +44,7 @@ WHERE
       AND family != 1
     WHERE
       processes.path NOT LIKE '/System/%'
+      -- TODO: consider whitelisting /Applications/%.app/Contents/MacOS/%
       AND processes.path NOT LIKE '/Library/Apple/%'
       AND processes.path NOT LIKE '/usr/libexec/%'
       AND processes.path NOT LIKE '/usr/sbin/%'
@@ -60,6 +61,7 @@ WHERE
   AND pmm.path LIKE "%.dylib"
   AND exception_key NOT IN (
     '500,Bitwarden,/Applications/Bitwarden.app/Contents/MacOS/Bitwarden',
+    '500,Skitch,/Applications/Skitch.app/Contents/MacOS/Skitch',
     '500,J8RPQ294UB.com.skitch.SkitchHelper,/Applications/Skitch.app/Contents/Library/LoginItems/J8RPQ294UB.com.skitch.SkitchHelper.app/Contents/MacOS/J8RPQ294UB.com.skitch.SkitchHelper',
     '500,Revolt,/Applications/Revolt.app/Contents/MacOS/Revolt',
     '500,Revolt Helper,/Applications/Revolt.app/Contents/Frameworks/Revolt Helper.app/Contents/MacOS/Revolt Helper',

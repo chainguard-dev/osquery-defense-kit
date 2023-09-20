@@ -42,6 +42,7 @@ WHERE
     '/usr/libexec/UserEventAgent',
     '/usr/sbin/systemstats',
     '/usr/bin/libvirtd',
+    '/usr/bin/tcpdump',
     '/usr/sbin/cupsd',
     '/run/current-system/systemd/lib/systemd/systemd'
   )

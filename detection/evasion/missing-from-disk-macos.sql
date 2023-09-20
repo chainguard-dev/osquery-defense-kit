@@ -52,6 +52,7 @@ WHERE
       OR cmd LIKE '/Library/Developer/CommandLineTools/%'
       OR p.path IN (
         '/Applications/Slack.app/Contents/Frameworks/Slack Helper.app/Contents/MacOS/Slack Helper',
+        '/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app/Contents/MacOS/Code Helper',
         '/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Renderer).app/Contents/MacOS/Code Helper (Renderer)'
       )
       OR cmd LIKE '/opt/homebrew/Cellar/%'

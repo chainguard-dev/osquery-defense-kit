@@ -121,6 +121,7 @@ WHERE
   AND NOT homedir LIKE '~/%/bin'
   AND NOT homedir LIKE '~/%/shims'
   AND NOT homedir LIKE '~/%/plugins'
+  AND NOT homedir LIKE '/Users/%/.provisio'
   AND NOT homedir IN (
     '~/.bin',
     '~/.fzf',
@@ -163,6 +164,7 @@ WHERE
     '~/Library/helm',
     '~/Library/Services',
     '~/.terraform.d',
+    '~/.terraform.versions',
     '~/.iterm2',
     '/Users/Shared/LogiOptionsPlus/cache',
     '~/Library/Screen Savers',

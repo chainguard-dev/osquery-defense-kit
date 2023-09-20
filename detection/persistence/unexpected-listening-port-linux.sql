@@ -184,6 +184,7 @@ WHERE
       'controller',
       'docker-proxy',
       'hugo',
+      'crane',
       'kubectl',
       'nginx-ingress-c',
       'node',
