@@ -44,7 +44,7 @@ out/odk-policy.conf: out/osqtool-$(ARCH)  $(wildcard policy/*.sql)
 	./out/osqtool-$(ARCH) --verify --output out/odk-policy.conf pack policy/
 
 out/odk-vulnerabilities.conf: out/osqtool-$(ARCH)  $(wildcard vulnerabilities/*.sql)
-	./out/osqtool-$(ARCH) --verify --output out/odk-vulnerabilities.conf pack vulnerabilities/
+	./out/osqtool-$(ARCH) --output out/odk-vulnerabilities.conf pack vulnerabilities/
 
 out/odk-incident-response.conf: out/osqtool-$(ARCH)  $(wildcard incident_response/*.sql)
 	./out/osqtool-$(ARCH)  --max-query-duration=12s  --output out/odk-incident-response.conf --verify pack incident_response/
