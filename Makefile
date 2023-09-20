@@ -7,27 +7,56 @@ out/osqtool-$(ARCH):
 	GOBIN=$(CURDIR)/out go install github.com/chainguard-dev/osqtool/cmd/osqtool@latest
 	mv out/osqtool out/osqtool-$(ARCH)
 
-out/odk-detection.conf: out/osqtool-$(ARCH) $(wildcard detection/*.sql)
-	./out/osqtool-$(ARCH) --max-query-duration=8s --verify pack detection/ > out/.odk-detection.conf
-	mv out/.odk-detection.conf out/odk-detection.conf
+out/odk-detection-c2.conf: out/osqtool-$(ARCH) $(wildcard detection/c2/*.sql)
+	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-c2.conf pack detection/c2
+
+out/odk-detection-collection.conf: out/osqtool-$(ARCH) $(wildcard detection/collection/*.sql)
+	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-collection.conf pack detection/collection
+
+out/odk-detection-credentials.conf: out/osqtool-$(ARCH) $(wildcard detection/credentials/*.sql)
+	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-credentials.conf pack detection/credentials
+
+out/odk-detection-discovery.conf: out/osqtool-$(ARCH) $(wildcard detection/discovery/*.sql)
+	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-discovery.conf pack detection/discovery
+
+out/odk-detection-evasion.conf: out/osqtool-$(ARCH) $(wildcard detection/evasion/*.sql)
+	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-evasion.conf pack detection/evasion
+
+out/odk-detection-execution.conf: out/osqtool-$(ARCH) $(wildcard detection/execution/*.sql)
+	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-execution.conf pack detection/execution
+
+out/odk-detection-exfil.conf: out/osqtool-$(ARCH) $(wildcard detection/exfil/*.sql)
+	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-exfil.conf pack detection/exfil
+
+out/odk-detection-impact.conf: out/osqtool-$(ARCH) $(wildcard detection/impact/*.sql)
+	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-impact.conf pack detection/impact
+
+out/odk-detection-initial_access.conf: out/osqtool-$(ARCH) $(wildcard detection/initial_access/*.sql)
+	./out/osqtool-$(ARCH) --max-query-duration=8s --verify -output out/odk-detection-initial_access.conf pack detection/initial_access
+
+out/odk-detection-persistence.conf: out/osqtool-$(ARCH) $(wildcard detection/persistence/*.sql)
+	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-persistence.conf pack detection/persistence
+
+out/odk-detection-privesc.conf: out/osqtool-$(ARCH) $(wildcard detection/privesc/*.sql)
+	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-privesc.conf pack detection/privesc
 
 out/odk-policy.conf: out/osqtool-$(ARCH)  $(wildcard policy/*.sql)
-	./out/osqtool-$(ARCH) --verify pack policy/ > out/.odk-policy.conf
-	mv out/.odk-policy.conf out/odk-policy.conf
+	./out/osqtool-$(ARCH) --verify --output out/odk-policy.conf pack policy/
+
+out/odk-vulnerabilities.conf: out/osqtool-$(ARCH)  $(wildcard vulnerabilities/*.sql)
+	./out/osqtool-$(ARCH) --verify --output out/odk-vulnerabilities.conf pack vulnerabilities/
 
 out/odk-incident-response.conf: out/osqtool-$(ARCH)  $(wildcard incident_response/*.sql)
-	./out/osqtool-$(ARCH)  --max-query-duration=12s --verify pack incident_response/ > out/.odk-incident-response.conf
-	mv out/.odk-incident-response.conf out/odk-incident-response.conf
+	./out/osqtool-$(ARCH)  --max-query-duration=12s  --output out/odk-incident-response.conf --verify pack incident_response/
 
 # A privacy-aware variation of IR rules
 out/odk-incident-response-privacy.conf: out/osqtool-$(ARCH)  $(wildcard incident_response/*.sql)
-	./out/osqtool-$(ARCH) --exclude-tags=disabled,disabled-privacy pack incident_response/ > out/.odk-incident-response-privacy.conf
-	mv out/.odk-incident-response-privacy.conf out/odk-incident-response-privacy.conf
+	./out/osqtool-$(ARCH) --exclude-tags=disabled,disabled-privacy --output out/odk-incident-response-privacy.conf pack incident_response/
 
 out/osquery.conf:
 	cat osquery.conf | sed s/"out\/"/""/g > out/osquery.conf
 
-packs: out/odk-detection.conf out/odk-policy.conf out/odk-incident-response.conf out/odk-incident-response-privacy.conf
+packs: out/odk-detection-c2.conf out/odk-detection-collection.conf out/odk-detection-credentials.conf out/odk-detection-discovery.conf out/odk-detection-evasion.conf out/odk-detection-execution.conf out/odk-detection-exfil.conf out/odk-detection-impact.conf out/odk-detection-initial_access.conf out/odk-detection-persistence.conf out/odk-detection-privesc.conf  out/odk-policy.conf out/odk-incident-response.conf out/odk-incident-response-privacy.conf out/odk-vulnerabilities.conf
 
 out/odk-packs.zip: packs out/osquery.conf
 	cd out && rm -f .*.conf && zip odk-packs.zip *.conf
