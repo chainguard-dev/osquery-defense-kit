@@ -9,7 +9,8 @@
 -- tags: transient process events
 -- platform: linux
 -- interval: 300
-SELECT -- Child
+SELECT
+  -- Child
   pe.path AS p0_path,
   pe.time AS p0_time,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
@@ -119,6 +120,13 @@ WHERE
     OR p0_cmd LIKE '%ld.so.preload%'
     OR p0_cmd LIKE '%urllib.urlopen%'
     OR p0_cmd LIKE '%nohup%tmp%'
+    OR p0.cmdline LIKE '%.ssh/%'
+    OR p0.cmdline LIKE '%tar%.local/share%'
+    OR p0.cmdline LIKE '%.config%gcloud%'
+    OR p0.cmdline LIKE '%.aws/%'
+    OR p0.cmdline LIKE '%.mozilla%firefox%'
+    OR p0.cmdline LIKE '%.config/%chrome%'
+    OR p0.cmdline LIKE '%tar%.config%'
     OR p0_cmd LIKE '%systemctl stop firewalld%'
     OR p0_cmd LIKE '%systemctl disable firewalld%'
     OR p0_cmd LIKE '%pkill -f%'
