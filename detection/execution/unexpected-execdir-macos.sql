@@ -105,6 +105,7 @@ WHERE
     '~/.magefile'
   )
   AND NOT homedir LIKE '~/%/bin'
+  AND NOT homedir LIKE '~/Downloads/%.app/Contents/MacOS'
   AND NOT top_homedir IN (
     '~/Applications/',
     '~/Applications (Parallels)/',

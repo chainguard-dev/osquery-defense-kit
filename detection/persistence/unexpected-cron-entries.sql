@@ -21,3 +21,4 @@ WHERE
   AND command NOT LIKE '%anacron start%'
   AND command NOT LIKE '%/usr/lib/php/sessionclean%'
   AND command NOT LIKE 'root command -v debian-sa1%'
+  AND command NOT LIKE '%rsync%'

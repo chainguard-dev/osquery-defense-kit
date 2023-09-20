@@ -47,7 +47,11 @@ WHERE
   -- Demo keys
   AND NOT file.filename LIKE 'host-project-%'
   AND NOT file.filename LIKE 'ulabs-%'
+  AND NOT file.filename LIKE 'test-%'
+  AND NOT file.filename LIKE 'demo-%'
+  AND NOT file.filename LIKE 'example-%'
   AND NOT hash.sha256 IN (
     "c7d6bac8e942511e25973889ac38656d4d46f68044650d694721017fda23716e",
+    "386bd767a15daa0659519bcb0b178826ef1579d1f0ec32f63ae01efc68e7889d",
     "bd5f4c01ebb5636b94584ee4ae42514b27d371859f7344f6aa5a37332ee714ba"
   )

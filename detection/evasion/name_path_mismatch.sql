@@ -89,21 +89,17 @@ WHERE
     '0,udevadm,systemd-udevd',
     '0,udevadm,(udev-worker)',
     '500,netcat,nc',
-    '120,systemd,(sd-pam)',
     '500,busybox,sh',
-    '125,systemd,(sd-pam)',
-    '127,systemd,(sd-pam)',
-    '42,systemd,(sd-pam)',
     '500,coreutils,tail',
     '500,gjs-console,gnome-character',
     '500,plugin-container,MainThread',
     '500,pyrogenesis,main',
     '500,rootlesskit,exe',
     '500,rootlessport,exe',
-    '500,systemd,(sd-pam)',
     '500,udevadm,systemd-udevd',
     '500,vim.basic,vi'
   )
+  AND NOT exception_key LIKE '%,systemd,(sd-pam)'
   AND NOT (
     p0.path = '/usr/lib/xfce4/panel/wrapper-2.0'
     AND exception_key LIKE '500,wrapper-2.0,panel-%'

@@ -137,6 +137,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         AND file.size = 90921938
       )
   )
+  AND NOT signature.authority = 'Developer ID Application: Adobe Inc. (JQ525L2MZD)'
   AND NOT (
     magic.data IS NOT NULL
     AND (
@@ -145,10 +146,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       OR magic.data LIKE 'symbolic link to %'
       OR magic.data LIKE 'ELF %-bit LSB shared object%'
       OR magic.data LIKE 'libtool library file,%'
-      OR (
-        file.filename IN ("configure", "mkinstalldirs", "config.status")
-        AND magic.data LIKE "POSIX shell script, ASCII text executable%"
-      )
+      OR magic.data LIKE "POSIX shell script, ASCII text executable%"
       OR (
         file.size < 50000
         AND file.uid > 500

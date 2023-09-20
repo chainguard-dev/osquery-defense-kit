@@ -202,6 +202,7 @@ WHERE
     'sh -c -- exec-bin node_modules/.bin/hugo/hugo server',
     'sh -c /usr/bin/defaults write us.zoom.xos NSQuitAlwaysKeepsWindows -bool false',
     '/bin/sh -c ioreg -rd1 -c IOPlatformExpertDevice',
+    '/usr/bin/python3 /usr/bin/terminator',
     '/bin/sh -c sysctl hw.model kern.osrelease',
     '/bin/sh /etc/security/audit_warn soft /var/audit',
     'sh -c hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo',

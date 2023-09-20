@@ -102,6 +102,7 @@ WHERE
     'remarkable.com',
     'rewind.ai',
     's3.amazonaws.com',
+    'synaptics.com',
     'securew2.com',
     'signal.org',
     'skype.com',
@@ -111,6 +112,7 @@ WHERE
     'tableplus.com',
     'teams.cdn.office.net',
     'techsmith.com',
+    'slack.com',
     'ubuntu.com',
     'umd.edu',
     'usa.canon.com',
@@ -136,6 +138,7 @@ WHERE
     'bearly.ai',
     'brave.com',
     'cron.com',
+    'opalcamera.com',
     'discord.com',
     'dl.discordapp.net',
     'flipperzero.one',
@@ -180,6 +183,7 @@ WHERE
   AND host NOT LIKE 'mirror%'
   AND host NOT LIKE 'driver.%'
   AND host NOT LIKE 'support%'
+  AND host NOT LIKE 's3.%.amazonaws.com'
   AND host NOT LIKE 'software%'
   AND host NOT LIKE 'www.google.%'
   AND host NOT LIKE '%release%.storage.googleapis.com'

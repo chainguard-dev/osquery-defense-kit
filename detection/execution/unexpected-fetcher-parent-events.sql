@@ -71,6 +71,7 @@ WHERE
   AND p0_name IN ('curl', 'wget', 'ftp', 'tftp')
   AND NOT exception_key IN (
     'curl,0,nm-dispatcher,',
+    'curl,500,bash,bash',
     'curl,0,nm-dispatcher,nm-dispatcher',
     'curl,500,bash,nix-daemon',
     'curl,500,bash,ShellLauncher',

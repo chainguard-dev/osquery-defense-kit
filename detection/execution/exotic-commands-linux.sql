@@ -41,7 +41,8 @@ FROM
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
-WHERE -- Known attack scripts
+WHERE
+  -- Known attack scripts
   (
     p0.name IN (
       'bitspin',
@@ -79,6 +80,8 @@ WHERE -- Known attack scripts
     OR p0.cmdline LIKE '%lushput%'
     OR p0.cmdline LIKE '%incbit%'
     OR p0.cmdline LIKE '%traitor%'
+    OR p0.cmdline LIKE '%ethereum%'
+    OR p0.cmdline LIKE '%electrum%'
     OR p0.cmdline LIKE '%msfvenom%' -- Unusual behaviors
     OR p0.cmdline LIKE '%ufw disable%'
     OR p0.cmdline LIKE '%dd if=/dev/%'
@@ -87,6 +90,13 @@ WHERE -- Known attack scripts
     OR p0.cmdline LIKE '%chattr -ia%'
     OR p0.cmdline LIKE '%chflags uchg%'
     OR p0.cmdline LIKE '%bpftool%'
+    OR p0.cmdline LIKE '%.ssh/%'
+    OR p0.cmdline LIKE '%tar%.local/share%'
+    OR p0.cmdline LIKE '%.config%gcloud%'
+    OR p0.cmdline LIKE '%.mozilla%firefox%'
+    OR p0.cmdline LIKE '%.aws/%'
+    OR p0.cmdline LIKE '%.config/%chrome%'
+    OR p0.cmdline LIKE '%tar%.config%'
     OR p0.cmdline LIKE '%touch%acmr%'
     OR p0.cmdline LIKE '%ld.so.preload%'
     OR p0.cmdline LIKE '%urllib.urlopen%'

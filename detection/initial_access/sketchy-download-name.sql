@@ -12,25 +12,20 @@ SELECT
   hash.sha256,
   ea.value AS download_url,
   signature.authority AS s_auth,
-  signature.identifier AS s_id  
+  signature.identifier AS s_id
 FROM
   file
   LEFT JOIN magic ON file.path = magic.path
   LEFT JOIN hash ON file.path = hash.path
-  LEFT JOIN extended_attributes ea ON file.path = ea.path AND ea.key = "where_from"
+  LEFT JOIN extended_attributes ea ON file.path = ea.path
+  AND ea.key = "where_from"
   LEFT JOIN signature ON file.path = signature.path
 WHERE
   file.path LIKE "/Users/%/Downloads/%"
-
   -- Frequently targetted extension for InfoStealer attacks
-  AND extension IN (
-    'dmg',
-    'exe',
-    'rar',
-    'pkg'
-  )
+  AND extension IN ('dmg', 'exe', 'rar', 'pkg')
   AND (
-    file.filename LIKE "%Adobe Photoshop%"    
+    file.filename LIKE "%Adobe Photoshop%"
     OR file.filename LIKE "%.app%"
     OR file.filename LIKE "%Advertising%"
     OR file.filename LIKE "%agreement%"
@@ -71,4 +66,5 @@ WHERE
     OR file.filename LIKE "pdftk_server-%-win-setup.exe"
     OR file.filename LIKE "PioneerDriveUpdaterBDR%.dmg"
     OR file.filename LIKE "%MacVim%.dmg"
+    OR file.filename LIKE 'PA Lottery Player Location Check%.dmg'
   )

@@ -9,7 +9,8 @@
 -- tags: transient process events
 -- platform: linux
 -- interval: 300
-SELECT -- Child
+SELECT
+  -- Child
   pe.path AS p0_path,
   pe.time AS p0_time,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
@@ -119,6 +120,13 @@ WHERE
     OR p0_cmd LIKE '%ld.so.preload%'
     OR p0_cmd LIKE '%urllib.urlopen%'
     OR p0_cmd LIKE '%nohup%tmp%'
+    OR p0_cmd LIKE '%.ssh/%'
+    OR p0_cmd LIKE '%tar%.local/share%'
+    OR p0_cmd LIKE '%.config%gcloud%'
+    OR p0_cmd LIKE '%.aws/%'
+    OR p0_cmd LIKE '%.mozilla%firefox%'
+    OR p0_cmd LIKE '%.config/%chrome%'
+    OR p0_cmd LIKE '%tar%.config%'
     OR p0_cmd LIKE '%systemctl stop firewalld%'
     OR p0_cmd LIKE '%systemctl disable firewalld%'
     OR p0_cmd LIKE '%pkill -f%'
@@ -181,6 +189,7 @@ WHERE
     AND (
       p0_cmd LIKE '%/org.gpgtools.log.%/fifo'
       OR p0_cmd LIKE 'mkfifo -- %/gitstatus.POWERLEVEL9K%.fifo'
+      OR p0_cmd LIKE '%/p10k.%'
     )
   )
   AND NOT p0_cmd IN ('lsmod', 'dd if=/dev/stdin conv=unblock cbs=79')
@@ -195,11 +204,14 @@ WHERE
   AND NOT p0_cmd LIKE '%modprobe nf_nat_netbios_ns'
   AND NOT p0_cmd LIKE '%modprobe -va%'
   AND NOT p0_cmd LIKE 'pkill -f cut -c3%'
+  AND NOT p0_cmd LIKE '%nc -h%'
+  AND NOT p0_cmd LIKE '%socat%kwallet%socket'
   AND NOT p0_cmd LIKE 'tail /%history'
   AND NOT p0_cmd LIKE '%/usr/bin/cmake%Socket%'
   AND NOT p0_name IN ('ar', 'cc1', 'compile', 'cmake', 'cc1plus')
   AND NOT exception_key IN (
     'bash,500,ninja,bash',
     'ls,500,zsh,alacritty',
+    'nc,500,fish,konsole',
     'bash,0,bash,containerd-shim-runc-v2'
   )
