@@ -54,5 +54,8 @@ WHERE
     '/var/run/lima-boot-done',
     '/var/run/lima-ssh-ready'
   )
-  AND magic.data NOT IN ('JSON data')
+  AND (
+    magic.data IS NULL
+    OR magic.data != 'JSON data'
+  )
   AND file.size > 10

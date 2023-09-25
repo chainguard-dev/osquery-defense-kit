@@ -47,7 +47,10 @@ WHERE
     file.uid = 1000
     AND file.gid = 1000
     AND file.mode = '0700'
-    AND magic.data = 'data'
+    AND (
+      magic.data IS NULL
+      OR magic.data = 'data'
+    )
     AND file.path LIKE '/dev/shm/pulse-shm-%'
     AND file.size > 60000000
   ) -- Seen with Steam
@@ -57,7 +60,8 @@ WHERE
     AND file.mode IN ('0755', '0775')
     AND file.path LIKE '/dev/shm/u1000-Shm_%'
     AND (
-      magic.data NOT LIKE "%executable%"
+      magic.data IS NULL
+      OR magic.data NOT LIKE "%executable%"
       OR magic.data IN (
         'data',
         'Applesoft BASIC program data, first line number 86',

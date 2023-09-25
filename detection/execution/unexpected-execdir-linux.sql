@@ -5,7 +5,8 @@
 --
 -- tags: transient process state
 -- platform: linux
-SELECT -- Child
+SELECT
+  -- Child
   p0.pid AS p0_pid,
   p0.cgroup_path AS p0_cgroup,
   p0.path AS p0_path,
@@ -66,7 +67,7 @@ WHERE
       AND INSTR(path, "/app/") != 1
       AND INSTR(path, "/ko-app") != 1
       AND INSTR(path, "/usr/share/teams/") != 1
-      AND INSTR(path, "/.terraform/") > 0
+      AND path NOT LIKE "%/.terraform%"
       AND NOT path LIKE '/tmp/%/osqtool'
       AND NOT path LIKE '/tmp/GoLand/___go_build_%_go'
       AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
