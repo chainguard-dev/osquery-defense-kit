@@ -71,6 +71,8 @@ WHERE
         )
         OR exception_key LIKE '%sh,~/.Trash'
     )
+    AND NOT pe.cwd LIKE '%/build/%'
+    AND NOT pe.cwd LIKE '%/out/%'
 GROUP BY
     p.cmdline,
     p.cwd;

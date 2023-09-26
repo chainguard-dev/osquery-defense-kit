@@ -51,6 +51,7 @@ WHERE
   AND yara.count > 0
   AND p0.name NOT IN (
     'old',
+    'stable',
     'fig-darwin-universal',
     'wezterm-gui'
   )

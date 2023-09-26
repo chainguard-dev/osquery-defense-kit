@@ -79,6 +79,7 @@ WHERE
     'ZaloCall,8.8.8.8,53',
     'Telegram,8.8.8.8,53',
     'Meeting Center,8.8.8.8,53',
+    'limactl,8.8.8.8,53',
     'signal-desktop,8.8.8.8,53',
     'slack,8.8.8.8,53',
     'EpicWebHelper,8.8.4.4,53',

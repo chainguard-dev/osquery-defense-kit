@@ -100,7 +100,9 @@ WHERE
   )
   AND NOT exception_key IN (
     '500,0,123,sntp',
+    '500,0,443,com.google.one.NetworkExtension',
     '500,0,22,ssh',
+    '500,0,443,com.apple.NRD.UpdateBrainService',
     '500,0,31488,sntp',
     '500,0,32768,ksfetch',
     '500,0,32768,syncthing',
@@ -132,14 +134,25 @@ WHERE
     '500,500,32768,cloud-sql-proxy',
     '500,500,32768,ksfetch',
     '500,500,4318,Code Helper (Plugin)',
+    '500,500,80,Code Helper (Plugin)',
     '500,500,443,aws',
     '500,500,443,cloud_sql_proxy',
     '500,500,443,Code Helper (Plugin)',
     '500,500,443,Code Helper',
+    '500,500,443,grype',
     '500,500,443,copilot-agent-macos-arm64',
     '500,500,443,Electron',
+    '500,500,443,chainctl',
+    '500,0,80,http',
+    '500,500,443,figma_agent',
+    '500,0,443,fwupdmgr',
+    '500,500,443,GitX',
+    '500,0,110,syncthing',
+    '500,500,80,Code Helper (Plugin)',
+    '500,500,80,ksfetch',
     '500,500,443,gitsign',
     '500,500,443,go',
+    '500,0,443,OneDriveStandaloneUpdater',
     '500,500,443,ksfetch',
     '500,500,443,node',
     '500,500,443,old',
@@ -148,6 +161,8 @@ WHERE
     '500,500,80,copilot-agent-macos-arm64',
     '500,500,80,node'
   )
+  AND NOT exception_key LIKE '500,500,443,terraform%'
+  AND NOT exception_key LIKE '500,0,%,chrome'
   AND NOT (
     basename = "Python"
     AND (

@@ -125,6 +125,7 @@ WHERE
     '53,6,65,mDNSResponder,Software Signing',
     '5454,6,0,xrdd,Developer ID Application: X-Rite, Incorporated (2K7GT73B4R)',
     '546,17,0,configd,Software Signing',
+    '49152,6,500,Stream Deck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     '547,17,500,dhcp6d,Software Signing',
     '5900,6,0,launchd,Software Signing',
     '5900,6,0,screensharingd,Software Signing',

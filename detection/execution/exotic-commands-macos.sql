@@ -95,7 +95,7 @@ WHERE
   )
   AND NOT (
     p0_cmd LIKE '%UserKnownHostsFile=/dev/null%'
-    AND p1.name LIKE 'limactl%'
+    AND p0_cmd LIKE "%lima/%"
   )
   AND NOT (
     p0_cmd LIKE '%UserKnownHostsFile=/dev/null%'

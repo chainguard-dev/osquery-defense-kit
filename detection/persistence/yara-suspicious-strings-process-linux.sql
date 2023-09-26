@@ -67,7 +67,7 @@ WHERE
         $avahi = "avahi-daemon:"
         $redhat4 = "Red Hat 4"
     condition:
-        filesize < 10MB and 2 of them
+        filesize < 25MB and 3 of them
 }'
   AND yara.count > 0
   AND p0.name NOT IN (
@@ -88,12 +88,18 @@ WHERE
     '/usr/bin/bash',
     '/usr/bin/gnome-software',
     '/usr/bin/gpg-agent',
+    '/bin/fish',
+    '/usr/bin/fish',
     '/usr/bin/ibus-daemon',
     '/usr/bin/make',
+    '/usr/bin/docker-proxy',
     '/usr/bin/NetworkManager',
     '/usr/bin/nvidia-persistenced',
+    '/usr/lib/systemd/systemd-machined',
     '/usr/bin/pulseaudio',
     '/usr/bin/udevadm',
+    '/usr/sbin/crond',
+    '/usr/sbin/gdm',
     '/usr/bin/update-notifier',
     '/usr/bin/Xwayland',
     '/usr/lib/bluetooth/bluetoothd',    
