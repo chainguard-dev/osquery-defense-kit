@@ -172,6 +172,7 @@ WHERE
     '/dev/fb,Xorg',
     '/dev/hidraw,chrome',
     '/dev/hwrng,rngd',
+    '/dev/hvc,agetty',
     '/dev/input/event,thermald',
     '/dev/input/event,touchegg',
     '/dev/input/event,Xorg',

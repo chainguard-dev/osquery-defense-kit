@@ -118,6 +118,8 @@ WHERE
     '/dev/loop',
     '/dev/loop-control',
     '/dev/lp',
+    '/dev/hvc',
+    '/dev/vportp',
     '/dev/mapper/',
     '/dev/mapper/control',
     '/dev/mcelog',

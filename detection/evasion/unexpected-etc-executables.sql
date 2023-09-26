@@ -33,6 +33,7 @@ WHERE
     '/etc/alternatives',
     '/etc/apcupsd',
     '/etc/apm/resume.d',
+    '/etc/vmware-tools/scripts/vmware',
     '/etc/apm/scripts.d',
     '/etc/apm/suspend.d',
     '/etc/avahi',

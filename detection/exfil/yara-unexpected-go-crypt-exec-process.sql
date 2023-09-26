@@ -74,6 +74,8 @@ WHERE
     'kubectl',
     'go',
     'docker',
+    'lima-guestagent',
+    'containerd-star',
     'gopls',
     'launcher',
     'tflint',

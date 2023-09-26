@@ -65,17 +65,18 @@ WHERE
   AND yara.sigrule = '    
     rule stealer {
     strings:
-        $ds = "data_stealers" ascii
-        $lk = "/Library/Keychains" ascii
-        $cs = "cookies.sqlite" ascii
-        $mc = "moz_cookies" ascii
-        $og = "OperaGX" ascii
-        $bs = "BraveSoftware" ascii
-        $os = "osascript" ascii
-        $fgp = "find-generic-password" ascii
+        $data_stealers = "data_stealers" ascii
+        $library_keychains = "/Library/Keychains" ascii
+        $cookies_sqlite = "cookies.sqlite" ascii
+        $moz_cookies = "moz_cookies" ascii
+        $operagx = "OperaGX" ascii
+        $brave_software = "BraveSoftware" ascii
+        $osascript = "osascript" ascii
+        $find_generic_password = "find-generic-password" ascii
 
     condition:
         2 of them
 }'
-  AND yara.count > 0  
-GROUP BY file.path
+  AND yara.count > 0
+GROUP BY
+  file.path
