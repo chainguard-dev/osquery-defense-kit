@@ -75,6 +75,8 @@ WHERE
   AND p0.start_time < (strftime('%s', 'now') - 1200)
   AND exception_key NOT IN (
     '(sd-pam),/usr/lib/systemd/systemd,0,user.slice,user-0.slice,0755',
+    'sshd,/usr/sbin/sshd,0,user.slice,user-501.slice,0755',
+    'launcher,/usr/local/kolide-k2/bin/launcher,0,system.slice,launcher.kolide-k2.service,0755',
     '.tailscaled-wra,/nix/store/__VERSION__/bin/.tailscaled-wrapped,0,system.slice,tailscaled.service,0555',
     '/usr/bin/monito,/usr/bin/perl,0,system.slice,monitorix.service,0755',
     'ModemManager,/usr/sbin/ModemManager,0,system.slice,ModemManager.service,0755',

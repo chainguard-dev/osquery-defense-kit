@@ -89,6 +89,7 @@ WHERE
     '/usr/bin/gnome-software',
     '/usr/bin/gpg-agent',
     '/usr/bin/ibus-daemon',
+    '/usr/bin/make',
     '/usr/bin/NetworkManager',
     '/usr/bin/nvidia-persistenced',
     '/usr/bin/pulseaudio',

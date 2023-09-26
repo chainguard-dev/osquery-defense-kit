@@ -89,6 +89,7 @@ WHERE
     '0,udevadm,systemd-udevd',
     '0,udevadm,(udev-worker)',
     '500,netcat,nc',
+    '500,nc.openbsd,nc',
     '500,busybox,sh',
     '500,coreutils,tail',
     '500,gjs-console,gnome-character',

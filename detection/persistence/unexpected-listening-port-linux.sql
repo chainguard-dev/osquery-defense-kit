@@ -70,6 +70,9 @@ WHERE
   ) IN (
     '10250,6,0,kubelet',
     '10250,6,500,kubelet',
+    '22,6,0,systemd',
+    '58,255,500,systemd-network',
+    '68,17,500,systemd-network',
     '10254,6,101,nginx-ingress-c',
     '10256,6,0,kube-proxy',
     '10256,6,500,kube-proxy',
