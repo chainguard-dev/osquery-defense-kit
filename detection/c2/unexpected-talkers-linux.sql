@@ -238,9 +238,16 @@ WHERE
     AND p.euid > 500
   )
   AND NOT (
+    p.name = 'ruby'
+    AND p.cmdline LIKE '%fluentd%'
+    AND s.remote_port > 1024
+    AND s.protocol = 6
+    AND p.euid > 500
+  )
+  AND NOT (
     p.name = 'java'
     AND p.cmdline LIKE '/home/%/PhpStorm%'
-    AND s.remote_port > 1024
+    AND s.remote_port > 79
     AND s.protocol = 6
     AND p.euid > 500
   )

@@ -94,6 +94,7 @@ WHERE
     "xdg-permission-store",
     "xdg-desktop-portal",
     "xdg-document-portal",
+    'udevadm',
     "xdg-desktop-portal-gnome",
     "xdg-desktop-portal-gtk",
     "nm-applet",

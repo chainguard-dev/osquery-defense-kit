@@ -144,6 +144,7 @@ WHERE
     'flipperzero.one',
     'dl.google.com',
     'duckduckgo.com',
+    'go.dev',
     'dygma.com',
     'emacsformacosx.com',
     'getkap.co',

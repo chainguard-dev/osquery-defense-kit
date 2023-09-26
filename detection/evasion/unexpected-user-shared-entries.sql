@@ -79,6 +79,7 @@ WHERE
       '/Users/Shared/Relocated Items',
       '/Users/Shared/TechSmith'
     )
+    OR file.path LIKE '/Users/Shared/Epic Games/%'
     OR file.path LIKE "/Users/Shared/Previously Relocated Items %/%"
     OR (
       file.path LIKE "%.plist"

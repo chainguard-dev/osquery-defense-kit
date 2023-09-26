@@ -172,6 +172,7 @@ WHERE
     '500,git,0u,0g,git',
     '500,git-remote-http,0u,0g,git-remote-http',
     '500,git-remote-http,u,g,git-remote-http',
+    '500,com.docker.backend,0u,0g,com.docker.back',
     '500,gitsign,0u,0g,gitsign',
     '500,gitsign,500u,0g,gitsign',
     '500,gitsign,500u,500g,gitsign',

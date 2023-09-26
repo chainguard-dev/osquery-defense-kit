@@ -34,6 +34,7 @@ WHERE
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Creative Labs Pte. Ltd. (5Q3552844F)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
+    'Developer ID Application: Jonathan Bullard (Z2SG5H3HC8)',
     'Developer ID Application: Ilya Parniuk (ACC5R6RH47)',
     'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK)',
     'Developer ID Application: Hercules Labs Inc. (B8PC799ZGU)',

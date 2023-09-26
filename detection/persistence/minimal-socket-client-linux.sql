@@ -46,7 +46,8 @@ WHERE p0.path != '' -- optimization: focus on longer running processes
         '/usr/lib/electron/chrome-sandbox',
         '/usr/bin/i3blocks'
     )
-    AND p0.name NOT IN ('chrome_crashpad', 'dhcpcd', 'Brackets-node') -- optimization: minimalistic daemons typically only run 1 pid per path
+    AND p0.name NOT IN ('chrome_crashpad', 'dhcpcd', 'stern', 'Brackets-node') -- optimization: minimalistic daemons typically only run 1 pid per path
+    AND p0.path NOT LIKE '/home/%/go/bin/%'
     AND pos.family != 1
     AND pos.pid > 0
     AND pos.state != 'LISTEN'
