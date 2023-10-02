@@ -252,6 +252,7 @@ WHERE
     'true,NortonLifeLock Inc,Norton Safe Web,fnpbeacklnhmkkilekogeiekaglbmmka',
     'true,Opera Norway AS,Opera AI Prompts,mljbnbeedpkgakdchcmfapkjhfcogaoc',
     'true,Opera Software AS,Rich Hints Agent,enegjkbbakeegngfapepobipndnebkdk',
+    'true,Opera,Cashback Assistant,ompjkhnkeoicimmaehlcmgmpghobbjoj',
     'true,Pawel Psztyc,Advanced REST client,hgmloofddffdnphfgcellkdfbfbjeloo',
     'true,Pushbullet,Pushbullet,chlffgpmiacpedhhbkiomidkjlcfhogd',
     'true,Rakuten,Rakuten: Get Cash Back For Shopping,chhjbpecpncaggjpdakmflnfcopglcmi',

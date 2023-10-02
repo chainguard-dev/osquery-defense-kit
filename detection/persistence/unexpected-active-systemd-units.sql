@@ -41,6 +41,7 @@ WHERE
     AND (
       exception_key IN (
         '-.slice,Root Slice,',
+        'cups-browsed.service,Make remote CUPS printers available locally,cups-browsed',
         'ModemManager.service,Modem Manager,root',
         'NetworkManager-dispatcher.service,Network Manager Script Dispatcher Service,',
         'NetworkManager-wait-online.service,Network Manager Wait Online,',

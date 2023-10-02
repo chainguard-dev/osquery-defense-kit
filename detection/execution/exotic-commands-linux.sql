@@ -133,4 +133,4 @@ WHERE
   )
   AND NOT p0.cmdline like '%socat UNIX-LISTEN:%com.discordapp%discord-ipc%'
   AND NOT p0.cmdline IN ('nc 127.0.0.1 5900')
-  AND NOT p0.name IN ('cc1', 'compile', 'cmake', 'cc1plus')
+  AND NOT p0.name IN ('cc1', 'compile', 'cmake', 'cc1plus', 'chrome_crashpad')

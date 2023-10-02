@@ -97,6 +97,7 @@ WHERE
     'udevadm',
     "xdg-desktop-portal-gnome",
     "xdg-desktop-portal-gtk",
+    "perl",
     "nm-applet",
     "acpid",
     "systemd",

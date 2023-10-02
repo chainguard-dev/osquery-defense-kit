@@ -107,6 +107,8 @@ WHERE
     '3306,6,500,java,u,g,java',
     '3307,6,500,cloud_sql_proxy,0u,0g,cloud_sql_proxy',
     '3443,6,500,chrome,0u,0g,chrome',
+    '500,0,32768,com.apple.MobileSoftwareUpdate.UpdateBrainService',
+    '500,0,80,com.apple.NRD.UpdateBrainService',
     '3478,6,500,chrome,0u,0g,chrome',
     '3478,6,500,firefox,0u,0g,firefox',
     '4070,6,500,spotify,0u,0g,spotify',

@@ -186,7 +186,11 @@ WHERE
       OR p0_cmd LIKE '%/p10k.%'
     )
   )
-  AND NOT p0_cmd IN ('lsmod', 'dd if=/dev/stdin conv=unblock cbs=79')
+  AND NOT p0_cmd IN (
+    'lsmod',
+    'dd if=/dev/stdin conv=unblock cbs=79',
+    '/usr/bin/socat STDIN UNIX-CONNECT:/run/user/1000/kwallet5.socket'
+  )
   AND NOT p0_cmd LIKE 'find . -executable -type f -name %grep -l GNU Libtool%touch -r%'
   AND NOT p0_cmd LIKE 'modinfo -k%'
   AND NOT p0_cmd LIKE 'modprobe -ab%'
@@ -203,5 +207,6 @@ WHERE
     'bash,500,ninja,bash',
     'ls,500,zsh,alacritty',
     'nc,500,fish,konsole',
+    'chrome_crashpad_handler,500,systemd,systemd',
     'bash,0,bash,containerd-shim-runc-v2'
   )

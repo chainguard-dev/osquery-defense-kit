@@ -27,7 +27,9 @@ WHERE
   file.directory = "/var/run"
   AND file.type = "regular"
   AND file.filename NOT IN (
+    '.DidRunFLO',
     '.autoBackup',
+    '.fctcompsupdate',
     'FirstBootAfterUpdate',
     'FirstBootCleanupHandled',
     'appfwd.pid',
@@ -46,7 +48,6 @@ WHERE
     'diskarbitrationd.pid',
     'fctc.s',
     'hdiejectd.pid',
-    '.fctcompsupdate',
     'installd.commit.pid',
     'kdc.pid',
     'prl_disp_service.pid',
