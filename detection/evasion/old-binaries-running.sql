@@ -56,6 +56,7 @@ WHERE
     '/usr/bin/sshfs',
     '/usr/bin/xclip',
     '/usr/bin/xss-lock',
+    '/usr/bin/i3lock',
     '/usr/local/bin/dive'
   )
   AND p.name NOT IN (
