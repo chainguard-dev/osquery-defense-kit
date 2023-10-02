@@ -157,6 +157,7 @@ WHERE
   AND p1_path NOT IN (
     '/Applications/Docker.app/Contents/MacOS/Docker',
     '/Applications/Docker.app/Contents/MacOS/install',
+    '/Applications/Hyper.app/Contents/MacOS/Hyper',
     '/Applications/Visual Studio Code.app/Contents/MacOS/Electron',
     '/Applications/Docker.app/Contents/Resources/bin/com.docker.cli',
     '/Applications/Docker.app/Contents/Resources/bin/docker-credential-desktop',

@@ -97,7 +97,6 @@ WHERE
     OR (
       (
         vol_name LIKE "Install%"
-
         -- The rest are synced with sketchy-download-names
         OR vol_name LIKE "%.app%"
         OR vol_name LIKE "%AnyDesk%"
@@ -174,6 +173,8 @@ WHERE
       -- emacs
       AND magic.data NOT LIKE 'symbolic link to bin-x86%'
       AND magic.data NOT LIKE 'symbolic link to /Users/%/My Drive'
+      -- Docker
+      AND magic.data NOT LIKE 'cannot open%'
     )
   )
 GROUP BY

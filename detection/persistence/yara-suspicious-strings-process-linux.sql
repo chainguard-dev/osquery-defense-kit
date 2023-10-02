@@ -43,8 +43,7 @@ FROM
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
   p0.start_time > (strftime('%s', 'now') - 7200)
-  AND
-  yara.sigrule = '    
+  AND yara.sigrule = '    
     rule redflags {
     strings:
         $bash_history = ".bash_history"
@@ -90,6 +89,7 @@ WHERE
     '/usr/bin/sudo',
     '/usr/bin/bash',
     '/usr/bin/containerd-shim-runc-v2',
+    '/bin/containerd-shim-runc-v2',
     '/usr/bin/docker-proxy',
     '/usr/bin/fish',
     '/usr/bin/gnome-software',
@@ -102,7 +102,7 @@ WHERE
     '/usr/bin/udevadm',
     '/usr/bin/update-notifier',
     '/usr/bin/Xwayland',
-    '/usr/lib/bluetooth/bluetoothd',    
+    '/usr/lib/bluetooth/bluetoothd',
     '/usr/lib/bluetooth/obexd',
     '/usr/libexec/accounts-daemon',
     '/usr/libexec/bluetooth/bluetoothd',

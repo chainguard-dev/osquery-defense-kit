@@ -258,7 +258,10 @@ WHERE
   ) -- Locally built executables
   AND NOT (
     s.identifier = 'a.out'
-    AND dir LIKE '~/%'
+    AND (
+      dir LIKE '~/%'
+      OR dir LIKE '/Users/%'
+    )
     AND p1_name IN ('fish', 'sh', 'bash', 'zsh', 'terraform', 'code')
   )
   AND NOT (

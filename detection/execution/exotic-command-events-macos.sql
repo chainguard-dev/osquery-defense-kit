@@ -209,6 +209,7 @@ WHERE
     'yara,500,bash,fish',
     'ssh,500,limactl.ventura,launchd',
     'git,500,zsh,login',
+    'bat,500,zsh,login',
     'git,500,zsh,goland',
     'sh,0,Ecamm Live,launchd',
     'cat,500,zsh,login'
