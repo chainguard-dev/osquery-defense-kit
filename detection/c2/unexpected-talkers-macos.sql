@@ -85,6 +85,7 @@ WHERE
   )
   AND pos.remote_address NOT IN (
     '0.0.0.0',
+    '::127.0.0.1',
     '127.0.0.1',
     '::ffff:127.0.0.1',
     '::1',
@@ -182,8 +183,10 @@ WHERE
     '0,6,80,tailscaled,tailscaled,500u,80g',
     '500,6,22,ssh,ssh,0u,500g',
     '500,6,22,ssh,ssh,500u,0g',
+    '500,6,80,qemu-system-x86_64,qemu-system-x86_64,500u,80g',
     '500,6,22,ssh,ssh,500u,20g',
     '500,6,22,ssh,ssh,500u,80g',
+    '500,6,80,git-remote-http,git-remote-http,500u,20g',
     '500,6,3307,cloud_sql_proxy,cloud_sql_proxy,0u,0g',
     '500,6,3307,cloud-sql-proxy,cloud-sql-proxy,500u,20g',
     '500,6,3307,cloud_sql_proxy,cloud_sql_proxy,500u,20g',
@@ -216,12 +219,15 @@ WHERE
     )
     AND id_exception_key IN (
       'Developer ID Application: Bookry Ltd (4259LE8SU5),com.bookry.wavebox.helper',
+      'Developer ID Application: Tailscale Inc. (W5364U7YZB),io.tailscale.ipn.macsys.network-extension',
       'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.helper',
       'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
+      'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D),com.googlecode.iterm2',
       'Apple Mac OS Application Signing,com.microsoft.OneDrive-mac',
       'Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL),com.tinyspeck.slackmacgap.helper',
       'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.EpicGamesLauncher',
       'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK),fctupdate',
+      'Developer ID Application: Skype Communications S.a.r.l (AL798K98FX),com.skype.skype.Helper',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.one.NetworkExtension',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.edgemac.helper',

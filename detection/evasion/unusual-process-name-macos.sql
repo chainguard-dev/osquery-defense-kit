@@ -95,6 +95,7 @@ WHERE
     'cpu',
     'BetterTouchToolAppleScriptRunner',
     'BetterTouchToolShellScriptRunner',
+    'TwitterNotificationServiceExtension',
     'at.obdev.littlesnitch.networkextension',
     'EcammLiveVideoOutAssistantXPCHelper'
   )

@@ -129,6 +129,7 @@ WHERE
     '/Volumes/Jabra Direct Setup/JabraDirectSetup.pkg'
   )
   AND trimpath NOT LIKE '/Volumes/JDK %/JDK %.pkg'
+  AND trimpath NOT LIKE '/Volumes/Splunk %/Install Splunk'
   AND trimpath NOT LIKE '/Volumes/Google Earth Pro%/Install Google Earth Pro%.pkg'
   AND trimpath NOT LIKE '/Volumes/mysql-shell-%/mysql-shell-%.pkg'
   AND trimpath NOT LIKE '/Volumes/Blackmagic DaVinci Resolve/Install Resolve %.pkg'

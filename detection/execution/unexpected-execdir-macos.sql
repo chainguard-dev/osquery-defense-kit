@@ -141,6 +141,7 @@ WHERE
     '~/Library/Caches/com.mimestream.Mimestream/',
     '~/Library/Caches/com.sempliva.Tiles/',
     '~/Library/Services/UE4EditorServices.app/',
+    '~/Library/Caches/com.grammarly.ProjectLlama/',
     '~/Library/Caches/JetBrains/',
     '~/Library/Caches/Cypress/',
     '~/Library/Caches/org.gpgtools.updater/',

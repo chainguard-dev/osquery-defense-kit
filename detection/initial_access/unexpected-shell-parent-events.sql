@@ -250,6 +250,7 @@ WHERE
       'bash,0,mutter-x11-frames,gnome-shell',
       'bash,0,perl5.30,system_installd',
       'bash,0,pia-daemon,launchd',
+      'sh,500,splunkd,splunkd',
       'bash,0,udevadm,udevadm',
       'bash,500,.man-wrapped,zsh',
       'bash,500,Foxit PDF Reader,launchd',
@@ -290,6 +291,8 @@ WHERE
       'zsh,500,stable,launchd'
     )
     OR p0_cmd LIKE '%/bash -e%/bin/as -arch%'
+    OR p0_cmd LIKE '/bin/sh -c /Applications/%'
+    OR p0_cmd LIKE '%/usr/bin/python3 /usr/bin/terminator%'
     OR p0_cmd LIKE '/bin/bash /opt/homebrew/%'
     OR p0_cmd LIKE '/bin/bash /usr/bin/xdg-settings check %'
     OR p0_cmd LIKE '/bin/bash /usr/local/Homebrew/%'

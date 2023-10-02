@@ -171,6 +171,7 @@ WHERE
       'helm history',
       '/Library/Apple/System/Library/StagedFrameworks/Safari/SafariShared.framework/XPCServices/com.apple.Safari.History.xpc/Contents/MacOS/com.apple.Safari.History',
       'nc -h',
+      'nc',
       'nc -uv 8.8.8.8 53',
       'nc localhost 8080 -vz',
       'nix profile history',
@@ -202,9 +203,10 @@ WHERE
   AND NOT p0_cmd LIKE 'touch -r /tmp/KSInstallAction.%'
   AND NOT p0_cmd LIKE '%find /Applications/LogiTuneInstaller.app -type d -exec chmod 777 {}%'
   AND NOT p0_cmd LIKE '/bin/rm -f /tmp/com.adobe.%.updater/%'
-  AND NOT p0_name IN ('cc1', 'compile')
+  AND NOT p0_name IN ('cc1', 'compile', 'yara')
   AND NOT exception_key IN (
     'dd,500,zsh,login',
+    'yara,500,bash,fish',
     'ssh,500,limactl.ventura,launchd',
     'git,500,zsh,login',
     'git,500,zsh,goland',

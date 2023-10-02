@@ -23,7 +23,7 @@ out/odk-detection-evasion.conf: out/osqtool-$(ARCH) $(wildcard detection/evasion
 	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-evasion.conf pack detection/evasion
 
 out/odk-detection-execution.conf: out/osqtool-$(ARCH) $(wildcard detection/execution/*.sql)
-	./out/osqtool-$(ARCH) --max-query-duration=8s --verify -output out/odk-detection-execution.conf pack detection/execution
+	./out/osqtool-$(ARCH) --max-query-duration=16s --verify -output out/odk-detection-execution.conf pack detection/execution
 
 out/odk-detection-exfil.conf: out/osqtool-$(ARCH) $(wildcard detection/exfil/*.sql)
 	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-exfil.conf pack detection/exfil
@@ -47,7 +47,7 @@ out/odk-vulnerabilities.conf: out/osqtool-$(ARCH)  $(wildcard vulnerabilities/*.
 	./out/osqtool-$(ARCH) --output out/odk-vulnerabilities.conf pack vulnerabilities/
 
 out/odk-incident-response.conf: out/osqtool-$(ARCH)  $(wildcard incident_response/*.sql)
-	./out/osqtool-$(ARCH)  --max-query-duration=12s  --output out/odk-incident-response.conf --verify pack incident_response/
+	./out/osqtool-$(ARCH)  --max-query-duration=12s --output out/odk-incident-response.conf --verify pack incident_response/
 
 # A privacy-aware variation of IR rules
 out/odk-incident-response-privacy.conf: out/osqtool-$(ARCH)  $(wildcard incident_response/*.sql)
@@ -101,7 +101,7 @@ verify-ci: ./out/osqtool-$(ARCH)
 verify: ./out/osqtool-$(ARCH)
 	$(SUDO) ./out/osqtool-$(ARCH) --max-results=150000 --max-query-duration=10s --max-total-daily-duration=15m verify incident_response
 	$(SUDO) ./out/osqtool-$(ARCH) --max-results=0 --max-query-duration=6s --max-total-daily-duration=10m verify policy
-	$(SUDO) ./out/osqtool-$(ARCH) --max-results=0 --max-query-duration=12s --max-total-daily-duration=2h30m --max-query-daily-duration=1h verify detection
+	$(SUDO) ./out/osqtool-$(ARCH) --max-results=0 --max-query-duration=16s --max-total-daily-duration=2h30m --max-query-daily-duration=1h verify detection
 
 all: out/odk-packs.zip
 

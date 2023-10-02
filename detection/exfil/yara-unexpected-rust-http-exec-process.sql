@@ -52,6 +52,7 @@ WHERE
   AND p0.name NOT IN (
     'old',
     'stable',
+    'Cody',
     'fig-darwin-universal',
     'wezterm-gui'
   )
