@@ -84,10 +84,10 @@ WHERE
   AND p0.path NOT LIKE '%/chrome_crashpad_handler'
   AND p0.path NOT LIKE '/nix/store/%/bin/%'
   AND p0.path NOT LIKE '/nix/store/%/libexec/%'
+  AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/launcher'
   AND p0.path NOT IN (
     '/bin/fish',
-    '/usr/bin/NetworkManager',
-    '/usr/bin/Xwayland',
+    '/usr/bin/sudo',
     '/usr/bin/bash',
     '/usr/bin/containerd-shim-runc-v2',
     '/usr/bin/docker-proxy',
@@ -96,22 +96,23 @@ WHERE
     '/usr/bin/gpg-agent',
     '/usr/bin/ibus-daemon',
     '/usr/bin/make',
+    '/usr/bin/NetworkManager',
     '/usr/bin/nvidia-persistenced',
     '/usr/bin/pulseaudio',
     '/usr/bin/udevadm',
     '/usr/bin/update-notifier',
+    '/usr/bin/Xwayland',
     '/usr/lib/bluetooth/bluetoothd',    
     '/usr/lib/bluetooth/obexd',
-    '/usr/lib/systemd/systemd',
-    '/usr/lib/systemd/systemd-journald',
-    '/usr/lib/systemd/systemd-machined',
     '/usr/libexec/accounts-daemon',
     '/usr/libexec/bluetooth/bluetoothd',
     '/usr/libexec/bluetooth/obexd',
     '/usr/libexec/sssd/sssd_kcm',
     '/usr/libexec/xdg-desktop-portal',
+    '/usr/lib/systemd/systemd',
+    '/usr/lib/systemd/systemd-journald',
+    '/usr/lib/systemd/systemd-machined',
     '/usr/local/kolide-k2/bin/launcher',
-    '/usr/sbin/NetworkManager',
     '/usr/sbin/acpid',
     '/usr/sbin/auditd',
     '/usr/sbin/cron',
@@ -119,7 +120,7 @@ WHERE
     '/usr/sbin/gdm',
     '/usr/sbin/gssproxy',
     '/usr/sbin/mcelog',
+    '/usr/sbin/NetworkManager',
     '/usr/sbin/rsyslogd',
     '/usr/sbin/smartd'
-
   )
