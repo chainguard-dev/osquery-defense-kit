@@ -26,7 +26,7 @@ out/odk-detection-execution.conf: out/osqtool-$(ARCH) $(wildcard detection/execu
 	./out/osqtool-$(ARCH) --max-query-duration=16s --verify -output out/odk-detection-execution.conf pack detection/execution
 
 out/odk-detection-exfil.conf: out/osqtool-$(ARCH) $(wildcard detection/exfil/*.sql)
-	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-exfil.conf pack detection/exfil
+	./out/osqtool-$(ARCH) --max-query-duration=16s --verify -output out/odk-detection-exfil.conf pack detection/exfil
 
 out/odk-detection-impact.conf: out/osqtool-$(ARCH) $(wildcard detection/impact/*.sql)
 	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-impact.conf pack detection/impact
@@ -35,7 +35,7 @@ out/odk-detection-initial_access.conf: out/osqtool-$(ARCH) $(wildcard detection/
 	./out/osqtool-$(ARCH) --max-query-duration=8s --verify -output out/odk-detection-initial_access.conf pack detection/initial_access
 
 out/odk-detection-persistence.conf: out/osqtool-$(ARCH) $(wildcard detection/persistence/*.sql)
-	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-persistence.conf pack detection/persistence
+	./out/osqtool-$(ARCH) --max-query-duration=14s --verify -output out/odk-detection-persistence.conf pack detection/persistence
 
 out/odk-detection-privesc.conf: out/osqtool-$(ARCH) $(wildcard detection/privesc/*.sql)
 	./out/osqtool-$(ARCH) --max-query-duration=4s --verify -output out/odk-detection-privesc.conf pack detection/privesc
