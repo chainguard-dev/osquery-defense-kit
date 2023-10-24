@@ -153,6 +153,7 @@ WHERE
   AND file.path NOT IN (
     '/etc/cloud/clean.d/99-installer',
     '/etc/grub2-efi.cfg',
+    '/etc/cloud/clean.d/99-installer-use-networkmanager',
     '/etc/grub2.cfg',
     '/etc/hibernate.sh',
     '/etc/libpaper.d/texlive-base',

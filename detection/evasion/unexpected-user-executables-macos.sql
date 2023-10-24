@@ -118,60 +118,64 @@ WHERE
     magic.data IS NOT NULL
     AND magic.data LIKE "%shell script%"
   )
+  AND NOT (
+    magic.data IS NULL
+    AND file.size < 50000
+  )
   AND NOT homedir LIKE '~/%/bin'
   AND NOT homedir LIKE '~/%/shims'
   AND NOT homedir LIKE '~/%/plugins'
   AND NOT homedir LIKE '/Users/%/.provisio'
   AND NOT homedir IN (
+    '~/.amplify/bin',
+    '~/.asdf/shims',
+    '~/.bazel/bin',
     '~/.bin',
+    '~/.cache/gitstatus',
+    '~/.config/kn',
+    '~/.config/nvim.bak',
+    '~/.docker/cli-plugins',
+    '~/.emacs.d/backups',
+    '~/.emacs.d.bak/bin',
+    '~/.fig/bin',
     '~/.fzf',
     '~/.fzf/bin',
-    '~/.venv/bin',
-    '~/.fig/bin',
-    '~/.zsh_snap/zsh-snap',
-    '~/.zed/gopls',
-    '~/.config/kn',
-    '~/.asdf/shims',
-    '~/.amplify/bin',
-    '~/.emacs.d/backups',
-    '~/.rbenv/shims',
-    '~/.config/nvim.bak',
-    '~/.bazel/bin',
-    '~/.pulumi-dev/bin',
     '~/.gvm/bin',
-    '~/.emacs.d.bak/bin',
-    '~/.docker/cli-plugins',
-    '~/.zsh_snap/zsh-autocomplete',
-    '~/.cache/gitstatus',
-    '~/.wrangler/bin',
-    '~/.provisio',
-    '~/.pyenv/shims',
-    '~/Library/ApplicationSupport/iTerm2',
     '~/.kn/plugins',
     '~/.kuberlr/darwin-amd64',
-    '/Users/Shared/logitune',
+    '~/Library/ApplicationSupport/iTerm2',
+    '~/Library/Dropbox/DropboxMacUpdate.app/Contents/MacOS',
     '~/.oh-my-zsh/tools',
-    '~/Library/Dropbox/DropboxMacUpdate.app/Contents/MacOS'
+    '~/.provisio',
+    '~/.pulumi-dev/bin',
+    '~/.pyenv/shims',
+    '~/.rbenv/shims',
+    '/Users/Shared/logitune',
+    '~/.venv/bin',
+    '~/.wrangler/bin',
+    '~/.zed/gopls',
+    '~/.zsh_snap/zsh-autocomplete',
+    '~/.zsh_snap/zsh-snap'
   )
   AND NOT top2_homedir IN (
+    '~/.iterm2',
     '~/Library/Application Support',
-    '/Users/Shared/LGHUB/cache',
-    '~/Library/Printers',
-    '~/Library/QuickLook',
-    '~/Library/pnpm',
-    '/Users/Shared/Red Giant/Uninstall',
-    '~/Library/Thunderbird',
+    '~/Library/Caches',
     '~/Library/helm',
+    '~/Library/pnpm',
+    '~/Library/Printers',
+    '~/Library/Python',
+    '~/Library/QuickLook',
+    '~/Library/Screen Savers',
     '~/Library/Services',
+    '~/Library/Thunderbird',
+    '~/.magefile',
+    '~/.nvm',
     '~/.terraform.d',
     '~/.terraform.versions',
-    '~/.iterm2',
+    '/Users/Shared/LGHUB/cache',
     '/Users/Shared/LogiOptionsPlus/cache',
-    '~/Library/Screen Savers',
-    '~/Library/Python',
-    '~/Library/Caches',
-    '~/.magefile',
-    '~/.nvm'
+    '/Users/Shared/Red Giant/Uninstall'
   )
 GROUP BY
   f.path
