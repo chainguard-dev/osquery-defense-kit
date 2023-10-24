@@ -86,9 +86,12 @@ WHERE
   AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/launcher'
   AND p0.path NOT IN (
     '/bin/fish',
+    '/usr/bin/nvim',
+    '/bin/bash',
     '/usr/bin/sudo',
     '/usr/bin/bash',
     '/usr/bin/containerd-shim-runc-v2',
+    '/usr/libexec/flatpak-system-helper',
     '/bin/containerd-shim-runc-v2',
     '/usr/bin/docker-proxy',
     '/usr/bin/fish',

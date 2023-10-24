@@ -247,7 +247,7 @@ WHERE
     AND p.euid > 500
   )
   AND NOT (
-    p.name = 'java'
+    p.name IN ('java', 'jcef_helper')
     AND p.cmdline LIKE '/home/%/PhpStorm%'
     AND s.remote_port > 79
     AND s.protocol = 6

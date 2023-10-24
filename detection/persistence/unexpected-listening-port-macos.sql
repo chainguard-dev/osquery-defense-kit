@@ -144,6 +144,7 @@ WHERE
     '80,6,500,limactl,',
     '8081,6,500,crane,',
     '81,6,500,nginx,',
+    '49152,6,500,qemu-system-aarch64,',
     '8123,6,500,Brackets-node,Developer ID Application: CORE.AI SCIENTIFIC TECHNOLOGIES PRIVATE LIMITED (8F632A866K)',
     '8770,6,500,sharingd,Software Signing',
     '8771,6,500,sharingd,Software Signing',

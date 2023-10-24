@@ -180,6 +180,7 @@ WHERE
     '/System/Library/Frameworks/Security.framework/authtrampoline',
     '/usr/bin/alacritty',
     '/usr/bin/apt',
+    '/usr/sbin/networksetup',
     '/usr/bin/apt-get',
     '/usr/bin/bash',
     '/usr/bin/bwrap',

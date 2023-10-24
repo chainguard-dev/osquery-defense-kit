@@ -221,6 +221,8 @@ WHERE
     'true,,coLaboratory Notebook,pianggobfjcgeihlmfhfgkfalopndooo',
     'true,,crouton integration,gcpneefbbnfalgjniomfjknbcgkbijom',
     'true,,iCloud Bookmarks,fkepacicchenbjecpbpbclokcabebhah',
+    'true,,Todoist for Gmail,clgenfnodoocmhnlnpknojdbjjnmecff',
+    'true,,Cisco Umbrella Chromebook client (Ext),jcdhmojfecjfmbdpchihbeilohgnbdci',
     'true,,uBlock,epcnnfbjfcgphgdmggkamkmgojdagdnn',
     'true,,writeGPT - ChatGPT Prompt Engineer Assistant,dflcdbibjghipieemcligeelbmackgco',
     'true,Adaware,Safe Torrent Scanner,aegnopegbbhjeeiganiajffnalhlkkjb',

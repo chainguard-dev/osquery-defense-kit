@@ -43,8 +43,7 @@ FROM
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
   p0.start_time > (strftime('%s', 'now') - 7200)
-  AND
-  yara.sigrule = '    
+  AND yara.sigrule = '    
     rule cryptexec {
     strings:
         $c0 = "crypto/cipher.newCBC" ascii
@@ -64,6 +63,7 @@ WHERE
   AND p0.path NOT LIKE '%terraform%'
   AND p0.path NOT LIKE '%rootlesskit%'
   AND p0.path NOT LIKE '/opt/homebrew/%'
+  AND p0.path NOT LIKE '/private/var/folders/%/T/go-build%'
   AND p0.name NOT IN (
     'buildkit',
     'buildkitd',

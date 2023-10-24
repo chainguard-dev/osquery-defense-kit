@@ -233,6 +233,7 @@ WHERE
   AND path_exception NOT LIKE '/dev/shm/pym-%python3.%'
   -- celery
   AND path_exception NOT LIKE '/dev/shm/pymp-%,python3.%'
+  AND dir_exception NOT LIKE '/dev/shm/byobu-%/status.tmux,'
   AND NOT (
     pof.path LIKE '/dev/bus/usb/%'
     AND p0.name IN (

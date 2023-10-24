@@ -61,6 +61,7 @@ WHERE
   AND pmm.path LIKE "%.dylib"
   AND exception_key NOT IN (
     '500,Bitwarden,/Applications/Bitwarden.app/Contents/MacOS/Bitwarden',
+    '500,Evernote,/Applications/Evernote.app/Contents/MacOS/Evernote',
     '500,Skitch,/Applications/Skitch.app/Contents/MacOS/Skitch',
     '500,monday.com,/Applications/monday.com.app/Contents/MacOS/monday.com',
     '500,J8RPQ294UB.com.skitch.SkitchHelper,/Applications/Skitch.app/Contents/Library/LoginItems/J8RPQ294UB.com.skitch.SkitchHelper.app/Contents/MacOS/J8RPQ294UB.com.skitch.SkitchHelper',
@@ -83,3 +84,4 @@ GROUP BY
 HAVING
   lib_count IN (1, 2)
   AND libs NOT LIKE '/Applications/%/Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib,/usr/lib/libobjc-trampolines.dylib'
+  AND libs NOT LIKE '/usr/lib/libobjc-trampolines.dylib,/Applications/%.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib'

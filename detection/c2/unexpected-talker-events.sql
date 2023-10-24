@@ -78,6 +78,7 @@ WHERE
   AND s.remote_address NOT LIKE '::ffff:192.168.%'
   AND s.remote_address NOT LIKE 'fc00:%'
   AND NOT s.path LIKE '/Applications/%' -- NOTE: Do not filter out /bin (bash) or /usr/bin (nc)
+  AND NOT s.path LIKE '/private/var/folders/%/T/go-build%'
   AND NOT top2_dir IN (
     '/Library/Apple',
     '/Library/Application Support',
@@ -104,7 +105,11 @@ WHERE
     '500,0,110,syncthing',
     '500,0,123,sntp',
     '500,0,53,spotify',
+    '500,500,443,Signal',
+    '500,500,443,Google Chrome Helper',
+    '500,500,443,Signal Helper (Renderer)',
     '500,0,1234,spotify',
+    '500,500,443,apk',
     '500,0,20480,io.tailscale.ipn.macsys.network-extension',
     '500,0,22,ssh',
     '500,0,31488,sntp',
@@ -123,6 +128,9 @@ WHERE
     '500,0,443,git-remote-http',
     '500,0,443,gnome-software',
     '500,0,443,http',
+    '500,0,443,Brackets',
+    '500,500,80,Google Chrome Helper',
+    '500,500,443,minikube',
     '500,0,443,io.tailscale.ipn.macsys.network-extension',
     '500,0,443,ksfetch',
     '500,0,443,launcher',
@@ -134,6 +142,7 @@ WHERE
     '500,500,53,Code Helper',
     '500,0,43,whois',
     '500,0,443,spotify',
+    '500,0,443,snapd',
     '500,0,443,syncthing',
     '500,0,443,velociraptor',
     '500,0,443,wget',
@@ -143,6 +152,7 @@ WHERE
     '500,0,53,NetworkManager',
     '500,0,53,chrome',
     '500,0,53,git',
+    '500,500,443,GoogleUpdater',
     '500,0,53,launcher',
     '500,0,53,slack',
     '500,0,53,wget',
@@ -151,6 +161,7 @@ WHERE
     '500,0,80,com.apple.NRD.UpdateBrainService',
     '500,0,80,firefox',
     '500,0,80,http',
+    '500,500,20480,GoogleUpdater',
     '500,0,80,io.tailscale.ipn.macsys.network-extension',
     '500,0,80,ksfetch',
     '500,0,9,launcher',
