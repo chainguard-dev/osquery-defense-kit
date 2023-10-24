@@ -76,6 +76,7 @@ WHERE
   AND exception_key NOT IN (
     '/dev/afsc_type,revisiond,Software Signing,com.apple.revisiond',
     '/dev/auditpipe,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF),osqueryd',
+    '/dev/auditpipe,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF),io.osquery.agent',
     '/dev/auditsessions,GSSCred,Software Signing,com.apple.GSSCred',
     '/dev/auditsessions,TouchBarServer,Software Signing,com.apple.touchbarserver',
     '/dev/auditsessions,authd,Software Signing,com.apple.authd',

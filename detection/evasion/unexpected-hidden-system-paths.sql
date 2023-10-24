@@ -105,6 +105,7 @@ WHERE
     '/tmp/.last_update_check.json',
     '/tmp/.metrics-agent/',
     '/tmp/.searcher.tmp/',
+    '/tmp/.bazelci/',
     '/tmp/.settings-agent/',
     '/tmp/.terraform.lock.hcl',
     '/tmp/.terraform/',

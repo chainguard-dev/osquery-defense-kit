@@ -95,11 +95,11 @@ WHERE
   )
   AND NOT (
     p0_cmd LIKE '%UserKnownHostsFile=/dev/null%'
-    AND p0_cmd LIKE "%lima/%"
-  )
-  AND NOT (
-    p0_cmd LIKE '%UserKnownHostsFile=/dev/null%'
-    AND p0_cmd LIKE '%@localhost'
+    AND (
+      p0_cmd LIKE "%lima/%"
+      OR p0_cmd LIKE "%minikube/%"
+      OR p0_cmd LIKE '%@localhost'
+    )
   )
   AND NOT (
     p0_cmd LIKE '%sh -i'

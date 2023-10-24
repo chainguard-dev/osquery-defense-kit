@@ -81,6 +81,8 @@ WHERE
     '0,nix,nix,',
     '0,osqueryd,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     '0,velociraptor,a.out,',
+    '500,monday.com Helper (GPU),com.monday.desktop.helper.GPU,Apple Mac OS Application Signing',
+    '500,clangd,clangd,',
     '500,.cargo-wrapped,.cargo-wrapped,',
     '500,Android File Transfer Agent,com.google.android.mtpagent,Developer ID Application: Google, Inc. (EQHXZ8M8AV)',
     '500,AppleMusic,AppleMusic,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
