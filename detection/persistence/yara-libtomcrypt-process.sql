@@ -4,7 +4,7 @@
 --   * https://www.deepinstinct.com/blog/bpfdoor-malware-evolves-stealthy-sniffing-backdoor-ups-its-game
 --
 -- tags: persistent
--- interval: 86400
+-- interval: 3600
 -- platform: posix
 SELECT
   yara.strings,
@@ -42,7 +42,7 @@ FROM
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  p0.start_time > (strftime('%s', 'now') - 7200)
+  p0.start_time > (strftime('%s', 'now') - 3600)
   AND
   yara.sigrule = '    
     rule redflags {
