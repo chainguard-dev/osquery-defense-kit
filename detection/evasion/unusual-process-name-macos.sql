@@ -7,7 +7,10 @@
 SELECT
   p0.name AS pname,
   COALESCE(REGEX_MATCH (p0.path, '.*/(.*)', 1), p0.path) AS basename,
-  COALESCE(REGEX_MATCH (p0.name, '.*/.*\.([a-z]{2,4})$', 1), "") AS pext,
+  COALESCE(
+    REGEX_MATCH (p0.name, '.*/.*\.([a-z]{2,4})$', 1),
+    ""
+  ) AS pext,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -33,7 +36,7 @@ SELECT
   p2_hash.sha256 AS p2_sha256
 FROM
   processes p0
-  LEFT JOIN signature s ON p0.path = s.path  
+  LEFT JOIN signature s ON p0.path = s.path
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
@@ -91,8 +94,9 @@ WHERE
     )
     AND pext NOT IN ("", "gui", "cli", "us", "node", "com")
   )
- AND NOT pname IN (
+  AND NOT pname IN (
     'cpu',
+    'com.microsoft.teams2.notificationcenter',
     'BetterTouchToolAppleScriptRunner',
     'BetterTouchToolShellScriptRunner',
     'TwitterNotificationServiceExtension',

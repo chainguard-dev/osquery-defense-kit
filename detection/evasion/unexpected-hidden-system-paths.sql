@@ -152,7 +152,11 @@ WHERE
     '/var/tmp/.ses',
     '/var/tmp/.ses.bak'
   )
-  AND file.directory NOT IN ('/etc/skel', '/etc/skel/.config')
+  AND file.directory NOT IN (
+    '/etc/skel',
+    '/etc/skel/.config',
+    '/var/root/.provisio'
+  )
   AND file.path NOT LIKE '/%bin/bootstrapping/.default_components'
   AND file.path NOT LIKE '/tmp/.#%'
   AND file.path NOT LIKE '/tmp/.lark_cache_%'

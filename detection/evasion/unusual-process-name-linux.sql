@@ -7,7 +7,10 @@
 SELECT
   p0.name AS pname,
   COALESCE(REGEX_MATCH (p0.path, '.*/(.*)', 1), p0.path) AS basename,
-  COALESCE(REGEX_MATCH (p0.name, '.*/.*\.([a-z]{2,4})$', 1), "") AS pext,
+  COALESCE(
+    REGEX_MATCH (p0.name, '.*/.*\.([a-z]{2,4})$', 1),
+    ""
+  ) AS pext,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -90,18 +93,21 @@ WHERE
   )
   AND NOT p1_pid = 2
   AND NOT p0_pid = 2
+  AND NOT pname LIKE '.%-wrap%'
+  AND p0.path NOT LIKE "/nix/store/%/.%-wrapped"
   AND basename NOT IN (
-    "xdg-permission-store",
-    "xdg-desktop-portal",
-    "xdg-document-portal",
+    "acpid",
+    'firefox',
+    "gmenudbusmenuproxy",
+    "irqbalance",
+    "kactivitymanagerd",
+    "nm-applet",
+    "perl",
+    "systemd",
     'udevadm',
+    "xdg-desktop-portal",
     "xdg-desktop-portal-gnome",
     "xdg-desktop-portal-gtk",
-    "perl",
-    "nm-applet",
-    "acpid",
-    "systemd",
-    "kactivitymanagerd",
-    "gmenudbusmenuproxy",
-    "irqbalance"
+    "xdg-document-portal",
+    "xdg-permission-store"
   )
