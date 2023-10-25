@@ -62,6 +62,7 @@ WHERE
             '.vscode',
             '.vim',
             '.config',
+            '.github',
             '.provisio',
             '.terraform.d',
             '.emacs.d',
