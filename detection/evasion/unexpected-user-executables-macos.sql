@@ -120,7 +120,7 @@ WHERE
   )
   AND NOT (
     magic.data IS NULL
-    AND file.size < 50000
+    AND f.size < 50000
   )
   AND NOT homedir LIKE '~/%/bin'
   AND NOT homedir LIKE '~/%/shims'
