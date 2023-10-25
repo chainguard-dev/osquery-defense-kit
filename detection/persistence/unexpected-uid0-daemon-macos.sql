@@ -285,11 +285,12 @@ WHERE -- Focus on longer-running programs
         '/usr/sbin/systemstats'
       )
       AND NOT path LIKE '/nix/store/%-nix-%/bin/nix'
-      AND NOT path LIKE '/opt/homebrew/Cellar/htop/%/bin/htop'
       AND NOT path LIKE '/opt/homebrew/Cellar/btop/%/bin/btop'
+      AND NOT path LIKE '/opt/homebrew/Cellar/htop/%/bin/htop'
+      AND NOT path LIKE '/opt/homebrew/Cellar/mtr/%/sbin/%'
       AND NOT path LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
-      AND NOT path LIKE '/usr/local/Cellar/htop/%/bin/htop'
       AND NOT path LIKE '/usr/local/Cellar/btop/%/bin/btop'
+      AND NOT path LIKE '/usr/local/Cellar/htop/%/bin/htop'
       AND NOT path LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
       AND NOT path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
     GROUP BY

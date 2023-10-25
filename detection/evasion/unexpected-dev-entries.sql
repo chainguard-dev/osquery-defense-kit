@@ -8,7 +8,8 @@
 --
 -- tags: persistent state filesystem
 -- platform: posix
-SELECT file.path,
+SELECT
+  file.path,
   file.type,
   file.size,
   file.mtime,
@@ -17,10 +18,12 @@ SELECT file.path,
   file.gid,
   hash.sha256,
   magic.data
-FROM file
+FROM
+  file
   LEFT JOIN hash ON file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE (
+WHERE
+  (
     file.path LIKE '/dev/shm/%%'
     OR file.path LIKE '/dev/%/.%'
     OR file.path LIKE '/dev/.%'
@@ -34,6 +37,7 @@ WHERE (
       file.path LIKE '/dev/shm/.com.google.%'
       OR file.path LIKE '/dev/shm/.org.chromium.%'
       OR file.path LIKE '/dev/shm/wayland.mozilla.%'
+      OR file.path LIKE '/dev/shm/byobu-%'
       OR file.path LIKE '/dev/shm/shm-%-%-%'
       OR file.path LIKE '/dev/shm/pulse-shm-%'
       OR file.path LIKE '/dev/shm/u1000-Shm%'
