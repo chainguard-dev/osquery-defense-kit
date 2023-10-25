@@ -279,6 +279,7 @@ WHERE
   )
   AND NOT exception_key LIKE 'abrt-dbus,/usr/sbin/abrt-dbus,0,system.slice,system-dbus%org.freedesktop.problems.slice,0755'
   AND NOT exception_key LIKE 'fusermount3,/usr/bin/fusermount3,%,user.slice,user-%.slice,4755'
+  AND NOT p0.path IN ('/bin/bash', '/usr/bin/bash')
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY
   p0.pid
