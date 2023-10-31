@@ -75,6 +75,7 @@ WHERE
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5),com.elgato.WaveLink,/Applications/WaveLink.app/,0',
     'Developer ID Application: Cypress.Io, Inc. (7D655LWGLY),com.electron.cypress,/Users/garrying/Library/Caches/Cypress/12.9.0/Cypress.app/,501',
     'Developer ID Application: DBeaver Corporation (42B6MDKMW8),org.jkiss.dbeaver.core.product,/Applications/DBeaver.app/,501',
+    'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker.docker,/Applications/Docker.app/,501',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK),com.getdropbox.dropbox,/Applications/Dropbox.app/,501',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland,/Applications/GoLand.app/,501',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.pycharm,/Applications/PyCharm.app/,501',

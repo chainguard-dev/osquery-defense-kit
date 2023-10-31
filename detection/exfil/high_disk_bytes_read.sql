@@ -55,6 +55,11 @@ WHERE
   AND p0.path NOT LIKE '/Library/Apple/System/Library/%'
   AND p0.path NOT LIKE '/home/%/.local/share/Steam/steamapps/%'
   AND p0.name NOT IN (
+    'GoogleSoftwareUpdateAgent',
+    'LogiFacecamService',
+    'Safari',
+    'UpdateBrainService',
+    'ZwiftAppMetal',
     'baloo_file',
     'baloo_file_extr',
     'bash',
@@ -79,7 +84,6 @@ WHERE
     'gnome-software',
     'go',
     'golangci-lint',
-    'GoogleSoftwareUpdateAgent',
     'gopls',
     'grype',
     'java',
@@ -89,7 +93,6 @@ WHERE
     'kube-scheduler',
     'kue',
     'launcher',
-    'LogiFacecamService',
     'mediawriter',
     'melange',
     'nautilus',
@@ -105,7 +108,6 @@ WHERE
     'qemu-system-x86-64',
     'rpi-imager',
     'rsync',
-    'Safari',
     'sh',
     'slack',
     'spotify',
@@ -117,14 +119,13 @@ WHERE
     'thunderbird',
     'tilt',
     'unattended-upgr',
-    'UpdateBrainService',
     'vim',
     'wineserver',
+    'wolfictl',
     'yay',
     'ykman-gui',
     'yum',
-    'zsh',
-    'ZwiftAppMetal'
+    'zsh'
   )
   AND NOT p0.path IN (
     '/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/XPCServices/com.apple.Safari.BrowserDataImportingService.xpc/Contents/MacOS/com.apple.Safari.BrowserDataImportingService',

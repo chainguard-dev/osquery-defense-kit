@@ -33,6 +33,7 @@ WHERE
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Creative Labs Pte. Ltd. (5Q3552844F)',
+    'Developer ID Application: Wireshark Foundation (7Z6EMTD2C6)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Jonathan Bullard (Z2SG5H3HC8)',
     'Developer ID Application: Ilya Parniuk (ACC5R6RH47)',

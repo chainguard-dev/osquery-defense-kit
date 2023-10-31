@@ -130,6 +130,7 @@ WHERE
     '500,go,a.out,',
     '500,gopls,a.out,',
     '500,gopls,gopls,',
+    '500,monday.com,com.monday.desktop,Apple Mac OS Application Signing',
     '500,gpg-agent,gpg-agent,',
     '500,Grammarly for Safari,com.grammarly.safari.extension,Apple Mac OS Application Signing',
     '500,Grammarly Safari Extension,com.grammarly.safari.extension.ext2,Apple Mac OS Application Signing',
@@ -216,6 +217,7 @@ WHERE
   AND NOT exception_key LIKE '500,copilot-agent-macos-%,copilot-agent-macos-%,'
   AND NOT exception_key LIKE '500,samply,samply-%,'
   AND NOT exception_key LIKE '500,gopls_%,a.out,'
+  AND NOT exception_key LIKE '500,terraform-provider-%,,'
   AND NOT exception_key LIKE '500,terraform-provider-%,a.out,'
   AND NOT exception_key LIKE '500,Runner.%,apphost-%,'
   AND NOT exception_key LIKE '500,kubectl.%,a.out,'

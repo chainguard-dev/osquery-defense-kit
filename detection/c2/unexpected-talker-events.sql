@@ -89,6 +89,7 @@ WHERE
     '/System/Volumes',
     '/usr/libexec',
     '/usr/local',
+    '/usr/bin',
     '/usr/sbin',
     '~/.provisio',
     '~/Applications',
@@ -100,11 +101,16 @@ WHERE
     '~/src',
     '~/work'
   )
-  AND NOT homedir = '~/Library/Application Support/Foxit Software/Addon/Foxit PDF Reader/FoxitPDFReaderUpdateService.app/Contents/MacOS'
+  AND NOT homedir IN (
+    '~/Library/Application Support/Foxit Software/Addon/Foxit PDF Reader/FoxitPDFReaderUpdateService.app/Contents/MacOS',
+    '/opt/spotify'
+  )
   AND NOT exception_key IN (
     '500,0,110,syncthing',
     '500,0,1234,spotify',
     '500,0,123,sntp',
+    '500,500,32768,Code Helper',
+    '500,0,443,Authy',
     '500,0,20480,io.tailscale.ipn.macsys.network-extension',
     '500,0,22,ssh',
     '500,0,31488,sntp',
@@ -119,6 +125,7 @@ WHERE
     '500,0,443,chrome_crashpad_handler',
     '500,0,443,com.apple.MobileSoftwareUpdate.UpdateBrainService',
     '500,0,443,com.apple.NRD.UpdateBrainService',
+    '500,500,32768,Chromium Helper',
     '500,0,443,com.google.one.NetworkExtension',
     '500,0,443,curl',
     '500,0,443,electron',
@@ -126,6 +133,8 @@ WHERE
     '500,0,443,fwupdmgr',
     '500,0,443,git-remote-http',
     '500,0,443,gnome-software',
+    '500,0,53,electron',
+    '500,0,443,kioslave5',
     '500,0,443,http',
     '500,0,443,io.tailscale.ipn.macsys.network-extension',
     '500,0,443,ksfetch',
@@ -136,6 +145,7 @@ WHERE
     '500,0,443,OneDriveStandaloneUpdater',
     '500,0,443,slack',
     '500,0,443,snapd',
+    '500,500,32768,Code Helper',
     '500,0,443,spotify',
     '500,0,443,ssh',
     '500,0,443,syncthing',
@@ -147,6 +157,7 @@ WHERE
     '500,0,53,launcher',
     '500,0,53,NetworkManager',
     '500,0,53,slack',
+    '500,0,443,com.fortinet.forticlient.macos.vpn.nwextension',
     '500,0,53,spotify',
     '500,0,53,wget',
     '500,0,5632,ssh',
@@ -161,6 +172,7 @@ WHERE
     '500,500,13568,Code Helper',
     '500,500,20480,Code Helper',
     '500,500,20480,GoogleUpdater',
+    '500,0,4070,spotify',
     '500,500,20480,ksfetch',
     '500,500,22,ssh',
     '500,500,2304,cloud_sql_proxy',
@@ -188,6 +200,7 @@ WHERE
     '500,500,443,git-remote-http',
     '500,500,443,gitsign',
     '500,500,443,GitX',
+    '500,500,32768,melange',
     '500,500,443,go',
     '500,500,443,Google Chrome Helper',
     '500,500,443,GoogleUpdater',
@@ -196,6 +209,7 @@ WHERE
     '500,500,443,kubectl',
     '500,500,443,minikube',
     '500,500,443,node',
+    '500,500,2304,terraform-provider-google_v4.37.0_x5',
     '500,500,443,old',
     '500,500,443,Signal',
     '500,500,443,Signal Helper (Renderer)',
@@ -213,6 +227,10 @@ WHERE
   AND NOT exception_key LIKE '500,500,443,terraform%'
   AND NOT exception_key LIKE '500,0,%,syncthing'
   AND NOT exception_key LIKE '500,0,%,chrome'
+  AND NOT p0_path LIKE '/Users/%/code/%'
+  AND NOT p0_path LIKE '/Users/%/go/%'
+  AND NOT p0_path LIKE '/Users/%/src/%'
+  AND NOT p0_path LIKE '/Users/%/dev/%'
   AND NOT (
     basename = "Python"
     AND (

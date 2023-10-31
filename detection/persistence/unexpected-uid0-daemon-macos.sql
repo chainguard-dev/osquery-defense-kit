@@ -204,6 +204,7 @@ WHERE -- Focus on longer-running programs
         '/usr/libexec/colorsync.displayservices',
         '/usr/libexec/colorsyncd',
         '/usr/libexec/configd',
+        '/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Resources/Java Updater.app/Contents/MacOS/Java Updater',
         '/usr/libexec/containermanagerd',
         '/usr/libexec/corebrightnessd',
         '/usr/libexec/coreduetd',

@@ -41,5 +41,6 @@ WHERE
   AND hostnames NOT LIKE '%.test'
   AND hostnames NOT LIKE '%.internal'
   AND hostnames NOT LIKE '%.local'
+  AND hostnames NOT LIKE "%.cloud"
   AND hostnames NOT LIKE 'ip6-%'
   AND hostnames NOT LIKE "%.example.com"

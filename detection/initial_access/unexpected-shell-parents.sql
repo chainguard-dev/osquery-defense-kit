@@ -63,6 +63,7 @@ WHERE
     'PK-Backend',
     'Rancher Desktop',
     'Runner.Listener',
+    'terraform-provi',
     'Runner.Worker',
     'abrt-action-per',
     'abrt-handle-eve',
@@ -91,6 +92,7 @@ WHERE
     'fish',
     'gephi',
     'git',
+    'GoogleUpdater',
     'git-remote-http',
     'git-remote-https',
     'gnome-session-b',
@@ -246,7 +248,7 @@ WHERE
   AND NOT p1.name LIKE '%term%'
   AND NOT p1.name LIKE '%Term%'
   AND NOT p1.name LIKE 'Emacs%'
-  AND NOT p1.name LIKE 'terraform-provider-%'
+  AND NOT p1.name LIKE 'terraform-prov%'
   AND NOT p1.path LIKE '/Users/%/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateAgent.app/Contents/MacOS/GoogleSoftwareUpdateAgent'
   -- Oh, NixOS.
   AND NOT p1.name LIKE '%/bin/bash'

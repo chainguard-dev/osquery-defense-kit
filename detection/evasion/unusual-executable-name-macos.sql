@@ -6,7 +6,10 @@
 -- tags: persistent process
 SELECT
   COALESCE(REGEX_MATCH (p0.path, '.*/(.*)', 1), p0.path) AS pname,
-  COALESCE(REGEX_MATCH (p0.path, '.*/.*\.([a-z]{2,4})$', 1), "") AS pext,
+  COALESCE(
+    REGEX_MATCH (p0.path, '.*/.*\.([a-z]{2,4})$', 1),
+    ""
+  ) AS pext,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -29,7 +32,7 @@ SELECT
   p2.name AS p2_name,
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
-  p2_hash.sha256 AS p2_sha256 
+  p2_hash.sha256 AS p2_sha256
 FROM
   processes p0
   LEFT JOIN signature s ON p0.path = s.path
@@ -82,13 +85,14 @@ WHERE
     OR REGEX_MATCH (pname, "^(\W)", 1) != ""
     OR (
       REGEX_MATCH (pname, "(\W)$", 1) != ""
-     AND pname NOT LIKE "%)"
+      AND pname NOT LIKE "%)"
     )
     AND pext NOT IN ("", "gui", "cli", "us", "node", "com")
   )
   AND NOT pname IN (
     'cpu',
     'BetterTouchToolAppleScriptRunner',
+    'ThingsWidgetExtensionMacAppStore',
     'BetterTouchToolShellScriptRunner',
     'at.obdev.littlesnitch.networkextension',
     'EcammLiveVideoOutAssistantXPCHelper'

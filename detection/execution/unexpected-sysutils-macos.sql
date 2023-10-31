@@ -101,6 +101,7 @@ WHERE
     'sysctl -n hw.optional.arm64',
     'sw_vers -productName',
     'sysctl -n sysctl.proc_translated',
+    '/usr/sbin/system_profiler SPUSBDataType',
     '/usr/sbin/sysctl kern.hv_support',
     '/usr/sbin/sysctl -n hw.cputype',
     '/usr/sbin/sysctl sysctl.proc_translated'

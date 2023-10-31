@@ -66,7 +66,7 @@ WHERE
         $avahi = "avahi-daemon:"
         $redhat4 = "Red Hat 4"
     condition:
-        filesize < 25MB and 3 of them
+        filesize < 25MB and 4 of them
 }'
   AND yara.count > 0
   AND p0.name NOT IN (
@@ -83,6 +83,7 @@ WHERE
   AND p0.path NOT LIKE '%/chrome_crashpad_handler'
   AND p0.path NOT LIKE '/nix/store/%/bin/%'
   AND p0.path NOT LIKE '/nix/store/%/libexec/%'
+  AND p0.path NOT LIKE '/usr/local/aws-cli/%/aws'
   AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/launcher'
   AND p0.path NOT IN (
     '/bin/bash',

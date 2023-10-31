@@ -97,6 +97,7 @@ WHERE
     'agetty,/nix/store/__VERSION__/bin/agetty,0,system.slice,system-getty.slice,0555',
     'agetty,/usr/bin/agetty,0,system.slice,system-getty.slice,0755',
     'agetty,/usr/sbin/agetty,0,system.slice,system-getty.slice,0755',
+    'bash,/usr/bin/bash,0,user.slice,user-1000.slice,0755',
     'agetty,/usr/sbin/agetty,0,system.slice,system-serial\x2dgetty.slice,0755',
     'alsactl,/usr/sbin/alsactl,0,system.slice,alsa-state.service,0755',
     'anacron,/usr/bin/anacron,0,system.slice,cronie.service,0755',
