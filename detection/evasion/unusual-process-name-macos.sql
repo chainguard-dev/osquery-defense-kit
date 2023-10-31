@@ -97,6 +97,7 @@ WHERE
   AND NOT pname IN (
     'cpu',
     'com.microsoft.teams2.notificationcenter',
+    'at.obdev.littlesnitch.endpointsecurity',
     'BetterTouchToolAppleScriptRunner',
     'BetterTouchToolShellScriptRunner',
     'TwitterNotificationServiceExtension',

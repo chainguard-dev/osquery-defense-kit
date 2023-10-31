@@ -1,5 +1,4 @@
 -- Rust Program that uses both HTTP and Exec
-
 -- tags: persistent
 -- interval: 7200
 -- platform: posix
@@ -52,6 +51,7 @@ WHERE
   AND p0.name NOT IN (
     'old',
     'stable',
+    'nvim',
     'Cody',
     'fig-darwin-universal',
     'wezterm-gui'

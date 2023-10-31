@@ -95,6 +95,7 @@ WHERE
   AND p0.path NOT LIKE '/Users/%/src/%'
   AND p0.path NOT LIKE '/Users/%/bin/%'
   AND p0.path NOT LIKE '/System/%'
+  AND p0.path NOT LIKE '/Users/%/Library/Caches/JetBrains/%/tmp/GoLand/___%'
   AND p0.path NOT LIKE '/opt/homebrew/Cellar/%/bin/%'
   AND p0.path NOT LIKE '/usr/libexec/%'
   AND p0.path NOT LIKE '/usr/sbin/%'
