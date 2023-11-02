@@ -150,6 +150,7 @@ WHERE
     'github.com',
     'go.dev',
     'krisp.ai',
+    'epson.com',
     'mail.google.com',
     'manual.canon',
     'mimestream.com',

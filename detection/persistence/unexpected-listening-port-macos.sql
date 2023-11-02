@@ -152,6 +152,7 @@ WHERE
     '8770,6,500,sharingd,Software Signing',
     '8771,6,500,sharingd,Software Signing',
     '88,17,0,kdc,Software Signing',
+    '49152,6,500,dbeaver,Developer ID Application: DBeaver Corporation (42B6MDKMW8)',
     '88,6,0,kdc,Software Signing',
     '8828,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '8829,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',

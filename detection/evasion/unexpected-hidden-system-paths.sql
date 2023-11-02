@@ -104,6 +104,7 @@ WHERE
     '/tmp/.last_survey_prompt.yaml',
     '/tmp/.last_update_check.json',
     '/tmp/.metrics-agent/',
+    '/tmp/.touchpaddefaults',
     '/tmp/.searcher.tmp/',
     '/tmp/.bazelci/',
     '/tmp/.settings-agent/',

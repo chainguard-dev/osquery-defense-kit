@@ -94,7 +94,7 @@ WHERE
   AND NOT p1_pid = 2
   AND NOT p0_pid = 2
   AND NOT pname LIKE '.%-wrap%'
-  AND p0.path NOT LIKE "/nix/store/%/.%-wrapped"
+  AND p0.path NOT LIKE "/nix/store/%"
   AND basename NOT IN (
     "acpid",
     'firefox',

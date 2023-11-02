@@ -83,6 +83,7 @@ WHERE
       AND NOT directory LIKE '/Users/%/.bin/'
       AND NOT directory LIKE '/Users/%/.cargo/bin/'
       AND NOT directory LIKE '/Users/%/.go/bin/'
+      AND NOT directory LIKE '/Users/%/Library/Mobile Documents/com~apple~CloudDocs/'
       AND NOT directory LIKE '/Users/%/Library/Application Support/AutoFirma/certutil/'
       AND NOT directory LIKE '/Users/%/Library/Caches/chainctl/'
       AND NOT directory LIKE '/Users/%/Library/Containers/%'
@@ -90,8 +91,8 @@ WHERE
       AND NOT directory LIKE '/Users/%/Library/Mobile Documents/com~apple~shoebox/%'
       AND NOT directory LIKE '/Users/%/.local/bin/'
       AND NOT directory LIKE '/Users/%/.minikube/bin/'
-      AND NOT directory LIKE '/Users/Shared/LGHUB/depots/%'
-      AND NOT directory LIKE '/Users/Shared/LogiOptionsPlus/depots/%'
+      AND NOT directory LIKE '/Users/Shared/LGHUB/%'
+      AND NOT directory LIKE '/Users/Shared/LogiOptionsPlus/%'
       AND NOT directory LIKE '/Users/%/.Trash/%'
       AND NOT directory LIKE '/Users/%/.vim/backup/'
       AND NOT directory IN (
@@ -142,14 +143,18 @@ WHERE
     '~/.fzf/bin',
     '~/.gvm/bin',
     '~/.kn/plugins',
+    '~/Library/Mobile Documents/com~apple~CloudDocs',
     '~/.kuberlr/darwin-amd64',
     '~/Library/ApplicationSupport/iTerm2',
     '~/Library/Dropbox/DropboxMacUpdate.app/Contents/MacOS',
+    '~/Library/Logs/Adobe',
     '~/.oh-my-zsh/tools',
     '~/.provisio',
     '~/.pulumi-dev/bin',
     '~/.pyenv/shims',
     '~/.rbenv/shims',
+    '/Users/Shared/LGHUB',
+    '/Users/Shared/LogiOptionsPlus',
     '/Users/Shared/logitune',
     '~/.venv/bin',
     '~/.wrangler/bin',
@@ -169,6 +174,7 @@ WHERE
     '~/Library/Screen Savers',
     '~/Library/Services',
     '~/Library/Thunderbird',
+    '~/.fzf/test',
     '~/.magefile',
     '~/.nvm',
     '~/.terraform.d',
@@ -177,5 +183,7 @@ WHERE
     '/Users/Shared/LogiOptionsPlus/cache',
     '/Users/Shared/Red Giant/Uninstall'
   )
+  AND NOT directory LIKE '/Users/%/.docker/cli-plugins'
+  AND NOT directory LIKE '/Users/%/.nix-profile/bin'
 GROUP BY
   f.path

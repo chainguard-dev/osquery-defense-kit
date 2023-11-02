@@ -76,6 +76,7 @@ WHERE
   AND NOT exception_key IN (
     "true,Daniel Kladnik @ kiboke studio,I don't care about cookies,fihnjjcciajhdojfnbdddfaoknhalnja",
     "true,Gareth Stephenson,My O'Reilly Downloader,deebiaolijlopiocielojiipnpnaldlk",
+    'true,,Awesome ChatGPT Screenshot & Screen Recorder,nlipoenfbbikpbjkfpfillcgkoblgpmj',
     'true,,Acorns Earn,facncfnojagdpibmijfjdmhkklabakgd',
     'true,,Adblock for Youtube™,cmedhionkhpnakcndndgjdbohmhepckk',
     'true,,Add to Amazon Wish List,ciagpekplgpbepdgggflgmahnjgiaced',
