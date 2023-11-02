@@ -42,14 +42,23 @@ FROM
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  p0.start_time > (strftime('%s', 'now') - 3600)
-  AND
-  yara.sigrule = '    
-    rule redflags {
-    strings:
-        $libtomcrypt = "LibTomCrypt"
-        $email = "tomstdenis@gmail.com"
-    condition:
-        filesize < 10MB and 1 of them
-}'
+  p0.pid IN (
+    SELECT
+      pid
+    FROM
+      processes
+    WHERE
+      start_time > (strftime('%s', 'now') - 3600)
+      AND path != ""
+    GROUP BY
+      path
+  )
+  AND yara.sigrule = '    
+      rule redflags {
+      strings:
+          $libtomcrypt = "LibTomCrypt"
+          $email = "tomstdenis@gmail.com"
+      condition:
+          filesize < 10MB and 1 of them
+  }'
   AND yara.count > 0
