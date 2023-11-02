@@ -97,6 +97,7 @@ WHERE
   AND NOT pname IN (
     'cpu',
     'com.microsoft.teams2.notificationcenter',
+    'ThingsWidgetExtensionMacAppStore',
     'at.obdev.littlesnitch.endpointsecurity',
     'BetterTouchToolAppleScriptRunner',
     'BetterTouchToolShellScriptRunner',
@@ -106,4 +107,4 @@ WHERE
   )
   -- example: 85C27NK92C.com.flexibits.fantastical2.mac.helper
   AND NOT pname LIKE "%.com.flexibits.fantastical2.mac.helper"
-  AND NOT s.authority = "Software Signing"
+  AND NOT s.authority IN ("Software Signing","Apple Mac OS Application Signing")
