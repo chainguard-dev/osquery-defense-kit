@@ -171,6 +171,7 @@ WHERE
     '0,velociraptor,velociraptor,0u,80g',
     '500,apko,apko,0u,0g',
     '500,apko,apko,500u,20g',
+    '500,istioctl,istioctl,500u,20g',
     '500,aws,aws,0u,0g',
     '500,cargo,cargo,500u,80g',
     '500,chainctl,chainctl,0u,0g',

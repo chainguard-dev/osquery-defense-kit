@@ -105,6 +105,7 @@ WHERE
       'rustc,/home/build/.cargo',
       'fish,~/.Trash',
       'git,~/.local/share',
+      'fileproviderd,~/Library/Mobile Documents',
       'java,/home/build/.gradle',
       'java,~/.gradle/daemon',
       'java,/home/build/.kotlin',

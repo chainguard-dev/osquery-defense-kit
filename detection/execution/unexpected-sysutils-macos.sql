@@ -102,6 +102,7 @@ WHERE
     'sw_vers -productName',
     'sysctl -n sysctl.proc_translated',
     '/usr/sbin/system_profiler SPUSBDataType',
+    'system_profiler SPUSBDataType',
     '/usr/sbin/sysctl kern.hv_support',
     '/usr/sbin/sysctl -n hw.cputype',
     '/usr/sbin/sysctl sysctl.proc_translated'
@@ -109,6 +110,7 @@ WHERE
   AND NOT exception_key IN (
     'system_profiler,500,Google Drive,launchd',
     'system_profiler,500,bash,launchd',
+    'system_profiler,500,Ultimate,launchd',
     'system_profiler,500,steam_osx,launchd',
     'system_profiler,500,bash,logioptionsplus_agent',
     'system_profiler,0,launcher,launchd'

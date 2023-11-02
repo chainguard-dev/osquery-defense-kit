@@ -93,6 +93,7 @@ WHERE
     'cpu',
     'BetterTouchToolAppleScriptRunner',
     'ThingsWidgetExtensionMacAppStore',
+    'com.microsoft.teams2.notificationcenter',
     'BetterTouchToolShellScriptRunner',
     'at.obdev.littlesnitch.networkextension',
     'EcammLiveVideoOutAssistantXPCHelper'

@@ -57,6 +57,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,500,bash,fakeroot',
     'curl,500,bash,fish',
     'curl,500,bash,nix-daemon',
+    'curl,500,zsh,Hyper',
     'curl,500,bash,ShellLauncher',
     'curl,500,bash,zsh',
     'curl,500,bash,bash',

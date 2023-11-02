@@ -37,21 +37,21 @@ WHERE
   AND file.path NOT LIKE '%/./%'
   AND NOT homedir IN (
     '~/Library/Accessibility/.com.apple.RTTTranscripts_SUPPORT/_EXTERNAL_DATA',
-    '~/Library/Finance/.finance_cloud_SUPPORT/_EXTERNAL_DATA',
-    '~/Library/Finance/.finance_local_SUPPORT/_EXTERNAL_DATA',
-    '~/Library/com.apple.groupkitd/.syncedGroupStore_SUPPORT/_EXTERNAL_DATA',
-    '~/Library/Finance/.finance_dropbox_SUPPORT/_EXTERNAL_DATA',
-    '~/Library/com.apple.groupkitd/.syncedGroupStore_SUPPORT/_EXTERNAL_DATA/',
-    '~/Library/Preferences/.wrangler',
-    '~/Library/Mobile Documents/.Trash%',
-    '~/Library/Group Containers/.SiriTodayViewExtension/Library',
-    '~/Library/Group Containers/.SiriTodayViewExtension',
-    '~/Library/Saved Searches/.DockTags',
-    '~/Library/Preferences/.wrangler/config',
-    '~/Library/HomeKit/.core-cloudkit_SUPPORT/_EXTERNAL_DATA',
-    '~/Library/HomeKit/.core-cloudkit-shared_SUPPORT/_EXTERNAL_DATA',
     '~/Library/Caches/.sigstore/gitsign',
+    '~/Library/com.apple.groupkitd/.syncedGroupStore_SUPPORT/_EXTERNAL_DATA',
+    '~/Library/com.apple.groupkitd/.syncedGroupStore_SUPPORT/_EXTERNAL_DATA/',
+    '~/Library/Finance/.finance_cloud_SUPPORT/_EXTERNAL_DATA',
+    '~/Library/Finance/.finance_dropbox_SUPPORT/_EXTERNAL_DATA',
+    '~/Library/Finance/.finance_local_SUPPORT/_EXTERNAL_DATA',
+    '~/Library/GroupContainersAlias/.SiriTodayViewExtension',
     '~/Library/GroupContainersAlias/.SiriTodayViewExtension/Library',
-    '~/Library/GroupContainersAlias/.SiriTodayViewExtension'
+    '~/Library/Group Containers/.SiriTodayViewExtension',
+    '~/Library/Group Containers/.SiriTodayViewExtension/Library',
+    '~/Library/HomeKit/.core-cloudkit-shared_SUPPORT/_EXTERNAL_DATA',
+    '~/Library/HomeKit/.core-cloudkit_SUPPORT/_EXTERNAL_DATA',
+    '~/Library/Preferences/.wrangler',
+    '~/Library/Preferences/.wrangler/config',
+    '~/Library/Saved Searches/.DockTags'
   )
   AND NOT homedir LIKE '~/Library/.icedove/%'
+  AND NOT homedir LIKE '~/Library/Mobile Documents/.Trash%'

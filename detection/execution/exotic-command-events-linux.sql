@@ -189,7 +189,8 @@ WHERE
   AND NOT p0_cmd IN (
     'lsmod',
     'dd if=/dev/stdin conv=unblock cbs=79',
-    '/usr/bin/socat STDIN UNIX-CONNECT:/run/user/1000/kwallet5.socket'
+    '/usr/bin/socat STDIN UNIX-CONNECT:/run/user/1000/kwallet5.socket',
+    'socat STDIN UNIX-CONNECT:/run/user/1000/kwallet5.socket'
   )
   AND NOT p0_cmd LIKE 'find . -executable -type f -name %grep -l GNU Libtool%touch -r%'
   AND NOT p0_cmd LIKE 'modinfo -k%'

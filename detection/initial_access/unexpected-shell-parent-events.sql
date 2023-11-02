@@ -252,6 +252,8 @@ WHERE
       'bash,0,mutter-x11-frames,gnome-shell',
       'bash,0,perl5.30,system_installd',
       'bash,0,pia-daemon,launchd',
+      'sh,500,viddy,zsh',
+      'bash,500,plasmashell,systemd',
       'sh,500,splunkd,splunkd',
       'bash,0,udevadm,udevadm',
       'bash,500,.man-wrapped,zsh',

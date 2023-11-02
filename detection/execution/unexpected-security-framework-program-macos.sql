@@ -85,6 +85,7 @@ WHERE
     '500,Android File Transfer Agent,com.google.android.mtpagent,Developer ID Application: Google, Inc. (EQHXZ8M8AV)',
     '500,AppleMusic,AppleMusic,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     '500,bash,bash,',
+    '500,Speedtest,com.ookla.speedtest-macos,Apple Mac OS Application Signing',
     '500,bash,com.apple.bash,Software Signing',
     '500,Bazecor Helper,,',
     '500,Bitwarden,com.bitwarden.desktop,Apple Mac OS Application Signing',

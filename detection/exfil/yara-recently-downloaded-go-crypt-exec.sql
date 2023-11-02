@@ -40,3 +40,5 @@ WHERE
         3 of them
 }'
   AND yara.count > 0
+  AND file.path NOT LIKE '/Users/%/Downloads/chainctl%'
+  AND file.filename NOT IN ('grype', 'chainctl')
