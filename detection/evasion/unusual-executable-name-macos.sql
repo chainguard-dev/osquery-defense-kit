@@ -92,6 +92,7 @@ WHERE
   AND NOT pname IN (
     'cpu',
     'BetterTouchToolAppleScriptRunner',
+    'TwitterNotificationServiceExtension',
     'ThingsWidgetExtensionMacAppStore',
     'com.microsoft.teams2.notificationcenter',
     'BetterTouchToolShellScriptRunner',

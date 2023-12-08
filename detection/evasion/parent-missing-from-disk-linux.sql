@@ -13,8 +13,7 @@
 --   * none observed
 --
 -- tags: persistent daemon
-SELECT
-  -- Child
+SELECT -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
   p0.name AS p0_name,
@@ -36,15 +35,13 @@ SELECT
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM
-  processes p0
+FROM processes p0
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
-WHERE
-  p1.on_disk != 1
+WHERE p1.on_disk != 1
   AND p0.on_disk = 1
   AND NOT p0.pid IN (1, 2)
   AND NOT p1.pid IN (1, 2) -- launchd, kthreadd
@@ -96,7 +93,10 @@ WHERE
   )
   AND NOT p2.name = 'bwrap'
   AND p1.cgroup_path NOT LIKE '/system.slice/docker-%'
-  AND p1.cgroup_path != '/system.slice/docker.service'
+  AND p1.cgroup_path NOT IN (
+    '/system.slice/docker.service',
+    '/system.slice/containerd.service'
+  )
   AND p1.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
   AND p1.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/libpod-%'
   AND p1.path NOT LIKE '/opt/homebrew/Cellar/%'

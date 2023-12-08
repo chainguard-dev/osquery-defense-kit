@@ -157,7 +157,10 @@ WHERE
     '500,6,80,Google Drive Helper,Google Drive Helper,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.drivefs.helper',
     '500,6,80,IPNExtension,IPNExtension,Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension',
     '500,6,80,Jabra Direct,Jabra Direct,Developer ID Application: GN Audio AS (55LV32M29R),com.jabra.directonline',
+    '500,6,5222,WhatsApp,WhatsApp,Developer ID Application: WhatsApp Inc. (57T9237FN3),net.whatsapp.WhatsApp',
+    '500,6,993,Spark Desktop Helper,Spark Desktop Helper,Developer ID Application: Readdle Technologies Limited (3L68KQB4HG),com.readdle.SparkDesktop.helper',
     '500,6,80,jcef Helper,jcef Helper,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),org.jcef.jcef.helper',
+    '500,6,8080,Speedtest,Speedtest,Apple Mac OS Application Signing,com.ookla.speedtest-macos',
     '500,6,80,KakaoTalk,KakaoTalk,Apple Mac OS Application Signing,com.kakao.KakaoTalkMac',
     '500,6,80,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV),ksfetch',
     '500,6,80,launcher-Helper,launcher-Helper,Developer ID Application: Mojang AB (HR992ZEAE6),com.mojang.mclauncher.helper',
@@ -182,6 +185,7 @@ WHERE
   AND NOT alt_exception_key IN (
     '0,6,80,tailscaled,tailscaled,500u,80g',
     '500,6,22,ssh,ssh,0u,500g',
+    '500,6,5432,psql,psql,500u,80g',
     '500,6,22,ssh,ssh,500u,0g',
     '500,6,80,qemu-system-x86_64,qemu-system-x86_64,500u,80g',
     '500,6,22,ssh,ssh,500u,20g',
@@ -214,12 +218,14 @@ WHERE
   ) -- Known Web Browsers
   AND NOT (
     (
-      pos.remote_port IN (80, 999)
+      pos.remote_port IN (80, 587, 999)
       OR pos.remote_port > 1024
     )
     AND id_exception_key IN (
       'Apple Mac OS Application Signing,com.microsoft.OneDrive-mac',
       'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.Reader',
+      'Apple Mac OS Application Signing,com.ookla.speedtest-macos',
+      'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
       'Developer ID Application: Bookry Ltd (4259LE8SU5),com.bookry.wavebox.helper',
       'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.helper',
       'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.AdobeResourceSynchronizer',

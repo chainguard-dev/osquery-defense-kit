@@ -88,7 +88,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '/tmp/com.apple.installer%'
           OR file.path LIKE '%/tmp/epdf%'
           OR file.path LIKE '/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%'
-          OR file.filename IN ('mysqld_exporter', 'goreleaser')
+          OR file.filename IN ('mysqld_exporter', 'goreleaser', 'golangci-lint', 'cosign', 'grype', 'chainctl', 'configure')
         )
       )
       -- Melange
@@ -137,7 +137,10 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         AND file.size = 90921938
       )
   )
-  AND NOT signature.authority = 'Developer ID Application: Adobe Inc. (JQ525L2MZD)'
+  AND NOT signature.authority IN (
+    'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+    'Developer ID Application: Docker Inc (9BNSXJN65R)'
+  )
   AND NOT (
     magic.data IS NOT NULL
     AND (

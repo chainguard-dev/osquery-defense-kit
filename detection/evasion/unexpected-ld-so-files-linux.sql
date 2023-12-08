@@ -33,6 +33,7 @@ WHERE
     '/etc/ld.so.conf,0644,34,d4b198c463418b493208485def26a6f4c57279467b9dfa491b70433cedb602e8',
     '/etc/ld.so.conf.d/000_cuda.conf,0644,41,a9327cff9435220eac872cffedc7f6144d915bdcb70d985304c72f4c3cb9a7d3',
     '/etc/ld.so.conf.d/989_cuda-11.conf,0644,44,915b1ed4caa95cf65a62a74d8255c5ef80ef864cc2767933c85e240a78957167',
+    '/etc/ld.so.conf.d/llvm16-x86_64.conf,0644,22,3ddda874af4dd14e9e873da09d082031abfacd4b5094982c28f53e1fd50a5fe3',
     '/etc/ld.so.conf.d/bind-export-x86_64.conf,0644,26,efeec53def06657c947f064463d5ebdb68f7c6f9e40cc2e72fc11c263484942e',
     '/etc/ld.so.conf.d/cuda.conf,0644,66,a65f7d96e2447eb40b1be9586b90eb0bd776a8938c93d21f9606d2880b548b28',
     '/etc/ld.so.conf.d/dyninst-x86_64.conf,0644,19,a4c740c1f59176d816ba18d429ba823317d3db416accf6d79a9cb0ac845d9d50',

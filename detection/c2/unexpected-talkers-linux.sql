@@ -202,6 +202,7 @@ WHERE
     '80,6,500,spotify,0u,0g,spotify',
     '80,6,500,spotify,500u,500g,spotify',
     '80,6,500,spotify-launcher,0u,0g,spotify-launche',
+    '80,6,0,python3.12,0u,0g,yum',
     '80,6,500,spotify,u,g,spotify',
     '80,6,500,steam,500u,100g,steam',
     '80,6,500,steam,500u,500g,steam',

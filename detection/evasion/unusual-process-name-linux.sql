@@ -99,6 +99,7 @@ WHERE
     "acpid",
     'firefox',
     "gmenudbusmenuproxy",
+    "systemd-executor",
     "irqbalance",
     "kactivitymanagerd",
     "nm-applet",

@@ -99,6 +99,8 @@ WHERE
     '/dev/HID-SENSOR-e..auto',
     '/dev/hpet',
     '/dev/hugepages/',
+    '/dev/mtd/',
+    '/dev/mtd/by-name',
     '/dev/hugepages/libvirt',
     '/dev/hvc',
     '/dev/hwrng',
@@ -249,6 +251,7 @@ WHERE
     '/dev/zvol/rpool'
   )
   AND NOT path LIKE '/dev/mapper/%'
+  AND NOT path LIKE '/dev/shm/byobu-%'
   AND NOT path LIKE '/dev/shm/sem.rpc%'
   AND NOT path LIKE '/dev/mqueue/us.zoom.aom.%'
   AND NOT path LIKE '/dev/shm/aomshm.%'

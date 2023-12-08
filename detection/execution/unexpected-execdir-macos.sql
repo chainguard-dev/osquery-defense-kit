@@ -65,7 +65,7 @@ WHERE
     SELECT
       pid
     FROM
-      processes
+      processesP
     WHERE
       pid > 0
       AND REGEX_MATCH (
@@ -140,6 +140,8 @@ WHERE
     '/Library/Application Support/EcammLive',
     '~/Library/Caches/com.mimestream.Mimestream/',
     '~/Library/Caches/com.sempliva.Tiles/',
+    '~/.local/share/bob/',
+    '~/anaconda3/Anaconda-Navigator.app/Contents/',
     '~/Library/Services/UE4EditorServices.app/',
     '~/Library/Caches/com.grammarly.ProjectLlama/',
     '~/Library/Caches/JetBrains/',

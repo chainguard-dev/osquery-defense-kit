@@ -45,5 +45,6 @@ WHERE
   ) == 1
   -- Common filenames that are non-controversial
   AND NOT INSTR(file.filename, 'melange.rsa') > 0
+  AND NOT INSTR(file.filename, 'local-melange-enterprise.rsa') > 0
   -- Demo keys
   AND NOT sha256 IN ('a68b29401730a9c5f3e06099f6703a43797ee5c6ad6c741961c6eb8ab39786de')

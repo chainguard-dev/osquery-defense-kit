@@ -116,6 +116,7 @@ WHERE
     '/usr/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
     '/var/.Parallels_swap/',
     '/var/.ntw_cache',
+    '/var/db/.RunLanguageChooserToo',
     '/var/.pwd_cache',
     '/var/db/.AppleInstallType.plist',
     '/var/db/.AppleUpgrade',
@@ -187,7 +188,7 @@ WHERE
   )
   AND NOT (
     type = 'regular'
-    AND filename = '.placeholder'
+    AND filename IN ('.placeholder', '.abignore', '.gitignore')
   ) -- A curious addition seen on NixOS and Fedora machines
   AND NOT (
     file.path = '/.cache/'

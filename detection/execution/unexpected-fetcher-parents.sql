@@ -52,6 +52,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,303,bash,nix',
     'curl,305,bash,nix',
     'curl,307,bash,nix',
+    'curl,500,make,bash',
     'curl,500,nwg-panel,systemd',
     'curl,500,bash,bash',
     'curl,500,bash,fakeroot',

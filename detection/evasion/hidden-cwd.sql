@@ -95,6 +95,7 @@ WHERE
       'bash,~/go/src',
       'bash,~/.local/share',
       'bash,~/.Trash',
+      'rm,/private/var/folders',
       'cc1,/home/build/.cache',
       'cc1plus,~/.cache/yay',
       'c++,~/.cache/yay',

@@ -116,5 +116,6 @@ WHERE
   )
   AND p0_cmd NOT LIKE '/usr/bin/xattr -w com.apple.quarantine 0002;%'
   AND p0_cmd NOT LIKE '/usr/bin/xattr -w com.apple.quarantine 0181;%'
+  AND p0_cmd NOT LIKE '/usr/bin/xattr -w com.apple.quarantine 0381;%'
 GROUP BY
   pe.pid
