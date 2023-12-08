@@ -44,7 +44,8 @@ WHERE
     'NEWS',
     '_libinput',
     'printcap',
-    'strace-log-merge'
+    'strace-log-merge',
+    'installer-info.json'
   )
   AND file.path NOT LIKE '%/lynis%'
   AND file.path NOT LIKE '%/yelp-xsl%'

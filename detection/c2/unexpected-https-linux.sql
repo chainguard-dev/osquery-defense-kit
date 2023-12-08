@@ -271,6 +271,7 @@ WHERE
     '500,spotify,u,g,spotify',
     '500,steam,500u,100g,steam',
     '500,steam,500u,500g,steam',
+    '500,ubuntu-report,0u,0g,ubuntu-report',
     '500,steamwebhelper,500u,100g,steamwebhelper',
     '500,steamwebhelper,500u,500g,steamwebhelper',
     '500,step,500u,500g,step',

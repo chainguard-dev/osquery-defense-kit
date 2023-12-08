@@ -56,6 +56,7 @@ WHERE
     'Developer ID Application: Objective-See, LLC (VBG97UB4TA)',
     'Developer ID Application: PFU LIMITED (XW4U7W2E9L)', -- Fujitsu
     'Developer ID Application: Paragon Software GmbH (LSJ6YVK468)',
+    'Developer ID Application: Grammarly, Inc (W8F64X92K3)',
     'Developer ID Application: Private Internet Access, Inc. (5357M5NW9W)',
     'Developer ID Application: Proton Technologies AG (6UN54H93QT)',
     'Developer ID Application: Sanford, L.P. (N3S6676K3E)', -- DYMO

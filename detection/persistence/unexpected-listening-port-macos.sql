@@ -154,6 +154,7 @@ WHERE
     '88,17,0,kdc,Software Signing',
     '49152,6,500,dbeaver,Developer ID Application: DBeaver Corporation (42B6MDKMW8)',
     '88,6,0,kdc,Software Signing',
+    '49152,6,500,CaptureCoreService,Developer ID Application: Capture One A/S (5WTDB5F65L)',
     '8828,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '8829,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '8830,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',

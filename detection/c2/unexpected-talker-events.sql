@@ -56,7 +56,7 @@ FROM
 WHERE
   s.time > (strftime('%s', 'now') -600)
   AND s.action = "connect"
-  AND s.remote_port > 0
+  AND s.remote_port > 10
   AND s.remote_address NOT IN (
     '127.0.0.1',
     '::ffff:127.0.0.1',
@@ -70,6 +70,7 @@ WHERE
   AND s.remote_address NOT LIKE '100.7%'
   AND s.remote_address NOT LIKE '172.1%'
   AND s.remote_address NOT LIKE '172.2%'
+  AND s.remote_address NOT LIKE '0000:%'
   AND s.remote_address NOT LIKE '172.30.%'
   AND s.remote_address NOT LIKE '172.31.%'
   AND s.remote_address NOT LIKE '::ffff:172.%'
@@ -112,8 +113,10 @@ WHERE
     '500,0,1234,spotify',
     '500,0,123,sntp',
     '500,0,20480,io.tailscale.ipn.macsys.network-extension',
+    '500,0,32768,com.apple.MobileSoftwareUpdate.UpdateBrainService',
     '500,0,22,ssh',
     '500,0,31488,sntp',
+    '500,0,443,go',
     '500,0,32768,com.apple.NRD.UpdateBrainService',
     '500,0,32768,firefox',
     '500,0,32768,io.tailscale.ipn.macsys.network-extension',
@@ -216,6 +219,7 @@ WHERE
     '500,500,443,istioctl',
     '500,500,443,ksfetch',
     '500,500,443,kubectl',
+    '500,99,443,Slack',
     '500,500,443,minikube',
     '500,500,443,node',
     '500,500,443,old',
@@ -236,6 +240,8 @@ WHERE
   AND NOT exception_key LIKE '500,500,443,terraform%'
   AND NOT exception_key LIKE '500,0,%,syncthing'
   AND NOT exception_key LIKE '500,0,%,chrome'
+  AND NOT exception_key LIKE '500,500,443,kubectl.%'
+
   AND NOT p0_path LIKE '/Users/%/code/%'
   AND NOT p0_path LIKE '/Users/%/go/%'
   AND NOT p0_path LIKE '/Users/%/src/%'

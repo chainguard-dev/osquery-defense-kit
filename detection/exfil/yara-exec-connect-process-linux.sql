@@ -66,6 +66,7 @@ WHERE
   AND yara.count > 0
   AND yara.path NOT IN (
     '/usr/sbin/auditd',
+    '/usr/bin/sudo',
     '/usr/bin/dbus-broker-launch',
     '/usr/sbin/mcelog'
   )

@@ -61,6 +61,7 @@ WHERE
   AND pmm.path LIKE "%.dylib"
   AND exception_key NOT IN (
     '500,Bitwarden,/Applications/Bitwarden.app/Contents/MacOS/Bitwarden',
+    '500,Final Cut Pro,/Applications/Final Cut Pro.app/Contents/MacOS/Final Cut Pro',
     '500,Evernote,/Applications/Evernote.app/Contents/MacOS/Evernote',
     '500,Skitch,/Applications/Skitch.app/Contents/MacOS/Skitch',
     '500,monday.com,/Applications/monday.com.app/Contents/MacOS/monday.com',

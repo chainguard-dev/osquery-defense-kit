@@ -118,6 +118,7 @@ WHERE
     'nu',
     'nvim',
     'OpenLens',
+    'Hyper',
     'package_script_service',
     'pacman',
     'perl',

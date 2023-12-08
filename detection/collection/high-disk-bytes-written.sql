@@ -146,6 +146,7 @@ WHERE
     'firefox',
     'fsdaemon',
     'mediawriter',
+    'grype',
     'go',
     'goland',
     'golangci-lint-v',
