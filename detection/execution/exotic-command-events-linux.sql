@@ -8,7 +8,7 @@
 --
 -- tags: transient process events
 -- platform: linux
--- interval: 300
+-- interval: 600
 SELECT
   -- Child
   pe.path AS p0_path,
@@ -32,11 +32,6 @@ SELECT
     COALESCE(p1_p2.cmdline, pe1_p2.cmdline, pe1_pe2.cmdline)
   ) AS p2_cmd,
   COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path) AS p2_path,
-  COALESCE(
-    p1_p2_hash.path,
-    pe1_p2_hash.path,
-    pe1_pe2_hash.path
-  ) AS p2_hash,
   REGEX_MATCH (
     COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path),
     '.*/(.*)',
@@ -65,11 +60,8 @@ FROM
   AND pe1_p2.start_time <= pe1.time
   LEFT JOIN process_events pe1_pe2 ON pe1.parent = pe1_p2.pid
   AND pe1_pe2.cmdline != '' -- Past grandparent via parent events
-  LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
-  LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
-  LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
 WHERE
-  pe.time > (strftime('%s', 'now') -300)
+  pe.time > (strftime('%s', 'now') -600)
   AND pe.cmdline != ''
   AND (
     p0_name IN (
