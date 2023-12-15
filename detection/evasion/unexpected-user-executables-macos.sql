@@ -183,7 +183,7 @@ WHERE
     '/Users/Shared/LogiOptionsPlus/cache',
     '/Users/Shared/Red Giant/Uninstall'
   )
-  AND NOT directory LIKE '/Users/%/.docker/cli-plugins'
-  AND NOT directory LIKE '/Users/%/.nix-profile/bin'
+  AND NOT f.directory LIKE '/Users/%/.docker/cli-plugins'
+  AND NOT f.directory LIKE '/Users/%/.nix-profile/bin'
 GROUP BY
   f.path
