@@ -29,6 +29,7 @@ WHERE
     OR file.ctime > (strftime('%s', 'now') -432000)
     OR file.mtime > (strftime('%s', 'now') -432000)
   )
+  AND NOT file.path LIKE '%.csv'
   AND yara.sigrule = '    
 rule http_exec {
     strings:

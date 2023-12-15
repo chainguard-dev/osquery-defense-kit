@@ -52,6 +52,7 @@ WHERE
     '~/Library/Application Support/CleanMyMac X Menu',
     '~/Library/Application Support/CleanMyMac X',
     '~/Library/Application Support/Code',
+    '~/Library/Application Support/nuclei',
     '~/Library/Application Support/Docker Desktop',
     '~/Library/Application Support/DropboxElectron',
     '~/Library/Application Support/GitHub Desktop',

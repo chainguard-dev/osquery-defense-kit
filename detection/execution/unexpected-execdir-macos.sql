@@ -65,7 +65,7 @@ WHERE
     SELECT
       pid
     FROM
-      processesP
+      processes
     WHERE
       pid > 0
       AND REGEX_MATCH (

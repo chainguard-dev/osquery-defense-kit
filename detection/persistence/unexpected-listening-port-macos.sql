@@ -54,6 +54,7 @@ WHERE
   AND NOT exception_key IN (
     '10011,6,0,launchd,Software Signing',
     '10011,6,0,webfilterproxyd,Software Signing',
+    '22000,6,500,syncthing,Developer ID Application: Kastelo AB (LQE5SYM783)',
     '1024,6,0,systemmigrationd,Software Signing',
     '1313,6,500,hugo,',
     '1338,6,500,registry,',

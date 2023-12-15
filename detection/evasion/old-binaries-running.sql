@@ -62,7 +62,7 @@ WHERE
   AND p.name NOT IN (
     'buildkitd',
     'kail',
-    'kail',
+    'Vimari Extension',
     'Android File Transfer Agent',
     'BluejeansHelper',
     'J8RPQ294UB.com.skitch.SkitchHelper',

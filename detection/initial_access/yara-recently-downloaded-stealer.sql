@@ -44,3 +44,4 @@ WHERE
         2 of them
 }'
   AND yara.count > 0
+  AND file.path NOT LIKE "%.csv"
