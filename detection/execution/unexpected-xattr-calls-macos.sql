@@ -112,7 +112,7 @@ WHERE
   AND NOT (
     pe.euid > 500
     AND p0_cmd = '/usr/bin/xattr -h'
-    AND p1_cmd LIKE '%homebrew%'
+    AND p1_cmd LIKE '%brew%'
   )
   AND p0_cmd NOT LIKE '/usr/bin/xattr -w com.apple.quarantine 0002;%'
   AND p0_cmd NOT LIKE '/usr/bin/xattr -w com.apple.quarantine 0181;%'

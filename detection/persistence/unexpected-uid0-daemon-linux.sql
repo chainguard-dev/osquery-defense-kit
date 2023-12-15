@@ -113,6 +113,7 @@ WHERE
     'boltd,/usr/lib/boltd,0,system.slice,bolt.service,0755',
     'lightdm,/nix/store/__VERSION__/bin/lightdm,0,user.slice,user-78.slice,0555',
     'boltd,/usr/libexec/boltd,0,system.slice,bolt.service,0755',
+    'firewalld,/usr/bin/python3.12,0,system.slice,firewalld.service,0755',
     'bpfilter_umh,/bpfilter_umh,0,,,',
     'chainctl,/usr/local/bin/chainctl,0,user.slice,user-1000.slice,0755',
     'containerd,/nix/store/__VERSION__/bin/containerd,0,system.slice,docker.service,0555',

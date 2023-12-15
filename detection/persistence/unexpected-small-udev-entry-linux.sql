@@ -38,6 +38,7 @@ WHERE
     '/usr/lib/udev/rules.d/60-ddcutil-i2c.rules',
     '/usr/lib/udev/rules.d/60-drm.rules',
     '/usr/lib/udev/rules.d/60-net.rules',
+    '/usr/lib/udev/rules.d/60-bridge-network-interface.rules',
     '/usr/lib/udev/rules.d/60-rfkill.rules',
     '/usr/lib/udev/rules.d/61-accelerometer.rules',
     '/usr/lib/udev/rules.d/61-mutter.rules',

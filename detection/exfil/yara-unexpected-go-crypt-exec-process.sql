@@ -67,6 +67,7 @@ WHERE
   AND p0.path NOT LIKE "/Users/%/go/bin/%"
   AND p0.path NOT LIKE "/home/%/go/bin/%"
   AND p0.path NOT LIKE "/Users/%/dev/%"
+  AND p0.path NOT LIKE "/Users/%/work/%"
   AND p0.path NOT LIKE "/home/%/dev/%"
   AND p0.path NOT LIKE '%docker%'
   AND p0.path NOT LIKE '%tailscale%'
@@ -85,6 +86,7 @@ WHERE
     'viddy',
     'kubectl',
     'yay',
+    'syft',
     'go',
     'grype',
     'eksctl',

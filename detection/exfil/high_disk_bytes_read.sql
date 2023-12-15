@@ -83,6 +83,8 @@ WHERE
     'fsnotifier',
     'gnome-software',
     'hugo',
+    'ollama-runer',
+    'ollama',
     'go',
     'golangci-lint',
     'gopls',

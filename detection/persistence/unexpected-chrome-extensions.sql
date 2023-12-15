@@ -209,6 +209,7 @@ WHERE
     'true,,Vimcal,akopimcimmdmklcmegcflfidpfegngke',
     'true,,Vimium,dbepggeogbaibhgnhhndojpepiihcmeb',
     'true,,Vue.js devtools,nhdogjmejiglipccpnnnanhbledajbpd',
+    'true,,Save to Pinterest,gpdjojdkbbmdfjfahjcgigfpmkopogic',
     'true,,WAVE Evaluation Tool,jbbplnpkjmmeebjpijfedlgcdilocofh',
     'true,,Wikiwand: Wikipedia Modernized,emffkefkbkpkgpdeeooapgaicgmcbolj',
     'true,,Windscribe - Free Proxy and Ad Blocker,hnmpcagpplmpfojmgmnngilcnanddlhb',

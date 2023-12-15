@@ -68,6 +68,7 @@ WHERE
       AND INSTR(path, "/ko-app") != 1
       AND INSTR(path, "/usr/share/teams/") != 1
       AND path NOT LIKE "%/.terraform%"
+      AND path != '/bpfilter_umh'
       AND NOT path LIKE '/tmp/%/osqtool'
       AND NOT path LIKE '/tmp/GoLand/___go_build_%_go'
       AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
