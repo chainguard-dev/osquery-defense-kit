@@ -49,6 +49,9 @@ out/odk-vulnerabilities.conf: out/osqtool-$(ARCH)  $(wildcard vulnerabilities/*.
 out/odk-incident-response.conf: out/osqtool-$(ARCH)  $(wildcard incident_response/*.sql)
 	./out/osqtool-$(ARCH)  --max-query-duration=12s --output out/odk-incident-response.conf --verify pack incident_response/
 
+out/combined-detection.conf: out/osqtool-$(ARCH)  $(wildcard */*/*.sql)
+	./out/osqtool-$(ARCH) --output out/combined-detection.conf --verify pack detection/ vulnerabilities/
+
 # A privacy-aware variation of IR rules
 out/odk-incident-response-privacy.conf: out/osqtool-$(ARCH)  $(wildcard incident_response/*.sql)
 	./out/osqtool-$(ARCH) --exclude-tags=disabled,disabled-privacy --output out/odk-incident-response-privacy.conf pack incident_response/
