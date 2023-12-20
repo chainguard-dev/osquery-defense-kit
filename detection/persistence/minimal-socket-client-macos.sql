@@ -64,6 +64,7 @@ WHERE
     '500,Final Cut Pro,/Applications/Final Cut Pro.app/Contents/MacOS/Final Cut Pro',
     '500,Evernote,/Applications/Evernote.app/Contents/MacOS/Evernote',
     '500,Skitch,/Applications/Skitch.app/Contents/MacOS/Skitch',
+    '500,Macdown,/Applications/MacDown.app/Contents/MacOS/MacDown',
     '500,monday.com,/Applications/monday.com.app/Contents/MacOS/monday.com',
     '500,J8RPQ294UB.com.skitch.SkitchHelper,/Applications/Skitch.app/Contents/Library/LoginItems/J8RPQ294UB.com.skitch.SkitchHelper.app/Contents/MacOS/J8RPQ294UB.com.skitch.SkitchHelper',
     '500,Revolt,/Applications/Revolt.app/Contents/MacOS/Revolt',
