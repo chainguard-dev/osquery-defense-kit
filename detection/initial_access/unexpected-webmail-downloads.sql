@@ -36,6 +36,7 @@ WHERE
     'doc',
     'docx',
     'dwg',
+    'rtf',
     'eml',
     'eps',
     'gif',

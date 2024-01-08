@@ -137,6 +137,7 @@ WHERE
     '546,17,0,configd,Software Signing',
     '547,17,500,dhcp6d,Software Signing',
     '5900,6,0,launchd,Software Signing',
+    '8125,6,500,Brackets-node,Developer ID Application: CORE.AI SCIENTIFIC TECHNOLOGIES PRIVATE LIMITED (8F632A866K)',
     '5900,6,0,screensharingd,Software Signing',
     '5990,6,500,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     '6000,6,500,X11.bin,Developer ID Application: Apple Inc. - XQuartz (NA574AWV7E)',

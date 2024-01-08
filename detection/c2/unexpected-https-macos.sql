@@ -166,6 +166,7 @@ WHERE
     '500,snyk-ls_darwin_arm64,snyk-ls_darwin_arm64,,a.out',
     '500,steam_osx,steam_osx,Developer ID Application: Valve Corporation (MXGJJ98X76),com.valvesoftware.steam',
     '500,syncthing,syncthing,,syncthing',
+    '500,Plex,Plex,Developer ID Application: Plex Inc. (K4QJ56KR4A),tv.plex.desktop',
     '500,terraform,terraform,Developer ID Application: Hashicorp, Inc. (D38WU7D763),terraform',
     '500,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos'
   )
