@@ -110,6 +110,7 @@ WHERE
     '/usr/bin/NetworkManager',
     '/usr/bin/nvidia-persistenced',
     '/usr/bin/nvim',
+    '/opt/Elastic/Endpoint/elastic-endpoint',
     '/usr/bin/pulseaudio',
     '/usr/bin/sshd',
     '/usr/bin/sudo',
