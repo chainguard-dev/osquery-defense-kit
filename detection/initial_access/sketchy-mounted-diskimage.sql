@@ -36,7 +36,7 @@ FROM
 WHERE
   file.path IN (
     SELECT
-      file.path
+      DISTINCT file.path
     FROM
       block_devices
       JOIN mounts ON mounts.device = block_devices.name
@@ -52,6 +52,11 @@ WHERE
       AND mounts.path LIKE "/Volumes/%"
       -- osquery will traverse symlinks, this prevents following symlinks to /Applications (poorly)
       AND file.path NOT LIKE "/Volumes/%/Applications/%"
+      AND file.path NOT LIKE "/Volumes/%/ /%"
+      AND NOT (
+        file.type != "regular"
+        AND file.directory LIKE '%/Contents/Resources/'
+      )
   )
   AND (
     --   Rule 0. App binaries that are hidden, like WnBJLaF/1302.app/Contents/MacOS/1302 (1302.app)
