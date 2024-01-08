@@ -1,7 +1,7 @@
 ARCH ?= $(shell uname -m)
 COLLECT_DIR ?= "./out/$(shell hostname -s)-$(shell date +%Y-%m-%-d-%H-%M-%S)"
 SUDO ?= "sudo"
-OSQTOOL_VERSION=v1.4.0
+OSQTOOL_VERSION=v1.4.1
 
 out/osqtool-$(ARCH)-$(OSQTOOL_VERSION):
 	mkdir -p out
