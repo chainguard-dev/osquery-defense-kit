@@ -112,6 +112,7 @@ WHERE
     'system_profiler,500,bash,launchd',
     'system_profiler,500,Ultimate,launchd',
     'system_profiler,500,steam_osx,launchd',
+    'ioreg,500,bash,Alfred Preferences',
     'system_profiler,500,bash,logioptionsplus_agent',
     'system_profiler,0,launcher,launchd'
   )

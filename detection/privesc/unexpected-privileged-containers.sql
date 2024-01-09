@@ -32,6 +32,7 @@ WHERE
     'cgr.dev/chainguard/wolfi-base',
     'distroless.dev/melange',
     'docker.io/rancher/k3s',
+    'ghcr.io/wolfi-dev/sdk@sha256',
     'cgr.dev/chainguard-private/python',
     'gcr.io/k8s-minikube/kicbase',
     'ghcr.io/wolfi-dev/sdk',
@@ -42,5 +43,6 @@ WHERE
     'wolfi'
   )
   AND image NOT LIKE 'ghcr.io/k3d-io/k3d-%'
+  AND image NOT LIKE 'ghcr.io/wolfi-dev/%'
   AND image NOT LIKE 'melange-%'
   AND command NOT LIKE '/usr/bin/melange build %'

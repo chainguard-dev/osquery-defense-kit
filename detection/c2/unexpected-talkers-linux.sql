@@ -233,6 +233,7 @@ WHERE
     '9999,6,500,firefox,0u,0g,firefox'
   )
   AND NOT exception_key LIKE '80,6,500,terraform_1.1.5,500u,500g,terraform'
+  AND NOT exception_key LIKE '%,6,500,nuclei,500u,500g,nuclei'
   AND NOT (
     p.name = 'java'
     AND p.cmdline LIKE '/home/%/.local/share/JetBrains/Toolbox/%'

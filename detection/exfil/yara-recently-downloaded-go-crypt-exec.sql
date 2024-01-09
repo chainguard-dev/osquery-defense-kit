@@ -33,12 +33,13 @@ WHERE
   AND yara.sigrule = '    
     rule cryptexec {
     strings:
-        $cbc = "crypto/cipher.newCBC" ascii
-        $aes = "crypto/aes.newCipher"
-        $run = "os/exec.(*Cmd).Run" ascii
-        $exec = "os/exec.Command" ascii
+        $s_cbc = "crypto/cipher.newCBC" ascii
+        $s_aes = "crypto/aes.newCipher"
+        $s_run = "os/exec.(*Cmd).Run" ascii
+        $s_exec = "os/exec.Command" ascii
+        $not_analysis = "Dynamic Section"
     condition:
-        3 of them
+        3 of ($s*) and none of ($not*)
 }'
   AND yara.count > 0
   AND file.path NOT LIKE '/Users/%/Downloads/chainctl%'

@@ -68,6 +68,7 @@ WHERE
       '.kotlin',
       '.npm',
       '.git',
+      '.linuxbrew',
       '.gimme',
       '.vscode',
       '.vim',

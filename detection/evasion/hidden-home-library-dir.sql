@@ -43,6 +43,7 @@ WHERE
     '~/Library/Finance/.finance_cloud_SUPPORT/_EXTERNAL_DATA',
     '~/Library/Finance/.finance_dropbox_SUPPORT/_EXTERNAL_DATA',
     '~/Library/Finance/.finance_local_SUPPORT/_EXTERNAL_DATA',
+    '~/Library/Stickers/.stickers_SUPPORT/_EXTERNAL_DATA',
     '~/Library/GroupContainersAlias/.SiriTodayViewExtension',
     '~/Library/GroupContainersAlias/.SiriTodayViewExtension/Library',
     '~/Library/Group Containers/.SiriTodayViewExtension',
@@ -55,3 +56,4 @@ WHERE
   )
   AND NOT homedir LIKE '~/Library/.icedove/%'
   AND NOT homedir LIKE '~/Library/Mobile Documents/.Trash%'
+  AND NOT homedir LIKE '~/Library/%/.%_SUPPORT/_EXTERNAL_DATA'

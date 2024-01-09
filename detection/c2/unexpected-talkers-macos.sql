@@ -209,8 +209,12 @@ WHERE
     AND remote_port < 32000
   )
   AND NOT (
+    exception_key LIKE '500,6,%,syncthing,syncthing,Developer ID Application: Kastelo AB (LQE5SYM783),syncthing'
+    AND remote_port > 24
+  )
+  AND NOT (
     exception_key LIKE '500,6,%,syncthing,syncthing,Developer ID Application: Jakob Borg (LQE5SYM783),syncthing'
-    AND remote_port > 79
+    AND remote_port > 24
   )
   AND NOT (
     alt_exception_key = '500,6,80,main,main,500u,20g'

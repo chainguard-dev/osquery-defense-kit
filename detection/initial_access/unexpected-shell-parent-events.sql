@@ -192,6 +192,7 @@ WHERE
       'zsh'
     )
     OR p1_name LIKE 'terraform-provider-%'
+    OR p1_name LIKE 'iTermServer-%'
     -- Do not add shells to this list if you want your query to detect
     -- bad programs that were started from a shell.
     OR p2_name IN ('env', 'git')
