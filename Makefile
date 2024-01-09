@@ -8,61 +8,24 @@ out/osqtool-$(ARCH)-$(OSQTOOL_VERSION):
 	GOBIN=$(CURDIR)/out go install github.com/chainguard-dev/osqtool/cmd/osqtool@$(OSQTOOL_VERSION)
 	mv out/osqtool out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)
 
-out/odk-detection-c2.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/c2/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=4s --verify -output out/odk-detection-c2.conf pack detection/c2
+out/detection.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/*.sql)
+	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=4s --verify -output out/detection.conf pack detection
 
-out/odk-detection-collection.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/collection/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=4s --verify -output out/odk-detection-collection.conf pack detection/collection
+out/policy.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  $(wildcard policy/*.sql)
+	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --verify --output out/policy.conf pack policy/
 
-out/odk-detection-credentials.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/credentials/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=4s --verify -output out/odk-detection-credentials.conf pack detection/credentials
+out/vulnerabilities.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  $(wildcard vulnerabilities/*.sql)
+	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --output out/vulnerabilities.conf pack vulnerabilities/
 
-out/odk-detection-discovery.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/discovery/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=4s --verify -output out/odk-detection-discovery.conf pack detection/discovery
-
-out/odk-detection-evasion.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/evasion/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=4s --verify -output out/odk-detection-evasion.conf pack detection/evasion
-
-out/odk-detection-execution.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/execution/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=16s --verify -output out/odk-detection-execution.conf pack detection/execution
-
-out/odk-detection-exfil.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/exfil/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=16s --verify -output out/odk-detection-exfil.conf pack detection/exfil
-
-out/odk-detection-impact.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/impact/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=4s --verify -output out/odk-detection-impact.conf pack detection/impact
-
-out/odk-detection-initial_access.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/initial_access/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=8s --verify -output out/odk-detection-initial_access.conf pack detection/initial_access
-
-out/odk-detection-persistence.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/persistence/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=14s --verify -output out/odk-detection-persistence.conf pack detection/persistence
-
-out/odk-detection-privesc.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/privesc/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=4s --verify -output out/odk-detection-privesc.conf pack detection/privesc
-
-out/odk-policy.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  $(wildcard policy/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --verify --output out/odk-policy.conf pack policy/
-
-out/odk-vulnerabilities.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  $(wildcard vulnerabilities/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --output out/odk-vulnerabilities.conf pack vulnerabilities/
-
-out/odk-incident-response.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  $(wildcard incident_response/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  --max-query-duration=12s --output out/odk-incident-response.conf --verify pack incident_response/
-
-out/combined-detection.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  $(wildcard */*/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --output out/combined-detection.conf --verify pack detection/ vulnerabilities/
-
-# A privacy-aware variation of IR rules
-out/odk-incident-response-privacy.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  $(wildcard incident_response/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --exclude-tags=disabled,disabled-privacy --output out/odk-incident-response-privacy.conf pack incident_response/
+out/incident-response.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  $(wildcard incident_response/*.sql)
+	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --exclude-tags=disabled,disabled-privacy --output out/incident-response.conf pack incident_response/
 
 out/osquery.conf:
 	cat osquery.conf | sed s/"out\/"/""/g > out/osquery.conf
 
-packs: out/odk-detection-c2.conf out/odk-detection-collection.conf out/odk-detection-credentials.conf out/odk-detection-discovery.conf out/odk-detection-evasion.conf out/odk-detection-execution.conf out/odk-detection-exfil.conf out/odk-detection-impact.conf out/odk-detection-initial_access.conf out/odk-detection-persistence.conf out/odk-detection-privesc.conf  out/odk-policy.conf out/odk-incident-response.conf out/odk-incident-response-privacy.conf out/odk-vulnerabilities.conf
+packs: out/detection.conf out/policy.conf out/incident-response.conf out/vulnerabilities.conf
 
-out/odk-packs.zip: packs out/osquery.conf
+out/packs.zip: packs out/osquery.conf
 	cd out && rm -f .*.conf && zip odk-packs.zip *.conf
 
 .PHONY: reformat
@@ -78,11 +41,19 @@ detect: ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)
 	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) run detection
 
 .PHONY: run-detect-pack
-run-detect-pack: out/odk-detection.conf
+run-detect-pack: out/detection.conf
 	$(SUDO) osqueryi --config_path osquery.conf --pack detection
 
+.PHONY: run-policy-pack
+run-policy-pack: out/policy.conf
+	$(SUDO) osqueryi --config_path osquery.conf --pack policy
+
+.PHONY: run-vuln-pack
+run-vuln-pack: out/vulnerabilities.conf
+	$(SUDO) osqueryi --config_path osquery.conf --pack vulnerabilities
+
 .PHONY: run-ir-pack
-run-ir-pack: out/odk-incident-response.conf
+run-ir-pack: out/incident-response.conf
 	$(SUDO) osqueryi --config_path osquery.conf --pack incident-response
 
 .PHONY: collect
@@ -107,5 +78,5 @@ verify: ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)
 	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-results=0 --max-query-duration=6s --max-total-daily-duration=10m verify policy
 	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-results=0 --max-query-duration=16s --max-total-daily-duration=2h30m --max-query-daily-duration=1h verify detection
 
-all: out/odk-packs.zip
+all: out/packs.zip
 
