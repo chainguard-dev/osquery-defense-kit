@@ -37,10 +37,11 @@ WHERE
         $s_aes = "crypto/aes.newCipher"
         $s_run = "os/exec.(*Cmd).Run" ascii
         $s_exec = "os/exec.Command" ascii
-        $not_analysis = "Dynamic Section"
+        $dynamic = "Dynamic Section"
     condition:
-        3 of ($s*) and none of ($not*)
-}'
+        3 of ($s*) and not $dynamic
+}
+  '
   AND yara.count > 0
   AND file.path NOT LIKE '/Users/%/Downloads/chainctl%'
   AND file.filename NOT IN ('grype', 'chainctl', 'elastic-agent')
