@@ -194,7 +194,9 @@ WHERE
     '500,500,32768,Electron',
     '500,500,32768,GoogleUpdater',
     '500,500,32768,java',
+    '500,99,443,Slack Helper',
     '500,500,32768,ksfetch',
+    '500,0,32768,elastic-endpoint',
     '500,500,32768,melange',
     '500,500,32768,node',
     '500,500,4318,Code Helper (Plugin)',
@@ -249,6 +251,7 @@ WHERE
   AND NOT p0_path LIKE '/Users/%/go/%'
   AND NOT p0_path LIKE '/Users/%/src/%'
   AND NOT p0_path LIKE '/Users/%/dev/%'
+  AND NOT p0_path LIKE '/System/%'
   AND NOT p0_path LIKE '/private/var/folders/%/T/AppTranslocation/%/%.app/Contents/MacOS/%'
   AND NOT (
     basename = "Python"

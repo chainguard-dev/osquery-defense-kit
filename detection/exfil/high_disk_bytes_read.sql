@@ -163,6 +163,8 @@ WHERE
     '/usr/sbin/spindump',
     '/usr/sbin/systemstats'
   )
+  AND NOT p0.path LIKE '/Library/SystemExtensions/%/io.kandji.KandjiAgent.ESF-Extension.systemextension/Contents/MacOS/io.kandji.KandjiAgent.ESF-Extension'
+
   AND NOT (
     p0.name = 'bindfs'
     AND p0.cmdline LIKE 'bindfs%-o fsname=%'

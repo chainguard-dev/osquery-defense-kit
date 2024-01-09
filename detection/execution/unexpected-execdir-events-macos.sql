@@ -313,6 +313,7 @@ WHERE
     'Apple Mac OS Application Signing',
     'Developer ID Application: Azul Systems, Inc. (TDTHCUPYFR)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+    'Developer ID Application: Rogue Amoeba Software, LLC (7266XEXAPM)',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW)',
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Cisco (DE8Y96K9QP)',

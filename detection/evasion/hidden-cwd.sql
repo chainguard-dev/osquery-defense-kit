@@ -75,16 +75,17 @@ WHERE
     WHERE
       cwd LIKE '%/.%'
       AND NOT name IN (
+        'apfsd',
         'bindfs',
-        'vim',
-        'find',
-        'nvim',
-        'terraform',
         'code',
-        'updatedb',
+        'Code Helper',
+        'find',
         'git',
         'gitsign',
-        'Code Helper'
+        'nvim',
+        'terraform',
+        'updatedb',
+        'vim'
       )
       AND NOT cgroup_path LIKE '/system.slice/docker-%'
       AND NOT cgroup_path LIKE '/system.slice/system.slice:docker:%'
@@ -105,6 +106,7 @@ WHERE
       'fish,~/.local/share',
       'rustc,/home/build/.cargo',
       'fish,~/.Trash',
+      'Arduino IDE Helper,/private/var/folders',
       'git,~/.local/share',
       'fileproviderd,~/Library/Mobile Documents',
       'java,/home/build/.gradle',

@@ -63,6 +63,8 @@ WHERE
     '0,elastic-endpoint,0u,0g,elastic-endpoin',
     '0,bash,0u,0g,bash',
     '0,filebeat,0u,0g,filebeat',
+    '500,gobuster,500u,500g,gobuster',
+    '500,nuclei,500u,500g,nuclei',
     '0,bash,0u,0g,mkinitcpio',
     '0,bash,0u,0g,sh',
     '0,chainctl,0u,0g,chainctl',
