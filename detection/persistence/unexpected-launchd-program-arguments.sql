@@ -62,6 +62,8 @@ WHERE
     'Developer ID Application: Sanford, L.P. (N3S6676K3E)', -- DYMO
     'Developer ID Application: Seiko Epson Corporation (TXAEAV5RN4)',
     'Developer ID Application: Tenable, Inc. (4B8J598M7U)',
+    'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
+    'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
     'Developer ID Application: X-Rite, Incorporated (2K7GT73B4R)',
     'Software Signing', -- Apple
     'yabai-cert'

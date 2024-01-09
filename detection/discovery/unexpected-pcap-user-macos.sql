@@ -66,7 +66,8 @@ WHERE
     'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'Apple Mac OS Application Signing',
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
-    'Developer ID Application: Docker Inc (9BNSXJN65R)'
+    'Developer ID Application: Docker Inc (9BNSXJN65R)',
+    'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)'
   )
 GROUP BY
   p0.pid

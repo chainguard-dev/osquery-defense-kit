@@ -306,6 +306,8 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK)',
+    'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
+    'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     'Developer ID Application: Foxit Corporation (8GN47HTP75)',
     'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
