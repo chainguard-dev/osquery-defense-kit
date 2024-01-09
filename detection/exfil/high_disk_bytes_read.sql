@@ -63,6 +63,7 @@ WHERE
     'baloo_file',
     'baloo_file_extr',
     'bash',
+    'apko',
     'bwrap',
     'cargo',
     'chrome',

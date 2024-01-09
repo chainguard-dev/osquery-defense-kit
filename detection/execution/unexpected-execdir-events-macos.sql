@@ -155,6 +155,7 @@ WHERE
     '/Volumes/Slack/Slack.app',
     '/opt/homebrew/Caskroom',
     '/opt/homebrew/Cellar',
+    '/Library/Elastic/Agent',
     '/opt/homebrew/Library',
     '/private/var/kolide-k2',
     '/usr/libexec/AssetCache',

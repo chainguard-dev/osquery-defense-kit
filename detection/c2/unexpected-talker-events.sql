@@ -165,6 +165,7 @@ WHERE
     '500,0,53,launcher',
     '500,0,53,nessusd',
     '500,0,53,NetworkManager',
+    '500,99,32768,Slack',
     '500,0,53,slack',
     '500,0,53,spotify',
     '500,500,32768,G2MUpdate',

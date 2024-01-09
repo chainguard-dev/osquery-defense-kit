@@ -32,6 +32,7 @@ WHERE
   AND p.path != '/'
   AND f.path NOT IN (
     '/opt/google/endpoint-verification/bin/apihelper',
+    '/opt/Elastic/Endpoint/elastic-endpoint',
     '/usr/bin/melange'
   )
   AND f.path NOT LIKE '/home/%'

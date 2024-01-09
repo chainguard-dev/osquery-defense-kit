@@ -42,4 +42,4 @@ WHERE
 }'
   AND yara.count > 0
   AND file.path NOT LIKE '/Users/%/Downloads/chainctl%'
-  AND file.filename NOT IN ('grype', 'chainctl')
+  AND file.filename NOT IN ('grype', 'chainctl', 'elastic-agent')

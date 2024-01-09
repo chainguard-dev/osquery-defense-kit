@@ -56,6 +56,7 @@ WHERE
     'sshd',
     'sudo',
     'systemd',
+    'elastic-agent',
     'systemd-udevd',
     'systemd-userdbd',
     'systemd-userwor',

@@ -62,6 +62,7 @@ WHERE
   AND exception_key NOT IN (
     '500,Bitwarden,/Applications/Bitwarden.app/Contents/MacOS/Bitwarden',
     '500,Final Cut Pro,/Applications/Final Cut Pro.app/Contents/MacOS/Final Cut Pro',
+    '500,Clipy,/Applications/Clipy.app/Contents/MacOS/Clipy',
     '500,Evernote,/Applications/Evernote.app/Contents/MacOS/Evernote',
     '500,Skitch,/Applications/Skitch.app/Contents/MacOS/Skitch',
     '500,Macdown,/Applications/MacDown.app/Contents/MacOS/MacDown',

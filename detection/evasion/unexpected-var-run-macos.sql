@@ -62,5 +62,6 @@ WHERE
     'utmpx',
     'wifi'
   )
+  AND NOT file.filename LIKE '%.pid'
 GROUP BY
   file.path;

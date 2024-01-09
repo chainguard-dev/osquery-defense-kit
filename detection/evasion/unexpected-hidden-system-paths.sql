@@ -62,6 +62,7 @@ WHERE
   AND file.path NOT IN (
     '/.VolumeIcon.icns',
     '/.autorelabel',
+    '/.equarantine/',
     '/.file',
     '/.lesshst',
     '/.mozilla/',

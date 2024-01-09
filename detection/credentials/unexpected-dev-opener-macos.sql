@@ -75,8 +75,9 @@ WHERE
   AND p0.path NOT LIKE '/usr/sbin/%'
   AND exception_key NOT IN (
     '/dev/afsc_type,revisiond,Software Signing,com.apple.revisiond',
-    '/dev/auditpipe,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF),osqueryd',
+    '/dev/auditpipe,ir_agent,Developer ID Application: Rapid7 LLC (UL6CGN7MAL),ir_agent',
     '/dev/auditpipe,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF),io.osquery.agent',
+    '/dev/auditpipe,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF),osqueryd',
     '/dev/auditsessions,GSSCred,Software Signing,com.apple.GSSCred',
     '/dev/auditsessions,TouchBarServer,Software Signing,com.apple.touchbarserver',
     '/dev/auditsessions,authd,Software Signing,com.apple.authd',

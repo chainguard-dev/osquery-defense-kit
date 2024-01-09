@@ -50,6 +50,7 @@ WHERE
     '0544',
     '0555',
     '0711',
+    '0750',
     '0755',
     '0775',
     '0744',
@@ -114,4 +115,8 @@ WHERE
   AND NOT (
     f.path LIKE '/Users/%/Library/Application Support/com.raycast.macos/NodeJS/runtime/%/bin/node'
     AND f.mode = '0754'
+  )
+  AND NOT (
+    f.path LIKE '/opt/Elastic/Agent/data/elastic-agent%/elastic-agent'
+    AND f.mode = '0770'
   )
