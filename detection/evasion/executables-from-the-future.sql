@@ -25,7 +25,7 @@ SELECT
   f.mtime - strftime('%s', 'now') AS mtime_diff,
   f.ctime - strftime('%s', 'now') AS ctime_diff,
   f.btime - strftime('%s', 'now') AS btime_diff,
-  strftime('%s', 'now') AS current_time,
+  strftime('%s', 'now') AS now_ts,
   hash.sha256 AS child_hash256,
   pp.path AS parent_path,
   pp.cmdline AS parent_cmd,
