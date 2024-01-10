@@ -67,6 +67,7 @@ WHERE
     '/.lesshst',
     '/.mozilla/',
     '/.vol/',
+    '/var/root/.zsh_history',
     '/dev/.mdadm/',
     '/etc/.#sudoers',
     '/etc/.clean',

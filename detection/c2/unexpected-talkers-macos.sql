@@ -227,15 +227,15 @@ WHERE
     )
     AND id_exception_key IN (
       'Apple Mac OS Application Signing,com.microsoft.OneDrive-mac',
-      'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.Reader',
       'Apple Mac OS Application Signing,com.ookla.speedtest-macos',
-      'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
+      'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.AdobeResourceSynchronizer',
+      'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.Reader',
       'Developer ID Application: Bookry Ltd (4259LE8SU5),com.bookry.wavebox.helper',
       'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.helper',
-      'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.AdobeResourceSynchronizer',
       'Developer ID Application: Cloudflare Inc. (68WVV388M8),CloudflareWARP',
       'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
       'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.EpicGamesLauncher',
+      'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.UE4EditorServices',
       'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK),fctupdate',
       'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D),com.googlecode.iterm2',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
@@ -245,6 +245,7 @@ WHERE
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),net.java.openjdk.java',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefox',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefoxdeveloperedition',
+      'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
       'Developer ID Application: Opera Software AS (A2P9LX4JPN),com.operasoftware.Opera.helper',
       'Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',
       'Developer ID Application: Skype Communications S.a.r.l (AL798K98FX),com.skype.skype.Helper',
@@ -255,7 +256,8 @@ WHERE
       'Developer ID Application: TechSmith Corporation (7TQL462TU8),com.techsmith.snagit.capturehelper2020',
       'Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.browser.helper',
       'Developer ID Application: Valve Corporation (MXGJJ98X76),com.valvesoftware.steam',
-      'Developer ID Application: Vladimir Prelovac (TFVG979488),com.apple.WebKit.Networking'
+      'Developer ID Application: Vladimir Prelovac (TFVG979488),com.apple.WebKit.Networking',
+      'Developer ID Application: Zwift, Inc (C2GM8Y9VFM),ZwiftAppSilicon'
     )
   )
 GROUP BY
