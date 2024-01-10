@@ -9,16 +9,16 @@ out/osqtool-$(ARCH)-$(OSQTOOL_VERSION):
 	mv out/osqtool out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)
 
 out/detection.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=4s --verify -output out/detection.conf pack detection
+	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=8s --verify -output out/detection.conf pack detection
 
 out/policy.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  $(wildcard policy/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --verify --output out/policy.conf pack policy/
+	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=8s --verify --output out/policy.conf pack policy/
 
 out/vulnerabilities.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  $(wildcard vulnerabilities/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --output out/vulnerabilities.conf pack vulnerabilities/
+	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=8s --output out/vulnerabilities.conf pack vulnerabilities/
 
 out/incident-response.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  $(wildcard incident_response/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --exclude-tags=disabled,disabled-privacy --output out/incident-response.conf pack incident_response/
+	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=8s --exclude-tags=disabled,disabled-privacy --output out/incident-response.conf pack incident_response/
 
 out/osquery.conf:
 	cat osquery.conf | sed s/"out\/"/""/g > out/osquery.conf
