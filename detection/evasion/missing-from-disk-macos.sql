@@ -22,6 +22,7 @@ SELECT
   p.cwd,
   p.on_disk,
   p.state,
+  strftime('%s', 'now') - p.start_time AS age,
   pp.on_disk AS parent_on_disk,
   pp.path AS parent_path,
   pp.cmdline AS parent_cmd,
@@ -33,7 +34,7 @@ FROM
   LEFT JOIN hash ON pp.path = hash.path
 WHERE
   p.on_disk != 1 -- false positives from recently spawned processes
-  AND (strftime('%s', 'now') - p.start_time) > 15
+  AND (strftime('%s', 'now') - p.start_time) > 900
   AND p.pid > 0
   AND p.parent != 2 -- kthreadd
   AND p.state != 'Z' -- The kernel no longer has enough tracking information for this alert to be useful
