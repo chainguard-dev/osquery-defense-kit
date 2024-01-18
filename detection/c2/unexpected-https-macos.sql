@@ -144,6 +144,7 @@ WHERE
     '500,Paintbrush,Paintbrush,Developer ID Application: Michael Schreiber (G966ML7VBG),com.soggywaffles.paintbrush',
     '500,Plex,Plex,Developer ID Application: Plex Inc. (K4QJ56KR4A),tv.plex.desktop',
     '500,PlexMobile,PlexMobile,Apple iPhone OS Application Signing,com.plexapp.plex',
+    '500,ZwiftAppSilicon,ZwiftAppSilicon,Developer ID Application: Zwift, Inc (C2GM8Y9VFM),ZwiftAppSilicon',
     '500,Realm,Realm,Apple iPhone OS Application Signing,camera.youpi.metareal',
     '500,Reflect Helper,Reflect Helper,Developer ID Application: Reflect App, LLC (789ULN5MZB),app.reflect.ReflectDesktop',
     '500,Reflect,Reflect,Developer ID Application: Reflect App, LLC (789ULN5MZB),app.reflect.ReflectDesktop',
@@ -157,10 +158,12 @@ WHERE
     '500,bash,bash,,bash',
     '500,chrome_crashpad_handler,chrome_crashpad_handler,Developer ID Application: Microsoft Corporation (UBF8T346G9),chrome_crashpad_handler',
     '500,cloud_sql_proxy,cloud_sql_proxy,,a.out',
+    '0,ir_agent,ir_agent,Developer ID Application: Rapid7 LLC (UL6CGN7MAL),bootstrap',
     '500,git-remote-http,git-remote-http,,git-remote-http-55554944748a32c47cdc35cfa7f071bb69a39ce4',
     '500,go,go,Developer ID Application: Google LLC (EQHXZ8M8AV),org.golang.go',
     '500,grype,grype,Developer ID Application: ANCHORE, INC. (9MJHKYX5AT),grype',
     '500,ksfetch,ksfetch,Developer ID Application: Google LLC (EQHXZ8M8AV),ksfetch',
+    '0,com.bitdefender.cst.net.dci.dci-network-extension,com.bitdefender.cst.net.dci.dci-network-extension,Developer ID Application: Bitdefender SRL (GUNFMW623Y),com.bitdefender.cst.net.dci.dci-network-extension',
     '500,melange,melange,,a.out',
     '500,ngrok,ngrok,Developer ID Application: ngrok LLC (TEX8MHRDQ9),a.out',
     '500,ngrok,ngrok,Developer ID Application: ngrok LLC (TEX8MHRDQ9),darwin_amd64',
@@ -217,6 +220,7 @@ WHERE
     '500,wolfictl,wolfictl,500u,20g'
   )
   AND NOT alt_exception_key LIKE '500,terraform-provider-%,terraform-provider-%,500u,20g'
+  AND NOT alt_exception_key LIKE '500,plugin_host-%,plugin_host-%,500u,20g'
   AND NOT p0.path LIKE '/private/var/folders/%/T/GoLand/%'
   AND NOT (
     exception_key = '500,Python,Python,,org.python.python'

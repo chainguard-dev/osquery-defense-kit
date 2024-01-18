@@ -198,6 +198,7 @@ WHERE pe.time > (strftime('%s', 'now') -600)
   AND NOT p0_name IN ('ar', 'cc1', 'compile', 'cmake', 'cc1plus')
   AND NOT exception_key IN (
     'bash,500,ninja,bash',
+    'grep,500,fish,konsole',
     'ls,500,zsh,alacritty',
     'nc,500,fish,konsole',
     'chrome_crashpad_handler,500,systemd,systemd',

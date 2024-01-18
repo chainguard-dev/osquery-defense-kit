@@ -138,19 +138,20 @@ WHERE
   )
   AND NOT top3_homedir IN (
     '/Library/Application Support/EcammLive',
+    '/Library/Developer/Xcode/',
+    '/opt/rapid7/ir_agent',
+    '~/.local/share/bob/',
+    '~/.terraform.d/plugin-cache/registry.terraform.io/',
+    '~/Library/Arduino15/packages/',
+    '~/Library/Caches/Cypress/',
+    '~/Library/Caches/JetBrains/',
+    '~/Library/Caches/com.grammarly.ProjectLlama/',
     '~/Library/Caches/com.mimestream.Mimestream/',
     '~/Library/Caches/com.sempliva.Tiles/',
-    '~/.local/share/bob/',
-    '/opt/rapid7/ir_agent',
-    '~/anaconda3/Anaconda-Navigator.app/Contents/',
-    '~/Library/Services/UE4EditorServices.app/',
-    '~/Library/Caches/com.grammarly.ProjectLlama/',
-    '~/Library/Caches/JetBrains/',
-    '~/Library/Caches/Cypress/',
     '~/Library/Caches/org.gpgtools.updater/',
     '~/Library/Caches/snyk/',
-    '/Library/Developer/Xcode/',
-    '~/.terraform.d/plugin-cache/registry.terraform.io/'
+    '~/Library/Services/UE4EditorServices.app/',
+    '~/anaconda3/Anaconda-Navigator.app/Contents/'
   )
   AND dir NOT LIKE '/Applications/%'
   AND dir NOT LIKE '/private/tmp/%.app/Contents/MacOS'

@@ -158,6 +158,7 @@ WHERE
     'Developer ID Application: Cisco (DE8Y96K9QP)',
     'Developer ID Application: CodeWeavers Inc. (9C6B7X7Z8E)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
+    'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     'Developer ID Application: Denver Technologies, Inc (2BBY89MBSN)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',

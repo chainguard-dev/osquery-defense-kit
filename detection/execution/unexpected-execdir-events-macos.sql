@@ -320,6 +320,7 @@ WHERE
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Cisco (DE8Y96K9QP)',
     'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
+    'Developer ID Application: Bitdefender SRL (GUNFMW623Y)',
     'Developer ID Application: CodeWeavers Inc. (9C6B7X7Z8E)',
     'Developer ID Application: Canon Inc. (XE2XNRRXZ5)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',

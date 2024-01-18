@@ -78,6 +78,7 @@ WHERE
     'Developer ID Application: Galvanix (5BRAQAFB8B)',
     'Developer ID Application: General Arcade (Pte. Ltd.) (S8JLSG5ES7)',
     'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
+    'Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     'Developer ID Application: GitHub (VEKTX9H2N7)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',

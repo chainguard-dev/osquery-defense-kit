@@ -86,6 +86,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '%/target/%'
           OR file.path LIKE '%/terraformer/%'
           OR file.path LIKE '/tmp/com.apple.installer%'
+          OR file.path LIKE '%.tfstate.sh'
           OR file.path LIKE '%/tmp/epdf%'
           OR file.path LIKE '/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%'
           OR file.filename IN ('mysqld_exporter', 'goreleaser', 'golangci-lint', 'cosign', 'grype', 'chainctl', 'configure')

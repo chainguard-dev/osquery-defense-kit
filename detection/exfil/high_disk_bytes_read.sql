@@ -127,6 +127,7 @@ WHERE
     'wineserver',
     'wolfictl',
     'yay',
+    'ZwiftAppSilicon',
     'ykman-gui',
     'yum',
     'zsh'

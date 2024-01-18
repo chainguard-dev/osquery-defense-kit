@@ -114,6 +114,7 @@ WHERE
     '/dev/macfuse,gcsfuse,,a.out',
     '/dev/macfuse,rclone,,a.out',
     '/dev/oslog,logd,Software Signing,com.apple.logd',
+    '/dev/bpf,BDLDaemon,Developer ID Application: Bitdefender SRL (GUNFMW623Y),com.bitdefender.epsecurity.BDLDaemonApp',
     '/dev/tty.usbmodem21430,Bazecor Helper (Renderer),,',
     '/dev/xcpm,PerfPowerServices,Software Signing,com.apple.PerfPowerServices',
     '/dev/xcpm,systemstats,Software Signing,com.apple.systemstats',

@@ -30,6 +30,7 @@ WHERE
     OR file.mtime > (strftime('%s', 'now') -432000)
   )
   AND NOT file.path LIKE '%.csv'
+  AND NOT file.path LIKE '%/libxul.so'
   AND yara.sigrule = '    
 rule http_exec {
     strings:

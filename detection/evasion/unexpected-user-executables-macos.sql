@@ -175,6 +175,7 @@ WHERE
     '~/Library/Services',
     '~/Library/Thunderbird',
     '~/.fzf/test',
+    '~/.revox/updates',
     '~/.magefile',
     '~/.nvm',
     '~/.terraform.d',
