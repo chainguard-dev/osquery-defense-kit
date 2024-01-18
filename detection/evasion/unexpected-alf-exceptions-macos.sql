@@ -98,7 +98,7 @@ WHERE
     'Software Signing,com.apple.audio.InfoHelper,/System/Library/Frameworks/AudioToolbox.framework/XPCServices/com.apple.audio.InfoHelper.xpc/,0',
     'Software Signing,com.apple.controlcenter,/System/Library/CoreServices/ControlCenter.app/,0',
     'Software Signing,com.apple.nc,/usr/bin/nc,0',
-    'Software Signing,com.apple.python3,/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0'
+    'Software Signing,com.apple.python3,/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
     'Software Signing,com.apple.python3,/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
     'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0'
   )
