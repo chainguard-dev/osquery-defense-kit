@@ -130,6 +130,7 @@ WHERE
     '500,Todoist Helper,com.todoist.mac.Todoist.helper,Apple Mac OS Application Signing',
     '500,Todoist,com.todoist.mac.Todoist,Apple Mac OS Application Signing',
     '500,TwitchStudioStreamDeck,TwitchStudioStreamDeck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
+    '500,J8RPQ294UB.com.skitch.SkitchHelper,J8RPQ294UB.com.skitch.SkitchHelper,Apple Mac OS Application Signing',
     '500,WinAppHelper,,',
     '500,WinAppHelper,WinAppHelper,',
     '500,bash,bash,',
@@ -230,5 +231,7 @@ WHERE
   AND NOT exception_key LIKE '500,marksman-macos,marksman-%,'
   AND NOT exception_key LIKE '500,rustlings,rustlings-%,'
   AND NOT exception_key LIKE '500,rust-analyzer,rust_analyzer-%,'
+  AND NOT exception_key LIKE '500,nvim,bob-%'
+  AND NOT exception_key LIKE '500,nvim,%.out,'
 GROUP BY
   p0.pid

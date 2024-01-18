@@ -234,6 +234,7 @@ WHERE
       'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.helper',
       'Developer ID Application: Cloudflare Inc. (68WVV388M8),CloudflareWARP',
       'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
+      'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker.docker',
       'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.EpicGamesLauncher',
       'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.UE4EditorServices',
       'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK),fctupdate',

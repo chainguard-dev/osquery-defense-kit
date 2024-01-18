@@ -120,3 +120,7 @@ WHERE
     f.path LIKE '/opt/Elastic/Agent/data/elastic-agent%/elastic-agent'
     AND f.mode = '0770'
   )
+  AND NOT (
+    f.path = '/Library/Bitdefender/AVP/product/bin/EndpointSecurityforMac.app/Contents/MacOS/EndpointSecurityforMac'
+    AND f.mode = '0655'
+  )

@@ -25,4 +25,4 @@ WHERE
   AND file.filename NOT LIKE '%.csv'
 -- "GROUP BY" should be unnecessary, but Kolide seems to require it
 GROUP BY ea.key
-HAVING num_downloads > 5
+HAVING num_downloads > 8

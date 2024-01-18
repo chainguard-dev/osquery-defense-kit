@@ -48,8 +48,20 @@ WHERE
   -- Ignore files that ahve already been removed
   AND file.filename NOT NULL
   AND exception_key NOT IN (
+    ',,/Applications/Google%20Chrome.app/,',
+    ',,/Applications/IntelliJ%20IDEA.app/,',
+    ',,/Applications/ProtonMail%20Bridge.app/,',
+    ',,/Applications/Visual%20Studio%20Code.app/,',
+    ',,/Applications/Visual%20Studio%20Code.app/Contents/Frameworks/Code%20Helper.app/,',
     ',a.out,/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/kubectl,501',
     ',a.out,/opt/homebrew/Cellar/go/1.20.4/libexec/pkg/tool/darwin_arm64/trace,501',
+    ',dnsmasq,/opt/homebrew/Cellar/dnsmasq/2.88/sbin/dnsmasq,0',
+    ',iodined-55554944d1ffcb236a84363d9b667be6a1742a17,/usr/local/sbin/iodined,501',
+    ',java,/opt/homebrew/Cellar/openjdk/19/libexec/openjdk.jdk/Contents/Home/bin/java,501',
+    ',org.python.python,/opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/Resources/Python.app/,501',
+    ',org.python.python,/opt/homebrew/Cellar/python@3.11/3.11.2_1/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/,501',
+    ',org.python.python,/opt/homebrew/Cellar/python@3.12/3.12.1/Frameworks/Python.framework/Versions/3.12/Resources/Python.app/,501',
+    '/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/',
     'Apple Mac OS Application Signing,com.anydo.mac,/Applications/Anydo.app/,0',
     'Apple Mac OS Application Signing,com.apple.garageband10,/Applications/GarageBand.app/,0',
     'Apple Mac OS Application Signing,com.busymac.busycal3,/Applications/BusyCal.app/,0',
@@ -57,15 +69,10 @@ WHERE
     'Apple Mac OS Application Signing,com.utmapp.QEMULauncher,/Applications/UTM.app/Contents/XPCServices/QEMUHelper.xpc/Contents/MacOS/QEMULauncher.app/,0',
     'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
     'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.localized/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
-    ',,/Applications/Google%20Chrome.app/,',
-    ',,/Applications/IntelliJ%20IDEA.app/,',
-    ',,/Applications/ProtonMail%20Bridge.app/,',
-    ',,/Applications/Visual%20Studio%20Code.app/,',
-    ',,/Applications/Visual%20Studio%20Code.app/Contents/Frameworks/Code%20Helper.app/,',
     'Developer ID Application: Any.DO inc. (FW4RAPJ9FF),com.anydo.mac,/Applications/Anydo.app/,501',
     'Developer ID Application: Bearly Inc (NK6K4BACCF),com.bearly.app,/Applications/Bearly.app/,501',
-    'Developer ID Application: Bohemian Coding (WUGMZZ5K46),com.bohemiancoding.sketch3,/Applications/Sketch.app/,501',
     'Developer ID Application: Bohemian Coding (WUGMZZ5K46),com.bohemiancoding.SketchMirrorHelper,/Applications/Sketch.app/Contents/XPCServices/SketchMirrorHelper.xpc/,501',
+    'Developer ID Application: Bohemian Coding (WUGMZZ5K46),com.bohemiancoding.sketch3,/Applications/Sketch.app/,501',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW),com.brother.utility.WorkflowAppControlServer,/Library/Printers/Brother/Utilities/Server/WorkflowAppControl.app/,0',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5),com.elgato.WaveLink,/Applications/WaveLink.app/,0',
     'Developer ID Application: Crul, Inc. (5PTD6R25S6),com.electron.crul,/Applications/crul.app/,501',
@@ -85,23 +92,18 @@ WHERE
     'Developer ID Application: Tailscale Inc. (W5364U7YZB),io.tailscale.ipn.macsys.network-extension,/Library/SystemExtensions/A30AF854-E980-4345-A658-17000BF66D00/io.tailscale.ipn.macsys.network-extension.systemextension/,0',
     'Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),com.vng.zalo,/Applications/Zalo.app/,501',
     'Developer ID Application: Voicemod Sociedad Limitada. (S2MC4XQDSM),net.voicemod.desktop,/Applications/Voicemod.app/,0',
-    ',dnsmasq,/opt/homebrew/Cellar/dnsmasq/2.88/sbin/dnsmasq,0',
-    ',iodined-55554944d1ffcb236a84363d9b667be6a1742a17,/usr/local/sbin/iodined,501',
-    ',java,/opt/homebrew/Cellar/openjdk/19/libexec/openjdk.jdk/Contents/Home/bin/java,501',
-    ',org.python.python,/opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/Resources/Python.app/,501',
-    ',org.python.python,/opt/homebrew/Cellar/python@3.11/3.11.2_1/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/,501',
-    ',org.python.python,/opt/homebrew/Cellar/python@3.12/3.12.1/Frameworks/Python.framework/Versions/3.12/Resources/Python.app/,501',
-    'Software Signing,com.apple.audio.InfoHelper,/System/Library/Frameworks/AudioToolbox.framework/XPCServices/com.apple.audio.InfoHelper.xpc/,0',
-    'Software Signing,com.apple.controlcenter,/System/Library/CoreServices/ControlCenter.app/,0',
     'Software Signing,com.apple.Music,/System/Applications/Music.app/,0',
-    'Software Signing,com.apple.nc,/usr/bin/nc,0',
-    'Software Signing,com.apple.python3,/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
     'Software Signing,com.apple.WebKit.Networking,/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/,0',
     'Software Signing,com.apple.WebKit.Networking,/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/,0',
-    'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0',
-    '/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/'
+    'Software Signing,com.apple.audio.InfoHelper,/System/Library/Frameworks/AudioToolbox.framework/XPCServices/com.apple.audio.InfoHelper.xpc/,0',
+    'Software Signing,com.apple.controlcenter,/System/Library/CoreServices/ControlCenter.app/,0',
+    'Software Signing,com.apple.nc,/usr/bin/nc,0',
+    'Software Signing,com.apple.python3,/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
+    'Software Signing,com.apple.python3,/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
+    'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0'
   )
   AND NOT exception_key LIKE ',a.out,/Users/%/dev/%,501'
+  AND NOT exception_key LIKE ',git-daemon-%,/opt/homebrew/Cellar/git/%/libexec/git-core/git-daemon,501'
   AND NOT exception_key LIKE ',org.python.python,/opt/homebrew/Cellar/python@%/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/,501'
   AND NOT exception_key LIKE ',a.out,/opt/homebrew/Cellar/podman/%/libexec/podman/gvproxy,501'
   AND NOT exception_key LIKE ',net.java.openjdk.java,/opt/homebrew/Cellar/openjdk%/libexec/openjdk.jdk/Contents/Home/bin/java,501'

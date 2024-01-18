@@ -41,6 +41,7 @@ WHERE
   AND filename NOT IN (
     'master.passwd',
     'COPYING',
+    'debian_version',
     'NEWS',
     '_libinput',
     'printcap',

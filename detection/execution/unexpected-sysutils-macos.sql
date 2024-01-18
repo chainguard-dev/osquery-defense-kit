@@ -108,14 +108,16 @@ WHERE
     '/usr/sbin/sysctl sysctl.proc_translated'
   )
   AND NOT exception_key IN (
-    'system_profiler,500,Google Drive,launchd',
-    'system_profiler,500,bash,launchd',
-    'system_profiler,500,Ultimate,launchd',
-    'system_profiler,500,steam_osx,launchd',
+    'ditto,500,ruby,zsh',
     'ioreg,500,bash,Alfred Preferences',
+    'system_profiler,0,launcher,launchd',
+    'system_profiler,500,Google Drive,launchd',
+    'system_profiler,500,Ultimate,launchd',
+    'system_profiler,500,bash,launchd',
     'system_profiler,500,bash,logioptionsplus_agent',
-    'system_profiler,0,launcher,launchd'
+    'system_profiler,500,steam_osx,launchd'
   )
+  AND NOT exception_key LIKE 'unzip,500,login,iTermServer-%'
   AND NOT p0_cmd LIKE '/usr/libexec/security_authtrampoline /Library/Application Support/Adobe/Adobe Desktop Common/ElevationManager/Adobe Installer auth%'
   AND NOT p0_cmd LIKE '%sqlite3%vulnerability.db%'
   AND NOT p1_path IN (

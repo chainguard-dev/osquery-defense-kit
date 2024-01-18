@@ -59,18 +59,19 @@ WHERE
   et.event_tapped IN ('EventKeyDown', 'EventKeyUp')
   AND s.authority != 'Software Signing' -- Popular programs that sniff keyboard events, but do not appear to be malware.
   AND NOT exception_key IN (
+    'Alfred,com.runningwithcrayons.Alfred,Developer ID Application: Running with Crayons Ltd (XZZXE9SED4)',
     'BetterTouchTool,com.hegenberg.BetterTouchTool,Developer ID Application: folivora.AI GmbH (DAFVSXZ82P)',
     'Contexts,com.contextsformac.Contexts,Developer ID Application: Usman Khalid (RZ7E748ZSC)',
     'Hyperkey,com.knollsoft.Hyperkey,Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',
+    'MonitorControl,me.guillaumeb.MonitorControl,Developer ID Application: Joni Van Roost (CYC8C8R4K9)',
+    'Rocket,net.matthewpalmer.Rocket,Developer ID Application: Matthew Palmer (Z4JV2M65MH)',
+    'TextExpander,com.smileonmymac.textexpander,Developer ID Application: SmileOnMyMac, LLC (7PKJ6G4DXL)',
     'iTerm2,com.googlecode.iterm2,Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
     'lghub_agent,com.logi.ghub.agent,Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'logioptionsplus_agent,com.logi.cp-dev-mgr,Developer ID Application: Logitech Inc. (QED4VVPZWA)',
-    'MonitorControl,me.guillaumeb.MonitorControl,Developer ID Application: Joni Van Roost (CYC8C8R4K9)',
     'osqueryd,io.osquery.agent,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
-    'Rocket,net.matthewpalmer.Rocket,Developer ID Application: Matthew Palmer (Z4JV2M65MH)',
     'skhd,skhd,',
-    'synergy-core,synergy-core,Developer ID Application: Symless Ltd (4HX897Y6GJ)',
-    'TextExpander,com.smileonmymac.textexpander,Developer ID Application: SmileOnMyMac, LLC (7PKJ6G4DXL)'
+    'synergy-core,synergy-core,Developer ID Application: Symless Ltd (4HX897Y6GJ)'
   )
 GROUP BY
   p0.path

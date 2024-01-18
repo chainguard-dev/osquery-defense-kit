@@ -109,4 +109,5 @@ WHERE
   AND NOT pname LIKE "%.com.flexibits.fantastical2.mac.helper"
   AND NOT pname LIKE 'cody-engine-%'
   AND NOT pname LIKE '%-macos-arm64'
+  AND NOT pname LIKE 'debug.test%'
   AND NOT s.authority IN ("Software Signing","Apple Mac OS Application Signing")

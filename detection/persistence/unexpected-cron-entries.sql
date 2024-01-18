@@ -23,3 +23,4 @@ WHERE
   AND command NOT LIKE 'root command -v debian-sa1%'
   AND command NOT LIKE '%rsync%'
   AND command NOT LIKE 'gsutil %'
+  AND command NOT LIKE '%git commit%'

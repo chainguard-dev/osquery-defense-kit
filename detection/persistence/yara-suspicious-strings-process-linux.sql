@@ -100,6 +100,8 @@ WHERE
     '/bin/containerd-shim-runc-v2',
     '/bin/fish',
     '/usr/bin/bash',
+    '/usr/lib/snapd/snapd',
+    '/usr/bin/snap',
     '/usr/bin/containerd-shim-runc-v2',
     '/usr/bin/docker-proxy',
     '/usr/bin/fish',
