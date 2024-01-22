@@ -12,17 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: setup-go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@0c52d547c9bc32b1aa3301fd7a9cb496313a4491 # v5.0.0
         with:
           go-version: 'stable'
 
       - name: setup-osquery
         run: |
-         curl -LO https://pkg.osquery.io/deb/osquery_5.7.0-1.linux_amd64.deb
-         sudo dpkg -i osquery_5.7.0-1.linux_amd64.deb
+         curl -LO https://pkg.osquery.io/deb/osquery_5.11.0-1.linux_amd64.deb
+         sudo dpkg -i osquery_5.11.0-1.linux_amd64.deb
 
       - name: verify
         run: make verify-ci
