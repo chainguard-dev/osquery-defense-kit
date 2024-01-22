@@ -119,6 +119,7 @@ WHERE
     '500,0,32768,com.apple.NRD.UpdateBrainService',
     '500,0,32768,elastic-endpoint',
     '500,0,32768,firefox',
+    '500,0,53,firefox',
     '500,0,32768,io.tailscale.ipn.macsys.network-extension',
     '500,0,32768,ksfetch',
     '500,0,32768,networkQuality',
