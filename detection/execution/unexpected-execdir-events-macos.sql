@@ -159,6 +159,7 @@ WHERE
     '/opt/Elastic/Endpoint',
     '/Library/Elastic/Agent',
     '/opt/homebrew/Library',
+    '/private/tmp/golangci-lint',
     '/private/var/kolide-k2',
     '/usr/libexec/AssetCache',
     '/usr/libexec/rosetta',
@@ -308,6 +309,7 @@ WHERE
   AND dir NOT LIKE '~/%repo%' -- When running code as root
   AND dir NOT LIKE '~/%sigstore%'
   AND dir NOT LIKE '%/.terraform/providers/%'
+  AND dir NOT LIKE '~/Library/Arduino%/packages/%'
   AND dir NOT LIKE '/Volumes/com.getdropbox.dropbox-%' -- These signers can run from wherever the hell they want.
   AND s.identifier != 'org.sparkle-project.Sparkle.Autoupdate'
   AND s.authority NOT IN (

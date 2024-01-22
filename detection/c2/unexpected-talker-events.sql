@@ -233,19 +233,37 @@ WHERE
     '500,500,443,grype',
     '500,500,443,istioctl',
     '500,500,443,ksfetch',
+    '500,0,80,slack',
     '500,500,443,kubectl',
     '500,500,443,minikube',
     '500,500,443,node',
+    '500,500,443,wolfibump',
     '500,500,443,old',
+    '500,500,443,sublime_text',
+    '500,500,32768,DropboxMacUpdate',
+    '500,500,53,Google Chrome Helper',
     '500,500,443,syft',
     '500,500,443,webexmtaV2',
+    '500,500,20480,Google Chrome Helper',
+    '500,99,32768,Slack Helper',
+    '500,99,13568,Slack Helper',
     '500,500,443,wolfictl',
     '500,500,53,Code Helper',
+    '500,0,80,ir_agent',
+    '500,500,3307,cloud_sql_proxy',
+    '500,0,443,com.adguard.mac.adguard.network-extension',
+    '500,0,32768,com.adguard.mac.adguard.network-extension',
     '500,500,53,Meeting Center',
     '500,500,53,gitsign',
+    '500,0,443,BDCoreIssues',
+    '500,0,32768,Authy',
+    '500,0,443,BDLDaemon',
+    '500,0,443,Python',
+    '500,0,443,filebeat',
     '500,500,80,Code Helper (Plugin)',
     '500,500,80,Code Helper',
     '500,500,80,Google Chrome Helper',
+    '500,0,443,rapid7_endpoint_broker',
     '500,500,80,GoogleUpdater',
     '500,500,80,cloud_sql_proxy',
     '500,500,80,copilot-agent-macos-arm64',
@@ -256,14 +274,18 @@ WHERE
     '500,99,443,Slack'
   )
   AND NOT exception_key LIKE '500,500,443,terraform%'
+  AND NOT exception_key LIKE '500,500,80,terraform%'
   AND NOT exception_key LIKE '500,0,%,syncthing'
   AND NOT exception_key LIKE '500,0,%,chrome'
+  AND NOT exception_key LIKE '500,500,443,___%_%'
   AND NOT exception_key LIKE '500,500,%,chrome'
+  AND NOT exception_key LIKE '500,500,%,Google Chrome Helper'
   AND NOT exception_key LIKE '500,500,443,kubectl.%'
 
   AND NOT p0_path LIKE '/Users/%/code/%'
   AND NOT p0_path LIKE '/Users/%/go/%'
   AND NOT p0_path LIKE '/Users/%/src/%'
+  AND NOT p0_path LIKE '/Users/%/Library/Caches/JetBrains/GoLand%'
   AND NOT p0_path LIKE '/Users/%/dev/%'
   AND NOT p0_path LIKE '/System/%'
   AND NOT p0_path LIKE '/private/var/folders/%/T/AppTranslocation/%/%.app/Contents/MacOS/%'

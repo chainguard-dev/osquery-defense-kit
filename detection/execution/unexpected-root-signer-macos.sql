@@ -80,6 +80,7 @@ WHERE
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
+    'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK)',

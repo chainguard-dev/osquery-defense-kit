@@ -80,6 +80,7 @@ WHERE
   AND exception_key NOT IN (
     '0,ir_agent,bootstrap,Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     '0,ir_agent,ir_agent,Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
+    '0,rapid7_endpoint_broker,rapid7_endpoint_broker,Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     '0,nix,nix,',
     '0,osqueryd,io.osquery.agent,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     '0,osqueryd,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
@@ -145,6 +146,7 @@ WHERE
     '500,cosign,a.out,',
     '500,cpu,cpu-555549441132dc6b7af538428ce3359ae94eab37,',
     '500,crane,a.out,',
+    '500,nvim,,',
     '500,debug.test,a.out,',
     '500,dive,a.out,',
     '500,dlv,a.out,',
@@ -218,6 +220,7 @@ WHERE
     AND p0.path LIKE '/Users/%/go/bin/%'
   )
   AND NOT exception_key LIKE '500,terraform-provider-cosign_%,,'
+  AND NOT exception_key LIKE '500,cody-engine-%-macos-arm64,%,'
   AND NOT exception_key LIKE '500,rust-analyzer-aarch64-apple-darwin,rust_analyzer-%,'
   AND NOT exception_key LIKE '500,___Test%.test,a.out,'
   AND NOT exception_key LIKE '500,zellij,zellij%,'

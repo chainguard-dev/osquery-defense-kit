@@ -59,6 +59,7 @@ WHERE
     'bash',
     'buildkit-runc',
     'build-script-build',
+    'arduino-cli',
     'chezmoi',
     'clang-11',
     'code',

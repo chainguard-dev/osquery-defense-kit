@@ -160,3 +160,5 @@ WHERE
     addr = "169.254.169.254"
     AND p2.path = "/usr/local/qualys/cloud-agent/bin/qualys-scan-util"
   )
+  -- Elastic Agent
+  AND NOT p0.path LIKE '/Library/Elastic/Agent/%'

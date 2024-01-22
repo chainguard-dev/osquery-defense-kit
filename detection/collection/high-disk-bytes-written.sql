@@ -198,4 +198,5 @@ WHERE
   AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND p0.path NOT LIKE '/nix/store/%kolide-launcher-%/bin/launcher'
   AND NOT p0.cmdline LIKE '%/lib/gcloud.py components update'
+  AND NOT p0.cmdline LIKE '%/gsutil %rsync%'
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
