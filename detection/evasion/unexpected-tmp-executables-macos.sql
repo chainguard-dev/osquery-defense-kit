@@ -67,6 +67,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '/tmp/GoLand/___Test%.test'
           OR file.path LIKE '%/git/%'
           OR file.path LIKE '%/github/%'
+          OR file.path LIKE '%/elastic-agent-%'
           OR file.path LIKE '%/go.%.sum'
           OR file.path LIKE "%/%/gradlew"
           OR file.path LIKE '%/guile-%/guile-%'

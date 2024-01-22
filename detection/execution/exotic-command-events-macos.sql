@@ -198,6 +198,7 @@ WHERE
   AND NOT p0_cmd LIKE 'rm -f /tmp/locate%/mklocate%/_mklocatedb%'
   AND NOT p0_cmd LIKE 'rm -f /tmp/insttmp_%'
   AND NOT p0_cmd LIKE '%nc localhost%'
+  AND NOT p0_cmd LIKE '%nc -vz localhost%'
   AND NOT p0_cmd LIKE '/bin/cp %history%sessions/%'
   AND NOT p0_cmd LIKE '%ssh %/lima/%'
   AND NOT p0_cmd LIKE 'touch -r /tmp/KSInstallAction.%'
@@ -206,6 +207,7 @@ WHERE
   AND NOT p0_name IN ('cc1', 'compile', 'yara')
   AND NOT exception_key IN (
     'dd,500,zsh,login',
+    'bash,500,idea,launchd',
     'yara,500,bash,fish',
     'ssh,500,limactl.ventura,launchd',
     'git,500,zsh,login',

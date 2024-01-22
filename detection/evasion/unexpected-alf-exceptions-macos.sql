@@ -51,6 +51,7 @@ WHERE
     ',,/Applications/Google%20Chrome.app/,',
     ',,/Applications/IntelliJ%20IDEA.app/,',
     ',,/Applications/ProtonMail%20Bridge.app/,',
+    ',,/usr/local/sbin/iodined,501',
     ',,/Applications/Visual%20Studio%20Code.app/,',
     ',,/Applications/Visual%20Studio%20Code.app/Contents/Frameworks/Code%20Helper.app/,',
     ',a.out,/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/kubectl,501',

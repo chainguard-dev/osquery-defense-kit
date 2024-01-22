@@ -163,26 +163,27 @@ WHERE
     '~/.zsh_snap/zsh-snap'
   )
   AND NOT top2_homedir IN (
+    '/Users/Shared/LGHUB/cache',
+    '/Users/Shared/LogiOptionsPlus/cache',
+    '/Users/Shared/Red Giant/Uninstall',
+    '~/.antigen',
+    '~/.fzf/test',
     '~/.iterm2',
+    '~/.magefile',
+    '~/.nvm',
+    '~/.revox/updates',
+    '~/.terraform.d',
+    '~/.terraform.versions',
     '~/Library/Application Support',
     '~/Library/Caches',
-    '~/Library/helm',
-    '~/Library/pnpm',
     '~/Library/Printers',
     '~/Library/Python',
     '~/Library/QuickLook',
     '~/Library/Screen Savers',
     '~/Library/Services',
     '~/Library/Thunderbird',
-    '~/.fzf/test',
-    '~/.revox/updates',
-    '~/.magefile',
-    '~/.nvm',
-    '~/.terraform.d',
-    '~/.terraform.versions',
-    '/Users/Shared/LGHUB/cache',
-    '/Users/Shared/LogiOptionsPlus/cache',
-    '/Users/Shared/Red Giant/Uninstall'
+    '~/Library/helm',
+    '~/Library/pnpm'
   )
   AND NOT f.directory LIKE '/Users/%/.docker/cli-plugins'
   AND NOT f.directory LIKE '/Users/%/.nix-profile/bin'

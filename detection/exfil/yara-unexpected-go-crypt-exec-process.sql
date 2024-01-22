@@ -75,6 +75,10 @@ WHERE
   AND p0.path NOT LIKE '%rootlesskit%'
   AND p0.path NOT LIKE '/opt/homebrew/%'
   AND p0.path NOT LIKE '/private/var/folders/%/T/go-build%'
+  AND p0.path NOT IN (
+    '/Applications/Keybase.app/Contents/SharedSupport/bin/updater',
+    '/Applications/Keybase.app/Contents/SharedSupport/bin/kbfs'
+  )
   AND p0.name NOT IN (
     'buildkit',
     'buildkitd',

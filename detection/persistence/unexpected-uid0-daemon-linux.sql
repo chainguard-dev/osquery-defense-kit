@@ -277,6 +277,7 @@ WHERE
     'zed,/usr/sbin/zed,0,system.slice,zfs-zed.service,0755',
     'zfs-auto-snapsh,/nix/store/__VERSION__/bin/ruby,0,system.slice,zfs-snapshot-frequent.service,0555',
     'zfs-auto-snapsh,/nix/store/__VERSION__/bin/ruby,0,system.slice,zfs-snapshot-hourly.service,0555',
+    'elastic-endpoin,/opt/Elastic/Endpoint/elastic-endpoint,0,system.slice,ElasticEndpoint.service,0500',
     'zfs,/nix/store/__VERSION__/bin/zfs,0,system.slice,zfs-snapshot-frequent.service,0555',
     'zfs,/nix/store/__VERSION__/bin/zfs,0,system.slice,zfs-snapshot-hourly.service,0555',
     'zfs,/nix/store/__VERSION__/bin/zfs,0,system.slice,znapzend.service,0555'

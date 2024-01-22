@@ -117,6 +117,7 @@ WHERE
     'spotify',
     'steam',
     'systemd',
+    'kandji-library-manager',
     'terraform',
     'terraform-ls',
     'terraform-provider-apko',
@@ -130,6 +131,7 @@ WHERE
     'ZwiftAppSilicon',
     'ykman-gui',
     'yum',
+    'BDLDaemon',
     'zsh'
   )
   AND NOT p0.path IN (

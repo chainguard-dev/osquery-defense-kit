@@ -65,7 +65,9 @@ WHERE
   AND NOT f.directory LIKE '%/.tflint.d/%'
   AND NOT f.directory LIKE '%/.vs-kubernetes/%'
   AND NOT f.directory LIKE '%/.vscode/extensions/%'
+  AND NOT f.directory LIKE '/Users/%/Library/Application Support/Code/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/%'
   AND NOT f.directory LIKE '%/.vscode-insiders/extensions/%'
+  AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'
   AND NOT f.path LIKE '/home/%/.config/bluejeans-v2/BluejeansHelper'
   AND NOT f.path LIKE '/nix/store/%/%-wrapped'
   AND NOT (
