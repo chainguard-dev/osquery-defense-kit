@@ -77,6 +77,8 @@ WHERE
       'controller',
       'docker-proxy',
       'hugo',
+      'limactl',
+      'qemu-system-aarch64',
       'crane',
       'kubectl',
       'nginx-ingress-c',

@@ -134,6 +134,7 @@ WHERE
   AND host NOT IN (
     'adoptium.net',
     'arc.net',
+    'asana.com',
     'balsamiq.com',
     'bearly.ai',
     'brave.com',
@@ -143,16 +144,16 @@ WHERE
     'dl.discordapp.net',
     'dl.google.com',
     'duckduckgo.com',
-    'kittycad.io',
     'dygma.com',
-    'figma.com',
     'emacsformacosx.com',
+    'epson.com',
+    'figma.com',
     'flipperzero.one',
     'getkap.co',
     'github.com',
     'go.dev',
+    'kittycad.io',
     'krisp.ai',
-    'epson.com',
     'mail.google.com',
     'manual.canon',
     'mimestream.com',
@@ -176,6 +177,7 @@ WHERE
     'wavebox.io',
     'www.google.com',
     'www.messenger.com',
+    'zed.dev',
     'zoom.us'
   )
   -- Yes, these are meant to be fairly broad.

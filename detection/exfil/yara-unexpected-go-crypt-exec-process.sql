@@ -77,12 +77,15 @@ WHERE
   AND p0.path NOT LIKE '/private/var/folders/%/T/go-build%'
   AND p0.path NOT IN (
     '/Applications/Keybase.app/Contents/SharedSupport/bin/updater',
-    '/Applications/Keybase.app/Contents/SharedSupport/bin/kbfs'
+    '/Applications/Keybase.app/Contents/SharedSupport/bin/kbfs',
+    '/usr/bin/ubuntu-report',
+    '/opt/rapid7/ir_agent/ir_agent'
   )
   AND p0.name NOT IN (
     'buildkit',
     'buildkitd',
     'cloud_sql_proxy',
+    'rapid7_endpoint_broker',
     'containerd',
     'gitsign-credent',
     'crane',
@@ -91,6 +94,7 @@ WHERE
     'kubectl',
     'yay',
     'syft',
+    'syncthing',
     'go',
     'grype',
     'eksctl',

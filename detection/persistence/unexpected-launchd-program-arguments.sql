@@ -66,6 +66,7 @@ WHERE
     'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
     'Developer ID Application: X-Rite, Incorporated (2K7GT73B4R)',
+    'Developer ID Application: Cloudflare Inc. (68WVV388M8)',
     'Software Signing', -- Apple
     'yabai-cert'
   )

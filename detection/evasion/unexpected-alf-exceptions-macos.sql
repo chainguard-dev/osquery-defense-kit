@@ -51,9 +51,9 @@ WHERE
     ',,/Applications/Google%20Chrome.app/,',
     ',,/Applications/IntelliJ%20IDEA.app/,',
     ',,/Applications/ProtonMail%20Bridge.app/,',
-    ',,/usr/local/sbin/iodined,501',
     ',,/Applications/Visual%20Studio%20Code.app/,',
     ',,/Applications/Visual%20Studio%20Code.app/Contents/Frameworks/Code%20Helper.app/,',
+    ',,/usr/local/sbin/iodined,501',
     ',a.out,/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/kubectl,501',
     ',a.out,/opt/homebrew/Cellar/go/1.20.4/libexec/pkg/tool/darwin_arm64/trace,501',
     ',dnsmasq,/opt/homebrew/Cellar/dnsmasq/2.88/sbin/dnsmasq,0',
@@ -70,11 +70,13 @@ WHERE
     'Apple Mac OS Application Signing,com.utmapp.QEMULauncher,/Applications/UTM.app/Contents/XPCServices/QEMUHelper.xpc/Contents/MacOS/QEMULauncher.app/,0',
     'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
     'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.localized/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
+    'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF),com.adguard.mac.adguard.network-extension,/Library/SystemExtensions/AD3BCA34-237A-4135-B7A4-0F7477D9144C/com.adguard.mac.adguard.network-extension.systemextension/,0',
     'Developer ID Application: Any.DO inc. (FW4RAPJ9FF),com.anydo.mac,/Applications/Anydo.app/,501',
     'Developer ID Application: Bearly Inc (NK6K4BACCF),com.bearly.app,/Applications/Bearly.app/,501',
     'Developer ID Application: Bohemian Coding (WUGMZZ5K46),com.bohemiancoding.SketchMirrorHelper,/Applications/Sketch.app/Contents/XPCServices/SketchMirrorHelper.xpc/,501',
     'Developer ID Application: Bohemian Coding (WUGMZZ5K46),com.bohemiancoding.sketch3,/Applications/Sketch.app/,501',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW),com.brother.utility.WorkflowAppControlServer,/Library/Printers/Brother/Utilities/Server/WorkflowAppControl.app/,0',
+    'Developer ID Application: Canonical Group Limited (X4QN7LTP59),com.canonical.multipass.,/Applications/Multipass.app/,0',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5),com.elgato.WaveLink,/Applications/WaveLink.app/,0',
     'Developer ID Application: Crul, Inc. (5PTD6R25S6),com.electron.crul,/Applications/crul.app/,501',
     'Developer ID Application: Cypress.Io, Inc. (7D655LWGLY),com.electron.cypress,/Users/garrying/Library/Caches/Cypress/12.9.0/Cypress.app/,501',
@@ -84,6 +86,7 @@ WHERE
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland,/Applications/GoLand.app/,501',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.pycharm,/Applications/PyCharm.app/,501',
     'Developer ID Application: Loom, Inc (QGD2ZPXZZG),com.loom.desktop,/Applications/Loom.app/,501',
+    'Developer ID Application: Martijn Smit (GX645XXEAX),com.mutedeck.mac,/Applications/MuteDeck/MuteDeck.app/,501',
     'Developer ID Application: Opentest, Inc. (QGD2ZPXZZG),com.loom.desktop,/Applications/Loom.app/,501',
     'Developer ID Application: Postdot Technologies, Inc (H7H8Q7M5CK),com.postmanlabs.mac,/Applications/Postman.app/,501',
     'Developer ID Application: Raycast Technologies Inc (SY64MV22J9),com.raycast.macos,/Applications/Raycast.app/,501',
@@ -101,7 +104,8 @@ WHERE
     'Software Signing,com.apple.nc,/usr/bin/nc,0',
     'Software Signing,com.apple.python3,/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
     'Software Signing,com.apple.python3,/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
-    'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0'
+    'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0',
+    'qbittorrent macos,org.qbittorrent.qBittorrent,/Applications/qbittorrent.app/,501'
   )
   AND NOT exception_key LIKE ',a.out,/Users/%/dev/%,501'
   AND NOT exception_key LIKE ',git-daemon-%,/opt/homebrew/Cellar/git/%/libexec/git-core/git-daemon,501'

@@ -33,9 +33,13 @@ WHERE
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Creative Labs Pte. Ltd. (5Q3552844F)',
+    'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
+    'Developer ID Application: Bitdefender SRL (GUNFMW623Y)',
+    'Developer ID Application: Rogue Amoeba Software, Inc. (7266XEXAPM)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
     'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK)',
+    'Developer ID Application: TPZ Solucoes Digitais Ltda (X37R283V2T)',
     'Developer ID Application: Hercules Labs Inc. (B8PC799ZGU)',
     'Developer ID Application: Ilya Parniuk (ACC5R6RH47)',
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
@@ -52,7 +56,10 @@ WHERE
     'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)',
     'Software Signing'
   )
-  AND program NOT IN ('/usr/local/MacGPG2/libexec/shutdown-gpg-agent')
+  AND program NOT IN (
+    '/usr/local/MacGPG2/libexec/shutdown-gpg-agent',
+    '/usr/local/bin/warsaw/core'
+  )
   AND NOT (
     l.path = '/Library/LaunchDaemons/com.docker.socket.plist'
     AND program_authority = 'Software Signing'

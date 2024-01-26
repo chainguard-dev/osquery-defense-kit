@@ -43,7 +43,8 @@ SELECT -- Child
     '.*/(.*)',
     1
   ) AS exception_key
-FROM process_events pe
+FROM
+  process_events pe
   LEFT JOIN processes p ON pe.pid = p.pid -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
   AND p1.start_time <= pe.time
@@ -60,7 +61,8 @@ FROM process_events pe
   LEFT JOIN process_events pe1_pe2 ON pe1.parent = pe1_p2.pid
   AND pe1_pe2.cmdline != ""
   AND pe1_pe2.cwd != ""
-WHERE pe.time > (strftime('%s', 'now') -600)
+WHERE
+  pe.time > (strftime('%s', 'now') -600)
   AND pe.cmdline != ""
   AND pe.cwd != ""
   AND (
@@ -201,6 +203,7 @@ WHERE pe.time > (strftime('%s', 'now') -600)
     'grep,500,fish,konsole',
     'ls,500,zsh,alacritty',
     'nc,500,fish,konsole',
+    'kmod,0,incusd,systemd',
     'chrome_crashpad_handler,500,systemd,systemd',
     'bash,0,bash,containerd-shim-runc-v2'
   )

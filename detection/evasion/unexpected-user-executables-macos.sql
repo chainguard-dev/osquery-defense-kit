@@ -174,6 +174,7 @@ WHERE
     '~/.revox/updates',
     '~/.terraform.d',
     '~/.terraform.versions',
+    '~/Library/CloudStorage',
     '~/Library/Application Support',
     '~/Library/Caches',
     '~/Library/Printers',
@@ -187,5 +188,6 @@ WHERE
   )
   AND NOT f.directory LIKE '/Users/%/.docker/cli-plugins'
   AND NOT f.directory LIKE '/Users/%/.nix-profile/bin'
+  AND NOT f.path LIKE '	/Users/%/Library/Fonts/%.ttf'
 GROUP BY
   f.path

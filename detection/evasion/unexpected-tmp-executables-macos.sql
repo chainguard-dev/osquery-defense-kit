@@ -90,7 +90,15 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '%.tfstate.sh'
           OR file.path LIKE '%/tmp/epdf%'
           OR file.path LIKE '/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%'
-          OR file.filename IN ('mysqld_exporter', 'goreleaser', 'golangci-lint', 'cosign', 'grype', 'chainctl', 'configure')
+          OR file.filename IN (
+            'mysqld_exporter',
+            'goreleaser',
+            'golangci-lint',
+            'cosign',
+            'grype',
+            'chainctl',
+            'configure'
+          )
         )
       )
       -- Melange
@@ -144,39 +152,41 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
     'Developer ID Application: Docker Inc (9BNSXJN65R)'
   )
   AND NOT (
-    magic.data IS NOT NULL
-    AND (
-      magic.data IN ('JSON data', 'ASCII text')
-      OR magic.data LIKE 'ELF %-bit %SB executable%'
-      OR magic.data LIKE 'symbolic link to %'
-      OR magic.data LIKE 'ELF %-bit LSB shared object%'
-      OR magic.data LIKE 'libtool library file,%'
-      OR magic.data LIKE "POSIX shell script, ASCII text executable%"
-      OR (
-        file.size < 50000
-        AND file.uid > 500
-        AND extension IN (
-          'adoc',
-          'md',
-          'bat',
-          'java',
-          'js',
-          'json',
-          'log',
-          'nib',
-          'pem',
-          'perl',
-          'pl',
-          'py',
-          'script',
-          'sh',
-          'status',
-          'strings',
-          'txt',
-          'yaml',
-          'yml'
-        )
-        AND magic.data NOT LIKE "%Mach-O%"
+    magic.data IN ('JSON data', 'ASCII text')
+    OR magic.data LIKE 'ELF %-bit %SB executable%'
+    OR magic.data LIKE 'symbolic link to %'
+    OR magic.data LIKE 'ELF %-bit LSB shared object%'
+    OR magic.data LIKE 'libtool library file,%'
+    OR magic.data LIKE "POSIX shell script, ASCII text executable%"
+    OR (
+      file.size < 50000
+      AND file.uid > 500
+      AND extension IN (
+        'adoc',
+        'md',
+        'bat',
+        'java',
+        'js',
+        'json',
+        'log',
+        'nib',
+        'pem',
+        'conf',
+        'perl',
+        'pl',
+        'rb',
+        'py',
+        'script',
+        'sh',
+        'status',
+        'strings',
+        'txt',
+        'yaml',
+        'yml'
+      )
+      AND (
+        magic.data IS NULL
+        OR magic.data NOT LIKE "%Mach-O%"
       )
     )
   )

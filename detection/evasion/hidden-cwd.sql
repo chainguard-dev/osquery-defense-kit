@@ -155,6 +155,7 @@ WHERE
     OR dir LIKE '~/%/.terragrunt-cache/%'
     OR dir LIKE '%/.build'
     OR dir LIKE '%/.git'
+    OR dir LIKE '%/.git/%'
     OR dir LIKE '%/.gradle'
     OR dir LIKE '%/.github/%'
     OR dir LIKE '%/.github'

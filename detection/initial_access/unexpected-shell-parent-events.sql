@@ -287,6 +287,7 @@ WHERE
       'sh,500,cloud_sql_proxy,zsh',
       'sh,500,docs,zsh',
       'sh,500,snyk-macos,snyk',
+      'zsh,500,OpenLens,launchd',
       'sh,500,ssh,mosh-client',
       'sh,500,updater,Foxit PDF Reader',
       'sh,500,yabai,launchd',

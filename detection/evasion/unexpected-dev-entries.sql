@@ -49,6 +49,7 @@ WHERE
   AND file.path NOT LIKE '/dev/shm/lttng-ust-wait-%'
   AND file.path NOT LIKE '/dev/shm/flatpak-%'
   AND file.path NOT LIKE '/dev/shm/libpod_rootless_lock_%'
+  AND file.path NOT LIKE '/dev/shm/sem.mp-%'
   AND file.path NOT LIKE '%/../%'
   AND file.path NOT LIKE '%/./%'
   AND file.path NOT IN ('/dev/.mdadm/', '/dev/shm/libpod_lock')

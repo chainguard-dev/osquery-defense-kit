@@ -74,7 +74,7 @@ WHERE
       OR REGEX_MATCH (p.name, "(pwn|xig|xmr)", 1) != "" -- malicious processes
       OR REGEX_MATCH (
         p.cmdline,
-        "(bitspin|lushput|incbit|traitor|msfvenom|urllib.urlopen|nohup.*tmp|chrome.*--load-extension|tail -f /dev/null|)",
+        "(bitspin|lushput|incbit|traitor|msfvenom|urllib.urlopen|nohup.*tmp|chrome.*--load-extension|tail -f /dev/null|wormhole)",
         1
       ) != "" -- suspicious things
       OR REGEX_MATCH (
@@ -99,6 +99,7 @@ WHERE
       p0_cmd LIKE "%lima/%"
       OR p0_cmd LIKE "%minikube/%"
       OR p0_cmd LIKE '%@localhost'
+      oR p0_cmd LIKE '%ServerAliveInterval=0%'
     )
   )
   AND NOT (

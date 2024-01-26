@@ -151,6 +151,7 @@ WHERE
     '500,crane,crane,500u,80g',
     '500,gh-dash,gh-dash,500u,20g',
     '500,git,git,0u,500g',
+    '500,taplo-full-darwin-aarch64,taplo-full-darwin-aarch64,500u,20g',
     '500,git-remote-http,git-remote-http,500u,20g',
     '500,git-remote-http,git-remote-http,500u,80g',
     '500,istioctl,istioctl,,a.out',
@@ -167,6 +168,7 @@ WHERE
   )
   AND NOT s.authority IN (
     'Developer ID Application: ANCHORE, INC. (9MJHKYX5AT)',
+    'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: AgileBits Inc. (2BUA8C4S2C)',
     'Developer ID Application: Bitdefender SRL (GUNFMW623Y)',

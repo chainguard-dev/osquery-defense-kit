@@ -37,19 +37,22 @@ FROM
   LEFT JOIN signature ON p.path = signature.path
 WHERE
   p.pid IN (
-        SELECT pid
-        FROM processes
-        WHERE path NOT LIKE '/System/%'
-        AND path NOT LIKE '/Library/Apple/%'
-        AND path NOT LIKE '/usr/libexec/%'
-        AND path NOT LIKE '/usr/sbin/%'
-        AND path NOT LIKE '/sbin/%'
-        AND path NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%'
-        AND path NOT LIKE '/usr/bin/%'
-        AND path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
-        AND path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
+    SELECT
+      pid
+    FROM
+      processes
+    WHERE
+      path NOT LIKE '/System/%'
+      AND path NOT LIKE '/Library/Apple/%'
+      AND path NOT LIKE '/usr/libexec/%'
+      AND path NOT LIKE '/usr/sbin/%'
+      AND path NOT LIKE '/sbin/%'
+      AND path NOT LIKE '/Volumes/%'
+      AND path NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%'
+      AND path NOT LIKE '/usr/bin/%'
+      AND path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+      AND path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
   )
-
   AND f.btime == f.mtime
   AND (
     -- change time is older than birth time

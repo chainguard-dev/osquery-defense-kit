@@ -213,6 +213,7 @@ WHERE
     'git,500,zsh,login',
     'bat,500,zsh,login',
     'git,500,zsh,goland',
+    'jq,500,zsh,login',
     'sh,0,Ecamm Live,launchd',
     'cat,500,zsh,login'
   )

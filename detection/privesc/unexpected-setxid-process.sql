@@ -35,6 +35,7 @@ WHERE
     '/opt/google/chrome/chrome-sandbox',
     '/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent',
     '/usr/bin/doas',
+    '/usr/bin/crontab',
     '/usr/bin/fusermount',
     '/usr/bin/fusermount3',
     '/usr/bin/keybase-redirector',

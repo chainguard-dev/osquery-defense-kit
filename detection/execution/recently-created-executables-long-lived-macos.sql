@@ -91,6 +91,7 @@ WHERE
         '~/Library/Application Support/Foxit Software/',
         '~/Library/Application Support/JetBrains/',
         '~/Library/Application Support/OpenLens',
+        '~/.local/share/nvim/',
         '~/Library/Application Support/sourcegraph-sp/',
         '~/Library/Application Support/Steam/',
         '~/Library/Application Support/WebEx Folder/',
@@ -127,13 +128,15 @@ WHERE
         '/usr/local/kolide-k2/Kolide.app/Contents/MacOS'
       )
       OR dir LIKE '~/%/node_modules/%bin'
+      OR dir LIKE '~/%.vscode/extensions/%'
       OR dir LIKE '~/%/go/bin'
       OR dir LIKE '~/Downloads/%.app/Contents/MacOS'
       OR f.path LIKE '%go-build%'
-      OR f.path LIKE '~/%/src/%.test'
-      OR f.path LIKE '~/%/pkg/%.test'
-      OR f.path LIKE '~/%/gopls'
-      OR f.path LIKE '~/go/%/bin'
+      OR homepath LIKE '~/%/src/%.test'
+      OR homepath LIKE '~/%/pkg/%.test'
+      OR homepath LIKE '~/%/gopls'
+      OR homepath LIKE '~/go/%/bin'
+      OR homepath LIKE '~/Parallels/%/WinAppHelper'
       OR f.path LIKE '/private/tmp/%/Creative Cloud Installer.app/Contents/MacOS/Install'
       OR f.path LIKE '/private/tmp/go-%'
       OR f.path LIKE '/private/tmp/nix-build-%'
@@ -146,55 +149,58 @@ WHERE
     )
   )
   AND NOT s.authority IN (
-    'Apple iPhone OS Application Signing',
     'Apple Mac OS Application Signing',
+    'Apple iPhone OS Application Signing',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Azul Systems, Inc. (TDTHCUPYFR)',
+    'Developer ID Application: Bitdefender SRL (GUNFMW623Y)',
     'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW)',
     'Developer ID Application: Bryan Jones (49EYHPJ4Q3)',
-    'Developer ID Application: Zwift, Inc (C2GM8Y9VFM)',
     'Developer ID Application: Canon Inc. (XE2XNRRXZ5)',
     'Developer ID Application: Cisco (DE8Y96K9QP)',
     'Developer ID Application: CodeWeavers Inc. (9C6B7X7Z8E)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
-    'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     'Developer ID Application: Denver Technologies, Inc (2BBY89MBSN)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     'Developer ID Application: Eclipse Foundation, Inc. (JCDTMS22B4)',
+    'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
     'Developer ID Application: Emmanouil Konstantinidis (3YP8SXP3BF)',
+    'Developer ID Application: EnterpriseDB Corporation (26QKX55P9K)',
+    'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
+    'Developer ID Application: GPGTools GmbH (PKV8ZPD836)',
     'Developer ID Application: Galvanix (5BRAQAFB8B)',
     'Developer ID Application: Garmin International (72ES32VZUA)',
     'Developer ID Application: General Arcade (Pte. Ltd.) (S8JLSG5ES7)',
-    'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
     'Developer ID Application: GitHub (VEKTX9H2N7)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
-    'Developer ID Application: GPGTools GmbH (PKV8ZPD836)',
-    'Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
     'Developer ID Application: Keybase, Inc. (99229SGT5K)',
-    'Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
-    'Developer ID Application: EnterpriseDB Corporation (26QKX55P9K)',
+    'Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Michael Jones (YD6LEYT6WZ)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Mojang AB (HR992ZEAE6)',
+    'Developer ID Application: OPENVPN TECHNOLOGIES, INC. (ACV7L3WCD8)',
+    'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
     'Developer ID Application: Objective-See, LLC (VBG97UB4TA)',
     'Developer ID Application: Opal Camera Inc (97Z3HJWCRT)',
-    'Developer ID Application: OPENVPN TECHNOLOGIES, INC. (ACV7L3WCD8)',
-    'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'Developer ID Application: Parallels International GmbH (4C6364ACXT)',
+    'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     'Developer ID Application: RescueTime, Inc (FSY4RB8H39)',
+    'Developer ID Application: SUSE LLC (2Q6FHJR3H3)',
     'Developer ID Application: Seiko Epson Corporation (TXAEAV5RN4)',
     'Developer ID Application: SteelSeries (6WGL6CHFH2)',
+    'Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
     'Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
-    'Developer ID Application: SUSE LLC (2Q6FHJR3H3)',
+    'Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     'Developer ID Application: Yubico Limited (LQA3CS5MM7)',
     'Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
+    'Developer ID Application: Zwift, Inc (C2GM8Y9VFM)',
     'Software Signing'
   )
   AND NOT (
