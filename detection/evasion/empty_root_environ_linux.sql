@@ -46,6 +46,7 @@ WHERE
     'gdm-session-wor',
     'gdm-x-session',
     'gpg-agent',
+    'ir_agent',
     'modprobe',
     'nginx',
     'osqueryi',

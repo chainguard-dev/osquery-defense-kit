@@ -255,6 +255,7 @@ WHERE
   AND NOT path LIKE '/dev/shm/sem.rpc%'
   AND NOT path LIKE '/dev/mqueue/us.zoom.aom.%'
   AND NOT path LIKE '/dev/shm/aomshm.%'
+  AND NOT path LIKE '/dev/shm/sem.mp-%'
   AND NOT path LIKE '/dev/shm/u%-Shm_%'
   AND NOT path LIKE '/dev/shm/.com.google.Chrome.%'
   AND NOT path LIKE '/dev/shm/u%-ValveIPC%'
