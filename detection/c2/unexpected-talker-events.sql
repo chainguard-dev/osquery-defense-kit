@@ -109,7 +109,7 @@ WHERE
     '/opt/spotify',
     '/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin'
   )
-  AND NOT exception_key IN (
+  AND NOT exception_key IN ( 
     '500,0,110,syncthing',
     '500,0,123,sntp',
     '500,0,1234,spotify',
@@ -181,6 +181,7 @@ WHERE
     '500,0,53,NetworkManager',
     '500,0,53,chrome',
     '500,0,53,electron',
+    '500,0,53,firefox',
     '500,0,53,git',
     '500,0,53,launcher',
     '500,0,53,nessusd',
@@ -282,7 +283,7 @@ WHERE
     '500,99,443,Slack Helper',
     '500,99,443,Slack',
     '500,99,53,Slack Helper'
-  )
+ )
   AND NOT exception_key LIKE '500,500,443,terraform%'
   AND NOT exception_key LIKE '500,500,2304,terraform%'
   AND NOT exception_key LIKE '500,500,53,terraform%'
