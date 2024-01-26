@@ -125,6 +125,7 @@ WHERE
     '/var/db/.LastGKApp',
     '/var/db/.LastGKReject',
     '/var/db/.MASManifest',
+    '/var/db/.EntReg',
     '/var/db/.RunLanguageChooserToo',
     '/var/db/.SoftwareUpdateOptions',
     '/var/db/.StagedAppleUpgrade',

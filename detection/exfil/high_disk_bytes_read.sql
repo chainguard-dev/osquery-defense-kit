@@ -62,6 +62,7 @@ WHERE
     'ZwiftAppMetal',
     'baloo_file',
     'baloo_file_extr',
+    'Disk Inventory X',
     'bash',
     'apko',
     'bwrap',
@@ -167,7 +168,6 @@ WHERE
     '/usr/sbin/systemstats'
   )
   AND NOT p0.path LIKE '/Library/SystemExtensions/%/io.kandji.KandjiAgent.ESF-Extension.systemextension/Contents/MacOS/io.kandji.KandjiAgent.ESF-Extension'
-
   AND NOT (
     p0.name = 'bindfs'
     AND p0.cmdline LIKE 'bindfs%-o fsname=%'

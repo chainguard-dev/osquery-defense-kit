@@ -173,6 +173,7 @@ WHERE
     'rsync',
     'rust-analyzer',
     'rustup',
+    'kandji-daemon',
     'slack',
     'snyk',
     'snyk-macos',

@@ -150,6 +150,12 @@ WHERE
     '7265,6,500,Raycast,Developer ID Application: Raycast Technologies Inc (SY64MV22J9)',
     '80,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '80,6,500,limactl,',
+    '111,17,1,rpcbind,Software Signing',
+    '111,6,1,rpcbind,Software Signing',
+    '3492,6,500,MuteDeck,Developer ID Application: Martijn Smit (GX645XXEAX)',
+    '49152,6,500,com.adguard.mac.adguard.network-extension,Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
+    '6996,6,500,sourcegraph-backend,Developer ID Application: SOURCEGRAPH INC (74A5FJ7P96)',
+    '9991,6,500,sourcegraph-backend,Developer ID Application: SOURCEGRAPH INC (74A5FJ7P96)',
     '8081,6,500,crane,',
     '81,6,500,nginx,',
     '8123,6,500,Brackets-node,Developer ID Application: CORE.AI SCIENTIFIC TECHNOLOGIES PRIVATE LIMITED (8F632A866K)',
@@ -168,10 +174,10 @@ WHERE
     '8834,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '8888,6,500,otel-desktop-viewer,',
     '9101,6,500,github_actions_exporter,'
-
   )
-  AND NOT exception_key LIKE '3%,6,500,sourcegraph-backend,Developer ID Application: SOURCEGRAPH INC (74A5FJ7P96)'
+  AND NOT exception_key LIKE '%,6,500,sourcegraph-backend,Developer ID Application: SOURCEGRAPH INC (74A5FJ7P96)'
   AND NOT exception_key LIKE '88%,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)'
+  AND NOT exception_key LIKE '%,0,rpc.%,Software Signing'
   AND NOT (
     signature.authority = 'Developer ID Application: Linear Orbit, Inc. (7VZ2S3V9RV)'
     AND lp.port > 1024

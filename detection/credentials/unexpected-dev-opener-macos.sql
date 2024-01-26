@@ -116,6 +116,8 @@ WHERE
     '/dev/macfuse,gcsfuse,,a.out',
     '/dev/macfuse,rclone,,a.out',
     '/dev/oslog,logd,Software Signing,com.apple.logd',
+    '/dev/pf,CloudflareWARP,Developer ID Application: Cloudflare Inc. (68WVV388M8),CloudflareWARP',
+    '/dev/pf,mullvad-daemon,Developer ID Application: Mullvad VPN AB (CKG9MXH72F),mullvad-daemon',
     '/dev/shm,python3',
     '/dev/tty.usbmodem21430,Bazecor Helper (Renderer),,',
     '/dev/xcpm,PerfPowerServices,Software Signing,com.apple.PerfPowerServices',

@@ -66,3 +66,4 @@ WHERE
     'fig-darwin-universal',
     'wezterm-gui'
   )
+  AND p0.name NOT LIKE 'cody-engine-%'

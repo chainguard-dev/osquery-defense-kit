@@ -82,13 +82,16 @@ WHERE
     '0,ir_agent,ir_agent,Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     '0,rapid7_endpoint_broker,rapid7_endpoint_broker,Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     '0,nix,nix,',
+    '500,dfu-discovery,a.out,',
     '0,osqueryd,io.osquery.agent,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     '0,osqueryd,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     '0,velociraptor,a.out,',
     '500,.cargo-wrapped,.cargo-wrapped,',
+    '500,serial-discovery,a.out,',
     '500,Android File Transfer Agent,com.google.android.mtpagent,Developer ID Application: Google, Inc. (EQHXZ8M8AV)',
     '500,AppleMusic,AppleMusic,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     '500,Bazecor Helper,,',
+    '500,python,,',
     '500,Bitwarden Helper (GPU),com.bitwarden.desktop.helper.GPU,Apple Mac OS Application Signing',
     '500,Bitwarden Helper (Renderer),com.bitwarden.desktop.helper.Renderer,Apple Mac OS Application Signing',
     '500,Bitwarden Helper,com.bitwarden.desktop.helper,Apple Mac OS Application Signing',
@@ -222,7 +225,7 @@ WHERE
   AND NOT exception_key LIKE '500,terraform-provider-cosign_%,,'
   AND NOT exception_key LIKE '500,cody-engine-%-macos-arm64,%,'
   AND NOT exception_key LIKE '500,rust-analyzer-aarch64-apple-darwin,rust_analyzer-%,'
-  AND NOT exception_key LIKE '500,___Test%.test,a.out,'
+  AND NOT exception_key LIKE '500,___%,a.out,'
   AND NOT exception_key LIKE '500,zellij,zellij%,'
   AND NOT exception_key LIKE '500,copilot-agent-macos-%,copilot-agent-macos-%,'
   AND NOT exception_key LIKE '500,samply,samply-%,'

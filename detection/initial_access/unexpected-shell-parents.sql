@@ -57,6 +57,7 @@ WHERE
     'anacron',
     'auditd',
     'bash',
+    'unattended-upgr',
     'buildkit-runc',
     'build-script-build',
     'arduino-cli',

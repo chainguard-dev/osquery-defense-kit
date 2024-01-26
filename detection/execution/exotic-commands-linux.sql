@@ -76,6 +76,7 @@ WHERE
     OR p0.cmdline LIKE '%--pool%'
     OR p0.cmdline LIKE '%--algo%'
     OR p0.cmdline LIKE '%--wss%'
+    OR p0.cmdline LIKE '%wormhole%'
     OR p0.cmdline LIKE '%bitspin%'
     OR p0.cmdline LIKE '%lushput%'
     OR p0.cmdline LIKE '%incbit%'
@@ -134,4 +135,10 @@ WHERE
   )
   AND NOT p0.cmdline like '%socat UNIX-LISTEN:%com.discordapp%discord-ipc%'
   AND NOT p0.cmdline IN ('nc 127.0.0.1 5900')
-  AND NOT p0.name IN ('cc1', 'compile', 'cmake', 'cc1plus', 'chrome_crashpad')
+  AND NOT p0.name IN (
+    'cc1',
+    'compile',
+    'cmake',
+    'cc1plus',
+    'chrome_crashpad'
+  )
