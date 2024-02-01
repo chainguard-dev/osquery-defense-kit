@@ -109,6 +109,7 @@ WHERE
     OR p0_cmd LIKE '%touch%acmr%'
     OR p0_cmd LIKE '%touch -r%'
     OR p0_cmd LIKE '%ld.so.preload%'
+    OR p0_cmd LIKE 'killall%NotificationCenter'
     OR p0_cmd LIKE '%urllib.urlopen%'
     OR p0_cmd LIKE '%nohup%tmp%'
     OR p0_cmd LIKE '%killall Terminal%'

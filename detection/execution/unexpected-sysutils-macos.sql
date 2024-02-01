@@ -86,6 +86,7 @@ WHERE
     '/usr/bin/openssl',
     '/usr/bin/security',
     '/usr/bin/sqlite3',
+    '/usr/sbin/spctl',
     '/usr/bin/sw_vers',
     '/usr/bin/unzip',
     '/usr/bin/uuidgen',
