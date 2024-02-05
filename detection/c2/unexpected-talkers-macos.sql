@@ -143,6 +143,7 @@ WHERE
     '500,6,5222,Telegram,Telegram,Apple Mac OS Application Signing,ru.keepcoder.Telegram',
     '500,6,5222,WhatsApp,WhatsApp,Developer ID Application: WhatsApp Inc. (57T9237FN3),net.whatsapp.WhatsApp',
     '500,6,5223,KakaoTalk,KakaoTalk,Apple Mac OS Application Signing,com.kakao.KakaoTalkMac',
+    '500,6,995,KakaoTalk,KakaoTalk,Apple Mac OS Application Signing,com.kakao.KakaoTalkMac',
     '500,6,5228,Clay,Clay,Developer ID Application: Clay Software, Inc. (C68GA48KN3),com.clay.mac',
     '500,6,5228,com.adguard.mac.adguard.network-extension,com.adguard.mac.adguard.network-extension,0u,0g',
     '500,6,5228,com.adguard.mac.adguard.network-extension,com.adguard.mac.adguard.network-extension,Developer ID Application: Adguard Software Limited (TC3Q7MAJXF),com.adguard.mac.adguard.network-extension',
@@ -224,10 +225,10 @@ WHERE
   AND NOT (
     alt_exception_key = '500,6,80,main,main,500u,20g'
     AND p0.path LIKE '/var/folders/%/T/go-build%/b001/exe/main'
-  ) -- Known Web Browsers
+  ) -- Wider
   AND NOT (
     (
-      pos.remote_port IN (80, 587, 999)
+      pos.remote_port IN (80, 123, 587, 999)
       OR pos.remote_port > 1024
     )
     AND id_exception_key IN (
@@ -235,7 +236,7 @@ WHERE
       'Apple Mac OS Application Signing,com.ookla.speedtest-macos',
       'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.AdobeResourceSynchronizer',
       'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.Reader',
-      'Developer ID Application: WhatsApp Inc. (57T9237FN3),net.whatsapp.WhatsApp.ServiceExtension',
+      'Developer ID Application: Bitdefender SRL (GUNFMW623Y),com.bitdefender.cst.net.dci.dci-network-extension',
       'Developer ID Application: Bookry Ltd (4259LE8SU5),com.bookry.wavebox.helper',
       'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.helper',
       'Developer ID Application: Cloudflare Inc. (68WVV388M8),CloudflareWARP',
@@ -244,13 +245,13 @@ WHERE
       'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.EpicGamesLauncher',
       'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.UE4EditorServices',
       'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK),fctupdate',
+      'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF),com.adguard.mac.adguard.network-extension',
       'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D),com.googlecode.iterm2',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.GoogleUpdater',
-      'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.teams2.helper',
-      'Developer ID Application: Bitdefender SRL (GUNFMW623Y),com.bitdefender.cst.net.dci.dci-network-extension',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.one.NetworkExtension',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.edgemac.helper',
+      'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.teams2.helper',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),net.java.openjdk.java',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefox',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefoxdeveloperedition',
@@ -266,6 +267,7 @@ WHERE
       'Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.browser.helper',
       'Developer ID Application: Valve Corporation (MXGJJ98X76),com.valvesoftware.steam',
       'Developer ID Application: Vladimir Prelovac (TFVG979488),com.apple.WebKit.Networking',
+      'Developer ID Application: WhatsApp Inc. (57T9237FN3),net.whatsapp.WhatsApp.ServiceExtension',
       'Developer ID Application: Zwift, Inc (C2GM8Y9VFM),ZwiftAppSilicon'
     )
   )

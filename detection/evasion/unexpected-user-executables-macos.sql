@@ -54,6 +54,9 @@ WHERE
         directory = '/Users/Shared/'
         OR directory LIKE '/Users/Shared/%'
         OR directory LIKE '/Users/Shared/.%'
+        OR directory = '/var/root/'
+        OR directory LIKE '/var/root/%%'
+        OR directory LIKE '/var/root/.%'
         OR directory LIKE '/Users/%/Library'
         OR directory LIKE '/Users/%/Library/%'
         OR directory LIKE '/Users/%/Library/%/.%'
@@ -137,11 +140,14 @@ WHERE
     '~/.config/nvim.bak',
     '~/.docker/cli-plugins',
     '~/.emacs.d/backups',
+    '~/Library/Logs/com.logmein.GoToOpener',
     '~/.emacs.d.bak/bin',
     '~/.fig/bin',
     '~/.fzf',
     '~/.fzf/bin',
     '~/.gvm/bin',
+    '~/.vs-tekton',
+    '~/.dotnet/tools',
     '~/.kn/plugins',
     '~/Library/Mobile Documents/com~apple~CloudDocs',
     '~/.kuberlr/darwin-amd64',

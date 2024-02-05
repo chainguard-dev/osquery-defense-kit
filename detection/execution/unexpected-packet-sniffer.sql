@@ -43,6 +43,7 @@ WHERE
     'systemd-network',
     'NetworkManager',
     'dhclient',
+    'packetbeat',
     'dhcpcd',
     'tcpdump'
   )
