@@ -162,3 +162,4 @@ WHERE
   )
   -- Elastic Agent
   AND NOT p0.path LIKE '/Library/Elastic/Agent/%'
+  AND NOt p0.cmdline LIKE '%/osqueryd %'
