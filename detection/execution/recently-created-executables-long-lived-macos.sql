@@ -180,6 +180,7 @@ WHERE
     'Developer ID Application: Keybase, Inc. (99229SGT5K)',
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Kolide, Inc (X98UFR7HA3)',
+    'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Michael Jones (YD6LEYT6WZ)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',

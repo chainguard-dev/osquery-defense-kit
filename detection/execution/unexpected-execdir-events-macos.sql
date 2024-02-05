@@ -332,6 +332,7 @@ WHERE
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
+    'Developer ID Application: Silicon Laboratories Inc (52444FG85C)',
     'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y)',
     'Developer ID Application: Figma, Inc. (T8RA8NE3B7)',
     'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK)',

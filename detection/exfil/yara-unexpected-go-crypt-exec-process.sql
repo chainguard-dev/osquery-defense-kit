@@ -94,6 +94,7 @@ WHERE
     'kubectl',
     'yay',
     'syft',
+    'Proton Mail Bridge',
     'syncthing',
     'go',
     'grype',
