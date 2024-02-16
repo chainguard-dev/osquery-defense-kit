@@ -97,6 +97,7 @@ WHERE
     '500,gjs-console,gnome-character',
     '500,plugin-container,MainThread',
     '500,pyrogenesis,main',
+    '500,vim.nox,vi',
     '500,rootlesskit,exe',
     '500,rootlessport,exe',
     '500,udevadm,systemd-udevd',

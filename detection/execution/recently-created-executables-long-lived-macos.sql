@@ -73,6 +73,7 @@ WHERE
       AND NOT path LIKE '/Library/Apple/%'
       AND NOT path LIKE '/nix/store/%'
       AND NOT path LIKE '/opt/homebrew/%'
+      AND NOT path LIKE '%/bin/cargo'
       AND NOT path LIKE '/System/%'
       AND NOT path LIKE '/usr/local/kolide-k2/bin/%'
       AND NOT path LIKE '%/cloud_sql_proxy'
@@ -181,6 +182,7 @@ WHERE
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
+    'Developer ID Application: Wesley FURLONG (P4A6FU9KZ3)',
     'Developer ID Application: Michael Jones (YD6LEYT6WZ)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Mojang AB (HR992ZEAE6)',

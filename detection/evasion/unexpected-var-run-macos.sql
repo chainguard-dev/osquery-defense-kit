@@ -30,6 +30,7 @@ WHERE
     '.DidRunFLO',
     '.autoBackup',
     '.fctcompsupdate',
+    'VMware Fusion Services.lock',
     'FirstBootAfterUpdate',
     'FirstBootCleanupHandled',
     'appfwd.pid',

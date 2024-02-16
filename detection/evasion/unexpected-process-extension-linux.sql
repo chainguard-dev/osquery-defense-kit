@@ -73,6 +73,7 @@ WHERE
     '29',
     '30',
     'bin',
+    'nox',
     'basic',
     'real',
     'AppImage',

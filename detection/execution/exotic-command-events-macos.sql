@@ -135,6 +135,7 @@ WHERE
     OR (
       p0_cmd LIKE '%UserKnownHostsFile=/dev/null%'
       AND NOT p1_name = 'limactl'
+      AND NOT p1_cmd LIKE '%gcloud.py%'
     ) -- Random keywords
     OR p0_cmd LIKE '%ransom%' -- Reverse shells
     OR p0_cmd LIKE '%fsockopen%'

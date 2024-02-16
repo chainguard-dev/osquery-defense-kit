@@ -5,8 +5,7 @@
 --
 -- tags: persistent state filesystem
 -- platform: darwin
-SELECT
-  ae.path,
+SELECT ae.path,
   ae.state,
   file.mtime,
   file.ctime,
@@ -26,13 +25,11 @@ SELECT
     ',',
     MIN(file.uid, 501)
   ) AS exception_key
-FROM
-  alf_exceptions ae
+FROM alf_exceptions ae
   LEFT JOIN file ON ae.path = file.path
   LEFT JOIN hash ON ae.path = hash.path
   LEFT JOIN signature ON ae.path = signature.path
-WHERE
-  -- Filter out stock exceptions to decrease overhead
+WHERE -- Filter out stock exceptions to decrease overhead
   ae.path NOT IN (
     '/System/Library/CoreServices/UniversalControl.app/',
     '/System/Library/PrivateFrameworks/Admin.framework/Versions/A/Resources/readconfig',
@@ -44,8 +41,7 @@ WHERE
     '/usr/libexec/xartstorageremoted',
     '/usr/sbin/mDNSResponder',
     '/usr/sbin/racoon'
-  )
-  -- Ignore files that ahve already been removed
+  ) -- Ignore files that ahve already been removed
   AND file.filename NOT NULL
   AND exception_key NOT IN (
     ',,/Applications/Google%20Chrome.app/,',
@@ -54,6 +50,7 @@ WHERE
     ',,/Applications/Visual%20Studio%20Code.app/,',
     ',,/Applications/Visual%20Studio%20Code.app/Contents/Frameworks/Code%20Helper.app/,',
     ',,/usr/local/sbin/iodined,501',
+    ',a.out,/Users/amouat/proj/learning-labs-static/server,501',
     ',a.out,/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/kubectl,501',
     ',a.out,/opt/homebrew/Cellar/go/1.20.4/libexec/pkg/tool/darwin_arm64/trace,501',
     ',dnsmasq,/opt/homebrew/Cellar/dnsmasq/2.88/sbin/dnsmasq,0',
@@ -96,6 +93,8 @@ WHERE
     'Developer ID Application: Tailscale Inc. (W5364U7YZB),io.tailscale.ipn.macsys.network-extension,/Library/SystemExtensions/A30AF854-E980-4345-A658-17000BF66D00/io.tailscale.ipn.macsys.network-extension.systemextension/,0',
     'Developer ID Application: VNG ONLINE CO.,LTD (CVB6BX97VM),com.vng.zalo,/Applications/Zalo.app/,501',
     'Developer ID Application: Voicemod Sociedad Limitada. (S2MC4XQDSM),net.voicemod.desktop,/Applications/Voicemod.app/,0',
+    'Developer ID Application: Evernote Corporation (Q79WDW8YH9),com.evernote.Evernote,/Applications/Evernote.app/,501',
+    'Developer ID Application: Python Software Foundation (BMM5U3QVKW),org.python.python,/Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/,0',
     'Software Signing,com.apple.Music,/System/Applications/Music.app/,0',
     'Software Signing,com.apple.WebKit.Networking,/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/,0',
     'Software Signing,com.apple.WebKit.Networking,/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/,0',
@@ -171,5 +170,4 @@ WHERE
       OR file.directory LIKE '/private/var/folders/%/T/go-build%/exe'
     )
   )
-GROUP BY
-  exception_key
+GROUP BY exception_key

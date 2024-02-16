@@ -320,6 +320,7 @@ WHERE
     OR p1_cmd LIKE '/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -W1 --disable=gems,rubyopt -- /Users/%/homebrew/Library/Homebrew/build.rb%'
     OR p1_cmd LIKE 'gcloud% auth%login%'
     OR p1_cmd LIKE '/%google-cloud-sdk/lib/gcloud.py%'
+    OR p1_cmd LIKE '%/usr/bin/terminator%'
     OR (
       exception_key = 'sh,500,ruby,zsh'
       AND p1_cmd LIKE '%brew.rb'

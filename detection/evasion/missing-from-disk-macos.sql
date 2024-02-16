@@ -79,3 +79,4 @@ WHERE
     p.name = ''
     AND parent_cmd = '/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox -foreground'
   )
+  AND NOt cmd LIKE '/opt/homebrew/opt/%'

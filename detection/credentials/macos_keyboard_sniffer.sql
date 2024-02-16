@@ -71,6 +71,7 @@ WHERE
     'logioptionsplus_agent,com.logi.cp-dev-mgr,Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'osqueryd,io.osquery.agent,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'skhd,skhd,',
+    'polyrecorder,polyrecorder,Developer ID Application: Adam Pietrasiak (SXF593CX2N)',
     'BetterDisplay,pro.betterdisplay.BetterDisplay,Developer ID Application: Istvan Toth (299YSU96J7)',
     'Superkey,com.knollsoft.Superkey,Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',
     'synergy-core,synergy-core,Developer ID Application: Symless Ltd (4HX897Y6GJ)'

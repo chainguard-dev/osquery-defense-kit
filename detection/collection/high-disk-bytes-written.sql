@@ -52,13 +52,13 @@ WHERE
   AND p0.pid > 2
   AND p0.parent != 2
   AND p0.path NOT IN (
-    '/bin/bash',
-    '/bin-busybox',
+ 
     '/Library/Application Support/Adobe/Adobe Desktop Common/HDBox/Setup',
+    '/bin-busybox',
+    '/bin/bash',
     '/opt/homebrew/bin/qemu-system-aarch64',
     '/opt/osquery/lib/osquery.app/Contents/MacOS/osqueryd',
     '/usr/bin/apt',
-    '/usr/lib/baloo_file',
     '/usr/bin/aptd',
     '/usr/bin/bash',
     '/usr/bin/bwrap',
@@ -76,8 +76,13 @@ WHERE
     '/usr/bin/qemu-system-x86_64',
     '/usr/bin/yay',
     '/usr/bin/zsh',
-    '/usr/lib64/thunderbird/thunderbird',
+    '/usr/lib/baloo_file',
     '/usr/lib/baloo_file_extractor',
+    '/usr/lib/flatpak-system-helper',
+    '/usr/lib/snapd/snapd',
+    '/usr/lib/systemd/systemd',
+    '/usr/lib/systemd/systemd-journald',
+    '/usr/lib64/thunderbird/thunderbird',
     '/usr/libexec/coreduetd',
     '/usr/libexec/flatpak-system-helper',
     '/usr/libexec/logd_helper',
@@ -85,13 +90,9 @@ WHERE
     '/usr/libexec/rosetta/oahd',
     '/usr/libexec/secd',
     '/usr/libexec/sharingd',
-    '/usr/lib/flatpak-system-helper',
-    '/usr/lib/snapd/snapd',
-    '/usr/lib/systemd/systemd',
-    '/usr/lib/systemd/systemd-journald',
     '/usr/sbin/screencapture',
     '/usr/share/spotify-client/spotify'
-  )
+ )
   AND NOT (
     p0.name LIKE 'jbd%/dm-%'
     AND p0.on_disk = -1
@@ -124,71 +125,70 @@ WHERE
     p0.name = 'aptd'
     AND p0.cmdline = '/usr/bin/python3 /usr/sbin/aptd'
   )
-  AND NOT p0.name IN (
+  AND NOT p0.name IN ( 
+    'Cisco WebEx Start',
+    'Install',
     'baloo_file_extr',
     'bwrap',
     'cargo',
     'chrome',
-    'Cisco WebEx Start',
+    'code',
     'com.apple.MobileSoftwareUpdate.UpdateBrainService',
     'com.apple.NRD.UpdateBrainService',
-    'code',
     'containerd',
     'containerd-',
     'containerd-shim',
     'darkfiles',
     'dlv',
     'dnf',
-    'tmux:server',
     'dnf-automatic',
     'docker-index',
     'esbuild',
     'firefox',
     'fsdaemon',
-    'mediawriter',
-    'grype',
     'go',
     'goland',
     'golangci-lint-v',
     'gopls',
     'grype',
     'idea',
-    'Install',
-    'terraform-provider-apko',
     'java',
     'jetbrains-toolb',
+    'kandji-daemon',
     'launcher',
     'limactl',
+    'mediawriter',
     'melange',
-    'steam_osx',
     'melange-run',
     'monorail',
     'nessusd',
     'ninja',
     'node',
-    'terraform',
     'photorec',
     'qemu-system-aarch64',
     'qemu-system-x86_64',
     'rsync',
     'rust-analyzer',
     'rustup',
-    'kandji-daemon',
     'slack',
     'snyk',
     'snyk-macos',
     'spotify',
     'staticcheck',
     'steam',
+    'steam_osx',
     'syft',
+    'terraform',
+    'terraform-provider-apko',
+    'tmux:server',
     'tracker-miner-f',
     'trivy',
-    'wolfictl',
     'trivy-db',
     'unattended-upgr',
     'wineserver',
+    'wolfictl',
     'yum'
-  )
+ )
   AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p0.path NOT LIKE '/home/%/.local/share/Steam'
   AND p0.path NOT LIKE '/nix/store/%/bin/%sh'
@@ -200,4 +200,6 @@ WHERE
   AND p0.path NOT LIKE '/nix/store/%kolide-launcher-%/bin/launcher'
   AND NOT p0.cmdline LIKE '%/lib/gcloud.py components update'
   AND NOT p0.cmdline LIKE '%/gsutil %rsync%'
+  AND NOT p0.cmdline LIKE '%brew.rb upgrade'  
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
+  

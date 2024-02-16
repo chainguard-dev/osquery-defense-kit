@@ -104,6 +104,7 @@ WHERE
     'ifconfig,0,pia-openvpn,pia-daemon',
     'ifconfig,500,zsh,stable',
     'ifconfig,500,dotnet,zsh',
+    'ifconfig,500,dotnet,dotnet',
     'netstat,0,io.tailscale.ipn.macsys.network-extension,launchd',
     'netstat,0,metricbeat,elastic-agent',
     'netstat,0,pia-daemon,launchd',

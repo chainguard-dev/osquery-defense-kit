@@ -97,6 +97,8 @@ WHERE
   -- Local DNS servers and custom clients go here
   AND basename NOT IN (
     'chrome',
+    'com.docker.backend',
+    'WhatsApp',
     'Jabra Direct Helper',
     'nessusd',
     'apko',

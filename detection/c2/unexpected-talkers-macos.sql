@@ -118,7 +118,6 @@ WHERE
     AND s.authority = 'Software Signing'
   )
   AND NOT exception_key IN (
-    '0,6,5228,prl_naptd,prl_naptd,Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',
     '0,6,80,fcconfig,fcconfig,Developer ID Application: Fortinet, Inc (AH4XFXJ7DK),fcconfig',
     '0,6,80,prl_naptd,prl_naptd,Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',
     '500,17,123,Garmin Express,Garmin Express,Developer ID Application: Garmin International (72ES32VZUA),com.garmin.renu.client',
@@ -186,7 +185,7 @@ WHERE
     '500,6,993,Mimestream,Mimestream,Developer ID Application: Mimestream, LLC (P2759L65T8),com.mimestream.Mimestream',
     '500,6,993,Spark Desktop Helper,Spark Desktop Helper,Developer ID Application: Readdle Technologies Limited (3L68KQB4HG),com.readdle.SparkDesktop.helper',
     '500,6,993,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird'
-  ) -- Useful for unsigned binaries
+ ) -- Useful for unsigned binaries
   AND NOT alt_exception_key IN (
     '0,6,80,tailscaled,tailscaled,500u,80g',
     '500,6,22,ssh,ssh,0u,500g',
@@ -240,10 +239,13 @@ WHERE
       'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.helper',
       'Developer ID Application: Cloudflare Inc. (68WVV388M8),CloudflareWARP',
       'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
+      'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.nightly.helper',
       'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker.docker',
       'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.EpicGamesLauncher',
       'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.UE4EditorServices',
       'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK),fctupdate',
+      'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode.helper',
+      'Developer ID Application: Vivaldi Technologies AS (4XF3XNRN6Y),com.vivaldi.Vivaldi.helper',
       'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D),com.googlecode.iterm2',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.GoogleUpdater',
@@ -253,7 +255,7 @@ WHERE
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.edgemac.helper',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),net.java.openjdk.java',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefox',
-      'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefoxdeveloperedition',
+      'Developer ID Application: ]Mozilla Corporation (43AQ936H96),org.mozilla.firefoxdeveloperedition',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
       'Developer ID Application: Opera Software AS (A2P9LX4JPN),com.operasoftware.Opera.helper',
       'Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',

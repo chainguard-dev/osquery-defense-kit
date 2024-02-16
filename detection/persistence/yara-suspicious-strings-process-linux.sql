@@ -82,6 +82,7 @@ WHERE
   AND p0.name NOT IN (
     'chrome_crashpad',
     'X',
+    'git',
     'systemd',
     'NetworkManager',
     'systemd-journal',

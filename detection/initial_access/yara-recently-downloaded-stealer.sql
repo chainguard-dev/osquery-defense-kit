@@ -45,3 +45,4 @@ WHERE
 }'
   AND yara.count > 0
   AND file.path NOT LIKE "%.csv"
+  AND file.filename != 'RIT_Wireless.dmg'

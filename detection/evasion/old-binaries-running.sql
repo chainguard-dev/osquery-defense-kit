@@ -46,6 +46,7 @@ WHERE
     '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService',
     '/Library/Printers/Brother/Utilities/BrStatusMonitor.app/Contents/MacOS/BrStatusMonitor',
     '/Library/Printers/Brother/Utilities/Server/LOGINserver.app/Contents/MacOS/LOGINserver',
+    '/Library/Printers/Brother/Filter/rastertobrother2300.bundle/Contents/MacOS/rastertobrother2300',
     '/Applications/Vimari.app/Contents/PlugIns/Vimari Extension.appex/Contents/MacOS/Vimari Extension',
     '/Library/Printers/Brother/Utilities/Server/NETserver.app/Contents/MacOS/NETserver',
     '/Library/Printers/Brother/Utilities/Server/USBAppControl.app/Contents/MacOS/USBAppControl',
@@ -71,6 +72,7 @@ WHERE
     'Pandora Helper',
     'dlv'
   )
+  AND f.path NOT LIKE '/private/var/folders/%/T/AppTranslocation/AC5EE427-8F66-4F1D-BDE1-852E8C1D17FB/d/Skitch.app/Contents/MacOS/Skitch'
   AND p.cgroup_path NOT LIKE '/system.slice/docker-%'
   AND p.cgroup_path NOT LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
 GROUP BY

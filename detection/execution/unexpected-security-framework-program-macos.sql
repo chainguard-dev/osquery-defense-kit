@@ -239,5 +239,6 @@ WHERE
   AND NOT exception_key LIKE '500,rust-analyzer,rust_analyzer-%,'
   AND NOT exception_key LIKE '500,nvim,bob-%'
   AND NOT exception_key LIKE '500,nvim,%.out,'
+  AND NOT exception_key LIKE '500,taplo-full-darwin-%,taplo-%,'
 GROUP BY
   p0.pid

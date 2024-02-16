@@ -99,7 +99,8 @@ WHERE
       p0_cmd LIKE "%lima/%"
       OR p0_cmd LIKE "%minikube/%"
       OR p0_cmd LIKE '%@localhost'
-      oR p0_cmd LIKE '%ServerAliveInterval=0%'
+      OR p0_cmd LIKE '%ServerAliveInterval=0%'
+      OR p1_cmd LIKE '%gcloud.py%'
     )
   )
   AND NOT (
