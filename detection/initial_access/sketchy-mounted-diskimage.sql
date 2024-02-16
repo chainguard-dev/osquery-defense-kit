@@ -35,8 +35,8 @@ FROM
   LEFT JOIN signature ON file.path = signature.path
 WHERE
   file.path IN (
-    SELECT
-      DISTINCT file.path
+    SELECT DISTINCT
+      file.path
     FROM
       block_devices
       JOIN mounts ON mounts.device = block_devices.name

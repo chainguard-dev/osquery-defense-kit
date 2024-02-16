@@ -20,9 +20,11 @@ WHERE
   -- this does it the slow way.
   AND ea.value LIKE "https://doc-%googleusercontent.com%"
   -- this seems excessive, but I was having issues with kMDItemFSCreationDate not filtering appropriately
-  AND MAX(file.btime, file.ctime, file.mtime) > (strftime('%s', 'now') -86400) 
+  AND MAX(file.btime, file.ctime, file.mtime) > (strftime('%s', 'now') -86400)
   -- Common, low-risk for exfil
   AND file.filename NOT LIKE '%.csv'
--- "GROUP BY" should be unnecessary, but Kolide seems to require it
-GROUP BY ea.key
-HAVING num_downloads > 8
+  -- "GROUP BY" should be unnecessary, but Kolide seems to require it
+GROUP BY
+  ea.key
+HAVING
+  num_downloads > 8

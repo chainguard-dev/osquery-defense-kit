@@ -52,7 +52,6 @@ WHERE
   AND p0.pid > 2
   AND p0.parent != 2
   AND p0.path NOT IN (
- 
     '/Library/Application Support/Adobe/Adobe Desktop Common/HDBox/Setup',
     '/bin-busybox',
     '/bin/bash',
@@ -92,7 +91,7 @@ WHERE
     '/usr/libexec/sharingd',
     '/usr/sbin/screencapture',
     '/usr/share/spotify-client/spotify'
- )
+  )
   AND NOT (
     p0.name LIKE 'jbd%/dm-%'
     AND p0.on_disk = -1
@@ -125,7 +124,7 @@ WHERE
     p0.name = 'aptd'
     AND p0.cmdline = '/usr/bin/python3 /usr/sbin/aptd'
   )
-  AND NOT p0.name IN ( 
+  AND NOT p0.name IN (
     'Cisco WebEx Start',
     'Install',
     'baloo_file_extr',
@@ -188,7 +187,7 @@ WHERE
     'wineserver',
     'wolfictl',
     'yum'
- )
+  )
   AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p0.path NOT LIKE '/home/%/.local/share/Steam'
   AND p0.path NOT LIKE '/nix/store/%/bin/%sh'
@@ -200,6 +199,5 @@ WHERE
   AND p0.path NOT LIKE '/nix/store/%kolide-launcher-%/bin/launcher'
   AND NOT p0.cmdline LIKE '%/lib/gcloud.py components update'
   AND NOT p0.cmdline LIKE '%/gsutil %rsync%'
-  AND NOT p0.cmdline LIKE '%brew.rb upgrade'  
+  AND NOT p0.cmdline LIKE '%brew.rb upgrade'
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
-  

@@ -40,7 +40,11 @@ FROM
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
   p0.pid IN (
-    SELECT pid FROM processes WHERE
+    SELECT
+      pid
+    FROM
+      processes
+    WHERE
       euid = 0
       AND path NOT LIKE '/System/%'
       AND path NOT LIKE '/Library/Apple/%'
@@ -56,9 +60,11 @@ WHERE
       AND path NOT LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
       AND path NOT LIKE '/usr/local/Cellar/htop/%/bin/htop'
       AND path NOT LIKE '/opt/homebrew/Cellar/btop/%/bin/btop'
-      AND path NOT IN ('/opt/socket_vmnet/bin/socket_vmnet', '/usr/local/sbin/velociraptor')
+      AND path NOT IN (
+        '/opt/socket_vmnet/bin/socket_vmnet',
+        '/usr/local/sbin/velociraptor'
+      )
   )
-
   AND pmm.path LIKE '%libpcap%'
   -- These are all protected directories
   AND NOT s.authority IN (

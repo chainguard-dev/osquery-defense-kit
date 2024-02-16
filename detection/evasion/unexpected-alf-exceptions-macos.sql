@@ -5,7 +5,8 @@
 --
 -- tags: persistent state filesystem
 -- platform: darwin
-SELECT ae.path,
+SELECT
+  ae.path,
   ae.state,
   file.mtime,
   file.ctime,
@@ -25,7 +26,8 @@ SELECT ae.path,
     ',',
     MIN(file.uid, 501)
   ) AS exception_key
-FROM alf_exceptions ae
+FROM
+  alf_exceptions ae
   LEFT JOIN file ON ae.path = file.path
   LEFT JOIN hash ON ae.path = hash.path
   LEFT JOIN signature ON ae.path = signature.path
@@ -170,4 +172,5 @@ WHERE -- Filter out stock exceptions to decrease overhead
       OR file.directory LIKE '/private/var/folders/%/T/go-build%/exe'
     )
   )
-GROUP BY exception_key
+GROUP BY
+  exception_key

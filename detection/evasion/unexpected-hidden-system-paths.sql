@@ -225,5 +225,4 @@ WHERE
     file.path LIKE '/tmp/.ssh-%'
     AND file.type = "socket"
     AND file.mode = '0600'
-    
   )
