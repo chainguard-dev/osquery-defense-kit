@@ -221,3 +221,9 @@ WHERE
     file.path = '/var/root/.oracle_jre_usage/'
     AND file.size = 96
   )
+  AND NOT (
+    file.path LIKE '/tmp/.ssh-%'
+    AND file.type = "socket"
+    AND file.mode = '0600'
+    
+  )

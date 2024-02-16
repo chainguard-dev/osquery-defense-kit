@@ -118,6 +118,7 @@ WHERE
     '500,0,20480,com.adguard.mac.adguard.network-extension',
     '500,0,20480,io.tailscale.ipn.macsys.network-extension',
     '500,0,22,ssh',
+    '500,0,27668,com.adguard.mac.adguard.network-extension',
     '500,0,31488,sntp',
     '500,0,32768,Authy',
     '500,0,32768,BDLDaemon',
@@ -138,9 +139,11 @@ WHERE
     '500,0,443,Authy',
     '500,0,443,BDCoreIssues',
     '500,0,443,BDLDaemon',
+    '500,0,443,BDUpdDaemon',
     '500,0,443,Brackets',
     '500,0,443,OneDriveStandaloneUpdater',
     '500,0,443,Python',
+    '500,0,443,bdredline',
     '500,0,443,chrome',
     '500,0,443,chrome_crashpad_handler',
     '500,0,443,com.adguard.mac.adguard.network-extension',
@@ -161,6 +164,7 @@ WHERE
     '500,0,443,gnome-software',
     '500,0,443,go',
     '500,0,443,http',
+    '500,0,443,incusd',
     '500,0,443,io.tailscale.ipn.macsys.network-extension',
     '500,0,443,ir_agent',
     '500,0,443,kioslave5',
@@ -168,8 +172,10 @@ WHERE
     '500,0,443,launcher',
     '500,0,443,metricbeat',
     '500,0,443,nessusd',
+    '500,500,32768,old',
     '500,0,443,networkQuality',
     '500,0,443,node',
+    '500,0,443,packetbeat',
     '500,0,443,pingsender',
     '500,0,443,rapid7_endpoint_broker',
     '500,0,443,slack',
@@ -181,6 +187,7 @@ WHERE
     '500,0,443,velociraptor',
     '500,0,443,wget',
     '500,0,5228,chrome',
+    '500,0,443,packetbeat',
     '500,0,53,Brackets',
     '500,0,53,NetworkManager',
     '500,0,53,chrome',
@@ -194,7 +201,9 @@ WHERE
     '500,0,53,wget',
     '500,0,5632,ssh',
     '500,0,80,BDUpdDaemon',
+    '500,0,27668,com.adguard.mac.adguard.network-extension',
     '500,0,80,chrome',
+    '500,0,80,com.adguard.mac.adguard.network-extension',
     '500,0,80,com.apple.NRD.UpdateBrainService',
     '500,0,80,com.bitdefender.cst.net.dci.dci-network-extension',
     '500,0,80,electron',
@@ -286,6 +295,8 @@ WHERE
     '500,500,80,ksfetch',
     '500,500,80,node',
     '500,500,9000,Meeting Center',
+    '500,500,32768,Microsoft.ServiceHub.Controller',
+    '500,500,32768,Microsoft.VisualStudio.Code.ServiceHost',
     '500,99,13568,Slack Helper',
     '500,99,32768,Slack Helper',
     '500,99,32768,Slack',
@@ -294,6 +305,7 @@ WHERE
     '500,99,53,Slack Helper'
  )
   AND NOT exception_key LIKE '500,500,443,terraform%'
+  AND NOT exception_key LIKE '500,500,32768,terraform-provider-%'
   AND NOT exception_key LIKE '500,500,2304,terraform%'
   AND NOT exception_key LIKE '500,500,53,terraform%'
   AND NOT exception_key LIKE '500,500,80,terraform%'

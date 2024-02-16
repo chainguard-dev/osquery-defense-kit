@@ -79,6 +79,7 @@ WHERE
     '/dev/auditpipe,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF),io.osquery.agent',
     '/dev/auditpipe,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF),osqueryd',
     '/dev/auditsessions,GSSCred,Software Signing,com.apple.GSSCred',
+    '/dev/bpf,packetbeat,Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z),packetbeat',
     '/dev/auditsessions,TouchBarServer,Software Signing,com.apple.touchbarserver',
     '/dev/auditsessions,authd,Software Signing,com.apple.authd',
     '/dev/auditsessions,securityd,Software Signing,com.apple.securityd',

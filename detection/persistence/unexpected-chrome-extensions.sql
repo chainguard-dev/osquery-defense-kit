@@ -74,7 +74,7 @@ WHERE
     )
   )
   AND NOT exception_key IN (
-    "true,Daniel Kladnik @ kiboke studio,I don't care about cookies,fihnjjcciajhdojfnbdddfaoknhalnja",
+
     "true,Gareth Stephenson,My O'Reilly Downloader,deebiaolijlopiocielojiipnpnaldlk",
     'false,privacybadger-owner@eff.org,Privacy Badger,mkejgcgkdlddbggjhhflekkondicpnop',
     'true,,Acorns Earn,facncfnojagdpibmijfjdmhkklabakgd',
@@ -144,7 +144,11 @@ WHERE
     'true,,Google Mail Checker,mihcahmgecmbnbcchbopgniflfhgnkff',
     'true,,Google Optimize,bhdplaindhdkiflmbfbciehdccfhegci',
     'true,,Google Play Books,mmimngoggfoobjdlefbcabngfnmieonb',
+<<<<<<< HEAD
     'true,,Grammarly: AI Writing and Grammar Checker App,kbfnbcaeplbcioakkpcpgfkobkghlhen', 
+=======
+    'true,,Grammarly: AI Writing and Grammar Checker App,kbfnbcaeplbcioakkpcpgfkobkghlhen',
+>>>>>>> main
     'true,,Grammarly: Grammar Checker and AI Writing App,kbfnbcaeplbcioakkpcpgfkobkghlhen',
     'true,,Grammarly: Grammar Checker and Writing App,kbfnbcaeplbcioakkpcpgfkobkghlhen',
     'true,,Gravit Designer,pdagghjnpkeagmlbilmjmclfhjeaapaa',
@@ -252,7 +256,7 @@ WHERE
     'true,,uBlock,epcnnfbjfcgphgdmggkamkmgojdagdnn',
     'true,,writeGPT - ChatGPT Prompt Engineer Assistant,dflcdbibjghipieemcligeelbmackgco',
     'true,Adaware,Safe Torrent Scanner,aegnopegbbhjeeiganiajffnalhlkkjb',
-    'true,Adblock for Chrome Team,Adblock for Chrome™,onomjaelhagjjojbkcafidnepbfkpnee', 
+    'true,Adblock for Chrome Team,Adblock for Chrome™,onomjaelhagjjojbkcafidnepbfkpnee',
     'true,Adblock, Inc.,AdBlock — best ad blocker,gighmmpiobklfepjocnamgkkbiglidom',
     'true,Adguard Software Ltd,AdGuard AdBlocker,bgnkhhnnamicmpeenaelnjfhikgbkllg',
     'true,AgileBits,1Password extension (desktop app required),aomjjhallfgjeglblehebfpbcfeobpgk',

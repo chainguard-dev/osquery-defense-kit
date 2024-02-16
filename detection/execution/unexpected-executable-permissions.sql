@@ -124,3 +124,7 @@ WHERE
     f.path = '/Library/Bitdefender/AVP/product/bin/EndpointSecurityforMac.app/Contents/MacOS/EndpointSecurityforMac'
     AND f.mode = '0655'
   )
+  AND NOT (
+    p0.name = 'ShortcutDroplet'
+    AND f.mode = '0751'
+  )

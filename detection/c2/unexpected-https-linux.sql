@@ -303,6 +303,7 @@ WHERE
     '500,wolfictl,500u,500g,wolfictl',
     '500,xmobar,0u,0g,xmobar',
     '500,yay,0u,0g,yay',
+    '0,packetbeat,0u,0g,packetbeat',
     '500,zdup,500u,500g,zdup',
     '500,zoom,0u,0g,zoom',
     '500,zoom.real,u,g,zoom.real'
@@ -335,7 +336,7 @@ WHERE
   )
   AND NOT (
     exception_key = '0,curl,0u,0g,curl'
-    AND p.cmdline = 'curl --fail https://ipinfo.io/timezone'
+    AND p.cmdline LIKE 'curl --fail %'
   ) -- Exclude processes running inside of containers
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
   AND NOT p.cgroup_path LIKE '/system.slice/system.slice:docker:%'

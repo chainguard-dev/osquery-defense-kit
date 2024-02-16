@@ -218,6 +218,7 @@ WHERE
       '500,Python,Python,,org.python.python',
       '500,Python,Python,,Python',
       '500,Python,Python,,',
+      '500,Python,Python,0u,80g',
       '500,Python,Python,Developer ID Application: Ned Deily (DJ3H93M7VJ),org.python.python'
     )
     AND (
