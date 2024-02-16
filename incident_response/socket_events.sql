@@ -7,4 +7,5 @@ SELECT
   *
 FROM
   socket_events
-WHERE time > (strftime('%s', 'now') -600)
+WHERE
+  time > (strftime('%s', 'now') -600)

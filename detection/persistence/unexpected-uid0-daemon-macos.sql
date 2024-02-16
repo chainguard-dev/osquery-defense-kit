@@ -304,6 +304,7 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Cloudflare Inc. (68WVV388M8)',
     'Developer ID Application: Creative Labs Pte. Ltd. (5Q3552844F)',
+    'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',

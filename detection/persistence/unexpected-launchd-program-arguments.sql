@@ -51,6 +51,7 @@ WHERE
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: MacPaw Inc. (S8EX82NJP6)',
     'Developer ID Application: Mullvad VPN AB (CKG9MXH72F)',
+    'Developer ID Application: Proton AG (2SB5Z68H26)',
     'Developer ID Application: Mersive Technologies (63B5A5WDNG)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',

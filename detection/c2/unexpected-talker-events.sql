@@ -80,6 +80,7 @@ WHERE
   AND s.remote_address NOT LIKE 'fc00:%'
   AND NOT s.path LIKE '/Applications/%' -- NOTE: Do not filter out /bin (bash) or /usr/bin (nc)
   AND NOT s.path LIKE '/private/var/folders/%/T/go-build%'
+  AND NOT s.path = '/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Resources/Java Updater.app/Contents/MacOS/Java Updater'
   AND NOT top2_dir IN (
     '/Library/Apple',
     '/Library/Application Support',
@@ -109,10 +110,12 @@ WHERE
     '/opt/spotify',
     '/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin'
   )
-  AND NOT exception_key IN ( 
+  AND NOT exception_key IN (
+    '0,velociraptor,velociraptor,500u,80g',
     '500,0,110,syncthing',
     '500,0,123,sntp',
     '500,0,1234,spotify',
+    '500,0,20480,com.adguard.mac.adguard.network-extension',
     '500,0,20480,io.tailscale.ipn.macsys.network-extension',
     '500,0,22,ssh',
     '500,0,27668,com.adguard.mac.adguard.network-extension',
@@ -126,6 +129,7 @@ WHERE
     '500,0,32768,firefox',
     '500,0,32768,git-remote-http',
     '500,0,32768,io.tailscale.ipn.macsys.network-extension',
+    '500,0,32768,ir_agent',
     '500,0,32768,ksfetch',
     '500,0,32768,networkQuality',
     '500,0,32768,syncthing',
@@ -201,12 +205,15 @@ WHERE
     '500,0,80,chrome',
     '500,0,80,com.adguard.mac.adguard.network-extension',
     '500,0,80,com.apple.NRD.UpdateBrainService',
+    '500,0,80,com.bitdefender.cst.net.dci.dci-network-extension',
     '500,0,80,electron',
     '500,0,80,firefox',
     '500,0,80,http',
+    '500,0,80,incusd',
     '500,0,80,io.tailscale.ipn.macsys.network-extension',
     '500,0,80,ir_agent',
     '500,0,80,ksfetch',
+    '500,0,80,metricbeat',
     '500,0,80,slack',
     '500,0,8080,com.bitdefender.cst.net.dci.dci-network-extension',
     '500,0,9,launcher',
@@ -232,6 +239,7 @@ WHERE
     '500,500,32768,ksfetch',
     '500,500,32768,melange',
     '500,500,32768,node',
+    '500,500,32768,rzls',
     '500,500,32768,terraform-ls',
     '500,500,3307,cloud_sql_proxy',
     '500,500,4318,Code Helper (Plugin)',
@@ -286,6 +294,7 @@ WHERE
     '500,500,80,firefox-bin',
     '500,500,80,ksfetch',
     '500,500,80,node',
+    '500,500,9000,Meeting Center',
     '500,500,32768,Microsoft.ServiceHub.Controller',
     '500,500,32768,Microsoft.VisualStudio.Code.ServiceHost',
     '500,99,13568,Slack Helper',
@@ -294,7 +303,7 @@ WHERE
     '500,99,443,Slack Helper',
     '500,99,443,Slack',
     '500,99,53,Slack Helper'
- )
+  )
   AND NOT exception_key LIKE '500,500,443,terraform%'
   AND NOT exception_key LIKE '500,500,32768,terraform-provider-%'
   AND NOT exception_key LIKE '500,500,2304,terraform%'

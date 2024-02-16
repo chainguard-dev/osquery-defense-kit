@@ -106,6 +106,7 @@ WHERE
     '32768,6,0,tailscaled,0u,0g,tailscaled',
     '32768,6,500,ssh,0u,0g,ssh',
     '3306,6,500,java,u,g,java',
+    '80,6,500,firefox-bin,500u,500g,firefox-bin',
     '3307,6,500,cloud_sql_proxy,0u,0g,cloud_sql_proxy',
     '3443,6,500,chrome,0u,0g,chrome',
     '3478,6,500,chrome,0u,0g,chrome',
@@ -287,8 +288,8 @@ WHERE
     AND p.euid > 500
   )
   AND NOT (
-    p.name = 'firefox'
-    AND f.filename = 'firefox'
+    p.name IN ('firefox', 'firefox-bin')
+    AND f.filename IN ('firefox', 'firefox-bin')
     AND s.remote_port > 3000
     AND s.protocol IN (6, 17)
     AND p.euid > 500

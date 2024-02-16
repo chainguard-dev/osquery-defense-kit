@@ -44,4 +44,5 @@ WHERE -- This time should match the interval
   )
   OR (
     key = 'DYLD_FRAMEWORK_PATH' -- sort of obsolete, but may affect SIP abusers
+    AND NOT pe.value LIKE '%/IDLE.app/%'
   )

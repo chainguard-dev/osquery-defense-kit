@@ -94,10 +94,11 @@ WHERE
     )
   )
   AND NOT p1_cmd IN (
+    '/opt/incus/bin/incusd --group incus-admin --logfile /var/log/incus/incusd.log',
     '/bin/sh /etc/network/if-up.d/avahi-autoipd',
     '/usr/bin/libvirtd --timeout 120'
   )
-  AND NOT p1_path IN ('/usr/libexec/gvfsd')
+  AND NOT p1_path IN ('/usr/libexec/gvfsd', '/opt/incus/bin/incusd')
   AND NOT p0_cmd LIKE '%ip route add % dev % metric 1000 scope link'
   AND NOT p0_cmd LIKE '%ip link set lo netns -1'
 GROUP BY
