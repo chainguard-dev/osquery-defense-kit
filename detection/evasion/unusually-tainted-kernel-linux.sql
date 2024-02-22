@@ -37,10 +37,11 @@ FROM
     ORDER BY
       km.name ASC
   )
+  -- 4096 is a signed, out of tree, open source driver
   -- 4097 is a signed, out of tree, proprietary driver
   -- 512 is a kernel warning
 WHERE
-  taint NOT IN (0, 512, 4097)
+  taint NOT IN (0, 512, 4096, 4097)
   AND NOT (
     (
       -- 12289 is an unsigned, out of tree, proprietary
