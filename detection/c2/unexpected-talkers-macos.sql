@@ -256,7 +256,7 @@ WHERE
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.teams2.helper',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),net.java.openjdk.java',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefox',
-      'Developer ID Application: ]Mozilla Corporation (43AQ936H96),org.mozilla.firefoxdeveloperedition',
+      'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefoxdeveloperedition',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
       'Developer ID Application: Opera Software AS (A2P9LX4JPN),com.operasoftware.Opera.helper',
       'Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',
