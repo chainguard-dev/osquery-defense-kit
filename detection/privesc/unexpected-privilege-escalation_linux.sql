@@ -56,6 +56,7 @@ WHERE
         '/usr/bin/doas',
         '/usr/bin/fusermount',
         '/usr/bin/fusermount3',
+        '/usr/bin/newgrp',
         '/usr/bin/login',
         '/usr/bin/su',
         '/usr/bin/sudo',

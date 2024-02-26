@@ -24,12 +24,14 @@ SELECT
   magic.data AS f_magic,
   -- Child
   pe.path AS p0_path,
+  COALESCE(REGEX_MATCH (pe.path, '.*/(.*)', 1), pe.path) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
   pe.cwd AS p0_cwd,
   pe.pid AS p0_pid,
   -- Parent
   pe.parent AS p1_pid,
   p1.cgroup_path AS p1_cgroup,
+  REGEX_MATCH (COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
   TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
   COALESCE(p1.path, pe1.path) AS p1_path,
   COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
@@ -40,6 +42,11 @@ SELECT
   TRIM(
     COALESCE(p1_p2.cmdline, pe1_p2.cmdline, pe1_pe2.cmdline)
   ) AS p2_cmd,
+  REGEX_MATCH (
+    COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path),
+    '.*/(.*)',
+    1
+  ) AS p2_name,
   COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path) AS p2_path,
   COALESCE(
     p1_p2_hash.path,

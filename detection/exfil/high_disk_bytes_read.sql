@@ -89,6 +89,7 @@ WHERE
     'ollama-runer',
     'ollama',
     'go',
+    'elastic-endpoin',
     'golangci-lint',
     'gopls',
     'grype',

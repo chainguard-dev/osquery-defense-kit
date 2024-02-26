@@ -246,6 +246,8 @@ WHERE
     '/dev/watchdog',
     '/dev/wmi/',
     '/dev/wmi/dell-smbios',
+    '/dev/wwanat',
+    '/dev/wwanmbim',
     '/dev/zd',
     '/dev/zero',
     '/dev/zfs',

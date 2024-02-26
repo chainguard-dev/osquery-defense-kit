@@ -173,6 +173,7 @@ WHERE
     '8443,6,500,controlplane',
     '8443,6,500,webhook',
     '8834,6,0,nessusd',
+    '547,17,500,dnsmasq',
     '9000,6,500,authentik-proxy',
     '9000,6,500,main',
     '9090,6,500,controlplane',

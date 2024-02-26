@@ -57,6 +57,7 @@ WHERE -- This time should match the interval
     AND NOT pe.value IN (
       'libfakeroot.so',
       '/usr/local/lib/libmimalloc.so',
+      '/opt/splunkforwarder/lib/libdlwrapper.so',
       '/usr/lib/libjemalloc.so'
     )
     AND NOT pe.value LIKE ':/home/%/.local/share/Steam'

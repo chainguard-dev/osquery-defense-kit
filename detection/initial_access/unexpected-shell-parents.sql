@@ -144,6 +144,7 @@ WHERE
     'steam_osx',
     'swift',
     'systemd',
+    'VisualStudio',
     'terminator',
     'terraform-provi',
     'test2json',
