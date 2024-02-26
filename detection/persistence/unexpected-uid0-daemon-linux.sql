@@ -100,7 +100,7 @@ WHERE
     'alsactl,/usr/sbin/alsactl,0,system.slice,alsa-state.service,0755',
     'anacron,/usr/bin/anacron,0,system.slice,cronie.service,0755',
     'incusd,/usr/libexec/incus/incusd,0,lxc.monitor.pure-dodo,,0755',
-    'anonical-livep,/snap/canonical-livepatch/__VERSION__/canonical-livepatchd,0,system.slice,snap.canonical-livepatch.canonical-livepatchd.service,0755',
+    'canonical-livep,/snap/canonical-livepatch/__VERSION__/canonical-livepatchd,0,system.slice,snap.canonical-livepatch.canonical-livepatchd.service,0755',
     'anacron,/usr/sbin/anacron,0,system.slice,crond.service,0755',
     'apcupsd,/usr/bin/apcupsd,0,system.slice,apcupsd.service,0755',
     'atd,/usr/sbin/atd,0,system.slice,atd.service,0755',
