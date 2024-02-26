@@ -121,6 +121,7 @@ WHERE
     '/dev/pf,CloudflareWARP,Developer ID Application: Cloudflare Inc. (68WVV388M8),CloudflareWARP',
     '/dev/pf,mullvad-daemon,Developer ID Application: Mullvad VPN AB (CKG9MXH72F),mullvad-daemon',
     '/dev/shm,python3',
+    '/dev/zero,bash,Software Signing,com.apple.bash',
     '/dev/tty.usbmodem21430,Bazecor Helper (Renderer),,',
     '/dev/xcpm,PerfPowerServices,Software Signing,com.apple.PerfPowerServices',
     '/dev/xcpm,systemstats,Software Signing,com.apple.systemstats',

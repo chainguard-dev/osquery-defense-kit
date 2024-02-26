@@ -156,6 +156,7 @@ WHERE
       p0_cmd LIKE '%/org.gpgtools.log.%/fifo'
       OR p0_cmd LIKE '%/var/%/gitstatus.POWERLEVEL9K.%'
       OR p0_cmd LIKE '%/var/%/p10k.worker.%'
+      OR p0_cmd LIKE '%/tmp/blesh/%'
     )
   )
   AND NOT (
@@ -194,6 +195,7 @@ WHERE
   AND NOT p0_cmd LIKE 'dirname %history'
   AND NOT p0_cmd LIKE '/bin/rm -f /tmp/periodic.%'
   AND NOT p0_cmd LIKE '/bin/rm -f /tmp/nix-shell.%'
+  AND NOT p0_cmd LIKE 'rm -f /tmp/blesh/%'
   AND NOT p0_cmd LIKE 'touch -r . /private/tmp/nix-build%'
   AND NOT p0_cmd LIKE '%GNU Libtool%touch -r%'
   AND NOT p0_cmd LIKE 'rm -f /tmp/locate%/_updatedb%'
@@ -211,6 +213,7 @@ WHERE
     'dd,500,zsh,login',
     'bash,500,idea,launchd',
     'yara,500,bash,fish',
+    'go,500,fish,login',
     'ssh,500,limactl.ventura,launchd',
     'git,500,zsh,login',
     'bat,500,zsh,login',

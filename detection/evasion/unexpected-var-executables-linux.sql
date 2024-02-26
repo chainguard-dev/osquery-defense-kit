@@ -37,6 +37,7 @@ WHERE
   AND file.type = 'regular'
   AND file.path NOT LIKE '%/../%'
   AND file.path NOT LIKE '%/./%'
+  AND file.path NOT LIKE '/var/tmp/images/%'
   AND (
     file.mode LIKE '%7%'
     OR file.mode LIKE '%5%'

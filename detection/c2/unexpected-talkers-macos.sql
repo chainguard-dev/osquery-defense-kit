@@ -192,6 +192,7 @@ WHERE
     '500,6,22,ssh,ssh,0u,500g',
     '500,6,5432,psql,psql,500u,80g',
     '500,6,22,ssh,ssh,500u,0g',
+    '500,17,123,gvproxy,gvproxy,500u,80g',
     '500,6,80,qemu-system-x86_64,qemu-system-x86_64,500u,80g',
     '500,6,22,ssh,ssh,500u,20g',
     '500,6,22,ssh,ssh,500u,80g',

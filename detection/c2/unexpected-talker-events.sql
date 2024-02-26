@@ -83,6 +83,7 @@ WHERE
   AND NOT s.path = '/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Resources/Java Updater.app/Contents/MacOS/Java Updater'
   AND NOT top2_dir IN (
     '/Library/Apple',
+    '/Library/Developer',
     '/Library/Application Support',
     '/Library/Kandji',
     '/opt/homebrew',

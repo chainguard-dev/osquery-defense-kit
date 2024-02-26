@@ -201,6 +201,8 @@ WHERE
   AND NOT exception_key IN (
     'bash,500,ninja,bash',
     'grep,500,fish,konsole',
+    'tar,0,incusd,systemd',
+    'bwrap,500,melange,dash',
     'ls,500,zsh,alacritty',
     'nc,500,fish,konsole',
     'kmod,0,incusd,systemd',
