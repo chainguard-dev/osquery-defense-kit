@@ -174,6 +174,7 @@ WHERE
     '/dev/hidraw,chrome',
     '/dev/hvc,agetty',
     '/dev/hwrng,rngd',
+    '/dev/wwan0mbim,mbim-proxy',
     '/dev/input/event,Xorg',
     '/dev/input/event,thermald',
     '/dev/input/event,touchegg',
