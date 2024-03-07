@@ -29,6 +29,7 @@ WHERE
   AND file.filename NOT IN (
     'acpid.pid',
     'agetty.reload',
+    'pulseaudio-enable-autospawn',
     'alsactl.pid',
     'apcupsd.pid',
     'com.rapid7.cnchub.pid',

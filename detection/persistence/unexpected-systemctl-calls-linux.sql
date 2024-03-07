@@ -80,6 +80,8 @@ WHERE
     'systemctl,0,snapd,systemd',
     'systemctl,0,tailscaled,',
     'systemctl,127,snap,systemd',
+    'systemctl,500,snapd,systemd',
+    'systemctl,500,systemd,systemd',
     'systemctl,500,bash,gnome-terminal-server',
     'systemctl,500,snap,systemd',
     'systemctl,500,systemd,',

@@ -42,6 +42,7 @@ WHERE
   AND f.path NOT LIKE '/opt/rapid7/ir_agent/%'
   AND f.path NOT LIKE '/usr/local/aws-cli/%/dist/aws'
   AND f.path NOT LIKE '/usr/local/kolide-k2/bin/%-updates/%'
+  AND f.path NOT LIKE '/var/kolide-k2/k2device.kolide.com/updates/%'
   AND f.path NOT LIKE '/tmp/go-build%'
   AND p.name NOT LIKE 'osqtool%'
 GROUP by

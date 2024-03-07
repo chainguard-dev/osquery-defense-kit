@@ -290,6 +290,7 @@ WHERE
       'zsh,500,OpenLens,launchd',
       'sh,500,ssh,mosh-client',
       'sh,500,updater,Foxit PDF Reader',
+      'dash,500,gdm-wayland-session,gdm-session-worker',
       'sh,500,yabai,launchd',
       'zsh,500,old,launchd',
       'zsh,500,old,old',

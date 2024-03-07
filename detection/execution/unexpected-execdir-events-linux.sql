@@ -77,6 +77,7 @@ WHERE
         AND INSTR(path, "/nix/") != 1
         AND INSTR(path, "/opt/") != 1
         AND INSTR(path, "/snap/") != 1
+        AND INSTR(path, "/var/kolide-k2/") != 1
         AND INSTR(path, "/var/lib/snapd/") != 1
         AND INSTR(path, "/usr/share/spotify") != 1
         AND INSTR(path, "/usr/share/code/") != 1

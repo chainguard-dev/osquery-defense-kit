@@ -103,8 +103,8 @@ WHERE
     OR (
       p0.cmdline LIKE '%UserKnownHostsFile=/dev/null%'
       AND NOT p1.name = 'limactl'
-      AND NOT p0.cmdline LIKE '%@localhost'
-      AND NOT p0.cmdline LIKE '%@localhost -A'
+      AND NOT p0.cmdline LIKE '%@localhost%'
+      AND NOT p0.cmdline LIKE '%@localhost -A%'
     ) -- Crypto miners
     OR p0.cmdline LIKE '%hashrate%'
     OR p0.cmdline LIKE '%hashvault%'

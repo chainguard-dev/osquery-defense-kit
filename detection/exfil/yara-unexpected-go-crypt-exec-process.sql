@@ -101,6 +101,7 @@ WHERE
     'go',
     'gopls',
     'grype',
+    'packetbeat',
     'incus',
     'incusd',
     'keybase',
