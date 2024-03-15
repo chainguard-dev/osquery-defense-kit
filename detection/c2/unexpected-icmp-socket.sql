@@ -3,7 +3,7 @@
 -- references:
 --   *https://attack.mitre.org/techniques/T1095/ (C2: Non-Application Layer Protocol)
 --
--- tags: transient state net often
+-- tags: transient state net extra
 SELECT
   pop.pid AS p0_pid,
   pop.socket,

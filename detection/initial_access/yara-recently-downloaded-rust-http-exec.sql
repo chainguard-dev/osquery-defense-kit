@@ -1,4 +1,4 @@
--- Recently downloaded cryptexec program
+-- tags: volume filesystem seldom
 SELECT
   file.path,
   file.size,

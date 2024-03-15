@@ -1,7 +1,7 @@
 -- Currently running UPX executable
 -- 
 -- tags: persistent
--- interval: 3600
+-- interval: 7199
 -- platform: posix
 SELECT
   yara.*,

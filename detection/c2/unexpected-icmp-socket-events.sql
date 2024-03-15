@@ -4,7 +4,7 @@
 --   *https://attack.mitre.org/techniques/T1095/ (C2: Non-Application Layer Protocol)
 --
 -- interval: 300
--- tags: transient events net
+-- tags: transient events net extra
 SELECT
   se.*,
   p.path,

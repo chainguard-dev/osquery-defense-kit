@@ -6,7 +6,7 @@
 -- false positives:
 --   * possible, but none known
 --
--- tags: transient process events
+-- tags: transient process events extra
 -- platform: linux
 -- interval: 600
 SELECT -- Child
