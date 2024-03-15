@@ -1,4 +1,4 @@
--- Recently downloaded Stealer
+-- tags: volume filesystem seldom
 SELECT
   file.path,
   file.size,

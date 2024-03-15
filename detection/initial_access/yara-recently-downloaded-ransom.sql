@@ -1,4 +1,4 @@
--- Recently downloaded UPX file
+-- tags: volume filesystem seldom
 SELECT
   file.path,
   file.size,
