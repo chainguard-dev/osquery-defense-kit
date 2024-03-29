@@ -128,6 +128,7 @@ WHERE
     'whatsapp.com',
     'xtom.com',
     'zoom.us',
+    'yubico.com',
     'zoomgov.com',
     'zsa.io'
   )

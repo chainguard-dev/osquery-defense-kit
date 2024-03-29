@@ -65,6 +65,7 @@ WHERE
     '/dev/null',
     '/dev/ptmx',
     '/dev/random',
+    '/dev/zero',
     '/dev/tty',
     '/dev/urandom'
   )
