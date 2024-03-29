@@ -24,3 +24,4 @@ WHERE
   AND command NOT LIKE '%rsync%'
   AND command NOT LIKE 'gsutil %'
   AND command NOT LIKE '%git commit%'
+  AND command NOT LIKE 'docker run amouat/jocko%'

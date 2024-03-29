@@ -150,6 +150,8 @@ WHERE
     '500,cpu,cpu-555549441132dc6b7af538428ce3359ae94eab37,',
     '500,crane,a.out,',
     '500,nvim,,',
+    '500,J8RPQ294UB.com.skitch.SkitchHelper,J8RPQ294UB.com.skitch.SkitchHelper,Developer ID Application: Skitch Inc (J8RPQ294UB)',
+    '500,AeroSpace,bobko.aerospace,aerospace-codesign-certificate',
     '500,debug.test,a.out,',
     '500,dive,a.out,',
     '500,dlv,a.out,',
@@ -239,6 +241,8 @@ WHERE
   AND NOT exception_key LIKE '500,rust-analyzer,rust_analyzer-%,'
   AND NOT exception_key LIKE '500,nvim,bob-%'
   AND NOT exception_key LIKE '500,nvim,%.out,'
+  AND NOT exception_key LIKE '500,rzls,apphost-%,'
+  AND NOT exception_key LIKE '500,sg-nvim-agent,sg_nvim_agent-%,'
   AND NOT exception_key LIKE '500,taplo-full-darwin-%,taplo-%,'
 GROUP BY
   p0.pid

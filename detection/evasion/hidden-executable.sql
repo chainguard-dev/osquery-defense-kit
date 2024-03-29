@@ -62,6 +62,7 @@ WHERE
   AND NOT f.directory LIKE '%/.steampipe/db/%'
   AND NOT f.directory LIKE '%/.docker/cli-plugins'
   AND NOT f.directory LIKE '%/.cursor/%'
+  AND NOT f.directory LIKE '/Applications/Corsair iCUE5 Software/.cuepkg-%'
   AND NOT f.directory LIKE '%/.tflint.d/%'
   AND NOT f.directory LIKE '%/.vs-kubernetes/%'
   AND NOT f.directory LIKE '%/.vscode/extensions/%'

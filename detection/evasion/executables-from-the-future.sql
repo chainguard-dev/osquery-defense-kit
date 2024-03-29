@@ -4,7 +4,7 @@
 --   * https://attack.mitre.org/techniques/T1070/006/ (Indicator Removal on Host: Timestomp)
 --
 -- false positives:
---   * None observed
+--   * Badly distributed software
 --
 -- tags: persistent state process
 SELECT
@@ -37,6 +37,12 @@ FROM
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
 WHERE
-  mtime_newer == 1
-  OR ctime_newer == 1
-  OR btime_newer == 1
+  (
+    mtime_newer == 1
+    OR ctime_newer == 1
+    OR btime_newer == 1
+  )
+  AND NOT p.path LIKE '/Applications/Signal.app%'
+  AND NOT p.path LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%'
+  -- 2038
+  AND NOT f.mtime > 2153484373

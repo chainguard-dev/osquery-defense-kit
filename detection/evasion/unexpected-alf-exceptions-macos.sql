@@ -98,6 +98,8 @@ WHERE -- Filter out stock exceptions to decrease overhead
     'Developer ID Application: Evernote Corporation (Q79WDW8YH9),com.evernote.Evernote,/Applications/Evernote.app/,501',
     'Developer ID Application: Python Software Foundation (BMM5U3QVKW),org.python.python,/Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/,0',
     'Software Signing,com.apple.Music,/System/Applications/Music.app/,0',
+    'Software Signing,com.apple.rpc,/usr/sbin/rpc.lockd,0',
+    'Software Signing,com.apple.Terminal,/System/Applications/Utilities/Terminal.app/,0',
     'Software Signing,com.apple.WebKit.Networking,/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/,0',
     'Software Signing,com.apple.WebKit.Networking,/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/,0',
     'Software Signing,com.apple.audio.InfoHelper,/System/Library/Frameworks/AudioToolbox.framework/XPCServices/com.apple.audio.InfoHelper.xpc/,0',
@@ -106,6 +108,7 @@ WHERE -- Filter out stock exceptions to decrease overhead
     'Software Signing,com.apple.python3,/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
     'Software Signing,com.apple.python3,/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
     'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0',
+    'Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ),dev.zed.Zed,/Applications/Zed.app/,501',
     'qbittorrent macos,org.qbittorrent.qBittorrent,/Applications/qbittorrent.app/,501'
   )
   AND NOT exception_key LIKE ',a.out,/Users/%/dev/%,501'

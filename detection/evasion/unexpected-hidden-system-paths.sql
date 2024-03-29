@@ -124,6 +124,7 @@ WHERE
     '/var/db/.InstallerTMExcludes.plist',
     '/var/db/.LastGKApp',
     '/var/db/.LastGKReject',
+    '/tmp/.wsdl/',
     '/var/db/.MASManifest',
     '/var/db/.EntReg',
     '/var/db/.RunLanguageChooserToo',
@@ -142,6 +143,7 @@ WHERE
     '/var/root/.docker/',
     '/var/root/.forward',
     '/var/root/.lesshst',
+    '/etc/.bootcount',
     '/var/root/.nix-channels',
     '/var/root/.nix-defexpr/',
     '/var/root/.nix-profile/',
@@ -165,6 +167,7 @@ WHERE
   )
   AND file.path NOT LIKE '/%bin/bootstrapping/.default_components'
   AND file.path NOT LIKE '/tmp/.#%'
+  AND file.path NOT LIKE '/lib/jvm/.java-%.jinfo'
   AND file.path NOT LIKE '/tmp/.lark_cache_%'
   AND file.path NOT LIKE '/tmp/.cdx.json%'
   AND file.path NOT LIKE '/tmp/.wine-%'

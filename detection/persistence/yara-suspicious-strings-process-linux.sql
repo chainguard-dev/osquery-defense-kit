@@ -3,7 +3,7 @@
 -- reference:
 --   * https://github.com/timb-machine/linux-malware/blob/725aad34e216cc024c93b04964b289f10f819e6e/defensive/yara/personal-malware-bazaar/unixredflags3.yara
 --
--- tags: persistent
+-- tags: persistent extra
 -- interval: 7200
 -- platform: linux
 SELECT
@@ -76,12 +76,13 @@ WHERE
         $avahi = "avahi-daemon:"
         $redhat4 = "Red Hat 4"
     condition:
-        filesize < 25MB and 4 of them
+        filesize < 25MB and 5 of them
 }'
   AND yara.count > 0
   AND p0.name NOT IN (
     'chrome_crashpad',
     'X',
+    'emacs',
     'git',
     'systemd',
     'NetworkManager',
@@ -100,12 +101,15 @@ WHERE
     '/bin/bash',
     '/bin/containerd-shim-runc-v2',
     '/bin/fish',
+    '/bin/dash',
+    '/bin/sh',
     '/usr/bin/bash',
     '/usr/lib/snapd/snapd',
     '/usr/bin/snap',
     '/usr/bin/containerd-shim-runc-v2',
     '/usr/bin/docker-proxy',
     '/usr/bin/fish',
+    '/usr/bin/docker',
     '/usr/bin/gnome-software',
     '/usr/bin/gpg-agent',
     '/usr/bin/ibus-daemon',

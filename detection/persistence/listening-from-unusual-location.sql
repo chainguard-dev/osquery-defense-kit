@@ -96,5 +96,5 @@ WHERE
     '/Applications/Keybase.app/Contents/SharedSupport/bin',
     '/opt/docker-desktop/bin'
   )
-  AND NOT exception_key IN ('16620,6,500,psi-bastion')
+  AND NOT exception_key IN ('16620,6,500,psi-bastion', '32768,6,500,java')
   AND NOT p0.path LIKE '/nix/store/%'

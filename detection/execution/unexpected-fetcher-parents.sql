@@ -71,6 +71,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,500,node-cve-count.,bash',
     'curl,500,nvim,nvim',
     'curl,500,ruby,zsh',
+    'curl,500,endpoint-instal,bash',
     'curl,500,ShellLauncher,',
     'curl,500,ShellLauncher,login',
     'curl,500,Slack,launchd',

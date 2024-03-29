@@ -144,6 +144,7 @@ WHERE
     'docker-index',
     'esbuild',
     'firefox',
+    'logioptionsplus_updater',
     'fsdaemon',
     'go',
     'goland',

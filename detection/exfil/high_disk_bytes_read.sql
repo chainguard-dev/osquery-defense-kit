@@ -145,6 +145,7 @@ WHERE
     '/usr/bin/darktable',
     '/usr/bin/dockerd',
     '/usr/bin/gnome-shell',
+    '/Library/Application Support/Adobe/Adobe Desktop Common/HDBox/Setup',
     '/usr/bin/gnome-software',
     '/usr/bin/rsync',
     '/usr/bin/teskdisk',

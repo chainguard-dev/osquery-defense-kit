@@ -194,6 +194,7 @@ WHERE
   )
   AND NOT f.directory LIKE '/Users/%/.docker/cli-plugins'
   AND NOT f.directory LIKE '/Users/%/.nix-profile/bin'
-  AND NOT f.path LIKE '	/Users/%/Library/Fonts/%.ttf'
+  AND NOT f.path LIKE '/Users/%/Library/Fonts/%.ttf'
+  AND NOT f.path LIKE '/Users/%/Library/Fonts/%.otf'
 GROUP BY
   f.path
