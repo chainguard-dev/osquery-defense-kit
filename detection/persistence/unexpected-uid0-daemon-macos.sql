@@ -301,6 +301,8 @@ WHERE -- Focus on longer-running programs
   AND NOT s.authority IN (
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Bitdefender SRL (GUNFMW623Y)',
+    'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
+    'Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9)',
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Cloudflare Inc. (68WVV388M8)',
     'Developer ID Application: Creative Labs Pte. Ltd. (5Q3552844F)',

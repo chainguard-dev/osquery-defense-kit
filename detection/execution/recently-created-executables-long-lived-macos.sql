@@ -195,6 +195,7 @@ WHERE
     'Developer ID Application: Parallels International GmbH (4C6364ACXT)',
     'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     'Developer ID Application: RescueTime, Inc (FSY4RB8H39)',
+    'Developer ID Application: Wizards of OBS LLC (2MMRE5MTB8)',
     'Developer ID Application: SUSE LLC (2Q6FHJR3H3)',
     'Developer ID Application: Seiko Epson Corporation (TXAEAV5RN4)',
     'Developer ID Application: SteelSeries (6WGL6CHFH2)',

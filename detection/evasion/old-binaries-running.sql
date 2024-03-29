@@ -59,6 +59,7 @@ WHERE
     '/usr/bin/xclip',
     '/usr/bin/xss-lock',
     '/usr/bin/i3lock',
+    '/usr/bin/xbindkeys',
     '/usr/local/bin/dive'
   )
   AND p.name NOT IN (
@@ -72,7 +73,7 @@ WHERE
     'Pandora Helper',
     'dlv'
   )
-  AND f.path NOT LIKE '/private/var/folders/%/T/AppTranslocation/AC5EE427-8F66-4F1D-BDE1-852E8C1D17FB/d/Skitch.app/Contents/MacOS/Skitch'
+  AND f.path NOT LIKE '/private/var/folders/%/T/AppTranslocation/%/d/Skitch.app/Contents/MacOS/Skitch'
   AND p.cgroup_path NOT LIKE '/system.slice/docker-%'
   AND p.cgroup_path NOT LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
 GROUP BY

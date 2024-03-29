@@ -41,7 +41,7 @@ WHERE
   AND p.path NOT LIKE '%.sh'
   AND p.path NOT LIKE '%.py'
   AND p.path NOT LIKE '%.rb'
-  AND p.path != '/sbin/ldconfig'
+  AND p.path NOT IN ('/sbin/ldconfig', '/usr/sbin/ldconfig')
   AND NOT (
     p.path LIKE '/Users/%'
     AND magic.data LIKE 'POSIX shell script%'

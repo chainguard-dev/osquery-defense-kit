@@ -6,7 +6,7 @@
 -- references:
 --   * https://www.deepinstinct.com/blog/bpfdoor-malware-evolves-stealthy-sniffing-backdoor-ups-its-game
 --
--- tags: persistent process state seldom
+-- tags: persistent process state seldom extra
 -- platform: macos
 SELECT
   p.uid,
@@ -61,27 +61,30 @@ WHERE
   AND pmm.path LIKE "%.dylib"
   AND exception_key NOT IN (
     '500,Bitwarden,/Applications/Bitwarden.app/Contents/MacOS/Bitwarden',
-    '500,Final Cut Pro,/Applications/Final Cut Pro.app/Contents/MacOS/Final Cut Pro',
     '500,Clipy,/Applications/Clipy.app/Contents/MacOS/Clipy',
     '500,Evernote,/Applications/Evernote.app/Contents/MacOS/Evernote',
-    '500,Skitch,/Applications/Skitch.app/Contents/MacOS/Skitch',
-    '500,Macdown,/Applications/MacDown.app/Contents/MacOS/MacDown',
-    '500,monday.com,/Applications/monday.com.app/Contents/MacOS/monday.com',
+    '500,Final Cut Pro,/Applications/Final Cut Pro.app/Contents/MacOS/Final Cut Pro',
     '500,J8RPQ294UB.com.skitch.SkitchHelper,/Applications/Skitch.app/Contents/Library/LoginItems/J8RPQ294UB.com.skitch.SkitchHelper.app/Contents/MacOS/J8RPQ294UB.com.skitch.SkitchHelper',
-    '500,Revolt,/Applications/Revolt.app/Contents/MacOS/Revolt',
-    '500,Revolt Helper,/Applications/Revolt.app/Contents/Frameworks/Revolt Helper.app/Contents/MacOS/Revolt Helper',
+    '500,Lightshot Screenshot,/Applications/Lightshot Screenshot.app/Contents/MacOS/Lightshot Screenshot',
+    '500,Macdown,/Applications/MacDown.app/Contents/MacOS/MacDown',
     '500,Revolt Helper (GPU),/Applications/Revolt.app/Contents/Frameworks/Revolt Helper (GPU).app/Contents/MacOS/Revolt Helper (GPU)',
-    '500,Slack,/Applications/Slack.app/Contents/MacOS/Slack',
+    '500,Revolt Helper,/Applications/Revolt.app/Contents/Frameworks/Revolt Helper.app/Contents/MacOS/Revolt Helper',
+    '500,Revolt,/Applications/Revolt.app/Contents/MacOS/Revolt',
+    '500,Skitch,/Applications/Skitch.app/Contents/MacOS/Skitch',
     '500,Slack Helper (GPU),/Applications/Slack.app/Contents/Frameworks/Slack Helper (GPU).app/Contents/MacOS/Slack Helper (GPU)',
     '500,Slack Helper (Renderer),/Applications/Slack.app/Contents/Frameworks/Slack Helper (Renderer).app/Contents/MacOS/Slack Helper (Renderer)',
+    '500,Slack,/Applications/Slack.app/Contents/MacOS/Slack',
     '500,Snagit 2020,/Applications/Snagit 2020.app/Contents/MacOS/Snagit 2020',
     '500,SnagitHelper2020,/Applications/Snagit 2020.app/Contents/Library/LoginItems/SnagitHelper2020.app/Contents/MacOS/SnagitHelper2020',
+    '500,Speedtest,/Applications/Speedtest.app/Contents/MacOS/Speedtest',
     '500,Todoist,/Applications/Todoist.app/Contents/MacOS/Todoist',
-    '500,WhatsApp Helper (GPU),/Applications/WhatsApp.app/Contents/Frameworks/WhatsApp Helper (GPU).app/Contents/MacOS/WhatsApp Helper (GPU)'
+    '500,WhatsApp Helper (GPU),/Applications/WhatsApp.app/Contents/Frameworks/WhatsApp Helper (GPU).app/Contents/MacOS/WhatsApp Helper (GPU)',
+    '500,monday.com,/Applications/monday.com.app/Contents/MacOS/monday.com'
   )
   AND exception_key NOT LIKE '500,MacVim,/%/MacVim.app/Contents/MacOS/MacVim'
   AND exception_key NOT LIKE '500,PrinterProxy,/Users/%/Library/Printers/Brother %.app/Contents/MacOS/PrinterProxy'
   AND exception_key NOT LIKE '500,Steam Helper,/Users/%/Library/Application Support/Steam/Steam.AppBundle/Steam/Contents/MacOS/Frameworks/Steam Helper.app/Contents/MacOS/Steam Helper'
+  AND exception_key NOT LIKE '500,Skitch,/private/var/folders/%/d/Skitch.app/Contents/MacOS/Skitch'
 GROUP BY
   pos.pid
 HAVING

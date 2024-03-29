@@ -111,6 +111,7 @@ WHERE
       OR p.path LIKE '/opt/homebrew/Cellar/%/bin/%'
       OR p.path LIKE '/opt/homebrew/Caskroom/%/bin/%'
       OR p.path LIKE '/Users/%/google-cloud-sdk/bin/%'
+      OR p.path LIKE '/Users/%/J8RPQ294UB.com.skitch.SkitchHelper'
     )
   )
   AND NOT (

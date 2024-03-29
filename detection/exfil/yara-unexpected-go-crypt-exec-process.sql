@@ -3,7 +3,7 @@
 -- reference:
 --   * https://github.com/Neo23x0/signature-base/blob/master/yara/pua_cryptocoin_miner.yar
 --
--- tags: persistent
+-- tags: persistent extra
 -- interval: 3600
 -- platform: posix
 SELECT

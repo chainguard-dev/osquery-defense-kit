@@ -141,6 +141,7 @@ WHERE
     '/Library/Developer/Xcode/',
     '/opt/rapid7/ir_agent',
     '~/.local/share/bob/',
+    '~/.local/share/nvim/',
     '~/.terraform.d/plugin-cache/registry.terraform.io/',
     '~/Library/Arduino15/packages/',
     '~/Library/Caches/Cypress/',

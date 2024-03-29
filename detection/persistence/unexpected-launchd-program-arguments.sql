@@ -41,6 +41,7 @@ WHERE
     'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
     'Developer ID Application: Google, Inc. (EQHXZ8M8AV)',
+    'Developer ID Application: Red Hat, Inc. (HYSCB8KRL2)',
     'Developer ID Application: Hercules Labs Inc. (B8PC799ZGU)',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     'Developer ID Application: OPENVPN TECHNOLOGIES, INC. (ACV7L3WCD8)',

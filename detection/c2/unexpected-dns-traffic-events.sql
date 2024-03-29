@@ -102,6 +102,7 @@ WHERE
     'Jabra Direct Helper',
     'nessusd',
     'apko',
+    'nuclei',
     'adguard_dns',
     'IPNExtension',
     'mDNSResponder',
