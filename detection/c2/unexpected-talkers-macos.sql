@@ -5,8 +5,7 @@
 --
 -- tags: transient state net often
 -- platform: macos
-SELECT
-  pos.protocol,
+SELECT pos.protocol,
   pos.local_port,
   pos.remote_port,
   pos.remote_address,
@@ -67,8 +66,7 @@ SELECT
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM
-  process_open_sockets pos
+FROM process_open_sockets pos
   LEFT JOIN processes p0 ON pos.pid = p0.pid
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
@@ -77,8 +75,7 @@ FROM
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN signature s ON p0.path = s.path
-WHERE
-  pos.protocol > 0
+WHERE pos.protocol > 0
   AND NOT (
     pos.remote_port IN (53, 443)
     AND pos.protocol IN (6, 17)
@@ -234,27 +231,27 @@ WHERE
     AND id_exception_key IN (
       'Apple Mac OS Application Signing,com.microsoft.OneDrive-mac',
       'Apple Mac OS Application Signing,com.ookla.speedtest-macos',
+      'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF),com.adguard.mac.adguard.network-extension',
       'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.AdobeResourceSynchronizer',
       'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.Reader',
       'Developer ID Application: Bitdefender SRL (GUNFMW623Y),com.bitdefender.cst.net.dci.dci-network-extension',
       'Developer ID Application: Bookry Ltd (4259LE8SU5),com.bookry.wavebox.helper',
       'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.helper',
-      'Developer ID Application: Cloudflare Inc. (68WVV388M8),CloudflareWARP',
-      'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
       'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.nightly.helper',
+      'Developer ID Application: Cloudflare Inc. (68WVV388M8),CloudflareWARP',
       'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker.docker',
+      'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker.docker',
+      'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
       'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.EpicGamesLauncher',
       'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.UE4EditorServices',
       'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK),fctupdate',
-      'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode.helper',
-      'Developer ID Application: Vivaldi Technologies AS (4XF3XNRN6Y),com.vivaldi.Vivaldi.helper',
-      'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF),com.adguard.mac.adguard.network-extension',
       'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D),com.googlecode.iterm2',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.GoogleUpdater',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.one.NetworkExtension',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.edgemac.helper',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.teams2.helper',
+      'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode.helper',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),net.java.openjdk.java',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefox',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefoxdeveloperedition',
@@ -263,16 +260,16 @@ WHERE
       'Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',
       'Developer ID Application: Skype Communications S.a.r.l (AL798K98FX),com.skype.skype.Helper',
       'Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL),com.tinyspeck.slackmacgap.helper',
-      'Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
       'Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
+      'Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
       'Developer ID Application: Tailscale Inc. (W5364U7YZB),io.tailscale.ipn.macsys.network-extension',
       'Developer ID Application: TechSmith Corporation (7TQL462TU8),com.techsmith.snagit.capturehelper2020',
       'Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.browser.helper',
       'Developer ID Application: Valve Corporation (MXGJJ98X76),com.valvesoftware.steam',
+      'Developer ID Application: Vivaldi Technologies AS (4XF3XNRN6Y),com.vivaldi.Vivaldi.helper',
       'Developer ID Application: Vladimir Prelovac (TFVG979488),com.apple.WebKit.Networking',
       'Developer ID Application: WhatsApp Inc. (57T9237FN3),net.whatsapp.WhatsApp.ServiceExtension',
       'Developer ID Application: Zwift, Inc (C2GM8Y9VFM),ZwiftAppSilicon'
     )
   )
-GROUP BY
-  p0.cmdline
+GROUP BY p0.cmdline

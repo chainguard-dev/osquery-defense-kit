@@ -248,6 +248,7 @@ WHERE
     )
     OR exception_key IN (
       'bash,0,auditd,launchd',
+      'sh,0,expect,kandji-daemon',
       'bash,0,etcd,containerd-shim-runc-v2',
       'bash,0,kube-apiserver,containerd-shim-runc-v2',
       'bash,0,mutter-x11-frames,gnome-shell',
@@ -290,6 +291,7 @@ WHERE
       'zsh,500,OpenLens,launchd',
       'sh,500,ssh,mosh-client',
       'sh,500,updater,Foxit PDF Reader',
+      'dash,500,gdm-wayland-session,gdm-session-worker',
       'sh,500,yabai,launchd',
       'zsh,500,old,launchd',
       'zsh,500,old,old',

@@ -119,6 +119,7 @@ WHERE
     '500,trunk,trunk,Developer ID Application: Trunk Technologies, Inc. (LDR5F9BL92),trunk-cli',
     '500,java,java,Developer ID Application: Oracle America, Inc. (VB5E2TV963),com.oracle.java.8u401.java',
     '500,bash,bash,,bash',
+    '500,Sky Go,Sky Go,Developer ID Application: Sky UK Limited (GJ24C8864F),com.bskyb.skygoplayer',
     '500,Skitch,Skitch,Developer ID Application: Skitch Inc (J8RPQ294UB),com.skitch.skitch',
     '500,cloud_sql_proxy,cloud_sql_proxy,,a.out',
     '500,git-remote-http,git-remote-http,,git-remote-http-55554944748a32c47cdc35cfa7f071bb69a39ce4',
@@ -131,6 +132,7 @@ WHERE
   AND NOT alt_exception_key IN (
     '0,velociraptor,velociraptor,0u,0g',
     '0,velociraptor,velociraptor,0u,80g',
+    '500,taplo,taplo,500u,20g',
     '500,nodegizmo,nodegizmo,500u,20g',
     '500,apko,apko,0u,0g',
     '500,apko,apko,500u,20g',
@@ -218,6 +220,7 @@ WHERE
       '500,Python,Python,,org.python.python',
       '500,Python,Python,,Python',
       '500,Python,Python,,',
+      '500,Python,Python,Developer ID Application: Python Software Foundation (BMM5U3QVKW),org.python.python',
       '500,Python,Python,0u,80g',
       '500,Python,Python,Developer ID Application: Ned Deily (DJ3H93M7VJ),org.python.python'
     )
