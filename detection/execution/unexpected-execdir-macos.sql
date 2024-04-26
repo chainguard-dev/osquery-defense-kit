@@ -117,6 +117,7 @@ WHERE
     '~/.steampipe/',
     '~/.config/',
     '~/dev/',
+    '~/workspace/',
     '~/git/',
     '~/go/',
     '~/google-cloud-sdk/',

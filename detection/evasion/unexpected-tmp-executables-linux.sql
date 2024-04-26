@@ -1,5 +1,5 @@
 -- Find unexpected executables in temp directories, often used by malware droppers
--- 
+--
 -- tags: persistent
 -- platform: linux
 SELECT DISTINCT
@@ -198,6 +198,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       'pl',
       'py',
       'rb',
+      'pub',
       'registry',
       'script',
       'sh',

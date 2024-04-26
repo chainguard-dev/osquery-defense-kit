@@ -110,8 +110,10 @@ WHERE
       'fish',
       'gatherheaderdoc',
       'gdm3',
+      'terraform',
       'gdm-session-worker',
       'gdm-x-session',
+      'gdm-wayland-session',
       'git',
       'gke-gcloud-auth-plugin',
       'gnome-session-binary',
@@ -177,6 +179,7 @@ WHERE
       'update-notifier',
       'vi',
       'vim',
+      'vim.nox',
       'Vim',
       'MacVim',
       'watch',
@@ -325,7 +328,7 @@ WHERE
     OR p1_cmd LIKE '/%google-cloud-sdk/lib/gcloud.py%'
     OR p1_cmd LIKE '%/usr/bin/terminator%'
     OR (
-      exception_key = 'sh,500,ruby,zsh'
+      exception_key IN ('sh,500,ruby,zsh','bash,500,ruby,zsh')
       AND p1_cmd LIKE '%brew.rb'
     )
     OR (

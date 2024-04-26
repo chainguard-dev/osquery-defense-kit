@@ -72,6 +72,7 @@ WHERE
       OR cmd LIKE '/Users/%/homebrew/opt/mysql/bin/%' -- Sometimes cmd is empty also :(
       OR cmd LIKE '%/go/src/github.com/%'
       OR cmd LIKE '%/.terraform/providers/%'
+      OR cmd LIKE ''
       OR parent_cmd LIKE '/Applications/Google Chrome.app/%'
     )
   )

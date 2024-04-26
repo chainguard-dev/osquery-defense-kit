@@ -94,6 +94,7 @@ WHERE
       AND NOT directory LIKE '/Users/%/Library/Mobile Documents/com~apple~shoebox/%'
       AND NOT directory LIKE '/Users/%/.local/bin/'
       AND NOT directory LIKE '/Users/%/.minikube/bin/'
+      AND NOT directory LIKE '/Users/%/.crc/bin/'
       AND NOT directory LIKE '/Users/Shared/LGHUB/%'
       AND NOT directory LIKE '/Users/Shared/LogiOptionsPlus/%'
       AND NOT directory LIKE '/Users/%/.Trash/%'

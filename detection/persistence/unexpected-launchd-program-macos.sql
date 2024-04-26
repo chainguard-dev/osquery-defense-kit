@@ -30,19 +30,17 @@ WHERE
   AND l.path NOT LIKE '/System/%'
   AND program IS NOT NULL
   AND program_authority NOT IN (
+    'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
+    'Developer ID Application: Bitdefender SRL (GUNFMW623Y)',
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Creative Labs Pte. Ltd. (5Q3552844F)',
-    'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
-    'Developer ID Application: Bitdefender SRL (GUNFMW623Y)',
-    'Developer ID Application: Rogue Amoeba Software, Inc. (7266XEXAPM)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
+    'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
     'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK)',
-    'Developer ID Application: TPZ Solucoes Digitais Ltda (X37R283V2T)',
     'Developer ID Application: Hercules Labs Inc. (B8PC799ZGU)',
     'Developer ID Application: Ilya Parniuk (ACC5R6RH47)',
-    'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
     'Developer ID Application: Jonathan Bullard (Z2SG5H3HC8)',
     'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
@@ -51,9 +49,12 @@ WHERE
     'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
     'Developer ID Application: Oracle America, Inc. (VB5E2TV963)',
     'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
+    'Developer ID Application: Rogue Amoeba Software, Inc. (7266XEXAPM)',
+    'Developer ID Application: TPZ Solucoes Digitais Ltda (X37R283V2T)',
     'Developer ID Application: Valve Corporation (MXGJJ98X76)',
     'Developer ID Application: Wireshark Foundation (7Z6EMTD2C6)',
     'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)',
+    'Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9)',
     'Software Signing'
   )
   AND program NOT IN (

@@ -67,16 +67,16 @@ collect: ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)
 # Looser values for CI use
 .PHONY: verify-ci
 verify-ci: ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)
-	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-results=150000 --max-query-duration=30s --max-total-daily-duration=90m verify incident_response
-	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-results=2 --max-query-duration=12s verify policy
-	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-results=15 --max-query-duration=12s --max-total-daily-duration=2h30m --max-query-daily-duration=1h verify detection
+	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --workers 1 --max-results=150000 --max-query-duration=30s --max-total-daily-duration=90m verify incident_response
+	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --workers 1 --max-results=2 --max-query-duration=12s verify policy
+	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --workers 1 --max-results=15 --max-query-duration=12s --max-total-daily-duration=2h30m --max-query-daily-duration=1h verify detection
 
 # Local verification
 .PHONY: verify
 verify: ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)
-	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-results=150000 --max-query-duration=10s --max-total-daily-duration=15m verify incident_response
-	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-results=0 --max-query-duration=6s --max-total-daily-duration=10m verify policy
-	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-results=0 --max-query-duration=16s --max-total-daily-duration=2h30m --max-query-daily-duration=1h verify detection
+	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --workers 1 --max-results=150000 --max-query-duration=10s --max-total-daily-duration=15m verify incident_response
+	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --workers 1 --max-results=0 --max-query-duration=6s --max-total-daily-duration=10m verify policy
+	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --workers 1 --max-results=0 --max-query-duration=16s --max-total-daily-duration=2h30m --max-query-daily-duration=1h verify detection
 
 all: out/packs.zip
 

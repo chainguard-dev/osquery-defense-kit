@@ -120,7 +120,7 @@ WHERE
     OR (
       p0.cmdline LIKE '%sh -i'
       AND NOT p0.path = '/usr/bin/docker'
-      AND NOT p1.name IN ('sh', 'java', 'containerd-shim', 'code')
+      AND NOT p1.name IN ('sh', 'java', 'containerd-shim', 'code', 'emacs', 'vim', 'vim.nox')
       AND NOT p1.cmdline LIKE '%pipenv shell'
       AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
       AND NOT p0.cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
@@ -138,8 +138,12 @@ WHERE
   AND NOT p0.cmdline IN ('nc 127.0.0.1 5900')
   AND NOT p0.name IN (
     'cc1',
+    'git',
+    'emacs',
     'compile',
+    'bwrap',
     'cmake',
     'cc1plus',
     'chrome_crashpad'
   )
+  AND NOT p1.name IN ('bwrap')

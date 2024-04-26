@@ -159,6 +159,7 @@ WHERE pos.protocol > 0
     '500,6,80,Slack Helper,Slack Helper,Apple Mac OS Application Signing,com.tinyspeck.slackmacgap.helper',
     '500,6,80,Snagit 2020,Snagit 2020,Apple Mac OS Application Signing,com.TechSmith.Snagit2020',
     '500,6,80,Snagit 2023,Snagit 2023,Developer ID Application: TechSmith Corporation (7TQL462TU8),com.TechSmith.Snagit2023',
+    '500,6,80,Snagit 2024,Snagit 2024,Developer ID Application: TechSmith Corporation (7TQL462TU8),com.TechSmith.Snagit2024',
     '500,6,80,SnagitHelper2020,SnagitHelper2020,Apple Mac OS Application Signing,com.techsmith.snagit.capturehelper2020',
     '500,6,80,SnagitHelper2023,SnagitHelper2023,Developer ID Application: TechSmith Corporation (7TQL462TU8),com.techsmith.snagit.capturehelper2023',
     '500,6,80,Spark Desktop Helper,Spark Desktop Helper,Developer ID Application: Readdle Technologies Limited (3L68KQB4HG),com.readdle.SparkDesktop.helper',
@@ -175,7 +176,7 @@ WHERE pos.protocol > 0
     '500,6,80,launcher-Helper,launcher-Helper,Developer ID Application: Mojang AB (HR992ZEAE6),com.mojang.mclauncher.helper',
     '500,6,80,node,node,Developer ID Application: Node.js Foundation (HX7739G8FX),node',
     '500,6,80,rpi-imager,rpi-imager,Developer ID Application: Floris Bos (WYH7G79LM6),org.raspberrypi.imagingutility',
-    '500,6,80,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
+    '500,6,80,thunderbird,thunderbird,Defveloper ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
     '500,6,8009,Spotify Helper,Spotify Helper,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
     '500,6,8080,Speedtest,Speedtest,Apple Mac OS Application Signing,com.ookla.speedtest-macos',
     '500,6,8080,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
@@ -202,6 +203,7 @@ WHERE pos.protocol > 0
     '500,6,80,firefox,firefox,500u,20g',
     '500,6,80,qemu-system-aarch64,qemu-system-aarch64,500u,80g'
   )
+  AND NOT alt_exception_key LIKE '500,6,22,packer-plugin-amazon%,packer-plugin-amazon_%,500u,20g'
   AND NOT (
     alt_exception_key LIKE '500,6,%,syncthing,syncthing,0u,500g'
     AND remote_port > 79
@@ -232,6 +234,7 @@ WHERE pos.protocol > 0
       'Apple Mac OS Application Signing,com.microsoft.OneDrive-mac',
       'Apple Mac OS Application Signing,com.ookla.speedtest-macos',
       'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF),com.adguard.mac.adguard.network-extension',
+      'Developer ID Application: Cisco (DE8Y96K9QP),Cisco-Systems.SparkHelper',
       'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.AdobeResourceSynchronizer',
       'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.Reader',
       'Developer ID Application: Bitdefender SRL (GUNFMW623Y),com.bitdefender.cst.net.dci.dci-network-extension',
@@ -250,6 +253,7 @@ WHERE pos.protocol > 0
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.GoogleUpdater',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.one.NetworkExtension',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode.helper',
+      'Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.Browser',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.edgemac.helper',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.teams2.helper',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),net.java.openjdk.java',

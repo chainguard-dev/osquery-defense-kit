@@ -149,6 +149,8 @@ WHERE
   AND NOT p0.path LIKE '/usr/local/Cellar/%'
   AND NOT p0.path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND NOT p0.path LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/launcher'
+  AND NOT p0.path LIKE '/var/kolide-k2/%/osqueryd'
+  AND NOT p0.path LIKE '/var/kolide-k2/%/launcher'
   AND NOT p0.path LIKE '%/.vscode/extensions/%'
   AND NOT p0.path LIKE '%/.local/share/spotify-launcher/install/usr/%'
   AND NOT (

@@ -163,6 +163,7 @@ WHERE
     'mnvoip.mm.fcix.net',
     'mutedeck.com',
     'obdev.at',
+    'awscli.amazonaws.com',
     'obsidian.md',
     'obsproject.com',
     'opalcamera.com',

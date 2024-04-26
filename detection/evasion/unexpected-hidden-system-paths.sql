@@ -186,6 +186,7 @@ WHERE
   AND file.filename NOT LIKE '.%.swo'
   AND file.filename NOT LIKE '.%.swp'
   AND file.path NOT LIKE '%/google-cloud-sdk/.install/'
+  AND file.path NOT LIKE '/usr/lib/jvm/.java-%-openjdk-%.jinfo'
   AND NOT (
     type = 'regular'
     AND (

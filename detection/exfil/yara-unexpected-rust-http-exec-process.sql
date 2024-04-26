@@ -49,7 +49,7 @@ WHERE
     GROUP BY
       path
   )
-  AND yara.sigrule = '    
+  AND yara.sigrule = '
     rule http_exec {
     strings:
         $http_proxy = "HTTP_PROXY" ascii
@@ -62,6 +62,7 @@ WHERE
     'old',
     'stable',
     'nvim',
+    'sg-nvim-agent',
     'Cody',
     'fig-darwin-universal',
     'wezterm-gui'
