@@ -56,7 +56,7 @@ WHERE
     FROM
       processes
     WHERE
-      start_time < (strftime('%s', 'now') - 1200)
+      start_time < (strftime('%s', 'now') - 7200)
       AND parent != 0
       -- Assume STP
       AND NOT path LIKE '/System/%'
@@ -97,7 +97,9 @@ WHERE
     '500,Bitwarden Helper,com.bitwarden.desktop.helper,Apple Mac OS Application Signing',
     '500,Bitwarden,com.bitwarden.desktop,Apple Mac OS Application Signing',
     '500,BloomRPC Helper,,',
+    '500,monorail,,',
     '500,Chromium,Chromium,',
+    '500,clangd,,',
     '500,CopyClip,com.fiplab.clipboard,Apple Mac OS Application Signing',
     '500,Divvy,com.mizage.Divvy,Apple Mac OS Application Signing',
     '500,Duckly Helper (Renderer),Electron Helper (Renderer),',
@@ -206,6 +208,7 @@ WHERE
     '500,tflint-ruleset-google,a.out,',
     '500,timestamp-server,a.out,',
     '500,vim,,',
+    '500,ruff,,',
     '500,vim,vim,'
   )
   AND NOT (
@@ -229,6 +232,7 @@ WHERE
   AND NOT exception_key LIKE '500,rust-analyzer-aarch64-apple-darwin,rust_analyzer-%,'
   AND NOT exception_key LIKE '500,___%,a.out,'
   AND NOT exception_key LIKE '500,zellij,zellij%,'
+  AND NOT exception_key LIKE '500,ruff,ruff%,'
   AND NOT exception_key LIKE '500,copilot-agent-macos-%,copilot-agent-macos-%,'
   AND NOT exception_key LIKE '500,samply,samply-%,'
   AND NOT exception_key LIKE '500,gopls_%,a.out,'

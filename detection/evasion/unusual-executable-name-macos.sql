@@ -102,6 +102,7 @@ WHERE
   AND NOT pname LIKE '.%-wrapped'
   AND NOT pname LIKE 'cody-engine-%'
   AND NOT pname LIKE '__%go_build_%'
+  AND NOT pname LIKE '__%go_test_%'
   -- example: 85C27NK92C.com.flexibits.fantastical2.mac.helper
   AND NOT pname LIKE "%.com.flexibits.fantastical2.mac.helper"
   AND NOT s.authority = "Software Signing"

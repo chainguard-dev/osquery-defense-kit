@@ -92,9 +92,14 @@ WHERE
   -- Overly broad, but prevents a lot of false positives
   AND NOT homepath LIKE "~/.%"
   AND NOT homecwd LIKE "~/.%"
+  AND NOT homecwd LIKE '/Users/%/.gradle/daemon/%'
   AND NOT f.directory IN (
     '/Applications/Keybase.app/Contents/SharedSupport/bin',
     '/opt/docker-desktop/bin'
   )
-  AND NOT exception_key IN ('16620,6,500,psi-bastion', '32768,6,500,java')
+  AND NOT exception_key IN (
+    '16620,6,500,psi-bastion',
+    '32768,6,500,java',
+    '1,1,500,ping'
+    )
   AND NOT p0.path LIKE '/nix/store/%'

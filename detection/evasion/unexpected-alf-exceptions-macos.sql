@@ -58,9 +58,6 @@ WHERE -- Filter out stock exceptions to decrease overhead
     ',dnsmasq,/opt/homebrew/Cellar/dnsmasq/2.88/sbin/dnsmasq,0',
     ',iodined-55554944d1ffcb236a84363d9b667be6a1742a17,/usr/local/sbin/iodined,501',
     ',java,/opt/homebrew/Cellar/openjdk/19/libexec/openjdk.jdk/Contents/Home/bin/java,501',
-    ',org.python.python,/opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/Resources/Python.app/,501',
-    ',org.python.python,/opt/homebrew/Cellar/python@3.11/3.11.2_1/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/,501',
-    ',org.python.python,/opt/homebrew/Cellar/python@3.12/3.12.1/Frameworks/Python.framework/Versions/3.12/Resources/Python.app/,501',
     '/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/',
     'Apple Mac OS Application Signing,com.anydo.mac,/Applications/Anydo.app/,0',
     'Apple Mac OS Application Signing,com.apple.garageband10,/Applications/GarageBand.app/,0',
@@ -89,7 +86,7 @@ WHERE -- Filter out stock exceptions to decrease overhead
     'Developer ID Application: Opentest, Inc. (QGD2ZPXZZG),com.loom.desktop,/Applications/Loom.app/,501',
     'Developer ID Application: Postdot Technologies, Inc (H7H8Q7M5CK),com.postmanlabs.mac,/Applications/Postman.app/,501',
     'Developer ID Application: Raycast Technologies Inc (SY64MV22J9),com.raycast.macos,/Applications/Raycast.app/,501',
-    'Developer ID Application: RescueTime, Inc (FSY4RB8H39),com.rescuetime.RescueTime,/Applications/RescueTime.app/,0',
+    'Developer ID Application: RescueTime, Inc (FSY4RB8H39),c]om.rescuetime.RescueTime,/Applications/RescueTime.app/,0',
     'Developer ID Application: Sonos, Inc. (2G4LW83Q3E),com.sonos.macController,/Applications/Sonos.app/,501',
     'Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client,/Applications/Spotify.app/,501',
     'Developer ID Application: Tailscale Inc. (W5364U7YZB),io.tailscale.ipn.macsys.network-extension,/Library/SystemExtensions/A30AF854-E980-4345-A658-17000BF66D00/io.tailscale.ipn.macsys.network-extension.systemextension/,0',
@@ -105,6 +102,8 @@ WHERE -- Filter out stock exceptions to decrease overhead
     'Software Signing,com.apple.audio.InfoHelper,/System/Library/Frameworks/AudioToolbox.framework/XPCServices/com.apple.audio.InfoHelper.xpc/,0',
     'Software Signing,com.apple.controlcenter,/System/Library/CoreServices/ControlCenter.app/,0',
     'Software Signing,com.apple.nc,/usr/bin/nc,0',
+    'Software Signing,com.apple.rapportd,/usr/libexec/rapportd,0',
+    'Software Signing,com.apple.netbiosd,/usr/sbin/netbiosd,0',
     'Software Signing,com.apple.python3,/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
     'Software Signing,com.apple.python3,/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
     'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0',
@@ -112,6 +111,9 @@ WHERE -- Filter out stock exceptions to decrease overhead
     'qbittorrent macos,org.qbittorrent.qBittorrent,/Applications/qbittorrent.app/,501'
   )
   AND NOT exception_key LIKE ',a.out,/Users/%/dev/%,501'
+  AND NOT exception_key LIKE ',a.out,/Users/%/hugo,501'
+  AND NOT exception_key LIKE 'Developer ID Application: The Foundry (82R497YNSK),org.python.python,/Applications/Nuke%/Contents/Frameworks/Python.framework/Versions/%/Resources/Python.app/,501'
+  AND NOT exception_key LIKE ',org.python.python,/opt/homebrew/Cellar/python%/Frameworks/Python.framework/Versions/%/Resources/Python.app/,501'
   AND NOT exception_key LIKE ',git-daemon-%,/opt/homebrew/Cellar/git/%/libexec/git-core/git-daemon,501'
   AND NOT exception_key LIKE ',org.python.python,/opt/homebrew/Cellar/python@%/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/,501'
   AND NOT exception_key LIKE ',a.out,/opt/homebrew/Cellar/podman/%/libexec/podman/gvproxy,501'

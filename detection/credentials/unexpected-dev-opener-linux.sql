@@ -238,8 +238,8 @@ WHERE
   )
   -- Halflife
   AND path_exception NOT LIKE '/dev/shm/u1000-Shm_%,bash'
-  -- lvmdbusd
-  AND path_exception NOT LIKE '/dev/shm/pym-%python3.%'
+  -- lvmdbusd / gcloud / gsutil
+  AND path_exception NOT LIKE '/dev/shm/pym-%python3%'
   -- celery
   AND path_exception NOT LIKE '/dev/shm/pymp-%,python3.%'
   AND dir_exception NOT LIKE '/dev/shm/byobu-%/status.tmux,'

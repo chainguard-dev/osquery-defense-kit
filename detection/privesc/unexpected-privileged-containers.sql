@@ -45,4 +45,5 @@ WHERE
   AND image NOT LIKE 'ghcr.io/k3d-io/k3d-%'
   AND image NOT LIKE 'ghcr.io/wolfi-dev/%'
   AND image NOT LIKE 'melange-%'
+  AND image NOT LIKE 'k3d-k3d.localhost:%'
   AND command NOT LIKE '/usr/bin/melange build %'

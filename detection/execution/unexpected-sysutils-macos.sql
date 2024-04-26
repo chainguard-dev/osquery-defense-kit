@@ -101,6 +101,7 @@ WHERE
     'sysctl -i sysctl.proc_translated',
     'sysctl -n hw.optional.arm64',
     'sw_vers -productName',
+    'unzip -h',
     'sysctl -n sysctl.proc_translated',
     '/usr/sbin/system_profiler SPUSBDataType',
     'system_profiler SPUSBDataType',

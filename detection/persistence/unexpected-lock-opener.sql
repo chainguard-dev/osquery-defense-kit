@@ -102,6 +102,8 @@ WHERE
   AND NOT exception_key LIKE '500,iTermServer-%,~/Library/Application Support/iTerm2'
   AND NOT exception_key LIKE '500,%,/private/var/folders/%/T/Sentry_StreamDeck'
   AND NOT exception_key LIKE '500,gnome-software,/var/tmp/flatpak-cache-%'
+  AND NOT exception_key LIKE '%,gnome-shell,/run/user/%'
+  AND NOT exception_key LIKE '%,pipewire%,/run/user/%'
   AND NOT exception_key LIKE '500,com.docker.backend,/private/var/folders/%/go/pkg/mod/cache/%'
 GROUP BY
   p0.path,

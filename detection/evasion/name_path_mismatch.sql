@@ -77,6 +77,7 @@ WHERE
   AND NOT base_letters IN (
     'bash',
     'dash',
+    'busybox',
     'electron',
     'firefox',
     'node',
@@ -91,6 +92,7 @@ WHERE
     '500,netcat,nc',
     '500,nc.openbsd,nc',
     '500,vim.tiny,vi',
+    '500,x86_64-linux-gnu-as,as',
     '500,systemd-executor,(sd-pam)',
     '500,busybox,sh',
     '500,coreutils,tail',

@@ -47,6 +47,7 @@ WHERE
     '/etc/ld.so.conf.d/intel-oneapi-compiler-dpcpp-cpp-runtime-libs.conf,0644,44,9f123b367c8afdcd116047d24f91339a95724d6f6cd189967696d2eb8eda63b4',
     '/etc/ld.so.conf.d/intel-oneapi-compiler-shared-opencl-cpu.conf,0644,92,c4f62f0bfed45e548755c60b5e012e79c9062bb2a993c041db661951eb994476',
     '/etc/ld.so.conf.d/intel-oneapi-compiler-shared-runtime.conf,0644,157,0b4a1c81fcab2d345f99e0187f29cf28f085ae67bf42c86d7b509c06b345186e',
+    '/etc/ld.so.conf.d/fakechroot-x86_64-linux-gnu.conf,0644,37,b31d4e51d547996eaad550223d078701016504cdf6571abd2b37ece9db3caac7',
     '/etc/ld.so.conf.d/intel-oneapi-compiler-shared-runtime.conf,0644,92,c4f62f0bfed45e548755c60b5e012e79c9062bb2a993c041db661951eb994476',
     '/etc/ld.so.conf.d/intel-oneapi-compiler-shared-runtime-libs.conf,0644,65,0e9c472578fe009314f02ab64613fc41114f4d07cfd3a805191a5b755d780a43',
     '/etc/ld.so.conf.d/intel-oneapi-openmp.conf,0644,155,160358af96f4a1a92e624fa84a1776d45c1a2c4695c8b96070374f6d66bf6061',

@@ -13,20 +13,27 @@ FROM
   LEFT JOIN magic ON file.path = magic.path
   LEFT JOIN hash ON file.path = hash.path
 WHERE
-  -- Only scan recent downloads
-  (
-    file.path LIKE '/home/%/Downloads/%'
-    OR file.path LIKE '/Users/%/Downloads/%'
-    OR file.path LIKE '/tmp/%'
-    OR file.path LIKE '/var/tmp/%'
+  file.path IN (
+    SELECT path
+    FROM file
+    WHERE (
+        file.path LIKE '/home/%/Downloads/%'
+        OR file.path LIKE '/home/%/Downloads/%/%'
+        OR file.path LIKE '/Users/%/Downloads/%'
+        OR file.path LIKE '/Users/%/Downloads/%/%'
+        OR file.path LIKE '/tmp/%'
+        OR file.path LIKE '/var/tmp/%'
+      )
+      AND file.type = "regular"
+      AND file.size > 2000
+      AND file.size < 400000
+      AND (
+        file.btime > (strftime('%s', 'now') -43200)
+        OR file.ctime > (strftime('%s', 'now') -43200)
+        OR file.mtime > (strftime('%s', 'now') -43200)
+      )
   )
-  AND (
-    file.btime > (strftime('%s', 'now') -432000)
-    OR file.ctime > (strftime('%s', 'now') -432000)
-    OR file.mtime > (strftime('%s', 'now') -432000)
-  )
-  AND NOT file.path LIKE '%.csv'
-  AND yara.sigrule = '    
+  AND yara.sigrule = '
     rule miner {
     strings:
         $tcp = "stratum+tcp://" ascii

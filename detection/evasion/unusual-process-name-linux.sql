@@ -112,6 +112,7 @@ WHERE
     "xdg-desktop-portal",
     "xdg-desktop-portal-gnome",
     "xdg-desktop-portal-gtk",
+    "xdg-dbpus-proxy",
     "xdg-document-portal",
     "xdg-permission-store"
   )
