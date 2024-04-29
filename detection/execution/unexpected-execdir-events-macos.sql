@@ -9,7 +9,7 @@
 --
 -- interval: 240
 -- platform: darwin
--- tags: filesystem events
+-- tags: filesystem events extra
 SELECT
   COALESCE(
     REGEX_MATCH (REPLACE(pe.path, u.directory, '~'), '(.*)/', 1),
