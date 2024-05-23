@@ -104,6 +104,7 @@ WHERE
     'java',
     'jetbrains_client',
     'kitty',
+    'ptyxis-agent',
     'ko',
     'konsole',
     'kubectl',

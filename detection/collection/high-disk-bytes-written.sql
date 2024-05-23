@@ -131,6 +131,7 @@ WHERE
     'baloo_file_extr',
     'bwrap',
     'cargo',
+    'GoogleUpdater',
     'chrome',
     'code',
     'com.apple.MobileSoftwareUpdate.UpdateBrainService',

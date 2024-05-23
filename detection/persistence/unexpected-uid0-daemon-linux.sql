@@ -187,6 +187,8 @@ WHERE
     'iwd,/usr/lib/iwd/iwd,0,system.slice,iwd.service,0755',
     'launcher,/usr/local/kolide-k2/bin/launcher,0,system.slice,launcher.kolide-k2.service,0755',
     'launcher,/usr/local/kolide-k2/bin/launcher-updates/__VERSION__/launcher,0,system.slice,launcher.kolide-k2.service,0755',
+    'launcher,/opt/kolide-k2/bin/launcher,0,system.slice,launcher.kolide-k2.service,0755',
+    'launcher,/opt/kolide-k2/bin/launcher-updates/__VERSION__/launcher,0,system.slice,launcher.kolide-k2.service,0755',
     'launcher,/var/kolide-k2/k2device.kolide.com/updates/launcher/__VERSION__/launcher,0,system.slice,launcher.kolide-k2.service,0755',
     'libvirtd,/usr/bin/libvirtd,0,system.slice,libvirtd.service,0755',
     'lightdm,/nix/store/__VERSION__/bin/lightdm,0,system.slice,display-manager.service,0555',
@@ -299,6 +301,8 @@ WHERE
     'velociraptor_cl,/usr/local/bin/velociraptor,0,system.slice,velociraptor_client.service,0700',
     'virtiofsd,/opt/incus/bin/virtiofsd,0,system.slice,incus.service,0755',
     'virtlogd,/usr/bin/virtlogd,0,system.slice,virtlogd.service,0755',
+    'osqueryd,/usr/lib/opt/kolide-k2/bin/osqueryd,0,system.slice,launcher.kolide-k2.service,0755',
+    'launcher,/usr/lib/opt/kolide-k2/bin/launcher,0,system.slice,launcher.kolide-k2.service,0755',
     'wpa_supplicant,/usr/bin/wpa_supplicant,0,system.slice,wpa_supplicant.service,0755',
     'wpa_supplicant,/usr/sbin/wpa_supplicant,0,system.slice,wpa_supplicant.service,0755',
     'xdg-desktop-por,/usr/libexec/xdg-desktop-portal,0,user.slice,user-1000.slice,0755',
@@ -309,6 +313,7 @@ WHERE
     'yum,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
     'zed,/nix/store/__VERSION__/bin/zed,0,system.slice,zfs-zed.service,0555',
     'zed,/usr/sbin/zed,0,system.slice,zfs-zed.service,0755',
+    'elastic-endpoin,/var/opt/Elastic/Endpoint/elastic-endpoint,0,elasticendpoint,,0500',
     'zfs,/nix/store/__VERSION__/bin/zfs,0,system.slice,zfs-snapshot-frequent.service,0555',
     'zfs,/nix/store/__VERSION__/bin/zfs,0,system.slice,zfs-snapshot-hourly.service,0555',
     'zfs,/nix/store/__VERSION__/bin/zfs,0,system.slice,znapzend.service,0555',
@@ -317,7 +322,11 @@ WHERE
   )
   AND NOT exception_key LIKE 'abrt-dbus,/usr/sbin/abrt-dbus,0,system.slice,system-dbus%org.freedesktop.problems.slice,0755'
   AND NOT exception_key LIKE 'fusermount3,/usr/bin/fusermount3,%,user.slice,user-%.slice,4755'
+  AND NOT exception_key LIKE 'elastic-agent,/opt/Elastic/Agent/data/elastic-agent%/elastic-agent,0,system.slice,elastic-agent.service,0750'
+  AND NOT exception_key LIKE 'elastic-agent,/var/opt/Elastic/Agent/data/elastic-agent%/elastic-agent,0,system.slice,elastic-agent.service,0750'
+  AND NOT exception_key LIKE 'elastic-agent,/var/opt/Elastic/Agent/data/elastic-agent%/elastic-agent,0,system.slice,elastic-agent.service,0770'
   AND NOT exception_key LIKE '%beat,/opt/Elastic/Agent/data/elastic-%/components/%beat,0,system.slice,elastic-agent.service,0750'
+  AND NOT exception_key LIKE '%beat,/var/opt/Elastic/Agent/data/elastic-%/components/%beat,0,system.slice,elastic-agent.service,0750'
   AND NOT exception_key LIKE 'osquery-extensi,/opt/Elastic/Agent/data/elastic-agent-%/components/osquery-extension.ext,0,system.slice,elastic-agent.service,0750'
   AND NOT exception_key LIKE 'osqueryd,/opt/Elastic/Agent/data/elastic-agent-%/components/osqueryd,0,system.slice,elastic-agent.service,0750'
   AND NOT exception_key LIKE 'elastic-agent,/opt/Elastic/Agent/data/elastic-agent-%/elastic-agent,0,system.slice,elastic-agent.service,0770'

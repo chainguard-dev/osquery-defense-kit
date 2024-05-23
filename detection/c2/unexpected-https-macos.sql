@@ -109,6 +109,7 @@ WHERE
     '0,AGSService,AGSService,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.ags',
     '500,Authy,Authy,Apple iPhone OS Application Signing,com.authy',
     '500,Fleet,~/Library/Caches/JetBrains/Fleet',
+    '500,WebexHelper,WebexHelper,Developer ID Application: Cisco (DE8Y96K9QP),Cisco-Systems.SparkHelper',
     '500,IterableRichNotifications,IterableRichNotifications,Apple iPhone OS Application Signing,com.plexapp.plex.IterableRichNotifications',
     '500,Java Updater,Java Updater,Developer ID Application: Oracle America, Inc. (VB5E2TV963),com.oracle.java.Java-Updater',
     '500,Kindle,Kindle,TestFlight Beta Distribution,com.amazon.Lassen',
@@ -119,6 +120,8 @@ WHERE
     '500,trunk,trunk,Developer ID Application: Trunk Technologies, Inc. (LDR5F9BL92),trunk-cli',
     '500,java,java,Developer ID Application: Oracle America, Inc. (VB5E2TV963),com.oracle.java.8u401.java',
     '500,bash,bash,,bash',
+    '500,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
+    '500,zed,zed,Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ),dev.zed.Zed',
     '500,jcef Helper,jcef Helper,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),org.jcef.jcef.helper',
     '500,agent,agent,Developer ID Application: Datadog, Inc. (JKFCB4CN7C),agent',
     '500,Sky Go,Sky Go,Developer ID Application: Sky UK Limited (GJ24C8864F),com.bskyb.skygoplayer',
@@ -133,6 +136,7 @@ WHERE
   )
   AND NOT alt_exception_key IN (
     '0,velociraptor,velociraptor,0u,0g',
+    '500,pulumi-resource-github,pulumi-resource-github,500u,20g',
     '0,velociraptor,velociraptor,0u,80g',
     '500,taplo,taplo,500u,20g',
     '500,nodegizmo,nodegizmo,500u,20g',

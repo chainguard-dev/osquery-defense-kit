@@ -44,6 +44,7 @@ WHERE
   AND f.path NOT LIKE '/usr/local/kolide-k2/bin/%-updates/%'
   AND f.path NOT LIKE '/var/kolide-k2/k2device.kolide.com/updates/%'
   AND f.path NOT LIKE '/tmp/go-build%'
+  AND f.path NOT LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%/bin/%'
   AND p.name NOT LIKE 'osqtool%'
 GROUP by
   p.pid

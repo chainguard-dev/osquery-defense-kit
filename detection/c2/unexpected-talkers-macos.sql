@@ -133,6 +133,8 @@ WHERE pos.protocol > 0
     '500,6,3389,Microsoft Remote Desktop,Microsoft Remote Desktop,Apple Mac OS Application Signing,com.microsoft.rdc.macos',
     '500,6,4070,Spotify,Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
     '500,6,4317,flyctl,flyctl,,a.out',
+    '500,6,80,Sky Go,Sky Go,Developer ID Application: Sky UK Limited (GJ24C8864F),com.bskyb.skygoplayer',
+    '500,6,80,agent,agent,Developer ID Application: Datadog, Inc. (JKFCB4CN7C),agent',
     '500,6,4318,Code Helper (Plugin),Code Helper (Plugin),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
     '500,6,5053,bridge,bridge,Developer ID Application: Proton Technologies AG (6UN54H93QT),bridge',
     '500,6,5091,ZoomPhone,ZoomPhone,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.ZoomPhone',

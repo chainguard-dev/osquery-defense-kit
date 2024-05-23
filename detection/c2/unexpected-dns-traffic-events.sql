@@ -82,6 +82,7 @@ WHERE
     'com.docker.vpnkit,8.8.8.8,53',
     'WebexHelper,8.8.8.8,53',
     'Meeting Center,8.8.8.8,53',
+    'ServiceExtension,8.8.8.8,53',
     'nuclei,1.0.0.1,53',
     'limactl,8.8.8.8,53',
     'adguard_dns,1.0.0.1,53',

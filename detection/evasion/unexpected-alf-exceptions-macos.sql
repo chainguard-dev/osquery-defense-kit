@@ -52,6 +52,7 @@ WHERE -- Filter out stock exceptions to decrease overhead
     ',,/Applications/Visual%20Studio%20Code.app/,',
     ',,/Applications/Visual%20Studio%20Code.app/Contents/Frameworks/Code%20Helper.app/,',
     ',,/usr/local/sbin/iodined,501',
+    ',a.out,/Users/dlorenc/.wash/downloads/nats-server,501',
     ',a.out,/Users/amouat/proj/learning-labs-static/server,501',
     ',a.out,/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/kubectl,501',
     ',a.out,/opt/homebrew/Cellar/go/1.20.4/libexec/pkg/tool/darwin_arm64/trace,501',
@@ -123,6 +124,11 @@ WHERE -- Filter out stock exceptions to decrease overhead
   AND NOT exception_key LIKE ',node,/opt/homebrew/Cellar/nvm/%/versions/node/v%/bin/node,501'
   AND NOT exception_key LIKE ',java,/opt/homebrew/Cellar/openjdk/%/libexec/openjdk.jdk/Contents/Home/bin/java,501'
   AND NOT exception_key LIKE ',python3.%,/nix/store/%-python3-3%/bin/python3.%,0'
+  AND NOT signature.authority IN (
+    'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
+    'Developer ID Application: The Foundry (82R497YNSK)',
+    'Developer ID Application: OpenAI, L.L.C. (2DC432GLL2)'
+  )
   AND NOT (
     signature.identifier LIKE 'cargo-%'
     AND ae.path LIKE '/Users/%/.rustup/%'

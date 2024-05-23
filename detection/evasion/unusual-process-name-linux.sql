@@ -103,6 +103,7 @@ WHERE
     "irqbalance",
     "kactivitymanagerd",
     "com.docker.backend",
+    'xdg-dbus-proxy',
     "com.docker.build",
     "com.docker.extensions",
     "nm-applet",
@@ -116,3 +117,4 @@ WHERE
     "xdg-document-portal",
     "xdg-permission-store"
   )
+  AND NOT (basename IN ('nm-dispatcher') AND p1_pid=1)

@@ -95,6 +95,7 @@ WHERE
     '/dev/console,launchd_sim,Software Signing,com.apple.xpc.launchd',
     '/dev/cu.BLTH,bluetoothd,Software Signing,com.apple.bluetoothd',
     '/dev/io,ControlCenter,Software Signing,com.apple.controlcenter',
+    '/dev/bpf,MHLinkServer,Developer ID Application: Metric Halo Distribution, Inc. (X7EY8SFM86),com.mhlabs.mhlink.server',
     '/dev/io,PerfPowerServices,Software Signing,com.apple.PerfPowerServices',
     '/dev/io,WiFiAgent,Software Signing,com.apple.wifi.WiFiAgent',
     '/dev/io,WirelessRadioManagerd,Software Signing,com.apple.WirelessRadioManagerd',
