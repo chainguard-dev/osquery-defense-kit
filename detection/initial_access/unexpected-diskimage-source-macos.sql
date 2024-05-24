@@ -165,6 +165,7 @@ WHERE
     'obdev.at',
     'awscli.amazonaws.com',
     'obsidian.md',
+    'universal-blue.discourse.group',
     'obsproject.com',
     'opalcamera.com',
     'posit.co',

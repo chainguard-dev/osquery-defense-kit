@@ -122,6 +122,7 @@ WHERE
     AND p1_cmd LIKE '/usr/bin/env bash ./hack/%.sh'
   )
   AND NOT p0_cmd LIKE 'wget --no-check-certificate https://github.com/istio/istio/%'
+  AND NOT p0_cmd LIKE '%curl -L https://artifacts.elastic.co/%'
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY
   pe.pid

@@ -106,6 +106,7 @@ WHERE
     '0,snapd,0u,0g,snapd',
     '128,fwupdmgr,0u,0g,fwupdmgr',
     '0,systemctl,0u,0g,systemctl',
+    '500,flatpak,0u,0g,flatpak',
     '0,tailscaled,0u,0g,tailscaled',
     '0,tailscaled,500u,500g,tailscaled',
     '0,velociraptor,0u,0g,velociraptor_cl',
