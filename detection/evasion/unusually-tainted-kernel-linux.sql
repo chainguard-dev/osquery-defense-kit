@@ -51,7 +51,8 @@ WHERE
     )
     OR (
       -- 12352 is unsigned, out of tree, requested by user space
-      taint = 12352
+      -- 12289 is an unsigned, out of tree, proprietary
+      taint IN (12352, 12289)
       AND modules LIKE "%,v4l2loopback,%"
     )
   )

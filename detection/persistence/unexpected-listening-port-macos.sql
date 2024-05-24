@@ -176,6 +176,7 @@ WHERE
     '8771,6,500,sharingd,Software Signing',
     '88,17,0,kdc,Software Signing',
     '88,6,0,kdc,Software Signing',
+    '53,17,500,server,',
     '1338,6,500,ec2-metadata-mock,',
     '15611,6,500,Postman,Developer ID Application: Postdot Technologies, Inc (H7H8Q7M5CK)',
     '8828,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',

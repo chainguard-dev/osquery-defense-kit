@@ -148,6 +148,7 @@ WHERE
     '80,6,500,wget,0u,0g,wget',
     '80,6,0,gawk,0u,0g,awk',
     '80,6,0,gpg,0u,0g,gpg',
+    '80,6,500,chrome,u,g,chrome',
     '80,6,0,grep,0u,0g,grep',
     '80,6,0,kmod,0u,0g,depmod',
     '80,6,0,kubelet,u,g,kubelet',
