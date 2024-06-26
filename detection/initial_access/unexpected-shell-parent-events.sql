@@ -91,6 +91,7 @@ WHERE
       'com.docker.backend',
       'conmon',
       'containerd-shim',
+      'idea',
       'containerd-shim-runc-v2',
       'cpptools',
       'dash',
@@ -291,6 +292,7 @@ WHERE
       'sh,500,Meeting Center,launchd',
       'sh,500,cloud_sql_proxy,zsh',
       'sh,500,docs,zsh',
+      'bash,500,incusd,incusd',
       'sh,500,snyk-macos,snyk',
       'zsh,500,OpenLens,launchd',
       'sh,500,ssh,mosh-client',
@@ -298,6 +300,7 @@ WHERE
       'dash,500,gdm-wayland-session,gdm-session-worker',
       'sh,500,yabai,launchd',
       'zsh,500,old,launchd',
+      'zsh,500,Hyper,launchd',
       'zsh,500,old,old',
       'zsh,500,python3.10,gnome-shell',
       'zsh,500,stable,launchd'

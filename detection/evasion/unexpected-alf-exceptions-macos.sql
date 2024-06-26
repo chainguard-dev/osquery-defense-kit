@@ -52,6 +52,7 @@ WHERE -- Filter out stock exceptions to decrease overhead
     ',,/Applications/Visual%20Studio%20Code.app/,',
     ',,/Applications/Visual%20Studio%20Code.app/Contents/Frameworks/Code%20Helper.app/,',
     ',,/usr/local/sbin/iodined,501',
+    ',a.out,/private/tmp/learning-labs-static/server,501',
     ',a.out,/Users/dlorenc/.wash/downloads/nats-server,501',
     ',a.out,/Users/amouat/proj/learning-labs-static/server,501',
     ',a.out,/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/kubectl,501',

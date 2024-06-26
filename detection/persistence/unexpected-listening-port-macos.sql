@@ -89,6 +89,7 @@ WHERE
     '43398,6,500,IPNExtension,Apple Mac OS Application Signing',
     '443,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '443,6,500,limactl,',
+    '1234,6,500,qemu-system-aarch64,',
     '4000,6,500,OrbStack Helper,Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)',
     '44450,6,500,Linear Helper,Developer ID Application: Linear Orbit, Inc. (7VZ2S3V9RV)',
     '44554,6,500,Luna Display,Developer ID Application: Astro HQ LLC (8356ZZ8Y5K)',

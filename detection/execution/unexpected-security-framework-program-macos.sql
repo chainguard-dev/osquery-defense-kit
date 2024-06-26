@@ -100,6 +100,7 @@ WHERE
     '500,monorail,,',
     '500,Chromium,Chromium,',
     '500,clangd,,',
+    '500,GoLinks Extension,com.golinks.golinks-app.safari-app-extension,Apple Mac OS Application Signing',
     '500,CopyClip,com.fiplab.clipboard,Apple Mac OS Application Signing',
     '500,Divvy,com.mizage.Divvy,Apple Mac OS Application Signing',
     '500,Duckly Helper (Renderer),Electron Helper (Renderer),',

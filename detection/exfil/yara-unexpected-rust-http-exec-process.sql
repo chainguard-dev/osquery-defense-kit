@@ -60,7 +60,9 @@ WHERE
   AND yara.count > 0
   AND p0.name NOT IN (
     'old',
+    'deno',
     'stable',
+    'figma_agent',
     'nvim',
     'sg-nvim-agent',
     'Cody',

@@ -56,6 +56,7 @@ WHERE
     'ssh',
     'sshd',
     'sudo',
+    'launcher',
     'systemd',
     'elastic-agent',
     'systemd-udevd',

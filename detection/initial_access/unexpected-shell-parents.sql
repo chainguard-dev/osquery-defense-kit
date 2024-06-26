@@ -108,6 +108,7 @@ WHERE
     'ko',
     'konsole',
     'kubectl',
+    'incusd',
     'kue',
     'lightdm',
     'LogiTune',

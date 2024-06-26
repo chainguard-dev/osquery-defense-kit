@@ -81,6 +81,7 @@ WHERE
     'electron',
     'firefox',
     'node',
+    'vim',
     'perl',
     'python',
     'ruby',

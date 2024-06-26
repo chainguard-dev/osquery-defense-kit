@@ -131,6 +131,7 @@ WHERE
     OR dir IN (
       '~/.config',
       '~/.local/bin',
+      '/var/home/linuxbrew/.linuxbrew/Cellar',
       '~/.vim',
       '~/.provisio',
       '~/.terraform.d',
