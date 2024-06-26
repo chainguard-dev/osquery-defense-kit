@@ -110,6 +110,7 @@ WHERE
     'osqueryd',
     'osqueryi',
     'plasmashell',
+    'update_dyld_sim_shared_cache',
     'qemu-system-aarch64',
     'qemu-system-x86',
     'qemu-system-x86-64',

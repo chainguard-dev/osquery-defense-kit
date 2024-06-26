@@ -64,6 +64,7 @@ WHERE
       AND INSTR(path, "/var/kolide-k2/") != 1
       AND INSTR(path, "/usr/share/spotify") != 1
       AND INSTR(path, "/usr/share/code/") != 1
+      AND INSTR(path, "/var/home/") != 1
       AND INSTR(path, "/usr/local/") != 1
       AND INSTR(path, "/tmp/go-build") != 1
       AND INSTR(path, "/app/") != 1

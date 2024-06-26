@@ -79,6 +79,7 @@ WHERE
     'systemctl,0,pacman,sudo',
     'systemctl,0,snapd,systemd',
     'systemctl,0,tailscaled,',
+    'systemctl,500,strace,bash',
     'systemctl,127,snap,systemd',
     'systemctl,500,snapd,systemd',
     'systemctl,500,systemd,systemd',

@@ -76,6 +76,7 @@ WHERE
     'Socket Process,8.8.8.8,53',
     'com.docker.backend,8.8.8.8,53',
     'ZoomPhone,8.8.8.8,53',
+    'gvproxy,170.247.170.2,53',
     'CapCut,8.8.8.8,53',
     'ZaloCall,8.8.8.8,53',
     'Telegram,8.8.8.8,53',
@@ -99,6 +100,7 @@ WHERE
   -- Local DNS servers and custom clients go here
   AND basename NOT IN (
     'chrome',
+    'gvproxy',
     'com.docker.backend',
     'WhatsApp',
     'Jabra Direct Helper',

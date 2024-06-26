@@ -89,6 +89,7 @@ WHERE
     '/usr/lib/flatpak-session-helper',
     '/usr/lib/fwupd/fwupd',
     '/usr/lib/gdm',
+    '/usr/lib/cups/notifier/dbus',
     '/usr/sbin/dnsmasq',
     '/usr/lib/gdm-session-worker',
     '/usr/lib/gdm-x-session',
