@@ -7,22 +7,22 @@
 -- platform: darwin
 -- tags: filesystem events
 SELECT
+  s.identifier AS s_id,
+  s.authority AS s_auth,
   -- Child
   pe.path AS p0_path,
-  s.authority AS p0_sauth,
-  s.identifier AS p0_sid,
-  hash.sha256 AS p0_hash,
-  REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,
+  COALESCE(REGEX_MATCH (pe.path, '.*/(.*)', 1), pe.path) AS p0_name,
   TRIM(pe.cmdline) AS p0_cmd,
   pe.time AS p0_time,
+  -- pe.cwd is NULL on macOS
   p.cwd AS p0_cwd,
   pe.pid AS p0_pid,
   pe.euid AS p0_euid,
   -- Parent
   pe.parent AS p1_pid,
   TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
-  COALESCE(p1.path, pe1.path) AS p1_path,
   p1.cwd AS p1_cwd,
+  COALESCE(p1.path, pe1.path) AS p1_path,
   COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
   REGEX_MATCH (COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
   -- Grandparent
@@ -44,10 +44,10 @@ SELECT
   ) AS p2_name
 FROM
   process_events pe
-  LEFT JOIN signature s ON pe.path = s.path
-  LEFT JOIN processes p ON pe.pid = p.pid
-  LEFT JOIN hash ON pe.path = hash.path
-  -- Parents (via two paths)
+  LEFT JOIN file f ON pe.path = f.path
+  LEFT JOIN signature S ON pe.path = s.path
+  LEFT JOIN users u ON pe.uid = u.uid
+  LEFT JOIN processes p ON pe.pid = p.pid -- Parents (via two paths)
   LEFT JOIN processes p1 ON pe.parent = p1.pid
   LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
   LEFT JOIN process_events pe1 ON pe.parent = pe1.pid

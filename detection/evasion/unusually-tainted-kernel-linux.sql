@@ -42,12 +42,18 @@ FROM
   -- 512 is a kernel warning
 WHERE
   taint NOT IN (0, 512, 4096, 4097)
+  -- Some day, folks will sign rootkits. That day isn't today.
+  AND is_unsigned = 1
   AND NOT (
     (
       -- 12289 is an unsigned, out of tree, proprietary
       -- 12801 is an unsigned, out of tree, proprietary with kernel warning. not great.
       taint IN (12289, 12801)
-      AND modules LIKE "%,nvidia,%"
+      AND (
+        modules LIKE "%,nvidia,%"
+        OR modules LIKE "%,v42loopback,%"
+        OR modules LIKE "%,wl,%"
+      )
     )
     OR (
       -- 12352 is unsigned, out of tree, requested by user space

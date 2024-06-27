@@ -142,6 +142,7 @@ WHERE
     'sdk',
     'sdzoomplugin',
     'sh',
+    'vim-nox11',
     'skhd',
     'ssh',
     'sshd',

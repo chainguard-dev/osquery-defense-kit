@@ -61,6 +61,7 @@ WHERE
     '/usr/bin/apt',
     '/usr/bin/aptd',
     '/usr/bin/bash',
+    '/usr/bin/gnome-disks',
     '/usr/bin/bwrap',
     '/usr/bin/curl',
     '/usr/bin/darktable',

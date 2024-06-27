@@ -88,6 +88,7 @@ WHERE
         '~/Library/Application Support/com.elgato.StreamDeck/',
         '~/Library/Application Support/duckly/',
         '/Library/Application Support/EcammLive',
+        '~/homebrew/Library/Homebrew/',
         '~/Library/Application Support/Figma/',
         '~/Library/Application Support/Foxit Software/',
         '~/Library/Application Support/JetBrains/',

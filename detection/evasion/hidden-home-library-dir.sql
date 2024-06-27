@@ -57,3 +57,6 @@ WHERE
   AND NOT homedir LIKE '~/Library/.icedove/%'
   AND NOT homedir LIKE '~/Library/Mobile Documents/.Trash%'
   AND NOT homedir LIKE '~/Library/%/.%_SUPPORT/_EXTERNAL_DATA'
+  -- ugh
+  AND NOT file.path LIKE '/Library/Application Scripts/.%-%-%-%-%/.%'
+

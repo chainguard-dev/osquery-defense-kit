@@ -87,6 +87,7 @@ WHERE
     AND pext NOT IN ("", "gui", "cli", "us", "node", "com")
   )
   AND NOT pname LIKE '.%-wrapped'
+  AND NOT pname LIKE '__debug_bin%'
   AND pname NOT IN (
     "xdg-permission-store",
     "xdg-desktop-portal",

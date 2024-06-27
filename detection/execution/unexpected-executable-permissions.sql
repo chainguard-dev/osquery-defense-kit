@@ -117,7 +117,7 @@ WHERE
     AND f.mode = '0754'
   )
   AND NOT (
-    f.path LIKE '/opt/Elastic/Agent/data/elastic-agent%/elastic-agent'
+    f.path LIKE '%/Elastic/Agent/data/elastic-agent%/elastic-agent'
     AND f.mode = '0770'
   )
   AND NOT (

@@ -50,6 +50,7 @@ WHERE
     '/Applications/Vimari.app/Contents/PlugIns/Vimari Extension.appex/Contents/MacOS/Vimari Extension',
     '/Library/Printers/Brother/Utilities/Server/NETserver.app/Contents/MacOS/NETserver',
     '/Library/Printers/Brother/Utilities/Server/USBAppControl.app/Contents/MacOS/USBAppControl',
+    '/Library/Application Support/EPSON/Scanner/ScannerMonitor/Epson Scanner Monitor.app/Contents/MacOS/Epson Scanner Monitor',
     '/Library/Printers/Brother/Utilities/Server/USBserver.app/Contents/MacOS/USBserver',
     '/Library/Printers/Brother/Utilities/Server/WorkflowAppControl.app/Contents/MacOS/WorkflowAppControl',
     '/snap/brackets/138/opt/brackets/Brackets',
@@ -64,6 +65,7 @@ WHERE
   )
   AND p.name NOT IN (
     'buildkitd',
+    'Flycut',
     'kail',
     'Vimari Extension',
     'Android File Transfer Agent',
