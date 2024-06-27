@@ -67,9 +67,12 @@ WHERE
   p0.euid = 0
   AND pmm.path LIKE '%libcurl%'
   AND NOT exception_key IN (
+    '0,0,/var/run/ublue-update.lock,regular,0755',
+    'rpm-ostree,/usr/bin/rpm-ostree,0,system.slice,rpm-ostreed.service,0755',
+    'rpm-ostree,/usr/bin/rpm-ostree,0,system.slice,ublue-update.service,0755',
+    'dnf-automatic,/usr/bin/python3.12,0,system.slice,dnf-automatic-install.service,0755',
     'dnf-automatic,/usr/bin/python__VERSION__,0,system.slice,dnf-automatic-install.service,0755',
     'dnf,/usr/bin/python__VERSION__,0,system.slice,dnf-makecache.service,0755',
-    '0,0,/var/run/ublue-update.lock,regular,0755',
     'dnf,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
     'flatpak-system-,/usr/libexec/flatpak-system-helper,0,system.slice,flatpak-system-helper.service,0755',
     'fwupd,/usr/libexec/fwupd/fwupd,0,system.slice,fwupd.service,0755',
@@ -78,9 +81,9 @@ WHERE
     'NetworkManager,/usr/bin/NetworkManager,0,system.slice,NetworkManager.service,0755',
     'NetworkManager,/usr/sbin/NetworkManager,0,system.slice,NetworkManager.service,0755',
     'nix-daemon,/nix/store/__VERSION__/bin/nix,0,system.slice,nix-daemon.service,0555',
+    'ostree,/usr/bin/ostree,0,system.slice,ostree-finalize-staged-hold.service,0755',
     'packagekitd,/usr/libexec/packagekitd,0,system.slice,packagekit.service,0755',
     'pacman,/usr/bin/pacman,0,user.slice,user-1000.slice,0755',
-    'dnf-automatic,/usr/bin/python3.12,0,system.slice,dnf-automatic-install.service,0755',
     'sddm-helper,/usr/lib/sddm/sddm-helper,0,user.slice,user-1000.slice,0755',
     'sddm,/usr/bin/sddm,0,system.slice,sddm.service,0755',
     'virtlogd,/usr/bin/virtlogd,0,system.slice,virtlogd.service,0755',

@@ -90,21 +90,22 @@ WHERE
   AND NOT exception_key IN (
     '0,udevadm,systemd-udevd',
     '0,udevadm,(udev-worker)',
-    '500,netcat,nc',
-    '500,nc.openbsd,nc',
-    '500,vim.tiny,vi',
-    '500,x86_64-linux-gnu-as,as',
-    '500,systemd-executor,(sd-pam)',
     '500,busybox,sh',
     '500,coreutils,tail',
+    '500,gjs-console,daemon.js',
     '500,gjs-console,gnome-character',
+    '500,nc.openbsd,nc',
+    '500,netcat,nc',
     '500,plugin-container,MainThread',
     '500,pyrogenesis,main',
-    '500,vim.nox,vi',
     '500,rootlesskit,exe',
     '500,rootlessport,exe',
+    '500,systemd-executor,(sd-pam)',
     '500,udevadm,systemd-udevd',
-    '500,vim.basic,vi'
+    '500,vim.basic,vi',
+    '500,vim.nox,vi',
+    '500,vim.tiny,vi',
+    '500,x86_64-linux-gnu-as,as'
   )
   AND NOT exception_key LIKE '%,systemd,(sd-pam)'
   AND NOT (

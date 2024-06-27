@@ -91,6 +91,7 @@ WHERE
     'accounts-daemon,/usr/lib/accounts-daemon,0,system.slice,accounts-daemon.service,0755',
     'accounts-daemon,/usr/libexec/accounts-daemon,0,system.slice,accounts-daemon.service,0755',
     'acpid,/usr/sbin/acpid,0,system.slice,acpid.service,0755',
+    'pmdaxfs,/usr/libexec/pcp/pmdas/xfs/pmdaxfs,0,system.slice,pmcd.service,0755',
     'agetty,/nix/store/__VERSION__/bin/agetty,0,system.slice,system-getty.slice,0555',
     'agetty,/usr/bin/agetty,0,system.slice,system-getty.slice,0755',
     'agetty,/usr/sbin/agetty,0,system.slice,system-getty.slice,0755',

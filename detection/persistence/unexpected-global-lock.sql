@@ -37,15 +37,18 @@ WHERE
     OR path LIKE "/dev/mqueue/.%.lock"
   )
   AND exception_key NOT IN (
+    '0,0,/var/run/apport.lock,regular,0600',
+    '0,0,/var/run/dnf-metadata.lock,regular,0644',
+    '0,0,/var/run/ublue-update.lock,regular,0755',
+    '0,0,/var/run/ufw.lock,regular,0644',
     '0,0,/var/run/unattended-upgrades.lock,regular,0640',
+    '0,0,/var/run/xtables.lock,regular,0600',
+    '0,1,/var/run/VMware Fusion Services.lock,regular,0600',
     '500,0,/tmp/mysql.sock.lock,regular,0600',
     '500,0,/tmp/mysqlx.sock.lock,regular,0600',
-    '0,0,/var/run/xtables.lock,regular,0600',
-    '0,0,/var/run/dnf-metadata.lock,regular,0644',
-    '0,0,/var/run/ufw.lock,regular,0644',
-    '0,0,/var/run/apport.lock,regular,0600',
-    '0,0,/var/run/ublue-update.lock,regular,0755',
+    '500,1000,/tmp/golangci-lint.lock,regular,0600',
+    '500,1001,/tmp/nwg-dock.lock,regular,0600',
     '74,0,/tmp/mysql.sock.lock,regular,0600',
-    '74,0,/tmp/mysqlx.sock.lock,regular,0600',
-    '500,1001,/tmp/nwg-dock.lock,regular,0600'
+    '74,0,/tmp/mysqlx.sock.lock,regular,0600'
   )
+  AND NOT exception_key LIKE '500,1000,/tmp/keepassxc-%-linux.lock,regular,0644'

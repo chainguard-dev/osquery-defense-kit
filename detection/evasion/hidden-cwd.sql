@@ -133,6 +133,7 @@ WHERE
       '~/.local/bin',
       '/var/home/linuxbrew/.linuxbrew/Cellar',
       '~/.vim',
+      '~/dev/extra-packages/.chainguard',
       '~/.provisio',
       '~/.terraform.d',
       '~/.cache/yay',
@@ -155,10 +156,12 @@ WHERE
     OR dir LIKE '/tmp/%/.github/workflows'
     OR dir LIKE '~/%/.terragrunt-cache/%'
     OR dir LIKE '%/.build'
+    OR dir LIKE '%/.cargo/%'
     OR dir LIKE '%/.git'
     OR dir LIKE '%/.git/%'
     OR dir LIKE '%/.gradle'
     OR dir LIKE '%/.github/%'
+    OR dir LIKE '%/.cache/melange%'
     OR dir LIKE '%/.github'
     OR dir LIKE '%/.venv'
     OR dir LIKE '/home/build/.cache%'
