@@ -43,12 +43,14 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         AND (
           file.path LIKE '%/go-build%'
           OR file.directory LIKE '/tmp/%/out'
+          OR file.path IN ('/tmp/mkinitramfs', '/tmp/mission')
           OR file.path LIKE '%/bin/%'
+          OR file.path LIKE "%/bin/bash"
+          OR file.path LIKE "%/bin/busybox"
           OR file.path LIKE '%/checkout/%'
           OR file.path LIKE '%/ci/%'
-          OR file.path LIKE '%/Rakefile'
+          OR file.path LIKE '%/configure'
           OR file.path LIKE '%/debug/%'
-          OR file.path LIKE '/tmp/ko%/out'
           OR file.path LIKE '%/dist/%'
           OR file.path LIKE '%/flow/%.npmzS_cacachezStmpzSgit-clone%'
           OR file.path LIKE '%/git/%'
@@ -56,27 +58,27 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '%/go.%.sum'
           OR file.path LIKE "%/%/gradlew"
           OR file.path LIKE '%/guile-%/guile-%'
-          OR file.path LIKE '%/melange-guest-%'
+          OR file.path LIKE '%integration_test%'
           OR file.path LIKE '%/ko/%'
           OR file.path LIKE '%/kots/%'
           OR file.path LIKE "%/lib/%.so"
-          OR file.path LIKE '/tmp/GoLand/___go_build_%_go'
           OR file.path LIKE "%/lib/%.so.%"
-          OR file.path LIKE '%/configure'
-          OR file.path LIKE '%integration_test%'
-          OR file.path LIKE '%test_script'
           OR file.path LIKE "%/melange%"
-          OR file.path LIKE "%/bin/busybox"
-          OR file.path LIKE "%/bin/bash"
-          OR file.path LIKE "/tmp/lima/%"
+          OR file.path LIKE '%/melange-guest-%'
           OR file.path LIKE '%/pdf-tools/%'
+          OR file.path LIKE '%/Rakefile'
           OR file.path LIKE '%-release%/%'
           OR file.path LIKE '%/site-packages/markupsafe/_speedups.cpython-%'
           OR file.path LIKE '%/src/%'
           OR file.path LIKE '%/target/%'
           OR file.path LIKE '%/terraformer/%'
+          OR file.path LIKE '%test_script'
           OR file.path LIKE '%/tmp/epdf%'
+          OR file.path LIKE '/tmp/GoLand/___go_build_%_go'
+          OR file.path LIKE '/tmp/ko%/out'
+          OR file.path LIKE "/tmp/lima/%"
           OR file.path LIKE '/tmp/lima/%/out/%'
+          OR file.path LIKE '/tmp/wolfi%'
         )
       )
       AND NOT (

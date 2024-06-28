@@ -37,6 +37,7 @@ WHERE
   AND gap.path NOT LIKE '/Users/%/rekor-cli'
   AND gap.path NOT LIKE '/Users/%/trivy'
   AND gap.path NOT LIKE '/usr/local/bin/%'
+  AND gap.path NOT LIKE '/Users/%/Downloads/openresty%/bundle/install'
   AND signature.authority != 'Developer ID Application: Jamie Zawinski (4627ATJELP)'
 GROUP BY
   gap.requirement

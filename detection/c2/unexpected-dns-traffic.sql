@@ -94,6 +94,7 @@ WHERE
     '/usr/sbin/mDNSResponder'
   )
   AND p.path NOT LIKE '/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/%/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper'
+  AND p.path NOT LIKE '%/podman/gvproxy'
   -- Workaround for the GROUP_CONCAT subselect adding a blank ent
   -- Workaround for the GROUP_CONCAT subselect adding a blank ent
 GROUP BY

@@ -109,6 +109,7 @@ WHERE
     '0,.tailscaled-wrapped,0u,0g,.tailscaled-wra',
     '0,velociraptor,0u,0g,velociraptor_cl',
     '0,yay,0u,0g,yay',
+    '500,python3.11,u,g,pip',
     '105,http,0u,0g,https',
     '106,geoclue,0u,0g,geoclue',
     '115,geoclue,0u,0g,geoclue',
@@ -116,6 +117,7 @@ WHERE
     '128,fwupdmgr,0u,0g,fwupdmgr',
     '129,fwupdmgr,0u,0g,fwupdmgr',
     '42,http,0u,0g,https',
+    '500,podman,0u,0g,podman',
     '500,1password,0u,0g,1password',
     '500,abrt-action-generate-core-backtrace,0u,0g,abrt-action-gen',
     '500,act,0u,0g,act',
@@ -330,6 +332,7 @@ WHERE
   AND NOT exception_key LIKE '500,node,0u,0g,npm exec %'
   AND NOT exception_key LIKE '500,node,0u,0g,npm install %'
   AND NOT exception_key LIKE '500,python3.%,0u,0g,pip'
+  AND NOT exception_key LIKE '500,python3%,u,g,pip'
   AND NOT exception_key LIKE '500,cosign-%,500u,500g,cosign-%'
   AND NOT exception_key LIKE '500,terraform-provider-%,500u,500g,terraform-provi'
   AND NOT (

@@ -77,6 +77,7 @@ WHERE
       'controller',
       'docker-proxy',
       'hugo',
+      'gopls',
       'limactl',
       'qemu-system-aarch64',
       'crane',
@@ -88,6 +89,11 @@ WHERE
     )
     AND lp.port > 1024
     and lp.protocol = 6
+  )
+  AND NOT (
+    p0.name = "ssh"
+    AND homecwd LIKE '/tmp/%'
+    AND lp.address IN ("127.0.0.1", "::1")
   )
   -- Overly broad, but prevents a lot of false positives
   AND NOT homepath LIKE "~/.%"
