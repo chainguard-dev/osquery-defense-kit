@@ -22,6 +22,7 @@ SELECT
   f.size,
   hash.sha256,
   REPLACE(f.directory, u.directory, '~') AS homedir,
+  REPLACE(f.path, u.directory, '~') AS homepath,
   RTRIM(
     COALESCE(
       REGEX_MATCH (
@@ -198,6 +199,13 @@ WHERE
     '~/Library/Thunderbird',
     '~/Library/helm',
     '~/Library/pnpm'
+  )
+  AND NOT homepath IN (
+    '~/Library/Assistant/SiriAnalytics.db',
+    '~/Library/Calendars/Calendar.sqlitedb-wal',
+    '~/Library/Finance/finance_cloud.db',
+    '~/Library/Finance/finance_cloud.db-wal',
+    '~/Library/HTTPStorages/com.apple.AddressBookSourceSync'
   )
   AND NOT f.directory LIKE '/Users/%/.docker/cli-plugins'
   AND NOT f.directory LIKE '/Users/%/.nix-profile/bin'

@@ -146,6 +146,7 @@ WHERE
     '49152,6,65,mDNSResponder,Software Signing',
     '5000,6,500,ControlCenter,Software Signing',
     '5001,6,500,crane,',
+    '25565,6,500,java,',
     '5001,6,500,gvproxy,',
     '5060,6,500,CommCenter,Software Signing',
     '53,17,500,dnsmasq,',

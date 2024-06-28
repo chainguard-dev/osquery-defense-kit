@@ -91,6 +91,7 @@ WHERE
   AND pof.path NOT IN (
     '/dev/dri/card0',
     '/dev/dri/card1',
+    '/dev/dri/card2',
     '/dev/dri/renderD128',
     '/dev/dri/renderD129',
     '/dev/fuse',
@@ -126,6 +127,7 @@ WHERE
     '/dev/input,acpid',
     '/dev/input,gnome-shell',
     '/dev/input,Hyprland',
+    '/dev/input,kwin_wayland',
     '/dev/input,systemd',
     '/dev/input,systemd-logind',
     '/dev/input,thermald',
@@ -174,13 +176,13 @@ WHERE
     '/dev/hidraw,chrome',
     '/dev/hvc,agetty',
     '/dev/hwrng,rngd',
-    '/dev/input/event,Xorg',
     '/dev/input/event,thermald',
     '/dev/input/event,touchegg',
-    '/dev/kmsg,_k3s-inner',
+    '/dev/input/event,Xorg',
     '/dev/kmsg,bpfilter_umh',
     '/dev/kmsg,dmesg',
     '/dev/kmsg,k3s',
+    '/dev/kmsg,_k3s-inner',
     '/dev/kmsg,kubelet',
     '/dev/kmsg,systemd',
     '/dev/kmsg,systemd-coredump',
@@ -190,10 +192,10 @@ WHERE
     '/dev/mapper/control,gpartedbin',
     '/dev/mapper/control,multipathd',
     '/dev/mcelog,mcelog',
-    '/dev/media,pipewire',
-    '/dev/media,wireplumber',
     '/dev/media0,pipewire',
     '/dev/media0,wireplumber',
+    '/dev/media,pipewire',
+    '/dev/media,wireplumber',
     '/dev/net/tun,openvpn',
     '/dev/net/tun,qemu-system-x86_64',
     '/dev/net/tun,slirp4netns',
@@ -201,17 +203,18 @@ WHERE
     '/dev/sda,ntfs-3g',
     '/dev/shm/envoy_shared_memory_1,envoy',
     '/dev/tpmrm,launcher',
-    '/dev/tty,Xorg',
     '/dev/tty,agetty',
     '/dev/tty,gdm-wayland-session',
     '/dev/tty,gdm-x-session',
     '/dev/tty,systemd-logind',
+    '/dev/tty,Xorg',
     '/dev/uhid,bluetoothd',
     '/dev/uinput,bluetoothd',
     '/dev/usb/hiddev,apcupsd',
     '/dev/usb/hiddev,upowerd',
     '/dev/vhost-net,qemu-system-x86_64',
     '/dev/vhost-vsock,qemu-system-x86_64',
+    '/dev/video0,chrome',
     '/dev/video,brave',
     '/dev/video,cheese',
     '/dev/video,chrome',
@@ -229,7 +232,6 @@ WHERE
     '/dev/video,wireplumber',
     '/dev/video,zoom',
     '/dev/video,zoom.real',
-    '/dev/video0,chrome',
     '/dev/wwan0mbim,mbim-proxy',
     '/dev/zfs,',
     '/dev/zfs,zed',
@@ -247,6 +249,10 @@ WHERE
       pof.path = "/dev/uinput"
       AND p0.name LIKE "solaar%"
       AND p0.path LIKE '/usr/bin/python%'
+  )
+  AND NOT (
+      pof.path LIKE "/dev/input/event%"
+      AND p0.name = "openrazer-daemo"
   )
   AND NOT (
     pof.path LIKE '/dev/bus/usb/%'

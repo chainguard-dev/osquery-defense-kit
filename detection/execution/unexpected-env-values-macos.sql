@@ -41,8 +41,10 @@ WHERE -- This time should match the interval
     AND NOT pe.value LIKE '/opt/homebrew/Cellar/r/4.%/lib/R/lib/libR.dylib'
     AND NOT pe.value LIKE '%/libsamply_mac_preload.dylib'
     AND NOT pe.value LIKE '%/Steam/Steam.AppBundle/Steam/Contents/MacOS/steamloader.dylib:%/Steam/Steam.AppBundle/Steam/Contents/MacOS/gameoverlayrenderer.dylib'
+    AND NOT pe.value LIKE '%//libtrace.dylib'
   )
   OR (
     key = 'DYLD_FRAMEWORK_PATH' -- sort of obsolete, but may affect SIP abusers
     AND NOT pe.value LIKE '%/IDLE.app/%'
+    AND NOT pe.value = '/System/Library/Frameworks'
   )

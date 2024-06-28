@@ -59,14 +59,16 @@ WHERE
 }'
   AND yara.count > 0
   AND p0.name NOT IN (
-    'old',
+    'Cody',
     'deno',
-    'stable',
+    'DevPod',
+    'fig-darwin-universal',
     'figma_agent',
     'nvim',
+    'old',
     'sg-nvim-agent',
-    'Cody',
-    'fig-darwin-universal',
-    'wezterm-gui'
+    'stable',
+    'wezterm-gui',
+    'zed'
   )
   AND p0.name NOT LIKE 'cody-engine-%'

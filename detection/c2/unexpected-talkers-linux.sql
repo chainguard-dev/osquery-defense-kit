@@ -84,6 +84,7 @@ WHERE
     AND exception_key = '32768,6,%,sshd,0u,0g,sshd'
   )
   AND NOT exception_key IN (
+    '123,17,500,chronyd,0u,0g,chronyd',
     '4070,6,500,spotify,u,g,spotify',
     '8000,6,500,brave,0u,0g,brave',
     '8000,6,500,chrome,0u,0g,chrome',
@@ -93,6 +94,7 @@ WHERE
     '80,6,0,kmod,0u,0g,depmod',
     '80,6,0,kubelet,u,g,kubelet',
     '80,6,0,ldconfig,0u,0g,ldconfig',
+    '80,6,0,NetworkManager,0u,0g,NetworkManager',
     '80,6,0,packagekitd,0u,0g,packagekitd',
     '80,6,0,pacman,0u,0g,pacman',
     '80,6,0,pdftex,0u,0g,pdftex',
