@@ -117,6 +117,7 @@ WHERE
     '80,6,500,aws-iam-authenticator,0u,0g,aws-iam-authent',
     '80,6,500,brave,0u,0g,brave',
     '80,6,500,chrome,0u,0g,chrome',
+    '80,6,500,chrome,u,g,chrome',
     '80,6,500,cloud_sql_proxy,0u,0g,cloud_sql_proxy',
     '80,6,500,code,0u,0g,code',
     '80,6,500,copilot-agent-linux,500u,500g,copilot-agent-l',
