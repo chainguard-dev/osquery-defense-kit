@@ -101,11 +101,13 @@ WHERE
       OR p0_cmd LIKE '/usr/bin/osascript /Users/%/Library/Caches/com.runningwithcrayons.Alfred/Workflow Scripts/%'
       OR p0_cmd LIKE '/usr/bin/osascript /Users/%/osx-trash/trashfile.AppleScript %'
       OR p0_cmd LIKE '/usr/bin/osascript %com.docker.docker%'
+      OR p0_cmd LIKE '%osacompile -o /Users/%/Applications/Home Manager Trampolines/%'
       OR p1_cmd LIKE '%aws %sso%'
       OR p1_cmd LIKE '%gcloud% auth %login%'
       OR p1_cmd LIKE '%gcloud% init'
       OR p1_cmd LIKE '% /opt/homebrew/bin/jupyter%notebook'
       OR p1_cmd LIKE '/bin/sh %/opt/homebrew/bin/git-gui%'
+      OR p1_cmd LIKE '%tell application "System Events" to sleep%'
       OR p1_authority = 'Developer ID Application: Docker Inc (9BNSXJN65R)'
       OR p1_name IN ('yubikey-agent')
       OR (

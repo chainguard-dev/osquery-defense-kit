@@ -88,17 +88,21 @@ WHERE
   )
   AND NOT pname LIKE '.%-wrapped'
   AND NOT pname LIKE '__debug_bin%'
+  AND NOT pname LIKE '__Test%.test'
   AND pname NOT IN (
-    "xdg-permission-store",
-    "xdg-desktop-portal",
-    "xdg-document-portal",
-    "xdg-desktop-portal-gnome",
-    "xdg-desktop-portal-gtk",
-    "xdg-dbus-proxy",
+    "acpid",
+    "akonadi_followupreminder_agent",
+    "gmenudbusmenuproxy",
+    "irqbalance",
+    "kactivitymanagerd",
     "nm-applet",
     "nm-dispatcher",
-    "acpid",
-    "kactivitymanagerd",
-    "gmenudbusmenuproxy",
-    "irqbalance"
+    "xdg-dbus-proxy",
+    "xdg-desktop-portal",
+    "xdg-desktop-portal-gnome",
+    "xdg-desktop-portal-gtk",
+    "xdg-desktop-portal-kde",
+    "xdg-document-portal",
+    "xdg-permission-store",
+    "xwaylandvideobridge"
   )

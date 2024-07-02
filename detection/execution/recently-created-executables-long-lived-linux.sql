@@ -104,6 +104,7 @@ WHERE
     '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1',
     '/usr/lib/slack/chrome_crashpad_handler',
     '/usr/lib/slack/slack',
+    '/usr/libexec/flatpak-portal',
     '/usr/lib/snapd/snapd',
     '/usr/lib/systemd/systemd',
     '/usr/lib/systemd/systemd-homed',

@@ -105,6 +105,7 @@ WHERE
     'WhatsApp',
     'Jabra Direct Helper',
     'nessusd',
+    'limactl',
     'apko',
     'nuclei',
     'adguard_dns',

@@ -117,7 +117,8 @@ WHERE
     'system_profiler,500,Ultimate,launchd',
     'system_profiler,500,bash,launchd',
     'system_profiler,500,bash,logioptionsplus_agent',
-    'system_profiler,500,steam_osx,launchd'
+    'system_profiler,500,steam_osx,launchd',
+    'unzip,500,tmux,launchd'
   )
   AND NOT exception_key LIKE 'unzip,500,login,iTermServer-%'
   AND NOT p0_cmd LIKE '/usr/libexec/security_authtrampoline /Library/Application Support/Adobe/Adobe Desktop Common/ElevationManager/Adobe Installer auth%'

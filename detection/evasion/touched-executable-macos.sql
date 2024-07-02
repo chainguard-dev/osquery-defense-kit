@@ -66,31 +66,32 @@ WHERE
   ) -- Vendors that create software packages that look like a touched file.
   AND NOT signature.authority IN (
     'Apple Mac OS Application Signing',
-    'Developer ID Application: Fumihiko Takayama (G43BCU2T37)', -- Karibiner
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW)',
     'Developer ID Application: Bryan Jones (49EYHPJ4Q3)',
-    'Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     'Developer ID Application: CodeWeavers Inc. (9C6B7X7Z8E)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
-    'Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Emmanouil Konstantinidis (3YP8SXP3BF)',
-    'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
+    'Developer ID Application: Fumihiko Takayama (G43BCU2T37)', -- Karibiner
+    'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
     'Developer ID Application: Galvanix (5BRAQAFB8B)',
     'Developer ID Application: General Arcade (Pte. Ltd.) (S8JLSG5ES7)',
-    'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
-    'Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
-    'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     'Developer ID Application: GitHub (VEKTX9H2N7)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
+    'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Michael Jones (YD6LEYT6WZ)',
+    'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
+    'Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     'Developer ID Application: RescueTime, Inc (FSY4RB8H39)',
     'Developer ID Application: Seiko Epson Corporation (TXAEAV5RN4)',
+    'Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
+    'Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
     'Developer ID Application: Yubico Limited (LQA3CS5MM7)',
+    'Developer ID Application: Zoom Video Communications, Inc.',
     'Software Signing'
   )
   AND NOT (
@@ -100,6 +101,7 @@ WHERE
         '/Applications/Canon Utilities/IJ Scan Utility/Canon IJ Scan Utility Lite.app/Contents/Library/LoginItems/CIJSULAgent.app/Contents/MacOS/CIJSULAgent',
         '/Applications/Canon Utilities/Inkjet Extended Survey Program/Inkjet Extended Survey Program.app/Contents/MacOS/ESPController.app/Contents/Library/LoginItems/CanonIJExtendedSurveyLaunchAgent.app/Contents/MacOS/CanonIJExtendedSurveyLaunchAgent',
         '/Applications/Divvy.app/Contents/MacOS/Divvy',
+        '/usr/local/bin/node',
         '/Applications/Sourcetree.app/Contents/MacOS/Sourcetree',
         '/Library/CoreMediaIO/Plug-Ins/DAL/LogiCapture.plugin/Contents/MacOS/Assistant',
         '/Library/Printers/Brother/Utilities/BrStatusMonitor.app/Contents/MacOS/BrStatusMonitor'

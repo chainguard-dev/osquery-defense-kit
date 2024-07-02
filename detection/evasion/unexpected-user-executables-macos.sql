@@ -133,6 +133,11 @@ WHERE
   AND NOT homedir LIKE '~/%/plugins'
   AND NOT homedir LIKE '/Users/%/.provisio'
   AND NOT homedir IN (
+    '/Users/Shared/LGHUB',
+    '/Users/Shared/LogiOptionsPlus',
+    '/Users/Shared/logitune',
+    '/var/root/.PenTablet',
+    '~/.PenTablet',
     '~/.amplify/bin',
     '~/.asdf/shims',
     '~/.bazel/bin',
@@ -143,37 +148,33 @@ WHERE
     '~/.docker/cli-plugins',
     '~/.docker/scout',
     '~/.dotnet/tools',
-    '~/.emacs.d/backups',
     '~/.emacs.d.bak/bin',
+    '~/.emacs.d/backups',
     '~/.fig/bin',
     '~/.fzf',
     '~/.fzf/bin',
     '~/.gvm/bin',
     '~/.kn/plugins',
     '~/.kuberlr/darwin-amd64',
-    '~/Library/ApplicationSupport/iTerm2',
-    '~/Library/Dropbox/DropboxMacUpdate.app/Contents/MacOS',
-    '~/Library/Logs/Adobe',
-    '~/Library/Logs/com.logmein.GoToOpener',
-    '~/Library/Mobile Documents/com~apple~CloudDocs',
     '~/.npm/sentry-cli',
     '~/.oh-my-zsh/tools',
-    '~/.PenTablet',
     '~/.provisio',
     '~/.pulumi-dev/bin',
     '~/.pyenv/shims',
     '~/.rbenv/shims',
-    '/Users/Shared/LGHUB',
-    '/Users/Shared/LogiOptionsPlus',
-    '/Users/Shared/logitune',
-    '/var/root/.PenTablet',
     '~/.venv/bin',
     '~/.vs-tekton',
     '~/.wash/downloads',
     '~/.wrangler/bin',
     '~/.zed/gopls',
     '~/.zsh_snap/zsh-autocomplete',
-    '~/.zsh_snap/zsh-snap'
+    '~/.zsh_snap/zsh-snap',
+    '~/Library/ApplicationSupport/iTerm2',
+    '~/Library/Dropbox/DropboxMacUpdate.app/Contents/MacOS',
+    '~/Library/Group Containers/group.com.apple.wifi.logs/previous',
+    '~/Library/Logs/Adobe',
+    '~/Library/Logs/com.logmein.GoToOpener',
+    '~/Library/Mobile Documents/com~apple~CloudDocs'
   )
   AND NOT top2_homedir IN (
     '/Users/Shared/LGHUB/cache',
@@ -182,6 +183,7 @@ WHERE
     '~/.antigen',
     '~/.fzf/test',
     '~/.iterm2',
+    '~/.sdkman/libexec',
     '~/.magefile',
     '~/.nvm',
     '~/.revox/updates',
@@ -205,8 +207,13 @@ WHERE
     '~/Library/Calendars/Calendar.sqlitedb-wal',
     '~/Library/Finance/finance_cloud.db',
     '~/Library/Finance/finance_cloud.db-wal',
+    '~/Library/Logs/zoom.us/upload_history.txt',
     '~/Library/HTTPStorages/com.apple.AddressBookSourceSync'
   )
+  AND NOT homepath LIKE '~/Library/%/%.sqlite'
+  AND NOT homepath LIKE '~/Library/%/%.sqlite-wal'
+  AND NOT homepath LIKE '~/Library/%/%.db'
+  AND NOT homepath LIKE '~/Library/%/%.db-wal'
   AND NOT f.directory LIKE '/Users/%/.docker/cli-plugins'
   AND NOT f.directory LIKE '/Users/%/.nix-profile/bin'
   AND NOT f.path LIKE '/Users/%/Library/Fonts/%.ttf'

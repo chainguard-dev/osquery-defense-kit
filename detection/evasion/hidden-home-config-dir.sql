@@ -35,6 +35,7 @@ WHERE
   )
   AND file.path NOT LIKE '%/../%'
   AND file.path NOT LIKE '%/./%'
+  AND file.path NOT LIKE '/root/.cache/.flatpak/%'
   AND file.path NOT LIKE '/root/.debug/.build-id/%'
   AND file.path NOT LIKE '/home/%/.config/%/.git%'
   AND file.path NOT LIKE '/home/%/.config/.gsd-keyboard.settings-ported'

@@ -66,17 +66,18 @@ WHERE
     'Grammarly Desktop,com.grammarly.ProjectLlama,Developer ID Application: Grammarly, Inc (W8F64X92K3)',
     'HueSync,com.lighting.huesync,Developer ID Application: Signify Netherlands B.V. (PREPN2W95S)',
     'Hyperkey,com.knollsoft.Hyperkey,Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',
+    'Lunar,fyi.lunar.Lunar,Developer ID Application: Alin Panaitiu (RDDXV84A73)',
+    'MonitorControl,me.guillaumeb.MonitorControl,Developer ID Application: Joni Van Roost (CYC8C8R4K9)',
+    'Rocket,net.matthewpalmer.Rocket,Developer ID Application: Matthew Palmer (Z4JV2M65MH)',
+    'Superkey,com.knollsoft.Superkey,Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',
+    'TextExpander,com.smileonmymac.textexpander,Developer ID Application: SmileOnMyMac, LLC (7PKJ6G4DXL)',
     'iTerm2,com.googlecode.iterm2,Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
     'lghub_agent,com.logi.ghub.agent,Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'logioptionsplus_agent,com.logi.cp-dev-mgr,Developer ID Application: Logitech Inc. (QED4VVPZWA)',
-    'MonitorControl,me.guillaumeb.MonitorControl,Developer ID Application: Joni Van Roost (CYC8C8R4K9)',
     'osqueryd,io.osquery.agent,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'polyrecorder,polyrecorder,Developer ID Application: Adam Pietrasiak (SXF593CX2N)',
-    'Rocket,net.matthewpalmer.Rocket,Developer ID Application: Matthew Palmer (Z4JV2M65MH)',
     'skhd,skhd,',
-    'Superkey,com.knollsoft.Superkey,Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',
-    'synergy-core,synergy-core,Developer ID Application: Symless Ltd (4HX897Y6GJ)',
-    'TextExpander,com.smileonmymac.textexpander,Developer ID Application: SmileOnMyMac, LLC (7PKJ6G4DXL)'
+    'synergy-core,synergy-core,Developer ID Application: Symless Ltd (4HX897Y6GJ)'
   )
 GROUP BY
   p0.path

@@ -1,4 +1,4 @@
--- Detect the execution of priveleged Docker containers which can be used to escape to the host.
+-- Detect the execution of privileged Docker containers which can be used to escape to the host.
 --
 -- references:
 --   * https://attack.mitre.org/techniques/T1611/
@@ -25,20 +25,21 @@ FROM
 WHERE
   privileged = 1
   AND image_name NOT IN (
-    'cgr.dev/chainguard/melange',
+    'cgr.dev/chainguard-private/python',
     'cgr.dev/chainguard/apko',
+    'cgr.dev/chainguard/k3s',
+    'cgr.dev/chainguard/melange',
     'cgr.dev/chainguard/python',
     'cgr.dev/chainguard/sdk',
     'cgr.dev/chainguard/wolfi-base',
     'distroless.dev/melange',
+    'docker.io/library/registry',
     'docker.io/rancher/k3s',
-    'ghcr.io/wolfi-dev/sdk@sha256',
-    'cgr.dev/chainguard-private/python',
     'gcr.io/k8s-minikube/kicbase',
     'ghcr.io/wolfi-dev/sdk',
+    'ghcr.io/wolfi-dev/sdk@sha256',
     'kindest/node',
-    -- blame k3d/k3s for this
-    'docker.io/library/registry',
+    'ligfx/k3d-registry-dockerd',
     'moby/buildkit',
     'wolfi'
   )

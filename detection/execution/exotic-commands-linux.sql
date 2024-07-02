@@ -140,6 +140,7 @@ WHERE
     'cc1',
     'git',
     'emacs',
+    'espeak',
     'compile',
     'bwrap',
     'cmake',

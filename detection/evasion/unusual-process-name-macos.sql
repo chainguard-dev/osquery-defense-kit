@@ -99,6 +99,7 @@ WHERE
     'com.microsoft.teams2.notificationcenter',
     'ThingsWidgetExtensionMacAppStore',
     'at.obdev.littlesnitch.endpointsecurity',
+    'launchd_startx',
     'BetterTouchToolAppleScriptRunner',
     'BetterTouchToolShellScriptRunner',
     'TwitterNotificationServiceExtension',
