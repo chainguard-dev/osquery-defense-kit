@@ -69,7 +69,7 @@ WHERE
     OR pname LIKE "mm-%"
     OR pname LIKE "nm_%"
     OR pname LIKE "rcu%"
-    OR REGEX_MATCH (pname, '([a-z]{16,})', 1) != ""
+    OR REGEX_MATCH (pname, '([a-z]{18,})', 1) != ""
     OR REGEX_MATCH (pname, '([a-zA-Z0-9]{32,})', 1) != ""
     OR REGEX_MATCH (pname, '(\w{40,})', 1) != ""
     OR REGEX_MATCH (
@@ -97,24 +97,27 @@ WHERE
   AND p0.path NOT LIKE "/nix/store/%"
   AND basename NOT IN (
     "acpid",
-    'firefox',
-    "gmenudbusmenuproxy",
-    "systemd-executor",
-    "irqbalance",
-    "kactivitymanagerd",
     "com.docker.backend",
-    'xdg-dbus-proxy',
     "com.docker.build",
     "com.docker.extensions",
+    "dynamiclinkmanager",
+    "gmenudbusmenuproxy",
+    "irqbalance",
+    "kactivitymanagerd",
     "nm-applet",
     "perl",
     "systemd",
-    'udevadm',
+    "systemd-executor",
+    "xdg-dbpus-proxy",
     "xdg-desktop-portal",
     "xdg-desktop-portal-gnome",
     "xdg-desktop-portal-gtk",
-    "xdg-dbpus-proxy",
+    "xdg-desktop-portal-kde",
     "xdg-document-portal",
-    "xdg-permission-store"
+    "xdg-permission-store",
+    "xwaylandvideobridge",
+    'firefox',
+    'udevadm',
+    'xdg-dbus-proxy'
   )
   AND NOT (basename IN ('nm-dispatcher') AND p1_pid=1)

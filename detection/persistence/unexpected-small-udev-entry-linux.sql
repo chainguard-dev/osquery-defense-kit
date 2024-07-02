@@ -65,6 +65,7 @@ WHERE
     '/usr/lib/udev/rules.d/75-davincipanel.rules',
     '/usr/lib/udev/rules.d/75-probe_mtd.rules',
     '/usr/lib/udev/rules.d/75-sdx.rules',
+    '/usr/lib/udev/rules.d/51-ocfs2.rules',
     '/usr/lib/udev/rules.d/81-kvm-rhel.rules',
     '/usr/lib/udev/rules.d/85-hdparm.rules',
     '/usr/lib/udev/rules.d/85-regulatory.rules',

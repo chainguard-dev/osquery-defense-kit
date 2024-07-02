@@ -63,6 +63,7 @@ WHERE
     'deno',
     'DevPod',
     'fig-darwin-universal',
+    'OrbStack Helper',
     'figma_agent',
     'nvim',
     'old',
@@ -72,3 +73,4 @@ WHERE
     'zed'
   )
   AND p0.name NOT LIKE 'cody-engine-%'
+  AND p0.path NOT IN ('/Applications/Zed.app/Contents/MacOS/Zed')

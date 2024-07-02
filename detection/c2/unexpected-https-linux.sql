@@ -257,8 +257,18 @@ WHERE
     '500,obs-ffmpeg-mux,0u,0g,obs-ffmpeg-mux',
     '500,obs-ffmpeg-mux,u,g,obs-ffmpeg-mux',
     '500,obsidian,0u,0g,obsidian',
+    '500,nami,500u,500g,nami',
     '500,obsidian,u,g,obsidian',
+    '500,gitsign,u,g,gitsign',
+    '500,code-oss,u,g,code-oss',
+    '500,plasma-discover,0u,0g,plasma-discover',
+    '500,bitwarden,u,g,bitwarden',
+    '500,extension-manager,0u,0g,extension-manag',
+    '500,accountwizard,u,g,accountwizard',
+    '500,drkonqi,0u,0g,drkonqi',
+    '500,thunderbird-bin,u,g,thunderbird-bin',
     '500,obs,u,g,obs',
+    '500,extension-manager,0u,0g,extension-manag',
     '500,op,0u,500g,op',
     '500,packer-plugin-proxmox_v1.1.2_x5.0_linux_amd64,500u,500g,packer-plugin-p',
     '500,pacman,0u,0g,pacman',
@@ -336,7 +346,7 @@ WHERE
   AND NOT exception_key LIKE '500,cosign-%,500u,500g,cosign-%'
   AND NOT exception_key LIKE '500,terraform-provider-%,500u,500g,terraform-provi'
   AND NOT (
-    exception_key LIKE '500,python3%,0u,0g,python3'
+    exception_key LIKE '500,python3%,0u,0g,python%'
     AND (
       p.cmdline LIKE '%/gcloud.py %'
       OR p.cmdline LIKE "%pip install%"

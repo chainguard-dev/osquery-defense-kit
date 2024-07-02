@@ -109,3 +109,7 @@ WHERE
     '1,1,500,ping'
     )
   AND NOT p0.path LIKE '/nix/store/%'
+  AND NOT (
+    exception_key = '32768,17,500,qemu-system-x86'
+    AND homecwd LIKE '/tmp/wolfi-%'
+  )

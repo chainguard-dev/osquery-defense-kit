@@ -107,42 +107,45 @@ WHERE
   )
   AND NOT exception_key IN (
     '0,AGSService,AGSService,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.ags',
-    '500,agent,agent,Developer ID Application: Datadog, Inc. (JKFCB4CN7C),agent',
+    '0,licenseDaemon,licenseDaemon,Developer ID Application: PACE Anti-Piracy, Inc. (TFZ8226T6X),com.paceap.eden.licenseDaemon',
+    '500,.Telegram-wrapped,.Telegram-wrapped,,Telegram',
     '500,Authy,Authy,Apple iPhone OS Application Signing,com.authy',
+    '500,Fleet,~/Library/Caches/JetBrains/Fleet',
+    '500,IterableRichNotifications,IterableRichNotifications,Apple iPhone OS Application Signing,com.plexapp.plex.IterableRichNotifications',
+    '500,Java Updater,Java Updater,Developer ID Application: Oracle America, Inc. (VB5E2TV963),com.oracle.java.Java-Updater',
+    '500,Kindle,Kindle,TestFlight Beta Distribution,com.amazon.Lassen',
+    '500,Paintbrush,Paintbrush,Developer ID Application: Michael Schreiber (G966ML7VBG),com.soggywaffles.paintbrush',
+    '500,Plex,Plex,Developer ID Application: Plex Inc. (K4QJ56KR4A),tv.plex.desktop',
+    '500,PlexMobile,PlexMobile,Apple iPhone OS Application Signing,com.plexapp.plex',
+    '500,Realm,Realm,Apple iPhone OS Application Signing,camera.youpi.metareal',
+    '500,Skitch,Skitch,Developer ID Application: Skitch Inc (J8RPQ294UB),com.skitch.skitch',
+    '500,Sky Go,Sky Go,Developer ID Application: Sky UK Limited (GJ24C8864F),com.bskyb.skygoplayer',
+    '500,WebexHelper,WebexHelper,Developer ID Application: Cisco (DE8Y96K9QP),Cisco-Systems.SparkHelper',
+    '500,agent,agent,Developer ID Application: Datadog, Inc. (JKFCB4CN7C),agent',
     '500,bash,bash,,bash',
     '500,cloud_sql_proxy,cloud_sql_proxy,,a.out',
     '500,com.docker.backend,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R),com.docker.docker',
-    '500,Fleet,~/Library/Caches/JetBrains/Fleet',
-    '500,.Telegram-wrapped,.Telegram-wrapped,,Telegram',
+    '500,gh,gh,,gh',
     '500,git-remote-http,git-remote-http,,git-remote-http-55554944748a32c47cdc35cfa7f071bb69a39ce4',
     '500,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',
-    '500,IterableRichNotifications,IterableRichNotifications,Apple iPhone OS Application Signing,com.plexapp.plex.IterableRichNotifications',
     '500,java,java,Developer ID Application: Oracle America, Inc. (VB5E2TV963),com.oracle.java.8u401.java',
-    '500,Java Updater,Java Updater,Developer ID Application: Oracle America, Inc. (VB5E2TV963),com.oracle.java.Java-Updater',
     '500,jcef Helper,jcef Helper,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),org.jcef.jcef.helper',
-    '500,Kindle,Kindle,TestFlight Beta Distribution,com.amazon.Lassen',
     '500,krisp Helper,krisp Helper,Developer ID Application: Krisp Technologies, Inc. (U5R26XM5Z2),ai.krisp.krispMac.helper',
     '500,krisp,krisp,Developer ID Application: Krisp Technologies, Inc. (U5R26XM5Z2),ai.krisp.krispMac',
     '500,melange,melange,,a.out',
     '500,node,node,Developer ID Application: Node.js Foundation (HX7739G8FX),node',
-    '500,Paintbrush,Paintbrush,Developer ID Application: Michael Schreiber (G966ML7VBG),com.soggywaffles.paintbrush',
-    '500,PlexMobile,PlexMobile,Apple iPhone OS Application Signing,com.plexapp.plex',
-    '500,Plex,Plex,Developer ID Application: Plex Inc. (K4QJ56KR4A),tv.plex.desktop',
     '500,process-agent,process-agent,Developer ID Application: Datadog, Inc. (JKFCB4CN7C),process-agent',
     '500,pycharm,pycharm,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.pycharm',
-    '500,Realm,Realm,Apple iPhone OS Application Signing,camera.youpi.metareal',
     '500,sdaudioswitch,sdaudioswitch,,sdaudioswitch',
-    '500,Skitch,Skitch,Developer ID Application: Skitch Inc (J8RPQ294UB),com.skitch.skitch',
-    '500,Sky Go,Sky Go,Developer ID Application: Sky UK Limited (GJ24C8864F),com.bskyb.skygoplayer',
     '500,snyk-ls_darwin_arm64,snyk-ls_darwin_arm64,,a.out',
     '500,syncthing,syncthing,,syncthing',
     '500,trunk,trunk,Developer ID Application: Trunk Technologies, Inc. (LDR5F9BL92),trunk-cli',
-    '500,WebexHelper,WebexHelper,Developer ID Application: Cisco (DE8Y96K9QP),Cisco-Systems.SparkHelper',
     '500,zed,zed,Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ),dev.zed.Zed'
   )
   AND NOT alt_exception_key IN (
     '0,velociraptor,velociraptor,0u,0g',
     '0,velociraptor,velociraptor,0u,80g',
+    '500,nami,nami,0u,0g',
     '500,apko,apko,0u,0g',
     '500,apko,apko,500u,20g',
     '500,aws,aws,0u,0g',
@@ -228,11 +231,6 @@ WHERE
   AND NOT alt_exception_key LIKE '500,plugin_host-%,plugin_host-%,500u,20g'
   AND NOT p0.path LIKE '/private/var/folders/%/T/GoLand/%'
   AND NOT (
-    exception_key = '500,Python,Python,,org.python.python'
-    AND p0_cmd LIKE '% main.py'
-    AND p0_cwd LIKE "%/neko"
-  )
-  AND NOT (
     exception_key IN (
       '500,Python,Python,,org.python.python',
       '500,Python,Python,,Python',
@@ -251,6 +249,7 @@ WHERE
       OR p0_cmd LIKE "%/gsutil/gsutil %"
       OR p0_cwd LIKE "/Users/%/github/%"
       OR p0_cwd LIKE "/Users/%/src/%"
+      OR p0_cmd LIKE '%bin/chaingpt %'
     )
   ) -- theScore and other iPhone apps
   AND NOT (

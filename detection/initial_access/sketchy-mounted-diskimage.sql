@@ -140,10 +140,11 @@ WHERE
       )
       AND file.directory LIKE "/Volumes/%/Contents/MacOS"
       AND signature.authority NOT IN (
-        "Developer ID Application: Logitech Inc. (QED4VVPZWA)",
-        "Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)",
         "Developer ID Application: Bookry Ltd (4259LE8SU5)",
+        "Developer ID Application: Justin Clift (C34AV33YLK)",
+        "Developer ID Application: Logitech Inc. (QED4VVPZWA)",
         "Developer ID Application: Oracle America, Inc. (VB5E2TV963)",
+        "Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)",
         "Developer ID Application: VideoLAN (75GAHG3SZQ)"
       )
     ) --   6. Volumes containing a hidden top-level folder or binary, such as yWnBJLaF (1302.app)

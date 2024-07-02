@@ -55,5 +55,6 @@ WHERE
   AND p0.path NOT IN (
     '/usr/libexec/bootpd',
     '/usr/local/bin/velociraptor',
+    '/usr/libexec/pcp/bin/pmcd',
     '/Applications/NetSpot.app/Contents/MacOS/NetSpot'
   )

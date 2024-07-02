@@ -45,6 +45,7 @@ WHERE
     'fprintd',
     'gdm-session-wor',
     'gdm-x-session',
+    'packagekit-dnf-',
     'gpg-agent',
     'ir_agent',
     'modprobe',

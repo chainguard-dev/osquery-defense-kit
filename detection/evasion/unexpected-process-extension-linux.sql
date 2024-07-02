@@ -72,6 +72,8 @@ WHERE
     '28',
     '29',
     '30',
+    'backend',
+    'build',
     'bin',
     'nox',
     'basic',

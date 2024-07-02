@@ -60,6 +60,7 @@ WHERE
         'anacron.timer,Trigger anacron every hour,',
         'apcupsd.service,APC UPS Power Control Daemon for Linux,',
         'apparmor.service,Load AppArmor profiles,',
+        'systemd-tmpfiles-setup.service,Create System Files and Directories,',
         'apport-autoreport.path,Process error reports when automatic reporting is enabled (file watch),',
         'apport-autoreport.service,Process error reports when automatic reporting is enabled,',
         'apport-autoreport.timer,Process error reports when automatic reporting is enabled (timer based),',

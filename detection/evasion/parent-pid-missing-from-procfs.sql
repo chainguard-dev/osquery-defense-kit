@@ -19,7 +19,7 @@ FROM
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN process_open_files pof ON p.pid = pof.pid
 WHERE -- Prevent false positives by avoiding short-lived commands
-  p.start_time < (strftime('%s', 'now') -1)
+  p.start_time < (strftime('%s', 'now') -300)
   AND p.parent NOT IN (
     SELECT
       pid
