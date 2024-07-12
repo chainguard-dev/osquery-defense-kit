@@ -101,6 +101,7 @@ WHERE
         '/Applications/Canon Utilities/IJ Scan Utility/Canon IJ Scan Utility Lite.app/Contents/Library/LoginItems/CIJSULAgent.app/Contents/MacOS/CIJSULAgent',
         '/Applications/Canon Utilities/Inkjet Extended Survey Program/Inkjet Extended Survey Program.app/Contents/MacOS/ESPController.app/Contents/Library/LoginItems/CanonIJExtendedSurveyLaunchAgent.app/Contents/MacOS/CanonIJExtendedSurveyLaunchAgent',
         '/Applications/Divvy.app/Contents/MacOS/Divvy',
+        '/opt/homebrew/share/google-cloud-sdk/bin/log-streaming',
         '/usr/local/bin/node',
         '/Applications/Sourcetree.app/Contents/MacOS/Sourcetree',
         '/Library/CoreMediaIO/Plug-Ins/DAL/LogiCapture.plugin/Contents/MacOS/Assistant',
