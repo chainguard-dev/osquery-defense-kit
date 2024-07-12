@@ -311,6 +311,7 @@ WHERE
     '500,steamwebhelper,500u,500g,steamwebhelper',
     '500,step,500u,500g,step',
     '500,step-cli,0u,0g,step',
+    '500,armcord,u,g,armcord',
     '500,stern,500u,500g,stern',
     '500,syncthing,0u,0g,syncthing',
     '500,syncthing,u,g,syncthing',

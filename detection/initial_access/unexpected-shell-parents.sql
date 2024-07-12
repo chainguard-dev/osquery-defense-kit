@@ -132,6 +132,7 @@ WHERE
     'nu',
     'nvim',
     'package_script_service',
+    'pycharm',
     'pacman',
     'perl',
     'pia-daemon',
@@ -258,6 +259,9 @@ WHERE
   AND NOT p0.cmdline LIKE '%/Library/Apple/System/Library/InstallerSandboxes%'
   AND NOT p0.cmdline LIKE '%gcloud config config-helper%'
   AND NOT p0.cmdline LIKE '%hugo/hugo server%'
+  AND NOT p1.cmdline LIKE '%/bin/pytest %'
+  AND NOT p0.cmdline LIKE '%/bin/codeclimate %'
+  AND NOT p0.cmdline LIKE '%/ChromeRecovery --browser-version=%'
   AND NOT p1.cmdline LIKE '/Applications/Warp.app/%'
   AND NOT p1.cmdline IN ('npm run start', 'npm install')
   AND NOT p1.cmdline LIKE '%brew.rb%'

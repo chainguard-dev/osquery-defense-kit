@@ -192,6 +192,7 @@ WHERE
       'xfce4-terminal',
       'xinit',
       'Xorg',
+      'lazygit',
       'xterm',
       'yay',
       'yum',
@@ -308,6 +309,7 @@ WHERE
       'zsh,500,old,launchd',
       'zsh,500,Hyper,launchd',
       'zsh,500,old,old',
+      'dash,500,python3.12,firefox-bin',
       'zsh,500,python3.10,gnome-shell',
       'zsh,500,stable,launchd'
     )
@@ -317,6 +319,7 @@ WHERE
     OR p0_cmd LIKE '/bin/bash /opt/homebrew/%'
     OR p0_cmd LIKE '/bin/bash /usr/bin/xdg-settings check %'
     OR p0_cmd LIKE '/bin/bash /usr/local/Homebrew/%'
+    OR p0_cmd LIKE '/bin/sh %/bin/xvim block %'
     OR p0_cmd LIKE '/bin/sh %/bin/gcloud%config config-helper%'
     OR p0_cmd LIKE '/bin/sh %/google-cloud-sdk/bin/gcloud config get project'
     OR p0_cmd LIKE '/bin/sh -c pkg-config %'

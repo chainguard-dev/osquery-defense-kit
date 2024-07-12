@@ -41,6 +41,9 @@ WHERE
     '/usr/bin/fusermount3',
     '/usr/sbin/acpid',
     '/usr/bin/dash',
+    '/opt/bitnami/redis/bin/redis-server',
+    '/usr/bin/kas',
+    '/usr/local/bin/gitary',
     '/usr/bin/docker',
     '/usr/sbin/mcelog',
     '/usr/libexec/docker/docker-proxy',
@@ -52,6 +55,9 @@ WHERE
   AND p0.name NOT IN (
     'chrome_crashpad',
     'dhcpcd',
+    'kas',
+    'gitaly',
+    'redis-server',
     'stern',
     'Brackets-node'
   ) -- optimization: minimalistic daemons typically only run 1 pid per path
@@ -60,6 +66,10 @@ WHERE
   AND pos.pid > 0
   AND pos.state != 'LISTEN'
   AND pmm.path LIKE "%.so.%"
+  AND NOT (
+    pos.local_address = "127.0.0.1"
+    AND pos.remote_address = "127.0.0.1"
+  )
 GROUP BY
   pos.pid -- libc.so, ld-linux
 HAVING

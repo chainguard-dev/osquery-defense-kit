@@ -106,9 +106,11 @@ WHERE
   AND NOT exception_key IN (
     '16620,6,500,psi-bastion',
     '32768,6,500,java',
+    '24024,17,500,MTGA',
     '1,1,500,ping'
     )
   AND NOT p0.path LIKE '/nix/store/%'
+  AND NOt p0.path LIKE '/Users/Shared/Epic Games/%'
   AND NOT (
     exception_key = '32768,17,500,qemu-system-x86'
     AND homecwd LIKE '/tmp/wolfi-%'

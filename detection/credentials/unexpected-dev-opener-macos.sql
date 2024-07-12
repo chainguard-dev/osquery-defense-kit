@@ -119,6 +119,7 @@ WHERE
     '/dev/klog,syslogd,Software Signing,com.apple.syslogd',
     '/dev/macfuse,gcsfuse,,a.out',
     '/dev/macfuse,rclone,,a.out',
+    '/dev/auditpipe,osqueryd,,',
     '/dev/oslog,logd,Software Signing,com.apple.logd',
     '/dev/pf,CloudflareWARP,Developer ID Application: Cloudflare Inc. (68WVV388M8),CloudflareWARP',
     '/dev/pf,mullvad-daemon,Developer ID Application: Mullvad VPN AB (CKG9MXH72F),mullvad-daemon',
