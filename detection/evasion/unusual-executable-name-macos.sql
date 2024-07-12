@@ -92,6 +92,7 @@ WHERE
   AND NOT pname IN (
     'cpu',
     'BetterTouchToolAppleScriptRunner',
+    'BetterTouchToolAppleScriptRunner2',
     'dynamiclinkmanager',
     'launchd_startx',
     'TwitterNotificationServiceExtension',

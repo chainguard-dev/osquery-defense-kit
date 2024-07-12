@@ -84,3 +84,4 @@ WHERE
   AND NOT basename LIKE 'python3.%'
   AND NOT basename LIKE 'python2.%'
   AND NOT basename LIKE 'terraform-provider%'
+  AND NOT basename LIKE 'ld-%.so'

@@ -73,4 +73,5 @@ WHERE
     'zed'
   )
   AND p0.name NOT LIKE 'cody-engine-%'
+  AND p0.path NOT LIKE '/Users/%/.cargo/bin/%'
   AND p0.path NOT IN ('/Applications/Zed.app/Contents/MacOS/Zed')

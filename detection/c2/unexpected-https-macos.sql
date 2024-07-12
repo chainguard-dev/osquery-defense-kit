@@ -145,6 +145,7 @@ WHERE
   AND NOT alt_exception_key IN (
     '0,velociraptor,velociraptor,0u,0g',
     '0,velociraptor,velociraptor,0u,80g',
+    '500,sm-agent,sm-agent,500u,20g',
     '500,nami,nami,0u,0g',
     '500,apko,apko,0u,0g',
     '500,apko,apko,500u,20g',
@@ -237,6 +238,8 @@ WHERE
       '500,Python,Python,,',
       '500,Python,Python,Developer ID Application: Python Software Foundation (BMM5U3QVKW),org.python.python',
       '500,Python,Python,0u,80g',
+      '500,python3.11,python3.11,,python3.11',
+      '500,python3.12,python3.12,,python3.12',
       '500,Python,Python,Developer ID Application: Ned Deily (DJ3H93M7VJ),org.python.python'
     )
     AND (
@@ -250,6 +253,7 @@ WHERE
       OR p0_cwd LIKE "/Users/%/github/%"
       OR p0_cwd LIKE "/Users/%/src/%"
       OR p0_cmd LIKE '%bin/chaingpt %'
+      OR p0_cmd LIKE '%fetch_commits%'
     )
   ) -- theScore and other iPhone apps
   AND NOT (

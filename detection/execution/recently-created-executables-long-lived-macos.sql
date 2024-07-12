@@ -115,9 +115,11 @@ WHERE
       )
       OR dir IN (
         '~/bin',
+        '~/gohome/bin',
         '~/code/bin',
         '~/go/bin',
         '~/melange',
+        '~/repos/bincapz/out',
         '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
         '/usr/local/kolide-k2/Kolide.app/Contents/MacOS',
         '~/Library/Application Support/dev.warp.Warp-Stable',
@@ -131,6 +133,7 @@ WHERE
       )
       OR dir LIKE '~/%/node_modules/%bin'
       OR dir LIKE '~/%.vscode/extensions/%'
+      OR dir LIKE '~/.vscode-insiders/extensions/%'
       OR dir LIKE '~/%/go/bin'
       OR dir LIKE '~/Downloads/%.app/Contents/MacOS'
       OR f.path LIKE '%go-build%'

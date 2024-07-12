@@ -59,6 +59,7 @@ WHERE
       OR cmd LIKE '/opt/homebrew/Cellar/%'
       OR p.path LIKE '/Users/%/Library/Application Support/Steam/Steam.AppBundle/Steam/Contents/MacOS/ipcserver.old'
       OR p.path LIKE '/opt/homebrew/Cellar/%/bin/%'
+      OR p.path LIKE '/private/var/kolide-k2/k2device.kolide.com/updates/%'
       OR p.path LIKE '/Users/%/homebrew/Cellar/%'
       OR p.path LIKE '/usr/local/Cellar/%/bin/%'
       OR p.path LIKE '/private/var/folders/zz/%/T/PKInstallSandboxTrash/%.sandboxTrash/%'

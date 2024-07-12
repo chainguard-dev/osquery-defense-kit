@@ -130,9 +130,11 @@ WHERE -- Filter out stock exceptions to decrease overhead
   AND NOT exception_key LIKE ',node,/opt/homebrew/Cellar/nvm/%/versions/node/v%/bin/node,501'
   AND NOT exception_key LIKE ',java,/opt/homebrew/Cellar/openjdk/%/libexec/openjdk.jdk/Contents/Home/bin/java,501'
   AND NOT exception_key LIKE ',python3.%,/nix/store/%-python3-3%/bin/python3.%,0'
+  AND NOT exception_key LIKE 'Developer ID Application: Cypress.Io, Inc. (7D655LWGLY),com.electron.cypress,/Users/%/Library/Caches/Cypress/12.9.0/Cypress.app/,501'
   AND NOT signature.authority IN (
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     'Developer ID Application: The Foundry (82R497YNSK)',
+    'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: OpenAI, L.L.C. (2DC432GLL2)'
   )
   AND NOT (

@@ -37,10 +37,12 @@ WHERE
     '/usr/bin/melange'
   )
   AND f.path NOT LIKE '/home/%'
+  AND f.path NOT LIKe '/var/home/%'
   AND f.path NOT LIKE '/snap/%'
   AND f.path NOT LIKE '/tmp/%go-build%/exe/%'
   AND f.path NOT LIKE '/usr/local/bin/%'
   AND f.path NOT LIKE '/opt/rapid7/ir_agent/%'
+  AND f.path NOT LIKE '/var/home/linuxbrew/.linuxbrew/%'
   AND f.path NOT LIKE '/opt/Elastic/Agent/data/elastic-agent%'
   AND f.path NOT LIKE '/usr/local/aws-cli/%/dist/aws'
   AND f.path NOT LIKE '/usr/local/kolide-k2/bin/%-updates/%'
