@@ -68,8 +68,8 @@ collect: ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)
 .PHONY: verify-ci
 verify-ci: ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)
 	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --workers 1 --max-results=150000 --max-query-duration=30s --max-total-daily-duration=90m verify incident_response
-	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --workers 1 --max-results=5 --max-query-duration=30s verify policy
-	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --workers 1 --max-results=20 --max-query-duration=30s --max-total-daily-duration=2h30m --max-query-daily-duration=1h verify detection
+	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --workers 1 --max-results=50 --max-query-duration=30s verify policy
+	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --workers 1 --max-results=1000 --max-query-duration=30s --max-total-daily-duration=2h30m --max-query-daily-duration=1h verify detection
 
 # Local verification
 .PHONY: verify
