@@ -58,6 +58,7 @@ WHERE
     '10250,6,500,OrbStack Helper,Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)',
     '111,17,1,rpcbind,Software Signing',
     '111,6,1,rpcbind,Software Signing',
+    '1144,6,500,fuscript,Developer ID Application: Blackmagic Design Inc (9ZGFBWLSYP)',
     '1234,6,500,qemu-system-aarch64,',
     '1313,6,500,hugo,',
     '1338,6,500,ec2-metadata-mock,',
