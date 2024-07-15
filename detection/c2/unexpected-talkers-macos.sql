@@ -193,7 +193,8 @@ WHERE pos.protocol > 0
     '500,6,993,Spark Desktop Helper,Spark Desktop Helper,Developer ID Application: Readdle Technologies Limited (3L68KQB4HG),com.readdle.SparkDesktop.helper',
     '500,6,993,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
     '500,6,995,KakaoTalk,KakaoTalk,Apple Mac OS Application Signing,com.kakao.KakaoTalkMac',
-    '0,6,853,at.obdev.littlesnitch.networkextension,at.obdev.littlesnitch.networkextension,0u,0g'
+    '0,6,853,at.obdev.littlesnitch.networkextension,at.obdev.littlesnitch.networkextension,0u,0g',
+    '500,6,21,Cyberduck,Cyberduck,Developer ID Application: David Kocher (G69SCX94XU),ch.sudo.cyberduck'
   ) -- Useful for unsigned binaries
   AND NOT alt_exception_key IN (
     '0,6,80,tailscaled,tailscaled,500u,80g',
