@@ -122,7 +122,7 @@ WHERE pos.protocol > 0
     '500,17,123,Garmin Express,Garmin Express,Developer ID Application: Garmin International (72ES32VZUA),com.garmin.renu.client',
     '500,17,123,agent,agent,Developer ID Application: Datadog, Inc. (JKFCB4CN7C),agent',
     '500,17,32768,Luna Display,Luna Display,Developer ID Application: Astro HQ LLC (8356ZZ8Y5K),com.astro-hq.LunaDisplayMac',
-    '500,17,68,com.docker.backend,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
+    '500,17,68,com.docker.backend,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R),com.docker.docker',
     '500,17,8801,zoom.us,zoom.us,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos',
     '500,17,9000,Meeting Center,Meeting Center,Developer ID Application: Cisco (DE8Y96K9QP),com.webex.meetingmanager',
     '500,6,22,Cyberduck,Cyberduck,Developer ID Application: David Kocher (G69SCX94XU),ch.sudo.cyberduck',
@@ -193,7 +193,8 @@ WHERE pos.protocol > 0
     '500,6,993,Spark Desktop Helper,Spark Desktop Helper,Developer ID Application: Readdle Technologies Limited (3L68KQB4HG),com.readdle.SparkDesktop.helper',
     '500,6,993,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
     '500,6,995,KakaoTalk,KakaoTalk,Apple Mac OS Application Signing,com.kakao.KakaoTalkMac',
-    '0,6,853,at.obdev.littlesnitch.networkextension,at.obdev.littlesnitch.networkextension,0u,0g'
+    '0,6,853,at.obdev.littlesnitch.networkextension,at.obdev.littlesnitch.networkextension,0u,0g',
+    '500,6,21,Cyberduck,Cyberduck,Developer ID Application: David Kocher (G69SCX94XU),ch.sudo.cyberduck'
   ) -- Useful for unsigned binaries
   AND NOT alt_exception_key IN (
     '0,6,80,tailscaled,tailscaled,500u,80g',
