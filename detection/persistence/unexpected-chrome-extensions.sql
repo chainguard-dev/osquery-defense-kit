@@ -340,8 +340,9 @@ WHERE
     'true,,Zoom,hmbjbjdpkobdjplfobhljndfdfdipjhg',
     'true,,ZoomInfo Engage Chrome Extension,mnbjlpbmllanehlpbgilmbjgocpmcijp',
     'true,,Zoom Scheduler,kgjfgplpablkjnlkjmjdecgdpfankdle',
-    'true,AgileBits,1Password – Password Manager,aeblfdkhhhdcdjpifhhbdiojplfjncoa',
-    'true,,Loom – Screen Recorder & Screen Capture,liecbddmkiiihnedobmlmillhodjkdmb'
+    'true,AgileBits,1Password \xE2\x80\x93 Password Manager,aeblfdkhhhdcdjpifhhbdiojplfjncoa',
+    'true,,Loom \xE2\x80\x93 Screen Recorder & Screen Capture,liecbddmkiiihnedobmlmillhodjkdmb',
+    'true,Quantier, LLC,Vim for Google Docs\xE2\x84\xA2,aphmodfjbhofkpibocbggkdfnpbpjmpp'
   )
   AND NOT (
     exception_key IN (
