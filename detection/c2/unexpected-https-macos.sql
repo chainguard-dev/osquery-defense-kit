@@ -140,7 +140,9 @@ WHERE
     '500,snyk-ls_darwin_arm64,snyk-ls_darwin_arm64,,a.out',
     '500,syncthing,syncthing,,syncthing',
     '500,trunk,trunk,Developer ID Application: Trunk Technologies, Inc. (LDR5F9BL92),trunk-cli',
-    '500,zed,zed,Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ),dev.zed.Zed'
+    '500,zed,zed,Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ),dev.zed.Zed',
+    '500,ngrok,ngrok,Developer ID Application: ngrok LLC (TEX8MHRDQ9),a.out',
+    '500,kubectl,kubectl,Developer ID Application: Docker Inc (9BNSXJN65R),kubectl'
   )
   AND NOT alt_exception_key IN (
     '0,velociraptor,velociraptor,0u,0g',

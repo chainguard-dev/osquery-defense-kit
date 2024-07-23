@@ -193,8 +193,11 @@ WHERE pos.protocol > 0
     '500,6,993,Spark Desktop Helper,Spark Desktop Helper,Developer ID Application: Readdle Technologies Limited (3L68KQB4HG),com.readdle.SparkDesktop.helper',
     '500,6,993,thunderbird,thunderbird,Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
     '500,6,995,KakaoTalk,KakaoTalk,Apple Mac OS Application Signing,com.kakao.KakaoTalkMac',
-    '0,6,853,at.obdev.littlesnitch.networkextension,at.obdev.littlesnitch.networkextension,0u,0g',
-    '500,6,21,Cyberduck,Cyberduck,Developer ID Application: David Kocher (G69SCX94XU),ch.sudo.cyberduck'
+    '0,6,853,at.obdev.littlesnitch.networkextension,at.obdev.littlesnitch.networkextension,Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R),at.obdev.littlesnitch.networkextension',
+    '500,6,21,Cyberduck,Cyberduck,Developer ID Application: David Kocher (G69SCX94XU),ch.sudo.cyberduck',
+    '500,6,7881,zed,zed,Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ),dev.zed.Zed',
+    '0,6,7300,safeqclientcore,safeqclientcore,Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9),safeqclientcore',
+    '500,6,80,ngrok,ngrok,Developer ID Application: ngrok LLC (TEX8MHRDQ9),a.out'
   ) -- Useful for unsigned binaries
   AND NOT alt_exception_key IN (
     '0,6,80,tailscaled,tailscaled,500u,80g',
