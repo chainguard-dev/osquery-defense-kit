@@ -350,7 +350,7 @@ WHERE
     'true,eyeo GmbH,Adblock Plus - free ad blocker,cfhdojbkjhnklbpkdaibdccddilifddb',
     'true,homerchen19,File Icons for GitHub and GitLab,ficfmibkjjnpogdcfhfokmihanoldbfe',
     'true,https://metamask.io,MetaMask,nkbihfbeogaeaoehlefnkodbefgpgknn',
-    'true,stefanXO,Tab Manager Plus for Chrome,cnkdjjdmfiffagllbiiilooaoofcoeff',
+    'true,stefanXO,Tab Manager Plus for Chrome,cnkdjjdmfiffagllbiiilooaoofcoeff'
   )
   AND NOT (
     exception_key IN (
