@@ -79,5 +79,6 @@ WHERE
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)'
   )
+  AND NOT p0.path LIKE '/opt/homebrew/Cellar/kubernetes-cli/%/bin/kubectl'
 GROUP BY
   p0.pid

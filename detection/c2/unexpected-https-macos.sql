@@ -204,6 +204,7 @@ WHERE
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Denver Technologies, Inc (2BBY89MBSN)',
+    'Developer ID Application: TechSmith Corporation (7TQL462TU8)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
     'Developer ID Application: Farhan Ahmed (4RZN52RN5P)',

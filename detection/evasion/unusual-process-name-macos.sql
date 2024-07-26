@@ -100,6 +100,7 @@ WHERE
     'ThingsWidgetExtensionMacAppStore',
     'at.obdev.littlesnitch.endpointsecurity',
     'launchd_startx',
+    'dynamiclinkmanager',
     'BetterTouchToolAppleScriptRunner',
     'BetterTouchToolShellScriptRunner',
     'TwitterNotificationServiceExtension',

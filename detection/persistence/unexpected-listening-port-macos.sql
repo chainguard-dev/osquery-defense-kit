@@ -82,6 +82,7 @@ WHERE
     '2345,6,500,dlv,',
     '24678,6,500,node,',
     '24802,6,500,synergy-service,Developer ID Application: Symless Ltd (4HX897Y6GJ)',
+    '24851,6,500,HueSync,Developer ID Application: Signify Netherlands B.V. (PREPN2W95S)',
     '25565,6,500,java,',
     '26000,6,500,node20,Developer ID Application: Node.js Foundation (HX7739G8FX)',
     '27036,6,500,steam_osx,Developer ID Application: Valve Corporation (MXGJJ98X76)',
@@ -111,7 +112,6 @@ WHERE
     '49152,6,0,AirPlayXPCHelper,Software Signing',
     '49152,6,0,launchd,Software Signing',
     '49152,6,0,remoted,Software Signing',
-    '24851,6,500,HueSync,Developer ID Application: Signify Netherlands B.V. (PREPN2W95S)',
     '49152,6,0,remotepairingdeviced,Software Signing',
     '49152,6,500,AUHostingServiceXPC_arrow,Software Signing',
     '49152,6,500,CaptureCoreService,Developer ID Application: Capture One A/S (5WTDB5F65L)',
@@ -150,6 +150,7 @@ WHERE
     '49152,6,500,telepresence,',
     '49152,6,500,vpnkit-bridge,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '49152,6,65,mDNSResponder,Software Signing',
+    '500,6,8883,BambuStudio,BambuStudio,500u,80g',
     '5000,6,500,ControlCenter,Software Signing',
     '5001,6,500,crane,',
     '5001,6,500,gvproxy,',
@@ -195,6 +196,8 @@ WHERE
     '8834,6,0,nessusd,Developer ID Application: Tenable, Inc. (4B8J598M7U)',
     '8834,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '8888,6,500,otel-desktop-viewer,',
+    '8933,6,500,WebexHelper,Developer ID Application: Cisco (DE8Y96K9QP)',
+    '8934,6,500,WebexHelper,Developer ID Application: Cisco (DE8Y96K9QP)',
     '9101,6,500,github_actions_exporter,',
     '9991,6,500,sourcegraph-backend,Developer ID Application: SOURCEGRAPH INC (74A5FJ7P96)'
   )

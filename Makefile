@@ -34,7 +34,7 @@ reformat:
 
 .PHONY: reformat-updates
 reformat-updates:
-	git status -s | awk '{ print $$2 }' | grep ".sql" | perl -ne 'chomp; system("cp $$_ /tmp/fix.sql && npx sql-formatter -l sqlite /tmp/fix.sql > $$_");'
+	git status -s | awk '{ print $$2 }' | grep ".sql" | perl -ne 'chomp; print("$$_\n"); system("cp $$_ /tmp/fix.sql && npx sql-formatter -l sqlite /tmp/fix.sql > $$_");'
 
 .PHONY: detect
 detect: ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)

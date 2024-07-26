@@ -84,6 +84,7 @@ WHERE
     'X,/nix/store/__VERSION__/bin/Xorg,0,system.slice,display-manager.service,0555',
     'Xorg,/usr/lib/Xorg,0,system.slice,lightdm.service,0755',
     'Xorg,/usr/lib/Xorg,0,system.slice,sddm.service,0755',
+    'Xorg,/usr/lib/xorg/Xorg,0,system.slice,sddm.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-core,0,system.slice,abrt-journal-core.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-oops,0,system.slice,abrt-oops.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-xorg,0,system.slice,abrt-xorg.service,0755',
@@ -255,10 +256,12 @@ WHERE
     'scdaemon,/usr/libexec/scdaemon,0,user.slice,user-1000.slice,0755',
     'sddm,/usr/bin/sddm,0,system.slice,sddm.service,0755',
     'sddm-helper,/usr/lib/sddm/sddm-helper,0,user.slice,user-1000.slice,0755',
+    'sddm-helper,/usr/lib/x86_64-linux-gnu/sddm/sddm-helper,0,user.slice,user-1000.slice,0755',
     'sddm-helper,/usr/libexec/sddm-helper,0,user.slice,user-1000.slice,0755',
     'sedispatch,/usr/sbin/sedispatch,0,system.slice,auditd.service,0755',
     'sh,/nix/store/__VERSION__/bin/bash,0,system.slice,znapzend.service,0555',
     'smartd,/usr/sbin/smartd,0,system.slice,smartd.service,0755',
+    'smartd,/usr/sbin/smartd,0,system.slice,smartmontools.service,0755',
     'snapd,/snap/snapd/__VERSION__/usr/lib/snapd/snapd,0,system.slice,snapd.service,0755',
     'snapd,/usr/lib/snapd/snapd,0,system.slice,snapd.service,0755',
     'snapd,/usr/libexec/snapd/snapd,0,system.slice,snapd.service,0755',
@@ -327,17 +330,13 @@ WHERE
     'zfs-auto-snapsh,/nix/store/__VERSION__/bin/ruby,0,system.slice,zfs-snapshot-frequent.service,0555',
     'zfs-auto-snapsh,/nix/store/__VERSION__/bin/ruby,0,system.slice,zfs-snapshot-hourly.service,0555'
   )
-  AND NOT exception_key LIKE 'abrt-dbus,/usr/sbin/abrt-dbus,0,system.slice,system-dbus%org.freedesktop.problems.slice,0755'
+  AND NOT exception_key LIKE '%beat,%/opt/Elastic/Agent/data/elastic-%/components/%beat,0,system.slice,elastic-agent.service,%'
+  AND NOT exception_key LIKE 'abrt-dbus,/usr/sbin/abrt-dbus,0,system.slice,system-dbus%org.freedesktop.problems.slice,%'
+  AND NOT exception_key LIKE 'elastic-agent,%/opt/Elastic/Agent/data/elastic-agent%/elastic-agent,0,system.slice,elastic-agent.service,%'
   AND NOT exception_key LIKE 'fusermount3,/usr/bin/fusermount3,%,user.slice,user-%.slice,4755'
-  AND NOT exception_key LIKE 'elastic-agent,/opt/Elastic/Agent/data/elastic-agent%/elastic-agent,0,system.slice,elastic-agent.service,0750'
-  AND NOT exception_key LIKE 'elastic-agent,/var/opt/Elastic/Agent/data/elastic-agent%/elastic-agent,0,system.slice,elastic-agent.service,0750'
-  AND NOT exception_key LIKE 'elastic-agent,/var/opt/Elastic/Agent/data/elastic-agent%/elastic-agent,0,system.slice,elastic-agent.service,0770'
-  AND NOT exception_key LIKE '%beat,/opt/Elastic/Agent/data/elastic-%/components/%beat,0,system.slice,elastic-agent.service,0750'
-  AND NOT exception_key LIKE '%beat,/var/opt/Elastic/Agent/data/elastic-%/components/%beat,0,system.slice,elastic-agent.service,0750'
+  AND NOT exception_key LIKE 'incusd,%/bin/incusd,0,lxc.monitor.%,,0755'
   AND NOT exception_key LIKE 'osquery-extensi,/opt/Elastic/Agent/data/elastic-agent-%/components/osquery-extension.ext,0,system.slice,elastic-agent.service,0750'
   AND NOT exception_key LIKE 'osqueryd,/opt/Elastic/Agent/data/elastic-agent-%/components/osqueryd,0,system.slice,elastic-agent.service,0750'
-  AND NOT exception_key LIKE 'elastic-agent,/opt/Elastic/Agent/data/elastic-agent-%/elastic-agent,0,system.slice,elastic-agent.service,0770'
-  AND NOT exception_key LIKE 'incusd,%/bin/incusd,0,lxc.monitor.%,,0755'
   AND NOT p0.path IN ('/bin/bash', '/usr/bin/bash')
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY
