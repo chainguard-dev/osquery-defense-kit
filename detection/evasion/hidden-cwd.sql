@@ -151,6 +151,7 @@ WHERE
     OR top_dir IN ('~/Sync')
     OR dir LIKE '/Library/Apple/System/Library/InstallerSandboxes/.PKInstallSandboxManager-SystemSoftware/%'
     OR dir LIKE '/opt/homebrew/%/.cache/%'
+    OR dir LIKE '~/%enterprise-packages/.chainguard'
     OR dir LIKE '/private/tmp/%/.git'
     OR dir LIKE '/tmp/.mount_%'
     OR dir LIKE '/tmp/%/.git'

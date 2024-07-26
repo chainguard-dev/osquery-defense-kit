@@ -5,7 +5,8 @@
 --
 -- tags: transient state net often
 -- platform: macos
-SELECT pos.protocol,
+SELECT
+  pos.protocol,
   pos.local_port,
   pos.remote_port,
   pos.remote_address,
@@ -66,7 +67,8 @@ SELECT pos.protocol,
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM process_open_sockets pos
+FROM
+  process_open_sockets pos
   LEFT JOIN processes p0 ON pos.pid = p0.pid
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
@@ -75,7 +77,8 @@ FROM process_open_sockets pos
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN signature s ON p0.path = s.path
-WHERE pos.protocol > 0
+WHERE
+  pos.protocol > 0
   AND NOT (
     pos.remote_port IN (53, 443)
     AND pos.protocol IN (6, 17)
@@ -204,6 +207,7 @@ WHERE pos.protocol > 0
     '500,6,22,ssh,ssh,0u,500g',
     '500,6,5432,psql,psql,500u,80g',
     '500,6,22,ssh,ssh,500u,0g',
+    '500,17,123,limactl,limactl,500u,80g',
     '500,17,123,gvproxy,gvproxy,500u,80g',
     '500,6,80,qemu-system-x86_64,qemu-system-x86_64,500u,80g',
     '500,6,22,ssh,ssh,500u,20g',
@@ -300,4 +304,5 @@ WHERE pos.protocol > 0
       'Developer ID Application: Zwift, Inc (C2GM8Y9VFM),ZwiftAppSilicon'
     )
   )
-GROUP BY p0.cmdline
+GROUP BY
+  p0.cmdline

@@ -108,6 +108,7 @@ WHERE
     '80,6,0,python3.11,0u,0g,dnf-automatic',
     '80,6,0,python3.11,0u,0g,yum',
     '80,6,0,python3.12,0u,0g,yum',
+    '80,6,500,firefox-bin,0u,0g,firefox-bin',
     '80,6,0,python3.9,u,g,yum',
     '80,6,0,sort,0u,0g,sort',
     '80,6,0,systemd-hwdb,0u,0g,systemd-hwdb',

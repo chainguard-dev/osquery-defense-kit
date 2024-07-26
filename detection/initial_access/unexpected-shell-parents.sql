@@ -267,6 +267,7 @@ WHERE
   AND NOT p1.cmdline LIKE '%brew.rb%'
   AND NOT p1.cmdline LIKE '%/Homebrew/build.rb%'
   AND NOT p1.cmdline LIKE '%Code Helper%'
+  AND NOT p1.cmdline LIKE '%Code - Insiders Helper%'
   AND NOT p1.cmdline LIKE '%gcloud.py config config-helper%'
   AND NOT p1.cmdline LIKE '/usr/lib/electron19/electron /usr/lib/code/out/bootstrap-fork --type=ptyHost --logsPath /home/%/.config/Code - OSS/logs/%'
   AND NOT p1.name LIKE '%term%'

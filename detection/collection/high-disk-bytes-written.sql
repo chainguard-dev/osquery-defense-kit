@@ -61,13 +61,13 @@ WHERE
     '/usr/bin/apt',
     '/usr/bin/aptd',
     '/usr/bin/bash',
-    '/usr/bin/gnome-disks',
     '/usr/bin/bwrap',
     '/usr/bin/curl',
     '/usr/bin/darktable',
     '/usr/bin/dockerd',
     '/usr/bin/fish',
     '/usr/bin/git',
+    '/usr/bin/gnome-disks',
     '/usr/bin/gnome-shell',
     '/usr/bin/gnome-software',
     '/usr/bin/gnome-text-editor',
@@ -127,7 +127,6 @@ WHERE
     AND p0.cmdline = '/usr/bin/python3 /usr/sbin/aptd'
   )
   AND NOT p0.name IN (
-    'Cisco WebEx Start',
     'GoogleUpdater',
     'Install',
     'baloo_file_extr',
@@ -149,6 +148,7 @@ WHERE
     'firefox',
     'flatpak-session',
     'fsdaemon',
+    'git',
     'go',
     'goland',
     'golangci-lint-v',

@@ -51,4 +51,4 @@ WHERE
     '74,0,/tmp/mysql.sock.lock,regular,0600',
     '74,0,/tmp/mysqlx.sock.lock,regular,0600'
   )
-  AND NOT exception_key LIKE '500,1000,/tmp/keepassxc-%-linux.lock,regular,0644'
+  AND NOT exception_key LIKE '500,1000,/tmp/keepassxc-%.lock,regular,0644'
