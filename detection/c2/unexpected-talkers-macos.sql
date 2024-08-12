@@ -251,6 +251,7 @@ WHERE
     AND id_exception_key IN (
       'Apple Mac OS Application Signing,com.microsoft.OneDrive-mac',
       'Apple Mac OS Application Signing,com.ookla.speedtest-macos',
+      'Apple Mac OS Application Signing,net.whatsapp.WhatsApp.ServiceExtension',
       'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF),com.adguard.mac.adguard.network-extension',
       'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.AdobeResourceSynchronizer',
       'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.Reader',
@@ -270,7 +271,6 @@ WHERE
       'Developer ID Application: GUILHERME RAMBO (8C7439RJLG),codes.rambo.AirBuddy.MobileDevicesService',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.GoogleUpdater',
-      'Apple Mac OS Application Signing,net.whatsapp.WhatsApp.ServiceExtension',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.one.NetworkExtension',
       'Developer ID Application: Loom, Inc (QGD2ZPXZZG),com.loom.desktop',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode.helper',
@@ -280,7 +280,7 @@ WHERE
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefox',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefoxdeveloperedition',
       'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
-      'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker.docker',
+      'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R),at.obdev.littlesnitch.networkextension',
       'Developer ID Application: Opera Software AS (A2P9LX4JPN),com.operasoftware.Opera.helper',
       'Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',
       'Developer ID Application: Red Hat, Inc. (HYSCB8KRL2),gvproxy',
@@ -289,6 +289,7 @@ WHERE
       'Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
       'Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
       'Developer ID Application: Tailscale Inc. (W5364U7YZB),io.tailscale.ipn.macsys.network-extension',
+      'Developer ID Application: TechSmith Corporation (7TQL462TU8),com.techsmith.camtasia2024',
       'Developer ID Application: TechSmith Corporation (7TQL462TU8),com.techsmith.snagit.capturehelper2020',
       'Developer ID Application: TechSmith Corporation (7TQL462TU8),com.techsmith.snagit.capturehelper2024',
       'Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.Browser',
@@ -300,7 +301,6 @@ WHERE
       'Developer ID Application: WhatsApp Inc. (57T9237FN3),net.whatsapp.WhatsApp',
       'Developer ID Application: WhatsApp Inc. (57T9237FN3),net.whatsapp.WhatsApp.ServiceExtension',
       'Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos',
-      'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R),at.obdev.littlesnitch.networkextension',
       'Developer ID Application: Zwift, Inc (C2GM8Y9VFM),ZwiftAppSilicon'
     )
   )

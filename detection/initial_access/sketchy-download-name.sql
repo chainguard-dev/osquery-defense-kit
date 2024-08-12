@@ -63,6 +63,7 @@ WHERE
   -- False positives
   AND NOT (
     file.filename LIKE "LogiPresentation%.dmg"
+    OR file.filename = "googlesoftwareupdate.dmg"
     OR file.filename LIKE "pdftk_server-%-win-setup.exe"
     OR file.filename LIKE "PioneerDriveUpdaterBDR%.dmg"
     OR file.filename LIKE "%MacVim%.dmg"

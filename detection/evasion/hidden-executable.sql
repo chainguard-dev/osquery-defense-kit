@@ -69,6 +69,7 @@ WHERE
   AND NOT f.directory LIKE '%/.provisio/bin/%'
   AND NOT f.directory LIKE '%/.rustup/%'
   AND NOT f.directory LIKE '%/.rbenv/%'
+  AND NOT f.directory LIKE '%/.supermaven/%'
   AND NOT f.directory LIKE '%/.steampipe/db/%'
   AND NOT f.directory LIKE '%/.terraform%'
   AND NOT f.directory LIKE '%/.tflint.d/%'

@@ -60,6 +60,7 @@ WHERE
     '/usr/bin/mono-sgen',
     '/usr/bin/xclip',
     '/usr/bin/xsel',
+    '/usr/bin/espeak',
     '/usr/bin/xss-lock',
     '/usr/bin/i3lock',
     '/usr/bin/xbindkeys',

@@ -94,6 +94,7 @@ WHERE
     '500,busybox,sh',
     '500,coreutils,tail',
     '500,gjs-console,daemon.js',
+    '500,chainctl,docker-credenti',
     '500,gjs-console,gnome-character',
     '500,nc.openbsd,nc',
     '500,netcat,nc',
