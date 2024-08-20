@@ -193,10 +193,10 @@ WHERE
     '500,wolfictl,wolfictl,500u,20g'
   )
   AND NOT s.authority IN (
-    'Developer ID Application: ANCHORE, INC. (9MJHKYX5AT)',
     'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: AgileBits Inc. (2BUA8C4S2C)',
+    'Developer ID Application: ANCHORE, INC. (9MJHKYX5AT)',
     'Developer ID Application: Bitdefender SRL (GUNFMW623Y)',
     'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)',
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
@@ -206,7 +206,7 @@ WHERE
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
     'Developer ID Application: Farhan Ahmed (4RZN52RN5P)',
     'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK)',
-    'Developer ID Application: Oracle America, Inc. (VB5E2TV963)',
+    'Developer ID Application: GitHub (VEKTX9H2N7)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
     'Developer ID Application: Hashicorp, Inc. (D38WU7D763)',
     'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
@@ -214,8 +214,9 @@ WHERE
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Michael Schreiber (G966ML7VBG)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
-    'Developer ID Application: PSI Services LLC (73AT498HPV)',
+    'Developer ID Application: Oracle America, Inc. (VB5E2TV963)',
     'Developer ID Application: Panic, Inc. (VE8FC488U5)',
+    'Developer ID Application: PSI Services LLC (73AT498HPV)',
     'Developer ID Application: Quiet Riddle Ventures LLC (U68MSDN6DR)',
     'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     'Developer ID Application: Reflect App, LLC (789ULN5MZB)',
