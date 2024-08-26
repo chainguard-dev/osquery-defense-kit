@@ -1,6 +1,8 @@
 -- Look for sketchy udev entries, inspired by sedexp
+--
 -- references:
 --  * https://www.aon.com/en/insights/cyber-labs/unveiling-sedexp
+--  * https://ch4ik0.github.io/en/posts/leveraging-Linux-udev-for-persistence/
 --
 -- tags: volume filesystem
 -- platform: linux
@@ -25,7 +27,7 @@ WHERE file.path IN (
         GROUP BY file.inode
     )
     AND yara.sigrule = '
-rule udev_kernel_memory_device_runner : critical {
+rule udev_memory_device_runner : critical {
     meta:
         description = "runs program once built-in memory device is created"
     strings:
@@ -36,20 +38,32 @@ rule udev_kernel_memory_device_runner : critical {
         all of them
 }
 
-rule tiny_udev_runner_unusual : high {
+rule udev_at_runner : critical {
+    meta:
+        description = "runs program via at"
+        reference = "https://ch4ik0.github.io/en/posts/leveraging-Linux-udev-for-persistence/"
+    strings:
+        $add = "ACTION==\"add\""
+        $run_at = "RUN+=\"/usr/bin/at "
+        $run_at2 = "RUN+=\"at "
+    condition:
+        $add and any of ($run*)
+}
+
+rule udev_unusual_small_runner : high {
     meta:
         description = "small udev entry that runs program based on unusual parameters"
     strings:
-        $action_add = "ACTION==\"add\""
         $action_run = "RUN+="
-
         $not_attrs = "ATTRS{"
-        $not_subsystem = "SUBSYSTEM=="
+        $not_kernel = "KERNEL=="
+        $not_block = "SUBSYSTEM==\"block\""
+        $not_bridge = "RUN+=\"bridge-network-interface\""
     condition:
-        filesize < 256 and all of ($action*) and none of ($not*)
+        filesize < 96 and all of ($action*) and none of ($not*)
 }
 
-rule udev_kernel_builtin_runner : high {
+rule udev_major_runner : high {
     meta:
         description = "runs program once major device number is created, may have false-positives"
     strings:
