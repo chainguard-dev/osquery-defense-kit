@@ -80,6 +80,7 @@ WHERE
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Apple Inc. - XQuartz (NA574AWV7E)',
     'Developer ID Application: Bitdefender SRL (GUNFMW623Y)',
+    'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',

@@ -226,7 +226,10 @@ WHERE
   )
   AND NOT (
     exception_key LIKE '500,python3.%,%,'
-    AND p0.path LIKE '/opt/%/bin/python%'
+    AND (
+      p0.path LIKE '/opt/%/bin/python%'
+      OR p0.path LIKE '/nix/store/%/bin/python%'
+    )
   )
   AND NOT (
     exception_Key LIKE '500,%,a.out,'

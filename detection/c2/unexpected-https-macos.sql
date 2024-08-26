@@ -117,6 +117,7 @@ WHERE
     '500,Paintbrush,Paintbrush,Developer ID Application: Michael Schreiber (G966ML7VBG),com.soggywaffles.paintbrush',
     '500,Plex,Plex,Developer ID Application: Plex Inc. (K4QJ56KR4A),tv.plex.desktop',
     '500,PlexMobile,PlexMobile,Apple iPhone OS Application Signing,com.plexapp.plex',
+    '500,PowerPoint,PowerPoint,Apple Development: Zack Hoherchak (SS9PSPF8UF),PowerPoint',
     '500,Realm,Realm,Apple iPhone OS Application Signing,camera.youpi.metareal',
     '500,Skitch,Skitch,Developer ID Application: Skitch Inc (J8RPQ294UB),com.skitch.skitch',
     '500,Sky Go,Sky Go,Developer ID Application: Sky UK Limited (GJ24C8864F),com.bskyb.skygoplayer',
@@ -132,7 +133,9 @@ WHERE
     '500,jcef Helper,jcef Helper,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),org.jcef.jcef.helper',
     '500,krisp Helper,krisp Helper,Developer ID Application: Krisp Technologies, Inc. (U5R26XM5Z2),ai.krisp.krispMac.helper',
     '500,krisp,krisp,Developer ID Application: Krisp Technologies, Inc. (U5R26XM5Z2),ai.krisp.krispMac',
+    '500,kubectl,kubectl,Developer ID Application: Docker Inc (9BNSXJN65R),kubectl',
     '500,melange,melange,,a.out',
+    '500,ngrok,ngrok,Developer ID Application: ngrok LLC (TEX8MHRDQ9),a.out',
     '500,node,node,Developer ID Application: Node.js Foundation (HX7739G8FX),node',
     '500,process-agent,process-agent,Developer ID Application: Datadog, Inc. (JKFCB4CN7C),process-agent',
     '500,pycharm,pycharm,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.pycharm',
@@ -140,9 +143,7 @@ WHERE
     '500,snyk-ls_darwin_arm64,snyk-ls_darwin_arm64,,a.out',
     '500,syncthing,syncthing,,syncthing',
     '500,trunk,trunk,Developer ID Application: Trunk Technologies, Inc. (LDR5F9BL92),trunk-cli',
-    '500,zed,zed,Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ),dev.zed.Zed',
-    '500,ngrok,ngrok,Developer ID Application: ngrok LLC (TEX8MHRDQ9),a.out',
-    '500,kubectl,kubectl,Developer ID Application: Docker Inc (9BNSXJN65R),kubectl'
+    '500,zed,zed,Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ),dev.zed.Zed'
   )
   AND NOT alt_exception_key IN (
     '0,velociraptor,velociraptor,0u,0g',

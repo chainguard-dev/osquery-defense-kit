@@ -80,6 +80,7 @@ WHERE
     '/opt/homebrew/opt/dnsmasq/sbin/dnsmasq --keep-in-foreground -C /opt/homebrew/etc/dnsmasq.conf -7 /opt/homebrew/etc/dnsmasq.d,*.conf',
     '/opt/homebrew/opt/jenkins/bin/jenkins --httpListenAddress=127.0.0.1 --httpPort=8080',
     '/opt/homebrew/opt/mariadb/bin/mysqld_safe',
+    '/Applications/AeroSpace.app/Contents/MacOS/AeroSpace --started-at-login',
     '/Applications/Tunnelblick.app/Contents/Resources/launchAtLogin.sh',
     '/opt/homebrew/bin/gitsign-credential-cache',
     '/opt/homebrew/opt/pueue/bin/pueued --verbose',

@@ -111,6 +111,7 @@ WHERE
     '~/Applications (Parallels)/',
     '~/bin/',
     '~/.cargo/',
+    '~/.supermaven/',
     '~/code/',
     '~/.Trash/',
     '~/Code/',

@@ -253,7 +253,7 @@ WHERE
   -- still not sure what the hell this is
   AND NOT (
     file.path LIKE '/tmp/.%3D'
-    AND file.size < 30000
+    AND file.size < 35000
     AND file.size > 20000
     AND file.mode = '0644'
     AND uid = 501
