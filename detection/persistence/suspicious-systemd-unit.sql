@@ -47,21 +47,21 @@ rule systemd_execstart_elsewhere : medium {
     hash_2024_2024_Spinning_YARN_yarn_fragments = "723326f8551f2a92ccceeec93859f58df380a3212e7510bc64181f2a0743231c"
   strings:
     $execstart = /ExecStart=\/[\w\/]{1,128}/
-    $not_usr_sbin = "ExecStart=/usr/sbin/"
-    $not_sbin = "ExecStart=/sbin/"
-    $not_usr_lib = "ExecStart=/usr/lib/"
-    $not_lib = "ExecStart=/lib/"
-    $not_usr_bin = "ExecStart=/usr/bin/"
-    $not_opt = "ExecStart=/opt/"
-    $not_usr_libexec = "ExecStart=/usr/libexec/"
-    $not_usr_local = "ExecStart=/usr/local/"
-    $not_usr_share = "ExecStart=/usr/share/"
+    $not_bin = "ExecStart=/bin/"
     $not_bin_true = "ExecStart=/bin/true"
     $not_etc_rcd = "ExecStart=/etc/rc.d/rc.local"
     $not_etc_rc_local = "ExecStart=/etc/rc.local"
-    $not_bin = "ExecStart=/bin/"
-    $not_motd = "ExecStart=/etc/update-motd.d/"
     $not_init_d = "ExecStart=/etc/init.d/"
+    $not_lib = "ExecStart=/lib/"
+    $not_motd = "ExecStart=/etc/update-motd.d/"
+    $not_opt = "ExecStart=/opt/"
+    $not_sbin = "ExecStart=/sbin/"
+    $not_usr_bin = "ExecStart=/usr/bin/"
+    $not_usr_libexec = "ExecStart=/usr/libexec/"
+    $not_usr_lib = "ExecStart=/usr/lib/"
+    $not_usr_local = "ExecStart=/usr/local/"
+    $not_usr_sbin = "ExecStart=/usr/sbin/"
+    $not_usr_share = "ExecStart=/usr/share/"
   condition:
     filesize < 102400 and $execstart and none of ($not_*)
 }
@@ -72,13 +72,14 @@ rule systemd_execstop_elsewhere : medium {
 	description = "Runs program from unexpected directory at stop"
   strings:
     $execstop = /ExecStop=\/[\w\.\_\-]{2,64}/
-    $not_usr_sbin = "ExecStop=/usr/sbin/"
-    $not_sbin = "ExecStop=/sbin/"
-    $not_usr_lib = "ExecStop=/usr/lib/"
-    $not_usr_libexec = "ExecStop=/usr/libexec/"
-    $not_usr_share = "ExecStop=/usr/share/"
-    $not_usr_local = "ExecStop=/usr/local/"
     $not_lib = "ExecStop=/lib/"
+    $not_opt = "ExecStart=/opt/"
+    $not_sbin = "ExecStop=/sbin/"
+    $not_usr_libexec = "ExecStop=/usr/libexec/"
+    $not_usr_lib = "ExecStop=/usr/lib/"
+    $not_usr_local = "ExecStop=/usr/local/"
+    $not_usr_sbin = "ExecStop=/usr/sbin/"
+    $not_usr_share = "ExecStop=/usr/share/"
   condition:
     filesize < 384 and $execstop and none of ($not*)
 }
