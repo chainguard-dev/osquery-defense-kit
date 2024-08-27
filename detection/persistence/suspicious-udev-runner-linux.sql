@@ -6,7 +6,6 @@
 --
 -- tags: volume filesystem
 -- platform: linux
--- tags: volume filesystem
 SELECT
   file.path,
   file.size,
