@@ -26,4 +26,3 @@ WHERE
   AND command NOT LIKE 'docker run amouat/jocko%'
   AND command NOT LIKE 'gsutil %'
   AND command NOT LIKE 'root command -v debian-sa1%'
-

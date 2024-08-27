@@ -58,6 +58,7 @@ WHERE
         'alsa-store.service,Store Sound Card State,',
         'anacron.service,Run anacron jobs,',
         'anacron.timer,Trigger anacron every hour,',
+        'apache2.service,The Apache HTTP Server,',
         'apcupsd.service,APC UPS Power Control Daemon for Linux,',
         'apparmor.service,Load AppArmor profiles,',
         'apport-autoreport.path,Process error reports when automatic reporting is enabled (file watch),',

@@ -6,27 +6,33 @@
 --
 -- tags: volume filesystem
 -- platform: linux
--- tags: volume filesystem
-SELECT file.path,
-    file.size,
-    file.btime,
-    file.ctime,
-    file.mtime,
-    hash.sha256,
-    yara.*
-FROM file
-    JOIN yara ON file.path = yara.path
-    LEFT JOIN hash ON file.path = hash.path
-WHERE file.path IN (
-        SELECT file.path
-        FROM file
-        WHERE file.path LIKE '/etc/udev/rules.d/%'
-            OR file.path LIKE '/usr/lib/udev/rules.d/%'
-            OR file.path LIKE '/lib/udev/rules.d/%'
-            OR file.path LIKE '/usr/local/lib/udev/rules.d/%'
-        GROUP BY file.inode
-    )
-    AND yara.sigrule = '
+SELECT
+  file.path,
+  file.size,
+  file.btime,
+  file.ctime,
+  file.mtime,
+  hash.sha256,
+  yara.*
+FROM
+  file
+  JOIN yara ON file.path = yara.path
+  LEFT JOIN hash ON file.path = hash.path
+WHERE
+  file.path IN (
+    SELECT
+      file.path
+    FROM
+      file
+    WHERE
+      file.path LIKE '/etc/udev/rules.d/%'
+      OR file.path LIKE '/usr/lib/udev/rules.d/%'
+      OR file.path LIKE '/lib/udev/rules.d/%'
+      OR file.path LIKE '/usr/local/lib/udev/rules.d/%'
+    GROUP BY
+      file.inode
+  )
+  AND yara.sigrule = '
 rule udev_memory_device_runner : critical {
     meta:
         description = "runs program once built-in memory device is created"
@@ -73,4 +79,4 @@ rule udev_major_runner : high {
     condition:
         all of them
 }'
-    AND yara.count > 0
+  AND yara.count > 0

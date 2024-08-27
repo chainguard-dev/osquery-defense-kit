@@ -177,43 +177,52 @@ WHERE
     '~/Library/Mobile Documents/com~apple~CloudDocs'
   )
   AND NOT top2_homedir IN (
-    '/Users/Shared/LGHUB/cache',
-    '/Users/Shared/LogiOptionsPlus/cache',
-    '/Users/Shared/Red Giant/Uninstall',
     '~/.antigen',
+    '~/.docker.old/cli-plugins',
     '~/.fzf/test',
     '~/.iterm2',
-    '~/.sdkman/libexec',
-    '~/.magefile',
-    '~/.nvm',
-    '~/.revox/updates',
-    '~/.terraform.d',
-    '~/.terraform.versions',
-    '~/Library/CloudStorage',
-    '~/.docker.old/cli-plugins',
+    '~/.kuberlr/darwin-arm64',
     '~/Library/Application Support',
     '~/Library/Caches',
+    '~/Library/CloudStorage',
+    '~/Library/helm',
+    '~/Library/pnpm',
     '~/Library/Printers',
     '~/Library/Python',
     '~/Library/QuickLook',
     '~/Library/Screen Savers',
     '~/Library/Services',
     '~/Library/Thunderbird',
-    '~/Library/helm',
-    '~/Library/pnpm'
+    '~/.magefile',
+    '~/.nvm',
+    '~/.revox/updates',
+    '~/.sdkman/libexec',
+    '~/.terraform.d',
+    '~/.terraform.versions',
+    '/Users/Shared/LGHUB/cache',
+    '/Users/Shared/LogiOptionsPlus/cache',
+    '/Users/Shared/Red Giant/Uninstall'
   )
   AND NOT homepath IN (
+    '~/.config/nvm/nvm.sh',
     '~/Library/Assistant/SiriAnalytics.db',
+    '~/Library/Calendars/Calendar.sqlitedb',
     '~/Library/Calendars/Calendar.sqlitedb-wal',
+    '~/Library/com.apple.iTunesCloud/play_activity.sqlitedb-wal',
     '~/Library/Finance/finance_cloud.db',
     '~/Library/Finance/finance_cloud.db-wal',
+    '~/Library/Group Containers/group.com.docker/unleash-repo-schema-v1-Docker Desktop.json',
+    '~/Library/HTTPStorages/com.apple.AddressBookSourceSync',
+    '~/Library/HTTPStorages/com.apple.AddressBookSourceSync/httpstorages.sqlite-shm',
+    '	~/Library/Keychains/login.keychain-db',
     '~/Library/Logs/zoom.us/upload_history.txt',
-    '~/Library/HTTPStorages/com.apple.AddressBookSourceSync'
+    '~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2'
   )
   AND NOT homepath LIKE '~/Library/%/%.sqlite'
   AND NOT homepath LIKE '~/Library/%/%.sqlite-wal'
   AND NOT homepath LIKE '~/Library/%/%.db'
   AND NOT homepath LIKE '~/Library/%/%.db-wal'
+  AND NOT f.directory LIKE '/var/root/Library/Caches/%/org.sparkle-project.Sparkle/%/Sparkle.framework'
   AND NOT f.directory LIKE '/Users/%/.docker/cli-plugins'
   AND NOT f.directory LIKE '/Users/%/.nix-profile/bin'
   AND NOT f.path LIKE '/Users/%/Library/Fonts/%.ttf'

@@ -79,7 +79,9 @@ WHERE
       'hugo',
       'gopls',
       'limactl',
+      'nuclei',
       'qemu-system-aarch64',
+      'qemu-system-x86',
       'crane',
       'kubectl',
       'nginx-ingress-c',
@@ -108,7 +110,7 @@ WHERE
     '32768,6,500,java',
     '24024,17,500,MTGA',
     '1,1,500,ping'
-    )
+  )
   AND NOT p0.path LIKE '/nix/store/%'
   AND NOt p0.path LIKE '/Users/Shared/Epic Games/%'
   AND NOT (

@@ -34,6 +34,7 @@ WHERE
     '/opt/google/endpoint-verification/bin/apihelper',
     '/opt/Elastic/Endpoint/elastic-endpoint',
     '/opt/resolve/bin/resolve',
+    '/var/opt/velociraptor/bin/velociraptor',
     '/usr/bin/melange'
   )
   AND f.path NOT LIKE '/home/%'

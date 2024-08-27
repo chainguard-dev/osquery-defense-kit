@@ -88,13 +88,14 @@ WHERE
     'thunderbird'
   )
   AND NOT exception_key IN (
-    '0,udevadm,(udev-worker)',
     '0,udevadm,systemd-udevd',
+    '0,udevadm,(udev-worker)',
     '120,systemd-executor,(sd-pam)',
+    '42,systemd-executor,(sd-pam)',
     '500,busybox,sh',
+    '500,chainctl,docker-credenti',
     '500,coreutils,tail',
     '500,gjs-console,daemon.js',
-    '500,chainctl,docker-credenti',
     '500,gjs-console,gnome-character',
     '500,nc.openbsd,nc',
     '500,netcat,nc',

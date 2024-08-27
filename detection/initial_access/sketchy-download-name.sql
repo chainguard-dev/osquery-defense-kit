@@ -67,5 +67,7 @@ WHERE
     OR file.filename LIKE "pdftk_server-%-win-setup.exe"
     OR file.filename LIKE "PioneerDriveUpdaterBDR%.dmg"
     OR file.filename LIKE "%MacVim%.dmg"
+    OR file.filename LIKE 'CalDigit_%_PD_Firmware_Updater_v%_Mac.dmg'
+    OR file.filename LIKE 'TS%-Thunderbolt-Firmware-Updater-Uninstaller.dmg'
     OR file.filename LIKE 'PA Lottery Player Location Check%.dmg'
   )

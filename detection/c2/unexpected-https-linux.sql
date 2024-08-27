@@ -302,10 +302,14 @@ WHERE
     '500,slirp4netns,500u,500g,slirp4netns',
     '500,snap-store,0u,0g,snap-store',
     '500,snyk,500u,500g,snyk',
+    '500,plasmashell,0u,0g,plasmashell',
     '500,spotify,0u,0g,spotify',
     '500,spotify,500u,500g,spotify',
     '500,spotify,u,g,spotify',
+    '500,limactl,500u,500g,limactl',
+    '500,tidal-hifi,u,g,tidal-hifi',
     '500,steam,500u,100g,steam',
+    '0,skopeo,0u,0g,skopeo',
     '500,steam,500u,500g,steam',
     '500,steamwebhelper,500u,100g,steamwebhelper',
     '500,steamwebhelper,500u,500g,steamwebhelper',
@@ -328,6 +332,7 @@ WHERE
     '500,trivy,500u,500g,trivy',
     '500,ubuntu-report,0u,0g,ubuntu-report',
     '500,wget,0u,0g,wget',
+    '500,ssh,0u,0g,ssh',
     '500,wine64-preloader,500u,500g,DaveTheDiver.ex',
     '500,wine64-preloader,500u,500g,Root.exe',
     '500,wolfictl,500u,500g,wolfictl',
@@ -340,6 +345,7 @@ WHERE
   AND NOT exception_key LIKE '0,python3.%,0u,0g,dnf'
   AND NOT exception_key LIKE '0,python3.%,0u,0g,dnf-automatic'
   AND NOT exception_key LIKE '0,python3.%,0u,0g,yum'
+  AND NOT exception_key LIKE '500,python3.%,0u,0g,update-manager'
   AND NOT exception_key LIKE '500,cosign-%,500u,500g,cosign-%'
   AND NOT exception_key LIKE '500,node,0u,0g,npm exec %'
   AND NOT exception_key LIKE '500,node,0u,0g,npm install %'

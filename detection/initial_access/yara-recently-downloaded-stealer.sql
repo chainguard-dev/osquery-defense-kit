@@ -1,5 +1,6 @@
 -- tags: volume filesystem seldom extra
-SELECT file.path,
+SELECT
+  file.path,
   file.size,
   file.btime,
   file.ctime,
@@ -7,15 +8,19 @@ SELECT file.path,
   magic.data,
   hash.sha256,
   yara.*
-FROM file
+FROM
+  file
   JOIN yara ON file.path = yara.path
   LEFT JOIN magic ON file.path = magic.path
   LEFT JOIN hash ON file.path = hash.path
 WHERE -- Only scan recent downloads
   file.path IN (
-    SELECT path
-    FROM file
-    WHERE (
+    SELECT
+      path
+    FROM
+      file
+    WHERE
+      (
         file.path LIKE '/home/%/Downloads/%'
         OR file.path LIKE '/home/%/Downloads/%/%'
         OR file.path LIKE '/Users/%/Downloads/%'

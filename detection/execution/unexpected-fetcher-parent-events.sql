@@ -95,6 +95,7 @@ WHERE
       'kitty',
       'login',
       'roxterm',
+      'stable',
       'tmux',
       'tmux:server',
       'wezterm-gui',

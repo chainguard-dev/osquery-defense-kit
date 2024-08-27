@@ -68,6 +68,7 @@ WHERE
       '/Users/Shared/CleanMyMac X Menu',
       '/Users/Shared/LGHUB',
       '/Users/Shared/logi',
+      ' /Users/Shared/Maxon',
       '/Users/Shared/AdobeInstalledCodecsTier2',
       '/Users/Shared/LogioptionsPlus',
       '/Users/Shared/LogiOptionsPlus',

@@ -90,18 +90,16 @@ WHERE
     AND pext NOT IN ("", "gui", "cli", "us", "node", "com")
   )
   AND NOT pname IN (
-    'cpu',
-    'BetterTouchToolAppleScriptRunner',
-    'BetterTouchToolAppleScriptRunner2',
-    'dynamiclinkmanager',
-    'launchd_startx',
-    'TwitterNotificationServiceExtension',
-    'ThingsWidgetExtensionMacAppStore',
-    'com.microsoft.teams2.notificationcenter',
-    'BetterTouchToolShellScriptRunner',
     'at.obdev.littlesnitch.networkextension',
-    'EcammLiveVideoOutAssistantXPCHelper'
+    'com.microsoft.teams2.notificationcenter',
+    'cpu',
+    'dynamiclinkmanager',
+    'EcammLiveVideoOutAssistantXPCHelper',
+    'launchd_startx',
+    'ThingsWidgetExtensionMacAppStore',
+    'TwitterNotificationServiceExtension'
   )
+  AND NOT pname LIKE 'BetterTouch%Runner%'
   AND NOT pname LIKE '.%-wrapped'
   AND NOT pname LIKE 'cody-engine-%'
   AND NOT pname LIKE '__%go_build_%'

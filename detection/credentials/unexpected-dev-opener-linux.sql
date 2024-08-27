@@ -203,6 +203,7 @@ WHERE
     '/dev/sda,ntfs-3g',
     '/dev/shm/envoy_shared_memory_1,envoy',
     '/dev/tpmrm,launcher',
+    '/dev/udmabuf,gnome-shell-portal-helper',
     '/dev/tty,agetty',
     '/dev/tty,gdm-wayland-session',
     '/dev/tty,gdm-x-session',
@@ -246,13 +247,13 @@ WHERE
   AND path_exception NOT LIKE '/dev/shm/pymp-%,python3.%'
   AND dir_exception NOT LIKE '/dev/shm/byobu-%/status.tmux,'
   AND NOT (
-      pof.path = "/dev/uinput"
-      AND p0.name LIKE "solaar%"
-      AND p0.path LIKE '/usr/bin/python%'
+    pof.path = "/dev/uinput"
+    AND p0.name LIKE "solaar%"
+    AND p0.path LIKE '/usr/bin/python%'
   )
   AND NOT (
-      pof.path LIKE "/dev/input/event%"
-      AND p0.name = "openrazer-daemo"
+    pof.path LIKE "/dev/input/event%"
+    AND p0.name = "openrazer-daemo"
   )
   AND NOT (
     pof.path LIKE '/dev/bus/usb/%'

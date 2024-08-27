@@ -78,7 +78,7 @@ WHERE
       AND NOT path LIKE '/usr/local/kolide-k2/bin/%'
       AND NOT path LIKE '%/cloud_sql_proxy'
   )
-  AND (p0.start_time - MAX(f.ctime, f.btime)) < 60
+  AND (p0.start_time - MAX(f.ctime, f.btime)) < 600
   AND f.ctime > 0
   AND NOT (
     p0.euid > 499
@@ -134,8 +134,10 @@ WHERE
       OR dir LIKE '~/%/node_modules/%bin'
       OR dir LIKE '~/%.vscode/extensions/%'
       OR dir LIKE '~/.vscode-insiders/extensions/%'
+      OR dir LIKE '~/.rustup/toolchains/%'
       OR dir LIKE '~/%/go/bin'
       OR dir LIKE '~/Downloads/%.app/Contents/MacOS'
+      OR dir LIKE '~/dev/%'
       OR f.path LIKE '%go-build%'
       OR homepath LIKE '~/%/src/%.test'
       OR homepath LIKE '~/%/pkg/%.test'

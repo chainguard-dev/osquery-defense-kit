@@ -85,11 +85,13 @@ WHERE
     'Meeting Center,8.8.8.8,53',
     'ServiceExtension,8.8.8.8,53',
     'nuclei,1.0.0.1,53',
+    'distnoted,8.8.8.8,53',
     'limactl,8.8.8.8,53',
     'adguard_dns,1.0.0.1,53',
     'coredns,8.8.8.8,53',
     'signal-desktop,8.8.8.8,53',
     'slack,8.8.8.8,53',
+    'zed,8.8.8.8,53',
     'EpicWebHelper,8.8.4.4,53',
     'EpicWebHelper,8.8.8.8,53',
     'Signal Helper (Renderer),8.8.8.8,53',
@@ -99,22 +101,23 @@ WHERE
   )
   -- Local DNS servers and custom clients go here
   AND basename NOT IN (
-    'chrome',
-    'gvproxy',
-    'com.docker.backend',
-    'WhatsApp',
-    'Jabra Direct Helper',
-    'nessusd',
-    'limactl',
-    'apko',
-    'nuclei',
     'adguard_dns',
+    'apk',
+    'apko',
+    'chrome',
+    'com.apple.WebKit.Networking',
+    'com.docker.backend',
+    'go',
+    'gvproxy',
     'IPNExtension',
+    'Jabra Direct Helper',
+    'limactl',
     'mDNSResponder',
     'melange',
-    'com.apple.WebKit.Networking',
-    'apk',
-    'systemd-resolved'
+    'nessusd',
+    'nuclei',
+    'systemd-resolved',
+    'WhatsApp'
   )
   AND p.name NOT IN ('Jabra Direct Helper')
   -- Chromium/Electron apps seem to send stray packets out like nobodies business

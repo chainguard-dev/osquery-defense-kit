@@ -17,9 +17,12 @@ FROM
   LEFT JOIN hash ON file.path = hash.path
 WHERE
   file.path IN (
-    SELECT path
-    FROM file
-    WHERE (
+    SELECT
+      path
+    FROM
+      file
+    WHERE
+      (
         file.path LIKE '/home/%/Downloads/%'
         OR file.path LIKE '/home/%/Downloads/%/%'
         OR file.path LIKE '/Users/%/Downloads/%'

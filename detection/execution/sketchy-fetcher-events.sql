@@ -141,6 +141,7 @@ WHERE
     AND (
       pe.cmdline LIKE '%--dump-header%'
       OR pe.cmdline LIKE '%127.0.0.1:%'
+      OR pe.cmdline LIKE '% localhost:%'
       OR pe.cmdline LIKE '%/192.168.%:%'
       OR pe.cmdline LIKE '%application/json%'
       OR pe.cmdline LIKE '%/chainctl_%'

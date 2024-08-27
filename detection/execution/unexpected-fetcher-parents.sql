@@ -50,6 +50,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,301,bash,nix',
     'curl,302,bash,nix',
     'curl,303,bash,nix',
+    'curl,500,colima,zsh',
     'curl,305,bash,nix',
     'curl,307,bash,nix',
     'curl,500,make,bash',

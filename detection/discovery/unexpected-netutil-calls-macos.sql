@@ -105,15 +105,17 @@ WHERE
     'ifconfig,0,pia-openvpn,pia-daemon',
     'ifconfig,500,dotnet,dotnet',
     'ifconfig,500,dotnet,zsh',
+    'ifconfig,500,Python,Code Helper (Plugin)',
     'ifconfig,500,zsh,stable',
     'netstat,0,io.tailscale.ipn.macsys.network-extension,launchd',
     'netstat,0,metricbeat,elastic-agent',
     'netstat,0,pia-daemon,launchd',
     'netstat,500,AccountSubscriber,launchd',
-    'netstat,500,IPNExtension,launchd',
     'netstat,500,coresymbolicationd,launchd',
+    'netstat,500,IPNExtension,launchd',
     'pfctl,0,bash,pia-daemon',
-    'pfctl,0,pia-daemon,launchd'
+    'pfctl,0,pia-daemon,launchd',
+    'socketfilterfw,0,launcher,launchd'
   )
   AND p1_cmd NOT IN ('/bin/sh /etc/periodic/daily/420.status-network')
   AND p1_authority != 'Software Signing'

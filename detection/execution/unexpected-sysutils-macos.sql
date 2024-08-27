@@ -112,12 +112,13 @@ WHERE
   AND NOT exception_key IN (
     'ditto,500,ruby,zsh',
     'ioreg,500,bash,Alfred Preferences',
+    'ioreg,500,com.docker.backend,launchd',
     'system_profiler,0,launcher,launchd',
-    'system_profiler,500,Google Drive,launchd',
-    'system_profiler,500,Ultimate,launchd',
     'system_profiler,500,bash,launchd',
     'system_profiler,500,bash,logioptionsplus_agent',
+    'system_profiler,500,Google Drive,launchd',
     'system_profiler,500,steam_osx,launchd',
+    'system_profiler,500,Ultimate,launchd',
     'unzip,500,tmux,launchd'
   )
   AND NOT exception_key LIKE 'unzip,500,login,iTermServer-%'

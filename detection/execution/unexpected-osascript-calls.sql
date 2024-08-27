@@ -105,6 +105,7 @@ WHERE
       OR p1_cmd LIKE '%aws %sso%'
       OR p1_cmd LIKE '%gcloud% auth %login%'
       OR p1_cmd LIKE '%gcloud% init'
+      OR p1_cmd LIKE '%auth login'
       OR p1_cmd LIKE '% /opt/homebrew/bin/jupyter%notebook'
       OR p1_cmd LIKE '/bin/sh %/opt/homebrew/bin/git-gui%'
       OR p1_cmd LIKE '%tell application "System Events" to sleep%'

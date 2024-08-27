@@ -210,15 +210,15 @@ WHERE
       '/bin/bash /usr/bin/xdg-settings set default-url-scheme-handler slack Slack.desktop',
       '/bin/bash /usr/local/bin/mount-product-files',
       '/bin/sh -c black .',
-      '/bin/sh -c lsb_release -a --short',
+      "/bin/sh -c defaults delete 'com.cisco.webexmeetingsapp'",
       '/bin/sh -c ioreg -rd1 -c IOPlatformExpertDevice',
+      '/bin/sh -c lsb_release -a --short',
       '/bin/sh -c ps ax -ww -o pid,ppid,uid,gid,args',
       '/bin/sh -c scutil --get ComputerName',
-      "/bin/sh -c defaults delete 'com.cisco.webexmeetingsapp'",
       '/bin/sh -c sysctl hw.model kern.osrelease',
+      '/bin/sh -c uname -m 2>/dev/null',
       '/bin/sh /usr/bin/lsb_release -a',
       '/bin/sh /usr/bin/lsb_release -a --short',
-      '/usr/bin/python3 /usr/bin/terminator',
       '/bin/zsh -c ls',
       'sh -c /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find python3 2> /dev/null',
       'sh -c /bin/stty size 2>/dev/null',
@@ -228,7 +228,8 @@ WHERE
       'sh -c pactl --version',
       'sh -c python3.7 --version 2>&1',
       'sh -c /usr/bin/xcrun clang 2>&1',
-      'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null'
+      'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null',
+      '/usr/bin/python3 /usr/bin/terminator'
     )
     OR (
       p1_name = 'WhatsApp'
@@ -257,66 +258,68 @@ WHERE
     )
     OR exception_key IN (
       'bash,0,auditd,launchd',
-      'sh,0,expect,kandji-daemon',
       'bash,0,etcd,containerd-shim-runc-v2',
       'bash,0,kube-apiserver,containerd-shim-runc-v2',
       'bash,0,mutter-x11-frames,gnome-shell',
       'bash,0,perl5.30,system_installd',
       'bash,0,pia-daemon,launchd',
-      'sh,500,viddy,zsh',
-      'bash,500,plasmashell,systemd',
-      'zsh,500,rubymine,launchd',
-      'sh,500,splunkd,splunkd',
       'bash,0,udevadm,udevadm',
-      'bash,500,.man-wrapped,zsh',
-      'bash,500,Foxit PDF Reader,launchd',
-      'bash,500,Hyprland,gdm-wayland-session',
-      'bash,500,Private Internet Access,launchd',
       'bash,500,accounts-daemon,systemd',
       'bash,500,busybox,bwrap',
       'bash,500,com.docker.dev-envs,com.docker.backend',
       'bash,500,docker-builder,bash',
+      'bash,500,Foxit PDF Reader,launchd',
       'bash,500,gnome-session-binary,systemd',
       'bash,500,gpg-agent,launchd',
+      'bash,500,Hyprland,gdm-wayland-session',
+      'bash,500,incusd,incusd',
       'bash,500,lazygit,nvim',
+      'bash,500,.man-wrapped,zsh',
+      'bash,500,plasmashell,systemd',
+      'bash,500,Private Internet Access,launchd',
+      'bash,500,ruby,zsh',
       'bash,500,script,bash',
       'bash,500,steam,bash',
       'bash,500,xdg-desktop-portal,systemd',
       'bash,500,xdg-permission-store,systemd',
       'dash,0,anacron,systemd',
       'dash,0,dpkg,apt',
+      'bash,500,bwrap,bwrap',
       'dash,0,dpkg,python3.10',
       'dash,0,kindnetd,containerd-shim-runc-v2',
       'dash,0,kube-proxy,containerd-shim-runc-v2',
       'dash,0,run-parts,dash',
       'dash,0,snapd,systemd',
-      'sh,0,Ecamm Live,launchd',
+      'dash,500,gdm-wayland-session,gdm-session-worker',
+      'dash,500,python3.12,firefox-bin',
       'sh,0,auditd,launchd',
-      'sh,500,Google Drive,launchd',
-      'sh,500,LogiTune,launchd',
-      'sh,500,ssh,Code Helper (Plugin)',
-      'sh,500,Meeting Center,launchd',
+      'sh,0,Ecamm Live,launchd',
+      'sh,0,expect,kandji-daemon',
       'sh,500,cloud_sql_proxy,zsh',
       'sh,500,docs,zsh',
-      'bash,500,ruby,zsh',
-      'bash,500,incusd,incusd',
+      'sh,500,Google Drive,launchd',
+      'sh,500,LogiTune,launchd',
+      'sh,500,Meeting Center,launchd',
       'sh,500,snyk-macos,snyk',
-      'zsh,500,OpenLens,launchd',
+      'sh,500,splunkd,splunkd',
+      'sh,500,ssh,Code Helper (Plugin)',
       'sh,500,ssh,mosh-client',
       'sh,500,updater,Foxit PDF Reader',
-      'dash,500,gdm-wayland-session,gdm-session-worker',
+      'sh,500,viddy,zsh',
       'sh,500,yabai,launchd',
-      'zsh,500,old,launchd',
       'zsh,500,Hyper,launchd',
+      'zsh,500,old,launchd',
       'zsh,500,old,old',
-      'dash,500,python3.12,firefox-bin',
+      'zsh,500,OpenLens,launchd',
+      'zsh,500,pycharm,launchd',
       'zsh,500,python3.10,gnome-shell',
+      'zsh,500,rubymine,launchd',
       'zsh,500,stable,launchd'
     )
     OR p0_cmd LIKE '%/bash -e%/bin/as -arch%'
     OR p0_cmd LIKE '/bin/sh -c /Applications/%'
     OR p0_cmd LIKE '%/usr/bin/python3 /usr/bin/terminator%'
-    OR p0_cmd LIKE '/bin/bash /opt/homebrew/%'
+    OR p0_cmd LIKE '/bin/bash %/opt/homebrew/%'
     OR p0_cmd LIKE '/bin/bash /usr/bin/xdg-settings check %'
     OR p0_cmd LIKE '/bin/bash /usr/local/Homebrew/%'
     OR p0_cmd LIKE '/bin/sh %/bin/xvim block %'
@@ -340,7 +343,7 @@ WHERE
     OR p1_cmd LIKE '/%google-cloud-sdk/lib/gcloud.py%'
     OR p1_cmd LIKE '%/usr/bin/terminator%'
     OR (
-      exception_key IN ('sh,500,ruby,zsh','bash,500,ruby,zsh')
+      exception_key IN ('sh,500,ruby,zsh', 'bash,500,ruby,zsh')
       AND p1_cmd LIKE '%brew.rb'
     )
     OR (
