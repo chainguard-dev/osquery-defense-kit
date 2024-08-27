@@ -74,8 +74,11 @@ WHERE
         'auditd.service,Security Auditing Service,',
         'auditd.service,Security Audit Logging Service,',
         'audit.service,Kernel Auditing,',
+        'augenrules.service,auditd rules generation,',
         'avahi-daemon.service,Avahi mDNS/DNS-SD Stack,',
         'avahi-daemon.socket,Avahi mDNS/DNS-SD Stack Activation Socket,',
+        'backup-rpmdb.timer,Backup of RPM database,',
+        'backup-sysconfig.timer,Backup of /etc/sysconfig,',
         'binfmt-support.service,Enable support for additional executable binary formats,',
         'blk-availability.service,Availability of block devices,',
         'bluetooth.service,Bluetooth service,',
@@ -84,6 +87,8 @@ WHERE
         'brew-update.service,Auto update brew for mutable brew installs,1000',
         'brew-update.timer,Timer for brew update for mutable brew,',
         'brew-upgrade.timer,Timer for brew upgrade for on image brew,',
+        'ca-certificates.path,Watch for changes in CA certificates,',
+        'check-battery.timer,Check if mainboard battery is Ok,',
         'chronyd.service,NTP client/server,',
         'chrony.service,chrony, an NTP client/server',
         'cloud-config.service,Apply the settings specified in cloud-config,',
@@ -109,6 +114,7 @@ WHERE
         'dbus-broker.service,D-Bus System Message Bus,',
         'dbus.service,D-Bus System Message Bus,',
         'dbus.socket,D-Bus System Message Bus Socket,',
+        'detect-part-label-duplicates.service,Detect if the system suffers from bsc#1089761,',
         'dhcpcd.service,DHCP Client,',
         'displaylink.service,DisplayLink Manager Service,',
         'display-manager.service,Display Manager,',
@@ -143,6 +149,7 @@ WHERE
         'gnome-remote-desktop.service,GNOME Remote Desktop,gnome-remote-desktop',
         'gssproxy.service,GSSAPI Proxy Daemon,',
         'haproxy.service,HAProxy Load Balancer,',
+        'haveged.service,Entropy Daemon based on the HAVEGE algorithm,',
         'ifupdown-pre.service,Helper to synchronize boot up for ifupdown,',
         'iio-sensor-proxy.service,IIO Sensor Proxy service,',
         'import-state.service,Import network configuration from initramfs,',
@@ -156,10 +163,16 @@ WHERE
         'irqbalance.service,irqbalance daemon,',
         'iscsid.socket,Open-iSCSI iscsid Socket,',
         'iscsiuio.socket,Open-iSCSI iscsiuio Socket,',
+        'issue-generator.path,Watch for changes in issue snippets,',
         'iwd.service,Wireless service,',
+        'jeos-firstboot.service,SUSE JeOS First Boot Wizard,',
+        'jeos-firstboot-snapshot.service,SUSE JeOS First Boot Wizard - create system snapshot,',
+        'kbdsettings.service,Apply settings from /etc/sysconfig/keyboard,',
         'kde-sysmonitor-workaround.service,Workaround KDE System Monitor not having the correct caps,',
+        'kdump.service,Crash recovery kernel arming,',
         'kerneloops.service,Tool to automatically collect and submit kernel crash signatures,kernoops',
         'keyboard-setup.service,Set the console keyboard layout,',
+        'klog.service,Early Kernel Boot Messages,',
         'kmod-static-nodes.service,Create List of Static Device Nodes,',
         'kmod-static-nodes.service,Create list of static device nodes for the current kernel,',
         'kolide-launcher.service,Kolide launcher,',
@@ -170,6 +183,7 @@ WHERE
         'libvirtd-ro.socket,Libvirt local read-only socket,',
         'libvirtd.service,Virtualization daemon,',
         'libvirtd.socket,Libvirt local socket,',
+        'libvirt-workaround.service,Workaround to relabel libvirt files and directories,',
         'lightdm.service,Light Display Manager,',
         'lima-guestagent.service,lima-guestagent,',
         'livesys-late.service,SYSV: Late init script for live image.,',
@@ -189,6 +203,7 @@ WHERE
         'lxc-monitord.service,LXC Container Monitoring Daemon,',
         'lxc-net.service,LXC network bridge setup,',
         'lxc.service,LXC Container Initialization and Autoboot Code,',
+        'lxd-installer.socket,Helper to install lxd snap on demand,',
         'machine.slice,Virtual Machine and Container Slice,',
         'man-db.service,Daily man-db regeneration,root',
         'man-db.timer,Daily man-db regeneration,',
@@ -263,6 +278,8 @@ WHERE
         'resolvconf.service,Nameserver information manager,',
         'resolvconf.service,resolvconf update,',
         'rngd.service,Hardware RNG Entropy Gatherer Daemon,',
+        'rpcbind.service,RPC Bind,',
+        'rpcbind.socket,RPCbind Server Activation Socket,',
         'rpc-statd-notify.service,Notify NFS peers of a restart,',
         'rpm-ostree-countme.service,Weekly rpm-ostree Count Me reporting,rpm-ostree',
         'rpm-ostree-countme.timer,Weekly rpm-ostree Count Me timer,',
@@ -313,10 +330,6 @@ WHERE
         'systemd-boot-random-seed.service,Update Boot Loader Random Seed,',
         'systemd-boot-update.service,Automatic Boot Loader Update,',
         'systemd-coredump.socket,Process Core Dump Socket,',
-        'systemd-cryptsetup@cryptdata.service,Cryptography Setup for cryptdata,',
-        'systemd-cryptsetup@cryptoswap.service,Cryptography Setup for cryptoswap,',
-        'systemd-cryptsetup@cryptswap.service,Cryptography Setup for cryptswap,',
-        'systemd-cryptsetup@sda6_crypt.service,Cryptography Setup for sda6_crypt,',
         'systemd-fsckd.socket,fsck to fsckd communication Socket,',
         'systemd-fsck-root.service,File System Check on Root Device,',
         'systemd-growfs@-.service,Grow File System on /,',
@@ -456,6 +469,12 @@ WHERE
         'virtvboxd-ro.socket,libvirt VirtualBox daemon read-only socket,',
         'virtvboxd.socket,libvirt VirtualBox daemon socket,',
         'whoopsie.path,Start whoopsie on modification of the /var/crash directory,',
+        'wickedd-auto4.service,wicked AutoIPv4 supplicant service,',
+        'wickedd-dhcp4.service,wicked DHCPv4 supplicant service,',
+        'wickedd-dhcp6.service,wicked DHCPv6 supplicant service,',
+        'wickedd-nanny.service,wicked network nanny service,',
+        'wickedd.service,wicked network management service daemon,',
+        'wicked.service,wicked managed network interfaces,',
         'wpa_supplicant.service,WPA supplicant,',
         'zfs-import-cache.service,Import ZFS pools by cache file,',
         'zfs-load-key-rpool.service,Load ZFS key for rpool,',
@@ -473,13 +492,14 @@ WHERE
         'zpool-trim.service,ZFS pools trim,',
         'zpool-trim.timer,zpool-trim.timer,'
       )
-      OR exception_key LIKE 'machine-qemu%.scope,Virtual Machine qemu%,'
-      OR exception_key LIKE 'zfs-snapshot-%.timer,zfs-snapshot-%.timer,'
-      OR exception_key LIKE 'systemd-cryptsetup@dm_crypt%.service,Cryptography Setup for dm_crypt-%,'
-      OR exception_key LIKE 'zfs-snapshot-%.service,zfs-snapshot-%.service,'
+      OR exception_key LIKE 'boot-sysctl.service,Apply Kernel Variables for % from /boot,'
       OR exception_key LIKE 'dbus-:1.%-org.freedesktop.problems@%.service,dbus-:%.%-org.freedesktop.problems@%.service,0'
-      OR exception_key LIKE 'run-media-%.mount,run-media-%.mount,'
       OR exception_key LIKE 'drkonqi-coredump-processor@%.service,Pass systemd-coredump journal entries to relevant user for potential DrKonqi handling,'
+      OR exception_key LIKE 'machine-qemu%.scope,Virtual Machine qemu%,'
+      OR exception_key LIKE 'run-media-%.mount,run-media-%.mount,'
+      OR exception_key LIKE 'systemd-cryptsetup@%.service,Cryptography Setup for %,'
+      OR exception_key LIKE 'zfs-snapshot-%.service,zfs-snapshot-%.service,'
+      OR exception_key LIKE 'zfs-snapshot-%.timer,zfs-snapshot-%.timer,'
       OR id LIKE ''
       OR id LIKE 'dev-disk-by%.swap'
       OR id LIKE 'dev-mapper-%.swap'
