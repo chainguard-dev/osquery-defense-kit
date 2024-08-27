@@ -44,29 +44,31 @@ WHERE
     'android.com',
     'apple.com',
     'arc.net',
-    'box.com',
     'asana.com',
     'balena.io',
     'balsamiq.com',
+    'bblmw.com',
     'bluestacks.com',
+    'box.com',
     'brave.com',
-    'c-wss.com',
     'canon.co.uk',
     'cdn.mozilla.net',
     'charlesproxy.com',
     'cloudfront.net',
     'cron.com',
     'csclub.uwaterloo.ca',
+    'c-wss.com',
     'descript.com',
     'digidesign.com',
-    'discord.com',
     'discordapp.net',
+    'discord.com',
     'dl.sourceforge.net',
     'docker.com',
     'dogado.de',
     'download.prss.microsoft.com',
     'duckduckgo.com',
     'eclipse.org',
+    'emeet.com',
     'epson.com',
     'fcix.net',
     'gaomon.net',
@@ -79,6 +81,7 @@ WHERE
     'integodownload.com',
     'irccloud.com',
     'jetbrains.com',
+    'live.com',
     'kagi.com',
     'libreoffice.org',
     'logitech.com',
@@ -91,8 +94,8 @@ WHERE
     'mozilla.org',
     'mutedeck.com',
     'mysql.com',
-    'notion-static.com',
     'notion.so',
+    'notion-static.com',
     'ocf.berkeley.edu',
     'oobesaas.adobe.com',
     'openra.net',
@@ -107,8 +110,8 @@ WHERE
     'securew2.com',
     'signal.org',
     'skype.com',
-    'slack-edge.com',
     'slack.com',
+    'slack-edge.com',
     'stclairsoft.com',
     'steampowered.com',
     'synaptics.com',
@@ -127,9 +130,10 @@ WHERE
     'webex.com',
     'whatsapp.com',
     'xtom.com',
-    'zoom.us',
     'yubico.com',
+    'zoo.dev',
     'zoomgov.com',
+    'zoom.us',
     'zsa.io'
   )
   -- NOTE: Do not put all of storage.googleapis.com or similarly generic hosts here
@@ -198,6 +202,7 @@ WHERE
   AND host NOT LIKE 'driver.%'
   AND host NOT LIKE 'support%'
   AND host NOT LIKE 's3.%.amazonaws.com'
+  AND host NOT LIKe '%.s3.%.amazonaws.com'
   AND host NOT LIKE 'software%'
   AND host NOT LIKE 'www.google.%'
   AND host NOT LIKE '%release%.storage.googleapis.com'

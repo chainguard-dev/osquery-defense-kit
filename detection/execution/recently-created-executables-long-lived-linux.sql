@@ -45,7 +45,7 @@ WHERE
   p0.start_time > 0
   AND f.ctime > 0
   AND p0.start_time > (strftime('%s', 'now') - 43200)
-  AND (p0.start_time - MAX(f.ctime, f.btime)) < 45
+  AND (p0.start_time - MAX(f.ctime, f.btime)) < 900
   AND p0.start_time >= MAX(f.ctime, f.ctime)
   AND NOT f.directory IN ('/usr/lib/firefox', '/usr/local/kolide-k2/bin') -- Typically daemons or long-running desktop apps
   -- These are binaries that are known to get updated and subsequently executed
@@ -67,11 +67,13 @@ WHERE
     '/usr/lib64/thunderbird/thunderbird',
     '/usr/lib/at-spi2-registryd',
     '/usr/lib/at-spi-bus-launcher',
+    '/usr/lib/cups/notifier/dbus',
     '/usr/lib/docker/cli-plugins/docker-compose',
     '/usr/lib/electron25/electron',
     '/usr/libexec/accounts-daemon',
     '/usr/libexec/bluetooth/bluetoothd',
     '/usr/libexec/docker/docker-proxy',
+    '/usr/libexec/flatpak-portal',
     '/usr/libexec/flatpak-system-helper',
     '/usr/libexec/fwupd/fwupd',
     '/usr/libexec/gnome-shell-calendar-server',
@@ -89,9 +91,8 @@ WHERE
     '/usr/lib/flatpak-session-helper',
     '/usr/lib/fwupd/fwupd',
     '/usr/lib/gdm',
-    '/usr/lib/cups/notifier/dbus',
-    '/usr/sbin/dnsmasq',
     '/usr/lib/gdm-session-worker',
+    '/usr/lib64/discord/Discord',
     '/usr/lib/gdm-x-session',
     '/usr/lib/gnome-shell-calendar-server',
     '/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3',
@@ -100,11 +101,11 @@ WHERE
     '/usr/lib/ibus/ibus-portal',
     '/usr/lib/libreoffice/program/oosplash',
     '/usr/lib/libreoffice/program/soffice.bin',
+    '/usr/lib/opt/google/chrome/chrome',
     '/usr/lib/polkit-1/polkitd',
     '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1',
     '/usr/lib/slack/chrome_crashpad_handler',
     '/usr/lib/slack/slack',
-    '/usr/libexec/flatpak-portal',
     '/usr/lib/snapd/snapd',
     '/usr/lib/systemd/systemd',
     '/usr/lib/systemd/systemd-homed',
@@ -123,6 +124,7 @@ WHERE
     '/usr/lib/xdg-desktop-portal-gtk',
     '/usr/lib/xf86-video-intel-backlight-helper',
     '/usr/local/bin/kind',
+    '/usr/sbin/dnsmasq',
     '/usr/share/code/chrome_crashpad_handler',
     '/usr/share/code/code',
     '/usr/share/spotify-client/spotify',
@@ -154,6 +156,7 @@ WHERE
   AND NOT p0.path LIKE '/var/kolide-k2/%/osqueryd'
   AND NOT p0.path LIKE '/var/kolide-k2/%/launcher'
   AND NOT p0.path LIKE '%/.vscode/extensions/%'
+  AND NOT p0.path LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'
   AND NOT p0.path LIKE '%/.local/share/spotify-launcher/install/usr/%'
   AND NOT (
     p0.name IN ('osqtool-x86_64', 'osqtool-arm64')

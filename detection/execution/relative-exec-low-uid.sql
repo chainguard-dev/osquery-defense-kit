@@ -49,6 +49,7 @@ WHERE
       euid < 500
       AND cmdline LIKE './%'
       AND NOT cmdline LIKE './out/osqtool-% %'
+      AND NOT cmdline LIKE './osqueryi%'
       AND NOT cmdline LIKE './OneDrivePkgTelemetry%'
       AND NOT cgroup_path LIKE '/system.slice/docker-%'
   )

@@ -30,16 +30,17 @@ WHERE
   AND file.btime > (strftime('%s', 'now') -86400)
   -- Extensions that would not normally raise suspicion if sent by e-mail (excludes dmg, iso, lnk, exe)
   AND extension NOT IN (
-    'Dockerfile',
     'ai',
     'cer',
     'csv',
     'doc',
+    'Dockerfile',
     'docx',
     'dwg',
     'eml',
     'eps',
     'gif',
+    'heic',
     'htm',
     'html',
     'icloud',
@@ -53,6 +54,7 @@ WHERE
     'mp4',
     'mpeg',
     'mpg',
+    'numbers',
     'ods',
     'odt',
     'pages',
@@ -75,6 +77,7 @@ WHERE
     'xlsm',
     'xlsx',
     'xml',
+    'yml',
     'yaml',
     'zip'
   )

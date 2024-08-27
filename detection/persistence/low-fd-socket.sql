@@ -53,8 +53,9 @@ WHERE
   pos.fd < 3
   AND pos.family != 1
   AND p0.path NOT IN (
+    '/Applications/NetSpot.app/Contents/MacOS/NetSpot',
+    '/usr/bin/skopeo',
     '/usr/libexec/bootpd',
-    '/usr/local/bin/velociraptor',
     '/usr/libexec/pcp/bin/pmcd',
-    '/Applications/NetSpot.app/Contents/MacOS/NetSpot'
+    '/usr/local/bin/velociraptor'
   )

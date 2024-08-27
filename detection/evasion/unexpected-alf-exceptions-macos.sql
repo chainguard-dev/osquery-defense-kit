@@ -5,8 +5,7 @@
 --
 -- tags: persistent state filesystem
 -- platform: darwin
-SELECT
-  ae.path,
+SELECT ae.path,
   ae.state,
   file.mtime,
   file.ctime,
@@ -26,8 +25,7 @@ SELECT
     ',',
     MIN(file.uid, 501)
   ) AS exception_key
-FROM
-  alf_exceptions ae
+FROM alf_exceptions ae
   LEFT JOIN file ON ae.path = file.path
   LEFT JOIN hash ON ae.path = hash.path
   LEFT JOIN signature ON ae.path = signature.path
@@ -46,21 +44,11 @@ WHERE -- Filter out stock exceptions to decrease overhead
   ) -- Ignore files that ahve already been removed
   AND file.filename NOT NULL
   AND exception_key NOT IN (
-    ',,/Applications/Google%20Chrome.app/,',
-    ',,/Applications/IntelliJ%20IDEA.app/,',
-    ',,/Applications/ProtonMail%20Bridge.app/,',
-    ',,/Applications/Visual%20Studio%20Code.app/,',
-    ',,/Applications/Visual%20Studio%20Code.app/Contents/Frameworks/Code%20Helper.app/,',
-    ',,/Users/cpanato/code/src/github.com/sigstore/docs/node_modules/.bin/hugo/hugo,501',
-    ',a.out,/Users/amouat/proj/learning-labs-static/server,501',
-    ',a.out,/Users/dlorenc/.wash/downloads/nats-server,501',
     ',a.out,/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/kubectl,501',
     ',a.out,/opt/homebrew/Cellar/go/1.20.4/libexec/pkg/tool/darwin_arm64/trace,501',
     ',a.out,/private/tmp/learning-labs-static/server,501',
-    ',dnsmasq,/opt/homebrew/Cellar/dnsmasq/2.88/sbin/dnsmasq,0',
-    ',iodined-55554944d1ffcb236a84363d9b667be6a1742a17,/usr/local/sbin/iodined,501',
-    ',java,/opt/homebrew/Cellar/openjdk/19/libexec/openjdk.jdk/Contents/Home/bin/java,501',
-    '/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/',
+    ',a.out,/Users/amouat/proj/learning-labs-static/server,501',
+    ',a.out,/Users/dlorenc/.wash/downloads/nats-server,501',
     'Apple Mac OS Application Signing,com.anydo.mac,/Applications/Anydo.app/,0',
     'Apple Mac OS Application Signing,com.apple.garageband10,/Applications/GarageBand.app/,0',
     'Apple Mac OS Application Signing,com.busymac.busycal3,/Applications/BusyCal.app/,0',
@@ -69,11 +57,16 @@ WHERE -- Filter out stock exceptions to decrease overhead
     'Apple Mac OS Application Signing,com.utmapp.QEMULauncher,/Applications/UTM.app/Contents/XPCServices/QEMUHelper.xpc/Contents/MacOS/QEMULauncher.app/,0',
     'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
     'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.localized/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
+    ',,/Applications/Google%20Chrome.app/,',
+    ',,/Applications/IntelliJ%20IDEA.app/,',
+    ',,/Applications/ProtonMail%20Bridge.app/,',
+    ',,/Applications/Visual%20Studio%20Code.app/,',
+    ',,/Applications/Visual%20Studio%20Code.app/Contents/Frameworks/Code%20Helper.app/,',
     'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF),com.adguard.mac.adguard.network-extension,/Library/SystemExtensions/AD3BCA34-237A-4135-B7A4-0F7477D9144C/com.adguard.mac.adguard.network-extension.systemextension/,0',
     'Developer ID Application: Any.DO inc. (FW4RAPJ9FF),com.anydo.mac,/Applications/Anydo.app/,501',
     'Developer ID Application: Bearly Inc (NK6K4BACCF),com.bearly.app,/Applications/Bearly.app/,501',
-    'Developer ID Application: Bohemian Coding (WUGMZZ5K46),com.bohemiancoding.SketchMirrorHelper,/Applications/Sketch.app/Contents/XPCServices/SketchMirrorHelper.xpc/,501',
     'Developer ID Application: Bohemian Coding (WUGMZZ5K46),com.bohemiancoding.sketch3,/Applications/Sketch.app/,501',
+    'Developer ID Application: Bohemian Coding (WUGMZZ5K46),com.bohemiancoding.SketchMirrorHelper,/Applications/Sketch.app/Contents/XPCServices/SketchMirrorHelper.xpc/,501',
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW),com.brother.utility.WorkflowAppControlServer,/Library/Printers/Brother/Utilities/Server/WorkflowAppControl.app/,0',
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59),com.canonical.multipass.,/Applications/Multipass.app/,0',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5),com.elgato.WaveLink,/Applications/WaveLink.app/,0',
@@ -82,8 +75,10 @@ WHERE -- Filter out stock exceptions to decrease overhead
     'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker.docker,/Applications/Docker.app/,501',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK),com.getdropbox.dropbox,/Applications/Dropbox.app/,501',
     'Developer ID Application: Evernote Corporation (Q79WDW8YH9),com.evernote.Evernote,/Applications/Evernote.app/,501',
+    'Developer ID Application: folivora.AI GmbH (DAFVSXZ82P),com.hegenberg.BetterTouchTool,/Applications/BetterTouchTool.app/,501',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland,/Applications/GoLand.app/,501',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.pycharm,/Applications/PyCharm.app/,501',
+    'Developer ID Application: Shanghai Lunkuo Technology Co., Ltd (T3UBR9Y3B2),com.bambulab.bambu-studio,/Applications/BambuStudio.app/,501',
     'Developer ID Application: Loom, Inc (QGD2ZPXZZG),com.loom.desktop,/Applications/Loom.app/,501',
     'Developer ID Application: Martijn Smit (GX645XXEAX),com.mutedeck.mac,/Applications/MuteDeck/MuteDeck.app/,501',
     'Developer ID Application: Opentest, Inc. (QGD2ZPXZZG),com.loom.desktop,/Applications/Loom.app/,501',
@@ -99,28 +94,34 @@ WHERE -- Filter out stock exceptions to decrease overhead
     'Developer ID Application: Voicemod Sociedad Limitada. (S2MC4XQDSM),net.voicemod.desktop,/Applications/Voicemod.app/,0',
     'Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ),dev.zed.Zed,/Applications/Zed.app/,501',
     'Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ),dev.zed.Zed,/Volumes/Zed/Zed.app/,501',
-    'Software Signing,com.apple.Music,/System/Applications/Music.app/,0',
-    'Software Signing,com.apple.Terminal,/System/Applications/Utilities/Terminal.app/,0',
-    'Software Signing,com.apple.WebKit.Networking,/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/,0',
-    'Software Signing,com.apple.WebKit.Networking,/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/,0',
+    ',dnsmasq,/opt/homebrew/Cellar/dnsmasq/2.88/sbin/dnsmasq,0',
+    ',java,/opt/homebrew/Cellar/openjdk/19/libexec/openjdk.jdk/Contents/Home/bin/java,501',
+    ',net.java.openjdk.java,/usr/local/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home/bin/java,501',
     'Software Signing,com.apple.audio.AUHostingService.arm64e,/System/Library/Frameworks/AudioToolbox.framework/XPCServices/AUHostingServiceXPC_arrow.xpc/,0',
     'Software Signing,com.apple.audio.AUHostingService.x86-64,/System/Library/Frameworks/AudioToolbox.framework/XPCServices/AUHostingServiceXPC.xpc/,0',
     'Software Signing,com.apple.audio.InfoHelper,/System/Library/Frameworks/AudioToolbox.framework/XPCServices/com.apple.audio.InfoHelper.xpc/,0',
     'Software Signing,com.apple.controlcenter,/System/Library/CoreServices/ControlCenter.app/,0',
+    'Software Signing,com.apple.Music,/System/Applications/Music.app/,0',
     'Software Signing,com.apple.nc,/usr/bin/nc,0',
     'Software Signing,com.apple.netbiosd,/usr/sbin/netbiosd,0',
     'Software Signing,com.apple.python3,/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
     'Software Signing,com.apple.python3,/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/,0',
     'Software Signing,com.apple.rapportd,/usr/libexec/rapportd,0',
     'Software Signing,com.apple.rpc,/usr/sbin/rpc.lockd,0',
+    'Software Signing,com.apple.Terminal,/System/Applications/Utilities/Terminal.app/,0',
+    'Software Signing,com.apple.WebKit.Networking,/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/,0',
+    'Software Signing,com.apple.WebKit.Networking,/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/,0',
     'Software Signing,com.apple.xartstorageremoted,/usr/libexec/xartstorageremoted,0',
-    'qbittorrent macos,org.qbittorrent.qBittorrent,/Applications/qbittorrent.app/,501'
+    '/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/',
+    ',,/Users/cpanato/code/src/github.com/sigstore/docs/node_modules/.bin/hugo/hugo,501'
   )
   AND NOT exception_key LIKE ',a.out,/Users/%/dev/%,501'
   AND NOT exception_key LIKE ',a.out,/Users/%/hugo,501'
   AND NOT exception_key LIKE 'Developer ID Application: Cypress.Io, Inc. (7D655LWGLY),com.electron.cypress,/Users/%/Library/Caches/Cypress/13.12.0/Cypress.app/,501'
   AND NOT exception_key LIKE 'Developer ID Application: The Foundry (82R497YNSK),org.python.python,/Applications/Nuke%/Contents/Frameworks/Python.framework/Versions/%/Resources/Python.app/,501'
+  AND NOT exception_key LIKE 'Developer ID Application: Tailscale Inc. (W5364U7YZB),io.tailscale.ipn.macsys.network-extension,/Library/SystemExtensions/%'
   AND NOT exception_key LIKE ',org.python.python,/opt/homebrew/Cellar/python%/Frameworks/Python.framework/Versions/%/Resources/Python.app/,501'
+  AND NOT exception_key LIKE ',a.out,/Users/%/act/dist/local/act,501'
   AND NOT exception_key LIKE ',git-daemon-%,/opt/homebrew/Cellar/git/%/libexec/git-core/git-daemon,501'
   AND NOT exception_key LIKE ',org.python.python,/opt/homebrew/Cellar/python@%/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/,501'
   AND NOT exception_key LIKE ',a.out,/opt/homebrew/Cellar/podman/%/libexec/podman/gvproxy,501'
@@ -192,5 +193,4 @@ WHERE -- Filter out stock exceptions to decrease overhead
       OR file.directory LIKE '/private/var/folders/%/T/go-build%/exe'
     )
   )
-GROUP BY
-  exception_key
+GROUP BY exception_key

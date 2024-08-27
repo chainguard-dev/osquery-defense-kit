@@ -39,25 +39,26 @@ WHERE
     '~/Library/Accessibility/.com.apple.RTTTranscripts_SUPPORT/_EXTERNAL_DATA',
     '~/Library/Application Support/.keymapp',
     '~/Library/Caches/.sigstore/gitsign',
+    '~/Library/com.apple.groupkitd/.syncedGroupStore_SUPPORT/_EXTERNAL_DATA',
+    '~/Library/com.apple.groupkitd/.syncedGroupStore_SUPPORT/_EXTERNAL_DATA/',
     '~/Library/Finance/.finance_cloud_SUPPORT/_EXTERNAL_DATA',
     '~/Library/Finance/.finance_dropbox_SUPPORT/_EXTERNAL_DATA',
     '~/Library/Finance/.finance_local_SUPPORT/_EXTERNAL_DATA',
-    '~/Library/Group Containers/.SiriTodayViewExtension',
-    '~/Library/Group Containers/.SiriTodayViewExtension/Library',
     '~/Library/GroupContainersAlias/.SiriTodayViewExtension',
     '~/Library/GroupContainersAlias/.SiriTodayViewExtension/Library',
+    '~/Library/Group Containers/.SiriTodayViewExtension',
+    '~/Library/Group Containers/.SiriTodayViewExtension/Library',
     '~/Library/HomeKit/.core-cloudkit-shared_SUPPORT/_EXTERNAL_DATA',
     '~/Library/HomeKit/.core-cloudkit_SUPPORT/_EXTERNAL_DATA',
     '~/Library/Preferences/.wrangler',
     '~/Library/Preferences/.wrangler/config',
     '~/Library/Saved Searches/.DockTags',
-    '~/Library/Stickers/.stickers_SUPPORT/_EXTERNAL_DATA',
-    '~/Library/com.apple.groupkitd/.syncedGroupStore_SUPPORT/_EXTERNAL_DATA',
-    '~/Library/com.apple.groupkitd/.syncedGroupStore_SUPPORT/_EXTERNAL_DATA/'
+    '~/Library/Stickers/.stickers_SUPPORT/_EXTERNAL_DATA'
   )
   AND NOT homedir LIKE '~/Library/.icedove/%'
   AND NOT homedir LIKE '~/Library/Mobile Documents/.Trash%'
   AND NOT homedir LIKE '~/Library/%/.%_SUPPORT/_EXTERNAL_DATA'
+  AND NOT homedir LIKe '~/Library/Caches/.git%'
   -- ugh
   AND NOT file.path LIKE '/Library/Application Scripts/.%-%-%-%-%/.%'
   AND NOT homedir LIKE '~/Library/Application Scripts/.%-%-%-%-%/.%'

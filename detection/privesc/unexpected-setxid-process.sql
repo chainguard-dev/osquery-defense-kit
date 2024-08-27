@@ -31,6 +31,7 @@ WHERE
     '/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_session_monitor',
     '/Library/DropboxHelperTools/Dropbox_u501/dbkextd',
     '/opt/1Password/1Password-BrowserSupport',
+    '/usr/lib/opt/1Password/1Password-BrowserSupport',
     '/opt/1Password/1Password-KeyringHelper',
     '/opt/google/chrome/chrome-sandbox',
     '/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent',

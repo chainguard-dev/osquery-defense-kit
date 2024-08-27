@@ -19,15 +19,14 @@ SELECT
   GROUP_CONCAT(DISTINCT pmm.path) AS libs,
   COUNT(DISTINCT pmm.path) AS lib_count,
   -- Child
-  p0.pid AS p0_pid,
-  p0.path AS p0_path,
-  p0.name AS p0_name,
-  p0.start_time AS p0_start,
-  p0.cmdline AS p0_cmd,
-  p0.cwd AS p0_cwd,
-  p0.cgroup_path AS p0_cgroup,
-  p0.euid AS p0_euid,
-  p0_hash.sha256 AS p0_sha256
+  p0.path AS proc_path,
+  p0.name AS proc_name,
+  p0.start_time AS proc_start,
+  p0.cmdline AS proc_cmd,
+  p0.cwd AS porc_cwd,
+  p0.cgroup_path AS proc_cgroup,
+  p0.euid AS proc_euid,
+  p0_hash.sha256 AS sha256
 FROM
   processes p0
   JOIN process_open_sockets pos ON p0.pid = pos.pid

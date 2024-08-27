@@ -101,23 +101,26 @@ WHERE
     "com.docker.build",
     "com.docker.extensions",
     "dynamiclinkmanager",
+    'firefox',
     "gmenudbusmenuproxy",
     "irqbalance",
     "kactivitymanagerd",
     "nm-applet",
     "perl",
+    'pk-debconf-helper',
+    "pt_main_thread",
     "systemd",
     "systemd-executor",
+    'udevadm',
     "xdg-dbpus-proxy",
+    'xdg-dbus-proxy',
     "xdg-desktop-portal",
     "xdg-desktop-portal-gnome",
     "xdg-desktop-portal-gtk",
     "xdg-desktop-portal-kde",
     "xdg-document-portal",
     "xdg-permission-store",
-    "xwaylandvideobridge",
-    'firefox',
-    'udevadm',
-    'xdg-dbus-proxy'
+    "xwaylandvideobridge"
   )
+  AND basename NOT LIKE '___Test%'
   AND NOT (basename IN ('nm-dispatcher') AND p1_pid=1)

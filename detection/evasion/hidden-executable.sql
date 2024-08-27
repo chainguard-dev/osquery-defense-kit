@@ -58,8 +58,11 @@ WHERE
   AND NOT f.directory LIKE '%/.linuxbrew/Cellar/%/bin'
   AND NOT f.directory LIKE '%/.docker/cli-plugins'
   AND NOT f.directory LIKE '%/.fig/bin'
+  AND NOT f.directory LIKE '%/.linkerd2/bin'
   AND NOT f.directory LIKE '%/.go/bin'
+  AND NOT f.directory LIKE '%/.sdkman/%'
   AND NOT f.directory LIKE '%/.goenv/%/bin'
+  AND NOT f.directory LIKE '%/.goenv/%/pkg/%'
   AND NOT f.directory LIKE '%/.gradle/jdks/%'
   AND NOT f.directory LIKE '/home/%/.pyenv/versions/%/bin'
   AND NOT f.directory LIKE '%/.local/%'
@@ -78,11 +81,13 @@ WHERE
   AND NOT f.directory LIKE '%/.vscode-insiders/extensions/%'
   AND NOT f.directory LIKE '%/.vs-kubernetes/%'
   AND NOT f.directory LIKE '%/.yardstick/%'
+  AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'
   AND NOT f.path LIKE '/home/%/.config/bluejeans-v2/BluejeansHelper'
   AND NOT f.path LIKE '/nix/store/%/%-wrapped'
   AND NOT (
     f.path LIKE '/nix/store/%'
     AND p0.name LIKE '%-wrappe%'
   )
+  AND NOt f.path LIKE '/private/var/root/.Trash/OneDrive %.app/Contents/StandaloneUpdater.app/Contents/MacOS'
 GROUP BY
   f.path

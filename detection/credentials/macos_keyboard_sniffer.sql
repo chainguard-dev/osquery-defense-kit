@@ -77,6 +77,7 @@ WHERE
     'osqueryd,io.osquery.agent,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'polyrecorder,polyrecorder,Developer ID Application: Adam Pietrasiak (SXF593CX2N)',
     'skhd,skhd,',
+    'LinearMouse,com.lujjjh.LinearMouse,Developer ID Application: Jiahao Lu (C5686NKYJ7)',
     'synergy-core,synergy-core,Developer ID Application: Symless Ltd (4HX897Y6GJ)'
   )
 GROUP BY

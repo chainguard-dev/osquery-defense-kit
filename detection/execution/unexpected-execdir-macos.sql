@@ -111,14 +111,10 @@ WHERE
     '~/Applications (Parallels)/',
     '~/bin/',
     '~/.cargo/',
-    '~/.supermaven/',
     '~/code/',
-    '~/.Trash/',
     '~/Code/',
-    '~/.steampipe/',
     '~/.config/',
     '~/dev/',
-    '~/workspace/',
     '~/git/',
     '~/go/',
     '~/google-cloud-sdk/',
@@ -131,12 +127,17 @@ WHERE
     '~/.pulumi/',
     '~/.pyenv/',
     '~/.rbenv/',
+    '~/repos/',
     '~/.rustup/',
     '~/sigstore/',
     '~/src/',
+    '~/.steampipe/',
+    '~/.supermaven/',
     '~/.tflint.d/',
+    '~/.Trash/',
     '~/.vscode/',
-    '~/.vs-kubernetes/'
+    '~/.vs-kubernetes/',
+    '~/workspace/'
   )
   AND NOT top3_homedir IN (
     '/Library/Application Support/EcammLive',

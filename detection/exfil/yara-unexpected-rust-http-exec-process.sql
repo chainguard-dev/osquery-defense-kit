@@ -59,14 +59,15 @@ WHERE
 }'
   AND yara.count > 0
   AND p0.name NOT IN (
+    'atuin',
     'Cody',
     'deno',
     'DevPod',
     'fig-darwin-universal',
-    'OrbStack Helper',
     'figma_agent',
     'nvim',
     'old',
+    'OrbStack Helper',
     'sg-nvim-agent',
     'stable',
     'wezterm-gui',
@@ -74,4 +75,8 @@ WHERE
   )
   AND p0.name NOT LIKE 'cody-engine-%'
   AND p0.path NOT LIKE '/Users/%/.cargo/bin/%'
-  AND p0.path NOT IN ('/Applications/Zed.app/Contents/MacOS/Zed')
+  AND p0.path NOT IN (
+    '/Applications/safeqclient.app/Contents/MacOS/safeqclient',
+    '/Applications/Zed.app/Contents/MacOS/Zed',
+    '/Library/safeqclientcore/bin/safeqclientcore'
+  )

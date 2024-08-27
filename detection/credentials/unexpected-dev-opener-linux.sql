@@ -203,6 +203,7 @@ WHERE
     '/dev/sda,ntfs-3g',
     '/dev/shm/envoy_shared_memory_1,envoy',
     '/dev/tpmrm,launcher',
+    '/dev/udmabuf,gnome-shell-portal-helper',
     '/dev/tty,agetty',
     '/dev/tty,gdm-wayland-session',
     '/dev/tty,gdm-x-session',
