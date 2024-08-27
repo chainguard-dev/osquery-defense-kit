@@ -110,7 +110,7 @@ WHERE
     '32768,6,500,java',
     '24024,17,500,MTGA',
     '1,1,500,ping'
-    )
+  )
   AND NOT p0.path LIKE '/nix/store/%'
   AND NOt p0.path LIKE '/Users/Shared/Epic Games/%'
   AND NOT (

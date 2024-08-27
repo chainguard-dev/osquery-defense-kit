@@ -343,7 +343,7 @@ WHERE
     OR p1_cmd LIKE '/%google-cloud-sdk/lib/gcloud.py%'
     OR p1_cmd LIKE '%/usr/bin/terminator%'
     OR (
-      exception_key IN ('sh,500,ruby,zsh','bash,500,ruby,zsh')
+      exception_key IN ('sh,500,ruby,zsh', 'bash,500,ruby,zsh')
       AND p1_cmd LIKE '%brew.rb'
     )
     OR (

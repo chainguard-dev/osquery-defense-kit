@@ -8,7 +8,8 @@
 --
 -- tags: persistent state filesystem seldom
 -- platform: darwin
-SELECT file.path,
+SELECT
+  file.path,
   file.type,
   file.size,
   file.mtime,
@@ -26,10 +27,12 @@ SELECT file.path,
     ),
     "/"
   ) AS top3_dir
-FROM file
+FROM
+  file
   LEFT JOIN hash ON file.path = hash.path
   LEFT JOIN magic ON file.path = magic.path
-WHERE (
+WHERE
+  (
     file.path LIKE '/Users/Shared/%%'
     OR file.path LIKE '/Users/Shared/.%'
     OR file.path LIKE '/Users/Shared/.%/%%'

@@ -123,4 +123,7 @@ WHERE
     "xwaylandvideobridge"
   )
   AND basename NOT LIKE '___Test%'
-  AND NOT (basename IN ('nm-dispatcher') AND p1_pid=1)
+  AND NOT (
+    basename IN ('nm-dispatcher')
+    AND p1_pid = 1
+  )
