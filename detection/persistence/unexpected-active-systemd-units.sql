@@ -83,7 +83,6 @@ WHERE
         'blk-availability.service,Availability of block devices,',
         'bluetooth.service,Bluetooth service,',
         'bolt.service,Thunderbolt system service,',
-        'boot-sysctl.service,Apply Kernel Variables for 6.4.0-150600.23.17-default from /boot,',
         'bootupd.socket,bootupd.socket,',
         'brew-update.service,Auto update brew for mutable brew installs,1000',
         'brew-update.timer,Timer for brew update for mutable brew,',
@@ -493,13 +492,14 @@ WHERE
         'zpool-trim.service,ZFS pools trim,',
         'zpool-trim.timer,zpool-trim.timer,'
       )
+      OR exception_key LIKE 'boot-sysctl.service,Apply Kernel Variables for % from /boot,'
+      OR exception_key LIKE 'dbus-:1.%-org.freedesktop.problems@%.service,dbus-:%.%-org.freedesktop.problems@%.service,0'
+      OR exception_key LIKE 'drkonqi-coredump-processor@%.service,Pass systemd-coredump journal entries to relevant user for potential DrKonqi handling,'
       OR exception_key LIKE 'machine-qemu%.scope,Virtual Machine qemu%,'
-      OR exception_key LIKE 'zfs-snapshot-%.timer,zfs-snapshot-%.timer,'
+      OR exception_key LIKE 'run-media-%.mount,run-media-%.mount,'
       OR exception_key LIKE 'systemd-cryptsetup@%.service,Cryptography Setup for %,'
       OR exception_key LIKE 'zfs-snapshot-%.service,zfs-snapshot-%.service,'
-      OR exception_key LIKE 'dbus-:1.%-org.freedesktop.problems@%.service,dbus-:%.%-org.freedesktop.problems@%.service,0'
-      OR exception_key LIKE 'run-media-%.mount,run-media-%.mount,'
-      OR exception_key LIKE 'drkonqi-coredump-processor@%.service,Pass systemd-coredump journal entries to relevant user for potential DrKonqi handling,'
+      OR exception_key LIKE 'zfs-snapshot-%.timer,zfs-snapshot-%.timer,'
       OR id LIKE ''
       OR id LIKE 'dev-disk-by%.swap'
       OR id LIKE 'dev-mapper-%.swap'
