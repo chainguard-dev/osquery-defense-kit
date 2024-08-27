@@ -2,11 +2,13 @@
 --
 -- references:
 --   * https://attack.mitre.org/techniques/T1543/002/ (Create or Modify System Process: Systemd Service)
+--   * https://www.cadosecurity.com/blog/spinning-yarn-a-new-linux-malware-campaign-targets-docker-apache-hadoop-redis-and-confluence
+--   * https://sandflysecurity.com/blog/log4j-kinsing-linux-malware-in-the-wild/
 --
 -- false positives:
 --   * home-made systemd files
 --
--- tags: persistent seldom filesystem systemd
+-- tags: persistent filesystem systemd
 -- platform: linux
 SELECT
   file.path,
