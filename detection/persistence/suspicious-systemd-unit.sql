@@ -8,7 +8,7 @@
 -- false positives:
 --   * home-made systemd files
 --
--- tags: persistent filesystem systemd
+-- tags: persistent filesystem systemd extra
 -- platform: linux
 SELECT
   file.path,
