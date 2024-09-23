@@ -125,6 +125,7 @@ WHERE
         'java',
         'containerd-shim',
         'code',
+        'goland',
         'emacs',
         'vim',
         'vim.nox'

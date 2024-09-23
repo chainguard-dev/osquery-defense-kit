@@ -181,6 +181,7 @@ WHERE
     '500,istioctl,istioctl,500u,20g',
     '500,istioctl,istioctl,,a.out',
     '500,java,java,0u,0g',
+    '500,streamer,streamer,Developer ID Application: Autodesk (XXKJ396S2Y),streamer',
     '500,log-streaming,log-streaming,500u,80g',
     '500,.man-wrapped,.man-wrapped,0u,500g',
     '500,nami,nami,0u,0g',
@@ -198,6 +199,7 @@ WHERE
     '500,taplo,taplo,500u,20g',
     '500,vexi,vexi,500u,20g',
     '500,vim,vim,0u,500g',
+    '500,twistcli,twistcli,500u,20g',
     '500,wolfibump,wolfibump,500u,20g',
     '500,wolfictl,wolfictl,0u,0g',
     '500,wolfictl,wolfictl,500u,20g'
@@ -212,6 +214,7 @@ WHERE
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Denver Technologies, Inc (2BBY89MBSN)',
+    'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: TechSmith Corporation (7TQL462TU8)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
@@ -269,6 +272,7 @@ WHERE
       OR p0_cwd LIKE "/Users/%/src/%"
       OR p0_cmd LIKE '%bin/chaingpt %'
       OR p0_cmd LIKE '%fetch_commits%'
+      OR p0_cmd LIKE '%ipykernel_launcher %'
       OR p0_cmd LIKE '%/Python update_plugins.py'
       OR p0_cmd LIKE '%/pydevd.py'
     )

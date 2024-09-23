@@ -101,6 +101,7 @@ WHERE
     '/dev/io,WirelessRadioManagerd,Software Signing,com.apple.WirelessRadioManagerd',
     '/dev/io,airportd,Software Signing,com.apple.airport.airportd',
     '/dev/io,symptomsd,Software Signing,com.apple.symptomsd',
+    '/dev/console,Arc,Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.Browser',
     '/dev/io8log,ControlCenter,Software Signing,com.apple.controlcenter',
     '/dev/io8log,PerfPowerServices,Software Signing,com.apple.PerfPowerServices',
     '/dev/io8log,WiFiAgent,Software Signing,com.apple.wifi.WiFiAgent',

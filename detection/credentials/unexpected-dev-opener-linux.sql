@@ -131,6 +131,7 @@ WHERE
     '/dev/input,systemd',
     '/dev/input,systemd-logind',
     '/dev/input,thermald',
+    '/dev/shm,msedge',
     '/dev/input,upowerd',
     '/dev/input,Xorg',
     '/dev/net,tailscaled',
@@ -245,7 +246,7 @@ WHERE
   AND path_exception NOT LIKE '/dev/shm/pym-%python3%'
   -- celery
   AND path_exception NOT LIKE '/dev/shm/pymp-%,python3.%'
-  AND dir_exception NOT LIKE '/dev/shm/byobu-%/status.tmux,'
+  AND dir_exception NOT LIKE '/dev/shm/byobu-%/%.tmux%'
   AND NOT (
     pof.path = "/dev/uinput"
     AND p0.name LIKE "solaar%"

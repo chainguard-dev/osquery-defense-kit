@@ -44,6 +44,7 @@ WHERE
     'NetworkManager',
     'dhclient',
     'packetbeat',
+    'tailscaled',
     'dhcpcd',
     'tcpdump'
   )

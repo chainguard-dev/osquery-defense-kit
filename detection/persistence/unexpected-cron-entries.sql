@@ -26,3 +26,5 @@ WHERE
   AND command NOT LIKE 'docker run amouat/jocko%'
   AND command NOT LIKE 'gsutil %'
   AND command NOT LIKE 'root command -v debian-sa1%'
+  AND command NOT LIKE 'root test -x /usr/bin/geoipupdate % && /usr/bin/geoipupdate'
+  AND command NOT LIKe 'root [ -d "/run/systemd/system" ] || /usr/share/atop/atop%'

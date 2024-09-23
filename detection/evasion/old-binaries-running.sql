@@ -46,6 +46,7 @@ WHERE
     '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService',
     '/Library/Printers/Brother/Utilities/BrStatusMonitor.app/Contents/MacOS/BrStatusMonitor',
     '/Library/Application Support/Razer/RzUpdater.app/Contents/MacOS/RzUpdater',
+    '/Library/Application Support/LogiFacecam.bundle/Contents/MacOS/LogiFacecamService',
     '/Library/Printers/Brother/Utilities/Server/LOGINserver.app/Contents/MacOS/LOGINserver',
     '/Library/Printers/Brother/Filter/rastertobrother2300.bundle/Contents/MacOS/rastertobrother2300',
     '/Applications/Vimari.app/Contents/PlugIns/Vimari Extension.appex/Contents/MacOS/Vimari Extension',
@@ -82,6 +83,7 @@ WHERE
     'dlv'
   )
   AND f.path NOT LIKE '/private/var/folders/%/T/AppTranslocation/%/d/Skitch.app/Contents/MacOS/Skitch'
+  AND p.cgroup_path NOT LIKE '/user.slice/user-%.slice/user@%.service/user.slice/podman-%'
   AND p.cgroup_path NOT LIKE '/system.slice/docker-%'
   AND p.cgroup_path NOT LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
 GROUP BY

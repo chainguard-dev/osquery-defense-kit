@@ -182,6 +182,7 @@ WHERE
         'releases.hashicorp.com',
         'github.com',
         'cdn.zoom.us',
+        'repo1.maven.org',
         'dl.enforce.dev'
       )
       -- Ignore local addresses (Docker development)
@@ -193,3 +194,4 @@ WHERE
     )
   )
   AND NOT p1_cmd LIKE '/usr/bin/bash /usr/bin/makepkg %'
+  AND NOT url in ('https://aur.archlinux.org')

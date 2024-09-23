@@ -72,6 +72,9 @@ WHERE
         'archlinux-keyring-wkd-sync.service,Refresh existing keys of archlinux-keyring,',
         'archlinux-keyring-wkd-sync.timer,Refresh existing PGP keys of archlinux-keyring regularly,',
         'atd.service,Deferred execution scheduler,',
+        'atopacct.service,Atop process accounting daemon,',
+        'atop-rotate.timer,Daily atop restart,',
+        'atop.service,Atop advanced performance monitor,',
         'auditd.service,Security Auditing Service,',
         'auditd.service,Security Audit Logging Service,',
         'audit.service,Kernel Auditing,',
@@ -80,6 +83,7 @@ WHERE
         'avahi-daemon.socket,Avahi mDNS/DNS-SD Stack Activation Socket,',
         'backup-rpmdb.timer,Backup of RPM database,',
         'backup-sysconfig.timer,Backup of /etc/sysconfig,',
+        'bazzite-hardware-setup.service,Configure Bazzite for current hardware,',
         'binfmt-support.service,Enable support for additional executable binary formats,',
         'blk-availability.service,Availability of block devices,',
         'bluetooth.service,Bluetooth service,',
@@ -88,6 +92,7 @@ WHERE
         'brew-update.service,Auto update brew for mutable brew installs,1000',
         'brew-update.timer,Timer for brew update for mutable brew,',
         'brew-upgrade.timer,Timer for brew upgrade for on image brew,',
+        'btrfs-dedup@var-home.timer,Weekly Btrfs deduplication on /var/home,',
         'ca-certificates.path,Watch for changes in CA certificates,',
         'check-battery.timer,Check if mainboard battery is Ok,',
         'chronyd.service,NTP client/server,',
@@ -146,6 +151,7 @@ WHERE
         'fwupd.service,Firmware update daemon,',
         'gdm.service,GNOME Display Manager,',
         'geoclue.service,Location Lookup Service,geoclue',
+        'geoipupdate.timer,Weekly GeoIP update,',
         'gitsign.service,Keyless Git signing with Sigstore!,',
         'gnome-remote-desktop.service,GNOME Remote Desktop,gnome-remote-desktop',
         'gssproxy.service,GSSAPI Proxy Daemon,',
@@ -160,6 +166,7 @@ WHERE
         'incus.socket,Incus - Daemon (unix socket),',
         'incus-startup.service,Incus - Startup check,',
         'incus-user.socket,Incus - Daemon (user unix socket),',
+        'input-remapper.service,Service to inject keycodes without the GUI application,',
         'ir_agent.service,Rapid7 Insight Agent,root',
         'irqbalance.service,irqbalance daemon,',
         'iscsid.socket,Open-iSCSI iscsid Socket,',
@@ -260,6 +267,8 @@ WHERE
         'plymouth-read-write.service,Tell Plymouth To Write Out Runtime Data,',
         'plymouth-start.service,Show Plymouth Boot Screen,',
         'pmcd.service,Performance Metrics Collector Daemon,',
+        'podman-auto-update.timer,Podman auto-update timer,',
+        'podman-restart.service,Podman Start All Containers With Restart Policy Set To Always,',
         'podman.socket,Podman API Socket,',
         'polkit.service,Authorization Manager,',
         'polkit.service,Authorization Manager,polkitd',
@@ -300,13 +309,17 @@ WHERE
         'shadow.timer,Daily verification of password and group files,',
         '-.slice,Root Slice,',
         'smartd.service,Self Monitoring and Reporting Technology (SMART) Daemon,',
+        'smartmontools.service,Self Monitoring and Reporting Technology (SMART) Daemon,',
         'snap.canonical-livepatch.canonical-livepatchd.service,Service for snap application canonical-livepatch.canonical-livepatchd,',
+        'snap.cups.cups-browsed.service,Service for snap application cups.cups-browsed,',
+        'snap.cups.cupsd.service,Service for snap application cups.cupsd,',
         'snapd.apparmor.service,Load AppArmor profiles managed internally by snapd,',
         'snapd.seeded.service,Wait until snapd is fully seeded,',
         'snapd.service,Snap Daemon,',
         'snapd.socket,Socket activation for snappy daemon,',
         'snap.lxd.daemon.unix.socket,Socket unix for snap application lxd.daemon,',
         'snap.lxd.user-daemon.unix.socket,Socket unix for snap application lxd.user-daemon,',
+        'snap.multipass.multipassd.service,Service for snap application multipass.multipassd,',
         'snap.yubioath-desktop.pcscd.service,Service for snap application yubioath-desktop.pcscd,',
         'sshd.service,OpenSSH Daemon,',
         'sshd.service,OpenSSH server daemon,',
@@ -501,6 +514,7 @@ WHERE
       OR exception_key LIKE 'systemd-cryptsetup@%.service,Cryptography Setup for %,'
       OR exception_key LIKE 'zfs-snapshot-%.service,zfs-snapshot-%.service,'
       OR exception_key LIKE 'zfs-snapshot-%.timer,zfs-snapshot-%.timer,'
+      OR exception_key LIKE 'snap-aws\x2dcli-%.mount,Mount unit for aws-cli, revision %'
       OR id LIKE ''
       OR id LIKE 'dev-disk-by%.swap'
       OR id LIKE 'dev-mapper-%.swap'

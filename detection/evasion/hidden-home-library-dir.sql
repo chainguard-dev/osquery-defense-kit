@@ -45,6 +45,7 @@ WHERE
     '~/Library/Finance/.finance_dropbox_SUPPORT/_EXTERNAL_DATA',
     '~/Library/Finance/.finance_local_SUPPORT/_EXTERNAL_DATA',
     '~/Library/GroupContainersAlias/.SiriTodayViewExtension',
+    '~/Library/Caches/.adobe/c2pa_cache',
     '~/Library/GroupContainersAlias/.SiriTodayViewExtension/Library',
     '~/Library/Group Containers/.SiriTodayViewExtension',
     '~/Library/Group Containers/.SiriTodayViewExtension/Library',

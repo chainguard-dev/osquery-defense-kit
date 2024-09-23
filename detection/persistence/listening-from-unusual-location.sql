@@ -75,17 +75,18 @@ WHERE
     p0.name IN (
       'caddy',
       'controller',
-      'docker-proxy',
-      'hugo',
-      'gopls',
-      'limactl',
-      'nuclei',
-      'qemu-system-aarch64',
-      'qemu-system-x86',
       'crane',
+      'docker-proxy',
+      'gopls',
+      'hugo',
       'kubectl',
+      'limactl',
       'nginx-ingress-c',
       'node',
+      'nuclei',
+      'ollama',
+      'qemu-system-aarch64',
+      'qemu-system-x86',
       'rootlessport',
       'webhook'
     )
@@ -108,6 +109,8 @@ WHERE
   AND NOT exception_key IN (
     '16620,6,500,psi-bastion',
     '32768,6,500,java',
+    '32768,6,500,Chromium',
+    '32768,6,500,Code Helper (Plugin)',
     '24024,17,500,MTGA',
     '1,1,500,ping'
   )

@@ -48,7 +48,7 @@ FROM
 WHERE
   -- On my Linux machine, creating a gzip archive clocks in at 6780210
   bytes_written_rate > 4000000
-  AND age > 180
+  AND age > 200
   AND p0.pid > 2
   AND p0.parent != 2
   AND p0.path NOT IN (
@@ -82,12 +82,14 @@ WHERE
     '/usr/lib/flatpak-system-helper',
     '/usr/lib/snapd/snapd',
     '/usr/lib/systemd/systemd',
+    '/app/libexec/mediawriter/helper',
     '/usr/lib/systemd/systemd-journald',
     '/usr/lib64/thunderbird/thunderbird',
     '/usr/libexec/coreduetd',
     '/usr/libexec/flatpak-system-helper',
     '/usr/libexec/logd_helper',
     '/usr/libexec/packagekitd',
+    '/System/Library/PrivateFrameworks/MobileDevice.framework/Versions/Current/AppleMobileDeviceHelper.app/Contents/Resources/AppleMobileBackup',
     '/usr/libexec/rosetta/oahd',
     '/usr/libexec/secd',
     '/usr/libexec/sharingd',
@@ -132,8 +134,13 @@ WHERE
     'baloo_file_extr',
     'bincapz',
     'bwrap',
+    'nami',
+    'topgrade',
+    'vi',
+    'vim',
     'cargo',
     'chrome',
+    'wimlib-imagex',
     'code',
     'com.apple.MobileSoftwareUpdate.UpdateBrainService',
     'com.apple.NRD.UpdateBrainService',

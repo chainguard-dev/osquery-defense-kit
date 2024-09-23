@@ -42,6 +42,12 @@ FROM
 WHERE
   p0.euid = 0
   AND pmm.path LIKE '%libcurl%'
-  AND p0.name NOT IN ('nix-daemon', 'nix')
+  AND p0.name NOT IN (
+    'nix-daemon',
+    'nix',
+    'velociraptor',
+    'osqueryd',
+    'socket_vmnet'
+  )
 GROUP BY
   p0.pid

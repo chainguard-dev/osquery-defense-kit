@@ -1,4 +1,4 @@
--- Find unexpected hidden directories in operating-system foldersbin/
+-- Find unexpected hidden directories in operating-system folders
 --
 -- references:
 --   * https://themittenmac.com/what-does-apt-activity-look-like-on-macos/
@@ -169,6 +169,7 @@ WHERE
     '/var/root/.provisio',
     '/var/root/.Trash/',
     '/var/root/.viminfo',
+    '/var/root/.ssh/',
     '/var/root/.zsh_history',
     '/var/run/.heim_org.h5l.kcm-socket',
     '/var/run/.sim_diagnosticd_socket',
@@ -177,8 +178,10 @@ WHERE
     '/var/setup/.TemporaryItems',
     '/var/setup/.TemporaryItems/',
     '/var/tmp/.ses',
+    '/tmp/.ses',
     '/var/tmp/.ses.bak',
     '/.vol/',
+    '/tmp/.git/',
     '/.VolumeIcon.icns'
   )
   AND file.directory NOT IN (
@@ -189,6 +192,7 @@ WHERE
   AND file.path NOT LIKE '/%bin/bootstrapping/.default_components'
   AND file.path NOT LIKE '/tmp/.#%'
   AND file.path NOT LIKE '/lib/jvm/.java-%.jinfo'
+  AND file.path NOT LIKE '%/lib/.lib%.hmac'
   AND file.path NOT LIKE '/tmp/.lark_cache_%'
   AND file.path NOT LIKE '/tmp/.cdx.json%'
   AND file.path NOT LIKE '/var/roothome/.xauth%'
@@ -199,6 +203,7 @@ WHERE
   AND file.path NOT LIKE '/tmp/.xfsm-ICE-%'
   AND file.path NOT LIKE '/tmp/.com.google.Chrome.%'
   AND file.path NOT LIKE '/tmp/.org.chromium.Chromium%'
+  AND file.path NOT LIKe '/tmp/.com.microsoft.Edge.%'
   AND file.path NOT LIKE '/var/run/.vfs_rsrc_streams_%/'
   AND file.path NOT LIKE '/tmp/.X1%-lock'
   AND file.path NOT LIKE '/usr/local/%/.keepme'
@@ -213,6 +218,8 @@ WHERE
     type = 'regular'
     AND (
       filename LIKE '%.swp'
+      OR filename LIKE '%.swo'
+      OR filename LIKE '%.swn'
       OR size < 2
     )
   )
@@ -260,4 +267,12 @@ WHERE
     AND file.mode = '0644'
     AND uid = 501
     AND gid = 0
+  )
+  -- RX100
+  AND NOT (
+    file.path LIKE '/var/db/.%'
+    AND file.gid = 0
+    AND file.uid = 0
+    AND file.size = 28
+    AND file.mode = '0666'
   )

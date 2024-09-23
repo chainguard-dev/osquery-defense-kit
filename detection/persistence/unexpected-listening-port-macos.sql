@@ -54,6 +54,7 @@ WHERE
   AND NOT exception_key IN (
     '10011,6,0,launchd,Software Signing',
     '10011,6,0,webfilterproxyd,Software Signing',
+    '49152,6,500,Capture One,Developer ID Application: Capture One A/S (5WTDB5F65L)',
     '1024,6,0,systemmigrationd,Software Signing',
     '10250,6,500,OrbStack Helper,Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)',
     '111,17,1,rpcbind,Software Signing',
@@ -125,6 +126,7 @@ WHERE
     '49152,6,500,dbeaver,Developer ID Application: DBeaver Corporation (42B6MDKMW8)',
     '49152,6,500,EcammLiveRemoteXPCServer,Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     '49152,6,500,GarageBand,Apple Mac OS Application Signing',
+    '49152,6,500,HP Smart,Apple Mac OS Application Signing',
     '49152,6,500,git-daemon,',
     '49152,6,500,idea,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     '49152,6,500,IPNExtension,Apple Mac OS Application Signing',
@@ -137,6 +139,7 @@ WHERE
     '49152,6,500,Luna Display,Developer ID Application: Astro HQ LLC (8356ZZ8Y5K)',
     '49152,6,500,Music,Software Signing',
     '49152,6,500,node,',
+    '49152,6,500,HP Smart,Apple Mac OS Application Signing',
     '49152,6,500,qemu-system-aarch64,',
     '49152,6,500,rapportd,Software Signing',
     '49152,6,500,Resolve,Developer ID Application: Blackmagic Design Inc (9ZGFBWLSYP)',

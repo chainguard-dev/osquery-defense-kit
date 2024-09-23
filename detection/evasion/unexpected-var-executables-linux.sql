@@ -39,6 +39,8 @@ WHERE
   AND file.path NOT LIKE '%/./%'
   AND file.path NOT LIKE '/var/tmp/images/%'
   AND file.path NOT LIKE '/var/tmp/packages/%'
+  AND file.path NOT LIKE '/var/tmp/buildah-cache-1000/var/cache/rpm-ostree/%'
+  AND file.directory NOT LIKE '/var/tmp/buildah%/run'
   AND (
     file.mode LIKE '%7%'
     OR file.mode LIKE '%5%'

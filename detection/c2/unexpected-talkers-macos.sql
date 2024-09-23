@@ -1,4 +1,4 @@
--- Unexpected programs communicating over HTTPS (state-based)
+-- Unexpected programs communicating over non-HTTPS protocols (state-based)
 --
 -- references:
 --   * https://attack.mitre.org/techniques/T1071/ (C&C, Application Layer Protocol)
@@ -142,6 +142,7 @@ WHERE
     '500,6,3389,Microsoft Remote Desktop,Microsoft Remote Desktop,Apple Mac OS Application Signing,com.microsoft.rdc.macos',
     '500,6,3389,Microsoft Remote Desktop,Microsoft Remote Desktop,Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.rdc.macos',
     '500,6,4070,Spotify,Spotify,Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
+    '500,17,68,com.docker.backend,com.docker.backend,500u,80g',
     '500,6,4317,flyctl,flyctl,,a.out',
     '500,6,4318,Code Helper (Plugin),Code Helper (Plugin),Developer ID Application: Microsoft Corporation (UBF8T346G9),com.github.Electron.helper',
     '500,6,5053,bridge,bridge,Developer ID Application: Proton Technologies AG (6UN54H93QT),bridge',
@@ -196,6 +197,7 @@ WHERE
     '500,6,80,thunderbird,thunderbird,Defveloper ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
     '500,6,80,TIDAL Helper,TIDAL Helper,Developer ID Application: TIDAL Music AS (GK2243L7KB),com.tidal.desktop.helper',
     '500,6,80,Twitter,Twitter,Apple Mac OS Application Signing,maccatalyst.com.atebits.Tweetie2',
+    '500,6,8282,GeForceNOW,GeForceNOW,Developer ID Application: NVIDIA Corporation (6KR3T733EC),com.nvidia.gfnpc.mall',
     '500,6,80,Wavebox Helper,Wavebox Helper,Developer ID Application: Bookry Ltd (4259LE8SU5),com.bookry.wavebox.helper',
     '500,6,80,WhatsApp,WhatsApp,Developer ID Application: WhatsApp Inc. (57T9237FN3),WhatsApp',
     '500,6,9123,Elgato Control Center,Elgato Control Center,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5),com.corsair.ControlCenter',
@@ -253,10 +255,13 @@ WHERE
     AND id_exception_key IN (
       'Apple Mac OS Application Signing,com.microsoft.OneDrive-mac',
       'Apple Mac OS Application Signing,com.ookla.speedtest-macos',
+      'Apple Mac OS Application Signing,com.buildtoconnect.screenrecorder',
+      'Developer ID Application: AMZN Mobile LLC (94KV3E626L),lima__bin__limactl',
       'Apple Mac OS Application Signing,net.whatsapp.WhatsApp.ServiceExtension',
       'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF),com.adguard.mac.adguard.network-extension',
       'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.AdobeResourceSynchronizer',
       'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.lightroomCC',
+      'Developer ID Application: NVIDIA Corporation (6KR3T733EC),com.nvidia.nvcontainer',
       'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.Reader',
       'Developer ID Application: Bitdefender SRL (GUNFMW623Y),com.bitdefender.cst.net.dci.dci-network-extension',
       'Developer ID Application: Bookry Ltd (4259LE8SU5),com.bookry.wavebox.helper',
@@ -269,12 +274,14 @@ WHERE
       'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.EpicGamesLauncher',
       'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.UE4EditorServices',
       'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK),fctupdate',
+      'Developer ID Application: NVIDIA Corporation (6KR3T733EC),com.nvidia.nvcontainer',
       'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D),com.googlecode.iterm2',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.GoogleUpdater',
       'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.one.NetworkExtension',
       'Developer ID Application: GUILHERME RAMBO (8C7439RJLG),codes.rambo.AirBuddy.MobileDevicesService',
       'Developer ID Application: Loom, Inc (QGD2ZPXZZG),com.loom.desktop',
+      'Developer ID Application: SURFSHARK LTD (YHUG37CKN8),com.surfshark.vpnclient.macos.direct',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.edgemac.helper',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.teams2.helper',
       'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode.helper',
