@@ -4,7 +4,7 @@
 --  * https://www.aon.com/en/insights/cyber-labs/unveiling-sedexp
 --  * https://ch4ik0.github.io/en/posts/leveraging-Linux-udev-for-persistence/
 --
--- tags: volume filesystem
+-- tags: volume filesystem extra
 -- platform: linux
 SELECT
   file.path,
