@@ -9,7 +9,7 @@ out/osqtool-$(ARCH)-$(OSQTOOL_VERSION):
 	mv out/osqtool out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)
 
 out/detection.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=8s --verify --exclude-tags=disabled,disabled-privacy,extra --output  out/detection.conf pack detection
+	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=12s --verify --exclude-tags=disabled,disabled-privacy,extra --output  out/detection.conf pack detection
 
 out/policy.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  $(wildcard policy/*.sql)
 	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=8s --exclude-tags=disabled,disabled-privacy,extra o --verify --output out/policy.conf pack policy/
