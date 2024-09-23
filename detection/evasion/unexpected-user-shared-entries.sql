@@ -55,6 +55,7 @@ WHERE
       '/Users/Shared/CleanMyMac X/.licence',
       '/Users/Shared/LogiTuneInstallerStarted.txt',
       '/Users/Shared/.NSVolumeHeap',
+      '/Users/Shared/.4oaLkgIGnA',
       '/Users/Shared/.SeedEnrollment.plist'
     )
     OR top3_dir IN (
@@ -68,12 +69,14 @@ WHERE
       '/Users/Shared/CleanMyMac X Menu',
       '/Users/Shared/LGHUB',
       '/Users/Shared/logi',
-      ' /Users/Shared/Maxon',
+      '/Users/Shared/Pixologic',
+      '/Users/Shared/Maxon',
       '/Users/Shared/AdobeInstalledCodecsTier2',
       '/Users/Shared/LogioptionsPlus',
       '/Users/Shared/LogiOptionsPlus',
       '/Users/Shared/.logishrd',
       '/Users/Shared/logitune',
+      '/Users/Shared/ZBrushData2024',
       '/Users/Shared/macenhance',
       '/Users/Shared/Parallels',
       '/Users/Shared/PPN',

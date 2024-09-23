@@ -73,6 +73,7 @@ WHERE
     '29',
     '30',
     'backend',
+    'emacs',
     'build',
     'bin',
     'nox',
@@ -85,3 +86,4 @@ WHERE
   AND NOT basename LIKE 'python2.%'
   AND NOT basename LIKE 'terraform-provider%'
   AND NOT basename LIKE 'ld-%.so'
+  AND NOT basename LIKE 'unison-%'

@@ -164,6 +164,7 @@ WHERE
     OR dir LIKE '%/.git/%'
     OR dir LIKE '%/.gradle'
     OR dir LIKE '%/.github/%'
+    OR dir LIKE '%/node_modules/.bin'
     OR dir LIKE '%/.cache/melange%'
     OR dir LIKE '%/.github'
     OR dir LIKE '%/.venv'

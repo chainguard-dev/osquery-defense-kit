@@ -78,7 +78,7 @@ WHERE
       AND NOT path LIKE '/usr/local/kolide-k2/bin/%'
       AND NOT path LIKE '%/cloud_sql_proxy'
   )
-  AND (p0.start_time - MAX(f.ctime, f.btime)) < 600
+  AND (p0.start_time - MAX(f.ctime, f.btime)) < 1200
   AND f.ctime > 0
   AND NOT (
     p0.euid > 499
@@ -118,6 +118,7 @@ WHERE
         '~/gohome/bin',
         '~/code/bin',
         '~/go/bin',
+        '/usr/local/aws-cli',
         '~/melange',
         '~/repos/bincapz/out',
         '~/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin',
@@ -138,6 +139,7 @@ WHERE
       OR dir LIKE '~/%/go/bin'
       OR dir LIKE '~/Downloads/%.app/Contents/MacOS'
       OR dir LIKE '~/dev/%'
+      OR dir LIKE '~/git/%'
       OR f.path LIKE '%go-build%'
       OR homepath LIKE '~/%/src/%.test'
       OR homepath LIKE '~/%/pkg/%.test'
@@ -165,6 +167,7 @@ WHERE
     'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW)',
     'Developer ID Application: Bryan Jones (49EYHPJ4Q3)',
     'Developer ID Application: Canon Inc. (XE2XNRRXZ5)',
+    'Developer ID Application: AMZN Mobile LLC (94KV3E626L)',
     'Developer ID Application: Cisco (DE8Y96K9QP)',
     'Developer ID Application: CodeWeavers Inc. (9C6B7X7Z8E)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
@@ -190,7 +193,9 @@ WHERE
     'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Wesley FURLONG (P4A6FU9KZ3)',
+    'Developer ID Application: Autodesk (XXKJ396S2Y)',
     'Developer ID Application: Michael Jones (YD6LEYT6WZ)',
+    'Developer ID Application: VMware, Inc. (EG7KH642X6)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Mojang AB (HR992ZEAE6)',
     'Developer ID Application: OPENVPN TECHNOLOGIES, INC. (ACV7L3WCD8)',

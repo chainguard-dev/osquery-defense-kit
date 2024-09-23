@@ -88,6 +88,8 @@ WHERE
       'login',
       'roxterm',
       'tmux',
+      'screen',
+      'gnome-terminal-server',
       'newgrp',
       'tmux:server',
       'wezterm-gui',

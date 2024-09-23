@@ -205,6 +205,8 @@ WHERE
   )
   AND NOT homepath IN (
     '~/.config/nvm/nvm.sh',
+    '~/.config/i3',
+    '~/.config/polybar',
     '~/Library/Assistant/SiriAnalytics.db',
     '~/Library/Calendars/Calendar.sqlitedb',
     '~/Library/Calendars/Calendar.sqlitedb-wal',
@@ -214,7 +216,7 @@ WHERE
     '~/Library/Group Containers/group.com.docker/unleash-repo-schema-v1-Docker Desktop.json',
     '~/Library/HTTPStorages/com.apple.AddressBookSourceSync',
     '~/Library/HTTPStorages/com.apple.AddressBookSourceSync/httpstorages.sqlite-shm',
-    '	~/Library/Keychains/login.keychain-db',
+    '~/Library/Keychains/login.keychain-db',
     '~/Library/Logs/zoom.us/upload_history.txt',
     '~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2'
   )

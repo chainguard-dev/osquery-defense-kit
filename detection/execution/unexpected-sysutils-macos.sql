@@ -101,6 +101,8 @@ WHERE
     'sysctl -i sysctl.proc_translated',
     'sysctl -n hw.optional.arm64',
     'sw_vers -productName',
+    '/usr/bin/security authorizationdb read system.login.screensaver',
+    'security authorizationdb read system.login.screensaver',
     'unzip -h',
     'sysctl -n sysctl.proc_translated',
     '/usr/sbin/system_profiler SPUSBDataType',
@@ -111,10 +113,13 @@ WHERE
   )
   AND NOT exception_key IN (
     'ditto,500,ruby,zsh',
+    'system_profiler,500,bash,DDPM',
     'ioreg,500,bash,Alfred Preferences',
     'ioreg,500,com.docker.backend,launchd',
     'system_profiler,0,launcher,launchd',
     'system_profiler,500,bash,launchd',
+    'ioreg,500,com.docker.backend,com.docker.backend',
+    'security_authtrampoline,500,Raycast,launchd',
     'system_profiler,500,bash,logioptionsplus_agent',
     'system_profiler,500,Google Drive,launchd',
     'system_profiler,500,steam_osx,launchd',

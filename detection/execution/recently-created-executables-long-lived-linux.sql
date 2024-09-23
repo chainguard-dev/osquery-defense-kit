@@ -45,7 +45,7 @@ WHERE
   p0.start_time > 0
   AND f.ctime > 0
   AND p0.start_time > (strftime('%s', 'now') - 43200)
-  AND (p0.start_time - MAX(f.ctime, f.btime)) < 900
+  AND (p0.start_time - MAX(f.ctime, f.btime)) < 1200
   AND p0.start_time >= MAX(f.ctime, f.ctime)
   AND NOT f.directory IN ('/usr/lib/firefox', '/usr/local/kolide-k2/bin') -- Typically daemons or long-running desktop apps
   -- These are binaries that are known to get updated and subsequently executed
@@ -132,6 +132,7 @@ WHERE
   )
   AND NOT p0.path LIKE '/home/%/bin/%'
   AND NOT p0.path LIKE '/home/%/git/%'
+  AND NOT p0.path LIKE '/home/%/upstream/%'
   AND NOT p0.path LIKE '/home/%/.local/share/JetBrains/Toolbox/apps/%'
   AND NOT p0.path LIKE '/home/%/.local/share/nvim/mason/packages/%'
   AND NOT p0.path LIKE '/home/%/.cache/JetBrains/%/GoLand/___%'
@@ -158,6 +159,7 @@ WHERE
   AND NOT p0.path LIKE '%/.vscode/extensions/%'
   AND NOT p0.path LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'
   AND NOT p0.path LIKE '%/.local/share/spotify-launcher/install/usr/%'
+  AND NOT p0.path LIKE '/var/opt/Elastic/Agent/data/elastic-agent-%/components/%'
   AND NOT (
     p0.name IN ('osqtool-x86_64', 'osqtool-arm64')
     AND p0.cmdline LIKE './%'

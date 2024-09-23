@@ -39,6 +39,8 @@ WHERE
   AND gap.path NOT LIKE '/usr/local/bin/%'
   AND gap.path NOT LIKE '/Users/%/Downloads/openresty%/bundle/install'
   AND gap.path NOT LIKE '/Users/%/Downloads/U_STIGViewer%/STIGViewer'
+  AND gap.path NOT LIKE '/Users/%/Downloads/grpcurl_%'
+  AND gap.path NOT LIKE '/Users/%/Downloads/%_arm64%/%'
   AND signature.authority != 'Developer ID Application: Jamie Zawinski (4627ATJELP)'
 GROUP BY
   gap.requirement

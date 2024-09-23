@@ -3,7 +3,7 @@
 -- refs:
 --   * https://attack.mitre.org/techniques/T1543/002/ (Create or Modify System Process: Systemd Service)
 --
--- tags: transient process state often
+-- tags: transient process events extra
 -- platform: linux
 -- interval: 300
 SELECT -- Child
@@ -77,6 +77,7 @@ WHERE
     'systemctl,0,kubeadm,containerd-shim-runc-v2',
     'systemctl,0,pacman,pacman',
     'systemctl,0,pacman,sudo',
+    'systemctl,500,snap,update-notifier',
     'systemctl,0,snapd,systemd',
     'systemctl,0,tailscaled,',
     'systemctl,500,strace,bash',
@@ -95,6 +96,8 @@ WHERE
     '/bin/systemctl -q is-enabled whoopsie.path',
     '/bin/systemctl --quiet is-enabled whoopsie.path',
     '/bin/systemctl stop --no-block nvidia-persistenced',
+    '/usr/bin/systemctl is-system-running',
+    'systemctl is-system-running',
     '/sbin/runlevel',
     'systemctl is-active systemd-resolved.service',
     'systemctl is-enabled power-profiles-daemon.service',
@@ -116,7 +119,8 @@ WHERE
     'systemctl --system daemon-reexec',
     'systemctl --user import-environment DISPLAY XAUTHORITY',
     '/usr/bin/systemctl try-reload-or-restart dbus',
-    '/usr/bin/systemctl --user is-active slack'
+    '/usr/bin/systemctl --user is-active slack',
+    'systemctl --user is-active slack'
   ) -- apt-helper form
   AND NOT p0_cmd LIKE '%systemctl is-active -q %.service'
   AND NOT p0_cmd LIKE '%systemctl show --property=%'

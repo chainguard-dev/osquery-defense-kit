@@ -78,7 +78,10 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,500,Slack,launchd',
     'curl,500,Stats,bash',
     'curl,500,zsh,login',
+    'curl,500,zsh,zellij',
     'curl,500,zsh,sh',
+    'curl,500,zsh,mc',
+    'curl,0,bash,kandji-library-manager',
     'wget,500,env,env',
     'wget,500,sh,bwrap',
     'wget,500,zsh,bash'

@@ -45,6 +45,7 @@ WHERE
     '/sbin/ldconfig',
     '/usr/sbin/ldconfig',
     '/usr/bin/c_rehash',
+    '/home/smoser/bin/firefox',
     '/usr/sbin/update-ca-certificates'
   )
   AND NOT (
@@ -58,4 +59,9 @@ WHERE
   AND NOT (
     p.path = "/"
     AND file.size < 8192
+  )
+  AND NOT cmdline IN (
+    'bpftool --version',
+    'bpftool --help',
+    'bpftool -V'
   )

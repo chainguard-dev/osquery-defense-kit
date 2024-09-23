@@ -34,6 +34,7 @@ WHERE
     'FirstBootAfterUpdate',
     'FirstBootCleanupHandled',
     'appfwd.pid',
+    'MobileAssetStartupActivation.doneThisBoot',
     'auditd.pid',
     'automount.initialized',
     'bootpd.pid',

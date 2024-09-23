@@ -152,6 +152,7 @@ WHERE
     '500,ko,,',
     '500,ko,a.out,',
     '500,kubectl,a.out,',
+    '500,Keeper Password Manager,com.callpod.keepermac.lite,Apple Mac OS Application Signing',
     '500,lua-language-server,lua-language-server,',
     '500,Magnet,com.crowdcafe.windowmagnet,Apple Mac OS Application Signing',
     '500,mattermost,a.out,',
@@ -212,6 +213,7 @@ WHERE
     '500,TwitchStudioStreamDeck,TwitchStudioStreamDeck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     '500,LogicProThumbnailExtension,com.apple.logic10.LogicProThumbnailExtension,Apple Mac OS Application Signing',
     '500,vim,,',
+    '500,chromedriver,chromedriver,',
     '500,vim,vim,',
     '500,WinAppHelper,,',
     '500,WinAppHelper,WinAppHelper,'
@@ -256,5 +258,6 @@ WHERE
   AND NOT exception_key LIKE '500,rzls,apphost-%,'
   AND NOT exception_key LIKE '500,sg-nvim-agent,sg_nvim_agent-%,'
   AND NOT exception_key LIKE '500,taplo-full-darwin-%,taplo-%,'
+  AND NOT exception_key LIKE '500,just,just-%,'
 GROUP BY
   p0.pid
