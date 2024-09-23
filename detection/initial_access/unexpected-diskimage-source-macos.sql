@@ -115,7 +115,7 @@ WHERE
     'notion.so',
     'notion-static.com',
     'ocf.berkeley.edu',
-    'odvdev.at'
+    'odvdev.at',
     'office.com',
     'oobesaas.adobe.com',
     'openra.net',

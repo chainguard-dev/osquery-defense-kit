@@ -60,7 +60,7 @@ WHERE
     p.path = "/"
     AND file.size < 8192
   )
-  AND NOT cmdline IN (
+  AND NOT p.cmdline IN (
     'bpftool --version',
     'bpftool --help',
     'bpftool -V'
