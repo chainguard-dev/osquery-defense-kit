@@ -12,7 +12,7 @@ out/detection.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(wildcard detection/
 	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=16s --verify --exclude-tags=disabled,disabled-privacy,extra --output  out/detection.conf pack detection
 
 out/policy.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  $(wildcard policy/*.sql)
-	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=8s --exclude-tags=disabled,disabled-privacy,extra o --verify --output out/policy.conf pack policy/
+	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=8s --exclude-tags=disabled,disabled-privacy,extra --verify --output out/policy.conf pack policy/
 
 out/vulnerabilities.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)  $(wildcard vulnerabilities/*.sql)
 	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=8s --exclude-tags=disabled,disabled-privacy,extra --output out/vulnerabilities.conf pack vulnerabilities/
