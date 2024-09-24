@@ -3,7 +3,7 @@
 -- refs:
 --   * https://attack.mitre.org/techniques/T1016/ (System Network Configuration Discovery)
 --
--- tags: transient process state often
+-- tags: transient process state often extra events
 -- platform: darwin
 -- interval: 600
 SELECT

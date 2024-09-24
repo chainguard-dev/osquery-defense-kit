@@ -1,6 +1,6 @@
 -- Return the list of audit user events
 --
--- tags: postmortem
+-- tags: postmortem events
 -- platform: linux
 SELECT
   *

@@ -8,7 +8,7 @@
 --
 -- interval: 300
 -- platform: linux
--- tags: process events
+-- tags: process events extra
 SELECT -- Child
   pe.path AS p0_path,
   REGEX_MATCH (pe.path, '.*/(.*)', 1) AS p0_name,

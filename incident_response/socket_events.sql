@@ -1,6 +1,6 @@
 -- Return the list of socket events
 --
--- tags: postmortem
+-- tags: postmortem events extra
 -- platform: posix
 -- interval: 600
 SELECT

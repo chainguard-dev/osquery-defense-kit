@@ -103,6 +103,9 @@ WHERE
       AND syscall = "execve"
       AND (
         cmdline LIKE '%chmod% 7%'
+        OR cmdline LIKE '%chmod 5%'
+        OR cmdline LIKE '%chmod 1%'
+        OR cmdline LIKE '%chmod +%x'
         OR cmdline LIKE '%chmod% +rwx%'
         OR cmdline LIKE '%chmod% +x%'
         OR cmdline LIKE '%chmod% u+x%'

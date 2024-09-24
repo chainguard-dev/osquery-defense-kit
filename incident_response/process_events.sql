@@ -2,6 +2,7 @@
 --
 -- interval: 600
 -- platform: posix
+-- tags: events extra
 SELECT
   pe.*,
   -- pe.cwd is often blank

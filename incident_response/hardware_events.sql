@@ -1,6 +1,6 @@
 -- Return hardware events
 --
--- tags: postmortem
+-- tags: postmortem events
 -- platform: posix
 SELECT
   *

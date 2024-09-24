@@ -6,6 +6,7 @@
 --
 -- platform: darwin
 -- interval: 900
+-- tags: events extra
 SELECT
   REGEX_MATCH (pe.path, '.*/(.*)', 1) || ',' || MIN(pe.euid, 500) || ',' || REGEX_MATCH (COALESCE(p1.path, pe1.path), '.*/(.*)', 1) || ',' || REGEX_MATCH (
     COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path),

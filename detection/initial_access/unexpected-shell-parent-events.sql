@@ -7,7 +7,7 @@
 --   * https://attack.mitre.org/techniques/T1059/ (Command and Scripting Interpreter)
 --   * https://attack.mitre.org/techniques/T1204/002/ (User Execution: Malicious File)
 --
--- tags: process events
+-- tags: process events extra
 -- interval: 300
 -- platform: posix
 SELECT
