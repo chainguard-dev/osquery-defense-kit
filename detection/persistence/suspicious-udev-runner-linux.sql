@@ -80,3 +80,8 @@ rule udev_major_runner : high {
         all of them
 }'
   AND yara.count > 0
+  AND NOT (
+    matches = "udev_unusual_small_runner"
+    AND file.path IN ('/usr/lib/udev/rules.d/99-cec-bluetooth.rules')
+    AND file.size = 74
+  )

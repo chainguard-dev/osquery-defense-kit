@@ -97,6 +97,7 @@ WHERE
   AND p0.path NOT LIKE "/nix/store/%"
   AND basename NOT IN (
     "acpid",
+    "busybox",
     "com.docker.backend",
     "com.docker.build",
     "com.docker.extensions",

@@ -87,6 +87,7 @@ WHERE
     'nuclei,1.0.0.1,53',
     'distnoted,8.8.8.8,53',
     'limactl,8.8.8.8,53',
+    'msedge,8.8.8.8,53',
     'adguard_dns,1.0.0.1,53',
     'coredns,8.8.8.8,53',
     'signal-desktop,8.8.8.8,53',

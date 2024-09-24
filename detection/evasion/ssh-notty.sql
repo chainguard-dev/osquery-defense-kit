@@ -51,4 +51,5 @@ WHERE
   AND child_name NOT IN ('', 'zfs')
   AND child_cmd NOT LIKE '%osquery-defense-kit%make verify'
   AND grandchild_cmd NOT LIKE '%osquery-defense-kit%make verify'
+  AND grandchild_name NOT IN ('unison')
   AND cmd != 'sshd: docker@notty'

@@ -98,6 +98,7 @@ WHERE
       'demoit',
       'direnv',
       'doas',
+      'docker',
       'docker-credential-desktop',
       'docker-credential-gcr',
       'Docker Desktop',

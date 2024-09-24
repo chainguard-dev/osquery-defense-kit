@@ -145,3 +145,5 @@ WHERE
     AND p1_name IN ("vim", "nvim")
   )
   AND NOT pe.path LIKE '/usr/local/Cellar/htop/%/bin/htop'
+  -- Surfshark
+  AND NOT pe.path LIKE '/Library/SystemExtensions/%/com.surfshark.vpnclient.macos.direct.PacketTunnel-WireGuard.systemextension/Contents/MacOS'

@@ -86,6 +86,7 @@ WHERE
     '17,255,500,mtr-packet',
     '18000,6,500,kourier',
     '22000,6,500,syncthing',
+    '2222,6,500,qemu-system-x86',
     '22,6,0,sshd',
     '22,6,0,systemd',
     '22,6,500,sshd',
@@ -214,6 +215,7 @@ WHERE
       'kubectl',
       'nginx-ingress-c',
       'node',
+      'qemu-system-x86',
       'rootlessport',
       'webhook'
     )

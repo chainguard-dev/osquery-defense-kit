@@ -99,6 +99,7 @@ WHERE
     '500,bufls,a.out,',
     '500,.cargo-wrapped,.cargo-wrapped,',
     '500,chainctl,a.out,',
+    '500,chromedriver,chromedriver,',
     '500,Chromium,Chromium,',
     '500,clangd,,',
     '500,clangd,clangd,',
@@ -113,6 +114,7 @@ WHERE
     '500,debug.test,a.out,',
     '500,dfu-discovery,a.out,',
     '500,dive,a.out,',
+    '500,Divvy,com.mizage.direct.Divvy,Developer ID Application: Mizage, LLC',
     '500,Divvy,com.mizage.Divvy,Apple Mac OS Application Signing',
     '500,dlv,a.out,',
     '500,docker,a.out,',
@@ -148,11 +150,13 @@ WHERE
     '500,J8RPQ294UB.com.skitch.SkitchHelper,J8RPQ294UB.com.skitch.SkitchHelper,Apple Mac OS Application Signing',
     '500,J8RPQ294UB.com.skitch.SkitchHelper,J8RPQ294UB.com.skitch.SkitchHelper,Developer ID Application: Skitch Inc (J8RPQ294UB)',
     '500,k9s,a.out,',
+    '500,Keeper Password Manager,com.callpod.keepermac.lite,Apple Mac OS Application Signing',
+    '500,keyboxd,,',
     '500,keyboxd,keyboxd,',
     '500,ko,,',
     '500,ko,a.out,',
     '500,kubectl,a.out,',
-    '500,Keeper Password Manager,com.callpod.keepermac.lite,Apple Mac OS Application Signing',
+    '500,LogicProThumbnailExtension,com.apple.logic10.LogicProThumbnailExtension,Apple Mac OS Application Signing',
     '500,lua-language-server,lua-language-server,',
     '500,Magnet,com.crowdcafe.windowmagnet,Apple Mac OS Application Signing',
     '500,mattermost,a.out,',
@@ -202,18 +206,16 @@ WHERE
     '500,Telegram,ru.keepcoder.Telegram,Apple Mac OS Application Signing',
     '500,testing,com.yourcompany.testing,', -- Xcode iPhone emulator
     '500,tflint,a.out,',
+    '500,Chromium Helper (GPU),Chromium Helper (GPU),',
     '500,tflint-ruleset-aws,a.out,',
     '500,tflint-ruleset-google,a.out,',
     '500,timestamp-server,a.out,',
-    '500,Divvy,com.mizage.direct.Divvy,Developer ID Application: Mizage, LLC',
     '500,Todoist,com.todoist.mac.Todoist,Apple Mac OS Application Signing',
     '500,Todoist Helper,com.todoist.mac.Todoist.helper,Apple Mac OS Application Signing',
     '500,Todoist Helper (GPU),com.todoist.mac.Todoist.helper.GPU,Apple Mac OS Application Signing',
     '500,Todoist Helper (Renderer),com.todoist.mac.Todoist.helper.Renderer,Apple Mac OS Application Signing',
     '500,TwitchStudioStreamDeck,TwitchStudioStreamDeck,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
-    '500,LogicProThumbnailExtension,com.apple.logic10.LogicProThumbnailExtension,Apple Mac OS Application Signing',
     '500,vim,,',
-    '500,chromedriver,chromedriver,',
     '500,vim,vim,',
     '500,WinAppHelper,,',
     '500,WinAppHelper,WinAppHelper,'
@@ -242,6 +244,7 @@ WHERE
   AND NOT exception_key LIKE '500,rust-analyzer-aarch64-apple-darwin,rust_analyzer-%,'
   AND NOT exception_key LIKE '500,___%,a.out,'
   AND NOT exception_key LIKE '500,zellij,zellij%,'
+  AND NOT exception_key LIKE '500,package-version-server-%,package_version_server-%,'
   AND NOT exception_key LIKE '500,ruff,ruff%,'
   AND NOT exception_key LIKE '500,copilot-agent-macos-%,copilot-agent-macos-%,'
   AND NOT exception_key LIKE '500,samply,samply-%,'

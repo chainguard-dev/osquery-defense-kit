@@ -155,6 +155,7 @@ WHERE
   )
   AND file.path NOT IN (
     '/etc/auto.net',
+    '/etc/auto.smb',
     '/etc/cloud/clean.d/99-installer',
     '/etc/cloud/clean.d/99-installer-use-networkmanager',
     '/etc/grub2.cfg',

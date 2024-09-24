@@ -134,28 +134,30 @@ WHERE
     '~/.steampipe/',
     '~/.supermaven/',
     '~/.tflint.d/',
+    '~/thinkorswim/',
     '~/.Trash/',
     '~/.vscode/',
     '~/.vs-kubernetes/',
     '~/workspace/'
   )
   AND NOT top3_homedir IN (
+    '~/anaconda3/Anaconda-Navigator.app/Contents/',
+    '~/.cache/selenium/chromedriver/',
     '/Library/Application Support/EcammLive',
-    '/Library/Developer/Xcode/',
-    '/opt/rapid7/ir_agent',
-    '~/.local/share/bob/',
-    '~/.local/share/nvim/',
-    '~/.terraform.d/plugin-cache/registry.terraform.io/',
     '~/Library/Arduino15/packages/',
-    '~/Library/Caches/Cypress/',
-    '~/Library/Caches/JetBrains/',
     '~/Library/Caches/com.grammarly.ProjectLlama/',
     '~/Library/Caches/com.mimestream.Mimestream/',
     '~/Library/Caches/com.sempliva.Tiles/',
+    '~/Library/Caches/Cypress/',
+    '~/Library/Caches/JetBrains/',
     '~/Library/Caches/org.gpgtools.updater/',
     '~/Library/Caches/snyk/',
+    '/Library/Developer/Xcode/',
     '~/Library/Services/UE4EditorServices.app/',
-    '~/anaconda3/Anaconda-Navigator.app/Contents/'
+    '~/.local/share/bob/',
+    '~/.local/share/nvim/',
+    '/opt/rapid7/ir_agent',
+    '~/.terraform.d/plugin-cache/registry.terraform.io/'
   )
   AND dir NOT LIKE '/Applications/%'
   AND dir NOT LIKE '/private/tmp/%.app/Contents/MacOS'
