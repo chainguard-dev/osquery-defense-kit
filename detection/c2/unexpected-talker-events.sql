@@ -3,7 +3,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1071/ (C&C, Application Layer Protocol)
 --
--- tags: transient state net extra
+-- tags: transient state net extra events
 -- interval: 601
 -- platform: posix
 SELECT

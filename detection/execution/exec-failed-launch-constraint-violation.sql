@@ -5,7 +5,7 @@
 --
 -- interval: 900
 -- platform: darwin
--- tags: filesystem events
+-- tags: filesystem events extra
 SELECT
   s.identifier AS s_id,
   s.authority AS s_auth,

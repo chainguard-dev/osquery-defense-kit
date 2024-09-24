@@ -1,6 +1,6 @@
 -- Retrieves disk image (DMG) events
 --
--- tags: postmortem
+-- tags: postmortem events
 -- platform: darwin
 SELECT
   *

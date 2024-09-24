@@ -5,7 +5,7 @@
 --
 -- interval: 300
 -- platform: darwin
--- tags: process events
+-- tags: process events extra
 SELECT
   -- Child
   pe.path AS p0_path,

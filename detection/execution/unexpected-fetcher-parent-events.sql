@@ -3,7 +3,7 @@
 -- refs:
 --   * https://attack.mitre.org/techniques/T1105/ (Ingress Tool Transfer)
 --
--- tags: transient process state often
+-- tags: transient process state often extra events
 -- platform: posix
 -- interval: 450
 SELECT

@@ -2,6 +2,7 @@
 --
 -- platform: posix
 -- interval: 300
+-- tags: events
 SELECT
   file.mode AS p0_binary_mode,
   pe.cmdline_size AS p0_cmd_size,

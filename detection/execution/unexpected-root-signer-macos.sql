@@ -2,7 +2,7 @@
 --
 -- platform: darwin
 -- interval: 900
--- tags: transient seldom process state
+-- tags: transient seldom events extra
 -- Canonical example of including process parents from process_events
 SELECT
   f.directory AS dir,

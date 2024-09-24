@@ -1,6 +1,6 @@
 -- Return the list of watched file events (must be configured)
 --
--- tags: postmortem
+-- tags: postmortem events
 -- platform: posix
 -- interval: 900
 SELECT

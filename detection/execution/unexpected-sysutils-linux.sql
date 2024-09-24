@@ -1,10 +1,11 @@
--- Unexpected calls to sysctl (event-based)
+-- Unexpected calls to system utilities (event-based)
 --
 -- refs:
 --   * https://attack.mitre.org/techniques/T1497/001/ (Virtualization/Sandbox Evasion: System Checks)
 --
 -- platform: linux
 -- interval: 600
+-- tags: events extra
 SELECT -- Child
   pe.path AS p0_path,
   pe.time AS p0_time,

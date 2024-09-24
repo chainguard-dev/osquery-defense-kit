@@ -1,6 +1,6 @@
 -- Return the list of SELinux events
 --
--- tags: postmortem
+-- tags: postmortem events
 -- platform: linux
 SELECT
   *

@@ -9,7 +9,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1564/001/ (Hide Artifacts: Hidden Files and Directories)
 --
--- tags: transient extra
+-- tags: transient extra events
 -- platform: linux
 -- interval: 600
 SELECT
