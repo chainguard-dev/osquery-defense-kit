@@ -12,6 +12,10 @@ ODK (osquery-defense-kit) is unique in that the queries are designed to be used 
 
 At the moment, these queries are predominantly designed for execution on POSIX platforms (Linux & macOS). Pull requests to improve support on other platforms are fully welcome.
 
+## Chainguard OSQuery SQL to FleetDM Yaml
+
+[osquerytofleet.py](./osquerytofleet.py) Just for us at Sentry. It's all well documented so have at 'er.
+
 ## Requirements
 
 * osquery v5.7.0 or above

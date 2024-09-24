@@ -1,0 +1,2686 @@
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves account policy data, such as creation time
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - account_policy_data-macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves account policy data, such as creation time
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      account_policy_data;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the configuration values for the Application Layer Firewall
+    for OSX.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - alf
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves the configuration values for the Application Layer Firewall for OSX.
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      alf;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the exceptions for the Application Layer Firewall in OSX.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - alf_exceptions_macos
+  observer_can_run: false
+  platforms: ''
+  query: |
+    -- Retrieves the exceptions for the Application Layer Firewall in OSX.
+    --
+    -- tags: postmortem
+    SELECT
+      *
+    FROM
+      alf_exceptions;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the list of processes with explicit authorization for the
+    Application Layer Firewall.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - alf_explicit_auths_macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves the list of processes with explicit authorization for the Application Layer Firewall.
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      alf_explicit_auths;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the services for the Application Layer Firewall in OSX.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - alf_services
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves the services for the Application Layer Firewall in OSX.
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      alf_services;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the list of application scheme/protocol-based IPC handlers.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - app_schemes
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves the list of application scheme/protocol-based IPC handlers.
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      app_schemes;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the currently installed applications in the target OSX
+    system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - apps
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves all the currently installed applications in the target OSX system.
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      apps;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves entries from the macOS authorization mechanisms db
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - authorization_mechanisms-macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves entries from the macOS authorization mechanisms db
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      authorization_mechanisms;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves entries from the macOS authorization rights db
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - authorizations-macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves entries from the macOS authorization rights db
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      authorizations;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the currently installed authorized keys on a system
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - authorized_keys
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves all the currently installed authorized keys on a system
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      authorized_keys.*
+    FROM
+      users
+      JOIN authorized_keys ON users.uid = authorized_keys.uid;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all block devices known to the system
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - block_devices
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves all block devices known to the system
+    -- platform: posix
+    -- tags: postmortem seldom
+    SELECT
+      *
+    FROM
+      block_devices
+  tags: postmortem, seldom
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the currently installed certificates on a system
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - certificates
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves all the currently installed certificates on a system
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      certificates;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves chrome extension cotent scripts that execute on a broad set
+    of URLs.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - chrome_extension_content_scripts
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves chrome extension cotent scripts that execute on a broad set of URLs.
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      chrome_extension_content_scripts.*
+    FROM
+      users
+      JOIN chrome_extension_content_scripts ON users.uid = chrome_extension_content_scripts.uid
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves chrome extensions that execute on a broad set of URLs.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - chrome_extensions
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves chrome extensions that execute on a broad set of URLs.
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      chrome_extensions.*
+    FROM
+      users
+      JOIN chrome_extensions ON users.uid = chrome_extensions.uid
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves crash log info per user
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - crashes-macos
+  observer_can_run: false
+  platforms: ''
+  query: |
+    -- Retrieves crash log info per user
+    --
+    -- tags: postmortem
+    SELECT
+      *
+    FROM
+      users
+      JOIN crashes USING (uid);
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Crontab entries
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - crontab
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Crontab entries
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      crontab
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves a list of debian packages
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - deb_packages
+  observer_can_run: false
+  platforms: Linux
+  query: |
+    -- Retrieves a list of debian packages
+    -- tags: postmortem
+    -- platform: Linux
+    SELECT
+      *
+    FROM
+      deb_packages;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the current disk encryption status for the target system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - disk_encryption
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves the current disk encryption status for the target system.
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      disk_encryption;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves disk image (DMG) events
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - disk_events_macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves disk image (DMG) events
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      disk_events;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of configured DNS servers on this system
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - dns_resolvers
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Return the list of configured DNS servers on this system
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      dns_resolvers;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of mounts for Docker containers
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - docker_container_mounts
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Return the list of mounts for Docker containers
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      docker_container_mounts;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of ports for Docker containers
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - docker_container_ports
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Return the list of ports for Docker containers
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      docker_container_ports;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of processes for Docker containers
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - docker_container_processes
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Return the list of processes for Docker containers
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      docker_container_processes.*,
+      docker_containers.name
+    FROM
+      docker_containers
+      JOIN docker_container_processes ON docker_containers.id = docker_container_processes.id;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of running Docker containers on this machine
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - docker_containers
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Return the list of running Docker containers on this machine
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      docker_containers
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the Docker image history on a machine
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - docker_image_history
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Return the Docker image history on a machine
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      docker_image_history
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of Docker images
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - docker_images
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Return the list of Docker images
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      docker_images;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Dump a list of process execution events from EndpointSecurity
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - es_process_events
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Dump a list of process execution events from EndpointSecurity
+    --
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      es_process_events;
+  tags: ''
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the entries in the target system /etc/hosts file.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - etc_hosts
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves all the entries in the target system /etc/hosts file.
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      etc_hosts;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves software packages with access to listening in on keyboard/mouse
+    events
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - event_taps_macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves software packages with access to listening in on keyboard/mouse events
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      event_taps;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of watched file events (must be configured)
+  discard_data: false
+  interval: 900
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - file_events
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Return the list of watched file events (must be configured)
+    --
+    -- tags: postmortem
+    -- platform: posix
+    -- interval: 900
+    SELECT
+      *
+    FROM
+      file_events
+    WHERE
+      time > (strftime('%s', 'now') -900)
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Returns a list of file information from /dev (non-hidden only)
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - files-dev
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Returns a list of file information from /dev (non-hidden only)
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      file.*,
+      magic.data
+    FROM
+      file
+      JOIN magic ON file.path = magic.path
+    WHERE
+      file.path LIKE "/dev/%%";
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Returns a list of file information from Downloads directories
+  discard_data: false
+  interval: 3600
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - files-downloads
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Returns a list of file information from Downloads directories
+    --
+    -- tags: postmortem
+    -- platform: posix
+    -- interval: 3600
+    SELECT
+      file.*,
+      magic.data,
+      hash.sha256
+    FROM
+      file
+      LEFT JOIN magic ON file.path = magic.path
+      LEFT JOIN hash ON file.path = hash.path
+    WHERE
+      (
+        file.path LIKE "/home/%/Downloads/%"
+        OR file.path LIKE "/Users/%/Downloads/%"
+      )
+      AND (
+        mtime > (strftime('%s', 'now') -3600)
+        OR ctime > (strftime('%s', 'now') -3600)
+        OR btime > (strftime('%s', 'now') -3600)
+      )
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Returns a list of file information from /etc (non-hidden only)
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - files-etc
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Returns a list of file information from /etc (non-hidden only)
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      file
+      JOIN hash ON file.path = hash.path
+    WHERE
+      file.path LIKE "/etc/%%";
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Returns a list of recently written files
+  discard_data: false
+  interval: 3600
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - files-recently-written
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Returns a list of recently written files
+    --
+    -- tags: postmortem
+    -- platform: posix
+    -- interval: 3600
+    SELECT
+      *
+    FROM
+      file
+    WHERE
+      (
+        path LIKE "/var/tmp/%"
+        OR path LIKE "/var/tmp/%/%"
+        OR path LIKE "/Applications/%"
+        OR path LIKE "/Applications/%/%"
+        OR path LIKE "/home/%/%"
+        OR path LIKE "/home/%/.%/%"
+        OR path LIKE "/home/%/.%/%/%"
+        OR path LIKE "/home/%/.config/%"
+        OR path LIKE "/home/%/.config/%/%"
+        OR path LIKE "/Library/%/%"
+        OR path LIKE "/Library/.%"
+        OR path LIKE "/Library/Application Support/%"
+        OR path LIKE "/Library/Application Support/.%"
+        OR path LIKE "/tmp/%"
+        OR path LIKE "/tmp/%/%"
+        OR path LIKE "/tmp/.%/%%"
+        OR path LIKE "/Users/%/%"
+        OR path LIKE "/Users/%/%/%"
+        OR path LIKE "/Users/%/.%/%"
+        OR path LIKE "/Users/%/.%/%/%"
+        OR path LIKE "/Users/Library/%"
+        OR path LIKE "/Users/Library/%/%"
+        OR path LIKE "/Users/Library/.%"
+        OR path LIKE "/Users/Library/Application Support/%"
+        OR path LIKE "/Users/Library/Application Support/%/%"
+        OR path LIKE "/Users/Library/Application Support/.%"
+        OR path LIKE "/var/%"
+        OR path LIKE "/var/%/%"
+      )
+      AND (
+        mtime > (strftime('%s', 'now') -3600)
+        OR (
+          atime > (strftime('%s', 'now') -3600)
+          AND file.type = "regular"
+        )
+        OR ctime > (strftime('%s', 'now') -3600)
+        OR btime > (strftime('%s', 'now') -3600)
+      )
+      AND NOT path LIKE "%/../%"
+    GROUP BY
+      inode;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of installed Firefox addons
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - firefox_addons
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Return the list of installed Firefox addons
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      firefox_addons.*
+    FROM
+      users
+      JOIN firefox_addons ON users.uid = firefox_addons.uid;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the gatekeeper exceptions on a macOS host
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - gatekeeper_approved_apps_macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves all the gatekeeper exceptions on a macOS host
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      gap.ctime,
+      gap.mtime,
+      gap.path,
+      file.mtime,
+      file.uid,
+      file.ctime,
+      file.gid,
+      hash.sha256,
+      signature.identifier,
+      signature.authority
+    FROM
+      gatekeeper_approved_apps AS gap
+      LEFT JOIN file ON gap.path = file.path
+      LEFT JOIN hash ON gap.path = hash.path
+      LEFT JOIN signature ON gap.path = signature.path
+    GROUP BY
+      gap.requirement
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of POSIX groups on the system
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - groups
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Return the list of POSIX groups on the system
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      groups;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return hardware events
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - hardware_events
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Return hardware events
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      hardware_events;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Dump a list of homebrew packages
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - homebrew-packages-macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Dump a list of homebrew packages
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      homebrew_packages;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of interface addresses
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - interface_addresses
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Return the list of interface addresses
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      interface_addresses;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return stats on network interfaces
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - interface_details
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Return stats on network interfaces
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      interface_details
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of interface addresses (IPv6)
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - interface_ipv6
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Return the list of interface addresses (IPv6)
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      interface_ipv6;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves IOKit registry
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - iokit-registry-macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves IOKit registry
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      iokit_registry;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the current status of IP/IPv6 forwarding.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - ip_forwarding
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves the current status of IP/IPv6 forwarding.
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      system_controls
+    WHERE
+      oid = '4.30.41.1'
+    UNION
+    SELECT
+      *
+    FROM
+      system_controls
+    WHERE
+      oid = '4.2.0.1';
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the current filters and chains per filter in the target system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - iptables
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Retrieves the current filters and chains per filter in the target system.
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      iptables;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return basic kernel information
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - kernel_info
+  observer_can_run: false
+  platforms: ''
+  query: |
+    -- Return basic kernel information
+    -- tags: postmortem
+    SELECT
+      *
+    FROM
+      kernel_info;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the information for the current kernel modules in the
+    target Linux system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - kernel_modules_linux
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Retrieves all the information for the current kernel modules in the target Linux system.
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      kernel_modules;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves entries from the macOS kernel panic logs
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - kernel_panics-macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves entries from the macOS kernel panic logs
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      kernel_panics;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the information about the current kernel extensions for
+    the target OSX system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - kextstat_macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves all the information about the current kernel extensions for the target OSX system.
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      kernel_extensions;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves chrome extensions that execute on a broad set of URLs.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - known_hosts
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves chrome extensions that execute on a broad set of URLs.
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      known_hosts.*
+    FROM
+      users
+      JOIN known_hosts ON users.uid = known_hosts.uid
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the list of the latest logins with PID, username and timestamp.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - last
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves the list of the latest logins with PID, username and timestamp.
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      last;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: macOS launchd entries
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - launchd_macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- macOS launchd entries
+    --
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      launchd;
+  tags: ''
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves launchd override keys per user
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - launchd_overrides_macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves launchd override keys per user
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      launchd_overrides;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the listening ports in the target system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - listening_ports
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves all the listening ports in the target system.
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      lp.*,
+      p.name AS p_name,
+      p.start_time AS p_time,
+      p.path AS p_path,
+      p.euid AS p_euid
+    FROM
+      listening_ports AS lp
+      LEFT JOIN processes p ON lp.pid = p.pid;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the list of all the currently logged in users in the target
+    system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - logged_in_users
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves the list of all the currently logged in users in the target system.
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      liu.*,
+      p.name,
+      p.cmdline,
+      p.cwd,
+      p.start_time,
+      p.root
+    FROM
+      logged_in_users liu,
+      processes p
+    WHERE
+      liu.pid = p.pid;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the values for the loginwindow process in the target
+    OSX system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - loginwindow1
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves all the values for the loginwindow process in the target OSX system.
+    --
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    select
+      key,
+      subkey,
+      value
+    from
+      plist
+    where
+      path = '/Library/Preferences/com.apple.loginwindow.plist';
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the values for the loginwindow process in the target
+    OSX system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - loginwindow2
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves all the values for the loginwindow process in the target OSX system.
+    --
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    select
+      key,
+      subkey,
+      value
+    from
+      plist
+    where
+      path = '/Library/Preferences/loginwindow.plist';
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the values for the loginwindow process in the target
+    OSX system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - loginwindow3
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves all the values for the loginwindow process in the target OSX system.
+    --
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    select
+      username,
+      key,
+      subkey,
+      value
+    from
+      plist p,
+      (
+        select
+          *
+        from
+          users
+        where
+          directory like '/Users/%'
+      ) u
+    where
+      p.path = u.directory || '/Library/Preferences/com.apple.loginwindow.plist';
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the values for the loginwindow process in the target
+    OSX system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - loginwindow4
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves all the values for the loginwindow process in the target OSX system.
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    select
+      username,
+      key,
+      subkey,
+      value
+    from
+      plist p,
+      (
+        select
+          *
+        from
+          users
+        where
+          directory like '/Users/%'
+      ) u
+    where
+      p.path = u.directory || '/Library/Preferences/loginwindow.plist';
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Returns the OS memory region map.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - memory_map
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Returns the OS memory region map.
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      memory_map;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the current list of mounted drives in the target system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - mounts
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves the current list of mounted drives in the target system.
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      mounts;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of npm packages
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - npm_packages
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Return the list of npm packages
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      npm_packages;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves entries from the macOS nvram database
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - nvram-macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves entries from the macOS nvram database
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      nvram;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the open files per process in the target system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - open_files
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves all the open files per process in the target system.
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT DISTINCT
+      pof.pid,
+      pof.path,
+      pof.fd,
+      p.name,
+      p.start_time,
+      p.euid,
+      p.parent,
+      p.uid,
+      p.cmdline
+    FROM
+      process_open_files pof
+      LEFT JOIN processes p ON pof.pid = p.pid
+    WHERE
+      pof.path NOT LIKE '/private/var/folders%'
+      AND pof.path NOT LIKE '/System/Library/%'
+      AND pof.path NOT IN ('/dev/null', '/dev/urandom', '/dev/random');
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the open sockets per process in the target system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - open_sockets
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves all the open sockets per process in the target system.
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT DISTINCT
+      pid,
+      family,
+      protocol,
+      local_address,
+      local_port,
+      remote_address,
+      remote_port,
+      path
+    FROM
+      process_open_sockets
+    WHERE
+      path <> ''
+      or remote_address <> '';
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the OS version including patch level
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - os_version
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Return the OS version including patch level
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      os_version;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return macOS package install history
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - package_install_history_macos
+  observer_can_run: false
+  platforms: ''
+  query: |
+    -- Return macOS package install history
+    --
+    -- tags: postmortem
+    SELECT
+      *
+    FROM
+      package_install_history;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return macOS package receipts
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - package_receipts_macos
+  observer_can_run: false
+  platforms: ''
+  query: |
+    -- Return macOS package receipts
+    --
+    -- tags: postmortem
+    SELECT
+      *
+    FROM
+      package_receipts;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return hardware platform info (UEFI)
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - platform_info
+  observer_can_run: false
+  platforms: ''
+  query: |
+    -- Return hardware platform info (UEFI)
+    --
+    -- tags: postmortem seldom
+    SELECT
+      *
+    FROM
+      platform_info
+  tags: postmortem, seldom
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves entries from the macOS preferences database
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - preferences_macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves entries from the macOS preferences database
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      preferences;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves all the environment variables per process in the target system.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - process_env
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves all the environment variables per process in the target system.
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      process_envs;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Recently executed programs
+  discard_data: false
+  interval: 600
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - process_events
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Recently executed programs
+    --
+    -- interval: 600
+    -- platform: posix
+    SELECT
+      pe.*,
+      -- pe.cwd is often blank
+      p.cwd AS delayed_proc_cwd,
+      pp.cwd AS delayed_parent_cwd,
+      pp.path AS parent_path,
+      pp.name AS delayed_parent_name
+    FROM
+      process_events pe
+      LEFT JOIN processes p ON pe.pid = p.pid
+      LEFT JOIN processes pp ON pe.parent = pp.pid
+    WHERE
+      pe.time > (strftime('%s', 'now') -600)
+      -- Filter out commands generated by osquery/kolide
+      AND pe.cmdline NOT LIKE '/bin/ps -x -o%'
+      AND parent_path NOT LIKE '/usr/local/kolide-k2/%/launcher'
+    GROUP BY
+      pe.pid,
+      pe.eid
+  tags: ''
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the memory map per process
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - process_memory_map
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves the memory map per process
+    -- platform: posix
+    -- tags: postmortem
+    SELECT
+      pid,
+      permissions,
+    offset
+    ,
+      inode,
+      path,
+      pseudo
+    FROM
+      process_memory_map
+    WHERE
+      path != ""
+    GROUP BY
+      pid,
+      permissions,
+    offset
+    ,
+      inode,
+      path,
+      pseudo;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of open files by process
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - process_open_files
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Return the list of open files by process
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      p.path AS p_path,
+      p.name AS p_name,
+      p.start_time AS p_time,
+      p.euid AS p_euid,
+      p.uid AS p_uid,
+      p.cmdline AS p_cmdline,
+      pof.*
+    FROM
+      process_open_files AS pof
+      LEFT JOIN processes p ON pof.pid = p.pid;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of open pipes per process
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - process_open_pipes
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Return the list of open pipes per process
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      p.path AS p_path,
+      p.name AS p_name,
+      p.start_time AS p_time,
+      p.euid AS p_euid,
+      p.uid AS p_uid,
+      p.cmdline AS p_cmdline,
+      pop.*
+    FROM
+      process_open_pipes AS pop
+      LEFT JOIN processes p ON pop.pid = p.pid;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of open sockets per process
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - process_open_sockets
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Return the list of open sockets per process
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      p.path AS p_path,
+      p.name AS p_name,
+      p.start_time AS p_time,
+      p.euid AS p_euid,
+      p.uid AS p_uid,
+      p.cmdline AS p_cmdline,
+      pos.*
+    FROM
+      process_open_sockets AS pos
+      LEFT JOIN processes p ON pos.pid = p.pid;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Currently running programs, only the columns that are not constantly
+    changing
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - processes
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Currently running programs, only the columns that are not constantly changing
+    --
+    -- tags: postmortem often
+    -- platform: posix
+    SELECT
+      pid,
+      name,
+      path,
+      cmdline,
+      state,
+      cwd,
+      root,
+      uid,
+      gid,
+      euid,
+      egid,
+      suid,
+      sgid,
+      on_disk,
+      start_time,
+      parent,
+      pgroup,
+      threads,
+      nice,
+      cgroup_path
+    FROM
+      processes
+  tags: postmortem, often
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the list of recent items opened in OSX by parsing the plist
+    per user.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - recent_items_macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves the list of recent items opened in OSX by parsing the plist per user.
+    -- tags: postmortem
+    -- platform: darwin
+    select
+      username,
+      key,
+      value
+    from
+      plist p,
+      (
+        select
+          *
+        from
+          users
+        where
+          directory like '/Users/%'
+      ) u
+    where
+      p.path = u.directory || '/Library/Preferences/com.apple.recentitems.plist';
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves a list of RPM packages
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - rpm_packages
+  observer_can_run: false
+  platforms: Linux
+  query: |
+    -- Retrieves a list of RPM packages
+    -- tags: postmortem
+    -- platform: Linux
+    SELECT
+      *
+    FROM
+      rpm_packages;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves currently running applications
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - running_apps_macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves currently running applications
+    --
+    -- tags: postmortem disabled-privacy
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      running_apps;
+  tags: postmortem, disabled-privacy
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of installed Safari extensions
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - safari_extensions_macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Return the list of installed Safari extensions
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      safari_extensions.*
+    FROM
+      users
+      JOIN safari_extensions ON users.uid = safari_extensions.uid;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Lists the application bundle that owns a sandbox label.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - sandboxes_macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Lists the application bundle that owns a sandbox label.
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      sandboxes;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of seccomp events
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - seccomp_events
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Return the list of seccomp events
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      seccomp_events;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of SELinux events
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - selinux_events
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Return the list of SELinux events
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      selinux_events;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return user data from /etc/shadow
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - shadow
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Return user data from /etc/shadow
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      shadow;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return shared memory info
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - shared_memory
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Return shared memory info
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      shm.*,
+      p.path AS p_path,
+      p.name AS p_name,
+      p.start_time AS p_time,
+      p.euid AS p_euid,
+      p.uid AS p_uid,
+      p.cmdline AS p_cmdline
+    FROM
+      shared_memory AS shm
+      LEFT JOIN processes p ON shm.pid = p.pid;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the command history, per user, by parsing the shell history
+    files.
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - shell_history
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves the command history, per user, by parsing the shell history files.
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      users
+      JOIN shell_history USING (uid);
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves System Integrity Protection Settings data
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - sip_config
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves System Integrity Protection Settings data
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      sip_config;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of socket events
+  discard_data: false
+  interval: 600
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - socket_events
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Return the list of socket events
+    --
+    -- tags: postmortem
+    -- platform: posix
+    -- interval: 600
+    SELECT
+      *
+    FROM
+      socket_events
+    WHERE
+      time > (strftime('%s', 'now') -600)
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the ssh configs per user
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - ssh_configs
+  observer_can_run: false
+  platforms: ''
+  query: |
+    -- Retrieves the ssh configs per user
+    --
+    -- tags: postmortem
+    SELECT
+      *
+    FROM
+      users
+      JOIN ssh_configs USING (uid);
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieve most programs that are part of a systems startup (multi-platform)
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - startup_items
+  observer_can_run: false
+  platforms: ''
+  query: |
+    -- Retrieve most programs that are part of a systems startup (multi-platform)
+    --
+    -- tags: postmortem
+    SELECT
+      *
+    FROM
+      startup_items;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves setuid-enabled executables in well-known paths
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - suid_bin
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Retrieves setuid-enabled executables in well-known paths
+    --
+    -- platform: posix
+    -- tags: postmortem
+    SELECT
+      *
+    FROM
+      suid_bin;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of syslog events
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - syslog_events
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Return the list of syslog events
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      syslog_events;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of sysctl values
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - system_controls
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Return the list of sysctl values
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      system_controls;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Returns a list of systemd units
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - systemd_units
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Returns a list of systemd units
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      systemd_units;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves recent entries from the macOS unified log
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - unified_log_macos
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Retrieves recent entries from the macOS unified log
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      unified_log;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of USB devices
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - usb_devices
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Return the list of USB devices
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      usb_devices;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Return the list of audit user events
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - user_events
+  observer_can_run: false
+  platforms: linux
+  query: |
+    -- Return the list of audit user events
+    --
+    -- tags: postmortem
+    -- platform: linux
+    SELECT
+      *
+    FROM
+      user_events;
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Retrieves the ssh keys per user
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - user_ssh_keys
+  observer_can_run: false
+  platforms: ''
+  query: |
+    -- Retrieves the ssh keys per user
+    --
+    -- tags: postmortem
+    SELECT
+      *
+    FROM
+      users
+      JOIN user_ssh_keys USING (uid);
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Returns a list of users
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - users
+  observer_can_run: false
+  platforms: posix
+  query: |
+    -- Returns a list of users
+    --
+    -- tags: postmortem
+    -- platform: posix
+    SELECT
+      *
+    FROM
+      users
+  tags: postmortem
+  team: ''
+---
+apiVersion: v1
+kind: query
+spec:
+  automations_enabled: false
+  description: Returns a list of malware matches from macOS XProtect
+  discard_data: false
+  interval: '0'
+  logging: snapshot
+  min_osquery_version: 5.7.0
+  name: chainguard - incident_response - xprotect_reports
+  observer_can_run: false
+  platforms: darwin
+  query: |
+    -- Returns a list of malware matches from macOS XProtect
+    --
+    -- tags: postmortem
+    -- platform: darwin
+    SELECT
+      *
+    FROM
+      xprotect_reports;
+  tags: postmortem
+  team: ''
