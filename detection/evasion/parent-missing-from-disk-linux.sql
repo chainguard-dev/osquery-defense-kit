@@ -61,6 +61,7 @@ WHERE
     '/usr/bin/kitty',
     '/usr/lib/electron22/electron',
     '/usr/bin/osqueryd',
+    '/usr/bin/make',
     '/usr/bin/ninja',
     '/usr/bin/cmake',
     '/usr/libexec/gvfsd',
@@ -82,6 +83,8 @@ WHERE
   AND NOT p1.name IN (
     'bash',
     'dnf',
+    'ninja',
+    'make',
     'electron',
     'gnome-terminal',
     'fish',

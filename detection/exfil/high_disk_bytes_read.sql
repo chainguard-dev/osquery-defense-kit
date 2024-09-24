@@ -151,22 +151,22 @@ WHERE
     'zsh'
   )
   AND NOT p0.path IN (
+    '/app/libexec/mediawriter/helper',
+    '/Library/Application Support/Adobe/Adobe Desktop Common/HDBox/Setup',
+    '/Library/Elastic/Endpoint/elastic-endpoint',
     '/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/XPCServices/com.apple.Safari.BrowserDataImportingService.xpc/Contents/MacOS/com.apple.Safari.BrowserDataImportingService',
     '/System/Volumes/Preboot/Cryptexes/Incoming/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent',
-    '/app/libexec/mediawriter/helper',
     '/usr/bin/apt',
     '/usr/bin/darktable',
     '/usr/bin/dockerd',
     '/usr/bin/gnome-shell',
-    '/Library/Application Support/Adobe/Adobe Desktop Common/HDBox/Setup',
     '/usr/bin/gnome-software',
     '/usr/bin/rsync',
     '/usr/bin/teskdisk',
+    '/usr/bin/topgrade',
     '/usr/bin/udevadm',
     '/usr/bin/update-notifier',
-    '/usr/lib/systemd/systemd',
     '/usr/lib64/electron/electron',
-    '/usr/libexec/PerfPowerServices',
     '/usr/libexec/aned',
     '/usr/libexec/biomesyncd',
     '/usr/libexec/coreduetd',
@@ -176,17 +176,18 @@ WHERE
     '/usr/libexec/logd',
     '/usr/libexec/logd_helper',
     '/usr/libexec/packagekitd',
-    '/Library/Elastic/Endpoint/elastic-endpoint',
     '/usr/libexec/PerfPowerServices',
     '/usr/libexec/signpost_reporter',
     '/usr/libexec/snapd/snapd',
     '/usr/libexec/syspolicyd',
     '/usr/libexec/tracker-extract-3',
     '/usr/libexec/tracker-miner-fs-3',
+    '/usr/lib/systemd/systemd',
     '/usr/sbin/spindump',
     '/usr/sbin/systemstats'
   )
   AND NOT p0.path LIKE '/Library/SystemExtensions/%/io.kandji.KandjiAgent.ESF-Extension.systemextension/Contents/MacOS/io.kandji.KandjiAgent.ESF-Extension'
+  AND NOT p0.path LIKE '/Users/%/Library/Application Support/Google/GoogleUpdater/%/GoogleUpdater.app/Contents/MacOS/GoogleUpdater'
   AND NOT (
     p0.name = 'bindfs'
     AND p0.cmdline LIKE 'bindfs%-o fsname=%'

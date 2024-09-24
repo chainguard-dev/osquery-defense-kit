@@ -173,6 +173,7 @@ WHERE
         'iscsiuio.socket,Open-iSCSI iscsiuio Socket,',
         'issue-generator.path,Watch for changes in issue snippets,',
         'iwd.service,Wireless service,',
+        'apache-htcacheclean.service,Disk Cache Cleaning Daemon for Apache HTTP Server,www-data',
         'jeos-firstboot.service,SUSE JeOS First Boot Wizard,',
         'jeos-firstboot-snapshot.service,SUSE JeOS First Boot Wizard - create system snapshot,',
         'kbdsettings.service,Apply settings from /etc/sysconfig/keyboard,',

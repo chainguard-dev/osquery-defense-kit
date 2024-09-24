@@ -76,16 +76,17 @@ WHERE
   ) -- Extremely common and unpredictable process name setters
   AND NOT base_letters IN (
     'bash',
-    'dash',
     'busybox',
+    'dash',
     'electron',
     'firefox',
+    'gjs',
     'node',
-    'vim',
     'perl',
     'python',
     'ruby',
-    'thunderbird'
+    'thunderbird',
+    'vim'
   )
   AND NOT exception_key IN (
     '0,udevadm,systemd-udevd',

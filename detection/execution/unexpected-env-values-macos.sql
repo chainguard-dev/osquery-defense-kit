@@ -26,7 +26,8 @@ WHERE -- This time should match the interval
   p.start_time > (strftime('%s', 'now') - 60)
   AND (
     key = 'HISTFILE'
-    AND NOT VALUE LIKE '/Users/%/.%_history'
+    AND NOT value LIKE '/Users/%/.%_history'
+    AND NOT value = '~/.tramp_history'
   )
   OR (
     key = 'LD_PRELOAD'

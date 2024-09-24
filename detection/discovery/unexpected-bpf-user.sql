@@ -39,6 +39,7 @@ WHERE
   AND p.path NOT IN (
     '/usr/bin/qemu-system-x86_64',
     '/usr/lib/systemd/systemd',
+    '/var/opt/Elastic/Endpoint/elastic-endpoint',
     '/opt/Elastic/Endpoint/elastic-endpoint'
   )
   AND p.cmdline != '/usr/bin/python3 /usr/sbin/execsnoop-bpfcc'

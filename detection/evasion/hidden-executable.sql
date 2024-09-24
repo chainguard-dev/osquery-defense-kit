@@ -54,6 +54,7 @@ WHERE
   AND NOT f.directory LIKE '%/.config/nvm/%/bin'
   AND NOT f.directory LIKE '%/.cursor/%'
   AND NOT f.directory LIKE '%/.deno/bin'
+  AND NOT f.directory LIKE '%/thinkorswim/.install4j/jre.bundle/Contents/Home/bin'
   AND NOT f.directory LIKE '%/.devpod/contexts/%'
   AND NOT f.directory LIKE '%/.linuxbrew/Cellar/%/bin'
   AND NOT f.directory LIKE '%/.docker/cli-plugins'

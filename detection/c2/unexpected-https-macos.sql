@@ -265,6 +265,7 @@ WHERE
       OR p0_cmd LIKE '%/google-cloud-sdk/platform/%'
       OR p0_cmd LIKE '%pip install%'
       OR p0_cmd LIKE '%pip3 install%'
+      OR p0_cmd LIKE '%__pip-runner__.py install%'
       OR p0_cmd LIKE '%googlecloudsdk/core/metrics_reporter.py%'
       OR p0_cmd LIKE '%/bin/aws%'
       OR p0_cmd LIKE "%/gsutil/gsutil %"
@@ -275,6 +276,7 @@ WHERE
       OR p0_cmd LIKE '%ipykernel_launcher %'
       OR p0_cmd LIKE '%/Python update_plugins.py'
       OR p0_cmd LIKE '%/pydevd.py'
+      OR p0_cmd LIKE '%anaconda-navigator%'
     )
   ) -- theScore and other iPhone apps
   AND NOT (

@@ -121,12 +121,13 @@ WHERE
       p0.cmdline LIKE '%sh -i'
       AND NOT p0.path = '/usr/bin/docker'
       AND NOT p1.name IN (
-        'sh',
-        'java',
-        'containerd-shim',
         'code',
-        'goland',
+        'containerd-shim',
         'emacs',
+        'goland',
+        'java',
+        'pycharm',
+        'sh',
         'vim',
         'vim.nox'
       )
