@@ -166,6 +166,7 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       OR magic.data LIKE 'ELF 64-bit MSB pie executable, IBM S/390%'
       OR magic.data LIKE 'ELF 32-bit LSB pie executable, ARM, EABI5%'
       OR magic.data LIKE 'symbolic link to %'
+      OR magic.data LIKE 'Linux kernel %'
     )
   )
   AND NOT (

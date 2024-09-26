@@ -104,6 +104,7 @@ WHERE
   AND basename NOT IN (
     'adguard_dns',
     'apk',
+    'agentbeat',
     'apko',
     'chrome',
     'com.apple.WebKit.Networking',
@@ -112,6 +113,8 @@ WHERE
     'wolfictl',
     'gvproxy',
     'incusd',
+    'helm',
+    'terraform-provi',
     'IPNExtension',
     'Jabra Direct Helper',
     'limactl',

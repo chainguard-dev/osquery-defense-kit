@@ -85,6 +85,7 @@ WHERE
     '/Library/Application Support/WirelessAutoImport/WirelessImporterDaemon',
     '/Library/PrivilegedHelperTools/MHLinkServer.app/Contents/MacOS/MHLinkServer',
     '/opt/homebrew/bin/gitsign-credential-cache',
+    '/opt/homebrew/opt/emacs/bin/emacs --fg-daemon',
     '/opt/homebrew/opt/dnsmasq/sbin/dnsmasq --keep-in-foreground -C /opt/homebrew/etc/dnsmasq.conf -7 /opt/homebrew/etc/dnsmasq.d,*.conf',
     '/opt/homebrew/opt/jenkins/bin/jenkins --httpListenAddress=127.0.0.1 --httpPort=8080',
     '/opt/homebrew/opt/mariadb/bin/mysqld_safe',
@@ -95,6 +96,7 @@ WHERE
     '/opt/homebrew/opt/yubikey-agent/bin/yubikey-agent -l /opt/homebrew/var/run/yubikey-agent.sock',
     '/usr/local/MacGPG2/libexec/fixGpgHome'
   )
+  AND program_arguments NOT LIKE '/opt/homebrew/opt/%/bin/%'
   AND program_arguments NOT LIKE '/opt/homebrew/opt/mongodb-community%/bin/mongod --config /opt/homebrew/etc/mongod.conf'
   AND program_arguments NOT LIKE '/Users/%/Library/Application Support/com.grammarly.ProjectLlama/Scripts/Grammarly Uninstaller'
   AND program_arguments NOT LIKE '/Users/%/Library/Application Support/com.grammarly.ProjectLlama/Scripts/post-uninstall.sh'

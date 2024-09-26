@@ -61,6 +61,7 @@ WHERE
         'apache2.service,The Apache HTTP Server,',
         'apcupsd.service,APC UPS Power Control Daemon for Linux,',
         'apparmor.service,Load AppArmor profiles,',
+        'vnstat.service,vnStat network traffic monitor,vnstat',
         'apport-autoreport.path,Process error reports when automatic reporting is enabled (file watch),',
         'apport-autoreport.service,Process error reports when automatic reporting is enabled,',
         'apport-autoreport.timer,Process error reports when automatic reporting is enabled (timer based),',

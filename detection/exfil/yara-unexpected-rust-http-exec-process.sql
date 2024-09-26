@@ -67,6 +67,7 @@ WHERE
     'figma_agent',
     'nvim',
     'old',
+    'rpm-ostree',
     'OrbStack Helper',
     'sg-nvim-agent',
     'stable',

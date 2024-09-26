@@ -330,6 +330,8 @@ WHERE
     '500,terraform,500u,500g,terraform',
     '500,terraform-ls,500u,500g,terraform-ls',
     '500,thunderbird,0u,0g,thunderbird',
+    '500,wolfi-package-status,500u,500g,wolfi-package-s',
+    '500,github-desktop,0u,0g,github-desktop',
     '500,thunderbird-bin,u,g,thunderbird-bin',
     '500,thunderbird,u,g,thunderbird',
     '500,tidal-hifi,u,g,tidal-hifi',

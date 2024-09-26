@@ -89,6 +89,7 @@ WHERE
     '/dev/bpf,airportd,Software Signing,com.apple.airport.airportd',
     '/dev/bpf,core,Developer ID Application: TPZ Solucoes Digitais Ltda (X37R283V2T),com.topaz.warsaw.core',
     '/dev/bpf,packetbeat,Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z),packetbeat',
+    '/dev/bpf,com.bjango.istatmenus.daemon,Developer ID Application: Bjango Pty Ltd (Y93TK974AT),com.bjango.istatmenus',
     '/dev/console,dbeaver,Developer ID Application: DBeaver Corporation (42B6MDKMW8),org.jkiss.dbeaver.core.product',
     '/dev/console,kernelmanagerd,Software Signing,com.apple.kernelmanagerd',
     '/dev/console,launchd,Software Signing,com.apple.xpc.launchd',

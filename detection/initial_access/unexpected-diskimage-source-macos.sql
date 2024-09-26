@@ -225,6 +225,7 @@ WHERE
     'stclairsoft.s3.amazonaws.com',
     'store.steampowered.com',
     'superkey.app',
+    'superhuman.com',
     'tableplus.com',
     'textexpander.com',
     'transmissionbt.com',

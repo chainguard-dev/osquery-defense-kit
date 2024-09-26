@@ -322,6 +322,7 @@ WHERE
     'velociraptor_cl,/usr/local/bin/velociraptor,0,system.slice,velociraptor_client.service,0700',
     'virtiofsd,/opt/incus/bin/virtiofsd,0,system.slice,incus.service,0755',
     'virtlogd,/usr/bin/virtlogd,0,system.slice,virtlogd.service,0755',
+    'just,/usr/bin/just,0,user.slice,user-1000.slice,0755',
     'wpa_supplicant,/usr/bin/wpa_supplicant,0,system.slice,wpa_supplicant.service,0755',
     'wpa_supplicant,/usr/sbin/wpa_supplicant,0,system.slice,wpa_supplicant.service,0755',
     'xdg-desktop-por,/usr/libexec/xdg-desktop-portal,0,user.slice,user-1000.slice,0755',

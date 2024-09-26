@@ -53,6 +53,8 @@ WHERE
   -- What I would give for osquery to support binary signature verification on Linux
   AND NOT p0.path IN (
     '',
+    '/bin/bash',
+    '/bin/sh',
     '/bin/containerd',
     '/bin/containerd-shim-runc-v2',
     '/opt/google/chrome/chrome',
