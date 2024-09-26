@@ -74,6 +74,7 @@ WHERE
     'wav',
     'webp',
     'xls',
+    'xlsb',
     'xlsm',
     'xlsx',
     'xml',

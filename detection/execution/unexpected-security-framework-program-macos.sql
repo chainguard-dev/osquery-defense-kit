@@ -191,6 +191,7 @@ WHERE
     '500,sdmicmute,sdmicmute,',
     '500,sdzoomplugin,,',
     '500,serial-discovery,a.out,',
+    '500,Keeper Password Manager Helper (GPU),com.callpod.keepermac.lite.helper,Apple Mac OS Application Signing',
     '500,Slack,com.tinyspeck.slackmacgap,Apple Mac OS Application Signing',
     '500,Slack Helper,com.tinyspeck.slackmacgap.helper,Apple Mac OS Application Signing',
     '500,Slack Helper (GPU),com.tinyspeck.slackmacgap.helper,Apple Mac OS Application Signing',

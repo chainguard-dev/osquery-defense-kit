@@ -43,11 +43,13 @@ WHERE
   p0.euid = 0
   AND pmm.path LIKE '%libcurl%'
   AND p0.name NOT IN (
-    'nix-daemon',
+    'ir_agent',
     'nix',
-    'velociraptor',
+    'nix-daemon',
     'osqueryd',
-    'socket_vmnet'
+    'rapid7_endpoint_broker',
+    'socket_vmnet',
+    'velociraptor'
   )
 GROUP BY
   p0.pid

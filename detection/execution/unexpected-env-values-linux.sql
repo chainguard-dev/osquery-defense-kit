@@ -51,6 +51,7 @@ WHERE -- This time should match the interval
     AND NOT pe.value LIKE '/home/%/.%_history'
     AND NOT pe.value LIKE '~/.%_history'
     AND NOT pe.value LIKE '%/.histfile'
+    AND NOT pe.value LIKE '/root/.%_history'
   )
   OR (
     pe.key = 'LD_PRELOAD'

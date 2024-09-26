@@ -145,7 +145,9 @@ WHERE
     '500,Sky Go,Sky Go,Developer ID Application: Sky UK Limited (GJ24C8864F),com.bskyb.skygoplayer',
     '500,snyk-ls_darwin_arm64,snyk-ls_darwin_arm64,,a.out',
     '500,syncthing,syncthing,,syncthing',
+    '500,apko,apko,,a.out',
     '500,.Telegram-wrapped,.Telegram-wrapped,,Telegram',
+    '500,java,java,Developer ID Application: Azul Systems, Inc. (TDTHCUPYFR),com.azul.zulu.java',
     '500,trunk,trunk,Developer ID Application: Trunk Technologies, Inc. (LDR5F9BL92),trunk-cli',
     '500,WebexHelper,WebexHelper,Developer ID Application: Cisco (DE8Y96K9QP),Cisco-Systems.SparkHelper',
     '500,zed,zed,Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ),dev.zed.Zed'

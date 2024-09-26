@@ -159,8 +159,10 @@ WHERE
     'sshd',
     'steam_osx',
     'swift',
+    'gosec',
     'systemd',
     'terminator',
+    'kandji-library-manager',
     'terraform',
     'terraform-provi',
     'test2json',
@@ -199,6 +201,7 @@ WHERE
     '/Applications/RStudio.app/Contents/Resources/app/bin/rsession-arm64',
     '/Applications/Amazon Photos.app/Contents/MacOS/Amazon Photos',
     '/bin/dash',
+    '/usr/bin/less',
     '/usr/bin/networksetup',
     '/bin/sh',
     '/usr/local/qualys/cloud-agent/bin/qualys-cloud-agent',
@@ -252,6 +255,10 @@ WHERE
   AND NOT (
     p1.name = 'sshd'
     AND p0.cmdline LIKE '%askpass%'
+  )
+  AND NOT (
+    p1.name = '(udev-worker)'
+    AND p0.cmdline LIKE '/bin/sh -c echo % > /sys/bus/usb/drivers/brcmfmac/new_id'
   )
   AND NOT (
     p1.name = 'steam'
