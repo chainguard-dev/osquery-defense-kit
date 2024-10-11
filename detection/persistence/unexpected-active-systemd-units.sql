@@ -6,7 +6,7 @@
 -- false positives:
 --   * System updates
 --
--- tags: persistent seldom filesystem systemd
+-- tags: persistent seldom filesystem systemd extra
 -- platform: linux
 SELECT --  description AS 'desc',
   fragment_path,

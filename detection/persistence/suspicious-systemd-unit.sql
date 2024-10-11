@@ -8,7 +8,7 @@
 -- false positives:
 --   * home-made systemd files
 --
--- tags: persistent filesystem systemd extra
+-- tags: persistent filesystem systemd
 -- platform: linux
 SELECT
   file.path,
@@ -117,6 +117,7 @@ rule systemd_small_multiuser_no_comments_or_documentation : high {
     $not_dbus = "Type=dbus"
     $not_oneshot = "Type=oneshot"
     $not_lima = "Description=lima-guestagent"
+    $not_bluefin = "projectbluefin.io"
   condition:
     filesize < 384 and $execstart and $multiuser and none of ($not_*)
 }
