@@ -117,7 +117,7 @@ rule systemd_small_multiuser_no_comments_or_documentation : high {
     $not_dbus = "Type=dbus"
     $not_oneshot = "Type=oneshot"
     $not_lima = "Description=lima-guestagent"
-    $not_bluefin = "projectbluefin.io"
+    $not_check_sb = "Description=Service to check for secure boot key enrollment"
   condition:
     filesize < 384 and $execstart and $multiuser and none of ($not_*)
 }
@@ -153,6 +153,7 @@ rule systemd_small_multiuser_not_in_dependency_tree : high {
     $not_idle = "Type=idle"
     $not_systemd = "ExecStart=systemd-"
     $not_lima = "Description=lima-guestagent"
+    $not_check_sb = "Description=Service to check for secure boot key enrollment"
   condition:
     filesize < 384 and $execstart and $multiuser and none of ($not_*)
 }
