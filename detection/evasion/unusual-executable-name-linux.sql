@@ -84,7 +84,7 @@ WHERE
       REGEX_MATCH (pname, "(\W)$", 1) != ""
       AND pname NOT LIKE "%)"
     )
-    AND pext NOT IN ("", "gui", "cli", "us", "node", "com")
+    AND pext NOT IN ("", "gui", "cli", "us", "node", "com", "test")
   )
   AND NOT pname LIKE '.%-wrapped'
   AND NOT pname LIKE '__debug_bin%'

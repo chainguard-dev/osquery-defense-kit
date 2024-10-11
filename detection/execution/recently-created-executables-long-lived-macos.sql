@@ -78,7 +78,7 @@ WHERE
       AND NOT path LIKE '/usr/local/kolide-k2/bin/%'
       AND NOT path LIKE '%/cloud_sql_proxy'
   )
-  AND (p0.start_time - MAX(f.ctime, f.btime)) < 1200
+  AND (p0.start_time - MAX(f.ctime, f.btime)) < 10800
   AND f.ctime > 0
   AND NOT (
     p0.euid > 499

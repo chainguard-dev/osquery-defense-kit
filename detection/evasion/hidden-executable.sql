@@ -70,6 +70,7 @@ WHERE
   AND NOT f.directory LIKE '%/node_modules/.bin/%'
   AND NOT f.directory LIKE '%/.nvm/versions/%/bin'
   AND NOT f.directory LIKE '%/.pnpm/%'
+  AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/%'
   AND NOT f.directory LIKE '%/.cache/selenium/chromedriver/%'
   AND NOT f.directory LIKE '%/.provisio/bin/%'
   AND NOT f.directory LIKE '%/.rustup/%'
