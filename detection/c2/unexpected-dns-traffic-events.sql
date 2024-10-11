@@ -67,7 +67,8 @@ WHERE
     '75.75.75.75', -- Comcast
     '75.75.76.76', -- Comcast
     '68.105.28.13', -- Cox
-    '80.248.7.1' -- 21st Century (NG)
+    '80.248.7.1', -- 21st Century (NG)
+    '34.160.111.32' -- wolfi.dev
   )
   -- Exceptions that specifically talk to one server
   AND exception_key NOT IN (
@@ -125,7 +126,7 @@ WHERE
     'systemd-resolved',
     'WhatsApp'
   )
-  AND p.name NOT IN ('Jabra Direct Helper')
+  AND p.name NOT IN ('Jabra Direct Helper', 'terraform-provi')
   -- Chromium/Electron apps seem to send stray packets out like nobodies business
   AND p.path NOT LIKE '%/%.app/Contents/MacOS/% Helper'
   -- Workaround for the GROUP_CONCAT subselect adding a blank ent

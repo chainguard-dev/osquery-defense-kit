@@ -50,10 +50,12 @@ WHERE
   bytes_read_rate > 2500000
   AND age > 180
   AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
-  AND p0.path NOT LIKE '/System/Library/%'
-  AND p0.path NOT LIKE '/System/Applications/%'
-  AND p0.path NOT LIKE '/Library/Apple/System/Library/%'
+  AND p0.path NOT LIKE '%/bin/%'
+  AND p0.path NOT LIKE '/usr/%'
   AND p0.path NOT LIKE '/home/%/.local/share/Steam/steamapps/%'
+  AND p0.path NOT LIKE '/Library/Apple/System/Library/%'
+  AND p0.path NOT LIKE '/System/Applications/%'
+  AND p0.path NOT LIKE '/System/Library/%'
   AND p0.name NOT IN (
     'BDLDaemon',
     'Disk Inventory X',
@@ -158,36 +160,7 @@ WHERE
     '/Library/Application Support/Adobe/Adobe Desktop Common/HDBox/Setup',
     '/Library/Elastic/Endpoint/elastic-endpoint',
     '/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/XPCServices/com.apple.Safari.BrowserDataImportingService.xpc/Contents/MacOS/com.apple.Safari.BrowserDataImportingService',
-    '/System/Volumes/Preboot/Cryptexes/Incoming/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent',
-    '/usr/bin/apt',
-    '/usr/bin/darktable',
-    '/usr/bin/dockerd',
-    '/usr/bin/gnome-shell',
-    '/usr/bin/gnome-software',
-    '/usr/bin/rsync',
-    '/usr/bin/teskdisk',
-    '/usr/bin/topgrade',
-    '/usr/bin/udevadm',
-    '/usr/bin/update-notifier',
-    '/usr/lib64/electron/electron',
-    '/usr/libexec/aned',
-    '/usr/libexec/biomesyncd',
-    '/usr/libexec/coreduetd',
-    '/usr/libexec/diskimagesiod',
-    '/usr/libexec/diskmanagementd',
-    '/usr/libexec/flatpak-system-helper',
-    '/usr/libexec/logd',
-    '/usr/libexec/logd_helper',
-    '/usr/libexec/packagekitd',
-    '/usr/libexec/PerfPowerServices',
-    '/usr/libexec/signpost_reporter',
-    '/usr/libexec/snapd/snapd',
-    '/usr/libexec/syspolicyd',
-    '/usr/libexec/tracker-extract-3',
-    '/usr/libexec/tracker-miner-fs-3',
-    '/usr/lib/systemd/systemd',
-    '/usr/sbin/spindump',
-    '/usr/sbin/systemstats'
+    '/System/Volumes/Preboot/Cryptexes/Incoming/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent'
   )
   AND NOT p0.path LIKE '/Library/SystemExtensions/%/io.kandji.KandjiAgent.ESF-Extension.systemextension/Contents/MacOS/io.kandji.KandjiAgent.ESF-Extension'
   AND NOT p0.path LIKE '/Users/%/Library/Application Support/Google/GoogleUpdater/%/GoogleUpdater.app/Contents/MacOS/GoogleUpdater'

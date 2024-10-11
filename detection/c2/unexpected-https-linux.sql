@@ -6,7 +6,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1071/ (C&C, Application Layer Protocol)
 --
--- tags: transient state net often
+-- tags: transient state net often extra
 -- platform: linux
 SELECT
   s.remote_address,
