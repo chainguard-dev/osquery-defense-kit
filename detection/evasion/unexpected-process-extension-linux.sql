@@ -79,6 +79,7 @@ WHERE
     'nox',
     'basic',
     'real',
+    'test',
     'AppImage',
     'ext'
   )
