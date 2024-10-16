@@ -72,7 +72,7 @@ WHERE
       AND NOT path LIKE '/Applications/%'
       AND NOT path LIKE '/Library/Apple/%'
       AND NOT path LIKE '/nix/store/%'
-      AND NOT path LIKE '/opt/homebrew/%'
+      AND NOT path LIKE '/opt/%'
       AND NOT path LIKE '%/bin/cargo'
       AND NOT path LIKE '/System/%'
       AND NOT path LIKE '/usr/local/kolide-k2/bin/%'

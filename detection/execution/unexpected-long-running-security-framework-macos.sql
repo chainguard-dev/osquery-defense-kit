@@ -56,31 +56,32 @@ WHERE
     FROM
       processes
     WHERE
-      start_time < (strftime('%s', 'now') - 7200)
+      start_time < (strftime('%s', 'now') - 25200)
       AND parent != 0
       -- Assume STP
       AND NOT path LIKE '/System/%'
       AND NOT path LIKE '/usr/libexec/%'
       AND NOT path LIKE '/usr/sbin/%'
+      -- Regular apps
+      AND NOT path LIKE '/Applications/%.app/%'
       -- Other oddball binary paths
-      AND NOT path LIKE '/opt/homebrew/Cellar/%'
+      AND NOT path LIKE '/opt/%'
       AND NOT path LIKE '/usr/local/Cellar/%/bin/%'
-      AND NOT path LIKE '/Users/%/go/src/%/%.test'
-      AND NOT (
-        path LIKE '/Users/%/homebrew/Cellar/%'
-        AND name IN ('limactl', 'Python', 'bash')
-      )
+      AND NOT path LIKE '/Users/%/go/%'
+      AND NOT path LIKE '/Users/%/dev/%'
+      AND NOT path LIKE '/Users/%/src/%'
+      AND NOT path LIKE '/Users/%/homebrew/Cellar/%'
       AND NOT (
         path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/com.elgato.cpu.sdPlugin/cpu'
         AND name = 'cpu'
       )
-      AND NOT path IN ('/opt/socket_vmnet/bin/socket_vmnet')
   )
   AND pmm.path LIKE '%Security.framework%'
   AND exception_key NOT IN (
     '0,ir_agent,bootstrap,Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     '0,ir_agent,ir_agent,Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     '0,nix,nix,',
+    '500,dirmngr,dirmngr,',
     '0,osqueryd,io.osquery.agent,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     '0,osqueryd,osqueryd,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     '0,rapid7_endpoint_broker,rapid7_endpoint_broker,Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
@@ -154,6 +155,7 @@ WHERE
     '500,keyboxd,,',
     '500,keyboxd,keyboxd,',
     '500,ko,,',
+    '500,dirmngr,,',
     '500,ko,a.out,',
     '500,kubectl,a.out,',
     '500,LogicProThumbnailExtension,com.apple.logic10.LogicProThumbnailExtension,Apple Mac OS Application Signing',
@@ -241,6 +243,8 @@ WHERE
     AND p0.path LIKE '/Users/%/go/bin/%'
   )
   AND NOT exception_key LIKE '500,terraform-provider-cosign_%,,'
+  AND NOT exception_key LIKE '500,sm-agent,sm_agent-%,'
+  AND NOT exception_key LIKE '500,lifx-streamdeck,lifx-streamdeck-%'
   AND NOT exception_key LIKE '500,cody-engine-%-macos-arm64,%,'
   AND NOT exception_key LIKE '500,rust-analyzer-aarch64-apple-darwin,rust_analyzer-%,'
   AND NOT exception_key LIKE '500,___%,a.out,'
