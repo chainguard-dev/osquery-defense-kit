@@ -210,6 +210,7 @@ WHERE
     '/Library/Developer/CommandLineTools/usr/bin/git',
     '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateDaemon',
     '/Library/Kandji/Kandji Agent.app/Contents/MacOS/kandji-library-manager',
+    '/Library/Kandji/Kandji Agent.app/Contents/Helpers/Kandji Library Manager.app/Contents/MacOS/kandji-library-manager',
     '/opt/X11/libexec/launchd_startx',
     '/Applications/DDPM/DDPM.app/Contents/MacOS/DDPM',
     '/sbin/launchd',

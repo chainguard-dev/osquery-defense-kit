@@ -90,6 +90,7 @@ WHERE
     'limactl,8.8.8.8,53',
     'msedge,8.8.8.8,53',
     'adguard_dns,1.0.0.1,53',
+    'helm,185.199.108.133,53',
     'coredns,8.8.8.8,53',
     'signal-desktop,8.8.8.8,53',
     'slack,8.8.8.8,53',

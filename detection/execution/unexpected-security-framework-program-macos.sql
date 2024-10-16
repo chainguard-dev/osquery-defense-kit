@@ -56,12 +56,14 @@ WHERE
     FROM
       processes
     WHERE
-      start_time < (strftime('%s', 'now') - 7200)
+      start_time < (strftime('%s', 'now') - 25200)
       AND parent != 0
       -- Assume STP
       AND NOT path LIKE '/System/%'
       AND NOT path LIKE '/usr/libexec/%'
       AND NOT path LIKE '/usr/sbin/%'
+      -- Regular apps
+      AND NOT path LIKE '/Applications/%.app/%'
       -- Other oddball binary paths
       AND NOT path LIKE '/opt/homebrew/Cellar/%'
       AND NOT path LIKE '/usr/local/Cellar/%/bin/%'

@@ -36,3 +36,8 @@ WHERE
     file.filename = '.DS_Store'
     AND hash.sha256 = 'd65165279105ca6773180500688df4bdc69a2c7b771752f0a46ef120b7fd8ec3'
   )
+  -- Kandji temp file
+  AND NOT (
+    file.filename LIKE '/Library/LaunchAgents/.dat.nosync%'
+    AND size = 242
+  )
