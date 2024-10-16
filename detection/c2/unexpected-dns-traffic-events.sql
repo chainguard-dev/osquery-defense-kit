@@ -62,6 +62,7 @@ WHERE
   )
   -- Some applications hard-code a safe DNS resolver, or allow the user to configure one
   AND s.remote_address NOT IN (
+    '1.1.1.1', -- Cloudflare
     '100.100.100.100', -- Tailscale Magic DNS
     '208.67.220.123', -- OpenDNS FamilyShield
     '75.75.75.75', -- Comcast
@@ -122,6 +123,7 @@ WHERE
     'limactl',
     'mDNSResponder',
     'melange',
+    'syncthing',
     'nessusd',
     'nuclei',
     'systemd-resolved',

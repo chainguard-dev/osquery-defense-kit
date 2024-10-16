@@ -38,6 +38,6 @@ WHERE
   )
   -- Kandji temp file
   AND NOT (
-    file.filename LIKE '/Library/LaunchAgents/.dat.nosync%'
+    file.path LIKE '/Library/LaunchAgents/.dat.nosync%'
     AND size = 242
   )
