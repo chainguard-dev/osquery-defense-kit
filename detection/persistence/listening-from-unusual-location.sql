@@ -109,9 +109,12 @@ WHERE
   AND NOT exception_key IN (
     '16620,6,500,psi-bastion',
     '32768,6,500,java',
+    '32768,6,500,logioptionsplus_agent',
+    '32768,17,500,logioptionsplus_agent',
     '32768,6,500,Chromium',
     '32768,6,500,Code Helper (Plugin)',
     '24024,17,500,MTGA',
+    '32768,17,499,viscosity_openvpn',
     '1,1,500,ping'
   )
   AND NOT p0.path LIKE '/nix/store/%'
