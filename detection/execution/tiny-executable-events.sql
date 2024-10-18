@@ -45,9 +45,9 @@ WHERE
     '/sbin/ldconfig',
     '/usr/sbin/ldconfig',
     '/usr/bin/c_rehash',
-    '/home/smoser/bin/firefox',
     '/usr/sbin/update-ca-certificates'
   )
+  AND NOT p.path LIKE '%/bin/firefox'
   AND NOT (
     p.path LIKE '/Users/%'
     AND magic.data LIKE 'POSIX shell script%'

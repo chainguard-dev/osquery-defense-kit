@@ -96,7 +96,7 @@ WHERE
   AND p0.path NOT LIKE '/Users/%/bin/%'
   AND p0.path NOT LIKE '/System/%'
   AND p0.path NOT LIKE '/Users/%/Library/Caches/JetBrains/%/tmp/GoLand/___%'
-  AND p0.path NOT LIKE '/opt/homebrew/Cellar/%/bin/%'
+  AND p0.path NOT LIKE '/opt/%'
   AND p0.path NOT LIKE '/usr/libexec/%'
   AND p0.path NOT LIKE '/usr/sbin/%'
   AND p0.path NOT LIKE '/usr/local/kolide-k2/%'
@@ -110,6 +110,7 @@ WHERE
     '0,licenseDaemon,licenseDaemon,Developer ID Application: PACE Anti-Piracy, Inc. (TFZ8226T6X),com.paceap.eden.licenseDaemon',
     '500,agent,agent,Developer ID Application: Datadog, Inc. (JKFCB4CN7C),agent',
     '500,Authy,Authy,Apple iPhone OS Application Signing,com.authy',
+    '500,podman,podman,Developer ID Application: Red Hat, Inc. (HYSCB8KRL2),podman',
     '500,bash,bash,,bash',
     '500,CrossyRoad,CrossyRoad,Apple iPhone OS Application Signing,com.hipsterwhale.crossy',
     '500,cloud_sql_proxy,cloud_sql_proxy,,a.out',
@@ -141,6 +142,7 @@ WHERE
     '500,pycharm,pycharm,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.pycharm',
     '500,Realm,Realm,Apple iPhone OS Application Signing,camera.youpi.metareal',
     '500,sdaudioswitch,sdaudioswitch,,sdaudioswitch',
+    '500,Signal Helper (Renderer),Signal Helper (Renderer),500u,20g',
     '500,Skitch,Skitch,Developer ID Application: Skitch Inc (J8RPQ294UB),com.skitch.skitch',
     '500,Sky Go,Sky Go,Developer ID Application: Sky UK Limited (GJ24C8864F),com.bskyb.skygoplayer',
     '500,snyk-ls_darwin_arm64,snyk-ls_darwin_arm64,,a.out',

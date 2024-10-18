@@ -109,13 +109,14 @@ WHERE
     'launchd_startx'
   )
   -- example: 85C27NK92C.com.flexibits.fantastical2.mac.helper
-  AND NOT pname LIKE "%.com.flexibits.fantastical2.mac.helper"
-  AND NOT pname LIKE 'cody-engine-%'
-  AND NOT pname LIKE '%-macos-arm64'
-  AND NOT pname LIKE 'debug.test%'
-  AND NOT pname LIKE '__%go_build%'
   AND NOt pname LIKE '___1Test%'
   AND NOT pname LIKE 'BetterTouchToolAppleScriptRunner%'
+  AND NOT pname LIKE 'cody-engine-%'
+  AND NOT pname LIKE "%.com.flexibits.fantastical2.mac.helper"
+  AND NOT pname LIKE 'debug.test%'
+  AND NOT pname LIKE '__%go_build%'
+  AND NOT pname LIKE '%-macos-arm64'
+  AND NOT pname LIKE '___Test%'
   AND NOT s.authority IN (
     "Software Signing",
     "Apple Mac OS Application Signing"

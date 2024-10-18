@@ -62,12 +62,14 @@ WHERE
   )
   -- Some applications hard-code a safe DNS resolver, or allow the user to configure one
   AND s.remote_address NOT IN (
+    '1.1.1.1', -- Cloudflare
     '100.100.100.100', -- Tailscale Magic DNS
     '208.67.220.123', -- OpenDNS FamilyShield
     '75.75.75.75', -- Comcast
     '75.75.76.76', -- Comcast
     '68.105.28.13', -- Cox
-    '80.248.7.1' -- 21st Century (NG)
+    '80.248.7.1', -- 21st Century (NG)
+    '34.160.111.32' -- wolfi.dev
   )
   -- Exceptions that specifically talk to one server
   AND exception_key NOT IN (
@@ -89,6 +91,7 @@ WHERE
     'limactl,8.8.8.8,53',
     'msedge,8.8.8.8,53',
     'adguard_dns,1.0.0.1,53',
+    'helm,185.199.108.133,53',
     'coredns,8.8.8.8,53',
     'signal-desktop,8.8.8.8,53',
     'slack,8.8.8.8,53',
@@ -120,12 +123,13 @@ WHERE
     'limactl',
     'mDNSResponder',
     'melange',
+    'syncthing',
     'nessusd',
     'nuclei',
     'systemd-resolved',
     'WhatsApp'
   )
-  AND p.name NOT IN ('Jabra Direct Helper')
+  AND p.name NOT IN ('Jabra Direct Helper', 'terraform-provi')
   -- Chromium/Electron apps seem to send stray packets out like nobodies business
   AND p.path NOT LIKE '%/%.app/Contents/MacOS/% Helper'
   -- Workaround for the GROUP_CONCAT subselect adding a blank ent

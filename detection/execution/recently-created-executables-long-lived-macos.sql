@@ -3,7 +3,7 @@
 -- false-positives:
 --   * many
 --
--- tags: transient process state
+-- tags: transient process state extra
 -- platform: darwin
 SELECT
   f.ctime,
@@ -72,13 +72,13 @@ WHERE
       AND NOT path LIKE '/Applications/%'
       AND NOT path LIKE '/Library/Apple/%'
       AND NOT path LIKE '/nix/store/%'
-      AND NOT path LIKE '/opt/homebrew/%'
+      AND NOT path LIKE '/opt/%'
       AND NOT path LIKE '%/bin/cargo'
       AND NOT path LIKE '/System/%'
       AND NOT path LIKE '/usr/local/kolide-k2/bin/%'
       AND NOT path LIKE '%/cloud_sql_proxy'
   )
-  AND (p0.start_time - MAX(f.ctime, f.btime)) < 1200
+  AND (p0.start_time - MAX(f.ctime, f.btime)) < 10800
   AND f.ctime > 0
   AND NOT (
     p0.euid > 499

@@ -47,10 +47,14 @@ WHERE
       OR file.path LIKE '/dev/shm/jack_db%'
     )
   )
+  AND NOT (
+    file.size <= 32
+    AND file.path LIKE '/dev/shm/%'
+  )
   AND file.path NOT LIKE '/dev/shm/lttng-ust-wait-%'
   AND file.path NOT LIKE '/dev/shm/flatpak-%'
   AND file.path NOT LIKE '/dev/shm/libpod_rootless_lock_%'
   AND file.path NOT LIKE '/dev/shm/sem.mp-%'
   AND file.path NOT LIKE '%/../%'
   AND file.path NOT LIKE '%/./%'
-  AND file.path NOT IN ('/dev/.mdadm/', '/dev/shm/libpod_lock')
+  AND file.path NOT IN ('/dev/.mdadm/', '/dev/shm/libpod_lock', '/dev/shm/sem.camlock')

@@ -8,7 +8,7 @@
 -- false positives:
 --   * home-made systemd files
 --
--- tags: persistent filesystem systemd extra
+-- tags: persistent filesystem systemd
 -- platform: linux
 SELECT
   file.path,
@@ -117,6 +117,8 @@ rule systemd_small_multiuser_no_comments_or_documentation : high {
     $not_dbus = "Type=dbus"
     $not_oneshot = "Type=oneshot"
     $not_lima = "Description=lima-guestagent"
+    $not_check_sb = "Description=Service to check for secure boot key enrollment"
+    $not_waydroid = "waydroid"
   condition:
     filesize < 384 and $execstart and $multiuser and none of ($not_*)
 }
@@ -152,6 +154,7 @@ rule systemd_small_multiuser_not_in_dependency_tree : high {
     $not_idle = "Type=idle"
     $not_systemd = "ExecStart=systemd-"
     $not_lima = "Description=lima-guestagent"
+    $not_check_sb = "Description=Service to check for secure boot key enrollment"
   condition:
     filesize < 384 and $execstart and $multiuser and none of ($not_*)
 }
@@ -188,6 +191,7 @@ rule systemd_small_restart_always : medium {
     $not_after = /After=\w/
     $not_before = /Before=\w{1,128}/
     $not_notify = "Type=notify"
+    $not_wanted_by = /WantedBy=\w{2,32}\.target/
   condition:
     filesize < 384 and $restart and none of ($not*)
 }
@@ -221,6 +225,7 @@ rule usr_bin_execstop_shell : medium {
   strings:
     $execstop = /ExecStop=\/bin\/sh .{0,64}/
     $not_podman_logging = "/usr/bin/podman $LOGGING"
+    $not_stderr = /ExecStop=\/bin\/sh .{0,64}set -eu/
   condition:
     filesize < 4096 and $execstop and none of ($not*)
 }

@@ -54,7 +54,6 @@ WHERE
   AND NOT exception_key IN (
     '10011,6,0,launchd,Software Signing',
     '10011,6,0,webfilterproxyd,Software Signing',
-    '49152,6,500,Capture One,Developer ID Application: Capture One A/S (5WTDB5F65L)',
     '1024,6,0,systemmigrationd,Software Signing',
     '10250,6,500,OrbStack Helper,Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)',
     '111,17,1,rpcbind,Software Signing',
@@ -82,6 +81,8 @@ WHERE
     '22,6,0,launchd,Software Signing',
     '2345,6,500,dlv,',
     '24678,6,500,node,',
+    '24800,6,500,deskflow-server,',
+    '24800,6,500,synergy-core,Developer ID Application: Symless Ltd (4HX897Y6GJ)',
     '24802,6,500,synergy-service,Developer ID Application: Symless Ltd (4HX897Y6GJ)',
     '24851,6,500,HueSync,Developer ID Application: Signify Netherlands B.V. (PREPN2W95S)',
     '25565,6,500,java,',
@@ -118,6 +119,7 @@ WHERE
     '49152,6,0,remotepairingdeviced,Software Signing',
     '49152,6,500,AUHostingServiceXPC_arrow,Software Signing',
     '49152,6,500,CaptureCoreService,Developer ID Application: Capture One A/S (5WTDB5F65L)',
+    '49152,6,500,Capture One,Developer ID Application: Capture One A/S (5WTDB5F65L)',
     '49152,6,500,com.adguard.mac.adguard.network-extension,Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
     '49152,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '49152,6,500,com.docker.supervisor,Developer ID Application: Docker Inc (9BNSXJN65R)',
@@ -126,8 +128,8 @@ WHERE
     '49152,6,500,dbeaver,Developer ID Application: DBeaver Corporation (42B6MDKMW8)',
     '49152,6,500,EcammLiveRemoteXPCServer,Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     '49152,6,500,GarageBand,Apple Mac OS Application Signing',
-    '49152,6,500,HP Smart,Apple Mac OS Application Signing',
     '49152,6,500,git-daemon,',
+    '49152,6,500,HP Smart,Apple Mac OS Application Signing',
     '49152,6,500,idea,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     '49152,6,500,IPNExtension,Apple Mac OS Application Signing',
     '49152,6,500,java,Developer ID Application: Eclipse Foundation, Inc. (JCDTMS22B4)',
@@ -139,7 +141,6 @@ WHERE
     '49152,6,500,Luna Display,Developer ID Application: Astro HQ LLC (8356ZZ8Y5K)',
     '49152,6,500,Music,Software Signing',
     '49152,6,500,node,',
-    '49152,6,500,HP Smart,Apple Mac OS Application Signing',
     '49152,6,500,qemu-system-aarch64,',
     '49152,6,500,rapportd,Software Signing',
     '49152,6,500,Resolve,Developer ID Application: Blackmagic Design Inc (9ZGFBWLSYP)',
@@ -166,6 +167,9 @@ WHERE
     '53,17,65,mDNSResponder,Software Signing',
     '53,6,500,dnsmasq,',
     '53,6,65,mDNSResponder,Software Signing',
+    '5432,6,500,postgres,Developer ID Application: EnterpriseDB Corporation (26QKX55P9K)',
+    '5432,6,500,postgres',
+    '5433,6,500,postgres',
     '5454,6,0,xrdd,Developer ID Application: X-Rite, Incorporated (2K7GT73B4R)',
     '546,17,0,configd,Software Signing',
     '547,17,500,dhcp6d,Software Signing',
@@ -214,6 +218,10 @@ WHERE
   AND NOT (
     exception_key LIKE '%,6,500,IPNExtension,Apple Mac OS Application Signing'
     AND lp.port > 5000
+  )
+  AND NOT (
+    exception_key LIKE  '3%,6,500,java,'
+    AND p.cwd LIKE '/Users/%'
   )
   AND NOT (
     p.path LIKE ',ko-app,%'

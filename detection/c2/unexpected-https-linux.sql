@@ -6,7 +6,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1071/ (C&C, Application Layer Protocol)
 --
--- tags: transient state net often
+-- tags: transient state net often extra
 -- platform: linux
 SELECT
   s.remote_address,
@@ -56,6 +56,10 @@ WHERE
   AND s.remote_address NOT LIKE '::ffff:10.%'
   AND s.remote_address NOT LIKE 'fc00:%'
   AND p.path != ''
+  AND p.path NOT LIKE '/app/bin/%'
+  AND p.path NOT LIKE '/usr/bin/%'
+  AND p.path NOT LIKE '/usr/local/bin/%'
+  AND p.path NOT LIKE '/opt/%'
   AND NOT exception_key IN (
     '0,agentbeat,0u,0g,agentbeat',
     '0,apk,u,g,apk',
@@ -65,6 +69,7 @@ WHERE
     '0,bash,0u,0g,sh',
     '0,canonical-livepatchd,0u,0g,canonical-livep',
     '0,chainctl,0u,0g,chainctl',
+    '0,chainctl,500u,500g,chainctl',
     '0,cmake,u,g,cmake',
     '0,containerd,u,g,containerd',
     '0,dirmngr,0u,0g,dirmngr',
@@ -192,6 +197,7 @@ WHERE
     '500,gh,0u,0g,gh',
     '500,gh-dash,500u,500g,gh-dash',
     '500,git,0u,0g,git',
+    '500,github-desktop,0u,0g,github-desktop',
     '500,git-remote-http,0u,0g,git-remote-http',
     '500,git-remote-http,u,g,git-remote-http',
     '500,gitsign,0u,0g,gitsign',
@@ -229,6 +235,7 @@ WHERE
     '500,k6,500u,500g,k6',
     '500,k9s,0u,0g,k9s',
     '500,kbfsfuse,0u,0g,kbfsfuse',
+    '500,keepassxc,u,g,keepassxc',
     '500,keybase,0u,0g,keybase',
     '500,Keybase,0u,0g,Keybase',
     '500,kioslave5,0u,0g,kioslave5',
@@ -330,8 +337,6 @@ WHERE
     '500,terraform,500u,500g,terraform',
     '500,terraform-ls,500u,500g,terraform-ls',
     '500,thunderbird,0u,0g,thunderbird',
-    '500,wolfi-package-status,500u,500g,wolfi-package-s',
-    '500,github-desktop,0u,0g,github-desktop',
     '500,thunderbird-bin,u,g,thunderbird-bin',
     '500,thunderbird,u,g,thunderbird',
     '500,tidal-hifi,u,g,tidal-hifi',
@@ -340,13 +345,13 @@ WHERE
     '500,todoist,0u,0g,todoist',
     '500,trivy,0u,0g,trivy',
     '500,trivy,500u,500g,trivy',
-    '0,chainctl,500u,500g,chainctl',
     '500,ubuntu-report,0u,0g,ubuntu-report',
     '500,WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '500,wget,0u,0g,wget',
     '500,wine64-preloader,500u,500g,DaveTheDiver.ex',
     '500,wine64-preloader,500u,500g,Root.exe',
     '500,wolfictl,500u,500g,wolfictl',
+    '500,wolfi-package-status,500u,500g,wolfi-package-s',
     '500,WPILibInstaller,500u,500g,WPILibInstaller',
     '500,writerside,500u,500g,writerside',
     '500,xmobar,0u,0g,xmobar',
@@ -357,6 +362,7 @@ WHERE
   ) -- Exceptions where we have to be more flexible for the process name
   AND NOT exception_key LIKE '0,python3.%,0u,0g,dnf'
   AND NOT exception_key LIKE '0,python3.%,0u,0g,dnf-automatic'
+  AND NOT exception_key LIKE '0,python3.%,500u,500g,dnf-automatic'
   AND NOT exception_key LIKE '0,python3.%,0u,0g,yum'
   AND NOT exception_key LIKE '500,python3.%,0u,0g,update-manager'
   AND NOT exception_key LIKE '500,cosign-%,500u,500g,cosign-%'

@@ -6,7 +6,7 @@
 -- false positives:
 --   * System updates
 --
--- tags: persistent seldom filesystem systemd
+-- tags: persistent seldom filesystem systemd extra
 -- platform: linux
 SELECT --  description AS 'desc',
   fragment_path,
@@ -90,6 +90,7 @@ WHERE
         'bluetooth.service,Bluetooth service,',
         'bolt.service,Thunderbolt system service,',
         'bootupd.socket,bootupd.socket,',
+        'brew-upgrade.service,Upgrade Brew packages,1000',
         'brew-update.service,Auto update brew for mutable brew installs,1000',
         'brew-update.timer,Timer for brew update for mutable brew,',
         'brew-upgrade.timer,Timer for brew upgrade for on image brew,',

@@ -7,7 +7,7 @@
 --   * https://attack.mitre.org/techniques/T1059/ (Command and Scripting Interpreter)
 --   * https://attack.mitre.org/techniques/T1204/002/ (User Execution: Malicious File)
 --
--- tags: process events
+-- tags: process events extra
 -- interval: 60
 -- platform: posix
 SELECT
@@ -186,6 +186,7 @@ WHERE
     'zellij',
     'zsh'
   )
+  AND p1_path NOT LIKE '/Applications/%.app/Contents/MacOS/%'
   AND p1_path NOT IN (
     '/Applications/Docker.app/Contents/MacOS/Docker',
     '/Applications/Docker.app/Contents/MacOS/install',
@@ -209,6 +210,7 @@ WHERE
     '/Library/Developer/CommandLineTools/usr/bin/git',
     '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateDaemon',
     '/Library/Kandji/Kandji Agent.app/Contents/MacOS/kandji-library-manager',
+    '/Library/Kandji/Kandji Agent.app/Contents/Helpers/Kandji Library Manager.app/Contents/MacOS/kandji-library-manager',
     '/opt/X11/libexec/launchd_startx',
     '/Applications/DDPM/DDPM.app/Contents/MacOS/DDPM',
     '/sbin/launchd',
