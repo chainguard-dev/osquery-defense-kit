@@ -241,13 +241,8 @@ WHERE
     '/dev/zfs,zfs',
     '/dev/zfs,zpool'
   )
-  -- Halflife
-  AND path_exception NOT LIKE '/dev/shm/u1000-Shm_%,bash'
-  -- lvmdbusd / gcloud / gsutil
-  AND path_exception NOT LIKE '/dev/shm/pym-%python3%'
-  -- celery
-  AND path_exception NOT LIKE '/dev/shm/pymp-%,python3.%'
-  AND dir_exception NOT LIKE '/dev/shm/byobu-%/%.tmux%'
+  AND path_exception NOT LIKE '/dev/shm/%'
+  AND path_exception NOT LIKE '/dev/cpu_dma_latency,python%'
   AND NOT (
     pof.path = "/dev/uinput"
     AND p0.name LIKE "solaar%"

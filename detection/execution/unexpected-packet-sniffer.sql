@@ -48,3 +48,9 @@ WHERE
     'dhcpcd',
     'tcpdump'
   )
+  AND NOT (
+    p0.cgroup_path LIKE '/system.slice/docker-%'
+    AND p0.path = '/speaker'
+    AND p0.name = 'speaker'
+    AND protocol = 2054
+  )

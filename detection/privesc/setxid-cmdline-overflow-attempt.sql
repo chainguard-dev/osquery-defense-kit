@@ -62,4 +62,5 @@ WHERE
   AND file.mode NOT LIKE '0%'
   AND pe.cmdline_size > 2048
   AND p0_cmd NOT LIKE '%sudo dpkg %'
+  AND p0_cmd NOT LIKE '%bwrap --bind %'
   AND p0_cmd NOT LIKE '%sudo %--vmodule=% --audit-policy-file=%kube%'

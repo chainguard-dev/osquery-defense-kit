@@ -11,6 +11,7 @@ SELECT
   p.path,
   p.name,
   p.cmdline,
+  p.cgroup_path,
   p.cwd,
   p.euid,
   p.parent,
@@ -34,6 +35,8 @@ WHERE
     '/opt/google/endpoint-verification/bin/apihelper',
     '/opt/Elastic/Endpoint/elastic-endpoint',
     '/opt/resolve/bin/resolve',
+    '/usr/bin/ld',
+    '/usr/bin/ld.bfd',
     '/var/opt/velociraptor/bin/velociraptor',
     '/usr/bin/melange'
   )
