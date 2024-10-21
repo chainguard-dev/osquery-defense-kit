@@ -208,8 +208,10 @@ WHERE (
     '/dev/snd/timer,character',
     '/dev/sr,block',
     '/dev/stderr,fifo',
+    '/dev/stderr,character',
     '/dev/stdin,character',
     '/dev/stdout,fifo',
+    '/dev/stdout,character',
     '/dev/tee,character',
     '/dev/tpm,character',
     '/dev/tpmrm,character',
@@ -276,7 +278,7 @@ WHERE (
   AND NOT (
     directory = '/dev/shm/'
     AND type = 'regular'
-    AND perm = '0666'
+    AND mode = '0666'
     AND uid IN (0,1000,1001)
     AND size IN (32,4096)
   )
