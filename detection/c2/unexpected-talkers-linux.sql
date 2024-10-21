@@ -92,6 +92,7 @@ WHERE
     '8000,6,500,brave,0u,0g,brave',
     '8000,6,500,chrome,0u,0g,chrome',
     '8000,6,500,firefox,0u,0g,firefox',
+    '80,6,500,telegram-desktop,u,g,telegram-deskto',
     '80,6,0,grep,0u,0g,grep',
     '80,6,0,incusd,0u,0g,incusd',
     '80,6,0,kmod,0u,0g,depmod',

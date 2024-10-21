@@ -73,7 +73,8 @@ WHERE
     'crond',
     'systemd',
     'systemd-udevd',
-    '(udev-worker)'
+    '(udev-worker)',
+    '(sd-exec-strv)'
   )
   AND NOT (
     p.name LIKE 'systemd-%'
