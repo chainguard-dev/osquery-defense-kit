@@ -89,7 +89,9 @@ WHERE pos.pid IN (
   AND p0.path NOT LIKE '/usr/sbin/%'
   AND p0.path NOT LIKE '/usr/libexec/%'
   AND NOT signed_exception IN (
+    '0,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     '500,Apple Mac OS Application Signing',
+    '500,Developer ID Application: Cisco (DE8Y96K9QP)',
     '500,Developer ID Application: Google LLC (EQHXZ8M8AV)'
   )
   AND NOT exception_key IN (
