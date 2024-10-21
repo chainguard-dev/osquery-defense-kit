@@ -5,8 +5,29 @@
 --
 -- tags: transient
 -- platform: posix
-SELECT
-  f.directory,
+SELECT f.directory,
+  f.btime,
+  p0.start_time,
+  REPLACE(f.directory, u.directory, '~') AS dir,
+  RTRIM(
+    COALESCE(
+      REGEX_MATCH (
+        REPLACE(f.directory, u.directory, '~'),
+        '([/~].*?/.*?)/',
+        1
+      ),
+      f.directory
+    ),
+    "/"
+  ) AS top2_dir,
+  COALESCE(
+    REGEX_MATCH (
+      REPLACE(f.directory, u.directory, '~'),
+      '([/~].*?/.*?/.*?)/',
+      1
+    ),
+    REPLACE(f.directory, u.directory, '~')
+  ) AS top3_dir,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -29,68 +50,69 @@ SELECT
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM
-  process_open_sockets pop
-  LEFT JOIN processes p0 ON pop.pid = p0.pid
+FROM processes p0
   LEFT JOIN file f ON p0.path = f.path
+  LEFT JOIN users u ON f.uid = u.uid
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
-WHERE
-  (
+WHERE (
     p0.name LIKE '.%'
     OR f.filename LIKE '.%'
     OR f.directory LIKE '%/.%'
   )
+  AND NOT top2_dir IN (
+    '~/.dropbox-dist',
+    '~/.goenv',
+    '~/.gradle/jdks',
+    '~/.local',
+    '~/.pnpm',
+    '~/.rbenv',
+    '~/.rustup',
+    '~/.sdkman',
+    '~/.supermaven',
+    '~/.terraform',
+    '~/.tflint.d',
+    '~/.vs-kubernetes'
+  )
+  AND NOT top3_dir IN (
+    '~/.bin',
+    '~/.bin-unwrapped',
+    '~/.cache/selenium/chromedriver/~',
+    '~/.cargo/bin',
+    '~/.config/bluejeans-v2',
+    '~/.config/Code',
+    '~/.config/nvm',
+    '~/.arkade/bin',
+    '~/.cache/gitstatus',
+    '~/.cursor',
+    '~/.deno/bin',
+    '~/.devpod/contexts',
+    '~/.docker/cli-plugins',
+    '~/.fig/bin',
+    '~/.go/bin',
+    '~/.linkerd2/bin',
+    '~/.linuxbrew/Cellar',
+    '~/node_modules/.bin',
+    '~/.nvm/versions',
+    '~/.provisio/bin',
+    '~/.pyenv/versions',
+    '~/.steampipe/db',
+    '~/thinkorswim/.install4j',
+    '~/.vscode/extensions',
+    '~/.vscode-insiders/extensions'
+  )
+  AND NOT dir LIKE '~/Library/Application Support/Code/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/%'
+  AND NOT dir LIKE '%/.terraform/providers/%'
   AND NOT f.directory LIKE '/Applications/Corsair iCUE5 Software/.cuepkg-%'
   AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'
-  AND NOT f.directory LIKE '%/.bin'
-  AND NOT f.directory LIKE '%/.bin-unwrapped'
-  AND NOT f.directory LIKE '%/.cargo/bin'
-  AND NOt f.directory LIKE '%/.config/Code/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/%'
-  AND NOT f.directory LIKE '%/.config/Code/User/globalStorage/sourcegraph.cody-ai/cody-engine'
-  AND NOT f.directory LIKE '%/.config/nvm/%/bin'
-  AND NOT f.directory LIKE '%/.cursor/%'
-  AND NOT f.directory LIKE '%/.deno/bin'
-  AND NOT f.directory LIKE '%/thinkorswim/.install4j/jre.bundle/Contents/Home/bin'
-  AND NOT f.directory LIKE '%/.devpod/contexts/%'
-  AND NOT f.directory LIKE '%/.linuxbrew/Cellar/%/bin'
-  AND NOT f.directory LIKE '%/.docker/cli-plugins'
-  AND NOT f.directory LIKE '%/.fig/bin'
-  AND NOT f.directory LIKE '%/.linkerd2/bin'
-  AND NOT f.directory LIKE '%/.go/bin'
-  AND NOT f.directory LIKE '%/.sdkman/%'
-  AND NOT f.directory LIKE '%/.goenv/%/bin'
-  AND NOT f.directory LIKE '%/.goenv/%/pkg/%'
-  AND NOT f.directory LIKE '%/.gradle/jdks/%'
-  AND NOT f.directory LIKE '%/.pyenv/versions/%/bin'
-  AND NOT f.directory LIKE '%/.local/%'
-  AND NOT f.directory LIKE '%/node_modules/.bin/%'
-  AND NOT f.directory LIKE '%/.nvm/versions/%/bin'
-  AND NOT f.directory LIKE '%/.pnpm/%'
-  AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/%'
-  AND NOT f.directory LIKE '%/.cache/selenium/chromedriver/%'
-  AND NOT f.directory LIKE '%/.provisio/bin/%'
-  AND NOT f.directory LIKE '%/.rustup/%'
-  AND NOT f.directory LIKE '%/.rbenv/%'
-  AND NOT f.directory LIKE '%/.supermaven/%'
-  AND NOT f.directory LIKE '%/.steampipe/db/%'
-  AND NOT f.directory LIKE '%/.terraform%'
-  AND NOT f.directory LIKE '%/.tflint.d/%'
-  AND NOT f.directory LIKE '/Users/%/Library/Application Support/Code/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/%'
-  AND NOT f.directory LIKE '%/.vscode/extensions/%'
-  AND NOT f.directory LIKE '%/.vscode-insiders/extensions/%'
-  AND NOT f.directory LIKE '%/.vs-kubernetes/%'
-  AND NOT f.directory LIKE '%/.yardstick/%'
   AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'
-  AND NOT f.path LIKE '/home/%/.config/bluejeans-v2/BluejeansHelper'
   AND NOT f.path LIKE '/nix/store/%/%-wrapped'
   AND NOT (
     f.path LIKE '/nix/store/%'
     AND p0.name LIKE '%-wrappe%'
   )
-  AND NOt f.path LIKE '/private/var/root/.Trash/OneDrive %.app/Contents/StandaloneUpdater.app/Contents/MacOS'
-GROUP BY
-  f.path
+  AND NOT f.path LIKE '/private/var/root/.Trash/OneDrive %.app/Contents/StandaloneUpdater.app/Contents/MacOS'
+GROUP BY f.path
