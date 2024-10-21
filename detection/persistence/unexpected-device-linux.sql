@@ -274,7 +274,10 @@ WHERE (
   AND NOT path LIKE '/dev/shm/u%-ValveIPC%'
   AND NOT path LIKE '/dev/%-vg/%-lv'
   AND NOT (
-    path LIKE '/dev/shm/%'
-    AND type NOT IN ('regular', 'directory')
+    directory = '/dev/shm/'
+    AND type = 'regular'
+    AND perm = '0666'
+    AND uid IN (0,1000,1001)
+    AND size IN (32,4096)
   )
 GROUP BY exception_key
