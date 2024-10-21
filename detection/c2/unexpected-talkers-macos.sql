@@ -1,17 +1,17 @@
--- Unexpected programs communicating over non-HTTPS protocols (state-based)
+-- Unexpected programs communicating over non-HTTPS running from weird locations
 --
 -- references:
 --   * https://attack.mitre.org/techniques/T1071/ (C&C, Application Layer Protocol)
 --
 -- tags: transient state net often
 -- platform: macos
-SELECT
-  pos.protocol,
+SELECT pos.protocol,
   pos.local_port,
   pos.remote_port,
-  pos.remote_address,
+  remote_address,
   pos.local_port,
   pos.local_address,
+  CONCAT (MIN(p0.euid, 500), ',', s.authority) AS signed_exception,
   CONCAT (
     MIN(p0.euid, 500),
     ',',
@@ -21,29 +21,8 @@ SELECT
     ',',
     REGEX_MATCH (p0.path, '.*/(.*?)$', 1),
     ',',
-    p0.name,
-    ',',
-    s.authority,
-    ',',
-    s.identifier
-  ) AS exception_key,
-  CONCAT (
-    MIN(p0.euid, 500),
-    ',',
-    pos.protocol,
-    ',',
-    MIN(pos.remote_port, 32768),
-    ',',
-    REGEX_MATCH (p0.path, '.*/(.*?)$', 1),
-    ',',
-    p0.name,
-    ',',
-    MIN(f.uid, 500),
-    'u,',
-    MIN(f.gid, 500),
-    'g'
-  ) AS alt_exception_key,
-  CONCAT (s.authority, ',', s.identifier) AS id_exception_key,
+    p0.name
+  ) AS unsigned_exception,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -60,62 +39,60 @@ SELECT
   p1.name AS p1_name,
   p1.euid AS p1_euid,
   p1.cmdline AS p1_cmd,
-  p1_hash.sha256 AS p1_sha256,
-  -- Grandparent
-  p1.parent AS p2_pid,
-  p2.name AS p2_name,
-  p2.path AS p2_path,
-  p2.cmdline AS p2_cmd,
-  p2_hash.sha256 AS p2_sha256
-FROM
-  process_open_sockets pos
+  p1_hash.sha256 AS p1_sha256
+FROM process_open_sockets pos
   LEFT JOIN processes p0 ON pos.pid = p0.pid
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
-  LEFT JOIN processes p2 ON p1.parent = p2.pid
-  LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN signature s ON p0.path = s.path
-WHERE
-  pos.protocol > 0
-  AND NOT (
-    pos.remote_port IN (53, 443)
-    AND pos.protocol IN (6, 17)
-  )
-  AND pos.remote_address NOT IN (
-    '0.0.0.0',
-    '::127.0.0.1',
-    '127.0.0.1',
-    '::ffff:127.0.0.1',
-    '::1',
-    '::'
-  )
-  AND pos.remote_address NOT LIKE 'fe80:%'
-  AND pos.remote_address NOT LIKE '127.%'
-  AND pos.remote_address NOT LIKE '192.168.%'
-  AND pos.remote_address NOT LIKE '172.1%'
-  AND pos.remote_address NOT LIKE '172.2%'
-  AND pos.remote_address NOT LIKE '169.254.%'
-  AND pos.remote_address NOT LIKE '172.30.%'
-  AND pos.remote_address NOT LIKE '172.31.%'
-  AND pos.remote_address NOT LIKE '::ffff:172.%'
-  AND pos.remote_address NOT LIKE '10.%'
-  AND pos.remote_address NOT LIKE '::ffff:10.%'
-  AND pos.remote_address NOT LIKE 'fc00:%'
-  AND pos.remote_address NOT LIKE 'fdfd:%'
-  AND pos.state != 'LISTEN' -- Ignore most common application paths
-  AND p0.path NOT LIKE '/Library/Apple/System/Library/%'
+WHERE pos.pid IN (
+    SELECT pid
+    from process_open_sockets
+    WHERE protocol > 0
+      AND NOT (
+        remote_port IN (53, 443)
+        AND protocol IN (6, 17)
+      )
+      AND remote_address NOT IN (
+        '0.0.0.0',
+        '::127.0.0.1',
+        '127.0.0.1',
+        '::ffff:127.0.0.1',
+        '::1',
+        '::'
+      )
+      AND remote_address NOT LIKE 'fe80:%'
+      AND remote_address NOT LIKE '127.%'
+      AND remote_address NOT LIKE '192.168.%'
+      AND remote_address NOT LIKE '172.1%'
+      AND remote_address NOT LIKE '172.2%'
+      AND remote_address NOT LIKE '169.254.%'
+      AND remote_address NOT LIKE '172.30.%'
+      AND remote_address NOT LIKE '172.31.%'
+      AND remote_address NOT LIKE '::ffff:172.%'
+      AND remote_address NOT LIKE '10.%'
+      AND remote_address NOT LIKE '::ffff:10.%'
+      AND remote_address NOT LIKE 'fc00:%'
+      AND remote_address NOT LIKE 'fdfd:%'
+      AND state != 'LISTEN'
+  ) -- Ignore most common application paths
+  AND p0.path NOT LIKE '/Applications/%.app/Contents/MacOS/%'
+  AND p0.path NOT LIKE '/Applications/%.app/Contents/Resources/%'
+  AND p0.path NOT LIKE '/Library/Apple/%'
   AND p0.path NOT LIKE '/Library/Application Support/%/Contents/%'
-  AND p0.path NOT LIKE '/System/Applications/%'
-  AND p0.path NOT LIKE '/System/Library/%'
   AND p0.path NOT LIKE '/System/%'
+  AND p0.path NOT LIKE '/Users/%/bin/%'
+  AND p0.path NOT LIKE '/opt/%/bin/%'
+  AND p0.path NOT LIKE '/usr/bin/%'
+  AND p0.path NOT LIKE '/usr/sbin/%'
   AND p0.path NOT LIKE '/usr/libexec/%'
-  AND p0.path NOT LIKE '/Users/%/go/bin/%'
-  AND p0.path NOT LIKE '/usr/sbin/%' -- Apple programs running from weird places, like the UpdateBrainService
-  AND NOT (
-    s.identifier LIKE 'com.apple.%'
-    AND s.authority = 'Software Signing'
+  AND NOT signed_exception IN (
+    '0,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
+    '500,Apple Mac OS Application Signing',
+    '500,Developer ID Application: Cisco (DE8Y96K9QP)',
+    '500,Developer ID Application: Google LLC (EQHXZ8M8AV)'
   )
   AND NOT exception_key IN (
     '0,6,7300,safeqclientcore,safeqclientcore,Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9),safeqclientcore',
@@ -231,101 +208,7 @@ WHERE
   )
   AND NOT alt_exception_key LIKE '500,6,22,packer-plugin-amazon%,packer-plugin-amazon_%,500u,20g'
   AND NOT (
-    alt_exception_key LIKE '500,6,%,syncthing,syncthing,0u,500g'
-    AND remote_port > 79
-  )
-  AND NOT (
-    alt_exception_key LIKE '500,6,%,nuclei,nuclei,500u,80g'
-    AND remote_port > 20
-    AND remote_port < 32000
-  )
-  AND NOT (
-    exception_key LIKE '500,6,%,syncthing,syncthing,Developer ID Application: Kastelo AB (LQE5SYM783),syncthing'
-    AND remote_port > 24
-  )
-  AND NOT (
-    exception_key LIKE '500,6,%,syncthing,syncthing,Developer ID Application: Jakob Borg (LQE5SYM783),syncthing'
-    AND remote_port > 24
-  )
-  AND NOT (
-    alt_exception_key = '500,6,80,main,main,500u,20g'
+    unsigned_exception = '500,6,80,main,main'
     AND p0.path LIKE '/var/folders/%/T/go-build%/b001/exe/main'
-  ) -- Wider
-  AND NOT (
-    (
-      pos.remote_port IN (80, 123, 587, 999)
-      OR pos.remote_port > 1024
-    )
-    AND id_exception_key IN (
-      'Apple Mac OS Application Signing,com.buildtoconnect.screenrecorder',
-      'Apple Mac OS Application Signing,com.microsoft.OneDrive-mac',
-      'Apple Mac OS Application Signing,com.ookla.speedtest-macos',
-      'Apple Mac OS Application Signing,net.whatsapp.WhatsApp',
-      'Apple Mac OS Application Signing,net.whatsapp.WhatsApp.ServiceExtension',
-      'Developer ID Application: AMZN Mobile LLC (94KV3E626L),lima__bin__limactl',
-      'Developer ID Application: AMZN Mobile LLC (94KV3E626L),net.java.openjdk.java',
-      'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF),com.adguard.mac.adguard.network-extension',
-      'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.AdobeResourceSynchronizer',
-      'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.Reader',
-      'Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.lightroomCC',
-      'Developer ID Application: Bitdefender SRL (GUNFMW623Y),com.bitdefender.cst.net.dci.dci-network-extension',
-      'Developer ID Application: Bookry Ltd (4259LE8SU5),com.bookry.wavebox.helper',
-      'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.helper',
-      'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4),com.brave.Browser.nightly.helper',
-      'Developer ID Application: Cisco (DE8Y96K9QP),Cisco-Systems.SparkHelper',
-      'Developer ID Application: Cloudflare Inc. (68WVV388M8),CloudflareWARP',
-      'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker',
-      'Developer ID Application: Docker Inc (9BNSXJN65R),com.docker.docker',
-      'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.EpicGamesLauncher',
-      'Developer ID Application: Epic Games International, S.a.r.l. (96DBZ92D3Y),com.epicgames.UE4EditorServices',
-      'Developer ID Application: Fellow Insights, Inc. (2NF46HY8D8),com.electron.fellow',
-      'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK),fctupdate',
-      'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D),com.googlecode.iterm2',
-      'Developer ID Application: GUILHERME RAMBO (8C7439RJLG),codes.rambo.AirBuddy.MobileDevicesService',
-      'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome.helper',
-      'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.GoogleUpdater',
-      'Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.one.NetworkExtension',
-      'Developer ID Application: Loom, Inc (QGD2ZPXZZG),com.loom.desktop',
-      'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.VSCode.helper',
-      'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.edgemac.helper',
-      'Developer ID Application: Microsoft Corporation (UBF8T346G9),com.microsoft.teams2.helper',
-      'Developer ID Application: Microsoft Corporation (UBF8T346G9),net.java.openjdk.java',
-      'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefox',
-      'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.firefoxdeveloperedition',
-      'Developer ID Application: Mozilla Corporation (43AQ936H96),org.mozilla.thunderbird',
-      'Developer ID Application: NVIDIA Corporation (6KR3T733EC),com.nvidia.nvcontainer',
-      'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R),at.obdev.littlesnitch.networkextension',
-      'Developer ID Application: Opera Software AS (A2P9LX4JPN),com.operasoftware.Opera.helper',
-      'Developer ID Application: Oracle America, Inc. (VB5E2TV963),net.java.openjdk.java',
-      'Developer ID Application: Parallels International GmbH (4C6364ACXT),com.parallels.naptd',
-      'Developer ID Application: Private Internet Access, Inc. (5357M5NW9W),com.privateinternetaccess.vpn',
-      'Developer ID Application: Red Hat, Inc. (HYSCB8KRL2),gvproxy',
-      'Developer ID Application: SUPERHUMAN LABS INC. (6XHFYUTQGX),com.superhuman.electron',
-      'Developer ID Application: SURFSHARK LTD (YHUG37CKN8),com.surfshark.vpnclient.macos.direct',
-      'Developer ID Application: Shanghai Lunkuo Technology Co., Ltd (T3UBR9Y3B2),com.bambulab.bambu-studio',
-      'Developer ID Application: Signal Messenger, LLC (U68MSDN6DR),org.whispersystems.signal-desktop.helper.Renderer',
-      'Developer ID Application: Skype Communications S.a.r.l (AL798K98FX),com.skype.skype.Helper',
-      'Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL),com.tinyspeck.slackmacgap.helper',
-      'Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client',
-      'Developer ID Application: Spotify (2FNC3A47ZF),com.spotify.client.helper',
-      'Developer ID Application: Tailscale Inc. (W5364U7YZB),io.tailscale.ipn.macsys.network-extension',
-      'Developer ID Application: TeamDev Ltd. (K436KHQ6D5),com.teamdev.Chromium',
-      'Developer ID Application: TechSmith Corporation (7TQL462TU8),com.techsmith.camtasia2024',
-      'Developer ID Application: TechSmith Corporation (7TQL462TU8),com.techsmith.snagit.capturehelper2020',
-      'Developer ID Application: TechSmith Corporation (7TQL462TU8),com.techsmith.snagit.capturehelper2024',
-      'Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.Browser',
-      'Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.browser.helper',
-      'Developer ID Application: Valve Corporation (MXGJJ98X76),com.valvesoftware.steam',
-      'Developer ID Application: Valve Corporation (MXGJJ98X76),com.valvesoftware.steam.helper',
-      'Developer ID Application: Vivaldi Technologies AS (4XF3XNRN6Y),com.vivaldi.Vivaldi.helper',
-      'Developer ID Application: Vladimir Prelovac (TFVG979488),com.apple.WebKit.Networking',
-      'Developer ID Application: WhatsApp Inc. (57T9237FN3),net.whatsapp.WhatsApp',
-      'Developer ID Application: WhatsApp Inc. (57T9237FN3),net.whatsapp.WhatsApp.ServiceExtension',
-      'Developer ID Application: Wizards of the Coast LLC (63JKFDP62M),com.wizards.mtga',
-      'Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ),dev.zed.Zed-Preview',
-      'Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3),us.zoom.xos',
-      'Developer ID Application: Zwift, Inc (C2GM8Y9VFM),ZwiftAppSilicon'
-    )
   )
-GROUP BY
-  p0.cmdline
+GROUP BY p0.cmdline
