@@ -71,6 +71,10 @@ WHERE (
     '~/.pnpm',
     '~/.rbenv',
     '~/.rustup',
+    '~/Code',
+    '~/code',
+    '~/Projects',
+    '~/src',
     '~/.sdkman',
     '~/.supermaven',
     '~/.terraform',
@@ -93,6 +97,7 @@ WHERE (
     '~/.docker/cli-plugins',
     '~/.fig/bin',
     '~/.go/bin',
+    '/home/linuxbrew/.linuxbrew',
     '~/.linkerd2/bin',
     '~/.linuxbrew/Cellar',
     '~/node_modules/.bin',
@@ -106,6 +111,7 @@ WHERE (
   )
   AND NOT dir LIKE '~/Library/Application Support/Code/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/%'
   AND NOT dir LIKE '%/.terraform/providers/%'
+  AND NOT dir LIKE '%/node_modules/.pnpm/%'
   AND NOT f.directory LIKE '/Applications/Corsair iCUE5 Software/.cuepkg-%'
   AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'
   AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'

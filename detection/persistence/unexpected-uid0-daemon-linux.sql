@@ -88,6 +88,7 @@ WHERE
     'agetty,/usr/sbin/agetty,0,system.slice,system-serial\x2dgetty.slice,0755',
     'alsactl,/usr/sbin/alsactl,0,system.slice,alsa-state.service,0755',
     'anacron,/usr/bin/anacron,0,system.slice,cronie.service,0755',
+    'anacron,/usr/sbin/anacron,0,system.slice,anacron.service,0755',
     'anacron,/usr/sbin/anacron,0,system.slice,crond.service,0755',
     'apache2,/usr/sbin/apache2,0,system.slice,apache2.service,0755',
     'apcupsd,/usr/bin/apcupsd,0,system.slice,apcupsd.service,0755',
@@ -118,6 +119,7 @@ WHERE
     'cupsd,/snap/cups/__VERSION__/sbin/cupsd,0,system.slice,snap.cups.cupsd.service,0700',
     'cupsd,/usr/bin/cupsd,0,system.slice,cups.service,0700',
     'cupsd,/usr/sbin/cupsd,0,system.slice,cups.service,0755',
+    'cupsd,/usr/sbin/cupsd,0,system.slice,system-cups.slice,0755',
     'dbus-daemon,/usr/bin/dbus-daemon,0,user.slice,user-1000.slice,0755',
     'dbus-launch,/usr/bin/dbus-launch,0,user.slice,user-1000.slice,0755',
     'dconf-service,/usr/libexec/dconf-service,0,user.slice,user-1000.slice,0755',
@@ -165,6 +167,7 @@ WHERE
     'gpg-agent,/usr/bin/gpg-agent,0,system.slice,fwupd.service,0755',
     'gpg-agent,/usr/bin/gpg-agent,0,system.slice,packagekit.service,0755',
     'gpg-agent,/usr/bin/gpg-agent,0,user.slice,user-1000.slice,0755',
+    'group-admin-dae,/usr/libexec/group-admin-daemon,0,system.slice,group-admin-daemon.service,0755',
     'gssproxy,/usr/sbin/gssproxy,0,system.slice,gssproxy.service,0755',
     'gvfsd-fuse,/usr/libexec/gvfsd-fuse,0,user.slice,user-1000.slice,0755',
     'gvfsd,/usr/libexec/gvfsd,0,user.slice,user-1000.slice,0755',
@@ -185,6 +188,7 @@ WHERE
     'ir_agent,/opt/rapid7/ir_agent/ir_agent,0,system.slice,ir_agent.service,0700',
     'irqbalance,/usr/sbin/irqbalance,0,system.slice,irqbalance.service,0755',
     'iwd,/usr/lib/iwd/iwd,0,system.slice,iwd.service,0755',
+    'just,/usr/bin/just,0,user.slice,user-1000.slice,0755',
     'launcher,/opt/kolide-k2/bin/launcher,0,system.slice,launcher.kolide-k2.service,0755',
     'launcher,/opt/kolide-k2/bin/launcher-updates/__VERSION__/launcher,0,system.slice,launcher.kolide-k2.service,0755',
     'launcher,/usr/lib/opt/kolide-k2/bin/launcher,0,system.slice,launcher.kolide-k2.service,0755',
@@ -198,6 +202,8 @@ WHERE
     'lightdm,/usr/bin/lightdm,0,system.slice,lightdm.service,0755',
     'lightdm,/usr/bin/lightdm,0,user.slice,user-1000.slice,0755',
     'lightdm,/usr/bin/lightdm,0,user.slice,user-974.slice,0755',
+    'lightdm,/usr/sbin/lightdm,0,system.slice,lightdm.service,0755',
+    'lightdm,/usr/sbin/lightdm,0,user.slice,user-1000.slice,0755',
     'lima-guestagent,/usr/local/bin/lima-guestagent,0,system.slice,lima-guestagent.service,0755',
     'login,/usr/bin/login,0,user.slice,user-1000.slice,0755',
     'low-memory-moni,/usr/libexec/low-memory-monitor,0,system.slice,low-memory-monitor.service,0755',
@@ -322,7 +328,6 @@ WHERE
     'velociraptor_cl,/usr/local/bin/velociraptor,0,system.slice,velociraptor_client.service,0700',
     'virtiofsd,/opt/incus/bin/virtiofsd,0,system.slice,incus.service,0755',
     'virtlogd,/usr/bin/virtlogd,0,system.slice,virtlogd.service,0755',
-    'just,/usr/bin/just,0,user.slice,user-1000.slice,0755',
     'wpa_supplicant,/usr/bin/wpa_supplicant,0,system.slice,wpa_supplicant.service,0755',
     'wpa_supplicant,/usr/sbin/wpa_supplicant,0,system.slice,wpa_supplicant.service,0755',
     'xdg-desktop-por,/usr/libexec/xdg-desktop-portal,0,user.slice,user-1000.slice,0755',
@@ -333,6 +338,7 @@ WHERE
     'X,/nix/store/__VERSION__/bin/Xorg,0,system.slice,display-manager.service,0555',
     'Xorg,/usr/lib/Xorg,0,system.slice,lightdm.service,0755',
     'Xorg,/usr/lib/Xorg,0,system.slice,sddm.service,0755',
+    'Xorg,/usr/lib/xorg/Xorg,0,system.slice,lightdm.service,0755',
     'Xorg,/usr/lib/xorg/Xorg,0,system.slice,sddm.service,0755',
     'yum,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
     'zed,/nix/store/__VERSION__/bin/zed,0,system.slice,zfs-zed.service,0555',
@@ -350,6 +356,7 @@ WHERE
   AND NOT exception_key LIKE 'incusd,%/bin/incusd,0,lxc.monitor.%,,0755'
   AND NOT exception_key LIKE 'osquery-extensi,/opt/Elastic/Agent/data/elastic-agent-%/components/osquery-extension.ext,0,system.slice,elastic-agent.service,0750'
   AND NOT exception_key LIKE 'osqueryd,/opt/Elastic/Agent/data/elastic-agent-%/components/osqueryd,0,system.slice,elastic-agent.service,0750'
+  AND NOT exception_key LIKE 'tuned-ppd,/usr/bin/python3.%,system.slice,tuned-ppd.service,0755'
   AND NOT p0.path IN ('/bin/bash', '/usr/bin/bash')
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY

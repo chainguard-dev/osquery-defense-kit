@@ -71,6 +71,7 @@ WHERE
   AND NOT pp.name IN (
     'systemd-userdbd',
     'crond',
+    'dpkg',
     'systemd',
     'systemd-udevd',
     '(udev-worker)',
@@ -85,6 +86,7 @@ WHERE
   AND NOT p.cmdline LIKE '%--type=zygote%'
   AND NOT p.cmdline LIKE '%--disable-seccomp-filter-sandbox%'
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
+  AND NOT pp.path LIKE '/usr/bin/%'
   AND NOT (
     p.name = 'sh'
     AND p.cgroup_path = '/system.slice/znapzend.service'

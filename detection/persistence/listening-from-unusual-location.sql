@@ -102,6 +102,7 @@ WHERE
   AND NOT homepath LIKE "~/.%"
   AND NOT homecwd LIKE "~/.%"
   AND NOT homecwd LIKE '/Users/%/.gradle/daemon/%'
+  AND NOT homecwd LIKE '/home/%/.gradle/daemon/%'
   AND NOT f.directory IN (
     '/Applications/Keybase.app/Contents/SharedSupport/bin',
     '/opt/docker-desktop/bin'

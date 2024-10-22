@@ -69,7 +69,8 @@ WHERE
     '75.75.76.76', -- Comcast
     '68.105.28.13', -- Cox
     '80.248.7.1', -- 21st Century (NG)
-    '34.160.111.32' -- wolfi.dev
+    '34.160.111.32', -- wolfi.dev
+    '185.125.190.31' -- Canonical
   )
   -- Exceptions that specifically talk to one server
   AND exception_key NOT IN (
@@ -90,6 +91,7 @@ WHERE
     'distnoted,8.8.8.8,53',
     'limactl,8.8.8.8,53',
     'msedge,8.8.8.8,53',
+    'brave,8.8.8.8,53',
     'adguard_dns,1.0.0.1,53',
     'helm,185.199.108.133,53',
     'coredns,8.8.8.8,53',
@@ -115,6 +117,7 @@ WHERE
     'go',
     'wolfictl',
     'gvproxy',
+    'grype',
     'incusd',
     'helm',
     'terraform-provi',
