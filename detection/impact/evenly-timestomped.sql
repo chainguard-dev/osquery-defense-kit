@@ -47,6 +47,7 @@ WHERE
     'printcap',
     'strace-log-merge',
     'installer-info.json'
+    'debian-keyring.gpg'
   )
   AND file.path NOT LIKE '%/lynis%'
   AND file.path NOT LIKE '%/yelp-xsl%'
