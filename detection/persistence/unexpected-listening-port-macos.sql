@@ -5,8 +5,7 @@
 --
 -- tags: persistent state net low
 -- platform: darwin
-SELECT
-  lp.address,
+SELECT lp.address,
   lp.port,
   lp.protocol,
   p.uid,
@@ -28,13 +27,11 @@ SELECT
     ',',
     signature.authority
   ) AS exception_key
-FROM
-  listening_ports lp
+FROM listening_ports lp
   LEFT JOIN processes p ON lp.pid = p.pid
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN signature ON p.path = signature.path
-WHERE
-  port != 0
+WHERE port != 0
   AND lp.address NOT IN ('224.0.0.251', '::1')
   AND lp.address NOT LIKE '127.0.0.%'
   AND lp.address NOT LIKE '172.1%'
@@ -220,7 +217,7 @@ WHERE
     AND lp.port > 5000
   )
   AND NOT (
-    exception_key LIKE  '3%,6,500,java,'
+    exception_key LIKE '3%,6,500,java,'
     AND p.cwd LIKE '/Users/%'
   )
   AND NOT (
@@ -229,18 +226,23 @@ WHERE
     and lp.protocol = 6
   )
   AND NOT (
-    p.name IN (
-      'caddy',
-      'com.docker.backend',
-      'controller',
-      'crane',
-      'crc',
-      'OrbStack Helper',
-      'docker-proxy',
-      'hugo',
-      'kubectl',
-      'node',
-      'webhook'
+    (
+      p.name IN (
+        'caddy',
+        'com.docker.backend',
+        'controller',
+        'crane',
+        'crc',
+        'OrbStack Helper',
+        'docker-proxy',
+        'hugo',
+        'kubectl',
+        'ssh',
+        'node',
+        'webhook'
+      )
+      OR p.name LIKE 'kubectl.%'
+      OR p.name LIKE '__%_go'
     )
     AND lp.port > 1024
     and lp.protocol = 6
@@ -266,5 +268,4 @@ WHERE
       AND lp.protocol = 6
     )
   )
-GROUP BY
-  exception_key
+GROUP BY exception_key

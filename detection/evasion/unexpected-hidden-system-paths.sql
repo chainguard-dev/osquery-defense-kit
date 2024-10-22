@@ -92,6 +92,7 @@ WHERE
     '/tmp/.eos-update-notifier.log',
     '/tmp/.featureflags-agent/',
     '/tmp/.font-unix/',
+    '/tmp/.SIGN.RSA.local-melange-enterprise.rsa.pub',
     '/tmp/.git/',
     '/tmp/.go-version',
     '/tmp/.helmrepo',

@@ -112,6 +112,7 @@ WHERE
     '500,Authy,Authy,Apple iPhone OS Application Signing,com.authy',
     '500,podman,podman,Developer ID Application: Red Hat, Inc. (HYSCB8KRL2),podman',
     '500,bash,bash,,bash',
+    '500,nami,nami,,a.out',
     '500,CrossyRoad,CrossyRoad,Apple iPhone OS Application Signing,com.hipsterwhale.crossy',
     '500,cloud_sql_proxy,cloud_sql_proxy,,a.out',
     '500,com.docker.backend,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R),com.docker.docker',

@@ -210,6 +210,7 @@ WHERE (
     '/dev/stderr,fifo',
     '/dev/stderr,character',
     '/dev/stdin,character',
+    '/dev/stdin,fifo',
     '/dev/stdout,fifo',
     '/dev/stdout,character',
     '/dev/tee,character',

@@ -49,8 +49,6 @@ WHERE
   -- Snap packages?
   AND p.path NOT LIKE '/tmp/.mount_%'
   AND p.path NOT LIKE '/home/%/.cache/yay/1password-cli/pkg/1password-cli/usr/bin/op'
-  AND p.path NOT IN (
-    '/usr/bin/python3.10',
-    '/opt/google/chrome/nacl_helper',
-    '/opt/Synergy/resources/synergy-tray'
-  )
+  -- Probably just an upgrade
+  AND p.path NOT LIKE '/usr/bin/%'
+  AND p.path NOT LIKE '/opt/%'

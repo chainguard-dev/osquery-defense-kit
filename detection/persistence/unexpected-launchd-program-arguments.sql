@@ -41,11 +41,11 @@ WHERE
     'Developer ID Application: Cloudflare Inc. (68WVV388M8)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
+    'Developer ID Application: EnterpriseDB Corporation (26QKX55P9K)',
     'Developer ID Application: Foxit Corporation (8GN47HTP75)',
     'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',
     'Developer ID Application: Google, Inc. (EQHXZ8M8AV)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
-    'Developer ID Application: Ubiquiti Inc. (4P645293E8)',
     'Developer ID Application: Grammarly, Inc (W8F64X92K3)',
     'Developer ID Application: Hercules Labs Inc. (B8PC799ZGU)',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
@@ -73,6 +73,7 @@ WHERE
     'Developer ID Application: Sanford, L.P. (N3S6676K3E)', -- DYMO
     'Developer ID Application: Seiko Epson Corporation (TXAEAV5RN4)',
     'Developer ID Application: Tenable, Inc. (4B8J598M7U)',
+    'Developer ID Application: Ubiquiti Inc. (4P645293E8)',
     'Developer ID Application: X-Rite, Incorporated (2K7GT73B4R)',
     'Software Signing', -- Apple
     'yabai-cert'

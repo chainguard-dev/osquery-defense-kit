@@ -75,6 +75,7 @@ WHERE -- This time should match the interval
   OR (
     LENGTH(pe.value) > 1024
     AND pe.key != 'LS_COLORS'
+    AND pe.key != 'HTTP_AUTH'
     AND f.mode IS NOT NULL
     AND f.mode NOT LIKE '0%'
   )

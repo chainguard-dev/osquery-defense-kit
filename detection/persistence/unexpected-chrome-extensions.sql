@@ -101,6 +101,8 @@ WHERE
     'true,Benjamin Hollis,JSONView,gmegofmjomhknnokphhckolhcffdaihd',
     'true,BetaFish,AdBlock — best ad blocker,gighmmpiobklfepjocnamgkkbiglidom',
     'true,,Bionic Reading,kdfkejelgkdjgfoolngegkhkiecmlflj',
+    'true,,Gem,bnbpceglddpnehbopmdjegpfinikcaoh',
+    'true,,Chrome Capture - screenshot & GIF,ggaabchcecdbomdcnbahdfddfikjmphe',
     'true,Bitwarden Inc.,Bitwarden - Free Password Manager,nngceckbapebfimnlniiiahkandclblb',
     'true,Bitwarden Inc.,Bitwarden Password Manager,nngceckbapebfimnlniiiahkandclblb',
     'true,,BlockSite: Block Websites & Stay Focused,eiimnmioipafcokbfikbljfdeojpcgbh',

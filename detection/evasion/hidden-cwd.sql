@@ -8,8 +8,7 @@
 --
 -- tags: transient often
 -- platform: posix
-SELECT
-  REPLACE(p0.cwd, u.directory, '~') AS dir,
+SELECT REPLACE(p0.cwd, u.directory, '~') AS dir,
   REGEX_MATCH (
     REPLACE(p0.cwd, u.directory, '~'),
     '([/~].*?/.*?)/',
@@ -56,8 +55,7 @@ SELECT
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM
-  processes p0
+FROM processes p0
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN users u ON p0.uid = u.uid
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
@@ -66,14 +64,10 @@ FROM
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
-WHERE
-  p0.pid IN (
-    SELECT DISTINCT
-      pid
-    FROM
-      processes
-    WHERE
-      cwd LIKE '%/.%'
+WHERE p0.pid IN (
+    SELECT DISTINCT pid
+    FROM processes
+    WHERE cwd LIKE '%/.%'
       AND NOT name IN (
         'apfsd',
         'bindfs',
@@ -93,33 +87,34 @@ WHERE
   AND NOT (
     exception_key IN (
       'Arduino IDE Helper,/private/var/folders',
-      'Electron,~/.vscode/extensions',
       'arduino-language-server,/private/var/folders',
       'as,~/.cache/yay',
-      'bash,~/.Trash',
-      'bash,~/.local/share',
       'bash,~/go/src',
-      'c++,~/.cache/yay',
+      'bash,~/.local/share',
+      'bash,~/.Trash',
       'cc1,/home/build/.cache',
       'cc1plus,~/.cache/yay',
+      'c++,~/.cache/yay',
       'cgo,~/.gimme/versions',
       'clangd,/private/var/folders',
       'conmon,/var~/.local/share',
-      'mysqld,/var~/.local/share',
       'dirhelper,/private/var/folders',
+      'Electron,~/.vscode/extensions',
       'fileproviderd,~/Library/Mobile Documents',
-      'fish,~/.Trash',
       'fish,~/.local/share',
+      'fish,~/.Trash',
       'git,~/.local/share',
+      'java,~/.gradle/daemon',
       'java,/home/build/.gradle',
       'java,/home/build/.kotlin',
-      'java,~/.gradle/daemon',
       'java,~/.local/share',
       'make,~/.cache/yay',
       'makepkg,~/.cache/yay',
       'mysqld,~/.local/share',
+      'mysqld,/var~/.local/share',
       'npm install,~/.npm/_cacache',
       'opera_autoupdate,/private/var/folders',
+      'postinstall,/Library/InstallerSandboxes/.PKInstallSandboxManager',
       'rm,/private/var/folders',
       'rust-analyzer-p,~/.cargo/registry',
       'rustc,/home/build/.cargo',
@@ -183,12 +178,10 @@ WHERE
     OR dir LIKE '~/%google-cloud-sdk/.install/.backup%'
     OR dir LIKE '~/code/%'
     OR dir LIKE '~/dev/%/dots/%/.config%'
-    OR dir LIKE '~/src/%'
-    -- For sudo calls to other things
+    OR dir LIKE '~/src/%' -- For sudo calls to other things
     OR (
       dir LIKE '/home/.terraform.d/%'
       AND p0.euid = 0
     )
   )
-GROUP BY
-  p0.pid
+GROUP BY p0.pid
