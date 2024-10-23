@@ -7,7 +7,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1555/ (Credentials from Password Stores)
 --
--- tags: transient state file access
+-- tags: transient state file access extra
 SELECT
   pof.pid,
   pof.fd,
@@ -125,6 +125,7 @@ WHERE
       'soffice.bin,soffice.bin,~/.mozilla/firefox',
       'updater,updater,~/.cache/mozilla',
       'updater,updater,~/.mozilla/firefox',
+      'vim.basic,vi,~/.ssh',
       'vim,vim,~/.aws'
     )
   )
