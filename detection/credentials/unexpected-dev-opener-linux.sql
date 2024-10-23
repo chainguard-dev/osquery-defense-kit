@@ -228,6 +228,7 @@ WHERE
     '/dev/video,obs',
     '/dev/video,obs-ffmpeg-mux',
     '/dev/video,pipewire',
+    '/dev/net/tun,pasta.avx2',
     '/dev/video,signal-desktop',
     '/dev/video,slack',
     '/dev/video,v4l2-relayd',
