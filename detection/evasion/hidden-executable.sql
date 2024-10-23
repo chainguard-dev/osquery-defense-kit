@@ -71,6 +71,7 @@ WHERE (
     '~/.pnpm',
     '~/.rbenv',
     '~/.rustup',
+    '~/.pulumi',
     '~/Code',
     '~/code',
     '~/Projects',

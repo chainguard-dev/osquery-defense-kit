@@ -26,6 +26,7 @@ SELECT -- Child
   p0.parent AS p1_pid,
   p1.cgroup_path AS p1_cgroup,
   p1.path AS p1_path,
+  REGEX_MATCH (p1.path, '(.*)/', 1) AS p1_dirname,
   p1.name AS p1_name,
   p1.cmdline AS p1_cmd,
   p1_hash.sha256 AS p1_sha256,
@@ -47,38 +48,14 @@ WHERE
   AND p0.on_disk = 1
   AND NOT p0.pid IN (1, 2)
   AND NOT p1.pid IN (1, 2) -- launchd, kthreadd
-  AND NOT p1.path IN (
-    '/opt/brave.com/brave/brave',
-    '/opt/google/chrome/chrome',
-    '/usr/bin/alacritty',
-    '/usr/bin/roxterm',
-    '/usr/bin/doas',
-    '/usr/bin/dockerd',
-    '/usr/bin/fusermount3',
-    '/usr/libexec/at-spi-bus-launcher',
-    '/usr/bin/gnome-shell',
-    '/usr/bin/ibus-daemon',
-    '/usr/bin/kitty',
-    '/usr/lib/electron22/electron',
-    '/usr/bin/osqueryd',
-    '/usr/bin/make',
-    '/usr/bin/ninja',
-    '/usr/bin/cmake',
-    '/usr/libexec/gvfsd',
-    '/usr/bin/sudo',
-    '/usr/bin/tmux',
-    '/usr/bin/python3',
-    '/usr/bin/yay',
-    '/usr/libexec/gdm-wayland-session',
-    '/usr/libexec/gdm-x-session',
-    '/usr/libexec/gnome-terminal-server',
-    '/usr/lib/gnome-session-binary',
-    '/usr/lib/systemd/systemd',
-    '/usr/lib/xdg-document-portal',
-    '/usr/sbin/auditd',
-    '/usr/sbin/gdm3',
-    '/usr/sbin/sshd',
-    '/usr/share/code/code'
+  -- Probably a software upgrade
+  AND NOT p1_dirname IN (
+    '/usr/lib/electron22',
+    '/usr/bin',
+    '/usr/libexec',
+    '/usr/lib/systemd',
+    '/usr/lib',
+    '/usr/share/code'
   ) -- long-running launchers
   AND NOT p1.name IN (
     'bash',
@@ -91,11 +68,12 @@ WHERE
     'gnome-shell',
     'kubelet',
     'kube-proxy',
+    'Docker Desktop',
     'lightdm',
     'nvim',
     'sh',
     'slack'
-  ) -- These alerts were unfortunately useless - lots of spam on macOS
+  )
   AND NOT (
     p1.path LIKE '/app/%'
     AND p1.cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/%'

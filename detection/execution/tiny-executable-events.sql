@@ -43,8 +43,9 @@ WHERE
   AND p.path NOT LIKE '%.rb'
   AND p.path NOT IN (
     '/sbin/ldconfig',
-    '/usr/sbin/ldconfig',
     '/usr/bin/c_rehash',
+    '/usr/sbin/bpftool',
+    '/usr/sbin/ldconfig',
     '/usr/sbin/update-ca-certificates'
   )
   AND NOT p.path LIKE '%/bin/firefox'
@@ -59,9 +60,4 @@ WHERE
   AND NOT (
     p.path = "/"
     AND file.size < 8192
-  )
-  AND NOT p.cmdline IN (
-    'bpftool --version',
-    'bpftool --help',
-    'bpftool -V'
   )

@@ -68,6 +68,7 @@ WHERE
   )
   -- Some applications hard-code a safe DNS resolver, or allow the user to configure one
   AND s.remote_address NOT IN (
+    '1.0.0.1', -- Cloudflare
     '1.1.1.1', -- Cloudflare
     '1.1.1.2', -- Cloudflare
     '8.8.8.8', -- Google
@@ -92,6 +93,7 @@ WHERE
     '/opt/podman/bin/gvproxy',
     '/System/Volumes/Preboot/Cryptexes/Incoming/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking',
     '/usr/bin/tailscaled',
+    '/sbin/apk',
     '/usr/lib/systemd/systemd-resolved',
     '/usr/sbin/mDNSResponder'
   )
