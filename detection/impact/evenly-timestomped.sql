@@ -26,7 +26,6 @@ WHERE
     OR file.path LIKE "/etc/%%"
     OR file.path LIKE "/sbin/%%"
     OR file.path LIKE "/lib/%%"
-    OR file.path LIKE "/usr/%%"
   )
   -- This timestamp is in UTC
   AND file.mtime > (strftime('%s', 'now') - (86400 * 720))
@@ -51,4 +50,3 @@ WHERE
   AND file.path NOT LIKE '%/lynis%'
   AND file.path NOT LIKE '%/yelp-xsl%'
   AND file.path NOT LIKE '/etc/cups/%'
-  AND file.path NOT LIKE '/usr/%'
