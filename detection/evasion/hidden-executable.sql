@@ -83,19 +83,20 @@ WHERE (
     '~/.vs-kubernetes'
   )
   AND NOT top3_dir IN (
+    '~/.arkade/bin',
     '~/.bin',
     '~/.bin-unwrapped',
+    '~/.cache/gitstatus',
     '~/.cache/selenium/chromedriver/~',
     '~/.cargo/bin',
     '~/.config/bluejeans-v2',
     '~/.config/Code',
     '~/.config/nvm',
-    '~/.arkade/bin',
-    '~/.cache/gitstatus',
     '~/.cursor',
     '~/.deno/bin',
     '~/.devpod/contexts',
     '~/.docker/cli-plugins',
+    '~/.dotfiles/.local',
     '~/.fig/bin',
     '~/.go/bin',
     '/home/linuxbrew/.linuxbrew',

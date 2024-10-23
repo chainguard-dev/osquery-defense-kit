@@ -53,3 +53,4 @@ WHERE
   )
   AND NOT exception_key LIKE '500,1000,/tmp/keepassxc-%.lock,regular,0644'
   AND NOT exception_key LIKE '500,1000,/tmp/keepassxc-%.lock,regular,0664'
+  AND NOT exception_key LIKE '500,0,/tmp/.s.PGSQL.%.lock,regular,0600'

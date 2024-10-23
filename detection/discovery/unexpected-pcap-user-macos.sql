@@ -8,6 +8,7 @@
 SELECT
   s.authority,
   s.identifier,
+  pmm.path,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,

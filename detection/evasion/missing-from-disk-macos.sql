@@ -32,9 +32,12 @@ FROM
   processes p
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON pp.path = hash.path
+  LEFT JOIN file ON p.path = file.path
 WHERE
-  p.on_disk != 1 -- false positives from recently spawned processes
-  AND (strftime('%s', 'now') - p.start_time) > 900
+  -- Unlike on Linux, this also excludes processes where the binary has been replaced since start time
+  p.on_disk != 1
+  AND file.path = ''
+  AND (strftime('%s', 'now') - p.start_time) > 25000
   AND p.pid > 0
   AND p.parent != 2 -- kthreadd
   AND p.state != 'Z' -- The kernel no longer has enough tracking information for this alert to be useful

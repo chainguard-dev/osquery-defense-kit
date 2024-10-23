@@ -7,8 +7,7 @@
 --   * Almost unlimited: any extension that isn't on your whitelist
 --
 -- tags: persistent seldom browser
-SELECT
-  name,
+SELECT name,
   profile,
   chrome_extensions.description AS 'descr',
   persistent AS persists,
@@ -35,13 +34,11 @@ SELECT
     identifier
   ) AS exception_key,
   hash.sha256
-FROM
-  users
+FROM users
   CROSS JOIN chrome_extensions USING (uid)
   LEFT JOIN file ON chrome_extensions.path = file.path
   LEFT JOIN hash ON chrome_extensions.path = hash.path
-WHERE
-  state = 1
+WHERE state = 1
   AND (
     (
       from_webstore != 'true'
@@ -101,8 +98,6 @@ WHERE
     'true,Benjamin Hollis,JSONView,gmegofmjomhknnokphhckolhcffdaihd',
     'true,BetaFish,AdBlock — best ad blocker,gighmmpiobklfepjocnamgkkbiglidom',
     'true,,Bionic Reading,kdfkejelgkdjgfoolngegkhkiecmlflj',
-    'true,,Gem,bnbpceglddpnehbopmdjegpfinikcaoh',
-    'true,,Chrome Capture - screenshot & GIF,ggaabchcecdbomdcnbahdfddfikjmphe',
     'true,Bitwarden Inc.,Bitwarden - Free Password Manager,nngceckbapebfimnlniiiahkandclblb',
     'true,Bitwarden Inc.,Bitwarden Password Manager,nngceckbapebfimnlniiiahkandclblb',
     'true,,BlockSite: Block Websites & Stay Focused,eiimnmioipafcokbfikbljfdeojpcgbh',
@@ -114,7 +109,9 @@ WHERE
     'true,,Capital One Shopping: Add to Chrome for Free,nenlahapcbofgnanklpelkaejcehkggg',
     'true,,Capital One Shopping: Save Now,nenlahapcbofgnanklpelkaejcehkggg',
     'true,,Caret,fljalecfjciodhpcledpamjachpmelml',
+    'true,,Checker Plus for Gmail™,oeopbcgkkoapgobdbedcemjljbihmemj',
     'true,,Chrome Capture - Gif & Screenshot tool,ggaabchcecdbomdcnbahdfddfikjmphe',
+    'true,,Chrome Capture - screenshot & GIF,ggaabchcecdbomdcnbahdfddfikjmphe',
     'true,chromeos-recovery-tool-admin@google.com,Chromebook Recovery Utility,jndclpdbaamdhonoechobihbbiimdgai',
     'true,,Chrome RDP for Google Cloud Platform,mpbbnannobiobpnfblimoapbephgifkm',
     'true,,Chrome Remote Desktop,inomeogfingihgjfjlpeplalcfajhgai',
@@ -170,16 +167,19 @@ WHERE
     'true,,Fakespot Fake Amazon Reviews and eBay Sellers,nakplnnackehceedgkgkokbgbmfghain',
     'true,Federico Brigante,GitHub Issue Link Status,nbiddhncecgemgccalnoanpnenalmkic',
     'true,,feedly,hipbfijinpcgfogaopmgehiegacbhmob',
+    'true,,Fellow: Meeting Notes, Agendas, and 1-on-1s,nomeamlnnhgiickcddocjalmlhdfknpo',
     'true,,FoxyProxy Basic,dookpfaalaaappcdneeahomimbllocnb',
     'true,François Duprat,Mobile simulator - responsive testing tool,ckejmhbmlajgoklhgbapkiccekfoccmk',
     'true,,Free Maps Ruler,ejpahoknghmacibohhgleeacndkglgmo',
     "true,Gareth Stephenson,My O'Reilly Downloader,deebiaolijlopiocielojiipnpnaldlk",
+    'true,,Gem,bnbpceglddpnehbopmdjegpfinikcaoh',
     'true,Ghostery,Ghostery – Privacy Ad Blocker,mlomiejdfkolichcflejclcbmpeaniij',
     'true,Ghostery,Ghostery Tracker & Ad Blocker - Privacy AdBlock,mlomiejdfkolichcflejclcbmpeaniij',
     'true,Ghostery,Ghostery Tracker Ad Blocker - Privacy AdBlock,mlomiejdfkolichcflejclcbmpeaniij',
     'true,,GHunt Companion,dpdcofblfbmmnikcbmmiakkclocadjab',
     'true,,Github Absolute Dates,iepecohjelcmdnahbddleblfphbaheno',
     'true,,GitHub Red Alert,kmiekjkmkbhbnlempjkaombjjcfhdnfe',
+    'true,GLIDER,Glider Proctoring,dcnidakmkbkbohdaelljpgdhmbbpbdbg',
     'true,,Gmail™ Email Templates by cloudHQ,llccdnmbipddnkhmldacpcjjcnljpoij',
     'true,,Go Links,gojgbkejhelijlkgpmlbbkklljgmfljj',
     'true,,GoLinks,mdkgfdijbhbcbajcdlebbodoppgnmhab',
@@ -243,6 +243,7 @@ WHERE
     'true,Microsoft Corporation,Microsoft 365,ndjpnladcallmjemlbaebfadecfhkepb',
     'true,Microsoft Corporation,Microsoft Autofill,fiedbfgcleddlbcmgdigjgdfcggjcion',
     'true,,Microsoft Single Sign On,ppnbnpeolgkicgegkbkbjmhlideopiji',
+    'true,,Moesif Origin/CORS Changer & API Logger,digfbfaphojjndkpccljibejjbppifbc',
     'true,Moustachauve,Cookie-Editor,hlkenndednhfkekhgcdicdfddnkalmdm',
     'true,,MQTTLens,hemojaaeigabkbcookmlgmdigohjobjm',
     'true,,NordVPN - VPN proxy for privacy and security,fjoaledfpmneenckfbpdfhkmimnjocfa',
@@ -281,7 +282,6 @@ WHERE
     'true,,React Developer Tools,fmkadmapgofadopljbjfkapdkoienihi',
     'true,,Reader Mode,llimhhconnjiflfimocjggfjdlmlhblm',
     'true,,Readwise,egfepjgjabnppmaiadpedbgadkcelcbd',
-    'true,,Fellow: Meeting Notes, Agendas, and 1-on-1s,nomeamlnnhgiickcddocjalmlhdfknpo',
     'true,,Readwise Highlighter,jjhefcfhmnkfeepcpnilbbkaadhngkbi',
     'true,Reddit Enhancement Suite contributors,Reddit Enhancement Suite,kbmfpngjjgdllneeigpgjifpgocmfgmb',
     'true,,Redux DevTools,lmhkpmbekcpmknklioeibfkpmmfibljd',
@@ -290,8 +290,8 @@ WHERE
     'true,,RSS Feed Reader,pnjaodmkngahhkoihejjehlcdlnohgmp',
     'true,,RSS Subscription Extension (by Google),nlbjncdgjeocebhnmkbbbdekmmmcbfjd',
     'true,,SABconnect++,okphadhbbjadcifjplhifajfacbkkbod',
+    'true,,Salesforce inspector,aodjmnfhjibkcdimpodiifdjnnncaafh',
     'true,,Salesforce,jjghhkepijgakdammjldcbnjehfkfmha',
-    'true,,Video Downloader PLUS,njgehaondchbmjmajphnhlojfnbfokng',
     'true,,SalesLoft Connect,cffgjgigjfgjkfdopbobbdadaelbhepo',
     'true,,SalesLoft Connect - Legacy,cffgjgigjfgjkfdopbobbdadaelbhepo',
     'true,,Save to Google Drive,gmbmikajjgmnabiglmofipeabaddhgne',
@@ -346,6 +346,7 @@ WHERE
     'true,,Universal Video Downloader,cogmkaeijeflocngklepoknelfjpdjng',
     'true,,User-Agent Switcher for Chrome,djflhoibgkdhkhhcedjiklpkjnoahfmg',
     'true,,Utime,kpcibgnngaaabebmcabmkocdokepdaki',
+    'true,,Video Downloader PLUS,njgehaondchbmjmajphnhlojfnbfokng',
     'true,,Vidyard - Webcam & Screen Recorder for Sales,jiihcciniecimeajcniapbngjjbonjan',
     'true,,VidyoWebConnector,mmedphfiemffkinodeemalghecnicmnh',
     'true,,Vimcal,akopimcimmdmklcmegcflfidpfegngke',
@@ -380,5 +381,4 @@ WHERE
     )
     AND chrome_extensions.path LIKE '%/Microsoft Edge/%'
   )
-GROUP BY
-  exception_key
+GROUP BY exception_key

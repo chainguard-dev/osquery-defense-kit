@@ -8,8 +8,7 @@
 --
 -- tags: transient state net rapid
 -- platform: linux
-SELECT
-  s.remote_address,
+SELECT s.remote_address,
   s.remote_port,
   s.local_port,
   s.local_address,
@@ -39,14 +38,12 @@ SELECT
     'g,',
     p.name
   ) AS exception_key
-FROM
-  process_open_sockets s
+FROM process_open_sockets s
   LEFT JOIN processes p ON s.pid = p.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN file f ON p.path = f.path
   LEFT JOIN hash ON p.path = hash.path
-WHERE
-  protocol > 0
+WHERE protocol > 0
   AND s.remote_port > 0 -- See unexpected-https-client
   AND NOT (
     s.remote_port = 443
@@ -92,6 +89,7 @@ WHERE
     '8000,6,500,brave,0u,0g,brave',
     '8000,6,500,chrome,0u,0g,chrome',
     '8000,6,500,firefox,0u,0g,firefox',
+    '80,6,500,vlc,0u,0g,vlc',
     '80,6,500,telegram-desktop,u,g,telegram-deskto',
     '80,6,0,grep,0u,0g,grep',
     '80,6,0,incusd,0u,0g,incusd',
@@ -203,6 +201,15 @@ WHERE
   AND NOT exception_key LIKE '%,6,500,nuclei,500u,500g,nuclei'
   AND NOT exception_key LIKE '%,6,500,ssh,0u,0g,ssh'
   AND NOT (
+    s.remote_port = 80
+    AND s.protocol = 6
+    AND p.euid > 500
+    AND (
+      p.path LIKE '%/bin/%'
+      OR p.path LIKE '/app/%'
+    )
+  )
+  AND NOT (
     p.name = 'java'
     AND p.cmdline LIKE '/home/%/.local/share/JetBrains/Toolbox/%'
     AND s.remote_port > 1024
@@ -274,5 +281,4 @@ WHERE
       OR p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
     )
   )
-GROUP BY
-  p.cmdline
+GROUP BY p.cmdline

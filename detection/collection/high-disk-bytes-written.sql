@@ -206,14 +206,15 @@ WHERE
   )
   AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p0.path NOT LIKE '/home/%/.local/share/Steam'
-  AND p0.path NOT LIKE '/nix/store/%/bin/%sh'
   AND p0.path NOT LIKE '/nix/store/%/bin/nix'
-  AND p0.path NOT LIKE '/System/Applications/%'
-  AND p0.path NOT LIKE "%/terraform-provider-%"
-  AND p0.path NOT LIKE '/System/Library/%'
-  AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
-  AND p0.path NOT LIKE '/var/kolide-k2/%/osqueryd'
+  AND p0.path NOT LIKE '/nix/store/%/bin/%sh'
   AND p0.path NOT LIKE '/nix/store/%kolide-launcher-%/bin/launcher'
+  AND p0.path NOT LIKE '/System/Applications/%'
+  AND p0.path NOT LIKE '/System/Library/%'
+  AND p0.path NOT LIKE "%/terraform-provider-%"
+  AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+  AND p0.path NOT LIKE '/var/folders/%/T/go-build%'
+  AND p0.path NOT LIKE '/var/kolide-k2/%/osqueryd'
   AND NOT p0.cmdline LIKE '%/lib/gcloud.py components update'
   AND NOT p0.cmdline LIKE '%/gsutil %rsync%'
   AND NOT p0.cmdline LIKE '%brew.rb upgrade'
