@@ -119,7 +119,7 @@ FROM
           '/usr/sbin/umount.nfs',
           '/usr/sbin/umount.nfs4',
           '/usr/sbin/userhelper',
-          '/usr/sbin/wodim'
+          '/usr/sbin/wodim',
           '/bin/bwrap',
           '/usr/bin/bwrap'
         )
