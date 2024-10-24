@@ -60,6 +60,7 @@ WHERE
   AND yara.count > 0
   AND p0.name NOT IN (
     'atuin',
+    'cargo',
     'Cody',
     'deno',
     'DevPod',

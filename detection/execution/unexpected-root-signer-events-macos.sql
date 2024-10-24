@@ -126,24 +126,8 @@ WHERE
   )
   AND NOT (
     s.authority = ""
-    AND pe.path LIKE "/opt/%/bin/socket_vmnet"
+    AND pe.path LIKE "/opt/%/bin/%"
     AND p1_path IN ("/usr/bin/sudo", "/sbin/launchd")
   )
-  AND NOT (
-    s.authority = ""
-    AND pe.path LIKE "/opt/homebrew/Cellar/mariadb/%/bin/mariadbd"
-    AND p0_cmd LIKE "/opt/homebrew/opt/mariadb/bin/mariadbd %"
-  )
-  AND NOT (
-    s.authority = ""
-    AND pe.path LIKE "/opt/homebrew/Cellar/tailscale/%/bin/tailscaled"
-    AND p0_cmd LIKE "/opt/homebrew/Cellar/tailscale/%/bin/tailscaled %"
-  )
-  AND NOT (
-    s.authority = "Developer ID Application: Node.js Foundation (HX7739G8FX)"
-    AND p0_name = "node"
-    AND p1_name IN ("vim", "nvim")
-  )
-  AND NOT pe.path LIKE '/usr/local/Cellar/htop/%/bin/htop'
   -- Surfshark
   AND NOT pe.path LIKE '/Library/SystemExtensions/%/com.surfshark.vpnclient.macos.direct.PacketTunnel-WireGuard.systemextension/Contents/MacOS'

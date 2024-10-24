@@ -82,6 +82,7 @@ WHERE
     'factorio',
     'Fedora Media Writer',
     'firefox',
+    'firefox-bin',
     'fish',
     'fleet_backend',
     'fsdaemon',
@@ -164,6 +165,7 @@ WHERE
   )
   AND NOT p0.path LIKE '/Library/SystemExtensions/%/io.kandji.KandjiAgent.ESF-Extension.systemextension/Contents/MacOS/io.kandji.KandjiAgent.ESF-Extension'
   AND NOT p0.path LIKE '/Users/%/Library/Application Support/Google/GoogleUpdater/%/GoogleUpdater.app/Contents/MacOS/GoogleUpdater'
+  AND NOT p0.path LIKE '/private/var/folders/%/T/go-build%'
   AND NOT (
     p0.name = 'bindfs'
     AND p0.cmdline LIKE 'bindfs%-o fsname=%'
