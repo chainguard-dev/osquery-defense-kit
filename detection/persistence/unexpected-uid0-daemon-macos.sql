@@ -323,6 +323,7 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
     'Developer ID Application: Ilya Parniuk (ACC5R6RH47)',
     'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
+    'Developer ID Application: SparkLabs Pty Ltd (34XR7GXFPX)',
     'Developer ID Application: Keybase, Inc. (99229SGT5K)',
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Kolide, Inc (X98UFR7HA3)',

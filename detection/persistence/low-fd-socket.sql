@@ -54,6 +54,7 @@ WHERE
   AND pos.family != 1
   AND p0.path NOT IN (
     '/Applications/NetSpot.app/Contents/MacOS/NetSpot',
+    '/Library/Application Support/Viscosity/viscosity_openvpn',
     '/usr/bin/skopeo',
     '/usr/libexec/bootpd',
     '/usr/libexec/pcp/bin/pmcd',

@@ -9,10 +9,9 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1070/006/ (Timestomping)
 --
--- tags: transient seldom filesystem state
+-- tags: transient seldom filesystem state extra
 -- platform: darwin
-SELECT
-  p.path,
+SELECT p.path,
   p.name,
   p.cmdline,
   p.euid,
@@ -29,26 +28,23 @@ SELECT
   hash.sha256 AS sha256,
   signature.identifier,
   signature.authority
-FROM
-  processes p
+FROM processes p
   LEFT JOIN file f ON p.path = f.path
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN signature ON p.path = signature.path
-WHERE
-  p.pid IN (
-    SELECT
-      pid
-    FROM
-      processes
-    WHERE
-      path NOT LIKE '/System/%'
+WHERE p.pid IN (
+    SELECT pid
+    FROM processes
+    WHERE path NOT LIKE '/System/%'
       AND path NOT LIKE '/Library/Apple/%'
       AND path NOT LIKE '/usr/libexec/%'
       AND path NOT LIKE '/usr/sbin/%'
       AND path NOT LIKE '/sbin/%'
       AND path NOT LIKE '/Volumes/%'
       AND path NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%'
+      AND path NOT LIKE '/Applications/%/Contents/MacOS/%'
+      AND path NOT LIKE '/opt/%/bin/%'
       AND path NOT LIKE '/usr/bin/%'
       AND path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
       AND path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
@@ -60,8 +56,7 @@ WHERE
     OR (
       (btime_ctime_days_diff < -365)
       AND (btime_ctime_days_diff < -1000)
-    )
-    -- access time is older than start time
+    ) -- access time is older than start time
     OR start_atime_days_diff > 90
   ) -- Vendors that create software packages that look like a touched file.
   AND NOT signature.authority IN (
@@ -74,7 +69,8 @@ WHERE
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Emmanouil Konstantinidis (3YP8SXP3BF)',
-    'Developer ID Application: Fumihiko Takayama (G43BCU2T37)', -- Karibiner
+    'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',
+    -- Karibiner
     'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
     'Developer ID Application: Galvanix (5BRAQAFB8B)',
     'Developer ID Application: General Arcade (Pte. Ltd.) (S8JLSG5ES7)',
@@ -122,8 +118,7 @@ WHERE
     AND p.path LIKE '/nix/store/%'
   )
   AND NOT (
-    p.euid > 300
-    -- Electron
+    p.euid > 300 -- Electron
     AND p.path LIKE '% Helper'
   )
   AND NOT (
@@ -133,5 +128,4 @@ WHERE
       OR p.path LIKE '/nix/store/%/bin/nix-daemon'
     )
   )
-GROUP by
-  p.pid
+GROUP by p.pid

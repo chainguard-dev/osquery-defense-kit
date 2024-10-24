@@ -70,8 +70,10 @@ WHERE
     '68.105.28.13', -- Cox
     '80.248.7.1', -- 21st Century (NG)
     '34.160.111.32', -- wolfi.dev
-    '185.125.190.31' -- Canonical
+    '185.125.190.31', -- Canonical
+    '185.125.190.77' -- Canonical
   )
+
   -- Exceptions that specifically talk to one server
   AND exception_key NOT IN (
     'coredns,0.0.0.0,53',
@@ -111,6 +113,7 @@ WHERE
     'apk',
     'agentbeat',
     'apko',
+    'canonical-livep',
     'chrome',
     'com.apple.WebKit.Networking',
     'com.docker.backend',
@@ -135,6 +138,7 @@ WHERE
   AND p.name NOT IN ('Jabra Direct Helper', 'terraform-provi')
   -- Chromium/Electron apps seem to send stray packets out like nobodies business
   AND p.path NOT LIKE '%/%.app/Contents/MacOS/% Helper'
+  AND p.path NOT LIKE '/snap/%'
   -- Workaround for the GROUP_CONCAT subselect adding a blank ent
 GROUP BY
   s.remote_address,
