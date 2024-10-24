@@ -61,6 +61,7 @@ WHERE -- Focus on longer-running programs
       AND NOT path LIKE '/Users/%/dev/%'
       AND NOT path LIKE '/Users/%/src/%'
       AND NOT path LIKE '/Users/%/bin/%'
+      AND NOT path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/%'
       AND NOT path LIKE '/private/var/folders%/T/go-build%/exe/%'
       AND NOT path LIKE '/Users/%/.terraform/providers/%'
       AND NOT REGEX_MATCH (path, '(.*)/', 1) LIKE '%/bin'
@@ -85,6 +86,7 @@ WHERE -- Focus on longer-running programs
     '500,sdzoomplugin,,',
     '500,sdaudioswitch,,',
     '500,gopls,a.out,',
+    '500,sdmicmute,sdmicmute,',
     '500,sdaudioswitch,sdaudioswitch,'
   )
   AND NOT exception_key LIKE '500,lifx-streamdeck,lifx-streamdeck-%'

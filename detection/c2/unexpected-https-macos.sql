@@ -186,7 +186,6 @@ WHERE
     '500,istioctl,istioctl,500u,20g',
     '500,istioctl,istioctl,,a.out',
     '500,java,java,0u,0g',
-    '500,streamer,streamer,Developer ID Application: Autodesk (XXKJ396S2Y),streamer',
     '500,log-streaming,log-streaming,500u,80g',
     '500,.man-wrapped,.man-wrapped,0u,500g',
     '500,nami,nami,0u,0g',
@@ -211,6 +210,8 @@ WHERE
   )
   AND NOT s.authority IN (
     'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
+    'Developer ID Application: AMZN Mobile LLC (94KV3E626L)',
+    'Developer ID Application: Autodesk (XXKJ396S2Y)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: AgileBits Inc. (2BUA8C4S2C)',
     'Developer ID Application: ANCHORE, INC. (9MJHKYX5AT)',

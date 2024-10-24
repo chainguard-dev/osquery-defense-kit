@@ -79,6 +79,7 @@ WHERE pos.pid IN (
       AND state != 'LISTEN'
   ) -- Ignore most common application paths
   AND p0.path NOT LIKE '/Applications/%.app/Contents/MacOS/%'
+  AND p0.path NOT LIKE '/Applications/%.app/Contents/%/MacOS/%'
   AND p0.path NOT LIKE '/Applications/%.app/Contents/Resources/%'
   AND p0.path NOT LIKE '/Library/Apple/%'
   AND p0.path NOT LIKE '/Library/Application Support/%/Contents/%'
@@ -92,7 +93,8 @@ WHERE pos.pid IN (
     '0,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     '500,Apple Mac OS Application Signing',
     '500,Developer ID Application: Cisco (DE8Y96K9QP)',
-    '500,Developer ID Application: Google LLC (EQHXZ8M8AV)'
+    '500,Developer ID Application: Google LLC (EQHXZ8M8AV)',
+    '500,Developer ID Application: Valve Corporation (MXGJJ98X76)'
   )
   AND NOT (
     unsigned_exception = '500,6,80,main,main'
