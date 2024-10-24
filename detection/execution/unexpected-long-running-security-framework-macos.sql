@@ -80,9 +80,15 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Google, Inc. (EQHXZ8M8AV)',
     'Developer ID Application: Valve Corporation (MXGJJ98X76)'
   )
-  AND exception_key NOT IN ('0,velociraptor,a.out,')
+  AND exception_key NOT IN (
+    '0,velociraptor,a.out,',
+    '500,sdzoomplugin,,',
+    '500,sdaudioswitch,,',
+    '500,gopls,a.out,',
+    '500,sdaudioswitch,sdaudioswitch,'
+  )
   AND NOT exception_key LIKE '500,lifx-streamdeck,lifx-streamdeck-%'
   AND NOT exception_key LIKE '500,___Test%.test,a.out'
   AND NOT exception_key LIKE '500,nvim,bob-%,'
-  AND NOT exception_key LIKE '500,%,a.out,'
+  AND NOT exception_key LIKE '500,sm-agent,sm_agent-%'
 GROUP BY p0.pid
