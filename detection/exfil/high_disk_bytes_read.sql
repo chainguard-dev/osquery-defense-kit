@@ -10,7 +10,7 @@
 -- references:
 --   * https://attack.mitre.org/tactics/TA0010/ (Exfiltration)
 --
--- tags: transient process
+-- tags: transient process extra
 SELECT
   -- WARNING: Writes to tmpfs are not reflected against this counter
   p0.disk_bytes_read AS bytes_read,
