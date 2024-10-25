@@ -11,7 +11,7 @@
 -- where the kernel namespaces can be shared. These kind of attacks tend to be
 --
 -- platform: linux
--- tags: transient state container escalation
+-- tags: transient state container escalation extra
 SELECT
   command,
   image_id,
@@ -25,24 +25,17 @@ FROM
 WHERE
   privileged = 1
   AND image_name NOT IN (
-    'cgr.dev/chainguard-private/python',
-    'cgr.dev/chainguard/apko',
-    'cgr.dev/chainguard/k3s',
-    'cgr.dev/chainguard/melange',
-    'cgr.dev/chainguard/python',
-    'cgr.dev/chainguard/sdk',
-    'cgr.dev/chainguard/wolfi-base',
     'distroless.dev/melange',
     'docker.io/library/registry',
     'docker.io/rancher/k3s',
     'gcr.io/k8s-minikube/kicbase',
-    'ghcr.io/wolfi-dev/sdk',
-    'ghcr.io/wolfi-dev/sdk@sha256',
     'kindest/node',
     'ligfx/k3d-registry-dockerd',
     'moby/buildkit',
-    'wolfi'
+    'wolfi',
+    'jdk-crac'
   )
+  AND image NOT LIKE 'cgr.dev/chainguard%'
   AND image NOT LIKE 'ghcr.io/k3d-io/k3d-%'
   AND image NOT LIKE 'ghcr.io/wolfi-dev/%'
   AND image NOT LIKE 'melange-%'

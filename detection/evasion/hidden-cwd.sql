@@ -73,6 +73,7 @@ WHERE p0.pid IN (
         'bindfs',
         'code',
         'Code Helper',
+        'Code Helper (Plugin)',
         'find',
         'git',
         'gitsign',
@@ -143,7 +144,12 @@ WHERE p0.pid IN (
       '~/.hunter/_Base',
       '~/.zsh'
     )
-    OR top_dir IN ('~/Sync', '~/src', '~/workspace')
+    OR top_dir IN (
+      '~/Sync',
+      '~/src',
+      '~/workspace',
+      '~/dev'
+    )
     OR dir LIKE '/Library/Apple/System/Library/InstallerSandboxes/.PKInstallSandboxManager-SystemSoftware/%'
     OR dir LIKE '/opt/homebrew/%/.cache/%'
     OR dir LIKE '~/%enterprise-packages/.chainguard'

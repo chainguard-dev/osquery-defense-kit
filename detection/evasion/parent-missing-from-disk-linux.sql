@@ -52,6 +52,7 @@ WHERE
   AND NOT p1_dirname IN (
     '/usr/lib/electron22',
     '/usr/bin',
+    '/opt/google/chrome',
     '/usr/libexec',
     '/usr/lib/systemd',
     '/usr/lib',
@@ -60,6 +61,7 @@ WHERE
   AND NOT p1.name IN (
     'bash',
     'dnf',
+    'chrome',
     'ninja',
     'make',
     'electron',
