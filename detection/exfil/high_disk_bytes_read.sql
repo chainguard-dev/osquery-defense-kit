@@ -50,8 +50,9 @@ WHERE
   bytes_read_rate > 2500000
   AND age > 180
   AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
-  AND p0.path NOT LIKE '%/bin/%'
-  AND p0.path NOT LIKE '/usr/%'
+  AND p0.path NOT LIKE '/app/%'
+  -- Don't exclude /usr so that we find things like tar & rsync
+  AND p0.path NOT LIKE '/opt/%'
   AND p0.path NOT LIKE '/home/%/.local/share/Steam/steamapps/%'
   AND p0.path NOT LIKE '/Library/Apple/System/Library/%'
   AND p0.path NOT LIKE '/System/Applications/%'
@@ -59,6 +60,7 @@ WHERE
   AND p0.name NOT IN (
     'apko',
     'Autodesk Identity Manager',
+    'Autodesk Fusion 360',
     'baloo_file',
     'baloo_file_extr',
     'bash',

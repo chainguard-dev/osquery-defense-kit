@@ -62,6 +62,7 @@ WHERE -- Focus on longer-running programs
       AND NOT path LIKE '/Users/%/src/%'
       AND NOT path LIKE '/Users/%/bin/%'
       AND NOT path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/%'
+      AND NOT path LIKE '/Users/%/Library/Application Support/Zed/supermaven/%'
       AND NOT path LIKE '/private/var/folders%/T/go-build%/exe/%'
       AND NOT path LIKE '/Users/%/.terraform/providers/%'
       AND NOT REGEX_MATCH (path, '(.*)/', 1) LIKE '%/bin'

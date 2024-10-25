@@ -253,6 +253,7 @@ WHERE
   AND NOT alt_exception_key LIKE '500,terraform-provider-%,terraform-provider-%,500u,20g'
   AND NOT alt_exception_key LIKE '500,plugin_host-%,plugin_host-%,500u,20g'
   AND NOT alt_exception_key LIKE '500,sm-agent-%,sm-agent-%,500u,20g'
+  AND NOT alt_exception_key LIKE '500,kubectl%,kubectl%,500u,20g'
   AND NOT p0.path LIKE '/private/var/folders/%/T/GoLand/%'
   AND NOT (
     exception_key IN (

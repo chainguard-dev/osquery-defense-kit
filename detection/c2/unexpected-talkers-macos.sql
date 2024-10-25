@@ -92,6 +92,7 @@ WHERE pos.pid IN (
   AND NOT signed_exception IN (
     '0,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     '500,Apple Mac OS Application Signing',
+    '500,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     '500,Developer ID Application: Cisco (DE8Y96K9QP)',
     '500,Developer ID Application: Google LLC (EQHXZ8M8AV)',
     '500,Developer ID Application: Valve Corporation (MXGJJ98X76)'

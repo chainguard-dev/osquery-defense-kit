@@ -16,6 +16,7 @@ SELECT s.remote_address,
   p.path,
   p.cmdline AS child_cmd,
   p.cwd,
+  p.euid,
   pp.path AS parent_path,
   p.parent AS parent_pid,
   pp.cmdline AS parent_cmd,
@@ -110,6 +111,7 @@ WHERE protocol > 0
     '80,6,0,python3.11,0u,0g,yum',
     '80,6,0,python3.12,0u,0g,dnf',
     '80,6,0,python3.12,0u,0g,yum',
+    '89,6,500,chrome,0u,0g,chrome',
     '80,6,0,python3.9,u,g,yum',
     '80,6,0,rpm-ostree,0u,0g,rpm-ostree',
     '80,6,0,sort,0u,0g,sort',
@@ -164,8 +166,10 @@ WHERE protocol > 0
     '80,6,500,slirp4netns,500u,500g,slirp4netns',
     '80,6,500,spotify,0u,0g,spotify',
     '80,6,500,spotify,500u,500g,spotify',
+    '80,6,500,ZoomWebviewHost,0u,0g,ZoomWebviewHost',
     '80,6,500,spotify-launcher,0u,0g,spotify-launche',
     '80,6,500,spotify,u,g,spotify',
+    '80,6,0,dnf5,0u,0g,dnf5',
     '80,6,500,steam,500u,100g,steam',
     '80,6,500,steam,500u,500g,steam',
     '80,6,500,steamwebhelper,500u,500g,steamwebhelper',
@@ -207,6 +211,7 @@ WHERE protocol > 0
     AND (
       p.path LIKE '%/bin/%'
       OR p.path LIKE '/app/%'
+      OR p.path LIKE '/opt/%'
     )
   )
   AND NOT (
