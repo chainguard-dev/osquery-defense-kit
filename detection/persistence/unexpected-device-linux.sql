@@ -193,6 +193,7 @@ WHERE (
     '/dev/sg,character',
     '/dev/sgx_provision',
     '/dev/shm/,directory',
+    '/dev/shm/envoy_shared_memory_,regular',
     '/dev/shm/libpod_lock,regular',
     '/dev/shm/libpod_rootless_lock_,regular',
     '/dev/shm/lttng-ust-wait-,regular',

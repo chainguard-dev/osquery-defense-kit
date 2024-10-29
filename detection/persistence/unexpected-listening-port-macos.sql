@@ -272,7 +272,7 @@ WHERE port != 0
   AND NOT (
     (
       exception_key LIKE '80,6,500,ssh,Software Signing'
-      AND p.cmdline LIKE '%/.colima/_lima/colima-docker/ssh.sock'
+      AND p.cmdline LIKE '%/.colima/_lima/colima-docker/ssh.sock%'
     )
   )
 GROUP BY exception_key

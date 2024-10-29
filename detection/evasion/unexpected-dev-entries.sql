@@ -45,6 +45,7 @@ WHERE
       OR file.path LIKE '/dev/shm/u1000-Valve%'
       OR file.path LIKE '/dev/shm/aomshm.%'
       OR file.path LIKE '/dev/shm/jack_db%'
+      OR file.path LIKE '/dev/shm/.com.microsoft.Edge.*'
     )
   )
   AND NOT (
