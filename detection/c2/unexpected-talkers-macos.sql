@@ -95,7 +95,8 @@ WHERE pos.pid IN (
     '500,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     '500,Developer ID Application: Cisco (DE8Y96K9QP)',
     '500,Developer ID Application: Google LLC (EQHXZ8M8AV)',
-    '500,Developer ID Application: Valve Corporation (MXGJJ98X76)'
+    '500,Developer ID Application: Valve Corporation (MXGJJ98X76)',
+    '500,Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G)'
   )
   AND NOT (
     unsigned_exception = '500,6,80,main,main'
