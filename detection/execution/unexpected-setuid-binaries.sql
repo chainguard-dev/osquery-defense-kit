@@ -294,7 +294,9 @@ FROM
           '/usr/sbin/umount.nfs',
           '/usr/sbin/umount.nfs4',
           '/usr/sbin/unix_chkpwd',
-          '/usr/sbin/usernetctl'
+          '/usr/sbin/usernetctl',
+          '/usr/bin/bwrap',
+          '/bin/bwrap'
         )
       )
       AND NOT (
