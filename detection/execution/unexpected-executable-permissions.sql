@@ -128,3 +128,7 @@ WHERE
     p0.name = 'ShortcutDroplet'
     AND f.mode = '0751'
   )
+  AND NOT (
+    f.path = '/home/%/.local/share/AppImage/ZenBrowser.AppImage'
+    AND f.mode = '0600'
+  )

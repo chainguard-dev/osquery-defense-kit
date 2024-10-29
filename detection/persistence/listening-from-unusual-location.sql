@@ -116,6 +116,7 @@ WHERE
     '32768,6,500,Code Helper (Plugin)',
     '24024,17,500,MTGA',
     '32768,6,500,Python',
+    '32768,6,500,python3',
     '32768,17,499,viscosity_openvpn',
     '1,1,500,ping'
   )

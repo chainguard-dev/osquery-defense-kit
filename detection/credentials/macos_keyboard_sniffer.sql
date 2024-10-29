@@ -67,6 +67,7 @@ WHERE
     'HueSync,com.lighting.huesync,Developer ID Application: Signify Netherlands B.V. (PREPN2W95S)',
     'Hyperkey,com.knollsoft.Hyperkey,Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',
     'Lunar,fyi.lunar.Lunar,Developer ID Application: Alin Panaitiu (RDDXV84A73)',
+    'Magnet,com.crowdcafe.windowmagnet,Apple Mac OS Application Signing',
     'MonitorControl,me.guillaumeb.MonitorControl,Developer ID Application: Joni Van Roost (CYC8C8R4K9)',
     'Rocket,net.matthewpalmer.Rocket,Developer ID Application: Matthew Palmer (Z4JV2M65MH)',
     'Superkey,com.knollsoft.Superkey,Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',

@@ -80,6 +80,7 @@ WHERE
   )
   AND program_arguments NOT IN (
     '/Applications/AeroSpace.app/Contents/MacOS/AeroSpace --started-at-login',
+    '/Applications/RODE Virtual Channels.app/Contents/MacOS/RODE Virtual Channels',
     '/Applications/Stream Deck.app/Contents/MacOS/Stream Deck --runinbk',
     '/Applications/Tunnelblick.app/Contents/Resources/launchAtLogin.sh',
     '/Library/Application Support/Sony Application Launcher/SonyAutoLauncher.app/Contents/MacOS/SonyAutoLauncher',

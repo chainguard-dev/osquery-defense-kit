@@ -81,6 +81,7 @@ WHERE
     'Socket Process,8.8.8.8,53',
     'com.docker.backend,8.8.8.8,53',
     'ZoomPhone,8.8.8.8,53',
+    'ZoomPhone,200.48.225.130,53',
     'gvproxy,170.247.170.2,53',
     'CapCut,8.8.8.8,53',
     'ZaloCall,8.8.8.8,53',
