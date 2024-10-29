@@ -171,6 +171,7 @@ WHERE
   AND NOT path_exception IN (
     '/dev/autofs,systemd',
     '/dev/console,agetty',
+    '/dev/console,busybox',
     '/dev/cpu/0/msr,nvidia-powerd',
     '/dev/drm_dp_aux,fwupd',
     '/dev/fb,Xorg',

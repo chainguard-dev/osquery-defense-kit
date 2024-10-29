@@ -110,6 +110,7 @@ WHERE
     '0,licenseDaemon,licenseDaemon,Developer ID Application: PACE Anti-Piracy, Inc. (TFZ8226T6X),com.paceap.eden.licenseDaemon',
     '0,chainctl,chainctl,,a.out',
     '500,agent,agent,Developer ID Application: Datadog, Inc. (JKFCB4CN7C),agent',
+    '500,Arc Helper,Arc Helper,Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.browser.helper',
     '500,Authy,Authy,Apple iPhone OS Application Signing,com.authy',
     '500,podman,podman,Developer ID Application: Red Hat, Inc. (HYSCB8KRL2),podman',
     '500,bash,bash,,bash',

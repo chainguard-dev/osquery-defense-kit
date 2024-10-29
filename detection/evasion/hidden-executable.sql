@@ -116,6 +116,7 @@ WHERE (
   AND NOT dir LIKE '%/.terraform/providers/%'
   AND NOT dir LIKE '%/node_modulues/.bin/hugo'
   AND NOT dir LIKE '%/node_modules/.pnpm/%'
+  AND NOT dir LIKE '%/.Trash/1Password %.app/Contents/Library/LoginItems/1Password Extension Helper.app/Contents/MacOS'
   AND NOT f.directory LIKE '/Applications/Corsair iCUE5 Software/.cuepkg-%'
   AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'
   AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'
@@ -125,6 +126,5 @@ WHERE (
     AND p0.name LIKE '%-wrappe%'
   )
   AND NOT f.path LIKE '%/.Trash/1Password %.app/Contents/Library/LoginItems/1Password Extension Helper.app/Contents/MacOS'
-  AND NOT f.path LIKE '/private/var/root/.Trash/OneDrive %.app/Contents/StandaloneUpdater.app/Contents/MacOS'
   AND NOT f.path LIKE '/home/%/.local/share/AppImage/ZenBrowser.AppImage'
 GROUP BY f.path
