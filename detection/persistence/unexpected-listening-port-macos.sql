@@ -76,6 +76,7 @@ WHERE port != 0
     '22000,6,500,syncthing,Developer ID Application: Jakob Borg (LQE5SYM783)',
     '22000,6,500,syncthing,Developer ID Application: Kastelo AB (LQE5SYM783)',
     '22,6,0,launchd,Software Signing',
+    '22,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '2345,6,500,dlv,',
     '24678,6,500,node,',
     '24800,6,500,deskflow-server,',
@@ -266,6 +267,12 @@ WHERE port != 0
       p.path = '/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent'
       AND lp.port = 3283
       AND lp.protocol = 6
+    )
+  )
+  AND NOT (
+    (
+      exception_key LIKE '80,6,500,ssh,Software Signing'
+      AND p.cmdline LIKE '%/.colima/_lima/colima-docker/ssh.sock'
     )
   )
 GROUP BY exception_key

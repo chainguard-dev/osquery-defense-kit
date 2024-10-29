@@ -78,6 +78,8 @@ WHERE
     '/.mozilla/',
     '/tmp/.accounts-agent/',
     '/tmp/.audio-agent/',
+    -- Xcode; see https://github.com/pyenv/pyenv/issues/1066#issuecomment-536782897
+    '/tmp/.BBE72B41371180178E084EEAF106AED4F350939DB95D3516864A1CC62E7AE82',
     '/tmp/.bazelci/',
     '/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
     '/tmp/.content-agent/',

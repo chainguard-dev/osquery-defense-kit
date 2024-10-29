@@ -181,6 +181,7 @@ WHERE protocol > 0
     '80,6,500,WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '80,6,500,wget,0u,0g,wget',
     '80,6,500,wine64-preloader,0u,0g,control.exe',
+    '80,6,500,zen,u,g,zen',
     '80,6,500,zoom,0u,0g,zoom',
     '80,6,500,zoom.real,u,g,zoom.real',
     '8080,6,500,brave,0u,0g,brave',

@@ -84,6 +84,7 @@ WHERE -- Focus on longer-running programs
   )
   AND exception_key NOT IN (
     '0,velociraptor,a.out,',
+    '500,cloud_sql_proxy,a.out,',
     '500,sdzoomplugin,,',
     '500,sdaudioswitch,,',
     '500,gopls,a.out,',

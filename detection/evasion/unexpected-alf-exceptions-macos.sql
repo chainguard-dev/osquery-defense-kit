@@ -55,6 +55,7 @@ WHERE -- Filter out stock exceptions to decrease overhead
     'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF),com.adguard.mac.adguard.network-extension,/Library/SystemExtensions/AD3BCA34-237A-4135-B7A4-0F7477D9144C/com.adguard.mac.adguard.network-extension.systemextension/,0',
     'Developer ID Application: Python Software Foundation (BMM5U3QVKW),org.python.python,/Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/,0',
     'Developer ID Application: Python Software Foundation (BMM5U3QVKW),org.python.python,/Library/Frameworks/Python.framework/Versions/3.12/Resources/Python.app/,0',
+    'Developer ID Application: Ned Deily (DJ3H93M7VJ),org.python.python,/Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/,0',
     'Developer ID Application: Tailscale Inc. (W5364U7YZB),io.tailscale.ipn.macsys.network-extension,/Library/SystemExtensions/A30AF854-E980-4345-A658-17000BF66D00/io.tailscale.ipn.macsys.network-extension.systemextension/,0',
     '/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/',
     ',,/Users/cpanato/code/src/github.com/sigstore/docs/node_modules/.bin/hugo/hugo,501'

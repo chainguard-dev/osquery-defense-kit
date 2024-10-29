@@ -108,6 +108,7 @@ WHERE
   AND NOT exception_key IN (
     '0,AGSService,AGSService,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.ags',
     '0,licenseDaemon,licenseDaemon,Developer ID Application: PACE Anti-Piracy, Inc. (TFZ8226T6X),com.paceap.eden.licenseDaemon',
+    '0,chainctl,chainctl,,a.out',
     '500,agent,agent,Developer ID Application: Datadog, Inc. (JKFCB4CN7C),agent',
     '500,Authy,Authy,Apple iPhone OS Application Signing,com.authy',
     '500,podman,podman,Developer ID Application: Red Hat, Inc. (HYSCB8KRL2),podman',
@@ -135,6 +136,7 @@ WHERE
     '500,melange,melange,,a.out',
     '500,ngrok,ngrok,Developer ID Application: ngrok LLC (TEX8MHRDQ9),a.out',
     '500,node,node,Developer ID Application: Node.js Foundation (HX7739G8FX),node',
+    '500,odo-darwin-amd64-b4853e1fa,odo-darwin-amd64-b4853e1fa,500u,20g',
     '500,Paintbrush,Paintbrush,Developer ID Application: Michael Schreiber (G966ML7VBG),com.soggywaffles.paintbrush',
     '500,PlexMobile,PlexMobile,Apple iPhone OS Application Signing,com.plexapp.plex',
     '500,Plex,Plex,Developer ID Application: Plex Inc. (K4QJ56KR4A),tv.plex.desktop',
