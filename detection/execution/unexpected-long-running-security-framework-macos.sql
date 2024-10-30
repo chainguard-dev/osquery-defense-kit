@@ -86,11 +86,11 @@ WHERE -- Focus on longer-running programs
     '0,velociraptor,a.out,',
     '500,cloud_sql_proxy,a.out,',
     '500,docker,docker,',
-    '500,sdzoomplugin,,',
-    '500,sdaudioswitch,,',
     '500,gopls,a.out,',
+    '500,sdaudioswitch,,',
+    '500,sdaudioswitch,sdaudioswitch,',
     '500,sdmicmute,sdmicmute,',
-    '500,sdaudioswitch,sdaudioswitch,'
+    '500,sdzoomplugin,,'
   )
   AND NOT exception_key LIKE '500,lifx-streamdeck,lifx-streamdeck-%'
   AND NOT exception_key LIKE '500,___Test%.test,a.out'

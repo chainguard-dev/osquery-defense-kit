@@ -64,26 +64,26 @@ WHERE (
     OR f.directory LIKE '%/.%'
   )
   AND NOT top2_dir IN (
+    '~/.cursor',
     '~/.dropbox-dist',
+    '~/.fzf',
     '~/.goenv',
     '~/.gradle/jdks',
+    '~/.krew',
     '~/.local',
     '~/.pnpm',
+    '~/.pulumi',
     '~/.rbenv',
     '~/.rustup',
-    '~/.pulumi',
-    '~/Code',
-    '~/code',
-    '~/.cursor',
-    '~/Projects',
-    '~/src',
     '~/.sdkman',
     '~/.supermaven',
     '~/.terraform',
     '~/.tflint.d',
     '~/.vs-kubernetes',
-    '~/.krew',
-    '~/.fzf'
+    '~/Code',
+    '~/Projects',
+    '~/code',
+    '~/src'
   )
   AND NOT top3_dir IN (
     '~/.arkade/bin',
