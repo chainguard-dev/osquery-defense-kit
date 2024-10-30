@@ -109,4 +109,8 @@ WHERE pos.pid IN (
     )
     AND p0.path LIKE '/opt/homebrew/Cellar/podman/%/libexec/podman/gvproxy'
   )
+  AND NOT (
+    unsigned_exception = '500,0,0,chainlink,chainlink'
+    AND p0.path LIKE '/var/folders/%/T/go-build%/b001/exe/chainlink'
+  )
 GROUP BY p0.cmdline
