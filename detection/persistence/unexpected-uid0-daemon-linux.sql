@@ -313,6 +313,7 @@ WHERE
     'tcpdump,/usr/bin/tcpdump,0,user.slice,user-1000.slice,0755',
     'thermald,/usr/sbin/thermald,0,system.slice,thermald.service,0755',
     'tuned,/usr/bin/python3.12,0,system.slice,tuned.service,0755',
+    'ubuntu-advantag,/usr/libexec/ubuntu-advantage-desktop-daemon,0,system.slice,ubuntu-advantage-desktop-daemon.service,0755',
     'udisksd,/nix/store/__VERSION__/libexec/udisks2/udisksd,0,system.slice,udisks2.service,0555',
     'udisksd,/usr/libexec/udisks2/udisksd,0,system.slice,udisks2.service,0755',
     'udisksd,/usr/lib/udisks2/udisksd,0,system.slice,udisks2.service,0755',

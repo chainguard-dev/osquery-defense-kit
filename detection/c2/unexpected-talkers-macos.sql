@@ -103,7 +103,16 @@ WHERE pos.pid IN (
     AND p0.path LIKE '/var/folders/%/T/go-build%/b001/exe/main'
   )
   AND NOT (
-    unsigned_exception = '500,6,32768,gvproxy,gvproxy'
+    unsigned_exception IN (
+      '500,6,32768,gvproxy,gvproxy',
+      '500,17,123,gvproxy,gvproxy'
+    )
     AND p0.path LIKE '/opt/homebrew/Cellar/podman/%/libexec/podman/gvproxy'
+  )
+  AND NOT (
+    unsigned_exception = '500,0,0,chainlink,chainlink'
+    AND p0.path LIKE '/var/folders/%/T/go-build%/b001/exe/chainlink'
+    AND remote_port = 0
+    AND protocol = 0
   )
 GROUP BY p0.cmdline

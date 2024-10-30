@@ -111,6 +111,7 @@ WHERE
     '~/Applications (Parallels)/',
     '~/bin/',
     '~/.cargo/',
+    '~/chainguard_repos/',
     '~/code/',
     '~/Code/',
     '~/.config/',
