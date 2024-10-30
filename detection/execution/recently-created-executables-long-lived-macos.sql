@@ -1,4 +1,4 @@
--- Long-running programs who were recently added to disk, based on btime/ctime
+-- Long-running programs who were started around when they were written to disk
 --
 -- false-positives:
 --   * many
@@ -22,6 +22,7 @@ SELECT
     REPLACE(f.directory, u.directory, '~')
   ) AS top3_dir,
   REPLACE(f.path, u.directory, '~') AS homepath,
+  p0.start_time - f.btime AS start_birth_delta,
   -- Child
   p0.pid AS p0_pid,
   p0.start_time AS p0_start,
@@ -66,20 +67,25 @@ WHERE
       processes
     WHERE
       start_time > 0
-      AND start_time > (strftime('%s', 'now') - 43200)
+      AND start_time > (strftime('%s', 'now') - 86400)
       AND pid > 0
       AND path != ""
       AND NOT path LIKE '/Applications/%'
       AND NOT path LIKE '/Library/Apple/%'
       AND NOT path LIKE '/nix/store/%'
+      AND NOT path LIKE '/usr/libexec/%'
+      AND NOT path LIKE '/usr/sbin/%'
+      AND NOT path LIKE '/bin/%'
+      AND NOT path LIKE '/usr/bin/%'
+      AND NOT path LIKE '/Library/Elastic/Agent/data/%/components/%'
       AND NOT path LIKE '/opt/%'
       AND NOT path LIKE '%/bin/cargo'
       AND NOT path LIKE '/System/%'
       AND NOT path LIKE '/usr/local/kolide-k2/bin/%'
-      AND NOT path LIKE '%/cloud_sql_proxy'
   )
-  AND (p0.start_time - MAX(f.ctime, f.btime)) < 10800
-  AND f.ctime > 0
+  -- Processes that started around when they were last modified on disk
+  AND start_birth_delta BETWEEN -900 AND 900
+  -- Exceptions for no-privileged execution
   AND NOT (
     p0.euid > 499
     AND (
@@ -141,11 +147,16 @@ WHERE
       OR dir LIKE '~/dev/%'
       OR dir LIKE '~/git/%'
       OR f.path LIKE '%go-build%'
+      OR homepath LIKE '~/%/cloud_sql_proxy'
       OR homepath LIKE '~/%/src/%.test'
       OR homepath LIKE '~/%/pkg/%.test'
       OR homepath LIKE '~/%/gopls'
       OR homepath LIKE '~/go/%/bin'
       OR homepath LIKE '~/Parallels/%/WinAppHelper'
+      OR homepath LIKE '~/%/terraform-provider-%'
+      OR homepath LIKE '~/src/%'
+      OR homepath LIKE '~/github/%'
+      OR homepath LIKE '~/go/src/%'
       OR f.path LIKE '/private/tmp/%/Creative Cloud Installer.app/Contents/MacOS/Install'
       OR f.path LIKE '/private/tmp/go-%'
       OR f.path LIKE '/private/tmp/nix-build-%'
@@ -224,6 +235,7 @@ WHERE
     AND p0.path LIKE "/Users/%/Library/Printers/%/Contents/MacOS/PrinterProxy"
     AND p0.uid > 499
   )
+  -- Local developer testing
   AND NOT (
     homepath LIKE '~/%'
     AND p0.uid > 499
@@ -234,10 +246,6 @@ WHERE
     AND p0.path NOT LIKE '%/.%'
     AND p0.path NOT LIKE '%Cache%'
   )
-  AND NOT homepath LIKE '~/%/terraform-provider-%'
-  AND NOT homepath LIKE '~/src/%'
-  AND NOT homepath LIKE '~/github/%'
-  AND NOT homepath LIKE '~/go/src/%'
   -- Arc
   AND NOT (
     p0.path LIKE '/Users/%/Library/Caches/%/org.sparkle-project.Sparkle/Launcher/%'
