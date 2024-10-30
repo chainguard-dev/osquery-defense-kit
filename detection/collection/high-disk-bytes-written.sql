@@ -10,7 +10,7 @@
 -- references:
 --   * https://attack.mitre.org/tactics/TA0009/ (Collection)
 --
--- tags: transient process
+-- tags: transient process extra
 SELECT
   -- WARNING: Writes to tmpfs are not reflected against this counter
   p0.disk_bytes_written AS bytes_written,
@@ -206,6 +206,7 @@ WHERE
   )
   AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p0.path NOT LIKE '/home/%/.local/share/Steam'
+  AND p0.path NOT LIKE '/Library/Application Support/%'
   AND p0.path NOT LIKE '/nix/store/%/bin/nix'
   AND p0.path NOT LIKE '/nix/store/%/bin/%sh'
   AND p0.path NOT LIKE '/nix/store/%kolide-launcher-%/bin/launcher'

@@ -72,6 +72,10 @@ WHERE
     '28',
     '29',
     '30',
+    '31',
+    '32',
+    '33',
+    '34',
     'backend',
     'emacs',
     'build',
@@ -85,6 +89,7 @@ WHERE
   )
   AND NOT basename LIKE 'python3.%'
   AND NOT basename LIKE 'python2.%'
+  AND NOT basename LIKE 'kubectl-%'
   AND NOT basename LIKE 'terraform-provider%'
   AND NOT basename LIKE 'ld-%.so'
   AND NOT basename LIKE 'unison-%'

@@ -3,7 +3,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1071/ (C&C, Application Layer Protocol)
 --
--- tags: transient state net often
+-- tags: transient state net often extra
 -- platform: macos
 SELECT
   pos.protocol,
@@ -213,18 +213,17 @@ WHERE
   )
   AND NOT s.authority IN (
     'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
-    'Developer ID Application: AMZN Mobile LLC (94KV3E626L)',
-    'Developer ID Application: Autodesk (XXKJ396S2Y)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: AgileBits Inc. (2BUA8C4S2C)',
+    'Developer ID Application: AMZN Mobile LLC (94KV3E626L)',
     'Developer ID Application: ANCHORE, INC. (9MJHKYX5AT)',
+    'Developer ID Application: Autodesk (XXKJ396S2Y)',
     'Developer ID Application: Bitdefender SRL (GUNFMW623Y)',
     'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)',
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Denver Technologies, Inc (2BBY89MBSN)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
-    'Developer ID Application: TechSmith Corporation (7TQL462TU8)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
     'Developer ID Application: Farhan Ahmed (4RZN52RN5P)',
@@ -248,7 +247,9 @@ WHERE
     'Developer ID Application: SteelSeries (6WGL6CHFH2)',
     'Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
     'Developer ID Application: Tailscale Inc. (W5364U7YZB)',
+    'Developer ID Application: TechSmith Corporation (7TQL462TU8)',
     'Developer ID Application: Tenable, Inc. (4B8J598M7U)',
+    'Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G)',
     'Developer ID Application: Valve Corporation (MXGJJ98X76)',
     'Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     'Developer ID Application: Zwift, Inc (C2GM8Y9VFM)'
