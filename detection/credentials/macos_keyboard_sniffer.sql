@@ -79,7 +79,8 @@ WHERE
     'polyrecorder,polyrecorder,Developer ID Application: Adam Pietrasiak (SXF593CX2N)',
     'skhd,skhd,',
     'LinearMouse,com.lujjjh.LinearMouse,Developer ID Application: Jiahao Lu (C5686NKYJ7)',
-    'synergy-core,synergy-core,Developer ID Application: Symless Ltd (4HX897Y6GJ)'
+    'synergy-core,synergy-core,Developer ID Application: Symless Ltd (4HX897Y6GJ)',
+    'deskflow-server,deskflow-server,'
   )
 GROUP BY
   p0.path
