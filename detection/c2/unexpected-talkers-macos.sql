@@ -112,5 +112,7 @@ WHERE pos.pid IN (
   AND NOT (
     unsigned_exception = '500,0,0,chainlink,chainlink'
     AND p0.path LIKE '/var/folders/%/T/go-build%/b001/exe/chainlink'
+    AND remote_port = 0
+    AND protocol = 0
   )
 GROUP BY p0.cmdline
