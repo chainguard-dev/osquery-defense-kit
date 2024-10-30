@@ -82,7 +82,8 @@ WHERE (
     '~/.terraform',
     '~/.tflint.d',
     '~/.vs-kubernetes',
-    '~/.krew'
+    '~/.krew',
+    '~/.fzf'
   )
   AND NOT top3_dir IN (
     '~/.arkade/bin',

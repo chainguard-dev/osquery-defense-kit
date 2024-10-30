@@ -175,6 +175,7 @@ WHERE
     '8009,6,0,java',
     '80,6,0,docker-proxy',
     '80,6,101,nginx',
+    '80,6,0,apache2',
     '80,6,33,apache2',
     '80,6,60,nginx',
     '8080,6,0,coredns',
