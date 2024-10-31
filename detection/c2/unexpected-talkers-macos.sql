@@ -104,6 +104,7 @@ WHERE pos.pid IN (
   )
   AND NOT (
     unsigned_exception IN (
+      '500,6,0,gvproxy,gvproxy',
       '500,6,32768,gvproxy,gvproxy',
       '500,17,123,gvproxy,gvproxy'
     )
@@ -112,6 +113,12 @@ WHERE pos.pid IN (
   AND NOT (
     unsigned_exception = '500,0,0,chainlink,chainlink'
     AND p0.path LIKE '/var/folders/%/T/go-build%/b001/exe/chainlink'
+    AND remote_port = 0
+    AND protocol = 0
+  )
+  AND NOT (
+    unsigned_exception = '500,0,0,.Telegram-wrapped,.Telegram-wrapped'
+    AND p0.path LIKE '/nix/store/%-telegram-desktop-%'
     AND remote_port = 0
     AND protocol = 0
   )

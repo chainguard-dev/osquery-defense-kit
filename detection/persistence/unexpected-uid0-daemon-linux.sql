@@ -211,6 +211,7 @@ WHERE
     'lxcfs,/usr/bin/lxcfs,0,system.slice,lxcfs.service,0755',
     'lxc-monitord,/usr/libexec/lxc/lxc-monitord,0,system.slice,lxc-monitord.service,0755',
     'lxc-monitord,/usr/lib/x86_64-linux-gnu/lxc/lxc-monitord,0,system.slice,lxc-monitord.service,0755',
+    'make,/usr/bin/make,0,user.slice,user-1000.slice,0755',
     'mbim-proxy,/usr/libexec/mbim-proxy,0,system.slice,ModemManager.service,0755',
     'mcelog,/usr/sbin/mcelog,0,system.slice,mcelog.service,0755',
     'ModemManager,/usr/sbin/ModemManager,0,system.slice,ModemManager.service,0755',

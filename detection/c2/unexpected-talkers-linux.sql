@@ -188,6 +188,7 @@ WHERE protocol > 0
     '8080,6,500,brave,0u,0g,brave',
     '8080,6,500,chrome,0u,0g,chrome',
     '8080,6,500,firefox,0u,0g,firefox',
+    '8080,6,500,idea,0u,0g,idea',
     '8080,6,500,python3.11,0u,0g,speedtest-cli',
     '8080,6,500,speedtest,500u,500g,speedtest',
     '8443,6,500,chrome,0u,0g,chrome',

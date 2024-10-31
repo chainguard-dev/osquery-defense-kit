@@ -97,4 +97,5 @@ WHERE -- Focus on longer-running programs
   AND NOT exception_key LIKE '500,___Test%.test,a.out'
   AND NOT exception_key LIKE '500,nvim,bob-%,'
   AND NOT exception_key LIKE '500,sm-agent,sm_agent-%'
+  AND NOT exception_key LIKE '500,___2go_build_main_go,a.out,'
 GROUP BY p0.pid
