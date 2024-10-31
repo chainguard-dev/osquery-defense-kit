@@ -115,6 +115,7 @@ WHERE (
   AND NOT f.directory LIKE '/Applications/Corsair iCUE5 Software/.cuepkg-%'
   AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'
   AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'
+  AND NOT f.directory LIKE '/Volumes/com.getdropbox.dropbox-%'
   AND NOT f.path LIKE '/nix/store/%/%-wrapped'
   AND NOT (
     f.path LIKE '/nix/store/%'
@@ -124,4 +125,5 @@ WHERE (
   AND NOT homedir LIKE '~/.local/share/AppImage/ZenBrowser.AppImage'
   AND NOT homedir LIKE '~/Library/Application Support/Code/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/%'
   AND NOT homedir LIKE '%/.Trash/1Password %.app/Contents/Library/LoginItems/1Password Extension Helper.app/Contents/MacOS'
+  AND NOT homedir LIKE '%/.Trash/Logi Options.app/Contents/Support/LogiMgrDaemon.app/Contents/MacOS'
 GROUP BY f.path

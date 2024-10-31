@@ -157,6 +157,7 @@ WHERE state = 1
     'true,,Endpoint Verification,callobklhcbilhphinckomhgkigmfocg',
     'true,,Eno® from Capital One®,clmkdohmabikagpnhjmgacbclihgmdje',
     'true,,Espruino Web IDE,bleoifhkdalbjfbobjackfdifdneehpo',
+    'true,,Evaboot,edccjhikjlfoakbbijgomgnoflcjgfjh',
     'true,,Event Merge for Google Calendar™,idehaflielbgpaokehlhidbjlehlfcep',
     'true,Evernote,Evernote Web Clipper,pioclpoplcdbaefihamjohnefbikjilc',
     'true,ExpressVPN,ExpressVPN: VPN proxy for a better internet,fgddmllnllkalaagkghckoinaemmogpe',

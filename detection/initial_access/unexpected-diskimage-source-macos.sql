@@ -235,6 +235,7 @@ WHERE
     'superhuman.com',
     'tableplus.com',
     'textexpander.com',
+    'tosmediaserver.schwab.com',
     'transmissionbt.com',
     'ubuntu.com',
     'ultimaker.com',
