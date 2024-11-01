@@ -99,6 +99,7 @@ WHERE
     "nm-dispatcher",
     "xdg-dbus-proxy",
     "xdg-desktop-portal",
+    "xdg-desktop-portal-xapp",
     "xdg-desktop-portal-gnome",
     "xdg-desktop-portal-gtk",
     "xdg-desktop-portal-kde",

@@ -199,7 +199,8 @@ WHERE
     '9090,6,500,controlplane',
     '9153,6,0,coredns',
     '9300,6,500,authentik-proxy',
-    '9880,6,500,rootlesskit'
+    '9880,6,500,rootlesskit',
+    '9999,6,500,python3'
   )
   AND NOT (
     p.path LIKE '/ko-app/%'

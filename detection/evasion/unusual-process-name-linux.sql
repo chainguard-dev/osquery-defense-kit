@@ -103,6 +103,7 @@ WHERE
     "com.docker.extensions",
     "dynamiclinkmanager",
     'firefox',
+    'firefox-bin',
     "gmenudbusmenuproxy",
     "irqbalance",
     "kactivitymanagerd",
