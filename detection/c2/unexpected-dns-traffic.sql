@@ -79,9 +79,10 @@ WHERE
   )
   -- Other exceptions
   AND exception_key NOT IN (
-    'coredns,0.0.0.0,53',
-    'nessusd,50.16.123.71,53',
     'Arc Helper,1.0.0.1,53',
+    'coredns,0.0.0.0,53',
+    'goland,149.112.112.10,53',
+    'nessusd,50.16.123.71,53',
     'syncthing,46.162.192.181,53'
   )
   -- Local DNS servers and custom clients go here

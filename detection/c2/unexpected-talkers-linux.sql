@@ -195,6 +195,7 @@ WHERE protocol > 0
     '8443,6,500,firefox,0u,0g,firefox',
     '8801,17,500,zoom,0u,0g,zoom',
     '8801,17,500,zoom.real,u,g,zoom.real',
+    '8883,6,500,bambu-studio,u,g,bambustu_main',
     '88,6,500,syncthing,0u,0g,syncthing',
     '8987,6,500,whois,0u,0g,whois',
     '9,17,0,launcher,0u,0g,launcher',

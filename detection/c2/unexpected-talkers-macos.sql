@@ -104,6 +104,7 @@ WHERE pos.pid IN (
   )
   AND NOT (
     unsigned_exception IN (
+      '500,0,0,gvproxy,gvproxy',
       '500,6,0,gvproxy,gvproxy',
       '500,6,32768,gvproxy,gvproxy',
       '500,17,123,gvproxy,gvproxy'
