@@ -143,6 +143,7 @@ WHERE (
     '/dev/kmsg,character',
     '/dev/kvm,character',
     '/dev/libmtp--.,character',
+    '/dev/libmtp--,character',
     '/dev/log,socket',
     '/dev/loop,block',
     '/dev/loop-control,character',

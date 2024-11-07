@@ -87,6 +87,7 @@ WHERE
     'coredns,0.0.0.0,53',
     'coredns,8.8.8.8,53',
     'distnoted,8.8.8.8,53',
+    'dockerd,162.159.140.238,53',
     'EpicWebHelper,8.8.4.4,53',
     'EpicWebHelper,8.8.8.8,53',
     'gvproxy,170.247.170.2,53',
