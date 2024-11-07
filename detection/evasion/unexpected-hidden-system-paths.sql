@@ -64,6 +64,7 @@ WHERE
     '/dev/.mdadm/',
     '/.equarantine/',
     '/etc/.bootcount',
+    '/dev/.blkid.tab',
     '/etc/.clean',
     '/etc/.java/',
     '/etc/.resolv.conf.systemd-resolved.bak',
