@@ -167,7 +167,7 @@ WHERE
     'gdm-session-wor,/usr/lib/gdm-session-worker,0,user.slice,user-120.slice,0755',
     'gdm,/usr/bin/gdm,0,system.slice,gdm.service,0755',
     'gdm,/usr/sbin/gdm,0,system.slice,gdm.service,0755',
-    'gdm,/usr/sbin/gdm,0,system.slice,display-manager.service,0755'
+    'gdm,/usr/sbin/gdm,0,system.slice,display-manager.service,0755',
     'geoclue.service,Location Lookup Service,geoclue,500',
     'gnome-keyring-d,/usr/bin/gnome-keyring-daemon,0,user.slice,user-1000.slice,0755',
     'gpg-agent,/usr/bin/gpg-agent,0,system.slice,fwupd.service,0755',
