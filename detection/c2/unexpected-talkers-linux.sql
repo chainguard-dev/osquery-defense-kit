@@ -83,6 +83,7 @@ WHERE protocol > 0
   )
   AND NOT exception_key IN (
     '123,17,500,chronyd,0u,0g,chronyd',
+    '123,17,473,chronyd,0u,0g,chronyd',
     '19305,6,500,msedge,0u,0g,msedge',
     '4070,6,500,spotify,u,g,spotify',
     '49152,6,500,ContinuityCaptureAgent,Software Signing',
