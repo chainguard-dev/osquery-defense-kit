@@ -116,6 +116,7 @@ WHERE (
   AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'
   AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'
   AND NOT f.directory LIKE '/Volumes/com.getdropbox.dropbox-%'
+  AND NOT f.directory LIKE '/var~/Code/cgr/private/.terraform/%'
   AND NOT f.path LIKE '/nix/store/%/%-wrapped'
   AND NOT (
     f.path LIKE '/nix/store/%'
