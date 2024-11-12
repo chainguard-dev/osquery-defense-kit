@@ -159,6 +159,7 @@ WHERE protocol > 0
     '80,6,500,python3.11,0u,0g,dnf',
     '80,6,500,python3.11,0u,0g,yum',
     '80,6,500,python3.12,0u,0g,pull-lp-source',
+    '80,6,0,python3.12,0u,0g,dnf-automatic',
     '80,6,500,qemu-system-x86_64,0u,0g,qemu-system-x86',
     '80,6,500,qemu-system-x86_64,500u,500g,qemu-system-x86',
     '80,6,500,rpi-imager,0u,0g,rpi-imager',
