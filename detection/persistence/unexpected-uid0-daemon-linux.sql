@@ -308,6 +308,7 @@ WHERE
     'supergfxd,/usr/bin/supergfxd,0,system.slice,supergfxd.service,0755',
     'su,/usr/bin/su,0,user.slice,user-1000.slice,4755',
     'su,/usr/bin/su,1000,user.slice,user-0.slice,4755',
+    'mc,/usr/bin/mc,0,user.slice,user-0.slice,0755',
     'switcheroo-cont,/usr/libexec/switcheroo-control,0,system.slice,switcheroo-control.service,0755',
     'systemd-coredum,/nix/store/__VERSION__/lib/systemd/systemd-coredump,0,,,0555',
     'systemd-homed,/usr/lib/systemd/systemd-homed,0,system.slice,systemd-homed.service,0755',

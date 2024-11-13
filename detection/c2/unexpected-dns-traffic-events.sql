@@ -73,7 +73,6 @@ WHERE
     '185.125.190.31', -- Canonical
     '185.125.190.77' -- Canonical
   )
-
   -- Exceptions that specifically talk to one server
   AND exception_key NOT IN (
     'adguard_dns,1.0.0.1,53',
@@ -84,6 +83,7 @@ WHERE
     'ChatGPT,8.8.8.8,53',
     'com.docker.backend,8.8.8.8,53',
     'com.docker.vpnkit,8.8.8.8,53',
+    'Creative Cloud Content Manager.node,8.8.4.4,53',
     'coredns,0.0.0.0,53',
     'coredns,8.8.8.8,53',
     'distnoted,8.8.8.8,53',

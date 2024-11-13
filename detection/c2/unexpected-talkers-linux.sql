@@ -8,7 +8,8 @@
 --
 -- tags: transient state net rapid
 -- platform: linux
-SELECT s.remote_address,
+SELECT
+  s.remote_address,
   s.remote_port,
   s.local_port,
   s.local_address,
@@ -39,12 +40,14 @@ SELECT s.remote_address,
     'g,',
     p.name
   ) AS exception_key
-FROM process_open_sockets s
+FROM
+  process_open_sockets s
   LEFT JOIN processes p ON s.pid = p.pid
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN file f ON p.path = f.path
   LEFT JOIN hash ON p.path = hash.path
-WHERE protocol > 0
+WHERE
+  protocol > 0
   AND s.remote_port > 0 -- See unexpected-https-client
   AND NOT (
     s.remote_port = 443
@@ -108,11 +111,13 @@ WHERE protocol > 0
     '80,6,0,python3.12,500u,500g,dnf-automatic',
     '80,6,0,python3.10,0u,0g,yum',
     '80,6,0,python3.11,0u,0g,dnf',
+    '123,17,106,chronyd,0u,0g,chronyd',
     '5222,6,500,msedge,0u,0g,msedge',
     '80,6,0,python3.11,0u,0g,dnf-automatic',
     '80,6,0,python3.11,0u,0g,yum',
     '80,6,0,python3.12,0u,0g,dnf',
     '80,6,0,python3.12,0u,0g,yum',
+    '80,6,0,python3.12,0u,0g,dnf-automatic',
     '89,6,500,chrome,0u,0g,chrome',
     '80,6,0,python3.9,u,g,yum',
     '80,6,0,rpm-ostree,0u,0g,rpm-ostree',
@@ -294,4 +299,5 @@ WHERE protocol > 0
       OR p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
     )
   )
-GROUP BY p.cmdline
+GROUP BY
+  p.cmdline

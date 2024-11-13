@@ -55,6 +55,7 @@ FROM
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
   lp.port != 0
+  AND NOT lp.address IN ("127.0.0.1", "::1")
   AND (
     p0.path LIKE "/private/tmp%"
     OR p0.path LIKE "/private/var/tmp%"
@@ -93,11 +94,6 @@ WHERE
     AND lp.port > 1024
     and lp.protocol = 6
   )
-  AND NOT (
-    p0.name = "ssh"
-    AND homecwd LIKE '/tmp/%'
-    AND lp.address IN ("127.0.0.1", "::1")
-  )
   -- Overly broad, but prevents a lot of false positives
   AND NOT homepath LIKE "~/.%"
   AND NOT homecwd LIKE "~/.%"
@@ -118,6 +114,7 @@ WHERE
     '32768,6,500,Python',
     '32768,6,500,python3',
     '32768,17,499,viscosity_openvpn',
+    '9867,6,500,bazel-remote',
     '1,1,500,ping'
   )
   AND NOT p0.path LIKE '/nix/store/%'

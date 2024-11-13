@@ -8,7 +8,8 @@
 --
 -- tags: transient often
 -- platform: posix
-SELECT REPLACE(p0.cwd, u.directory, '~') AS dir,
+SELECT
+  REPLACE(p0.cwd, u.directory, '~') AS dir,
   REGEX_MATCH (
     REPLACE(p0.cwd, u.directory, '~'),
     '([/~].*?/.*?)/',
@@ -55,7 +56,8 @@ SELECT REPLACE(p0.cwd, u.directory, '~') AS dir,
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM processes p0
+FROM
+  processes p0
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN users u ON p0.uid = u.uid
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
@@ -64,10 +66,14 @@ FROM processes p0
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
-WHERE p0.pid IN (
-    SELECT DISTINCT pid
-    FROM processes
-    WHERE cwd LIKE '%/.%'
+WHERE
+  p0.pid IN (
+    SELECT DISTINCT
+      pid
+    FROM
+      processes
+    WHERE
+      cwd LIKE '%/.%'
       AND NOT name IN (
         'apfsd',
         'bindfs',
@@ -94,6 +100,7 @@ WHERE p0.pid IN (
       'bash,~/.Trash',
       'bash,~/.local/share',
       'bash,~/go/src',
+      'telegram-deskto,~/snap/telegram-desktop',
       'c++,~/.cache/yay',
       'cc1,/home/build/.cache',
       'cc1plus,~/.cache/yay',
@@ -119,6 +126,7 @@ WHERE p0.pid IN (
       'rust-analyzer-p,~/.cargo/registry',
       'rustc,/home/build/.cargo',
       'vet,/home/build/.cache',
+      'npm install,/home/build/.npm',
       'zsh,/private/tmp/workspace',
       'zsh,~/.Trash'
     )
@@ -129,6 +137,7 @@ WHERE p0.pid IN (
     OR dir IN (
       '~/.config',
       '~/.local/bin',
+      '/home/build',
       '/var/home/linuxbrew/.linuxbrew/Cellar',
       '~/.vim',
       '~/dev/extra-packages/.chainguard',
@@ -144,12 +153,7 @@ WHERE p0.pid IN (
       '~/.hunter/_Base',
       '~/.zsh'
     )
-    OR top_dir IN (
-      '~/Sync',
-      '~/src',
-      '~/workspace',
-      '~/dev'
-    )
+    OR top_dir IN ('~/Sync', '~/src', '~/workspace', '~/dev')
     OR dir LIKE '/Library/Apple/System/Library/InstallerSandboxes/.PKInstallSandboxManager-SystemSoftware/%'
     OR dir LIKE '/opt/homebrew/%/.cache/%'
     OR dir LIKE '~/%enterprise-packages/.chainguard'
@@ -190,4 +194,5 @@ WHERE p0.pid IN (
       AND p0.euid = 0
     )
   )
-GROUP BY p0.pid
+GROUP BY
+  p0.pid

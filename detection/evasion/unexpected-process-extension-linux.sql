@@ -93,3 +93,4 @@ WHERE
   AND NOT basename LIKE 'terraform-provider%'
   AND NOT basename LIKE 'ld-%.so'
   AND NOT basename LIKE 'unison-%'
+  AND NOT basename IN ('io.elementary.appcenter')

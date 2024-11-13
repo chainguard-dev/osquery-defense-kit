@@ -127,6 +127,9 @@ WHERE
         'goland',
         'java',
         'pycharm',
+        'zsh',
+        'bash',
+        'jetbrains',
         'sh',
         'vim',
         'vim.nox'

@@ -39,7 +39,7 @@ FROM
   LEFT JOIN hash ON p.path = hash.path
 WHERE
   port != 0
-  AND lp.address NOT IN ('224.0.0.251', '::1')
+  AND lp.address NOT IN ('224.0.0.251', '::1', '127.0.0.1', '127.1.1.1')
   AND lp.address NOT LIKE '127.0.0.%'
   AND lp.address NOT LIKE '172.1%'
   AND lp.address NOT LIKE 'fe80::%'
@@ -74,6 +74,7 @@ WHERE
     '10256,6,0,kube-proxy',
     '10256,6,500,kube-proxy',
     '1,1,500,ping',
+    '1,255,500,ping',
     '1,255,500,mtr-packet',
     '1337,6,500,kdenlive',
     '1716,6,500,daemon.js',

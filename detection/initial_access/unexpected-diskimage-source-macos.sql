@@ -96,6 +96,7 @@ WHERE
     'irccloud.com',
     'jetbrains.com',
     'kagi.com',
+    'kolide.com',
     'libreoffice.org',
     'live.com',
     'logitech.com',
@@ -266,5 +267,6 @@ WHERE
   AND host NOT LIKE 'www.google.%'
   AND host NOT LIKE '%release%.storage.googleapis.com'
   AND ea.value NOT LIKE 'https://storage.googleapis.com/copilot-mac-releases/%'
+  AND ea.value NOT LIKE 'https://storage.googleapis.com/kolide-k2-production-downloads-f414/%'
 GROUP BY
   ea.value

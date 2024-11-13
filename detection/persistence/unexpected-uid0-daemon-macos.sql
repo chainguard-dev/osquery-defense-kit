@@ -272,6 +272,7 @@ WHERE -- Focus on longer-running programs
         '/usr/local/bin/warsaw/core',
         '/usr/local/kolide-k2/bin/osquery-extension.ext',
         '/usr/local/sbin/velociraptor',
+        '/opt/colima/bin/socket_vmnet',
         '/usr/sbin/aslmanager',
         '/usr/sbin/audioclocksyncd',
         '/usr/sbin/auditd',

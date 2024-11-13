@@ -65,6 +65,7 @@ WHERE
     '/usr/bin/pavucontrol',
     '/usr/bin/espeak',
     '/usr/bin/unpigz',
+    '/usr/bin/xsettingsd',
     '/usr/bin/xss-lock',
     '/usr/bin/i3lock',
     '/usr/bin/xbindkeys',
