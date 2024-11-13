@@ -53,9 +53,11 @@ WHERE
     '/usr/lib/electron22',
     '/usr/bin',
     '/opt/google/chrome',
+    '/opt/microsoft/msedge',
     '/usr/libexec',
     '/usr/lib/systemd',
     '/usr/lib',
+    '/usr/lib/go/bin',
     '/usr/share/code'
   ) -- long-running launchers
   AND NOT p1.name IN (

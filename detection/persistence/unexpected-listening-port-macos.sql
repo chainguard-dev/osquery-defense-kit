@@ -5,7 +5,8 @@
 --
 -- tags: persistent state net low
 -- platform: darwin
-SELECT lp.address,
+SELECT
+  lp.address,
   lp.port,
   lp.protocol,
   p.uid,
@@ -27,11 +28,13 @@ SELECT lp.address,
     ',',
     signature.authority
   ) AS exception_key
-FROM listening_ports lp
+FROM
+  listening_ports lp
   LEFT JOIN processes p ON lp.pid = p.pid
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN signature ON p.path = signature.path
-WHERE port != 0
+WHERE
+  port != 0
   AND lp.address NOT IN ('224.0.0.251', '::1')
   AND lp.address NOT LIKE '127.0.0.%'
   AND lp.address NOT LIKE '172.1%'
@@ -57,9 +60,11 @@ WHERE port != 0
     '111,6,1,rpcbind,Software Signing',
     '1144,6,500,fuscript,Developer ID Application: Blackmagic Design Inc (9ZGFBWLSYP)',
     '1234,6,500,qemu-system-aarch64,',
+    '5001,6,500,Record It,Apple Mac OS Application Signing',
     '1313,6,500,hugo,',
     '1338,6,500,ec2-metadata-mock,',
     '1338,6,500,registry,',
+    '4466,6,500,headlamp-server,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '137,17,0,launchd,Software Signing',
     '137,17,222,netbiosd,Software Signing',
     '138,17,0,launchd,Software Signing',
@@ -70,6 +75,7 @@ WHERE port != 0
     '1824,6,500,WaveLink,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     '1834,6,500,Camera Hub,Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     '2112,6,500,fake,',
+    '49152,6,0,webfilterproxyd,Software Signing',
     '2112,6,500,rekor-server,',
     '2112,6,500,timestamp-server,',
     '22000,6,500,syncthing,',
@@ -275,4 +281,5 @@ WHERE port != 0
       AND p.cmdline LIKE '%/.colima/_lima/colima-docker/ssh.sock%'
     )
   )
-GROUP BY exception_key
+GROUP BY
+  exception_key

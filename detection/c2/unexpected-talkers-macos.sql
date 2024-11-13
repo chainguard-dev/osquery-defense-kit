@@ -5,7 +5,8 @@
 --
 -- tags: transient state net often
 -- platform: macos
-SELECT pos.protocol,
+SELECT
+  pos.protocol,
   pos.local_port,
   pos.remote_port,
   remote_address,
@@ -40,17 +41,24 @@ SELECT pos.protocol,
   p1.euid AS p1_euid,
   p1.cmdline AS p1_cmd,
   p1_hash.sha256 AS p1_sha256
-FROM process_open_sockets pos
+FROM
+  process_open_sockets pos
   LEFT JOIN processes p0 ON pos.pid = p0.pid
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
   LEFT JOIN processes p1 ON p0.parent = p1.pid
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN signature s ON p0.path = s.path
-WHERE pos.pid IN (
-    SELECT pid
-    from process_open_sockets
-    WHERE protocol > 0
+WHERE
+  pos.pid IN (
+    SELECT
+      pid
+    from
+      process_open_sockets
+    WHERE
+      protocol > 0
+      AND local_port > 0
+      AND remote_port > 0
       AND NOT (
         remote_port IN (53, 443)
         AND protocol IN (6, 17)
@@ -124,4 +132,5 @@ WHERE pos.pid IN (
     AND remote_port = 0
     AND protocol = 0
   )
-GROUP BY p0.cmdline
+GROUP BY
+  p0.cmdline

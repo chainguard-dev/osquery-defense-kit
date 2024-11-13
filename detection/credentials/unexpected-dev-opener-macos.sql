@@ -108,6 +108,7 @@ WHERE
     '/dev/io8log,WiFiAgent,Software Signing,com.apple.wifi.WiFiAgent',
     '/dev/io8log,WirelessRadioManagerd,Software Signing,com.apple.WirelessRadioManagerd',
     '/dev/io8log,airportd,Software Signing,com.apple.airport.airportd',
+    '/dev/cu.debug-console,ZwiftAppSilicon,Developer ID Application: Zwift, Inc (C2GM8Y9VFM),ZwiftAppSilicon',
     '/dev/io8log,symptomsd,Software Signing,com.apple.symptomsd',
     '/dev/io8logmt,airportd,Software Signing,com.apple.airport.airportd',
     '/dev/io8logtemp,ControlCenter,Software Signing,com.apple.controlcenter',

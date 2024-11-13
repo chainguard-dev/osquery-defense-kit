@@ -2,7 +2,8 @@
 --
 -- platform: darwin
 -- tags: persistent state process seldom
-SELECT s.authority,
+SELECT
+  s.authority,
   s.identifier,
   CONCAT (
     MIN(p0.euid, 500),
@@ -38,7 +39,8 @@ SELECT s.authority,
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM processes p0
+FROM
+  processes p0
   JOIN process_memory_map pmm ON p0.pid = pmm.pid
   LEFT JOIN signature s ON p0.path = s.path
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
@@ -48,9 +50,12 @@ FROM processes p0
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE -- Focus on longer-running programs
   p0.pid IN (
-    SELECT pid
-    FROM processes
-    WHERE start_time < (strftime('%s', 'now') - 25200)
+    SELECT
+      pid
+    FROM
+      processes
+    WHERE
+      start_time < (strftime('%s', 'now') - 25200)
       AND parent != 0 -- Assume STP
       AND NOT path LIKE '/System/%'
       AND NOT path LIKE '/usr/libexec/%'
@@ -100,4 +105,6 @@ WHERE -- Focus on longer-running programs
   AND NOT exception_key LIKE '500,___2go_build_main_go,a.out,'
   AND NOT exception_key LIKE '500,rust-analyzer,rust_analyzer-%,'
   AND NOT exception_key LIKE '500,package-version-server-v%,package_version_server-%,'
-GROUP BY p0.pid
+  AND NOT exception_key LIKE '500,marksman-macos,marksman-%,'
+GROUP BY
+  p0.pid

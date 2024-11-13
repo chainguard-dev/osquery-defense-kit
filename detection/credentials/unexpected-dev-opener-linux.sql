@@ -238,6 +238,8 @@ WHERE
     '/dev/video,zoom',
     '/dev/video,zoom.real',
     '/dev/wwan0mbim,mbim-proxy',
+    '/dev/udmabuf,xdg-desktop-portal-gnome',
+    '/dev/udmabuf,nautilus',
     '/dev/zfs,',
     '/dev/zfs,zed',
     '/dev/zfs,zfs',

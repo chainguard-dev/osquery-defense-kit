@@ -77,6 +77,7 @@ WHERE
     'fwupd,/usr/libexec/fwupd/fwupd,0,system.slice,fwupd.service,0755',
     'fwupd,/usr/lib/fwupd/fwupd,0,system.slice,fwupd.service,0755',
     'libvirtd,/usr/bin/libvirtd,0,system.slice,libvirtd.service,0755',
+    'implicitclass,/usr/lib/cups/backend/implicitclass,0,system.slice,cups.service,0744',
     'NetworkManager,/usr/bin/NetworkManager,0,system.slice,NetworkManager.service,0755',
     'NetworkManager,/usr/sbin/NetworkManager,0,system.slice,NetworkManager.service,0755',
     'nix-daemon,/nix/store/__VERSION__/bin/nix,0,system.slice,nix-daemon.service,0555',

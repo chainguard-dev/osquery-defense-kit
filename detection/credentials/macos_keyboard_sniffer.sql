@@ -57,6 +57,7 @@ FROM
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
   et.event_tapped IN ('EventKeyDown', 'EventKeyUp')
+  AND et.enabled != 0
   AND s.authority != 'Software Signing' -- Popular programs that sniff keyboard events, but do not appear to be malware.
   AND NOT exception_key IN (
     'Alfred,com.runningwithcrayons.Alfred,Developer ID Application: Running with Crayons Ltd (XZZXE9SED4)',

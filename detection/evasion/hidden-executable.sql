@@ -5,7 +5,8 @@
 --
 -- tags: transient
 -- platform: posix
-SELECT f.directory,
+SELECT
+  f.directory,
   f.btime,
   p0.start_time,
   RTRIM(
@@ -51,7 +52,8 @@ SELECT f.directory,
   p2.path AS p2_path,
   p2.cmdline AS p2_cmd,
   p2_hash.sha256 AS p2_sha256
-FROM processes p0
+FROM
+  processes p0
   LEFT JOIN file f ON p0.path = f.path
   LEFT JOIN users u ON f.uid = u.uid
   LEFT JOIN hash p0_hash ON p0.path = p0_hash.path
@@ -59,7 +61,8 @@ FROM processes p0
   LEFT JOIN hash p1_hash ON p1.path = p1_hash.path
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
-WHERE (
+WHERE
+  (
     p0.name LIKE '.%'
     OR f.filename LIKE '.%'
     OR f.directory LIKE '%/.%'
@@ -88,6 +91,7 @@ WHERE (
     '~/.terraform',
     '~/.tflint.d',
     '~/.vs-kubernetes',
+    '~/chainguard-images',
     '~/Code',
     '~/Projects',
     '~/code',
@@ -116,7 +120,7 @@ WHERE (
   AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'
   AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'
   AND NOT f.directory LIKE '/Volumes/com.getdropbox.dropbox-%'
-  AND NOT f.directory LIKE '/var~/Code/cgr/private/.terraform/%'
+  AND NOT f.directory LIKE '%/.terraform/%'
   AND NOT f.path LIKE '/nix/store/%/%-wrapped'
   AND NOT (
     f.path LIKE '/nix/store/%'
@@ -127,4 +131,5 @@ WHERE (
   AND NOT homedir LIKE '~/Library/Application Support/Code/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/%'
   AND NOT homedir LIKE '%/.Trash/1Password %.app/Contents/Library/LoginItems/1Password Extension Helper.app/Contents/MacOS'
   AND NOT homedir LIKE '%/.Trash/Logi Options.app/Contents/Support/LogiMgrDaemon.app/Contents/MacOS'
-GROUP BY f.path
+GROUP BY
+  f.path
