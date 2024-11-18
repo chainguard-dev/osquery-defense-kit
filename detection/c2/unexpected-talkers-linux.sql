@@ -197,6 +197,7 @@ WHERE
     '8080,6,500,chrome,0u,0g,chrome',
     '8080,6,500,firefox,0u,0g,firefox',
     '8080,6,500,idea,0u,0g,idea',
+    '32768,6,500,mumble,0u,0g,mumble',
     '8080,6,500,python3.11,0u,0g,speedtest-cli',
     '8080,6,500,speedtest,500u,500g,speedtest',
     '8080,6,500,bambu-studio,u,g,bambustu_main',

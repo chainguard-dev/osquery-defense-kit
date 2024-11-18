@@ -228,6 +228,7 @@ WHERE state = 1
     'true,Keepa GmbH,Keepa - Amazon Price Tracker,neebplgakaahbhdphmkckjjcegoiijjo',
     'true,LastPass,LastPass: Free Password Manager,hdokiejnpimakedhajhdlcegeplioahd',
     'true,Leadjet,Leadjet - Make your CRM work on LinkedIn,kojhcdejfimplnokhhhekhiapceggamn',
+    'true,,LeadIQ: Contact Data in One Click,befngoippmpmobkkpkdoblkmofpjihnk',
     'true,,Lever Hire Extension,dgbcohbjchndmjocioegkgdniaffcaia',
     'true,,Link to Text Fragment,pbcodcjpfjdpcineamnnmbkkmkdpajjg',
     'true,,Lolli: Earn Bitcoin When You Shop,fleenceagaplaefnklabikkmocalkcpo',

@@ -91,6 +91,7 @@ WHERE
   AND NOT exception_key IN (
     '0,udevadm,systemd-udevd',
     '0,udevadm,(udev-worker)',
+    '0,systemd-executor,(sd-pam)',
     '120,systemd-executor,(sd-pam)',
     '42,systemd-executor,(sd-pam)',
     '500,busybox,sh',

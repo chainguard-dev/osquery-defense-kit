@@ -111,6 +111,7 @@ WHERE
     '/dev/snd/seq',
     '/dev/urandom',
     '/dev/vga_arbiter',
+    '/dev/udmabuf',
     '/dev/video10' -- workaround for poor regex management (ffmpeg)
   )
   AND pof.path NOT LIKE '/dev/pts/%'

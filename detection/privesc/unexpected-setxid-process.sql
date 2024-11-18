@@ -34,6 +34,7 @@ WHERE
     '/usr/lib/opt/1Password/1Password-BrowserSupport',
     '/opt/1Password/1Password-KeyringHelper',
     '/opt/google/chrome/chrome-sandbox',
+    '/opt/IRCCloud/chrome-sandbox',
     '/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent',
     '/usr/bin/doas',
     '/usr/bin/crontab',

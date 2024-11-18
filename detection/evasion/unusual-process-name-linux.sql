@@ -40,6 +40,7 @@ FROM
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
+  p0.start_time < (strftime('%s', 'now') - 43200) AND
   (
     pname LIKE "%kthread%"
     OR pname LIKE "%-help"
@@ -98,6 +99,7 @@ WHERE
   AND basename NOT IN (
     "acpid",
     "busybox",
+    "cpulimit",
     "com.docker.backend",
     "com.docker.build",
     "com.docker.extensions",
@@ -126,6 +128,7 @@ WHERE
     "xwaylandvideobridge"
   )
   AND basename NOT LIKE '___Test%'
+  AND basename NOT LIKE '___2Test%'
   AND NOT (
     basename IN ('nm-dispatcher')
     AND p1_pid = 1
