@@ -27,4 +27,5 @@ WHERE
   AND command NOT LIKE 'gsutil %'
   AND command NOT LIKE 'root command -v debian-sa1%'
   AND command NOT LIKE 'root test -x /usr/bin/geoipupdate % && /usr/bin/geoipupdate'
-  AND command NOT LIKe 'root [ -d "/run/systemd/system" ] || /usr/share/atop/atop%'
+  AND command NOT LIKE 'root [ -d "/run/systemd/system" ] || /usr/share/atop/atop%'
+  AND command NOT IN ("ps -A | grep at.obdev.littlesnitch.networkextension | grep -v 'grep' | awk '{print $1}' | xargs kill")

@@ -99,6 +99,7 @@ WHERE
     '3306,6,500,mariadbd,',
     '3306,6,74,mysqld,Developer ID Application: Oracle America, Inc. (VB5E2TV963)',
     '33333,6,500,Ultimate,',
+    '49152,6,500,Windsurf Helper (Plugin),Developer ID Application: EXAFUNCTION, INC. (83Z2LHX6XW)',
     '3400,6,500,Sonos,Developer ID Application: Sonos, Inc. (2G4LW83Q3E)',
     '3491,6,500,MuteDeck,Developer ID Application: Martijn Smit (GX645XXEAX)',
     '3492,6,500,MuteDeck,Developer ID Application: Martijn Smit (GX645XXEAX)',

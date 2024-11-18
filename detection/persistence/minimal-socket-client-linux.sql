@@ -36,20 +36,23 @@ WHERE
   p0.path != '' -- optimization: focus on longer running processes
   AND p0.start_time < (strftime('%s', 'now') - 900)
   AND p0.path NOT IN (
-    '/usr/bin/containerd',
-    '/usr/bin/fusermount3',
-    '/usr/sbin/acpid',
-    '/usr/bin/dash',
     '/opt/bitnami/redis/bin/redis-server',
-    '/usr/bin/kas',
-    '/usr/local/bin/gitary',
-    '/usr/bin/docker',
-    '/usr/sbin/mcelog',
-    '/usr/libexec/docker/docker-proxy',
-    '/usr/bin/docker-proxy',
     '/usr/bin/cat',
+    '/usr/bin/containerd',
+    '/usr/bin/dash',
+    '/usr/bin/docker',
+    '/usr/bin/docker-proxy',
+    '/usr/bin/fusermount3',
+    '/usr/bin/i3blocks',
+    '/usr/bin/kas',
+    '/usr/bin/vmalert',
     '/usr/lib/electron/chrome-sandbox',
-    '/usr/bin/i3blocks'
+    '/usr/libexec/docker/docker-proxy',
+    '/usr/lib/snapd/snapd',
+    '/usr/local/bin/containerd',
+    '/usr/local/bin/gitary',
+    '/usr/sbin/acpid',
+    '/usr/sbin/mcelog'
   )
   AND p0.name NOT IN (
     'chrome_crashpad',

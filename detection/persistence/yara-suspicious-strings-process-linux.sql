@@ -1,5 +1,5 @@
 -- Currently running program with Linux red flags
--- 
+--
 -- reference:
 --   * https://github.com/timb-machine/linux-malware/blob/725aad34e216cc024c93b04964b289f10f819e6e/defensive/yara/personal-malware-bazaar/unixredflags3.yara
 --
@@ -53,7 +53,7 @@ WHERE
     GROUP BY
       path
   )
-  AND yara.sigrule = '    
+  AND yara.sigrule = '
     rule redflags {
     strings:
         $bash_history = ".bash_history"
@@ -103,6 +103,7 @@ WHERE
     '/bin/fish',
     '/bin/dash',
     '/bin/sh',
+    '/usr/lib/systemd/systemd-executor',
     '/usr/bin/bash',
     '/usr/lib/snapd/snapd',
     '/usr/bin/snap',

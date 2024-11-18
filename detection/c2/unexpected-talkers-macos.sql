@@ -111,26 +111,17 @@ WHERE
     unsigned_exception = '500,6,80,main,main'
     AND p0.path LIKE '/var/folders/%/T/go-build%/b001/exe/main'
   )
-  AND NOT (
-    unsigned_exception IN (
+  -- port 0 means the connection has come and gone since the original process_open_sockets entry
+  AND NOT unsigned_exception IN (
       '500,0,0,gvproxy,gvproxy',
       '500,6,0,gvproxy,gvproxy',
+      '500,17,53,gvproxy,gvproxy',
+      '500,17,53,gvproxy,gvproxy',
       '500,6,32768,gvproxy,gvproxy',
-      '500,17,123,gvproxy,gvproxy'
-    )
-    AND p0.path LIKE '/opt/homebrew/Cellar/podman/%/libexec/podman/gvproxy'
-  )
-  AND NOT (
-    unsigned_exception = '500,0,0,chainlink,chainlink'
-    AND p0.path LIKE '/var/folders/%/T/go-build%/b001/exe/chainlink'
-    AND remote_port = 0
-    AND protocol = 0
-  )
-  AND NOT (
-    unsigned_exception = '500,0,0,.Telegram-wrapped,.Telegram-wrapped'
-    AND p0.path LIKE '/nix/store/%-telegram-desktop-%'
-    AND remote_port = 0
-    AND protocol = 0
+      '500,0,0,chainlink,chainlink',
+      '500,17,123,gvproxy,gvproxy',
+      '500,0,0,,',
+      '500,0,0,.Telegram-wrapped,.Telegram-wrapped'
   )
 GROUP BY
   p0.cmdline

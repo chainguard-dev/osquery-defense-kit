@@ -39,6 +39,7 @@ WHERE
   AND p.path NOT IN (
     '/usr/bin/qemu-system-x86_64',
     '/usr/lib/systemd/systemd',
+    '/usr/lib/systemd/systemd-nsresourced',
     '/var/opt/Elastic/Endpoint/elastic-endpoint',
     '/opt/Elastic/Endpoint/elastic-endpoint'
   )

@@ -99,6 +99,7 @@ WHERE
   )
   AND NOT top3_dir IN (
     '~/.bin',
+    '~/.vscode/cli',
     '~/.bin-unwrapped',
     '~/.cache/gitstatus',
     '~/.cache/selenium',

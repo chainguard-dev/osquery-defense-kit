@@ -30,6 +30,7 @@ WHERE
   AND gap.path NOT LIKE '/Users/%/%_darwin_a%64%'
   AND gap.path NOT LIKE '/Users/%/Downloads/cosign'
   AND gap.path NOT LIKE '/Users/%/Downloads/missp'
+  AND gap.path NOT LIKE '/Users/%/Downloads/twistcli'
   AND gap.path NOT LIKE '/Users/%/bom'
   AND gap.path NOT LIKE '/Users/%/configure'
   AND gap.path NOT LIKE '/Users/%/cosign-%'
