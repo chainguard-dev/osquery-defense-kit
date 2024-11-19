@@ -226,7 +226,7 @@ rule usr_bin_execstop_shell : medium {
     $execstop = /ExecStop=\/bin\/sh .{0,64}/
     $not_podman_logging = "/usr/bin/podman $LOGGING"
     $not_stderr = /ExecStop=\/bin\/sh .{0,64}set -eu/
-    $not_nfs = /ExecStop=\/bin\/sh -c \'\/usr\/sbin\/nfsdctl /
+    $not_nfs = /ExecStop=\/bin\/sh -c .\/usr\/sbin\/nfsdctl /
   condition:
     filesize < 4096 and $execstop and none of ($not*)
 }
