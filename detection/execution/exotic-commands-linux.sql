@@ -3,7 +3,7 @@
 -- false positives:
 --   * possible, but none known
 --
--- tags: transient process state
+-- tags: transient process state extra
 -- platform: linux
 SELECT
   DATETIME(f.ctime, 'unixepoch') AS p0_changed,
