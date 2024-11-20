@@ -351,7 +351,8 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Tenable, Inc. (4B8J598M7U)',
     'Developer ID Application: X-Rite, Incorporated (2K7GT73B4R)',
     'Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9)',
-    'Software Signing'
+    'Software Signing',
+    'Developer ID Application: PaperCut Software International Pty Ltd (B5N3YV5P2H)'
   )
   AND NOT (
     p0.path = '/Library/Printers/DYMO/Utilities/pnpd'

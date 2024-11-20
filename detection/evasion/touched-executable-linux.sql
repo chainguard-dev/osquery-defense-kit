@@ -56,5 +56,6 @@ WHERE
   AND p.name NOT LIKE 'osqtool%'
   AND f.path NOT LIKE '%/go/bin/%'
   AND f.path NOT LIKE '%/osqueryi'
+  AND f.path NOT LIKE '/tmp/%/.terraform/providers/%'
 GROUP by
   p.pid

@@ -105,7 +105,9 @@ WHERE
     '500,Developer ID Application: Google LLC (EQHXZ8M8AV)',
     '500,Developer ID Application: Sky UK Limited (GJ24C8864F)',
     '500,Developer ID Application: Valve Corporation (MXGJJ98X76)',
-    '500,Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G)'
+    '500,Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G)',
+    '500,Developer ID Application: Autodesk (XXKJ396S2Y)',
+    '500,Developer ID Application: Zwift, Inc (C2GM8Y9VFM)'
   )
   AND NOT (
     unsigned_exception = '500,6,80,main,main'
@@ -121,7 +123,9 @@ WHERE
       '500,0,0,chainlink,chainlink',
       '500,17,123,gvproxy,gvproxy',
       '500,0,0,,',
-      '500,0,0,.Telegram-wrapped,.Telegram-wrapped'
+      '500,0,0,.Telegram-wrapped,.Telegram-wrapped',
+      '500,6,443,cloud_sql_proxy,cloud_sql_proxy',
+      '500,6,32768,cloud_sql_proxy,cloud_sql_proxy'
   )
 GROUP BY
   p0.cmdline

@@ -155,6 +155,7 @@ rule systemd_small_multiuser_not_in_dependency_tree : high {
     $not_systemd = "ExecStart=systemd-"
     $not_lima = "Description=lima-guestagent"
     $not_check_sb = "Description=Service to check for secure boot key enrollment"
+    $not_touchee_gg = "ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/touchegg --daemon"
   condition:
     filesize < 384 and $execstart and $multiuser and none of ($not_*)
 }
