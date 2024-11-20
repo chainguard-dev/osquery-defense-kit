@@ -30,6 +30,7 @@ WHERE
     '/bin/ps',
     '/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_session_monitor',
     '/Library/DropboxHelperTools/Dropbox_u501/dbkextd',
+    '/Library/Application Support/Google/GoogleUpdater/Current/GoogleUpdater.app/Contents/Helpers/launcher',
     '/opt/1Password/1Password-BrowserSupport',
     '/usr/lib/opt/1Password/1Password-BrowserSupport',
     '/opt/1Password/1Password-KeyringHelper',

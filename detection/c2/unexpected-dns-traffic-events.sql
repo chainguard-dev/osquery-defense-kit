@@ -102,6 +102,7 @@ WHERE
     'Signal Helper (Renderer),8.8.8.8,53',
     'signal-desktop,8.8.8.8,53',
     'slack,8.8.8.8,53',
+    'snapd,185.125.188.54,53',
     'Socket Process,8.8.8.8,53',
     'syncthing,46.162.192.181,53',
     'Telegram,8.8.8.8,53',

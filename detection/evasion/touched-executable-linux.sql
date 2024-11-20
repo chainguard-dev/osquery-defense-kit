@@ -56,5 +56,7 @@ WHERE
   AND p.name NOT LIKE 'osqtool%'
   AND f.path NOT LIKE '%/go/bin/%'
   AND f.path NOT LIKE '%/osqueryi'
+  AND f.path NOT LIKE '/tmp/%/.terraform/providers/%'
+  AND f.path NOT LIKE '/var/opt/Elastic/Endpoint/elastic-endpoint'
 GROUP by
   p.pid

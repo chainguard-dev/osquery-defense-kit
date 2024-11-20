@@ -49,6 +49,7 @@ WHERE
     'jpg',
     'json',
     'key',
+    'md',
     'mov',
     'mp3',
     'mp4',
