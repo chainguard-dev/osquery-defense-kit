@@ -121,6 +121,7 @@ WHERE
       '500,17,53,gvproxy,gvproxy',
       '500,6,32768,gvproxy,gvproxy',
       '500,0,0,chainlink,chainlink',
+      '500,6,443,chainlink,chainlink',
       '500,17,123,gvproxy,gvproxy',
       '500,0,0,,',
       '500,0,0,.Telegram-wrapped,.Telegram-wrapped',
