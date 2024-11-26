@@ -132,6 +132,7 @@ WHERE
     '/dev/input,systemd',
     '/dev/input,systemd-logind',
     '/dev/input,thermald',
+    '/dev/input,touchegg',
     '/dev/input,upowerd',
     '/dev/input,Xorg',
     '/dev/net,tailscaled',

@@ -172,6 +172,7 @@ WHERE
     '/var/roothome/.ssh/',
     '/var/roothome/.var/',
     '/var/home/.snapshots/',
+    '/var/roothome/.lesshst',
     '/var/roothome/.viminfo',
     '/var/root/.lesshst',
     '/var/root/.nix-channels',

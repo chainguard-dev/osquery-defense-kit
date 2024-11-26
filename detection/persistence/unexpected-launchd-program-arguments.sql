@@ -63,6 +63,7 @@ WHERE
     'Developer ID Application: OPENVPN TECHNOLOGIES, INC. (ACV7L3WCD8)',
     'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'Developer ID Application: PACE Anti-Piracy, Inc. (TFZ8226T6X)',
+    'Developer ID Application: PaperCut Software International Pty Ltd (B5N3YV5P2H)',
     'Developer ID Application: Paragon Software GmbH (LSJ6YVK468)',
     'Developer ID Application: PFU LIMITED (XW4U7W2E9L)', -- Fujitsu
     'Developer ID Application: Private Internet Access, Inc. (5357M5NW9W)',

@@ -205,6 +205,7 @@ WHERE
     'krisp.ai',
     'macroplant.com',
     'mail.google.com',
+    'mangoslab.blob.core.windows.net',
     'manual.canon',
     'manytricks.com',
     'maxon.net',

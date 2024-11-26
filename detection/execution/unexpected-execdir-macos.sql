@@ -157,6 +157,7 @@ WHERE
     '~/Library/Services/UE4EditorServices.app/',
     '~/.local/share/bob/',
     '~/.local/share/nvim/',
+    '~/opentelemetry-operator/cmd/otel-allocator',
     '/opt/rapid7/ir_agent',
     '~/.terraform.d/plugin-cache/registry.terraform.io/'
   )

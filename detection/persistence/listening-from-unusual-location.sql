@@ -123,3 +123,7 @@ WHERE
     exception_key = '32768,17,500,qemu-system-x86'
     AND homecwd LIKE '/tmp/wolfi-%'
   )
+  AND NOT (
+    exception_key = '32768,17,500,go'
+    AND homecwd LIKE '%/.terraform/modules/%'
+  )
