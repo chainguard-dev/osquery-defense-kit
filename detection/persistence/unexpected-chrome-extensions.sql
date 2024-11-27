@@ -270,6 +270,7 @@ WHERE state = 1
     'true,,Playback Rate,jgmkoefgnppfpagkhifpialkkkgnfgag',
     'true,,PlayTo for Chromecast™,jngkenaoceimiimeokpdbmejeonaaami',
     'true,,Ponyrun,ohfoafaaamjfbhmceahibpppkbnohaeg',
+    'true,,Poshmark | PosherVA,ofacfijogapplfgkoolmdojoieiemihl',
     'true,,Postman,fhbjgbiflinjbdggehcddcbncdddomop',
     'true,,Privacy Badger,pkehgijcmpdhfbdbbnkijodmdjhbjlgp',
     'true,,Private Internet Access,jplnlifepflhkbkgonidnobkakhmpnmh',

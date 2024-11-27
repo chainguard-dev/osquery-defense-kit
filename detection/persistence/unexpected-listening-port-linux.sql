@@ -149,6 +149,7 @@ WHERE
     '58,255,500,dhcpcd',
     '58,255,500,dnsmasq',
     '58,255,500,mtr-packet',
+    '58,255,500,ping',
     '58,255,500,systemd-network',
     '631,17,0,cups-browsed',
     '631,17,115,cups-browsed',

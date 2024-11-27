@@ -99,6 +99,7 @@ WHERE
   AND p0.path NOT LIKE '/usr/libexec/%'
   AND NOT signed_exception IN (
     '0,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
+    '0,Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9)',
     '500,Apple Mac OS Application Signing',
     '500,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     '500,Developer ID Application: Cisco (DE8Y96K9QP)',
@@ -113,10 +114,16 @@ WHERE
     unsigned_exception = '500,6,80,main,main'
     AND p0.path LIKE '/var/folders/%/T/go-build%/b001/exe/main'
   )
+  AND NOT (
+    unsigned_exception = '500,6,443,.Telegram-wrapped,.Telegram-wrapped'
+    AND p0.path LIKE '/nix/store/%-telegram-desktop-%/Applications/Telegram.app/Contents/MacOS/Telegram'
+  )
   -- port 0 means the connection has come and gone since the original process_open_sockets entry
   AND NOT unsigned_exception IN (
       '500,0,0,gvproxy,gvproxy',
+      '500,0,0,Python,Python',
       '500,6,0,gvproxy,gvproxy',
+      '500,6,80,chainlink,chainlink',
       '500,17,53,gvproxy,gvproxy',
       '500,17,53,gvproxy,gvproxy',
       '500,6,32768,gvproxy,gvproxy',

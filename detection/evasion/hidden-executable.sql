@@ -102,6 +102,7 @@ WHERE
     '~/.vscode/cli',
     '~/.bin-unwrapped',
     '~/.cache/gitstatus',
+    '~/.cache/JetBrains',
     '~/.cache/selenium',
     '~/.config/bluejeans-v2',
     '~/.config/Code',
@@ -122,6 +123,7 @@ WHERE
   AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'
   AND NOT f.directory LIKE '/Volumes/com.getdropbox.dropbox-%'
   AND NOT f.directory LIKE '%/.terraform/%'
+  AND NOT f.directory LIKE '%/com.jetbrains.GoLand/cache/JetBrains/GoLand%'
   AND NOT f.path LIKE '/nix/store/%/%-wrapped'
   AND NOT (
     f.path LIKE '/nix/store/%'
