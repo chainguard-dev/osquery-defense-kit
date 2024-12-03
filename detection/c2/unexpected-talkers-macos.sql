@@ -133,7 +133,9 @@ WHERE
       '500,0,0,,',
       '500,0,0,.Telegram-wrapped,.Telegram-wrapped',
       '500,6,443,cloud_sql_proxy,cloud_sql_proxy',
-      '500,6,32768,cloud_sql_proxy,cloud_sql_proxy'
+      '500,6,32768,cloud_sql_proxy,cloud_sql_proxy',
+      '500,0,0,jspawnhelper,jspawnhelper',
+      '500,6,0,fuscript,fuscript'
   )
 GROUP BY
   p0.cmdline

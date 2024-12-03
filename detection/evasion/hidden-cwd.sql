@@ -100,6 +100,7 @@ WHERE
       'bash,~/.Trash',
       'bash,~/.local/share',
       'bash,~/go/src',
+      'bash,/var/home/linuxbrew',
       'telegram-deskto,~/snap/telegram-desktop',
       'c++,~/.cache/yay',
       'cc1,/home/build/.cache',

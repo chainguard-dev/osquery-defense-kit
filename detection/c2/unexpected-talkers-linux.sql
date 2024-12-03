@@ -106,6 +106,7 @@ WHERE
     '80,6,0,ldconfig,0u,0g,ldconfig',
     '80,6,0,NetworkManager,0u,0g,NetworkManager',
     '80,6,0,packagekitd,0u,0g,packagekitd',
+    '80,6,0,packagekit-dnf-refresh-repo,0u,0g,packagekit-dnf-',
     '80,6,0,pacman,0u,0g,pacman',
     '80,6,0,pdftex,0u,0g,pdftex',
     '80,6,0,python2.7,500u,500g,yum',
