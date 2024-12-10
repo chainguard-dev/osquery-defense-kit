@@ -49,7 +49,8 @@ WHERE
     '500,1000,/tmp/golangci-lint.lock,regular,0600',
     '500,1001,/tmp/nwg-dock.lock,regular,0600',
     '74,0,/tmp/mysql.sock.lock,regular,0600',
-    '74,0,/tmp/mysqlx.sock.lock,regular,0600'
+    '74,0,/tmp/mysqlx.sock.lock,regular,0600',
+    '0,1001,/var/run/keyd.socket.lock,regular,0600'
   )
   AND NOT exception_key LIKE '500,1000,/tmp/keepassxc-%.lock,regular,0644'
   AND NOT exception_key LIKE '500,1000,/tmp/keepassxc-%.lock,regular,0664'

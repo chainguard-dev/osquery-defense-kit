@@ -152,6 +152,8 @@ WHERE
     '/var/.ntw_cache',
     '/var/.Parallels_swap/',
     '/var/.pwd_cache',
+    '/var/discourse/.git/',
+    '/var/discourse/.github/',
     '/var/root/.bash_history',
     '/var/root/.bash_profile',
     '/var/root/.cache/',
