@@ -264,6 +264,7 @@ WHERE (
     '/dev/watchdog,character',
     '/dev/wwanat,character',
     '/dev/wwanmbim,character',
+    '/dev/wwanqcdm,character',
     '/dev/zd,block',
     '/dev/zero,character',
     '/dev/zfs,character',

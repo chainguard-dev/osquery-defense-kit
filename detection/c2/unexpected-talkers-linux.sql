@@ -222,6 +222,8 @@ WHERE
     '993,6,500,evolution,0u,0g,evolution',
     '993,6,500,thunderbird,0u,0g,thunderbird',
     '993,6,500,thunderbird,u,g,thunderbird',
+    '80,6,500,thunderbird-bin,0u,0g,thunderbird-bin',
+    '8883,6,500,WebKitWebProcess,u,g,WebKitWebProces',
     '9999,6,500,firefox,0u,0g,firefox'
   )
   AND NOT exception_key LIKE '80,6,500,terraform_1.1.5,500u,500g,terraform'

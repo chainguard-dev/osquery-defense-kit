@@ -75,6 +75,7 @@ WHERE
     'buildkitd',
     'Flycut',
     'kail',
+    'SetupWizard',
     'Vimari Extension',
     'Android File Transfer Agent',
     'BluejeansHelper',

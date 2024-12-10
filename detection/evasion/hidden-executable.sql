@@ -68,9 +68,9 @@ WHERE
     OR f.directory LIKE '%/.%'
   )
   AND NOT homedir LIKE '~/.%/bin'
-  AND NOT homedir LIKE '~/%/node_modules/.bin'
+  AND NOT homedir LIKE '~/%/node_modules/.bin%'
   AND NOT homedir LIKE '~/.%/%x64/%'
-  AND NOT homedir LIKE '%/node_modulues/.%'
+  AND NOT homedir LIKE '%/node_modules/.%'
   AND NOT homepath LIKE '~/%arm64%'
   AND NOT homepath LIKE '~/%x86_64%'
   AND NOT top3_dir LIKE '~/.%/extensions'
@@ -113,6 +113,7 @@ WHERE
     '/home/linuxbrew/.linuxbrew',
     '~/.linuxbrew/Cellar',
     '~/node_modules/.bin',
+    '~/Documents/GitHub',
     '~/.nvm/versions',
     '~/.pyenv/versions',
     '~/.steampipe/db',

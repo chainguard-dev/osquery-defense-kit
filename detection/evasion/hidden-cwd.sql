@@ -166,6 +166,7 @@ WHERE
     OR dir LIKE '~/%enterprise-packages/.chainguard'
     OR dir LIKE '%/.git'
     OR dir LIKE '%/.git/%'
+    OR dir LIKE '/run/.ro%'
     OR dir LIKE '%/.github'
     OR dir LIKE '%/.github/%'
     OR dir LIKE '~/%/github.com/%'
