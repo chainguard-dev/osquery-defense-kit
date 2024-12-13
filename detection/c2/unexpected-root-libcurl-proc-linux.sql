@@ -10,7 +10,7 @@ SELECT
   CONCAT (
     p0.name,
     ',',
-    REPLACE(
+    REPLACE (
       p0.path,
       COALESCE(
         REGEX_MATCH (p0.path, "/nix/store/(.*?)/.*", 1),
@@ -89,6 +89,7 @@ WHERE
     'ostree,/usr/bin/ostree,0,system.slice,ostree-finalize-staged-hold.service,0755',
     'packagekitd,/usr/libexec/packagekitd,0,system.slice,packagekit.service,0755',
     'pacman,/usr/bin/pacman,0,user.slice,user-1000.slice,0755',
+    'realmd,/usr/libexec/realmd,0,system.slice,realmd.service,0755',
     'rpm-ostree,/usr/bin/rpm-ostree,0,system.slice,rpm-ostreed.service,0755',
     'rpm-ostree,/usr/bin/rpm-ostree,0,system.slice,ublue-update.service,0755',
     'sddm-helper,/usr/libexec/sddm-helper,0,user.slice,user-1000.slice,0755',

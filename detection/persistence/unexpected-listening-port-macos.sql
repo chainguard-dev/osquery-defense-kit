@@ -49,7 +49,7 @@ WHERE
     AND lp.port IN (8000, 8080)
     AND lp.protocol = 6
   ) -- Filter out unmapped raw sockets
-  AND NOT (p.pid == '') -- Exceptions: the uid is capped at 500 to represent regular users versus system users
+  AND NOT (p.pid = '') -- Exceptions: the uid is capped at 500 to represent regular users versus system users
   -- port is capped at 49152 to represent transient ports
   AND NOT exception_key IN (
     '10011,6,0,launchd,Software Signing',
@@ -122,6 +122,7 @@ WHERE
     '49152,6,0,launchd,Software Signing',
     '49152,6,0,remoted,Software Signing',
     '49152,6,0,remotepairingdeviced,Software Signing',
+    '49152,6,500,Arduino IDE Helper,Developer ID Application: ARDUINO SA (7KT7ZWMCJT)',
     '49152,6,500,AUHostingServiceXPC_arrow,Software Signing',
     '49152,6,500,barrier',
     '49152,6,500,CaptureCoreService,Developer ID Application: Capture One A/S (5WTDB5F65L)',
@@ -147,6 +148,8 @@ WHERE
     '49152,6,500,Luna Display,Developer ID Application: Astro HQ LLC (8356ZZ8Y5K)',
     '49152,6,500,Music,Software Signing',
     '49152,6,500,node,',
+    '49152,6,500,OmniFocus,Apple Mac OS Application Signing',
+    '49152,6,500,Sonos,Developer ID Application: Sonos, Inc. (2G4LW83Q3E)',
     '49152,6,500,qemu-system-aarch64,',
     '49152,6,500,rapportd,Software Signing',
     '49152,6,500,Resolve,Developer ID Application: Blackmagic Design Inc (9ZGFBWLSYP)',
@@ -185,6 +188,7 @@ WHERE
     '5990,6,500,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     '6000,6,500,X11.bin,Developer ID Application: Apple Inc. - XQuartz (NA574AWV7E)',
     '631,6,0,cupsd,Software Signing',
+    '6650,6,500,java,',
     '67,17,0,bootpd,Software Signing',
     '67,17,0,launchd,Software Signing',
     '68,17,0,configd,Software Signing',

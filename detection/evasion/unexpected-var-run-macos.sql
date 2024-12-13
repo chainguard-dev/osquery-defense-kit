@@ -52,6 +52,7 @@ WHERE
     'hdiejectd.pid',
     'installd.commit.pid',
     'kdc.pid',
+    'MobileAssetCritialDomainsUpdated.plist',
     'prl_disp_service.pid',
     'prl_naptd.pid',
     'prl_desktop_services.lock',
