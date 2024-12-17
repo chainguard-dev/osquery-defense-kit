@@ -58,7 +58,7 @@ WHERE
   )
   AND file.path NOT LIKE '%/../'
   AND file.path NOT LIKE '%/./' -- Avoid mentioning extremely temporary files
-  AND strftime('%s', 'now') - file.ctime > 20
+  AND strftime ('%s', 'now') - file.ctime > 20
   AND file.path NOT IN (
     '/.autorelabel',
     '/.cache/',
@@ -78,6 +78,8 @@ WHERE
     '/.lesshst',
     '/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
     '/.mozilla/',
+    '/.nofollow/',
+    '/.resolve/',
     '/tmp/.accounts-agent/',
     '/tmp/.audio-agent/',
     '/tmp/.bazelci/',

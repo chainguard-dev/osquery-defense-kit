@@ -120,22 +120,23 @@ WHERE
   )
   -- port 0 means the connection has come and gone since the original process_open_sockets entry
   AND NOT unsigned_exception IN (
-      '500,0,0,gvproxy,gvproxy',
-      '500,0,0,Python,Python',
-      '500,6,0,gvproxy,gvproxy',
-      '500,6,80,chainlink,chainlink',
-      '500,17,53,gvproxy,gvproxy',
-      '500,17,53,gvproxy,gvproxy',
-      '500,6,32768,gvproxy,gvproxy',
-      '500,0,0,chainlink,chainlink',
-      '500,6,443,chainlink,chainlink',
-      '500,17,123,gvproxy,gvproxy',
-      '500,0,0,,',
-      '500,0,0,.Telegram-wrapped,.Telegram-wrapped',
-      '500,6,443,cloud_sql_proxy,cloud_sql_proxy',
-      '500,6,32768,cloud_sql_proxy,cloud_sql_proxy',
-      '500,0,0,jspawnhelper,jspawnhelper',
-      '500,6,0,fuscript,fuscript'
+    '500,0,0,gvproxy,gvproxy',
+    '500,0,0,Python,Python',
+    '500,6,0,gvproxy,gvproxy',
+    '500,6,80,chainlink,chainlink',
+    '500,17,53,gvproxy,gvproxy',
+    '500,17,53,gvproxy,gvproxy',
+    '500,6,443,gvproxy,gvproxy',
+    '500,6,32768,gvproxy,gvproxy',
+    '500,0,0,chainlink,chainlink',
+    '500,6,443,chainlink,chainlink',
+    '500,17,123,gvproxy,gvproxy',
+    '500,0,0,,',
+    '500,0,0,.Telegram-wrapped,.Telegram-wrapped',
+    '500,6,443,cloud_sql_proxy,cloud_sql_proxy',
+    '500,6,32768,cloud_sql_proxy,cloud_sql_proxy',
+    '500,0,0,jspawnhelper,jspawnhelper',
+    '500,6,0,fuscript,fuscript'
   )
 GROUP BY
   p0.cmdline

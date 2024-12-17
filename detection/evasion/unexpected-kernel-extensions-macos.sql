@@ -29,3 +29,4 @@ WHERE
   AND exception_key NOT LIKE '/Library/StagedExtensions/Library/Filesystems/macfuse.fs/Contents/Extensions/12/macfuse.kext,io.macfuse.filesystems.macfuse,%'
   AND exception_key NOT LIKE '/Library/StagedExtensions/Library/Extensions/ufsd_ExtFS.kext,com.paragon-software.filesystems.extfs,%'
   AND exception_key NOT LIKE '/Library/StagedExtensions/Library/Extensions/UAD2System.kext,com.uaudio.driver.UAD2System,%'
+  AND exception_key NOT LIKE '/usr/appleinternal/standalone/platform,com.apple.sptm,24.2.0,'

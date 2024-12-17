@@ -11,15 +11,15 @@ SELECT
   s.authority,
   s.identifier,
   CONCAT (
-    IIF(
+    IIF (
       REGEX_MATCH (pof.path, '(/dev/.*)\d+$', 1) != '',
       REGEX_MATCH (pof.path, '(/dev/.*)\d+', 1),
       pof.path
     ),
     ',',
-    REPLACE(
+    REPLACE (
       p0.path,
-      RTRIM(p0.path, REPLACE(p0.path, '/', '')),
+      RTRIM (p0.path, REPLACE (p0.path, '/', '')),
       ''
     ),
     ',',
@@ -90,11 +90,13 @@ WHERE
     '/dev/bpf,core,Developer ID Application: TPZ Solucoes Digitais Ltda (X37R283V2T),com.topaz.warsaw.core',
     '/dev/bpf,packetbeat,Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z),packetbeat',
     '/dev/bpf,com.bjango.istatmenus.daemon,Developer ID Application: Bjango Pty Ltd (Y93TK974AT),com.bjango.istatmenus',
+    '/dev/bus/usb/001/01,scdaemon',
     '/dev/console,dbeaver,Developer ID Application: DBeaver Corporation (42B6MDKMW8),org.jkiss.dbeaver.core.product',
     '/dev/console,kernelmanagerd,Software Signing,com.apple.kernelmanagerd',
     '/dev/console,launchd,Software Signing,com.apple.xpc.launchd',
     '/dev/console,launchd_sim,Software Signing,com.apple.xpc.launchd',
     '/dev/cu.BLTH,bluetoothd,Software Signing,com.apple.bluetoothd',
+    '/dev/cu.usbmodem10,serial-monitor,,a.out',
     '/dev/io,ControlCenter,Software Signing,com.apple.controlcenter',
     '/dev/bpf,MHLinkServer,Developer ID Application: Metric Halo Distribution, Inc. (X7EY8SFM86),com.mhlabs.mhlink.server',
     '/dev/io,PerfPowerServices,Software Signing,com.apple.PerfPowerServices',

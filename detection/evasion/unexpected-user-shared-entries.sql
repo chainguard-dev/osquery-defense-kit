@@ -20,7 +20,7 @@ SELECT
   file.gid,
   hash.sha256,
   magic.data,
-  RTRIM(
+  RTRIM (
     COALESCE(
       REGEX_MATCH (file.directory, '(/.*?/.*?/.*?/)', 1),
       file.directory
@@ -83,7 +83,8 @@ WHERE
       '/Users/Shared/Previously Relocated Items',
       '/Users/Shared/Red Giant',
       '/Users/Shared/Relocated Items',
-      '/Users/Shared/TechSmith'
+      '/Users/Shared/TechSmith',
+      '/Users/Shared/Media Cache Files/'
     )
     OR file.path LIKE '/Users/Shared/Epic Games/%'
     OR file.path LIKE "/Users/Shared/Previously Relocated Items %/%"

@@ -11,9 +11,9 @@
 SELECT
   s.authority AS p0_auth,
   s.identifier AS p0_id,
-  DATETIME(f.ctime, 'unixepoch') AS p0_changed,
-  DATETIME(f.mtime, 'unixepoch') AS p0_modified,
-  (strftime('%s', 'now') - p0.start_time) AS p0_runtime_s,
+  DATETIME (f.ctime, 'unixepoch') AS p0_changed,
+  DATETIME (f.mtime, 'unixepoch') AS p0_modified,
+  (strftime ('%s', 'now') - p0.start_time) AS p0_runtime_s,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -54,7 +54,7 @@ WHERE -- Focus on longer-running programs
       processes
     WHERE
       euid = 0
-      AND start_time < (strftime('%s', 'now') - 900)
+      AND start_time < (strftime ('%s', 'now') - 900)
       AND parent != 0 -- Assume STP
       AND path NOT IN (
         '/Applications/Foxit PDF Reader.app/Contents/MacOS/FoxitPDFReaderUpdateService.app/Contents/MacOS/FoxitPDFReaderUpdateService',
@@ -90,10 +90,12 @@ WHERE -- Focus on longer-running programs
         '/Library/PrivilegedHelperTools/com.prosofteng.DRInstaller',
         '/Library/PrivilegedHelperTools/licenseDaemon.app/Contents/MacOS/licenseDaemon',
         '/Library/PrivilegedHelperTools/MHLinkServer.app/Contents/MacOS/MHLinkServer',
+        '/Library/PrivilegedHelperTools/com.kairos.awdltool.xpc',
         '/Library/SystemExtensions/0FDB5206-860F-465C-B4D3-D6A0F43F4302/com.google.one.NetworkExtension.systemextension/Contents/MacOS/com.google.one.NetworkExtension',
         '/Library/SystemExtensions/2DA71D8A-7905-4012-A7D5-0B246D5AA77B/at.obdev.littlesnitch.networkextension.systemextension/Contents/MacOS/at.obdev.littlesnitch.networkextension',
         '/Library/SystemExtensions/4D1BF33A-9817-45D7-A242-8C39810C7F11/com.redcanary.agent.securityextension.systemextension/Contents/MacOS/com.redcanary.agent.securityextension',
         '/Library/SystemExtensions/CC9A335C-A6D0-4C87-B902-45EBDF4BFD85/com.google.one.NetworkExtension.systemextension/Contents/MacOS/com.google.one.NetworkExtension',
+        '/Library/SystemExtensions/49C3C4AF-624C-4E94-992A-4B2B25ED328E/ch.protonvpn.mac.WireGuard-Extension.systemextension/Contents/MacOS/ch.protonvpn.mac.WireGuard-Extension',
         '/opt/homebrew/Cellar/telepresence-arm64/2.7.6/bin/telepresence',
         '/opt/osquery/lib/osquery.app/Contents/MacOS/osqueryd',
         '/opt/socket_vmnet/bin/socket_vmnet',

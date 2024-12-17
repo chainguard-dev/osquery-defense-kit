@@ -13,7 +13,7 @@
 SELECT
   file.path,
   file.size,
-  datetime(file.btime, 'unixepoch') AS file_created,
+  datetime (file.btime, 'unixepoch') AS file_created,
   magic.data,
   hash.sha256,
   signature.identifier,
@@ -35,7 +35,7 @@ WHERE
     OR mdfind.query = "kMDItemWhereFroms != '' && kMDItemFSName == '*.pkg'"
   )
   AND ea.key = 'where_from'
-  AND file.btime > (strftime('%s', 'now') -86400)
+  AND file.btime > (strftime ('%s', 'now') -86400)
   AND domain NOT IN (
     'adobe.com',
     'akmedia.digidesign.com',
@@ -217,6 +217,7 @@ WHERE
     'obsproject.com',
     'opalcamera.com',
     'openai.com',
+    'packages.openvpn.net',
     'persistent.oaistatic.com',
     'portswigger-cdn.net',
     'posit.co',

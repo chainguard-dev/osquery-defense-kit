@@ -12,7 +12,7 @@ SELECT
   CONCAT (
     p0.name,
     ',',
-    REPLACE(
+    REPLACE (
       p0.path,
       COALESCE(
         REGEX_MATCH (p0.path, "/nix/store/(.*?)/.*", 1),
@@ -33,9 +33,9 @@ SELECT
     ',',
     f.mode
   ) AS exception_key,
-  DATETIME(f.ctime, 'unixepoch') AS p0_changed,
-  DATETIME(f.mtime, 'unixepoch') AS p0_modified,
-  (strftime('%s', 'now') - p0.start_time) AS p0_runtime_s,
+  DATETIME (f.ctime, 'unixepoch') AS p0_changed,
+  DATETIME (f.mtime, 'unixepoch') AS p0_modified,
+  (strftime ('%s', 'now') - p0.start_time) AS p0_runtime_s,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -72,7 +72,7 @@ WHERE
   p0.euid = 0
   AND p0.parent > 0
   AND p0.path != ""
-  AND p0.start_time < (strftime('%s', 'now') - 1200)
+  AND p0.start_time < (strftime ('%s', 'now') - 1200)
   AND exception_key NOT IN (
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-core,0,system.slice,abrt-journal-core.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-oops,0,system.slice,abrt-oops.service,0755',
@@ -141,6 +141,7 @@ WHERE
     'dockerd,/nix/store/__VERSION__/libexec/docker/dockerd,0,system.slice,docker.service,0555',
     'dockerd,/usr/bin/dockerd,0,system.slice,docker.service,0755',
     'dockerd,/usr/sbin/dockerd,0,system.slice,docker.service,0755',
+    'dockerd,/snap/docker/__VERSION__/bin/dockerd,0,system.slice,snap.docker.dockerd.service,0755',
     'docker-proxy,/usr/bin/docker-proxy,0,system.slice,docker.service,0755',
     'docker-proxy,/usr/libexec/docker/docker-proxy,0,system.slice,docker.service,0755',
     'docker,/usr/bin/docker,0,user.slice,user-1000.slice,0755',
@@ -278,6 +279,7 @@ WHERE
     'pwrstatd,/usr/sbin/pwrstatd,0,system.slice,pwrstatd.service,0700',
     'python3,/usr/bin/python3.10,0,system.slice,system-dbus\x2d:1.1\x2dorg.pop_os.transition_system.slice,0755',
     'python3,/usr/bin/python__VERSION__,0,system.slice,ubuntu-advantage.service,0755',
+    'python3,/usr/bin/python3.12,0,system.slice,dbus.service,0755',
     'qemu-ga,/usr/bin/qemu-ga,0,system.slice,qemu-guest-agent.service,0755',
     'qualys-cloud-ag,/usr/local/qualys/cloud-agent/bin/qualys-cloud-agent,0,system.slice,qualys-cloud-agent.service,0700',
     'rapid7_endpoint,/opt/rapid7/ir_agent/components/endpoint_broker/__VERSION__/rapid7_endpoint_broker,0,system.slice,ir_agent.service,0744',

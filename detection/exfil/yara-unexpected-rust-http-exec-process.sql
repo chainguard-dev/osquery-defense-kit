@@ -44,7 +44,7 @@ WHERE
     FROM
       processes
     WHERE
-      start_time > (strftime('%s', 'now') - 7200)
+      start_time > (strftime ('%s', 'now') - 7200)
       AND path != ""
       AND NOT path LIKE '/System/%'
       AND NOT path LIKE '/usr/libexec/%'
@@ -58,6 +58,7 @@ WHERE
       AND NOT path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/%'
       AND NOT path LIKE '/private/var/folders%/T/go-build%/exe/%'
       AND NOT path LIKE '/Users/%/.terraform/providers/%'
+      AND NOT path LIKE '/%/.local/zed.app/libexec/zed-editor'
     GROUP BY
       path
   )

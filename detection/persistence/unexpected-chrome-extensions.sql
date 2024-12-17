@@ -7,7 +7,8 @@
 --   * Almost unlimited: any extension that isn't on your whitelist
 --
 -- tags: persistent seldom browser
-SELECT name,
+SELECT
+  name,
   profile,
   chrome_extensions.description AS 'descr',
   persistent AS persists,
@@ -34,11 +35,13 @@ SELECT name,
     identifier
   ) AS exception_key,
   hash.sha256
-FROM users
+FROM
+  users
   CROSS JOIN chrome_extensions USING (uid)
   LEFT JOIN file ON chrome_extensions.path = file.path
   LEFT JOIN hash ON chrome_extensions.path = hash.path
-WHERE state = 1
+WHERE
+  state = 1
   AND (
     (
       from_webstore != 'true'
@@ -248,6 +251,7 @@ WHERE state = 1
     'true,,Moesif Origin/CORS Changer & API Logger,digfbfaphojjndkpccljibejjbppifbc',
     'true,Moustachauve,Cookie-Editor,hlkenndednhfkekhgcdicdfddnkalmdm',
     'true,,MQTTLens,hemojaaeigabkbcookmlgmdigohjobjm',
+    'true,,Nooks,kbbdibmbjngifdgbmlleelghocpeimhe',
     'true,,NordVPN - VPN proxy for privacy and security,fjoaledfpmneenckfbpdfhkmimnjocfa',
     'true,NortonLifeLock Inc,Norton Safe Web,fnpbeacklnhmkkilekogeiekaglbmmka',
     'true,,NoScript,doojmbjmlfjjnbmnoijecmcbfeoakpjm',
@@ -387,4 +391,5 @@ WHERE state = 1
     )
     AND chrome_extensions.path LIKE '%/Microsoft Edge/%'
   )
-GROUP BY exception_key
+GROUP BY
+  exception_key

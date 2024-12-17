@@ -55,7 +55,7 @@ WHERE -- Focus on longer-running programs
     FROM
       processes
     WHERE
-      start_time < (strftime('%s', 'now') - 25200)
+      start_time < (strftime ('%s', 'now') - 25200)
       AND parent != 0 -- Assume STP
       AND NOT path LIKE '/System/%'
       AND NOT path LIKE '/usr/libexec/%'
@@ -108,5 +108,6 @@ WHERE -- Focus on longer-running programs
   AND NOT exception_key LIKE '500,rust-analyzer,rust_analyzer-%,'
   AND NOT exception_key LIKE '500,package-version-server-v%,package_version_server-%,'
   AND NOT exception_key LIKE '500,marksman-macos,marksman-%,'
+  AND NOT exception_key LIKE '500,___go_build_main_go,a.out,'
 GROUP BY
   p0.pid
