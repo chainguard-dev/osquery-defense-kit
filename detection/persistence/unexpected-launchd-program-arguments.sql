@@ -76,6 +76,7 @@ WHERE
     'Developer ID Application: Tenable, Inc. (4B8J598M7U)',
     'Developer ID Application: Ubiquiti Inc. (4P645293E8)',
     'Developer ID Application: X-Rite, Incorporated (2K7GT73B4R)',
+    'Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     'Software Signing', -- Apple
     'yabai-cert'
   )
