@@ -73,6 +73,7 @@ WHERE
     'crond',
     'dpkg',
     'systemd',
+    'systemd-nsresou',
     'systemd-udevd',
     '(udev-worker)',
     '(sd-exec-strv)'

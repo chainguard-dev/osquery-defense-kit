@@ -67,6 +67,7 @@ WHERE
       '/Users/Shared/Canon_Inc_IC',
       '/Users/Shared/CleanMyMac X',
       '/Users/Shared/CleanMyMac X Menu',
+      '/Users/Shared/Electronic Arts',
       '/Users/Shared/LGHUB',
       '/Users/Shared/logi',
       '/Users/Shared/Pixologic',

@@ -117,7 +117,8 @@ WHERE
     '~/.nvm/versions',
     '~/.pyenv/versions',
     '~/.steampipe/db',
-    '~/thinkorswim/.install4j'
+    '~/thinkorswim/.install4j',
+    '/var~/.local/share'
   )
   AND NOT f.directory LIKE '/Applications/Corsair iCUE5 Software/.cuepkg-%'
   AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'

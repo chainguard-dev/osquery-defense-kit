@@ -109,7 +109,8 @@ WHERE
     'xdg-open',
     'EncryptMe',
     'dynamiclinkmanager',
-    'launchd_startx'
+    'launchd_startx',
+    'usercontextservice'
   )
   -- example: 85C27NK92C.com.flexibits.fantastical2.mac.helper
   AND NOt pname LIKE '___1Test%'

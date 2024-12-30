@@ -37,6 +37,7 @@ WHERE
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Creative Labs Pte. Ltd. (5Q3552844F)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
+    'Developer ID Application: EA Swiss Sarl (TSTV75T6Q5)',
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
     'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK)',
     'Developer ID Application: Hercules Labs Inc. (B8PC799ZGU)',
@@ -59,6 +60,7 @@ WHERE
     'Developer ID Application: Wireshark Foundation (7Z6EMTD2C6)',
     'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)',
     'Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9)',
+    'Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     'Software Signing'
   )
   AND program NOT IN (

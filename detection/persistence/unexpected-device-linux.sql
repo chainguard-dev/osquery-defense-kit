@@ -195,6 +195,7 @@ WHERE (
     '/dev/serial/,directory',
     '/dev/sg,character',
     '/dev/sgx_provision',
+    '/dev/shm/.org.chromium.Chromium.NjobT,regular',
     '/dev/shm/,directory',
     '/dev/shm/envoy_shared_memory_,regular',
     '/dev/shm/jack_db-,directory',

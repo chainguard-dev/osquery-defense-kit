@@ -108,7 +108,9 @@ WHERE
     '500,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '500,Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G)',
     '500,Developer ID Application: Autodesk (XXKJ396S2Y)',
-    '500,Developer ID Application: Zwift, Inc (C2GM8Y9VFM)'
+    '500,Developer ID Application: Zwift, Inc (C2GM8Y9VFM)',
+    '500,Developer ID Application: Spotify (2FNC3A47ZF)',
+    '500,Developer ID Application: Microsoft Corporation (UBF8T346G9)'
   )
   AND NOT (
     unsigned_exception = '500,6,80,main,main'

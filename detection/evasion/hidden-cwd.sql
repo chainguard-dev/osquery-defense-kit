@@ -109,6 +109,7 @@ WHERE
       'clangd,/private/var/folders',
       'conmon,/var~/.local/share',
       'dirhelper,/private/var/folders',
+      'exe,/var~/.local/share',
       'fileproviderd,~/Library/Mobile Documents',
       'fish,~/.Trash',
       'fish,~/.local/share',
