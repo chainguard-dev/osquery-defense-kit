@@ -23,7 +23,8 @@ WHERE
   AND exception_key NOT IN (
     '/Library/StagedExtensions/Library/Extensions/CalDigitUSBHubSupport.kext,com.CalDigit.USBHubSupport,1,<3>',
     '/Library/StagedExtensions/Library/Filesystems/macfuse.fs/Contents/Extensions/14/macfuse.kext,io.macfuse.filesystems.macfuse,2128.20,<1 3 4 5 7>',
-    '/Library/StagedExtensions/Library/Filesystems/kbfuse.fs/Contents/Extensions/13/kbfuse.kext,com.github.kbfuse.filesystems.kbfuse,2113.21,<1 3 4 5 7>'
+    '/Library/StagedExtensions/Library/Filesystems/kbfuse.fs/Contents/Extensions/13/kbfuse.kext,com.github.kbfuse.filesystems.kbfuse,2113.21,<1 3 4 5 7>',
+    '/usr/appleinternal/standalone/platform,com.apple.txm,24.2.0,'
   )
   AND exception_key NOT LIKE '/Library/StagedExtensions/Library/Extensions/ufsd_NTFS.kext,com.paragon-software.filesystems.ntfs,%'
   AND exception_key NOT LIKE '/Library/StagedExtensions/Library/Filesystems/macfuse.fs/Contents/Extensions/12/macfuse.kext,io.macfuse.filesystems.macfuse,%'

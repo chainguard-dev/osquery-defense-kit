@@ -50,6 +50,7 @@ WHERE
     'gdm3.pid',
     'gssproxy.pid',
     'haproxy.pid',
+    'keyd.socket.lock',
     'lightdm.pid',
     'lima-boot-done',
     'lima-ssh-ready',

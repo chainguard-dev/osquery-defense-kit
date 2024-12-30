@@ -99,6 +99,7 @@ WHERE
     '500,coreutils,tail',
     '500,gjs-console,daemon.js',
     '500,gjs-console,gnome-character',
+    '500,libgvc6-config-update,dot',
     '500,nc.openbsd,nc',
     '500,netcat,nc',
     '500,plugin-container,MainThread',

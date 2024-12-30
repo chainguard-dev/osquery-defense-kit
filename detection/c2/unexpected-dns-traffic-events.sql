@@ -100,6 +100,7 @@ WHERE
     'msedge,8.8.8.8,53',
     'node,149.22.90.225,5353',
     'nuclei,1.0.0.1,53',
+    'Pieces OS,8.8.4.4,53',
     'Pieces OS,208.67.222.222,53',
     'plugin-container,8.8.8.8,53',
     'ServiceExtension,8.8.8.8,53',
