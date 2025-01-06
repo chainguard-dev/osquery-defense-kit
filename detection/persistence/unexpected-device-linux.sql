@@ -12,7 +12,7 @@
 -- platform: linux
 SELECT -- Remove numerals from device names
   -- Ugly, but better than dealing with multiple rounds of nesting COALESCE + REGEX_MATCH
-  CONCAT(
+  CONCAT (
     REPLACE(
       REPLACE(
         REPLACE(
@@ -20,11 +20,7 @@ SELECT -- Remove numerals from device names
             REPLACE(
               REPLACE(
                 REPLACE(
-                  REPLACE(
-                    REPLACE(REPLACE(path, "0", ""), "1", ""),
-                    "2",
-                    ""
-                  ),
+                  REPLACE(REPLACE(REPLACE(path, "0", ""), "1", ""), "2", ""),
                   "3",
                   ""
                 ),
@@ -50,8 +46,10 @@ SELECT -- Remove numerals from device names
     file.type
   ) AS exception_key,
   file.*
-FROM file
-WHERE (
+FROM
+  file
+WHERE
+  (
     path LIKE '/dev/%'
     OR directory LIKE '/dev/%'
     OR directory LIKE '/dev/%/.%'
@@ -289,7 +287,8 @@ WHERE (
     directory = '/dev/shm/'
     AND type = 'regular'
     AND mode = '0666'
-    AND uid IN (0,1000,1001)
-    AND size IN (32,4096)
+    AND uid IN (0, 1000, 1001)
+    AND size IN (32, 4096)
   )
-GROUP BY exception_key
+GROUP BY
+  exception_key

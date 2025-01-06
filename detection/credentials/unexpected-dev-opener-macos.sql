@@ -11,15 +11,15 @@ SELECT
   s.authority,
   s.identifier,
   CONCAT (
-    IIF (
+    IIF(
       REGEX_MATCH (pof.path, '(/dev/.*)\d+$', 1) != '',
       REGEX_MATCH (pof.path, '(/dev/.*)\d+', 1),
       pof.path
     ),
     ',',
-    REPLACE (
+    REPLACE(
       p0.path,
-      RTRIM (p0.path, REPLACE (p0.path, '/', '')),
+      RTRIM(p0.path, REPLACE(p0.path, '/', '')),
       ''
     ),
     ',',

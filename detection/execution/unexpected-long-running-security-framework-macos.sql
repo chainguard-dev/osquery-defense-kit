@@ -55,7 +55,7 @@ WHERE -- Focus on longer-running programs
     FROM
       processes
     WHERE
-      start_time < (strftime ('%s', 'now') - 25200)
+      start_time < (strftime('%s', 'now') - 25200)
       AND parent != 0 -- Assume STP
       AND NOT path LIKE '/System/%'
       AND NOT path LIKE '/usr/libexec/%'

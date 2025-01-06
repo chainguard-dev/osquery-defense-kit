@@ -10,7 +10,7 @@ SELECT
   CONCAT (
     p0.name,
     ',',
-    REPLACE (
+    REPLACE(
       p0.path,
       COALESCE(
         REGEX_MATCH (p0.path, "/nix/store/(.*?)/.*", 1),

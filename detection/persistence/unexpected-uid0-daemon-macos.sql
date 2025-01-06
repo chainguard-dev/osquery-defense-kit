@@ -11,9 +11,9 @@
 SELECT
   s.authority AS p0_auth,
   s.identifier AS p0_id,
-  DATETIME (f.ctime, 'unixepoch') AS p0_changed,
-  DATETIME (f.mtime, 'unixepoch') AS p0_modified,
-  (strftime ('%s', 'now') - p0.start_time) AS p0_runtime_s,
+  DATETIME(f.ctime, 'unixepoch') AS p0_changed,
+  DATETIME(f.mtime, 'unixepoch') AS p0_modified,
+  (strftime('%s', 'now') - p0.start_time) AS p0_runtime_s,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -54,7 +54,7 @@ WHERE -- Focus on longer-running programs
       processes
     WHERE
       euid = 0
-      AND start_time < (strftime ('%s', 'now') - 900)
+      AND start_time < (strftime('%s', 'now') - 900)
       AND parent != 0 -- Assume STP
       AND path NOT IN (
         '/Applications/Foxit PDF Reader.app/Contents/MacOS/FoxitPDFReaderUpdateService.app/Contents/MacOS/FoxitPDFReaderUpdateService',
