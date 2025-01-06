@@ -73,6 +73,7 @@ WHERE
             '/Users/Shared/logi',
             '/Users/Shared/Pixologic',
             '/Users/Shared/Maxon',
+            '/Users/Shared/Media Cache Files',
             '/Users/Shared/AdobeInstalledCodecsTier2',
             '/Users/Shared/LogioptionsPlus',
             '/Users/Shared/LogiOptionsPlus',
