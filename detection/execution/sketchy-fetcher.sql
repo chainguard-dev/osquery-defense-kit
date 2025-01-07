@@ -163,3 +163,5 @@ WHERE
   -- Elastic Agent
   AND NOT p0.path LIKE '/Library/Elastic/Agent/%'
   AND NOt p0.cmdline LIKE '%/osqueryd %'
+  -- Dumb things run under Docker
+  AND NOT p0_cgroup LIKE '/system.slice/docker-%'

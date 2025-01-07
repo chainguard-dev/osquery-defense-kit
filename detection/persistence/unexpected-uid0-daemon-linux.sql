@@ -340,6 +340,7 @@ WHERE
     'systemd-sleep,/usr/lib/systemd/systemd-sleep,0,system.slice,systemd-suspend.service,0755',
     'systemd-udevd,/nix/store/__VERSION__/bin/udevadm,0,system.slice,systemd-udevd.service,0555',
     'systemd-udevd,/usr/bin/udevadm,0,system.slice,systemd-udevd.service,0755',
+    '(udev-worker),/usr/bin/udevadm,0,system.slice,systemd-udevd.service,0755',
     'systemd-userdbd,/usr/lib/systemd/systemd-userdbd,0,system.slice,systemd-userdbd.service,0755',
     'systemd-userwor,/usr/lib/systemd/systemd-userwork,0,system.slice,systemd-userdbd.service,0755',
     'systemd,/usr/lib/systemd/systemd,0,user.slice,user-0.slice,0755',

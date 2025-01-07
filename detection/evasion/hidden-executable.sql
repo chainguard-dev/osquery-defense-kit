@@ -95,7 +95,8 @@ WHERE
     '~/Code',
     '~/Projects',
     '~/code',
-    '~/src'
+    '~/src',
+    '/var~/.local'
   )
   AND NOT top3_dir IN (
     '~/.bin',
@@ -136,5 +137,6 @@ WHERE
   AND NOT homedir LIKE '~/Library/Application Support/Code/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/%'
   AND NOT homedir LIKE '%/.Trash/1Password %.app/Contents/Library/LoginItems/1Password Extension Helper.app/Contents/MacOS'
   AND NOT homedir LIKE '%/.Trash/Logi Options.app/Contents/Support/LogiMgrDaemon.app/Contents/MacOS'
+  AND NOT p0_cgroup LIKE '/system.slice/docker-%'
 GROUP BY
   f.path

@@ -357,6 +357,7 @@ WHERE
     '500,xmobar,0u,0g,xmobar',
     '500,yay,0u,0g,yay',
     '500,zdup,500u,500g,zdup',
+    '500,zed-editor,500u,500g,zed-editor',
     '500,zoom,0u,0g,zoom',
     '500,zoom.real,u,g,zoom.real'
   ) -- Exceptions where we have to be more flexible for the process name

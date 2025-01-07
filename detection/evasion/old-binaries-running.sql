@@ -63,6 +63,7 @@ WHERE
     '/snap/brackets/138/opt/brackets/Brackets',
     '/snap/brackets/138/opt/brackets/Brackets-node',
     '/usr/bin/dbus-broker-launch',
+    '/usr/libexec/dconf-service',
     '/usr/bin/espeak',
     '/usr/bin/i3blocks',
     '/usr/bin/i3lock',
@@ -80,6 +81,7 @@ WHERE
   AND p.name NOT IN (
     'buildkitd',
     'gitstatusd-darwin-arm64',
+    'gitstatusd-linu',
     'Flycut',
     'kail',
     'SetupWizard',
