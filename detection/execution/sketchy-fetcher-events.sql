@@ -175,14 +175,13 @@ WHERE
   AND NOT (
     pe.euid > 500
     -- /usr/bin/curl https://34.117.0.114:443 -k
-    AND REGEX_MATCH(pe.cmdline, '(curl https://[\w\.\:\/]+ -k)$', 1) != ""
+    AND REGEX_MATCH (pe.cmdline, '(curl https://[\w\.\:\/]+ -k)$', 1) != ""
   )
   AND NOT (
     pe.euid > 500
     -- /usr/bin/curl -k https://34.117.0.114:443
-    AND REGEX_MATCH(pe.cmdline, '(curl -k https://[\w\.\:\/]+)$', 1) != ""
+    AND REGEX_MATCH (pe.cmdline, '(curl -k https://[\w\.\:\/]+)$', 1) != ""
   )
-
   -- These are typically curl -k calls
   -- We need the addr "IS NOT NULL" to avoid filtering out
   -- NULL entries

@@ -9,17 +9,17 @@
 -- tags: transient seldom process filesystem state
 SELECT DISTINCT
   COALESCE(REGEX_MATCH (p0.path, '(.*)/', 1), p0.path) AS dir,
-  REPLACE (f.directory, u.directory, '~') AS homedir,
+  REPLACE(f.directory, u.directory, '~') AS homedir,
   COALESCE(
     REGEX_MATCH (
-      REPLACE (f.directory, u.directory, '~'),
+      REPLACE(f.directory, u.directory, '~'),
       '(~/.*?/.*?/.*?/)',
       1
     ),
-    REPLACE (f.directory, u.directory, '~')
+    REPLACE(f.directory, u.directory, '~')
   ) AS top3_homedir,
   REGEX_MATCH (
-    REPLACE (f.directory, u.directory, '~'),
+    REPLACE(f.directory, u.directory, '~'),
     '(~/.*?/)',
     1
   ) AS top_homedir,
@@ -102,6 +102,7 @@ WHERE
     '~/.cache/gitstatus',
     '~/.gvm/binscripts',
     '~/.local/share/gh/extensions/gh-sbom',
+    '~/.docker/cli-plugins',
     '~/.magefile'
   )
   AND NOT homedir LIKE '~/%/bin'

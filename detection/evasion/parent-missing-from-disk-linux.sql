@@ -76,7 +76,8 @@ WHERE
     'lightdm',
     'nvim',
     'sh',
-    'slack'
+    'slack',
+    'zed-editor'
   )
   AND NOT (
     p1.path LIKE '/app/%'

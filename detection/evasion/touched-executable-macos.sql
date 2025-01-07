@@ -11,7 +11,8 @@
 --
 -- tags: transient seldom filesystem state extra
 -- platform: darwin
-SELECT p.path,
+SELECT
+  p.path,
   p.name,
   p.cmdline,
   p.euid,
@@ -28,15 +29,20 @@ SELECT p.path,
   hash.sha256 AS sha256,
   signature.identifier,
   signature.authority
-FROM processes p
+FROM
+  processes p
   LEFT JOIN file f ON p.path = f.path
   LEFT JOIN processes pp ON p.parent = pp.pid
   LEFT JOIN hash ON p.path = hash.path
   LEFT JOIN signature ON p.path = signature.path
-WHERE p.pid IN (
-    SELECT pid
-    FROM processes
-    WHERE path NOT LIKE '/System/%'
+WHERE
+  p.pid IN (
+    SELECT
+      pid
+    FROM
+      processes
+    WHERE
+      path NOT LIKE '/System/%'
       AND path NOT LIKE '/Library/Apple/%'
       AND path NOT LIKE '/usr/libexec/%'
       AND path NOT LIKE '/usr/sbin/%'
@@ -128,4 +134,5 @@ WHERE p.pid IN (
       OR p.path LIKE '/nix/store/%/bin/nix-daemon'
     )
   )
-GROUP by p.pid
+GROUP by
+  p.pid

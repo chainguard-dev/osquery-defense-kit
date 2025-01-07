@@ -18,14 +18,19 @@ SELECT
   file.mtime,
   hash.sha256,
   yara.*
-FROM file
+FROM
+  file
   JOIN yara ON file.path = yara.path
   JOIN hash ON file.path = hash.path
 WHERE
   file.path IN (
-    SELECT DISTINCT(fragment_path) FROM systemd_units
-    WHERE fragment_path LIKE "%.service"
-    AND NOT fragment_path LIKE "/run/systemd/generator.late/%"
+    SELECT DISTINCT
+      (fragment_path)
+    FROM
+      systemd_units
+    WHERE
+      fragment_path LIKE "%.service"
+      AND NOT fragment_path LIKE "/run/systemd/generator.late/%"
   )
   AND yara.sigrule = '
 rule systemd_execstart_danger_path_val : high {
@@ -271,5 +276,4 @@ rule systemd_hidden_working_directory : critical {
 	any of them
 }
 '
-
-AND yara.count > 0
+  AND yara.count > 0

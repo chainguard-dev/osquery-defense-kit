@@ -130,6 +130,7 @@ WHERE
       'vet,/home/build/.cache',
       'npm install,/home/build/.npm',
       'zsh,/private/tmp/workspace',
+      'zsh,~/Library/Mobile Documents',
       'zsh,~/.Trash'
     )
     OR exception_key LIKE '%sh,~/.Trash/%'

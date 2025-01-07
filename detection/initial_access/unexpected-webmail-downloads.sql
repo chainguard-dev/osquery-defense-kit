@@ -11,13 +11,13 @@
 SELECT
   file.path,
   file.size,
-  datetime (file.btime, 'unixepoch') AS file_created,
+  datetime(file.btime, 'unixepoch') AS file_created,
   magic.data,
   hash.sha256,
   s.authority,
   s.identifier,
   LOWER(
-    REGEX_MATCH (RTRIM (file.path, '/'), '.*\.(.*?)$', 1)
+    REGEX_MATCH (RTRIM(file.path, '/'), '.*\.(.*?)$', 1)
   ) AS extension
 FROM
   mdfind
@@ -27,7 +27,7 @@ FROM
   LEFT JOIN signature s ON file.path = s.path
 WHERE
   mdfind.query = 'kMDItemWhereFroms == ''*https://mail.google.com/*'''
-  AND file.btime > (strftime ('%s', 'now') -86400)
+  AND file.btime > (strftime('%s', 'now') -86400)
   -- Extensions that would not normally raise suspicion if sent by e-mail (excludes dmg, iso, lnk, exe)
   AND extension NOT IN (
     'ai',

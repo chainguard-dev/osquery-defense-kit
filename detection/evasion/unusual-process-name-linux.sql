@@ -40,8 +40,8 @@ FROM
   LEFT JOIN processes p2 ON p1.parent = p2.pid
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
-  p0.start_time < (strftime('%s', 'now') - 43200) AND
-  (
+  p0.start_time < (strftime('%s', 'now') - 43200)
+  AND (
     pname LIKE "%kthread%"
     OR pname LIKE "%-help"
     OR pname LIKE "%flush%"

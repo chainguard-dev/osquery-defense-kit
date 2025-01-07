@@ -20,7 +20,7 @@ SELECT
   file.gid,
   hash.sha256,
   magic.data,
-  RTRIM (
+  RTRIM(
     COALESCE(
       REGEX_MATCH (file.directory, '(/.*?/.*?/.*?/)', 1),
       file.directory
@@ -67,11 +67,13 @@ WHERE
       '/Users/Shared/Canon_Inc_IC',
       '/Users/Shared/CleanMyMac X',
       '/Users/Shared/CleanMyMac X Menu',
+      '/Users/Shared/CleanMyMac_5',
       '/Users/Shared/Electronic Arts',
       '/Users/Shared/LGHUB',
       '/Users/Shared/logi',
       '/Users/Shared/Pixologic',
       '/Users/Shared/Maxon',
+      '/Users/Shared/Media Cache Files',
       '/Users/Shared/AdobeInstalledCodecsTier2',
       '/Users/Shared/LogioptionsPlus',
       '/Users/Shared/LogiOptionsPlus',

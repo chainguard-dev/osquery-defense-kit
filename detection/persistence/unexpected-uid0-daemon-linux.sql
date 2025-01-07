@@ -12,7 +12,7 @@ SELECT
   CONCAT (
     p0.name,
     ',',
-    REPLACE (
+    REPLACE(
       p0.path,
       COALESCE(
         REGEX_MATCH (p0.path, "/nix/store/(.*?)/.*", 1),
@@ -33,9 +33,9 @@ SELECT
     ',',
     f.mode
   ) AS exception_key,
-  DATETIME (f.ctime, 'unixepoch') AS p0_changed,
-  DATETIME (f.mtime, 'unixepoch') AS p0_modified,
-  (strftime ('%s', 'now') - p0.start_time) AS p0_runtime_s,
+  DATETIME(f.ctime, 'unixepoch') AS p0_changed,
+  DATETIME(f.mtime, 'unixepoch') AS p0_modified,
+  (strftime('%s', 'now') - p0.start_time) AS p0_runtime_s,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -72,7 +72,7 @@ WHERE
   p0.euid = 0
   AND p0.parent > 0
   AND p0.path != ""
-  AND p0.start_time < (strftime ('%s', 'now') - 1200)
+  AND p0.start_time < (strftime('%s', 'now') - 1200)
   AND exception_key NOT IN (
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-core,0,system.slice,abrt-journal-core.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-oops,0,system.slice,abrt-oops.service,0755',
@@ -248,6 +248,7 @@ WHERE
     'NetworkManager,/usr/bin/NetworkManager,0,system.slice,NetworkManager.service,0755',
     'NetworkManager,/usr/sbin/NetworkManager,0,system.slice,NetworkManager.service,0755',
     'newgrp,/usr/bin/newgrp,1000,user.slice,user-1000.slice,4755',
+    'rpm-ostree,/usr/bin/rpm-ostree,0,system.slice,rpm-ostreed.service,0755',
     'nix-daemon,/nix/store/__VERSION__/bin/nix,0,system.slice,nix-daemon.service,0555',
     'nm-dispatcher,/usr/libexec/nm-dispatcher,0,system.slice,NetworkManager-dispatcher.service,0755',
     'nm-dispatcher,/usr/lib/nm-dispatcher,0,system.slice,NetworkManager-dispatcher.service,0755',

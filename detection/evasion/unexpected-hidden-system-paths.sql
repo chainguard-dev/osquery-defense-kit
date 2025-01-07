@@ -58,7 +58,7 @@ WHERE
   )
   AND file.path NOT LIKE '%/../'
   AND file.path NOT LIKE '%/./' -- Avoid mentioning extremely temporary files
-  AND strftime ('%s', 'now') - file.ctime > 20
+  AND strftime('%s', 'now') - file.ctime > 20
   AND file.path NOT IN (
     '/.autorelabel',
     '/.cache/',
@@ -74,6 +74,9 @@ WHERE
     '/etc/skel/.mozilla/',
     '/etc/skel/.var/',
     '/etc/.#sudoers',
+    '/etc/.gitattributes',
+    '/etc/.git/',
+    '/etc/.etckeeper',
     '/.file',
     '/.lesshst',
     '/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
@@ -98,6 +101,7 @@ WHERE
     '/tmp/.featureflags-agent/',
     '/tmp/.font-unix/',
     '/tmp/.git/',
+    '/tmp/.venv/',
     '/tmp/.go-version',
     '/tmp/.helmrepo',
     '/tmp/.ICE-unix/',
@@ -197,6 +201,7 @@ WHERE
     '/var/setup/.TemporaryItems',
     '/var/setup/.TemporaryItems/',
     '/var/tmp/.ses',
+    '/var/setup/.fseventsd/',
     '/var/tmp/.ses.bak',
     '/.vol/',
     '/.VolumeIcon.icns'
@@ -204,6 +209,7 @@ WHERE
   AND file.directory NOT IN (
     '/etc/skel',
     '/etc/skel/.config',
+    '/etc/etckeeper/commit.d',
     '/var/root/.provisio'
   )
   AND file.path NOT LIKE '/%bin/bootstrapping/.default_components'

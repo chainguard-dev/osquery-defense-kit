@@ -8,7 +8,8 @@
 --
 -- tags: persistent process state seldom
 -- platform: macos
-SELECT p.uid,
+SELECT
+  p.uid,
   p.euid,
   pos.protocol,
   pos.pid,
@@ -32,18 +33,23 @@ SELECT p.uid,
     REPLACE(p.path, u.directory, '~'),
     s.authority
   ) AS exception_key
-FROM processes p
+FROM
+  processes p
   JOIN process_memory_map pmm ON p.pid = pmm.pid
   JOIN process_open_sockets pos ON p.pid = pos.pid
   LEFT JOIN file f ON p.path = f.path
   LEFT JOIN users u ON f.uid = u.uid
   LEFT JOIN signature s ON p.path = s.path
-WHERE p.pid IN (
-    SELECT processes.pid
-    FROM process_open_sockets
+WHERE
+  p.pid IN (
+    SELECT
+      processes.pid
+    FROM
+      process_open_sockets
       JOIN processes ON process_open_sockets.pid = processes.pid
       AND family != 1 -- The outer query is slow due to the use of process_memory_map, so narrow down our choices here
-    WHERE processes.path NOT LIKE '/System/%'
+    WHERE
+      processes.path NOT LIKE '/System/%'
       AND processes.path NOT LIKE '/Library/Apple/%'
       AND processes.path NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%'
       AND processes.path NOT LIKE '/sbin/%'
@@ -103,12 +109,14 @@ WHERE p.pid IN (
         '/usr/local/sbin/velociraptor'
       )
       AND processes.start_time < (strftime('%s', 'now') -600)
-      GROUP BY processes.path
+    GROUP BY
+      processes.path
   )
   AND NOT exception_key = '500,Steam Helper,~/Library/Application Support/Steam/Steam.AppBundle/Steam/Contents/MacOS/Frameworks/Steam Helper.app/Contents/MacOS/Steam HelperDeveloper ID Application: Valve Corporation (MXGJJ98X76)'
   AND pmm.path LIKE "%.dylib"
-
-GROUP BY pos.pid
-HAVING lib_count IN (1, 2)
+GROUP BY
+  pos.pid
+HAVING
+  lib_count IN (1, 2)
   AND libs NOT LIKE '/Applications/%/Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib,/usr/lib/libobjc-trampolines.dylib'
   AND libs NOT LIKE '/usr/lib/libobjc-trampolines.dylib,/Applications/%.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib'

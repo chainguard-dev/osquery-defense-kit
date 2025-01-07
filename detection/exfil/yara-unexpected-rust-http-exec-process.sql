@@ -44,7 +44,7 @@ WHERE
     FROM
       processes
     WHERE
-      start_time > (strftime ('%s', 'now') - 7200)
+      start_time > (strftime('%s', 'now') - 7200)
       AND path != ""
       AND NOT path LIKE '/System/%'
       AND NOT path LIKE '/usr/libexec/%'
@@ -79,6 +79,7 @@ WHERE
     'DevPod',
     'fig-darwin-universal',
     'figma_agent',
+    'i3status-rust',
     'nvim',
     'old',
     'OrbStack Helper',

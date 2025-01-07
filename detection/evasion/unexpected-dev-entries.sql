@@ -58,4 +58,8 @@ WHERE
   AND file.path NOT LIKE '/dev/shm/sem.mp-%'
   AND file.path NOT LIKE '%/../%'
   AND file.path NOT LIKE '%/./%'
-  AND file.path NOT IN ('/dev/.mdadm/', '/dev/shm/libpod_lock', '/dev/shm/sem.camlock')
+  AND file.path NOT IN (
+    '/dev/.mdadm/',
+    '/dev/shm/libpod_lock',
+    '/dev/shm/sem.camlock'
+  )

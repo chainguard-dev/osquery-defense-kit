@@ -84,6 +84,7 @@ WHERE
     'basic',
     'real',
     'test',
+    'tiny',
     'AppImage',
     'ext'
   )
