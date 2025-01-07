@@ -101,6 +101,7 @@ WHERE
     '0,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     '0,Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9)',
     '500,Apple Mac OS Application Signing',
+    '500,Developer ID Application: David Kocher (G69SCX94XU)',
     '500,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     '500,Developer ID Application: Cisco (DE8Y96K9QP)',
     '500,Developer ID Application: Google LLC (EQHXZ8M8AV)',

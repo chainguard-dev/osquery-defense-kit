@@ -67,11 +67,24 @@ WHERE
     '/usr/local/MacGPG2/libexec/shutdown-gpg-agent',
     '/usr/local/bin/warsaw/core'
   )
+  -- Special case: Docker does not consistently sign their plist files (security fail)
   AND NOT (
     l.path = '/Library/LaunchDaemons/com.docker.socket.plist'
     AND program_authority = 'Software Signing'
     AND program_identifier IN ('com.apple.ln', 'com.apple.link')
     AND program_arguments LIKE '/bin/ln -s -f /Users/%/run/docker.sock /var/run/docker.sock'
+  )
+  AND NOT (
+    l.path = '/Library/LaunchDaemons/com.docker.socket.plist'
+    AND program_identifier = 'com.docker'
+    AND program_authority = NULL
+    AND program = '/Library/PrivilegedHelperTools/com.docker.socket'
+  )
+  AND NOT (
+    l.path = '/Library/LaunchDaemons/com.docker.vmnetd.plist'
+    AND program_identifier = 'com.docker.vmnetd'
+    AND program_authority = NULL
+    AND program = ' /Library/PrivilegedHelperTools/com.docker.vmnetd'
   )
 GROUP BY
   l.path

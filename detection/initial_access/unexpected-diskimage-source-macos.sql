@@ -183,6 +183,7 @@ WHERE
     'chatgpt.com',
     'cron.com',
     'discord.com',
+    'duetdownload.com',
     'dl.discordapp.net',
     'dl2.discordapp.net',
     'dl.google.com',

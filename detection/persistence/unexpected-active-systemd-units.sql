@@ -89,6 +89,7 @@ WHERE
         'blk-availability.service,Availability of block devices,',
         'bluetooth.service,Bluetooth service,',
         'bolt.service,Thunderbolt system service,',
+        'bootloader-update.service,Update bootloader on boot,',
         'bootupd.socket,bootupd.socket,',
         'brew-update.service,Auto update brew for mutable brew installs,1000',
         'brew-update.timer,Timer for brew update for mutable brew,',
