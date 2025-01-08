@@ -84,7 +84,7 @@ WHERE
     l.path = '/Library/LaunchDaemons/com.docker.vmnetd.plist'
     AND program_identifier = 'com.docker.vmnetd'
     AND program_authority = NULL
-    AND program = ' /Library/PrivilegedHelperTools/com.docker.vmnetd'
+    AND program = '/Library/PrivilegedHelperTools/com.docker.vmnetd'
   )
 GROUP BY
   l.path

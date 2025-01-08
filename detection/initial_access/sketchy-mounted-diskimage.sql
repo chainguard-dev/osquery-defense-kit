@@ -145,6 +145,7 @@ WHERE
         "Developer ID Application: Logitech Inc. (QED4VVPZWA)",
         "Developer ID Application: Oracle America, Inc. (VB5E2TV963)",
         "Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)",
+        "Developer ID Application: Roblox Corporation (2CFABCH843)",
         "Developer ID Application: VideoLAN (75GAHG3SZQ)"
       )
     ) --   6. Volumes containing a hidden top-level folder or binary, such as yWnBJLaF (1302.app)

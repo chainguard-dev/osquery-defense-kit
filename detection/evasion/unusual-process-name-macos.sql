@@ -87,7 +87,10 @@ WHERE
     OR REGEX_MATCH (pname, "^(\d\d)", 1) != ""
     OR (
       REGEX_MATCH (pname, "^(\W)", 1) != ""
-      AND p0.path NOT LIKE "/nix/store/%/.%-wrapped"
+      AND NOT (
+        p0.path LIKE "/nix/store/%/.%-wrapped"
+        OR p0.path LIKE "/etc/profiles-per-user/%"
+      )
     )
     OR (
       REGEX_MATCH (pname, "(\W)$", 1) != ""
@@ -110,7 +113,8 @@ WHERE
     'EncryptMe',
     'dynamiclinkmanager',
     'launchd_startx',
-    'usercontextservice'
+    'usercontextservice',
+    'at.obdev.littlesnitchmini.networkextension'
   )
   -- example: 85C27NK92C.com.flexibits.fantastical2.mac.helper
   AND NOT pname LIKE '___1Test%'

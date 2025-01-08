@@ -125,6 +125,7 @@ WHERE
     '~/Parallels/',
     '~/proj/',
     '~/projects/',
+    '~/Projects/',
     '~/.provisio/',
     '~/.pulumi/',
     '~/.pyenv/',

@@ -126,6 +126,7 @@ WHERE
     '500,0,0,gvproxy,gvproxy',
     '500,0,0,Python,Python',
     '500,6,0,gvproxy,gvproxy',
+    '500,6,5223,apsd,apsd',
     '500,6,80,chainlink,chainlink',
     '500,17,53,gvproxy,gvproxy',
     '500,17,53,gvproxy,gvproxy',

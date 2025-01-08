@@ -41,6 +41,7 @@ WHERE
     '/usr/bin/crontab',
     '/usr/bin/fusermount',
     '/usr/bin/fusermount3',
+    '/usr/bin/newgrp',
     '/usr/bin/schroot',
     '/usr/bin/keybase-redirector',
     '/usr/bin/login',
