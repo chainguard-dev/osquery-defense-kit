@@ -56,7 +56,7 @@ WHERE
     AND lp.protocol = 6
   )
   -- Filter out unmapped raw sockets
-  AND NOT (p.pid == '')
+  AND NOT p.pid = ''
   -- Exceptions: the uid is capped at 500 to represent regular users versus system users
   -- port is capped at 32768 to represent transient ports
   AND NOT CONCAT (
@@ -113,6 +113,7 @@ WHERE
     '32768,6,500,java',
     '32768,6,500,jetbrains-toolb',
     '32768,6,500,spotify',
+    '32768,6,500,writerside',
     '3551,6,0,apcupsd',
     '4143,6,500,linkerd2-proxy',
     '4191,6,500,linkerd2-proxy',

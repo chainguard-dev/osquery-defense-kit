@@ -75,6 +75,7 @@ WHERE
   AND NOT homepath LIKE '~/%x86_64%'
   AND NOT top3_dir LIKE '~/.%/extensions'
   AND NOT top2_dir IN (
+    '/nix/store/.links',
     '~/.cursor',
     '~/.dropbox-dist',
     '~/.fzf',

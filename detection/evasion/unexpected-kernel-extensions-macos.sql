@@ -6,18 +6,18 @@
 -- platform: darwin
 -- tags: persistent seldom kernel
 SELECT
-  linked_against,
-  name,
-  path,
-  size,
-  version,
+  k.linked_against,
+  k.name,
+  k.path,
+  k.size,
+  k.version,
   hash.sha256,
-  path || ',' || name || ',' || version || ',' || linked_against AS exception_key
+  k.path || ',' || k.name || ',' || k.version || ',' || k.linked_against AS exception_key
 FROM
-  kernel_extensions
-  LEFT JOIN hash ON kernel_extensions.path = hash.path
+  kernel_extensions AS k
+  LEFT JOIN hash ON k.path = hash.path
 WHERE
-  path NOT LIKE '/System/Library/Extensions/%'
+  k.path NOT LIKE '/System/Library/Extensions/%'
   AND NOT (
     idx = 0
     AND name = '__kernel__'

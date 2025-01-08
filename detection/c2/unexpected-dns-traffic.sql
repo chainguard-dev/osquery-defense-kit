@@ -88,6 +88,7 @@ WHERE
   -- Local DNS servers and custom clients go here
   AND p.path NOT IN (
     '/Applications/Evernote.app/Contents/MacOS/Evernote',
+    '/Applications/Evernote.app/Contents/Frameworks/Evernote Helper.app/Contents/MacOS/Evernote Helper',
     '/Applications/Slack.app/Contents/Frameworks/Slack Helper.app/Contents/MacOS/Slack Helper',
     '/Applications/Spotify.app/Contents/Frameworks/Spotify Helper.app/Contents/MacOS/Spotify Helper',
     '/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/Contents/MacOS/IPNExtension',

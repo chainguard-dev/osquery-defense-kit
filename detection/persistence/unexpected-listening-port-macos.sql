@@ -53,6 +53,10 @@ WHERE
   -- port is capped at 49152 to represent transient ports
   AND NOT exception_key IN (
     '10011,6,0,launchd,Software Signing',
+    '443,6,500,ssh,Software Signing',
+    '80,6,500,ssh,Software Signing',
+    '9200,6,500,RAATServer,Developer ID Application: Roon Labs LLC (WU8DGC424P)',
+    '24513,6,500,LogiPluginService,Developer ID Application: Loupedeck Oy (M24R8BN5BK)',
     '10011,6,0,webfilterproxyd,Software Signing',
     '1024,6,0,systemmigrationd,Software Signing',
     '10250,6,500,OrbStack Helper,Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)',
