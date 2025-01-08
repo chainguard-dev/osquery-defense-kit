@@ -81,6 +81,7 @@ WHERE
     'unattended-upgrades.progress',
     'usbmuxd.pid',
     'utmp',
+    'virtlockd.pid',
     'xtables.lock',
     'zed.pid',
     'zed.state',

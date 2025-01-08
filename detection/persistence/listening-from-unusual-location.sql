@@ -74,6 +74,7 @@ WHERE
   )
   AND NOT (
     p0.name IN (
+      'aws',
       'caddy',
       'controller',
       'crane',

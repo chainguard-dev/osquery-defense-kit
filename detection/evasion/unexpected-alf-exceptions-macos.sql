@@ -49,6 +49,7 @@ WHERE -- Filter out stock exceptions to decrease overhead
     ',a.out,/private/tmp/learning-labs-static/server,501',
     ',a.out,/Users/amouat/proj/learning-labs-static/server,501',
     ',a.out,/Users/dlorenc/.wash/downloads/nats-server,501',
+    ',com.docker.docker,/Applications/Docker.app/,501',
     'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
     'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.localized/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
     ',deskflow-server,/Applications/Deskflow.app/Contents/MacOS/deskflow-server,501',
