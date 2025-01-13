@@ -72,6 +72,22 @@ WHERE
       OR perms LIKE "%webAuthenticationProxy%"
       OR perms LIKE "%management%"
     )
+    OR (
+      author LIKE '%BigMData%'
+      OR author LIKE '%BroCode LTD%'
+      OR author LIKE '%Chrome Extension Hub%'
+      OR author LIKE '%ExtensionsBox%'
+      OR author LIKE '%Free Business Apps%'
+      OR author LIKE '%Infwiz%'
+      OR author LIKE '%Karbon Project LP%'
+      OR author LIKE '%Kodice LLC%'
+      OR author LIKE '%Lazytech%'
+      OR author LIKE '%NioMaker%'
+      OR author LIKE '%PDF Toolbox cluster%'
+      OR author LIKE '%Yue Apps%'
+      OR author LIKE '%ZingDeck%'
+      OR author LIKE '%ZingFront Software%'
+    )
   )
   AND NOT exception_key IN (
     'false,,Grammarly: AI Writing and Grammar Checker App,cnlefmmeadmemmdciolhbnfeacpdfbkd',
