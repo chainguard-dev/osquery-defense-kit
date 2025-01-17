@@ -51,6 +51,7 @@ WHERE
     '3',
     '4',
     '5',
+    '7',
     '10',
     '11',
     '12',
@@ -78,6 +79,7 @@ WHERE
     '34',
     'backend',
     'emacs',
+    'bfd',
     'build',
     'bin',
     'nox',
@@ -88,6 +90,7 @@ WHERE
     'AppImage',
     'ext'
   )
+  AND NOT basename IN ('rpc.mountd')
   AND NOT basename LIKE 'python3.%'
   AND NOT basename LIKE 'python2.%'
   AND NOT basename LIKE 'kubectl-%'

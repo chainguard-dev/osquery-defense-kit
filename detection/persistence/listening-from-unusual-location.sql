@@ -106,6 +106,7 @@ WHERE
   )
   AND NOT exception_key IN (
     '16620,6,500,psi-bastion',
+    '2112,6,500,rebuilder',
     '32768,6,500,java',
     '32768,6,500,logioptionsplus_agent',
     '32768,17,500,logioptionsplus_agent',

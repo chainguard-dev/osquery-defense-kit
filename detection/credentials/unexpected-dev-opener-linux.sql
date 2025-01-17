@@ -89,6 +89,7 @@ FROM
 WHERE
   pof.path LIKE '/dev/%'
   AND pof.path NOT IN (
+    '/dev/console',
     '/dev/dri/card0',
     '/dev/dri/card1',
     '/dev/dri/card2',
@@ -250,7 +251,9 @@ WHERE
     '/dev/zfs,zpool'
   )
   AND path_exception NOT LIKE '/dev/shm/%'
+  AND path_exception NOT LIKE '/dev/video%,chrome'
   AND path_exception NOT LIKE '/dev/cpu_dma_latency,python%'
+  AND path_exception NOT LIKE '/dev/bus/usb/%,scdaemon'
   AND NOT (
     pof.path = "/dev/uinput"
     AND p0.name LIKE "solaar%"

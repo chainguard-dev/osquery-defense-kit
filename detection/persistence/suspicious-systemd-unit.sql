@@ -67,6 +67,7 @@ rule systemd_execstart_elsewhere : medium {
     $not_usr_local = "ExecStart=/usr/local/"
     $not_usr_sbin = "ExecStart=/usr/sbin/"
     $not_usr_share = "ExecStart=/usr/share/"
+    $not_etckeeper = "ExecStart=/etc/etckeeper/"
   condition:
     filesize < 102400 and $execstart and none of ($not_*)
 }
@@ -124,6 +125,7 @@ rule systemd_small_multiuser_no_comments_or_documentation : high {
     $not_lima = "Description=lima-guestagent"
     $not_check_sb = "Description=Service to check for secure boot key enrollment"
     $not_waydroid = "waydroid"
+    $not_keyd = "ExecStart=/usr/local/bin/keyd"
   condition:
     filesize < 384 and $execstart and $multiuser and none of ($not_*)
 }
@@ -160,7 +162,8 @@ rule systemd_small_multiuser_not_in_dependency_tree : high {
     $not_systemd = "ExecStart=systemd-"
     $not_lima = "Description=lima-guestagent"
     $not_check_sb = "Description=Service to check for secure boot key enrollment"
-    $not_touchee_gg = "ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/touchegg --daemon"
+    $not_touchegg = /ExecStart=.*\/touchegg --/
+    $not_keyd = "ExecStart=/usr/local/bin/keyd"
   condition:
     filesize < 384 and $execstart and $multiuser and none of ($not_*)
 }

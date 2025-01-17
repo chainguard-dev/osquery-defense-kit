@@ -118,11 +118,13 @@ WHERE
     'udevadm',
     "xdg-dbpus-proxy",
     'xdg-dbus-proxy',
+    'xdg-open',
     "xdg-desktop-portal",
     "xdg-desktop-portal-gnome",
     "xdg-desktop-portal-gtk",
     "xdg-desktop-portal-kde",
     "xdg-desktop-portal-xapp",
+    "xdg-desktop-portal-regolith",
     "xdg-document-portal",
     "xdg-permission-store",
     "xwaylandvideobridge"

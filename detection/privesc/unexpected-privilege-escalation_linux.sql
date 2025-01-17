@@ -56,6 +56,7 @@ WHERE
         '/usr/bin/doas',
         '/usr/bin/fusermount',
         '/usr/bin/fusermount3',
+        '/usr/lib/polkit-1/polkit-agent-helper-1',
         '/usr/bin/newgrp',
         '/usr/bin/login',
         '/usr/bin/su',
@@ -75,7 +76,7 @@ WHERE
   )
   AND NOT (
     p0.name = 'polkit-agent-he'
-    AND p1.path = '/usr/bin/gnome-shell'
+    AND p1.path IN ('/usr/bin/gnome-shell', '/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication')
   )
   AND NOT (
     p0.name = 'fusermount3'

@@ -91,10 +91,12 @@ WHERE
   )
   AND NOT pname IN (
     'at.obdev.littlesnitch.networkextension',
+    'at.obdev.littlesnitchmini.networkextension',
     'com.microsoft.teams2.notificationcenter',
     'cpu',
     'test',
     'dynamiclinkmanager',
+    'usercontextservice',
     'EcammLiveVideoOutAssistantXPCHelper',
     'launchd_startx',
     'ThingsWidgetExtensionMacAppStore',

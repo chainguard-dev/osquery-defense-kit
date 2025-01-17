@@ -54,6 +54,7 @@ WHERE
     '/usr/bin',
     '/opt/google/chrome',
     '/opt/microsoft/msedge',
+    '/usr/share/codium',
     '/usr/libexec',
     '/usr/lib/systemd',
     '/usr/lib',
@@ -81,6 +82,10 @@ WHERE
   )
   AND NOT (
     p1.path LIKE '/app/%'
+    AND p1.cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/%'
+  )
+  AND NOT (
+    p1.path LIKE '/home/build/%'
     AND p1.cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/%'
   )
   AND NOT p2.name = 'bwrap'

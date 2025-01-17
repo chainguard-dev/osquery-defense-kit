@@ -130,6 +130,7 @@ WHERE
     '/dev/hwrng,character',
     '/dev/ic-,character',
     '/dev/iio:device,character',
+    '/dev/iommu,character',
     '/dev/initctl,fifo',
     '/dev/input/by-id,directory',
     '/dev/input/by-path,directory',
@@ -280,6 +281,7 @@ WHERE
   AND NOT path LIKE '/dev/shm/u%-Shm_%'
   AND NOT path LIKE '/dev/shm/.com.google.Chrome.%'
   AND NOT path LIKE '/dev/shm/.com.microsoft.Edge.%'
+  AND NOT path LIKE '/dev/shm/flatpak-com.brave.Browser-%'
   AND NOT path LIKE '/dev/shm/libv4l-%'
   AND NOT path LIKE '/dev/shm/u%-ValveIPC%'
   AND NOT path LIKE '/dev/%-vg/%-lv'

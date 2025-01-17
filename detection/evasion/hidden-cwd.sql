@@ -83,6 +83,7 @@ WHERE
         'find',
         'git',
         'gitsign',
+        'mc',
         'nvim',
         'terraform',
         'updatedb',
@@ -100,13 +101,17 @@ WHERE
       'bash,~/.Trash',
       'bash,~/.local/share',
       'bash,~/go/src',
+      'bash,/var/lib/incus',
       'bash,/var/home/linuxbrew',
+      'java,/root/.gradle/daemon',
+      'bash,/var/tmp/.vscode-server',
       'telegram-deskto,~/snap/telegram-desktop',
       'c++,~/.cache/yay',
       'cc1,/home/build/.cache',
       'cc1plus,~/.cache/yay',
       'cgo,~/.gimme/versions',
       'clangd,/private/var/folders',
+      'curl,/var/home/linuxbrew',
       'conmon,/var~/.local/share',
       'dirhelper,/private/var/folders',
       'exe,/var~/.local/share',
@@ -142,6 +147,7 @@ WHERE
       '~/.local/bin',
       '/home/build',
       '/var/home/linuxbrew/.linuxbrew/Cellar',
+      '/var/home/linuxbrew/.linuxbrew/Homebrew',
       '~/.vim',
       '~/dev/extra-packages/.chainguard',
       '~/.provisio',
@@ -156,7 +162,7 @@ WHERE
       '~/.hunter/_Base',
       '~/.zsh'
     )
-    OR top_dir IN ('~/Sync', '~/src', '~/workspace', '~/dev')
+    OR top_dir IN ('~/Sync', '~/src', '~/workspace', '~/dev', '/var~/.local')
     OR dir LIKE '~/.%'
     OR dir LIKE '%/.build'
     OR dir LIKE '%/.cache/melange%'
@@ -168,6 +174,7 @@ WHERE
     OR dir LIKE '~/%enterprise-packages/.chainguard'
     OR dir LIKE '%/.git'
     OR dir LIKE '%/.git/%'
+    OR dir LIKE '%/.venv/%'
     OR dir LIKE '/run/.ro%'
     OR dir LIKE '%/.github'
     OR dir LIKE '%/.github/%'
