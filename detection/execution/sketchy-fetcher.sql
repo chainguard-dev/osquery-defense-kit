@@ -135,6 +135,8 @@ WHERE
       OR p0.cmdline LIKE 'curl -sL wttr.in%'
       OR p0.cmdline LIKE '%localhost:%'
       OR p0.cmdline LIKE '%127.0.0.1:%'
+      OR p0.cmdline LIKE '%169.254.169.254%'
+      OR p0.cmdline LIKE '%aws-ec2-metadata%'
       OR p0.name IN ('apko')
     )
   )

@@ -75,6 +75,7 @@ WHERE
     'atuin',
     'cargo',
     'Cody',
+    'i3status-rs',
     'deno',
     'DevPod',
     'fig-darwin-universal',
@@ -87,6 +88,7 @@ WHERE
     'sg-nvim-agent',
     'sm-agent',
     'stable',
+    'uv',
     'wezterm-gui',
     'zed'
   )

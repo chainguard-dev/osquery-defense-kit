@@ -308,6 +308,7 @@ WHERE -- Focus on longer-running programs
       path
   )
   AND NOT s.authority IN (
+    'Apple Mac OS Application Signing',
     'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: Bitdefender SRL (GUNFMW623Y)',
@@ -318,6 +319,7 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Creative Labs Pte. Ltd. (5Q3552844F)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
+    'Developer ID Application: EA Swiss Sarl (TSTV75T6Q5)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
     'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK)',
@@ -326,10 +328,9 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
     'Developer ID Application: Ilya Parniuk (ACC5R6RH47)',
     'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
-    'Developer ID Application: SparkLabs Pty Ltd (34XR7GXFPX)',
     'Developer ID Application: Keybase, Inc. (99229SGT5K)',
-    'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Kolide, Inc (X98UFR7HA3)',
+    'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: MacPaw Inc. (S8EX82NJP6)',
     'Developer ID Application: Mersive Technologies (63B5A5WDNG)',
@@ -337,24 +338,25 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     'Developer ID Application: Mullvad VPN AB (CKG9MXH72F)',
     'Developer ID Application: Nordvpn S.A. (W5W395V82Y)',
-    'Developer ID Application: OPENVPN TECHNOLOGIES, INC. (ACV7L3WCD8)',
-    'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
     'Developer ID Application: Objective-See, LLC (VBG97UB4TA)',
     'Developer ID Application: Opal Camera Inc (97Z3HJWCRT)',
-    'Developer ID Application: PROSOFT Engineering, Inc. (L2JPZL6629)',
+    'Developer ID Application: OPENVPN TECHNOLOGIES, INC. (ACV7L3WCD8)',
+    'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
+    'Developer ID Application: PaperCut Software International Pty Ltd (B5N3YV5P2H)',
     'Developer ID Application: Parallels International GmbH (4C6364ACXT)',
     'Developer ID Application: Private Internet Access, Inc. (5357M5NW9W)',
+    'Developer ID Application: PROSOFT Engineering, Inc. (L2JPZL6629)',
     'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     'Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',
-    'Developer ID Application: SURFSHARK LTD (YHUG37CKN8)',
     'Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
+    'Developer ID Application: SparkLabs Pty Ltd (34XR7GXFPX)',
+    'Developer ID Application: SURFSHARK LTD (YHUG37CKN8)',
     'Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     'Developer ID Application: Tenable, Inc. (4B8J598M7U)',
     'Developer ID Application: X-Rite, Incorporated (2K7GT73B4R)',
     'Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9)',
-    'Software Signing',
-    'Developer ID Application: PaperCut Software International Pty Ltd (B5N3YV5P2H)'
+    'Software Signing'
   )
   AND NOT (
     p0.path = '/Library/Printers/DYMO/Utilities/pnpd'

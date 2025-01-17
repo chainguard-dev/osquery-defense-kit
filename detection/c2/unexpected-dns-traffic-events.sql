@@ -62,16 +62,21 @@ WHERE
   )
   -- Some applications hard-code a safe DNS resolver, or allow the user to configure one
   AND s.remote_address NOT IN (
-    '1.1.1.1', -- Cloudflare
     '100.100.100.100', -- Tailscale Magic DNS
+    '1.0.0.1', -- Cloudflare
+    '1.1.1.1', -- Cloudflare
+    '1.1.1.2', -- Cloudflare
+    '185.125.190.31', -- Canonical
+    '185.125.190.77', -- Canonical
     '208.67.220.123', -- OpenDNS FamilyShield
+    '208.67.222.222', -- OpenDNS
+    '34.160.111.32', -- wolfi.dev
+    '68.105.28.13', -- Cox
     '75.75.75.75', -- Comcast
     '75.75.76.76', -- Comcast
-    '68.105.28.13', -- Cox
     '80.248.7.1', -- 21st Century (NG)
-    '34.160.111.32', -- wolfi.dev
-    '185.125.190.31', -- Canonical
-    '185.125.190.77' -- Canonical
+    '8.8.4.4', -- Google (backup)
+    '8.8.8.8' -- Google
   )
   -- Exceptions that specifically talk to one server
   AND exception_key NOT IN (
@@ -81,10 +86,13 @@ WHERE
     'CapCut,8.8.8.8,53',
     'cg,108.177.98.95,53',
     'ChatGPT,8.8.8.8,53',
+    'Code Helper (Plugin),1.0.0.1,53',
     'com.docker.backend,8.8.8.8,53',
     'com.docker.vpnkit,8.8.8.8,53',
+    'com.docker.buil,35.190.88.7,53', -- licensing exfil via Bugsnag?
     'coredns,0.0.0.0,53',
     'coredns,8.8.8.8,53',
+    'io.tailscale.ipn.macsys.network-extension,8.8.8.8,53',
     'Creative Cloud Content Manager.node,8.8.4.4,53',
     'Creative Cloud Content Manager.node,8.8.8.8,53',
     'distnoted,8.8.4.4,53',
@@ -95,6 +103,7 @@ WHERE
     'gvproxy,170.247.170.2,53',
     'helm,185.199.108.133,53',
     'limactl,8.8.8.8,53',
+    'Code Helper (Plugin),1.0.0.1,53',
     'Meeting Center,8.8.8.8,53',
     'msedge,8.8.4.4,53',
     'msedge,8.8.8.8,53',
@@ -114,6 +123,7 @@ WHERE
     'Socket Process,8.8.8.8,53',
     'syncthing,46.162.192.181,53',
     'Telegram,8.8.8.8,53',
+    'vunnel,8.8.8.8,53',
     'WebexHelper,8.8.8.8,53',
     'WhatsApp,1.1.1.1,53',
     'yum,208.67.222.222,53',
@@ -126,30 +136,34 @@ WHERE
   -- Local DNS servers and custom clients go here
   AND basename NOT IN (
     'adguard_dns',
-    'apk',
     'agentbeat',
+    'apk',
     'apko',
     'canonical-livep',
+    'cg',
     'chrome',
     'com.apple.WebKit.Networking',
     'com.docker.backend',
     'go',
-    'wolfictl',
-    'gvproxy',
     'grype',
-    'incusd',
+    'gvproxy',
     'helm',
-    'terraform-provi',
+    'incusd',
+    'io.tailscale.ipn.macsys.network-extension',
     'IPNExtension',
     'Jabra Direct Helper',
     'limactl',
     'mDNSResponder',
     'melange',
-    'syncthing',
     'nessusd',
     'nuclei',
+    'syncthing',
     'systemd-resolved',
-    'WhatsApp'
+    'tailscaled',
+    'terraform-ls',
+    'terraform-provi',
+    'WhatsApp',
+    'wolfictl'
   )
   AND p.name NOT IN ('Jabra Direct Helper', 'terraform-provi')
   -- Chromium/Electron apps seem to send stray packets out like nobodies business

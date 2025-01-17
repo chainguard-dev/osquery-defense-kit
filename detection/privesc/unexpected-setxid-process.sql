@@ -36,6 +36,7 @@ WHERE
     '/opt/1Password/1Password-KeyringHelper',
     '/opt/google/chrome/chrome-sandbox',
     '/opt/IRCCloud/chrome-sandbox',
+    '/opt/Blockbench/chrome-sandbox',
     '/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent',
     '/usr/bin/doas',
     '/usr/bin/crontab',
@@ -64,3 +65,4 @@ WHERE
   AND f.path NOT LIKE '/Users/%/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
   AND f.path NOT LIKE '/opt/homebrew/Cellar/dnsmasq/%/sbin/dnsmasq'
   AND f.path NOT LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
+  AND f.path NOT LIKE '/Library/Application Support/Google/GoogleUpdater/1%/GoogleUpdater.app/Contents/Helpers/launcher'

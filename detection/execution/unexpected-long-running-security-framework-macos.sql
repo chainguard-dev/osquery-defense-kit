@@ -91,8 +91,10 @@ WHERE -- Focus on longer-running programs
   )
   AND exception_key NOT IN (
     '0,velociraptor,a.out,',
+    '500,circleci-yaml-language-server,a.out,',
     '500,cloud_sql_proxy,a.out,',
     '500,docker,docker,',
+    '500,___1go_build_main_go,a.out,',
     '500,gopls,a.out,',
     '500,python3,python.exe,',
     '500,sdaudioswitch,,',
@@ -109,6 +111,6 @@ WHERE -- Focus on longer-running programs
   AND NOT exception_key LIKE '500,rust-analyzer,rust_analyzer-%,'
   AND NOT exception_key LIKE '500,package-version-server-v%,package_version_server-%,'
   AND NOT exception_key LIKE '500,marksman-macos,marksman-%,'
-  AND NOT exception_key LIKE '500,___go_build_main_go,a.out,'
+  AND NOT exception_key LIKE '500,___%go_build_%,a.out,'
 GROUP BY
   p0.pid

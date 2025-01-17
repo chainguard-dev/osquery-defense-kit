@@ -43,9 +43,11 @@ WHERE
   AND p.path NOT LIKE '%.rb'
   AND p.path NOT IN (
     '/sbin/ldconfig',
+    '/usr/bin/yq',
     '/usr/bin/c_rehash',
     '/usr/sbin/bpftool',
     '/usr/sbin/ldconfig',
+    '/opt/incus/bin/skopeo',
     '/usr/sbin/update-ca-certificates'
   )
   AND NOT p.path LIKE '%/firefox'

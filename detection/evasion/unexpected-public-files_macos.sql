@@ -42,4 +42,5 @@ WHERE
     OR file.path LIKE '%/../%'
     OR file.path LIKE '%/./%'
     OR file.path LIKE '/Users/%/Public/Drop Box/.localized'
+    OR file.path LIKE '/Users/%/Public/Drop Box/.DS_Store'
   )

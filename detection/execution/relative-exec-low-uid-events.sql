@@ -68,6 +68,7 @@ WHERE
   )
   AND p0_cmd NOT LIKE './tools/bpf/resolve_btfids/resolve_btfids -b vmlinux /var/lib/dkms/%'
   AND p0_cmd NOT LIKE './tools/objtool/objtool%--hacks%'
+  AND p0_cmd NOT LIKE './updater -insecure https://10.%:9174/check-update/macos'
   AND p0_cmd NOT LIKE './out/osqtool-% %'
   AND p0_path NOT LIKE '/private/tmp/PKInstallSandbox.%/Scripts/com.microsoft.OneDrive.%/OneDrivePkgTelemetry'
   AND NOT p0_cgroup LIKE '/system.slice/docker-%'

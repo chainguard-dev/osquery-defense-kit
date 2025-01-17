@@ -60,6 +60,7 @@ WHERE
       AND INSTR(path, "/opt/") != 1
       AND INSTR(path, "/snap/") != 1
       AND INSTR(path, "/var/lib/snapd/") != 1
+      AND INSTR(path, "/var/lib/awx/") != 1
       AND INSTR(path, "/var/lib/flatpak") != 1
       AND INSTR(path, "/var/opt/") != 1
       AND INSTR(path, "/var/usrlocal/bin/") != 1

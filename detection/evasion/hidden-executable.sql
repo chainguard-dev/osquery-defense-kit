@@ -101,7 +101,6 @@ WHERE
   )
   AND NOT top3_dir IN (
     '~/.bin',
-    '~/.vscode/cli',
     '~/.bin-unwrapped',
     '~/.cache/gitstatus',
     '~/.cache/JetBrains',
@@ -111,16 +110,18 @@ WHERE
     '~/.config/nvm',
     '~/.devpod/contexts',
     '~/.docker/cli-plugins',
+    '~/Documents/GitHub',
     '~/.dotfiles/.local',
     '/home/linuxbrew/.linuxbrew',
     '~/.linuxbrew/Cellar',
+    '~/.magefile',
     '~/node_modules/.bin',
-    '~/Documents/GitHub',
     '~/.nvm/versions',
     '~/.pyenv/versions',
     '~/.steampipe/db',
     '~/thinkorswim/.install4j',
-    '/var~/.local/share'
+    '/var~/.local/share',
+    '~/.vscode/cli'
   )
   AND NOT f.directory LIKE '/Applications/Corsair iCUE5 Software/.cuepkg-%'
   AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'

@@ -115,6 +115,7 @@ WHERE
       AND cmdline NOT LIKE 'chmod 700 /tmp/apt-key-gpghome.%'
       AND cmdline NOT LIKE 'chmod 700 /home/%/snap/%/%/.config'
       AND cmdline NOT LIKE 'chmod +x /home/%/bin/%'
+      AND cmdline NOT LIKE '%chmod 755 /home/%/.local/share/cinnamon/applets/download-and-upload-speed@cardsurf/translation.sh'
   )
   AND pe.time > (strftime('%s', 'now') -300)
   AND pe.syscall = "execve"

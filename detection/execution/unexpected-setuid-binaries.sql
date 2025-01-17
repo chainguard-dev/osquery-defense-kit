@@ -63,8 +63,11 @@ FROM
         AND uid = 0
         AND gid = 0
         AND file.path IN (
+          '/bin/bwrap',
           '/bin/cdda2wav',
           '/bin/cdrecord',
+          '/bin/chfn',
+          '/bin/chsh',
           '/bin/icedax',
           '/bin/mount.nfs',
           '/bin/mount.nfs4',
@@ -89,8 +92,11 @@ FROM
           '/sbin/umount.nfs4',
           '/sbin/userhelper',
           '/sbin/wodim',
+          '/usr/bin/bwrap',
           '/usr/bin/cdda2wav',
           '/usr/bin/cdrecord',
+          '/usr/bin/chfn',
+          '/usr/bin/chsh',
           '/usr/bin/icedax',
           '/usr/bin/mount.nfs',
           '/usr/bin/mount.nfs4',
@@ -112,16 +118,10 @@ FROM
           '/usr/sbin/readcd',
           '/usr/sbin/readom',
           '/usr/sbin/rscsi',
-          '/usr/bin/chsh',
-          '/usr/bin/chfn',
-          '/bin/chsh',
-          '/bin/chfn',
           '/usr/sbin/umount.nfs',
           '/usr/sbin/umount.nfs4',
           '/usr/sbin/userhelper',
-          '/usr/sbin/wodim',
-          '/bin/bwrap',
-          '/usr/bin/bwrap'
+          '/usr/sbin/wodim'
         )
       )
       AND NOT (
@@ -132,12 +132,9 @@ FROM
           '/bin/at',
           '/bin/atq',
           '/bin/atrm',
+          '/bin/bwrap',
           '/bin/chage',
           '/bin/chfn',
-          '/sbin/mount.cifs',
-          '/sbin/mount.smb3',
-          '/usr/sbin/mount.cifs',
-          '/usr/sbin/mount.smb3',
           '/bin/chsh',
           '/bin/crontab',
           '/bin/doas',
@@ -155,6 +152,7 @@ FROM
           '/bin/newgidmap',
           '/bin/newgrp',
           '/bin/newuidmap',
+          '/bin/ntfs-3g',
           '/bin/nvidia-modprobe',
           '/bin/passwd',
           '/bin/pkexec',
@@ -184,8 +182,12 @@ FROM
           '/sbin/grub2-set-bootflag',
           '/sbin/ksu',
           '/sbin/mount',
+          '/sbin/mount.cifs',
           '/sbin/mount.nfs',
           '/sbin/mount.nfs4',
+          '/sbin/mount.ntfs',
+          '/sbin/mount.ntfs-3g',
+          '/sbin/mount.smb3',
           '/sbin/mullvad-exclude',
           '/sbin/ndisc6',
           '/sbin/newgrp',
@@ -209,6 +211,7 @@ FROM
           '/usr/bin/atq',
           '/usr/bin/atrm',
           '/usr/bin/batch',
+          '/usr/bin/bwrap',
           '/usr/bin/chage',
           '/usr/bin/chfn',
           '/usr/bin/chsh',
@@ -229,6 +232,7 @@ FROM
           '/usr/bin/newgidmap',
           '/usr/bin/newgrp',
           '/usr/bin/newuidmap',
+          '/usr/bin/ntfs-3g',
           '/usr/bin/nvidia-modprobe',
           '/usr/bin/passwd',
           '/usr/bin/pkexec',
@@ -272,8 +276,12 @@ FROM
           '/usr/sbin/grub2-set-bootflag',
           '/usr/sbin/ksu',
           '/usr/sbin/mount',
+          '/usr/sbin/mount.cifs',
           '/usr/sbin/mount.nfs',
           '/usr/sbin/mount.nfs4',
+          '/usr/sbin/mount.ntfs',
+          '/usr/sbin/mount.ntfs-3g',
+          '/usr/sbin/mount.smb3',
           '/usr/sbin/mullvad-exclude',
           '/usr/sbin/ndisc6',
           '/usr/sbin/newgrp',
@@ -294,9 +302,7 @@ FROM
           '/usr/sbin/umount.nfs',
           '/usr/sbin/umount.nfs4',
           '/usr/sbin/unix_chkpwd',
-          '/usr/sbin/usernetctl',
-          '/usr/bin/bwrap',
-          '/bin/bwrap'
+          '/usr/sbin/usernetctl'
         )
       )
       AND NOT (

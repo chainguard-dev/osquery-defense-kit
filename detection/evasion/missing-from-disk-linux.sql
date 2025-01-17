@@ -51,4 +51,5 @@ WHERE
   AND p.path NOT LIKE '/home/%/.cache/yay/1password-cli/pkg/1password-cli/usr/bin/op'
   -- Probably just an upgrade
   AND p.path NOT LIKE '/usr/bin/%'
+  AND p.path NOT LIKE '/usr/sbin/%'
   AND p.path NOT LIKE '/opt/%'

@@ -39,6 +39,7 @@ WHERE
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: EA Swiss Sarl (TSTV75T6Q5)',
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
+    'Developer ID Application: Expressco Services, LLC (TC292Y5427)', -- ExpressVPN, bleh.
     'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK)',
     'Developer ID Application: Hercules Labs Inc. (B8PC799ZGU)',
     'Developer ID Application: Ilya Parniuk (ACC5R6RH47)',
