@@ -53,4 +53,3 @@ WHERE
   AND p.path NOT LIKE '/usr/bin/%'
   AND p.path NOT LIKE '/usr/sbin/%'
   AND p.path NOT LIKE '/opt/%'
-

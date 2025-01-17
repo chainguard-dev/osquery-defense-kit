@@ -162,7 +162,13 @@ WHERE
       '~/.hunter/_Base',
       '~/.zsh'
     )
-    OR top_dir IN ('~/Sync', '~/src', '~/workspace', '~/dev', '/var~/.local')
+    OR top_dir IN (
+      '~/Sync',
+      '~/src',
+      '~/workspace',
+      '~/dev',
+      '/var~/.local'
+    )
     OR dir LIKE '~/.%'
     OR dir LIKE '%/.build'
     OR dir LIKE '%/.cache/melange%'

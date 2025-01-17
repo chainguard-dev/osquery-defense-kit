@@ -76,7 +76,10 @@ WHERE
   )
   AND NOT (
     p0.name = 'polkit-agent-he'
-    AND p1.path IN ('/usr/bin/gnome-shell', '/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication')
+    AND p1.path IN (
+      '/usr/bin/gnome-shell',
+      '/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication'
+    )
   )
   AND NOT (
     p0.name = 'fusermount3'
