@@ -49,6 +49,7 @@ WHERE
     'jpg',
     'json',
     'key',
+    'loaded_1',
     'md',
     'mov',
     'mp3',
@@ -80,7 +81,7 @@ WHERE
     'xlsm',
     'xlsx',
     'xml',
-    'yml',
     'yaml',
+    'yml',
     'zip'
   )

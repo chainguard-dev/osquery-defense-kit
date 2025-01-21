@@ -173,6 +173,7 @@ WHERE
     OR dir LIKE '%/.build'
     OR dir LIKE '%/.cache/melange%'
     OR dir LIKE '%/.cargo/%'
+    OR dir LIKE '%/.cargo-arm64%'
     OR dir LIKE '~/code/%'
     OR dir LIKE '~/%/.config/nvim'
     OR dir LIKE '~/dev/%/dots/%/.config%'

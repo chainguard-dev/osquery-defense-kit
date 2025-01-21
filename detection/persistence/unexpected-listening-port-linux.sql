@@ -169,6 +169,7 @@ WHERE
     '6443,6,0,kube-apiserver',
     '6443,6,500,kube-apiserver',
     '67,17,114,dnsmasq',
+    '1601,6,500,rsyslogd',
     '67,17,130,dnsmasq',
     '67,17,500,dnsmasq',
     '68,17,0,dhclient',
@@ -240,5 +241,6 @@ WHERE
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
   AND NOT p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
   AND NOT p.cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/libpod-%'
+  AND NOT p1_cmd LIKE 'bwrap --bind%'
 GROUP BY
   exception_key

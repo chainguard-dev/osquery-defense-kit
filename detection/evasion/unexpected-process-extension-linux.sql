@@ -46,6 +46,7 @@ FROM
 WHERE
   extension IS NOT NULL
   AND extension NOT IN (
+    '0',
     '1',
     '2',
     '3',
