@@ -99,22 +99,23 @@ WHERE
     AND pext NOT IN ("", "gui", "cli", "us", "node", "com")
   )
   AND NOT pname IN (
+    'at.obdev.littlesnitch.endpointsecurity',
+    'at.obdev.littlesnitchmini.networkextension',
+    'at.obdev.littlesnitch.networkextension',
     'BetterTouchToolAppleScriptRunner',
     'BetterTouchToolAppleScriptRunner3',
     'BetterTouchToolShellScriptRunner',
-    'EcammLiveVideoOutAssistantXPCHelper',
-    'ThingsWidgetExtensionMacAppStore',
-    'TwitterNotificationServiceExtension',
-    'at.obdev.littlesnitch.endpointsecurity',
-    'at.obdev.littlesnitch.networkextension',
     'com.microsoft.teams2.notificationcenter',
     'cpu',
-    'xdg-open',
-    'EncryptMe',
     'dynamiclinkmanager',
+    'dynamiclinkmediaserver',
+    'EcammLiveVideoOutAssistantXPCHelper',
+    'EncryptMe',
     'launchd_startx',
+    'ThingsWidgetExtensionMacAppStore',
+    'TwitterNotificationServiceExtension',
     'usercontextservice',
-    'at.obdev.littlesnitchmini.networkextension'
+    'xdg-open'
   )
   -- example: 85C27NK92C.com.flexibits.fantastical2.mac.helper
   AND NOT pname LIKE '___1Test%'

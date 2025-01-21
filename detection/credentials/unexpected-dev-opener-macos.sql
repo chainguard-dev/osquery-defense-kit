@@ -135,5 +135,7 @@ WHERE
     '/dev/xcpm,systemstats,Software Signing,com.apple.systemstats',
     '/dev/xcpm,thermald,Software Signing,com.apple.thermald'
   )
+  -- Keyboard flashing
+  AND NOT exception_key LIKE '/dev/cu.usbmodem%,Google Chrome,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome'
 GROUP BY
   pof.pid

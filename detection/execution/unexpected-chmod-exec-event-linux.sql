@@ -124,5 +124,6 @@ WHERE
   AND p1_cgroup NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
   AND p2_cgroup NOT LIKE '/system.slice/docker-%'
   AND p2_cgroup NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
+  AND NOT exception_key IN ('chmod,500,bash,gnome-terminal-server')
 GROUP BY
   p0_pid

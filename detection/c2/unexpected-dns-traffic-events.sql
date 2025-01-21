@@ -152,6 +152,7 @@ WHERE
     'io.tailscale.ipn.macsys.network-extension',
     'IPNExtension',
     'Jabra Direct Helper',
+    'java',
     'limactl',
     'mDNSResponder',
     'melange',

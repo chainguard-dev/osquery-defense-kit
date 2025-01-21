@@ -101,7 +101,6 @@ WHERE
     '0,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     '0,Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9)',
     '500,Apple Mac OS Application Signing',
-    '500,Software Signing',
     '500,Developer ID Application: Autodesk (XXKJ396S2Y)',
     '500,Developer ID Application: Blackmagic Design Inc (9ZGFBWLSYP)',
     '500,Developer ID Application: Cisco (DE8Y96K9QP)',
@@ -109,12 +108,14 @@ WHERE
     '500,Developer ID Application: Google LLC (EQHXZ8M8AV)',
     '500,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '500,Developer ID Application: ngrok LLC (TEX8MHRDQ9)',
+    '500,Developer ID Application: Oracle America, Inc. (VB5E2TV963)',
     '500,Developer ID Application: Sky UK Limited (GJ24C8864F)',
     '500,Developer ID Application: Spotify (2FNC3A47ZF)',
     '500,Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G)',
     '500,Developer ID Application: Valve Corporation (MXGJJ98X76)',
     '500,Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
-    '500,Developer ID Application: Zwift, Inc (C2GM8Y9VFM)'
+    '500,Developer ID Application: Zwift, Inc (C2GM8Y9VFM)',
+    '500,Software Signing'
   )
   AND NOT (
     unsigned_exception = '500,6,80,main,main'
