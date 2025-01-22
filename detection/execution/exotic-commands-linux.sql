@@ -47,28 +47,28 @@ WHERE
     p0.name IN (
       'bitspin',
       'bpftool',
-      'heyoka',
-      'nstx',
-      'dnscat2',
-      'tuns',
-      'iodine',
-      'esxcli',
-      'vim-cmd',
-      'minerd',
       'cpuminer-multi',
       'cpuminer',
+      'dnscat2',
+      'esxcli',
+      'heyoka',
       'httpdns',
-      'rshell',
-      'rsh',
-      'xmrig',
       'incbit',
       'insmod',
+      'iodine',
       'kmod',
       'lushput',
+      'minerd',
       'mkfifo',
       'msfvenom',
       'nc',
-      'socat'
+      'nstx',
+      'rsh',
+      'rshell',
+      'socat',
+      'tuns',
+      'vim-cmd',
+      'xmrig'
     )
     OR p0.name LIKE '%pwn%'
     OR p0.name LIKE '%xig%'
@@ -150,14 +150,14 @@ WHERE
   AND NOT p0.cmdline like '%socat UNIX-LISTEN:%com.discordapp%discord-ipc%'
   AND NOT p0.cmdline IN ('nc 127.0.0.1 5900')
   AND NOT p0.name IN (
+    'bwrap',
     'cc1',
-    'git',
+    'cc1plus',
+    'chrome_crashpad',
+    'cmake',
+    'compile',
     'emacs',
     'espeak',
-    'compile',
-    'bwrap',
-    'cmake',
-    'cc1plus',
-    'chrome_crashpad'
+    'git'
   )
   AND NOT p1.name IN ('bwrap')

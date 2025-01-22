@@ -87,40 +87,40 @@ WHERE
     '/usr/bin/openssl',
     '/usr/bin/security',
     '/usr/bin/sqlite3',
-    '/usr/sbin/spctl',
     '/usr/bin/sw_vers',
     '/usr/bin/unzip',
     '/usr/bin/uuidgen',
     '/usr/bin/whoami',
     '/usr/libexec/security_authtrampoline',
     '/usr/sbin/ioreg',
+    '/usr/sbin/spctl',
     '/usr/sbin/sysctl',
     '/usr/sbin/system_profiler'
   )
   AND p.parent > 0
   AND NOT p0_cmd IN (
+    '/usr/bin/security authorizationdb read system.login.screensaver',
+    '/usr/sbin/sysctl -n hw.cputype',
+    '/usr/sbin/sysctl kern.hv_support',
+    '/usr/sbin/sysctl sysctl.proc_translated',
+    '/usr/sbin/system_profiler SPUSBDataType',
+    'security authorizationdb read system.login.screensaver',
+    'sw_vers -productName',
     'sysctl -i sysctl.proc_translated',
     'sysctl -n hw.optional.arm64',
-    'sw_vers -productName',
-    '/usr/bin/security authorizationdb read system.login.screensaver',
-    'security authorizationdb read system.login.screensaver',
-    'unzip -h',
     'sysctl -n sysctl.proc_translated',
-    '/usr/sbin/system_profiler SPUSBDataType',
     'system_profiler SPUSBDataType',
-    '/usr/sbin/sysctl kern.hv_support',
-    '/usr/sbin/sysctl -n hw.cputype',
-    '/usr/sbin/sysctl sysctl.proc_translated'
+    'unzip -h'
   )
   AND NOT exception_key IN (
     'ditto,500,ruby,zsh',
-    'system_profiler,500,bash,DDPM',
     'ioreg,500,bash,Alfred Preferences',
-    'ioreg,500,com.docker.backend,launchd',
-    'system_profiler,0,launcher,launchd',
-    'system_profiler,500,bash,launchd',
     'ioreg,500,com.docker.backend,com.docker.backend',
+    'ioreg,500,com.docker.backend,launchd',
     'security_authtrampoline,500,Raycast,launchd',
+    'system_profiler,0,launcher,launchd',
+    'system_profiler,500,bash,DDPM',
+    'system_profiler,500,bash,launchd',
     'system_profiler,500,bash,logioptionsplus_agent',
     'system_profiler,500,Google Drive,launchd',
     'system_profiler,500,steam_osx,launchd',
@@ -131,8 +131,8 @@ WHERE
   AND NOT p0_cmd LIKE '/usr/libexec/security_authtrampoline /Library/Application Support/Adobe/Adobe Desktop Common/ElevationManager/Adobe Installer auth%'
   AND NOT p0_cmd LIKE '%sqlite3%vulnerability.db%'
   AND NOT p1_path IN (
-    '/Applications/LogiTune.app/Contents/MacOS/LogiTune',
-    '/Applications/Alfred 5.app/Contents/Preferences/Alfred Preferences.app/Contents/MacOS/Alfred Preferences'
+    '/Applications/Alfred 5.app/Contents/Preferences/Alfred Preferences.app/Contents/MacOS/Alfred Preferences',
+    '/Applications/LogiTune.app/Contents/MacOS/LogiTune'
   )
 GROUP BY
   pe.pid

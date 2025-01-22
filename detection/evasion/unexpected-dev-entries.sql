@@ -25,9 +25,9 @@ FROM
 WHERE
   (
     file.path LIKE '/dev/shm/%%'
-    OR file.path LIKE '/dev/%/.%'
     OR file.path LIKE '/dev/.%'
     OR file.path LIKE '/dev/.%/%'
+    OR file.path LIKE '/dev/%/.%'
     OR file.path LIKE '/dev/%%/.%/%'
     OR file.path LIKE '/dev/mqueue/%%'
   ) -- We should also use uid for making decisions here
@@ -35,26 +35,26 @@ WHERE
     file.uid > 499
     AND (
       file.path LIKE '/dev/shm/.com.google.%'
-      OR file.path LIKE '/dev/shm/.org.chromium.%'
-      OR file.path LIKE '/dev/shm/wayland.mozilla.%'
-      OR file.path LIKE '/dev/shm/byobu-%'
-      OR file.path LIKE '/dev/shm/shm-%-%-%'
-      OR file.path LIKE '/dev/shm/pulse-shm-%'
-      OR file.path LIKE '/dev/shm/u1000-Shm%'
-      OR file.path LIKE '/dev/shm/sem.%autosave'
-      OR file.path LIKE '/dev/shm/u1000-Valve%'
-      OR file.path LIKE '/dev/shm/aomshm.%'
-      OR file.path LIKE '/dev/shm/jack_db%'
       OR file.path LIKE '/dev/shm/.com.microsoft.Edge.%'
+      OR file.path LIKE '/dev/shm/.org.chromium.%'
+      OR file.path LIKE '/dev/shm/aomshm.%'
+      OR file.path LIKE '/dev/shm/byobu-%'
+      OR file.path LIKE '/dev/shm/jack_db%'
+      OR file.path LIKE '/dev/shm/pulse-shm-%'
+      OR file.path LIKE '/dev/shm/sem.%autosave'
+      OR file.path LIKE '/dev/shm/shm-%-%-%'
+      OR file.path LIKE '/dev/shm/u1000-Shm%'
+      OR file.path LIKE '/dev/shm/u1000-Valve%'
+      OR file.path LIKE '/dev/shm/wayland.mozilla.%'
     )
   )
   AND NOT (
     file.size <= 32
     AND file.path LIKE '/dev/shm/%'
   )
-  AND file.path NOT LIKE '/dev/shm/lttng-ust-wait-%'
   AND file.path NOT LIKE '/dev/shm/flatpak-%'
   AND file.path NOT LIKE '/dev/shm/libpod_rootless_lock_%'
+  AND file.path NOT LIKE '/dev/shm/lttng-ust-wait-%'
   AND file.path NOT LIKE '/dev/shm/sem.mp-%'
   AND file.path NOT LIKE '%/../%'
   AND file.path NOT LIKE '%/./%'

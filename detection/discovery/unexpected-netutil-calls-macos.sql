@@ -76,10 +76,10 @@ FROM
 WHERE
   pe.path IN (
     '/sbin/ifconfig',
-    '/usr/sbin/netstat',
-    '/usr/bin/nscurl',
     '/sbin/pfctl',
-    '/usr/libexec/ApplicationFirewall/socketfilterfw'
+    '/usr/bin/nscurl',
+    '/usr/libexec/ApplicationFirewall/socketfilterfw',
+    '/usr/sbin/netstat'
   )
   AND uptime.total_seconds > 30
   AND pe.time > (strftime('%s', 'now') -600)
@@ -88,14 +88,20 @@ WHERE
   AND pe.status == 0
   AND NOT (
     pe.euid > 500
-    AND p1_name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
+    AND p1_name IN (
+      'bash',
+      'dash',
+      'fish',
+      'sh',
+      'zsh'
+    )
     AND p2_name IN (
       'kitty',
       'login',
-      'tmux',
       'ShellLauncher',
       'sudo',
       'tmux:server',
+      'tmux',
       'zsh'
     )
   )

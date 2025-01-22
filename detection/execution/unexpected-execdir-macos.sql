@@ -77,76 +77,81 @@ WHERE
       path
   )
   AND NOT dir IN (
+    '/Library/Application Support/Kandji/Kandji Menu/Kandji Menu.app/Contents/MacOS',
     '/Library/Application Support/Logitech.localized/Logitech Options.localized/LogiMgrUpdater.app/Contents/Resources',
     '/Library/DropboxHelperTools/Dropbox_u501',
     '/Library/Filesystems/kbfuse.fs/Contents/Resources',
     '/Library/Frameworks/Python.framework/Versions/3.10/bin',
     '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers.app/Contents/MacOS',
     '/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/GoogleSoftwareUpdateAgent.app/Contents/MacOS',
-    '/Library/Printers/DYMO/Utilities',
     '/Library/Kandji/Kandji Agent.app/Contents/MacOS/',
-    '/Library/Application Support/Kandji/Kandji Menu/Kandji Menu.app/Contents/MacOS',
+    '/Library/Printers/DYMO/Utilities',
     '/Library/PrivilegedHelperTools',
     '/Library/TeX/texbin',
-    '/usr/local/aws-cli',
     '/nix/store',
     '/nix/var/nix/profiles/default/bin',
     '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/gke-gcloud-auth-plugin',
     '/opt/usr/bin',
     '/opt/X11/bin',
     '/opt/X11/libexec',
-    '/run/current-system/sw/bin'
+    '/run/current-system/sw/bin',
+    '/usr/local/aws-cli'
   )
   AND NOT homedir IN (
-    '~/bin',
     '~/.cache/gitstatus',
+    '~/.docker/cli-plugins',
     '~/.gvm/binscripts',
     '~/.local/share/gh/extensions/gh-sbom',
-    '~/.docker/cli-plugins',
-    '~/.magefile'
+    '~/.magefile',
+    '~/bin'
   )
   AND NOT homedir LIKE '~/%/bin'
   AND NOT homedir LIKE '~/Downloads/%.app/Contents/MacOS'
   AND NOT top_homedir IN (
-    '~/Applications/',
-    '~/Applications (Parallels)/',
-    '~/bin/',
     '~/.cargo/',
+    '~/.config/',
+    '~/.kuberlr/',
+    '~/.provisio/',
+    '~/.pulumi/',
+    '~/.pyenv/',
+    '~/.rbenv/',
+    '~/.rustup/',
+    '~/.steampipe/',
+    '~/.supermaven/',
+    '~/.tflint.d/',
+    '~/.Trash/',
+    '~/.vs-kubernetes/',
+    '~/.vscode/',
+    '~/Applications (Parallels)/',
+    '~/Applications/',
+    '~/bin/',
     '~/chainguard_repos/',
     '~/code/',
     '~/Code/',
-    '~/.config/',
     '~/dev/',
     '~/git/',
     '~/go/',
     '~/google-cloud-sdk/',
     '~/homebrew/',
-    '~/.kuberlr/',
     '~/Parallels/',
     '~/proj/',
     '~/projects/',
     '~/Projects/',
-    '~/.provisio/',
-    '~/.pulumi/',
-    '~/.pyenv/',
-    '~/.rbenv/',
     '~/repos/',
-    '~/.rustup/',
     '~/sigstore/',
     '~/src/',
-    '~/.steampipe/',
-    '~/.supermaven/',
-    '~/.tflint.d/',
     '~/thinkorswim/',
-    '~/.Trash/',
-    '~/.vscode/',
-    '~/.vs-kubernetes/',
     '~/workspace/'
   )
   AND NOT top3_homedir IN (
-    '~/anaconda3/Anaconda-Navigator.app/Contents/',
-    '~/.cache/selenium/chromedriver/',
     '/Library/Application Support/EcammLive',
+    '/Library/Developer/Xcode/',
+    '/opt/rapid7/ir_agent',
+    '~/.cache/selenium/chromedriver/',
+    '~/.local/share/bob/',
+    '~/.local/share/nvim/',
+    '~/.terraform.d/plugin-cache/registry.terraform.io/',
+    '~/anaconda3/Anaconda-Navigator.app/Contents/',
     '~/Library/Arduino15/packages/',
     '~/Library/Caches/com.grammarly.ProjectLlama/',
     '~/Library/Caches/com.mimestream.Mimestream/',
@@ -155,13 +160,8 @@ WHERE
     '~/Library/Caches/JetBrains/',
     '~/Library/Caches/org.gpgtools.updater/',
     '~/Library/Caches/snyk/',
-    '/Library/Developer/Xcode/',
     '~/Library/Services/UE4EditorServices.app/',
-    '~/.local/share/bob/',
-    '~/.local/share/nvim/',
     '~/opentelemetry-operator/cmd/otel-allocator',
-    '/opt/rapid7/ir_agent',
-    '~/.terraform.d/plugin-cache/registry.terraform.io/',
     '~/zed/target/release/'
   )
   AND dir NOT LIKE '/Applications/%'
@@ -176,15 +176,15 @@ WHERE
   AND dir NOT LIKE '/private/var/folders/%/d/Wrapper/%.app'
   AND dir NOT LIKE '/private/var/folders/%/go-build%'
   AND dir NOT LIKE '/private/var/folders/%/GoLand'
-  AND dir NOT LIKE '%/.terraform/providers/%'
   AND dir NOT LIKE '/Volumes/com.getdropbox.dropbox-%'
-  AND homedir NOT LIKE '~/%/google-cloud-sdk/bin/%'
-  AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
-  AND homedir NOT LIKE '~/%/node_modules/%'
+  AND dir NOT LIKE '%/.terraform/providers/%'
   AND homedir NOT LIKE '~/.local/%/packages/%'
-  AND homedir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
-  AND homedir NOT LIKE '~/Library/Caches/%/org.sparkle-project.Sparkle/Launcher/%/Updater.app/Contents/MacOS'
+  AND homedir NOT LIKE '~/%/google-cloud-sdk/bin/%'
+  AND homedir NOT LIKE '~/%/node_modules/%'
   AND homedir NOT LIKE '~/Library/Application Support/%'
+  AND homedir NOT LIKE '~/Library/Caches/%/org.sparkle-project.Sparkle/Launcher/%/Updater.app/Contents/MacOS'
+  AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
+  AND homedir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
   AND s.authority NOT IN (
     'Apple iPhone OS Application Signing',
     'Apple Mac OS Application Signing',

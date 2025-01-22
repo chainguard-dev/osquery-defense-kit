@@ -50,26 +50,26 @@ WHERE
       p.name IN (
         'bitspin',
         'bpftool',
-        'heyoka',
-        'nstx',
-        'dnscat2',
-        'tuns',
-        'iodine',
-        'esxcli',
-        'vim-cmd',
-        'minerd',
         'cpuminer-multi',
         'cpuminer',
+        'dnscat2',
+        'esxcli',
+        'heyoka',
         'httpdns',
-        'rshell',
-        'rsh',
-        'xmrig',
         'incbit',
+        'iodine',
         'lushput',
+        'minerd',
         'mkfifo',
         'msfvenom',
         'nc',
-        'socat'
+        'nstx',
+        'rsh',
+        'rshell',
+        'socat',
+        'tuns',
+        'vim-cmd',
+        'xmrig'
       ) -- coin miner names
       OR REGEX_MATCH (p.name, "(pwn|xig|xmr)", 1) != "" -- malicious processes
       OR REGEX_MATCH (

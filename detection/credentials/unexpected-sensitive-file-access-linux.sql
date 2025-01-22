@@ -62,26 +62,26 @@ WHERE
   AND f.size < 1000000
   AND (
     pof.path IN ('/var/run/docker.sock')
-    OR pof.path LIKE '/home/%/.ssh/%'
-    OR pof.path LIKE '/home/%/.mozilla/firefox/%'
-    OR pof.path LIKE '/home/%/.config/google-chrome/%'
-    OR pof.path LIKE '/root/.ssh/%'
-    OR pof.path LIKE '/root/.bash_history'
-    OR pof.path LIKE '/home/%/.config/gcloud/%'
-    OR pof.path LIKE '/home/%/.config/Slack/%'
+    OR pof.path LIKE '/home/%/.aws%'
     OR pof.path LIKE '/home/%/.bash_history'
     OR pof.path LIKE '/home/%/.cache/mozilla/firefox%'
+    OR pof.path LIKE '/home/%/.config/gcloud/%'
+    OR pof.path LIKE '/home/%/.config/google-chrome/%'
     OR pof.path LIKE '/home/%/.config/mozilla/firefox%'
-    OR pof.path LIKE '/home/%/.aws%'
+    OR pof.path LIKE '/home/%/.config/Slack/%'
+    OR pof.path LIKE '/home/%/.mozilla/firefox/%'
+    OR pof.path LIKE '/home/%/.ssh/%'
+    OR pof.path LIKE '/root/.bash_history'
+    OR pof.path LIKE '/root/.ssh/%'
   )
   AND NOT p.cmdline LIKE 'less %id_rsa.pub'
   AND NOT (
     file_uid == process_uid
     AND exception_key IN (
       'aws,aws,~/.aws',
-      'chrome,chrome,~/.config/google-chrome',
       'chrome_crashpad_handler,chrome_crashpad,',
       'chrome_crashpad_handler,chrome_crashpad,~/.config/google-chrome',
+      'chrome,chrome,~/.config/google-chrome',
       'firefox-bin,file:// Content,~/.mozilla/firefox',
       'firefox-bin,firefox-bin,~/.cache/mozilla',
       'firefox-bin,firefox-bin,~/.mozilla/firefox',
@@ -89,14 +89,14 @@ WHERE
       'firefox-bin,Isolated Web Co,~/.mozilla/firefox',
       'firefox-bin,Privileged Cont,~/.mozilla/firefox',
       'firefox-bin,WebExtensions,~/.mozilla/firefox',
+      'firefox,.firefox-wrappe,~/.cache/mozilla',
+      'firefox,.firefox-wrappe,~/.mozilla/firefox',
       'firefox,file:// Content,~/.cache/mozilla',
       'firefox,file:// Content,~/.mozilla/firefox',
       'firefox,file:// Content,~/snap/firefox',
       'firefox,firefox,~/.cache/mozilla',
       'firefox,firefox,~/.mozilla/firefox',
       'firefox,firefox,~/snap/firefox',
-      'firefox,.firefox-wrappe,~/.cache/mozilla',
-      'firefox,.firefox-wrappe,~/.mozilla/firefox',
       'firefox,Isolated Servic,~/.cache/mozilla',
       'firefox,Isolated Servic,~/.mozilla/firefox',
       'firefox,Isolated Servic,~/snap/firefox',
@@ -116,17 +116,17 @@ WHERE
       'firefox,WebExtensions,~/snap/firefox',
       'plugin-container,MainThread,~/.mozilla/firefox',
       'plugin-container,MainThread,~/snap/firefox',
+      'python3,python3,~/.config/gcloud',
       'python3.10,python3,~/.config/gcloud',
       'python3.11,python3,~/.config/gcloud',
       'python3.12,python3,~/.config/gcloud',
-      'python3,python3,~/.config/gcloud',
       'slack,slack,~/.config/Slack',
       'slack,slack,~/snap/slack',
       'soffice.bin,soffice.bin,~/.mozilla/firefox',
       'updater,updater,~/.cache/mozilla',
       'updater,updater,~/.mozilla/firefox',
-      'vim.basic,vi,~/.ssh',
-      'vim,vim,~/.aws'
+      'vim,vim,~/.aws',
+      'vim.basic,vi,~/.ssh'
     )
   )
 GROUP BY

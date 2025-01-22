@@ -60,53 +60,60 @@ FROM
 WHERE
   uptime.total_seconds > 30
   AND pe.path IN (
-    '/usr/bin/ifconfig',
-    '/usr/bin/ip',
-    '/usr/bin/iptables',
-    '/usr/bin/ufw',
-    '/usr/bin/nft',
     '/bin/ifconfig',
     '/bin/ip',
     '/bin/iptables',
-    '/bin/ufw',
     '/bin/nft',
+    '/bin/ufw',
     '/sbin/ifconfig',
     '/sbin/ip',
     '/sbin/iptables',
+    '/sbin/nft',
     '/sbin/ufw',
-    '/sbin/nft'
+    '/usr/bin/ifconfig',
+    '/usr/bin/ip',
+    '/usr/bin/iptables',
+    '/usr/bin/nft',
+    '/usr/bin/ufw'
   )
   AND pe.cmdline != ''
   AND pe.time > (strftime('%s', 'now') -300)
   AND NOT (
     pe.euid > 500
-    AND p1_name IN ('sh', 'fish', 'zsh', 'bash', 'dash', 'nu')
+    AND p1_name IN (
+      'bash',
+      'dash',
+      'fish',
+      'nu',
+      'sh',
+      'zsh'
+    )
     AND p2_name IN (
       'alacritty',
       'gnome-terminal-',
+      'gnome-terminal-server',
       'kitty',
       'login',
-      'roxterm',
-      'tmux',
-      'screen',
-      'gnome-terminal-server',
       'newgrp',
+      'roxterm',
+      'screen',
       'tmux:server',
+      'tmux',
       'wezterm-gui',
       'zsh'
     )
   )
   AND NOT p1_cmd IN (
-    '/opt/incus/bin/incusd --group incus-admin --logfile /var/log/incus/incusd.log',
     '/bin/sh /etc/network/if-up.d/avahi-autoipd',
+    '/opt/incus/bin/incusd --group incus-admin --logfile /var/log/incus/incusd.log',
     '/usr/bin/libvirtd --timeout 120'
   )
   AND NOT p1_path IN (
-    '/usr/libexec/gvfsd',
     '/opt/incus/bin/incusd',
+    '/usr/libexec/gvfsd',
     '/usr/libexec/incus/incusd'
   )
-  AND NOT p0_cmd LIKE '%ip route add % dev % metric 1000 scope link'
   AND NOT p0_cmd LIKE '%ip link set lo netns -1'
+  AND NOT p0_cmd LIKE '%ip route add % dev % metric 1000 scope link'
 GROUP BY
   pe.pid

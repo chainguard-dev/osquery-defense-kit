@@ -65,16 +65,16 @@ WHERE
   AND pe.cmdline != ''
   AND (
     pe.path IN (
-      '/usr/bin/sysctl',
-      '/sbin/sysctl',
-      '/usr/sbin/sysctl',
-      '/usr/bin/chattr',
       '/sbin/chattr',
-      '/usr/sbin/chattr',
-      '/usr/bin/setenforce',
       '/sbin/setenforce',
+      '/sbin/sysctl',
+      '/usr/bin/chattr',
+      '/usr/bin/setenforce',
+      '/usr/bin/sqlite3',
+      '/usr/bin/sysctl',
+      '/usr/sbin/chattr',
       '/usr/sbin/setenforce',
-      '/usr/bin/sqlite3'
+      '/usr/sbin/sysctl'
     ) -- Used by LaZagne, through the Platform library
     OR (
       pe.path IN ('/ur/bin/uname', '/bin/uname')

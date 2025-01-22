@@ -84,24 +84,24 @@ WHERE
       'chainctl',
       'chezmoi',
       'clang-11',
-      'code',
-      'Code Helper (Renderer)',
       'Code - Insiders Helper (Renderer)',
+      'Code Helper (Renderer)',
+      'code',
       'collect2',
       'com.docker.backend',
       'conmon',
-      'containerd-shim',
       'containerd-shim-runc-v2',
+      'containerd-shim',
       'cpptools',
       'dash',
       'dbus-run-session',
       'demoit',
       'direnv',
       'doas',
-      'docker',
+      'Docker Desktop',
       'docker-credential-desktop',
       'docker-credential-gcr',
-      'Docker Desktop',
+      'docker',
       'dotnet',
       'dpkg',
       'Emacs-arm64-11',
@@ -111,10 +111,10 @@ WHERE
       'FinderSyncExtension',
       'fish',
       'gatherheaderdoc',
-      'gdm3',
       'gdm-session-worker',
       'gdm-wayland-session',
       'gdm-x-session',
+      'gdm3',
       'git',
       'gke-gcloud-auth-plugin',
       'gnome-session-binary',
@@ -144,9 +144,9 @@ WHERE
       'monorail',
       'my_print_defaults',
       'ninja',
-      'nix',
       'nix-build',
       'nix-daemon',
+      'nix',
       'nm-dispatcher',
       'node',
       'nu',
@@ -167,27 +167,27 @@ WHERE
       'sh',
       'ShellLauncher',
       'skhd',
-      'snyk',
       'snyk-macos',
+      'snyk',
       'sshd',
       'stable',
       'Stream Deck',
       'su',
       'sudo',
       'swift',
-      'systemd',
       'systemd-sleep',
+      'systemd',
       'terminator',
-      'terraform',
       'terraform-ls',
+      'terraform',
       'test2json',
-      'tmux',
       'tmux:server',
+      'tmux',
       'update-notifier',
       'vi',
+      'vim.nox',
       'vim',
       'Vim',
-      'vim.nox',
       'watch',
       'wezterm-gui',
       'xargs',
@@ -213,26 +213,26 @@ WHERE
       '/bin/bash /usr/bin/xdg-settings set default-url-scheme-handler slack Slack.desktop',
       '/bin/bash /usr/local/bin/mount-product-files',
       '/bin/sh -c black .',
-      "/bin/sh -c defaults delete 'com.cisco.webexmeetingsapp'",
       '/bin/sh -c ioreg -rd1 -c IOPlatformExpertDevice',
       '/bin/sh -c lsb_release -a --short',
       '/bin/sh -c ps ax -ww -o pid,ppid,uid,gid,args',
       '/bin/sh -c scutil --get ComputerName',
       '/bin/sh -c sysctl hw.model kern.osrelease',
       '/bin/sh -c uname -m 2>/dev/null',
-      '/bin/sh /usr/bin/lsb_release -a',
       '/bin/sh /usr/bin/lsb_release -a --short',
+      '/bin/sh /usr/bin/lsb_release -a',
       '/bin/zsh -c ls',
+      '/usr/bin/python3 /usr/bin/terminator',
       'sh -c /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find python3 2> /dev/null',
       'sh -c /bin/stty size 2>/dev/null',
+      'sh -c /usr/bin/xcrun clang 2>&1',
       'sh -c cat /proc/sys/kernel/pid_max',
-      "sh -c osascript -e 'user locale of (get system info)'",
-      "sh -c pacmd list-sinks |grep 'name:\|module:'",
       'sh -c pactl --version',
       'sh -c python3.7 --version 2>&1',
-      'sh -c /usr/bin/xcrun clang 2>&1',
       'sh -c xcode-select --print-path >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path 2>/dev/null',
-      '/usr/bin/python3 /usr/bin/terminator'
+      "/bin/sh -c defaults delete 'com.cisco.webexmeetingsapp'",
+      "sh -c osascript -e 'user locale of (get system info)'",
+      "sh -c pacmd list-sinks |grep 'name:\|module:'"
     )
     OR (
       p1_name = 'WhatsApp'
@@ -267,18 +267,19 @@ WHERE
       'bash,0,perl5.30,system_installd',
       'bash,0,pia-daemon,launchd',
       'bash,0,udevadm,udevadm',
+      'bash,500,.man-wrapped,zsh',
       'bash,500,accounts-daemon,systemd',
       'bash,500,busybox,bwrap',
       'bash,500,bwrap,bwrap',
       'bash,500,com.docker.dev-envs,com.docker.backend',
       'bash,500,docker-builder,bash',
       'bash,500,Foxit PDF Reader,launchd',
+      'bash,500,gdb,perl',
       'bash,500,gnome-session-binary,systemd',
       'bash,500,gpg-agent,launchd',
       'bash,500,Hyprland,gdm-wayland-session',
       'bash,500,incusd,incusd',
       'bash,500,lazygit,nvim',
-      'bash,500,.man-wrapped,zsh',
       'bash,500,plasmashell,systemd',
       'bash,500,Private Internet Access,launchd',
       'bash,500,ruby,zsh',
@@ -301,7 +302,6 @@ WHERE
       'sh,0,expect,kandji-daemon',
       'sh,500,cloud_sql_proxy,zsh',
       'sh,500,docs,zsh',
-      'bash,500,gdb,perl',
       'sh,500,Google Drive,launchd',
       'sh,500,LogiTune,launchd',
       'sh,500,Meeting Center,launchd',
@@ -321,32 +321,32 @@ WHERE
       'zsh,500,rubymine,launchd',
       'zsh,500,stable,launchd'
     )
-    OR p0_cmd LIKE '%/bash -e%/bin/as -arch%'
-    OR p0_cmd LIKE '/bin/sh -c /Applications/%'
-    OR p0_cmd LIKE '%/usr/bin/python3 /usr/bin/terminator%'
-    OR p0_cmd LIKE '/bin/bash %/opt/homebrew/%'
+    OR p0_cmd LIKE '/bin/bash /Users/%/homebrew/Library/Homebrew/shims/shared/curl %'
     OR p0_cmd LIKE '/bin/bash /usr/bin/xdg-settings check %'
     OR p0_cmd LIKE '/bin/bash /usr/local/Homebrew/%'
-    OR p0_cmd LIKE '/bin/sh %/bin/xvim block %'
-    OR p0_cmd LIKE '/bin/sh %/bin/gcloud%config config-helper%'
-    OR p0_cmd LIKE '/bin/sh %/google-cloud-sdk/bin/gcloud config get project'
-    OR p0_cmd LIKE '/bin/sh -c pkg-config %'
-    OR p0_cmd LIKE '/bin/sh %/docker-credential-gcloud get'
+    OR p0_cmd LIKE '/bin/bash %/opt/homebrew/%'
     OR p0_cmd LIKE '/bin/bash %git credential-osxkeychain get'
+    OR p0_cmd LIKE '/bin/sh -c /Applications/%'
+    OR p0_cmd LIKE '/bin/sh -c pkg-config %'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-open %'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings check %'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings get %'
     OR p0_cmd LIKE '/bin/sh /usr/bin/xdg-settings set %'
-    OR p0_cmd LIKE '/bin/bash /Users/%/homebrew/Library/Homebrew/shims/shared/curl %'
+    OR p0_cmd LIKE '/bin/sh %/bin/gcloud%config config-helper%'
+    OR p0_cmd LIKE '/bin/sh %/bin/xvim block %'
+    OR p0_cmd LIKE '/bin/sh %/docker-credential-gcloud get'
+    OR p0_cmd LIKE '/bin/sh %/google-cloud-sdk/bin/gcloud config get project'
+    OR p0_cmd LIKE '%/bash -e%/bin/as -arch%'
+    OR p0_cmd LIKE '%/google-chrome% --flag-switches-begin % --product-version'
+    OR p0_cmd LIKE '%/usr/bin/python3 /usr/bin/terminator%'
     OR p0_cmd LIKE '%gcloud config config-helper --format=json'
     OR p0_cmd LIKE '%gcloud config get-value%'
     OR p0_cmd LIKE '%sh -c ntia-checker %'
-    OR p0_cmd LIKE '%/google-chrome% --flag-switches-begin % --product-version'
-    OR p1_cmd LIKE '%/bin/pipenv shell'
-    OR p1_cmd LIKE '/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -W1 --disable=gems,rubyopt -- /Users/%/homebrew/Library/Homebrew/build.rb%'
-    OR p1_cmd LIKE 'gcloud% auth%login%'
     OR p1_cmd LIKE '/%google-cloud-sdk/lib/gcloud.py%'
+    OR p1_cmd LIKE '/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -W1 --disable=gems,rubyopt -- /Users/%/homebrew/Library/Homebrew/build.rb%'
+    OR p1_cmd LIKE '%/bin/pipenv shell'
     OR p1_cmd LIKE '%/usr/bin/terminator%'
+    OR p1_cmd LIKE 'gcloud% auth%login%'
     OR (
       exception_key IN ('sh,500,ruby,zsh', 'bash,500,ruby,zsh')
       AND p1_cmd LIKE '%brew.rb'

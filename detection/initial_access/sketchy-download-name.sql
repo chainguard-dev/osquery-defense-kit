@@ -25,23 +25,22 @@ WHERE
   -- Frequently targetted extension for InfoStealer attacks
   AND extension IN ('dmg', 'exe', 'rar', 'pkg')
   AND (
-    file.filename LIKE "%Adobe Photoshop%"
-    OR file.filename LIKE "%.app%"
+    file.filename LIKE "%.app%"
+    OR file.filename LIKE "%Adobe Photoshop%"
     OR file.filename LIKE "%Advertising%"
     OR file.filename LIKE "%agreement%"
     OR file.filename LIKE "%animated%"
     OR file.filename LIKE "%Brief%"
+    OR file.filename LIKE "%confidential%"
     OR file.filename LIKE "%confidentiality%"
     OR file.filename LIKE "%conract%"
     OR file.filename LIKE "%contract%"
     OR file.filename LIKE "%cover%"
     OR file.filename LIKE "%crack%"
+    OR file.filename LIKE "%curriculum%"
+    OR file.filename LIKE "%cv"
     OR file.filename LIKE "%description%"
     OR file.filename LIKE "%Flash%"
-    OR file.filename LIKE "%resume%"
-    OR file.filename LIKE "cv%"
-    OR file.filename LIKE "%cv"
-    OR file.filename LIKE "%curriculum%"
     OR file.filename LIKE "%freyavr%"
     OR file.filename LIKE "%game%"
     OR file.filename LIKE "%immediate%"
@@ -53,21 +52,22 @@ WHERE
     OR file.filename LIKE "%presentation%"
     OR file.filename LIKE "%receipt%"
     OR file.filename LIKE "%reference%"
-    OR file.filename LIKE "%terms%"
+    OR file.filename LIKE "%resume%"
     OR file.filename LIKE "%secret%"
-    OR file.filename LIKE "%confidential%"
+    OR file.filename LIKE "%terms%"
     OR file.filename LIKE "%trading%"
     OR file.filename LIKE "%Update%"
     OR file.filename LIKE "%weed%"
+    OR file.filename LIKE "cv%"
   )
   -- False positives
   AND NOT (
-    file.filename LIKE "LogiPresentation%.dmg"
-    OR file.filename = "googlesoftwareupdate.dmg"
+    file.filename = "googlesoftwareupdate.dmg"
+    OR file.filename LIKE 'CalDigit_%_PD_Firmware_Updater_v%_Mac.dmg'
+    OR file.filename LIKE 'PA Lottery Player Location Check%.dmg'
+    OR file.filename LIKE 'TS%-Thunderbolt-Firmware-Updater-Uninstaller.dmg'
+    OR file.filename LIKE "%MacVim%.dmg"
+    OR file.filename LIKE "LogiPresentation%.dmg"
     OR file.filename LIKE "pdftk_server-%-win-setup.exe"
     OR file.filename LIKE "PioneerDriveUpdaterBDR%.dmg"
-    OR file.filename LIKE "%MacVim%.dmg"
-    OR file.filename LIKE 'CalDigit_%_PD_Firmware_Updater_v%_Mac.dmg'
-    OR file.filename LIKE 'TS%-Thunderbolt-Firmware-Updater-Uninstaller.dmg'
-    OR file.filename LIKE 'PA Lottery Player Location Check%.dmg'
   )

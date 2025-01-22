@@ -13,12 +13,12 @@ FROM
   etc_hosts
 WHERE
   hostnames NOT IN (
-    'localhost',
-    'localhost ip6-localhost ip6-loopback',
-    'localhost localhost.localdomain localhost4 localhost4.localdomain4',
     'ip6-allnodes',
     'ip6-allrouters',
-    'kubernetes'
+    'kubernetes',
+    'localhost ip6-localhost ip6-loopback',
+    'localhost localhost.localdomain localhost4 localhost4.localdomain4',
+    'localhost'
   )
   AND address NOT IN (
     '::1',
@@ -32,15 +32,15 @@ WHERE
   AND address NOT LIKE '172.%'
   AND address NOT LIKE '192.168.%'
   AND address NOT LIKE '10.%'
-  AND hostnames NOT LIKE 'localhost.%'
-  AND hostnames NOT LIKE '%k8s%'
-  AND hostnames NOT LIKE '%.svc'
   AND hostnames NOT LIKE '%.%-%.%.dev'
-  AND hostnames NOT LIKE '%local%'
-  AND hostnames NOT LIKE '%.wtf'
-  AND hostnames NOT LIKE '%.test'
   AND hostnames NOT LIKE '%.internal'
   AND hostnames NOT LIKE '%.local'
-  AND hostnames NOT LIKE "%.cloud"
+  AND hostnames NOT LIKE '%.svc'
+  AND hostnames NOT LIKE '%.test'
+  AND hostnames NOT LIKE '%.wtf'
+  AND hostnames NOT LIKE '%k8s%'
+  AND hostnames NOT LIKE '%local%'
   AND hostnames NOT LIKE 'ip6-%'
+  AND hostnames NOT LIKE 'localhost.%'
+  AND hostnames NOT LIKE "%.cloud"
   AND hostnames NOT LIKE "%.example.com"

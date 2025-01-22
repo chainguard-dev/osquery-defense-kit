@@ -65,9 +65,9 @@ WHERE
 }'
   AND yara.count > 0
   AND yara.path NOT IN (
-    '/usr/sbin/auditd',
-    '/usr/lib/git-core/git-remote-https',
-    '/usr/bin/sudo',
     '/usr/bin/dbus-broker-launch',
+    '/usr/bin/sudo',
+    '/usr/lib/git-core/git-remote-https',
+    '/usr/sbin/auditd',
     '/usr/sbin/mcelog'
   )

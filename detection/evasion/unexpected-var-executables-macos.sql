@@ -31,19 +31,19 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
     WHERE
       (
         file.directory = '/var/tmp'
-        OR file.directory LIKE '/var/tmp/%'
-        OR file.directory LIKE '/var/tmp/%/%'
-        OR file.directory LIKE '/var/tmp/%/.%'
-        OR file.directory LIKE '/var/tmp/.%'
-        OR file.directory LIKE '/var/tmp/.%/%'
-        or file.directory LIKE '/var/tmp/.%/.%'
         OR file.directory = '/var/spool'
-        OR file.directory LIKE '/var/spool/%'
-        OR file.directory LIKE '/var/spool/%/%'
-        OR file.directory LIKE '/var/spool/%/.%'
         OR file.directory LIKE '/var/spool/.%'
+        OR file.directory LIKE '/var/spool/.%/.%'
         OR file.directory LIKE '/var/spool/.%/%'
-        or file.directory LIKE '/var/spool/.%/.%'
+        OR file.directory LIKE '/var/spool/%'
+        OR file.directory LIKE '/var/spool/%/.%'
+        OR file.directory LIKE '/var/spool/%/%'
+        OR file.directory LIKE '/var/tmp/.%'
+        OR file.directory LIKE '/var/tmp/.%/.%'
+        OR file.directory LIKE '/var/tmp/.%/%'
+        OR file.directory LIKE '/var/tmp/%'
+        OR file.directory LIKE '/var/tmp/%/.%'
+        OR file.directory LIKE '/var/tmp/%/%'
       ) -- Prevent weird recursion
       AND NOT file.directory LIKE '%/../%'
       AND NOT file.directory LIKE '%/./%' -- Exclude very temporary files
@@ -56,15 +56,15 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       ) -- Rosetta cache, SIP protected
       AND file.path NOT LIKE '/var/db/oah/%'
       AND file.path NOT LIKE '/var/folders/%/C/com.apple.FontRegistry/annex_aux'
+      AND file.path NOT LIKE '/var/folders/%/T/freefn-%_emacs_%.eln'
       AND file.path NOT LIKE '/var/folders/%/T/go.%.%.sum'
+      AND file.path NOT LIKE '/var/folders/%/T/iTerm2-script%'
+      AND file.path NOT LIKE '/var/folders/%/T/jansi-%-libjansi.jnilib'
       AND file.path NOT LIKE '/var/folders/%/T/pulumi-go.%'
       AND file.path NOT LIKE '/var/folders/%/T/sp_relauncher'
-      AND file.path NOT LIKE '/var/folders/%/T/iTerm2-script%'
-      AND file.path NOT LIKE '/var/tmp/epdfinfo%'
-      AND file.path NOT LIKE '/var/folders/%/T/jansi-%-libjansi.jnilib'
-      AND file.path NOT LIKE '/var/tmp/IN_PROGRESS_sysdiagnose_%.tmp/mddiagnose.mdsdiagnostic/diagnostic.log'
       AND file.path NOT LIKE '/var/run/current-system/etc/profiles/per-user/%'
-      AND file.path NOT LIKE '/var/folders/%/T/freefn-%_emacs_%.eln'
+      AND file.path NOT LIKE '/var/tmp/epdfinfo%'
+      AND file.path NOT LIKE '/var/tmp/IN_PROGRESS_sysdiagnose_%.tmp/mddiagnose.mdsdiagnostic/diagnostic.log'
       AND file.directory NOT IN (
         '/var/db/xcode_select_link/Makefiles/VersioningSystems/',
         '/var/db/xcode_select_link/usr/bin',
@@ -80,8 +80,8 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         '/var/select/X11/bin',
         '/var/select/X11/lib',
         '/var/select/X11/lib/dri',
-        '/var/select/X11/libexec',
-        '/var/select/X11/lib/flat_namespace'
+        '/var/select/X11/lib/flat_namespace',
+        '/var/select/X11/libexec'
       )
       AND file.path NOT IN (
         '/var/log/acroUpdaterTools.log',

@@ -92,8 +92,8 @@ WHERE
   AND NOT exception_key IN (
     '0,newgrp,sg',
     '0,systemd-executor,(sd-pam)',
-    '0,udevadm,systemd-udevd',
     '0,udevadm,(udev-worker)',
+    '0,udevadm,systemd-udevd',
     '112,systemd-executor,(sd-pam)',
     '120,systemd-executor,(sd-pam)',
     '128,systemd-executor,(sd-pam)',

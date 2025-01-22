@@ -44,29 +44,29 @@ FROM
 WHERE
   (
     pname LIKE "%kthread%"
+    OR pname LIKE '%xprotect%'
     OR pname LIKE "%-help"
+    OR pname LIKE "%acpi%"
+    OR pname LIKE "%crypt%"
     OR pname LIKE "%flush%"
-    OR pname LIKE "%tasks%"
-    OR pname LIKE "%thread%"
     OR pname LIKE "%initd%"
+    OR pname LIKE "%irq%"
+    OR pname LIKE "%kaudit%"
+    OR pname LIKE "%kdev%"
     OR pname LIKE "%kdmp%"
+    OR pname LIKE "%ksoft%"
+    OR pname LIKE "%kswap%"
     OR pname LIKE "%kworker%"
     OR pname LIKE "%launchd%"
+    OR pname LIKE "%nvme%"
+    OR pname LIKE "%tasks%"
+    OR pname LIKE "%thread%"
     OR pname LIKE "%user_dir%"
     OR pname LIKE "%xdg%"
+    OR pname LIKE "%zswap%"
     OR pname LIKE "cpu%"
     OR pname LIKE "events%"
     OR pname LIKE "idle_%"
-    OR pname LIKE '%xprotect%'
-    OR pname LIKE "%kaudit%"
-    OR pname LIKE "%nvme%"
-    OR pname LIKE "%zswap%"
-    OR pname LIKE "%crypt%"
-    OR pname LIKE "%acpi%"
-    OR pname LIKE "%kdev%"
-    OR pname LIKE "%ksoft%"
-    OR pname LIKE "%irq%"
-    OR pname LIKE "%kswap%"
     OR pname LIKE "mm-%"
     OR pname LIKE "nm_%"
     OR pname LIKE "rcu%"
@@ -94,21 +94,21 @@ WHERE
     'at.obdev.littlesnitchmini.networkextension',
     'com.microsoft.teams2.notificationcenter',
     'cpu',
-    'test',
     'dynamiclinkmanager',
-    'usercontextservice',
     'EcammLiveVideoOutAssistantXPCHelper',
     'launchd_startx',
+    'test',
     'ThingsWidgetExtensionMacAppStore',
-    'TwitterNotificationServiceExtension'
+    'TwitterNotificationServiceExtension',
+    'usercontextservice'
   )
-  AND NOT pname LIKE 'BetterTouch%Runner%'
-  AND NOT pname LIKE '.%-wrapped'
-  AND NOT pname LIKE 'cody-engine-%'
+  AND NOT pname LIKE '___%Test_%.test'
   AND NOT pname LIKE '__%go_build_%'
   AND NOT pname LIKE '__%go_test_%'
   AND NOT pname LIKE '__Test%'
-  AND NOT pname LIKE '___%Test_%.test'
+  AND NOT pname LIKE '.%-wrapped'
+  AND NOT pname LIKE 'BetterTouch%Runner%'
+  AND NOT pname LIKE 'cody-engine-%'
   -- example: 85C27NK92C.com.flexibits.fantastical2.mac.helper
   AND NOT pname LIKE "%.com.flexibits.fantastical2.mac.helper"
   AND NOT s.authority = "Software Signing"

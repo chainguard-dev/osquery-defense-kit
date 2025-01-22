@@ -58,23 +58,23 @@ WHERE -- This time should match the interval
     AND NOT pe.value = ''
     AND NOT p0.path LIKE '%/firefox'
     AND NOT pe.value IN (
-      'libfakeroot.so',
       '/opt/splunkforwarder/lib/libdlwrapper.so',
+      '/run/host/usr/lib/extest/libextest.so',
       '/tmp/preload.so',
       '/usr/lib/extest/libextest.so',
       '/usr/lib/libjemalloc.so',
-      '/usr/lib/libsnmallocshim.so',
       '/usr/lib/libsnmallocshim-checks-memcpy-only.so',
+      '/usr/lib/libsnmallocshim.so',
       '/usr/local/lib/libmimalloc.so',
-      '/run/host/usr/lib/extest/libextest.so'
+      'libfakeroot.so'
     )
+    AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
     AND NOT pe.value LIKE ':/home/%/.local/share/Steam'
-    AND NOT pe.value LIKE ':/home/%/.var/app/com.valvesoftware.Steam/%'
     AND NOT pe.value LIKE ':/home/%/.local/share/Steam/ubuntu%/gameoverlayrenderer.so:/home/%/.local/share/Steam/ubuntu%/gameoverlayrenderer.so'
+    AND NOT pe.value LIKE ':/home/%/.var/app/com.valvesoftware.Steam/%'
     AND NOT pe.value LIKE ':/snap/%'
     AND NOT pe.value LIKE '/app/bin/%'
     AND NOT pe.value LIKE 'libmozsandbox.so%'
-    AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
   )
   -- setuid
   OR (

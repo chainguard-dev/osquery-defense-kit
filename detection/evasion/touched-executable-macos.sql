@@ -43,17 +43,17 @@ WHERE
       processes
     WHERE
       path NOT LIKE '/System/%'
-      AND path NOT LIKE '/Library/Apple/%'
-      AND path NOT LIKE '/usr/libexec/%'
-      AND path NOT LIKE '/usr/sbin/%'
-      AND path NOT LIKE '/sbin/%'
-      AND path NOT LIKE '/Volumes/%'
-      AND path NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%'
       AND path NOT LIKE '/Applications/%/Contents/MacOS/%'
+      AND path NOT LIKE '/Library/Apple/%'
       AND path NOT LIKE '/opt/%/bin/%'
+      AND path NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%'
+      AND path NOT LIKE '/sbin/%'
       AND path NOT LIKE '/usr/bin/%'
-      AND path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+      AND path NOT LIKE '/usr/libexec/%'
       AND path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
+      AND path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+      AND path NOT LIKE '/usr/sbin/%'
+      AND path NOT LIKE '/Volumes/%'
   )
   AND f.btime == f.mtime
   AND (
@@ -77,9 +77,9 @@ WHERE
     'Developer ID Application: Emmanouil Konstantinidis (3YP8SXP3BF)',
     'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',
     -- Karibiner
-    'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
     'Developer ID Application: Galvanix (5BRAQAFB8B)',
     'Developer ID Application: General Arcade (Pte. Ltd.) (S8JLSG5ES7)',
+    'Developer ID Application: GEORGE NACHMAN (H7V7XYVQ7D)',
     'Developer ID Application: GitHub (VEKTX9H2N7)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
@@ -103,20 +103,20 @@ WHERE
         '/Applications/Canon Utilities/IJ Scan Utility/Canon IJ Scan Utility Lite.app/Contents/Library/LoginItems/CIJSULAgent.app/Contents/MacOS/CIJSULAgent',
         '/Applications/Canon Utilities/Inkjet Extended Survey Program/Inkjet Extended Survey Program.app/Contents/MacOS/ESPController.app/Contents/Library/LoginItems/CanonIJExtendedSurveyLaunchAgent.app/Contents/MacOS/CanonIJExtendedSurveyLaunchAgent',
         '/Applications/Divvy.app/Contents/MacOS/Divvy',
-        '/opt/homebrew/share/google-cloud-sdk/bin/log-streaming',
-        '/usr/local/bin/node',
         '/Applications/Sourcetree.app/Contents/MacOS/Sourcetree',
         '/Library/CoreMediaIO/Plug-Ins/DAL/LogiCapture.plugin/Contents/MacOS/Assistant',
-        '/Library/Printers/Brother/Utilities/BrStatusMonitor.app/Contents/MacOS/BrStatusMonitor'
+        '/Library/Printers/Brother/Utilities/BrStatusMonitor.app/Contents/MacOS/BrStatusMonitor',
+        '/opt/homebrew/share/google-cloud-sdk/bin/log-streaming',
+        '/usr/local/bin/node'
       )
-      OR p.path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/%'
-      OR p.path LIKE '/private/var/folders/%/T/AppTranslocation/%/Contents/MacOS/%'
-      OR p.path LIKE '/Applications/%.app/Contents/MacOS/%'
       OR p.path LIKE '/Applications/%.app/Contents/Frameworks/%/Versions/A/Resources/%'
-      OR p.path LIKE '/opt/homebrew/Cellar/%/bin/%'
+      OR p.path LIKE '/Applications/%.app/Contents/MacOS/%'
       OR p.path LIKE '/opt/homebrew/Caskroom/%/bin/%'
+      OR p.path LIKE '/opt/homebrew/Cellar/%/bin/%'
+      OR p.path LIKE '/private/var/folders/%/T/AppTranslocation/%/Contents/MacOS/%'
       OR p.path LIKE '/Users/%/google-cloud-sdk/bin/%'
       OR p.path LIKE '/Users/%/J8RPQ294UB.com.skitch.SkitchHelper'
+      OR p.path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/%'
     )
   )
   AND NOT (

@@ -33,18 +33,18 @@ FROM
 WHERE
   p.euid = 0
   AND pmm.path LIKE '%libpcap%'
-  AND child_path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
-  AND child_path NOT LIKE '/nix/store/%-systemd-%/lib/systemd/systemd%'
   AND child_path NOT LIKE '/nix/store/%-systemd-%/bin/udevadm'
-  AND child_path NOT LIKE '/System/Library/%'
+  AND child_path NOT LIKE '/nix/store/%-systemd-%/lib/systemd/systemd%'
   AND child_path NOT LIKE '/nix/store/%/bin/nix'
+  AND child_path NOT LIKE '/System/Library/%'
+  AND child_path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND child_path NOT IN (
-    '/usr/libexec/UserEventAgent',
-    '/usr/sbin/systemstats',
+    '/run/current-system/systemd/lib/systemd/systemd',
     '/usr/bin/libvirtd',
     '/usr/bin/tcpdump',
+    '/usr/libexec/UserEventAgent',
     '/usr/sbin/cupsd',
-    '/run/current-system/systemd/lib/systemd/systemd'
+    '/usr/sbin/systemstats'
   )
   AND child_cmd NOT IN (
     '/nix/var/nix/profiles/default/bin/nix-daemon',

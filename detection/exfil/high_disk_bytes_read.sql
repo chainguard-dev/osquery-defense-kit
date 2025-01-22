@@ -49,20 +49,20 @@ WHERE
   -- On my Linux machine, tarring up a home directory clocks in at 2,800,000 - 4,986,722
   bytes_read_rate > 2500000
   AND age > 180
-  AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p0.path NOT LIKE '/app/%'
+  AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
   -- Don't exclude /usr so that we find things like tar & rsync
-  AND p0.path NOT LIKE '/opt/%'
   AND p0.path NOT LIKE '/home/%/.local/share/Steam/steamapps/%'
   AND p0.path NOT LIKE '/Library/Apple/System/Library/%'
+  AND p0.path NOT LIKE '/opt/%'
   AND p0.path NOT LIKE '/System/Applications/%'
   AND p0.path NOT LIKE '/System/Library/%'
   AND p0.name NOT IN (
     'apko',
-    'Autodesk Identity Manager',
     'Autodesk Fusion 360',
-    'baloo_file',
+    'Autodesk Identity Manager',
     'baloo_file_extr',
+    'baloo_file',
     'bash',
     'BDLDaemon',
     'bincapz',
@@ -83,8 +83,8 @@ WHERE
     'emacs',
     'factorio',
     'Fedora Media Writer',
-    'firefox',
     'firefox-bin',
+    'firefox',
     'fish',
     'fleet_backend',
     'fsdaemon',
@@ -115,18 +115,18 @@ WHERE
     'Microsoft Update Assistant',
     'nautilus',
     'nessusd',
-    'nix',
     'nix-daemon',
+    'nix',
     'nvim',
-    'ollama',
     'ollama_llama_server',
     'ollama-runer',
+    'ollama',
     'osqueryd',
     'osqueryi',
     'plasmashell',
     'qemu-system-aarch64',
-    'qemu-system-x86',
     'qemu-system-x86-64',
+    'qemu-system-x86',
     'rpi-imager',
     'rpm-ostree',
     'rsync',
@@ -136,18 +136,18 @@ WHERE
     'slack',
     'snapd',
     'spotify',
-    'steam',
     'steam_osx',
+    'steam',
     'systemd',
-    'terraform',
     'terraform-ls',
     'terraform-provider-apko',
+    'terraform',
     'thunderbird',
     'tilt',
     'unattended-upgr',
+    'update_dyld_sim_shared_cache',
     'UpdateBrainService',
     'updatedb',
-    'update_dyld_sim_shared_cache',
     'vim',
     'wineserver',
     'wolfictl',
@@ -166,8 +166,8 @@ WHERE
     '/System/Volumes/Preboot/Cryptexes/Incoming/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent'
   )
   AND NOT p0.path LIKE '/Library/SystemExtensions/%/io.kandji.KandjiAgent.ESF-Extension.systemextension/Contents/MacOS/io.kandji.KandjiAgent.ESF-Extension'
-  AND NOT p0.path LIKE '/Users/%/Library/Application Support/Google/GoogleUpdater/%/GoogleUpdater.app/Contents/MacOS/GoogleUpdater'
   AND NOT p0.path LIKE '/private/var/folders/%/T/go-build%'
+  AND NOT p0.path LIKE '/Users/%/Library/Application Support/Google/GoogleUpdater/%/GoogleUpdater.app/Contents/MacOS/GoogleUpdater'
   AND NOT (
     p0.name = 'bindfs'
     AND p0.cmdline LIKE 'bindfs%-o fsname=%'

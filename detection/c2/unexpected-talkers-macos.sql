@@ -86,17 +86,17 @@ WHERE
       AND remote_address NOT LIKE 'fdfd:%'
       AND state != 'LISTEN'
   ) -- Ignore most common application paths
-  AND p0.path NOT LIKE '/Applications/%.app/Contents/MacOS/%'
   AND p0.path NOT LIKE '/Applications/%.app/Contents/%/MacOS/%'
+  AND p0.path NOT LIKE '/Applications/%.app/Contents/MacOS/%'
   AND p0.path NOT LIKE '/Applications/%.app/Contents/Resources/%'
   AND p0.path NOT LIKE '/Library/Apple/%'
   AND p0.path NOT LIKE '/Library/Application Support/%/Contents/%'
+  AND p0.path NOT LIKE '/opt/%/bin/%'
   AND p0.path NOT LIKE '/System/%'
   AND p0.path NOT LIKE '/Users/%/bin/%'
-  AND p0.path NOT LIKE '/opt/%/bin/%'
   AND p0.path NOT LIKE '/usr/bin/%'
-  AND p0.path NOT LIKE '/usr/sbin/%'
   AND p0.path NOT LIKE '/usr/libexec/%'
+  AND p0.path NOT LIKE '/usr/sbin/%'
   AND NOT signed_exception IN (
     '0,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     '0,Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9)',
@@ -127,27 +127,26 @@ WHERE
   )
   -- port 0 means the connection has come and gone since the original process_open_sockets entry
   AND NOT unsigned_exception IN (
-    '500,0,0,gvproxy,gvproxy',
-    '500,0,0,Python,Python',
-    '500,6,0,gvproxy,gvproxy',
-    '500,0,0,git,git',
-    '500,6,9418,git,git',
-    '500,6,5223,apsd,apsd',
-    '500,6,80,chainlink,chainlink',
-    '500,6,443,.Telegram-wrapped,.Telegram-wrapped',
-    '500,17,53,gvproxy,gvproxy',
-    '500,17,53,gvproxy,gvproxy',
-    '500,6,443,gvproxy,gvproxy',
-    '500,6,32768,gvproxy,gvproxy',
-    '500,0,0,chainlink,chainlink',
-    '500,6,443,chainlink,chainlink',
-    '500,17,123,gvproxy,gvproxy',
     '500,0,0,,',
     '500,0,0,.Telegram-wrapped,.Telegram-wrapped',
-    '500,6,443,cloud_sql_proxy,cloud_sql_proxy',
-    '500,6,32768,cloud_sql_proxy,cloud_sql_proxy',
+    '500,0,0,chainlink,chainlink',
+    '500,0,0,git,git',
+    '500,0,0,gvproxy,gvproxy',
     '500,0,0,jspawnhelper,jspawnhelper',
-    '500,6,0,fuscript,fuscript'
+    '500,0,0,Python,Python',
+    '500,17,123,gvproxy,gvproxy',
+    '500,17,53,gvproxy,gvproxy',
+    '500,6,0,fuscript,fuscript',
+    '500,6,0,gvproxy,gvproxy',
+    '500,6,32768,cloud_sql_proxy,cloud_sql_proxy',
+    '500,6,32768,gvproxy,gvproxy',
+    '500,6,443,.Telegram-wrapped,.Telegram-wrapped',
+    '500,6,443,chainlink,chainlink',
+    '500,6,443,cloud_sql_proxy,cloud_sql_proxy',
+    '500,6,443,gvproxy,gvproxy',
+    '500,6,5223,apsd,apsd',
+    '500,6,80,chainlink,chainlink',
+    '500,6,9418,git,git'
   )
 GROUP BY
   p0.cmdline

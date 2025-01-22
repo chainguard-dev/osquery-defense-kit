@@ -36,14 +36,15 @@ WHERE
   -- Jan 1st, 1980 (the source of many false positives)
   AND f.mtime > 315561600
   AND f.path NOT LIKE '/home/%/idea-IU-223.8214.52/%'
-  AND f.directory NOT LIKE '/Applications/%.app/Contents/MacOS'
   AND f.directory NOT LIKE '/Applications/%.app/Contents/Frameworks/%/Resources'
+  AND f.directory NOT LIKE '/Applications/%.app/Contents/MacOS'
   AND f.directory NOT LIKE '/opt/homebrew/Cellar/%/bin'
   AND f.path NOT IN (
     '/Applications/Gitter.app/Contents/Library/LoginItems/GitterHelperApp.app/Contents/MacOS/GitterHelperApp',
     '/Applications/Pandora.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/crashpad_handler',
     '/Applications/Skitch.app/Contents/Library/LoginItems/J8RPQ294UB.com.skitch.SkitchHelper.app/Contents/MacOS/J8RPQ294UB.com.skitch.SkitchHelper',
     '/Applications/Vimari.app/Contents/PlugIns/Vimari Extension.appex/Contents/MacOS/Vimari Extension',
+    '/Library/Apple/System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/Resources/usbmuxd',
     '/Library/Application Support/EPSON/Scanner/ScannerMonitor/Epson Scanner Monitor.app/Contents/MacOS/Epson Scanner Monitor',
     '/Library/Application Support/LogiFacecam.bundle/Contents/MacOS/LogiFacecamService',
     '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService',
@@ -56,14 +57,12 @@ WHERE
     '/Library/Printers/Brother/Utilities/Server/USBAppControl.app/Contents/MacOS/USBAppControl',
     '/Library/Printers/Brother/Utilities/Server/USBserver.app/Contents/MacOS/USBserver',
     '/Library/Printers/Brother/Utilities/Server/WorkflowAppControl.app/Contents/MacOS/WorkflowAppControl',
-    '/System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/Resources/usbmuxd',
-    '/Library/Apple/System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/Resources/usbmuxd',
     '/opt/IRCCloud/chrome-sandbox',
     '/opt/IRCCloud/irccloud',
-    '/snap/brackets/138/opt/brackets/Brackets',
     '/snap/brackets/138/opt/brackets/Brackets-node',
+    '/snap/brackets/138/opt/brackets/Brackets',
+    '/System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/Resources/usbmuxd',
     '/usr/bin/dbus-broker-launch',
-    '/usr/libexec/dconf-service',
     '/usr/bin/espeak',
     '/usr/bin/i3blocks',
     '/usr/bin/i3lock',
@@ -76,27 +75,28 @@ WHERE
     '/usr/bin/xsel',
     '/usr/bin/xsettingsd',
     '/usr/bin/xss-lock',
+    '/usr/libexec/dconf-service',
     '/usr/local/bin/dive'
   )
   AND p.name NOT IN (
-    'buildkitd',
-    'gitstatusd-darwin-arm64',
-    'gitstatusd-linu',
-    'Flycut',
-    'kail',
-    'SetupWizard',
-    'Vimari Extension',
     'Android File Transfer Agent',
     'BluejeansHelper',
+    'buildkitd',
+    'dlv',
+    'Flycut',
+    'gitstatusd-darwin-arm64',
+    'gitstatusd-linu',
     'J8RPQ294UB.com.skitch.SkitchHelper',
-    'Pandora',
+    'kail',
     'Pandora Helper',
-    'dlv'
+    'Pandora',
+    'SetupWizard',
+    'Vimari Extension'
   )
   AND f.path NOT LIKE '/private/var/folders/%/T/AppTranslocation/%/d/Skitch.app/Contents/MacOS/Skitch'
-  AND p.cgroup_path NOT LIKE '/user.slice/user-%.slice/user@%.service/user.slice/podman-%'
   AND p.cgroup_path NOT LIKE '/system.slice/docker-%'
   AND p.cgroup_path NOT LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
+  AND p.cgroup_path NOT LIKE '/user.slice/user-%.slice/user@%.service/user.slice/podman-%'
 GROUP BY
   p.pid,
   p.path

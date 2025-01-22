@@ -34,49 +34,49 @@ WHERE
   AND p.parent NOT IN (0, 2)
   AND NOT p.path IS NULL
   AND p.name NOT IN (
+    '(udev-worker)',
     '1Password-Keyri',
     'abrt-handle-eve',
     'applydeltarpm',
     'bwrap',
     'crond',
     'cupsd',
+    'dbus-daemon',
     'dhcpcd',
     'dnf',
+    'elastic-agent',
     'fprintd',
     'gdm-session-wor',
     'gdm-x-session',
-    'packagekit-dnf-',
     'gpg-agent',
     'ir_agent',
+    'launcher',
     'modprobe',
     'nginx',
     'osqueryi',
+    'packagekit-dnf-',
     'realmd',
-    'dbus-daemon',
     'sedispatch',
     'ssh',
     'sshd',
     'sudo',
-    'launcher',
-    'systemd',
-    'elastic-agent',
     'systemd-udevd',
     'systemd-userdbd',
     'systemd-userwor',
-    '(udev-worker)',
+    'systemd',
     'Xorg',
     'zfs',
     'zypak-sandbox'
   )
   AND NOT pp.name IN (
-    'systemd-userdbd',
+    '(sd-exec-strv)',
+    '(udev-worker)',
     'crond',
     'dpkg',
-    'systemd',
     'systemd-nsresou',
     'systemd-udevd',
-    '(udev-worker)',
-    '(sd-exec-strv)'
+    'systemd-userdbd',
+    'systemd'
   )
   AND NOT (
     p.name LIKE 'systemd-%'

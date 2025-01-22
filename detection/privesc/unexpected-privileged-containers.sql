@@ -29,15 +29,15 @@ WHERE
     'docker.io/library/registry',
     'docker.io/rancher/k3s',
     'gcr.io/k8s-minikube/kicbase',
+    'jdk-crac',
     'kindest/node',
     'ligfx/k3d-registry-dockerd',
     'moby/buildkit',
-    'wolfi',
-    'jdk-crac'
+    'wolfi'
   )
   AND image NOT LIKE 'cgr.dev/chainguard%'
   AND image NOT LIKE 'ghcr.io/k3d-io/k3d-%'
   AND image NOT LIKE 'ghcr.io/wolfi-dev/%'
-  AND image NOT LIKE 'melange-%'
   AND image NOT LIKE 'k3d-k3d.localhost:%'
+  AND image NOT LIKE 'melange-%'
   AND command NOT LIKE '/usr/bin/melange build %'

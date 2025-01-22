@@ -106,47 +106,47 @@ WHERE
     '/dev/nvidiactl',
     '/dev/ptmx',
     '/dev/pts/ptmx',
-    '/dev/shm/u1000-ValveIPCSharedObj-Steam',
     '/dev/random',
     '/dev/rfkill',
+    '/dev/shm/u1000-ValveIPCSharedObj-Steam',
     '/dev/snd/seq',
+    '/dev/udmabuf',
     '/dev/urandom',
     '/dev/vga_arbiter',
-    '/dev/udmabuf',
     '/dev/video10' -- workaround for poor regex management (ffmpeg)
   )
-  AND pof.path NOT LIKE '/dev/pts/%'
-  AND pof.path NOT LIKE '/dev/snd/%'
-  AND pof.path NOT LIKE '/dev/tty%'
   AND pof.path NOT LIKE '/dev/hidraw%'
+  AND pof.path NOT LIKE '/dev/pts/%'
   AND pof.path NOT LIKE '/dev/shm/.com.google.Chrome.%'
   AND pof.path NOT LIKE '/dev/shm/.org.chromium.Chromium.%'
+  AND pof.path NOT LIKE '/dev/snd/%'
+  AND pof.path NOT LIKE '/dev/tty%'
   -- Zoom
   AND pof.path NOT LIKE '/dev/shm/aomshm.%'
   AND pof.path NOT LIKE '/dev/shm/authentik_%'
   AND NOT dir_exception IN (
+    '/dev,qemu-nbd',
     '/dev/bus/usb,pcscd',
     '/dev/input,acpid',
     '/dev/input,gnome-shell',
     '/dev/input,Hyprland',
+    '/dev/input,keyd',
     '/dev/input,kwin_wayland',
-    '/dev/input,systemd',
     '/dev/input,systemd-logind',
+    '/dev/input,systemd',
     '/dev/input,thermald',
     '/dev/input,touchegg',
     '/dev/input,upowerd',
     '/dev/input,Xorg',
-    '/dev/net,tailscaled',
     '/dev/net,.tailscaled-wrapped',
+    '/dev/net,tailscaled',
     '/dev/net/tun,qemu-system-x86_64',
-    '/dev,qemu-nbd',
     '/dev/shm,1password',
     '/dev/shm,Brackets',
     '/dev/shm,chrome',
     '/dev/shm,code',
     '/dev/shm,electron',
     '/dev/shm,firefox',
-    '/dev/input,keyd',
     '/dev/shm,gameoverlayui',
     '/dev/shm,gopls',
     '/dev/shm,hl2_linux',
@@ -165,10 +165,10 @@ WHERE
     '/dev/shm,wine64-preloader',
     '/dev/shm,winedevice.exe',
     '/dev/shm,xdg-desktop-portal-hyprland',
+    '/dev/snd,.pulseaudio-wrapped',
     '/dev/snd,alsactl',
     '/dev/snd,pipewire',
     '/dev/snd,pulseaudio',
-    '/dev/snd,.pulseaudio-wrapped',
     '/dev/snd,wireplumber',
     '/dev/usb,apcupsd',
     '/dev/usb,upowerd'
@@ -186,28 +186,29 @@ WHERE
     '/dev/input/event,thermald',
     '/dev/input/event,touchegg',
     '/dev/input/event,Xorg',
+    '/dev/kmsg,_k3s-inner',
     '/dev/kmsg,bpfilter_umh',
     '/dev/kmsg,dmesg',
     '/dev/kmsg,k3s',
-    '/dev/kmsg,_k3s-inner',
     '/dev/kmsg,kubelet',
-    '/dev/kmsg,systemd',
     '/dev/kmsg,systemd-coredump',
     '/dev/kmsg,systemd-journald',
+    '/dev/kmsg,systemd',
     '/dev/kvm,qemu-system-x86_64',
     '/dev/mapper/control,dockerd',
     '/dev/mapper/control,gpartedbin',
     '/dev/mapper/control,multipathd',
     '/dev/mcelog,mcelog',
-    '/dev/media0,pipewire',
-    '/dev/media0,wireplumber',
     '/dev/media,pipewire',
     '/dev/media,wireplumber',
+    '/dev/media0,pipewire',
+    '/dev/media0,wireplumber',
+    '/dev/nbd,qemu-nbd',
     '/dev/net/tun,openvpn',
+    '/dev/net/tun,pasta.avx2',
     '/dev/net/tun,qemu-system-x86_64',
     '/dev/net/tun,slirp4netns',
     '/dev/pts,incusd',
-    '/dev/nbd,qemu-nbd',
     '/dev/sda,ntfs-3g',
     '/dev/shm/envoy_shared_memory_1,envoy',
     '/dev/tpmrm,launcher',
@@ -217,6 +218,8 @@ WHERE
     '/dev/tty,systemd-logind',
     '/dev/tty,Xorg',
     '/dev/udmabuf,gnome-shell-portal-helper',
+    '/dev/udmabuf,nautilus',
+    '/dev/udmabuf,xdg-desktop-portal-gnome',
     '/dev/uhid,bluetoothd',
     '/dev/uinput,bluetoothd',
     '/dev/uinput,keyd',
@@ -224,38 +227,35 @@ WHERE
     '/dev/usb/hiddev,upowerd',
     '/dev/vhost-net,qemu-system-x86_64',
     '/dev/vhost-vsock,qemu-system-x86_64',
-    '/dev/video0,chrome',
     '/dev/video,brave',
     '/dev/video,cheese',
     '/dev/video,chrome',
     '/dev/video,ffmpeg',
-    '/dev/video,firefox',
     '/dev/video,firefox-bin',
+    '/dev/video,firefox',
     '/dev/video,guvcview',
     '/dev/video,msedge',
-    '/dev/video,obs',
     '/dev/video,obs-ffmpeg-mux',
+    '/dev/video,obs',
     '/dev/video,pipewire',
-    '/dev/net/tun,pasta.avx2',
     '/dev/video,signal-desktop',
     '/dev/video,slack',
     '/dev/video,v4l2-relayd',
     '/dev/video,vlc',
     '/dev/video,wireplumber',
-    '/dev/video,zoom',
     '/dev/video,zoom.real',
+    '/dev/video,zoom',
+    '/dev/video0,chrome',
     '/dev/wwan0mbim,mbim-proxy',
-    '/dev/udmabuf,xdg-desktop-portal-gnome',
-    '/dev/udmabuf,nautilus',
     '/dev/zfs,',
     '/dev/zfs,zed',
     '/dev/zfs,zfs',
     '/dev/zfs,zpool'
   )
+  AND path_exception NOT LIKE '/dev/bus/usb/%,scdaemon'
+  AND path_exception NOT LIKE '/dev/cpu_dma_latency,python%'
   AND path_exception NOT LIKE '/dev/shm/%'
   AND path_exception NOT LIKE '/dev/video%,chrome'
-  AND path_exception NOT LIKE '/dev/cpu_dma_latency,python%'
-  AND path_exception NOT LIKE '/dev/bus/usb/%,scdaemon'
   AND NOT (
     pof.path = "/dev/uinput"
     AND p0.name LIKE "solaar%"
@@ -272,10 +272,10 @@ WHERE
       'fprintd',
       'fwupd',
       'gphoto2',
-      'gvfsd-gphoto2',
-      'gvfsd-mtp',
       'gvfs-gphoto2-vo',
       'gvfs-gphoto2-volume-monitor',
+      'gvfsd-gphoto2',
+      'gvfsd-mtp',
       'pcscd',
       'streamdeck',
       'usbmuxd'

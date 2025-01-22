@@ -48,16 +48,16 @@ WHERE
   p0.euid < p0.uid
   AND p0.path NOT IN (
     '',
-    '/bin/ps',
     '/Applications/Parallels Desktop.app/Contents/MacOS/Parallels Service',
+    '/Applications/VMware Fusion.app/Contents/Library/vmware-vmx',
+    '/bin/ps',
     '/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_session_monitor',
     '/Library/DropboxHelperTools/Dropbox_u501/dbkextd',
     '/usr/bin/login',
     '/usr/bin/su',
     '/usr/bin/sudo',
     '/usr/bin/top',
-    '/usr/local/bin/doas',
-    '/Applications/VMware Fusion.app/Contents/Library/vmware-vmx'
+    '/usr/local/bin/doas'
   )
   AND NOT (
     p0.path LIKE '/var/folders/%/T/CanonOFI_TEMP/Data/Software/Install/UniversalInstaller.app/Contents/Frameworks/UIx.framework/Resources/relay'

@@ -56,25 +56,25 @@ WHERE
   AND yara.sigrule = '
     rule redflags {
     strings:
+        $avahi = "avahi-daemon:"
         $bash_history = ".bash_history"
-        $google_chrome = "google-chrome"
+        $bin_sh = "/bin/sh"
         $cron = "cron"
+        $dev_mqueue = "/dev/mqueue"
         $dev_shm = "/dev/shm"
         $dev_tcp = "/dev/tcp"
         $dev_udp = "/dev/udp"
+        $google_chrome = "google-chrome"
         $iptables = "iptables"
         $ld_so = "ld.so.conf"
+        $pickup = "pickup -l"
         $proc = "/proc"
+        $redhat4 = "Red Hat 4"
         $sudo = "sudo"
         $systemctl = "systemctl"
         $useradd = "useradd"
-        $var_tmp = "/var/tmp"
         $var_run = "/var/run"
-        $dev_mqueue = "/dev/mqueue"
-        $bin_sh = "/bin/sh"
-        $pickup = "pickup -l"
-        $avahi = "avahi-daemon:"
-        $redhat4 = "Red Hat 4"
+        $var_tmp = "/var/tmp"
     condition:
         filesize < 25MB and 5 of them
 }'

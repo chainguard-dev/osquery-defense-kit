@@ -40,28 +40,28 @@ WHERE
     '/usr/bin/cat',
     '/usr/bin/containerd',
     '/usr/bin/dash',
-    '/usr/bin/docker',
     '/usr/bin/docker-proxy',
+    '/usr/bin/docker',
     '/usr/bin/fusermount3',
     '/usr/bin/i3blocks',
     '/usr/bin/kas',
     '/usr/bin/vmalert',
     '/usr/lib/electron/chrome-sandbox',
-    '/usr/libexec/docker/docker-proxy',
     '/usr/lib/snapd/snapd',
+    '/usr/libexec/docker/docker-proxy',
     '/usr/local/bin/containerd',
     '/usr/local/bin/gitary',
     '/usr/sbin/acpid',
     '/usr/sbin/mcelog'
   )
   AND p0.name NOT IN (
+    'Brackets-node',
     'chrome_crashpad',
     'dhcpcd',
-    'kas',
     'gitaly',
+    'kas',
     'redis-server',
-    'stern',
-    'Brackets-node'
+    'stern'
   ) -- optimization: minimalistic daemons typically only run 1 pid per path
   AND p0.path NOT LIKE '/home/%/go/bin/%'
   AND pos.family != 1

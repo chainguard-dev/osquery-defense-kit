@@ -46,19 +46,19 @@ WHERE
     WHERE
       start_time > (strftime('%s', 'now') - 7200)
       AND path != ""
-      AND NOT path LIKE '/System/%'
-      AND NOT path LIKE '/usr/libexec/%'
-      AND NOT path LIKE '/usr/sbin/%' -- Regular apps
+      AND NOT path LIKE '/%/.local/zed.app/libexec/zed-editor'
       AND NOT path LIKE '/Applications/%.app/Contents/macOS/%'
       AND NOT path LIKE '/opt/%'
-      AND NOT path LIKE '/Users/%/go/%'
-      AND NOT path LIKE '/Users/%/dev/%'
-      AND NOT path LIKE '/Users/%/src/%'
-      AND NOT path LIKE '/Users/%/bin/%'
-      AND NOT path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/%'
       AND NOT path LIKE '/private/var/folders%/T/go-build%/exe/%'
+      AND NOT path LIKE '/System/%'
       AND NOT path LIKE '/Users/%/.terraform/providers/%'
-      AND NOT path LIKE '/%/.local/zed.app/libexec/zed-editor'
+      AND NOT path LIKE '/Users/%/bin/%'
+      AND NOT path LIKE '/Users/%/dev/%'
+      AND NOT path LIKE '/Users/%/go/%'
+      AND NOT path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/%'
+      AND NOT path LIKE '/Users/%/src/%'
+      AND NOT path LIKE '/usr/libexec/%'
+      AND NOT path LIKE '/usr/sbin/%' -- Regular apps
     GROUP BY
       path
   )

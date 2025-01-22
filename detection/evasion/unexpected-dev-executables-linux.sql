@@ -23,16 +23,16 @@ WHERE
     -- This list is the result of multiple queries combined and can likely be minimized
     file.path LIKE '/dev/%%'
     OR file.path LIKE '/dev/%%/%%'
-    OR file.path LIKE '/dev/mqueue/%%'
     OR file.path LIKE '/dev/mqueue/.%/%%'
-    OR file.path LIKE '/dev/mqueue/%/%%'
-    OR file.path LIKE '/dev/mqueue/%/%/.%'
     OR file.path LIKE '/dev/mqueue/%/.%/%%'
-    OR file.path LIKE '/dev/shm/%%'
+    OR file.path LIKE '/dev/mqueue/%/%/.%'
+    OR file.path LIKE '/dev/mqueue/%/%%'
+    OR file.path LIKE '/dev/mqueue/%%'
     OR file.path LIKE '/dev/shm/.%/%%'
-    OR file.path LIKE '/dev/shm/%/%%'
-    OR file.path LIKE '/dev/shm/%/%/.%'
     OR file.path LIKE '/dev/shm/%/.%/%%'
+    OR file.path LIKE '/dev/shm/%/%/.%'
+    OR file.path LIKE '/dev/shm/%/%%'
+    OR file.path LIKE '/dev/shm/%%'
   )
   AND file.type = 'regular'
   AND file.size > 64
@@ -63,10 +63,10 @@ WHERE
       magic.data IS NULL
       OR magic.data NOT LIKE "%executable%"
       OR magic.data IN (
-        'data',
         'Applesoft BASIC program data, first line number 86',
-        'mc68k executable (shared)',
-        'DOS executable (COM)'
+        'data',
+        'DOS executable (COM)',
+        'mc68k executable (shared)'
       )
     )
   )

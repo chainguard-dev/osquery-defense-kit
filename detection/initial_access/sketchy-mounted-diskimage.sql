@@ -43,8 +43,8 @@ WHERE
       JOIN file ON file.directory = mounts.path
       OR file.directory LIKE mounts.path || "/%.app/Contents/MacOS/"
       OR file.directory LIKE mounts.path || "/%.app/Contents/Resources/"
-      OR file.directory LIKE mounts.path || "/%/%.app/Contents/MacOS/"
       OR file.directory LIKE mounts.path || "/%/%.app/Contents/Library/LaunchServices"
+      OR file.directory LIKE mounts.path || "/%/%.app/Contents/MacOS/"
       OR file.directory LIKE mounts.path || "/%/%.app/Contents/Resources/"
     WHERE
       model = 'Disk Image'
@@ -85,8 +85,8 @@ WHERE
       AND signature.authority NOT IN (
         'Software Signing',
         'Developer ID Application: Atlassian Pty Ltd (UPXU4CQZ5P)',
-        'Developer ID Application: MacroMates Ltd. (45TL96F76G)',
-        'Developer ID Application: Logitech Inc. (QED4VVPZWA)'
+        'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
+        'Developer ID Application: MacroMates Ltd. (45TL96F76G)'
       )
     ) -- Rule 3. App binaries with a numerical name, such as 2829030009 (Player_009.app)
     OR (
@@ -104,22 +104,21 @@ WHERE
         vol_name LIKE "Install%"
         -- The rest are synced with sketchy-download-names
         OR vol_name LIKE "%.app%"
-        OR vol_name LIKE "%AnyDesk%"
         OR vol_name LIKE "%Advertising%"
         OR vol_name LIKE "%agreement%"
         OR vol_name LIKE "%animated%"
+        OR vol_name LIKE "%AnyDesk%"
         OR vol_name LIKE "%Brief%"
+        OR vol_name LIKE "%confidential%"
         OR vol_name LIKE "%confidentiality%"
         OR vol_name LIKE "%conract%"
         OR vol_name LIKE "%contract%"
         OR vol_name LIKE "%cover%"
         OR vol_name LIKE "%crack%"
+        OR vol_name LIKE "%curriculum%"
+        OR vol_name LIKE "%cv"
         OR vol_name LIKE "%description%"
         OR vol_name LIKE "%Flash%"
-        OR vol_name LIKE "%resume%"
-        OR vol_name LIKE "cv%"
-        OR vol_name LIKE "%cv"
-        OR vol_name LIKE "%curriculum%"
         OR vol_name LIKE "%freyavr%"
         OR vol_name LIKE "%game%"
         OR vol_name LIKE "%immediate%"
@@ -130,13 +129,14 @@ WHERE
         OR vol_name LIKE "%poster%"
         OR vol_name LIKE "%presentation%"
         OR vol_name LIKE "%receipt%"
-        OR vol_name LIKE "%secret%"
-        OR vol_name LIKE "%confidential%"
         OR vol_name LIKE "%reference%"
+        OR vol_name LIKE "%resume%"
+        OR vol_name LIKE "%secret%"
         OR vol_name LIKE "%terms%"
         OR vol_name LIKE "%trading%"
         OR vol_name LIKE "%Update%"
         OR vol_name LIKE "%weed%"
+        OR vol_name LIKE "cv%"
       )
       AND file.directory LIKE "/Volumes/%/Contents/MacOS"
       AND signature.authority NOT IN (
@@ -157,10 +157,10 @@ WHERE
         OR file.mode LIKE "%1%"
       )
       AND file.filename NOT IN (
-        '.Trashes',
         '.background',
-        '.VolumeIcon.icns',
-        '.TemporaryItems'
+        '.TemporaryItems',
+        '.Trashes',
+        '.VolumeIcon.icns'
       )
       -- Brother Printer Utilities
       AND f != '/Volumes/brotherwdswML_nonPanel/MacResources'
@@ -173,10 +173,10 @@ WHERE
       file.symlink = 1
       AND magic.data NOT IN (
         '/Library/Application Support/Apple/Safari/SafariForWebKitDevelopment',
+        'symbolic link to ../Resources/public',
         'symbolic link to .',
         'symbolic link to /Applications',
         'symbolic link to /Applications/',
-        'symbolic link to ../Resources/public',
         'symbolic link to steam_osx'
       )
       -- emacs

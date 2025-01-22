@@ -67,15 +67,16 @@ WHERE
     OR f.filename LIKE '.%'
     OR f.directory LIKE '%/.%'
   )
+  AND NOT homedir LIKE '%/node_modules/.%'
+  AND NOT homedir LIKE '~/.%/%x64/%'
   AND NOT homedir LIKE '~/.%/bin'
   AND NOT homedir LIKE '~/%/node_modules/.bin%'
-  AND NOT homedir LIKE '~/.%/%x64/%'
-  AND NOT homedir LIKE '%/node_modules/.%'
   AND NOT homepath LIKE '~/%arm64%'
   AND NOT homepath LIKE '~/%x86_64%'
   AND NOT top3_dir LIKE '~/.%/extensions'
   AND NOT top2_dir IN (
     '/nix/store/.links',
+    '/var~/.local',
     '~/.cursor',
     '~/.dropbox-dist',
     '~/.fzf',
@@ -93,15 +94,16 @@ WHERE
     '~/.tflint.d',
     '~/.vs-kubernetes',
     '~/chainguard-images',
+    '~/code',
     '~/Code',
     '~/Projects',
-    '~/code',
-    '~/src',
-    '/var~/.local'
+    '~/src'
   )
   AND NOT top3_dir IN (
-    '~/.bin',
+    '/home/linuxbrew/.linuxbrew',
+    '/var~/.local/share',
     '~/.bin-unwrapped',
+    '~/.bin',
     '~/.cache/gitstatus',
     '~/.cache/JetBrains',
     '~/.cache/selenium',
@@ -110,35 +112,33 @@ WHERE
     '~/.config/nvm',
     '~/.devpod/contexts',
     '~/.docker/cli-plugins',
-    '~/Documents/GitHub',
     '~/.dotfiles/.local',
-    '/home/linuxbrew/.linuxbrew',
     '~/.linuxbrew/Cellar',
     '~/.magefile',
-    '~/node_modules/.bin',
     '~/.nvm/versions',
     '~/.pyenv/versions',
     '~/.steampipe/db',
-    '~/thinkorswim/.install4j',
-    '/var~/.local/share',
-    '~/.vscode/cli'
+    '~/.vscode/cli',
+    '~/Documents/GitHub',
+    '~/node_modules/.bin',
+    '~/thinkorswim/.install4j'
   )
   AND NOT f.directory LIKE '/Applications/Corsair iCUE5 Software/.cuepkg-%'
-  AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'
   AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'
   AND NOT f.directory LIKE '/Volumes/com.getdropbox.dropbox-%'
   AND NOT f.directory LIKE '%/.terraform/%'
+  AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'
   AND NOT f.directory LIKE '%/com.jetbrains.GoLand/cache/JetBrains/GoLand%'
   AND NOT f.path LIKE '/nix/store/%/%-wrapped'
   AND NOT (
     f.path LIKE '/nix/store/%'
     AND p0.name LIKE '%-wrappe%'
   )
-  AND NOT homedir LIKE '~/.Trash/1Password %.app/Contents/Library/LoginItems/1Password Extension Helper.app/Contents/MacOS'
-  AND NOT homedir LIKE '~/.local/share/AppImage/ZenBrowser.AppImage'
-  AND NOT homedir LIKE '~/Library/Application Support/Code/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/%'
   AND NOT homedir LIKE '%/.Trash/1Password %.app/Contents/Library/LoginItems/1Password Extension Helper.app/Contents/MacOS'
   AND NOT homedir LIKE '%/.Trash/Logi Options.app/Contents/Support/LogiMgrDaemon.app/Contents/MacOS'
+  AND NOT homedir LIKE '~/.local/share/AppImage/ZenBrowser.AppImage'
+  AND NOT homedir LIKE '~/.Trash/1Password %.app/Contents/Library/LoginItems/1Password Extension Helper.app/Contents/MacOS'
+  AND NOT homedir LIKE '~/Library/Application Support/Code/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/%'
   AND NOT p0_cgroup LIKE '/system.slice/docker-%'
 GROUP BY
   f.path

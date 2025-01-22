@@ -56,17 +56,17 @@ WHERE
         '/usr/bin/doas',
         '/usr/bin/fusermount',
         '/usr/bin/fusermount3',
-        '/usr/lib/polkit-1/polkit-agent-helper-1',
-        '/usr/bin/newgrp',
         '/usr/bin/login',
+        '/usr/bin/newgrp',
         '/usr/bin/su',
         '/usr/bin/sudo',
         '/usr/bin/top',
-        '/usr/libexec/Xorg',
-        '/usr/lib/xorg/Xorg'
+        '/usr/lib/polkit-1/polkit-agent-helper-1',
+        '/usr/lib/xorg/Xorg',
+        '/usr/libexec/Xorg'
       ) -- doas may be in the process of being upgraded
-      AND NOT path LIKE '/nix/store/%/bin/sudo'
       AND NOT path LIKE '/nix/store/%/bin/dhcpcd'
+      AND NOT path LIKE '/nix/store/%/bin/sudo'
       AND NOT path LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
       AND NOT name IN ('doas', 'sudo')
   )

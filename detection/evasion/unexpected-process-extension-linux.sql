@@ -78,24 +78,24 @@ WHERE
     '32',
     '33',
     '34',
+    'AppImage',
     'backend',
-    'emacs',
-    'bfd',
-    'build',
-    'bin',
-    'nox',
     'basic',
+    'bfd',
+    'bin',
+    'build',
+    'emacs',
+    'ext',
+    'nox',
     'real',
     'test',
-    'tiny',
-    'AppImage',
-    'ext'
+    'tiny'
   )
-  AND NOT basename IN ('rpc.mountd')
-  AND NOT basename LIKE 'python3.%'
-  AND NOT basename LIKE 'python2.%'
-  AND NOT basename LIKE 'kubectl-%'
-  AND NOT basename LIKE 'terraform-provider%'
-  AND NOT basename LIKE 'ld-%.so'
-  AND NOT basename LIKE 'unison-%'
   AND NOT basename IN ('io.elementary.appcenter')
+  AND NOT basename IN ('rpc.mountd')
+  AND NOT basename LIKE 'kubectl-%'
+  AND NOT basename LIKE 'ld-%.so'
+  AND NOT basename LIKE 'python2.%'
+  AND NOT basename LIKE 'python3.%'
+  AND NOT basename LIKE 'terraform-provider%'
+  AND NOT basename LIKE 'unison-%'

@@ -43,10 +43,16 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         AND (
           file.path LIKE '%/go-build%'
           OR file.directory LIKE '/tmp/%/out'
-          OR file.path IN ('/tmp/mkinitramfs', '/tmp/mission')
+          OR file.path IN (
+            '/tmp/mission',
+            '/tmp/mkinitramfs'
+          )
+          OR file.path LIKE '/tmp/GoLand/___go_build_%_go'
+          OR file.path LIKE '/tmp/ko%/out'
+          OR file.path LIKE '/tmp/lima/%/out/%'
+          OR file.path LIKE '/tmp/wolfi%'
+          OR file.path LIKE '%-release%/%'
           OR file.path LIKE '%/bin/%'
-          OR file.path LIKE "%/bin/bash"
-          OR file.path LIKE "%/bin/busybox"
           OR file.path LIKE '%/checkout/%'
           OR file.path LIKE '%/ci/%'
           OR file.path LIKE '%/configure'
@@ -56,41 +62,38 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           OR file.path LIKE '%/git/%'
           OR file.path LIKE '%/github/%'
           OR file.path LIKE '%/go.%.sum'
-          OR file.path LIKE "%/%/gradlew"
           OR file.path LIKE '%/guile-%/guile-%'
-          OR file.path LIKE '%integration_test%'
           OR file.path LIKE '%/ko/%'
           OR file.path LIKE '%/kots/%'
-          OR file.path LIKE "%/lib/%.so"
-          OR file.path LIKE "%/lib/%.so.%"
-          OR file.path LIKE "%/melange%"
           OR file.path LIKE '%/melange-guest-%'
           OR file.path LIKE '%/pdf-tools/%'
           OR file.path LIKE '%/Rakefile'
-          OR file.path LIKE '%-release%/%'
           OR file.path LIKE '%/site-packages/markupsafe/_speedups.cpython-%'
           OR file.path LIKE '%/src/%'
           OR file.path LIKE '%/target/%'
           OR file.path LIKE '%/terraformer/%'
-          OR file.path LIKE '%test_script'
           OR file.path LIKE '%/tmp/epdf%'
-          OR file.path LIKE '/tmp/GoLand/___go_build_%_go'
-          OR file.path LIKE '/tmp/ko%/out'
+          OR file.path LIKE '%integration_test%'
+          OR file.path LIKE '%test_script'
           OR file.path LIKE "/tmp/lima/%"
-          OR file.path LIKE '/tmp/lima/%/out/%'
-          OR file.path LIKE '/tmp/wolfi%'
+          OR file.path LIKE "%/%/gradlew"
+          OR file.path LIKE "%/bin/bash"
+          OR file.path LIKE "%/bin/busybox"
+          OR file.path LIKE "%/lib/%.so.%"
+          OR file.path LIKE "%/lib/%.so"
+          OR file.path LIKE "%/melange%"
         )
       )
       AND NOT (
         file.path LIKE "%/lib/%.so"
+        OR file.path LIKE '/tmp/staged-updates%launcher'
+        OR file.path LIKE "%/bin/bash"
+        OR file.path LIKE "%/bin/busybox"
         OR file.path LIKE "%/lib/%.so.%"
         OR file.path LIKE "%/lib64/%.so.%"
         OR file.path LIKE "%/lib64/%.so"
-        OR file.path LIKE '/tmp/staged-updates%launcher'
         OR file.path LIKE "%/melange%"
         OR file.path LIKE "%/sbin/%"
-        OR file.path LIKE "%/bin/busybox"
-        OR file.path LIKE "%/bin/bash"
       )
       -- Nix
       AND NOT (
@@ -160,13 +163,13 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         "ASCII text",
         "JSON data"
       )
-      OR magic.data LIKE "Unicode text%"
+      OR magic.data LIKE 'ELF 32-bit LSB pie executable, ARM, EABI5%'
+      OR magic.data LIKE 'ELF 64-bit MSB pie executable, IBM S/390%'
+      OR magic.data LIKE 'Linux kernel %'
+      OR magic.data LIKE 'symbolic link to %'
       OR magic.data LIKE "ELF 64-bit LSB shared object,%"
       OR magic.data LIKE "gzip compressed data%" -- Exotic platforms
-      OR magic.data LIKE 'ELF 64-bit MSB pie executable, IBM S/390%'
-      OR magic.data LIKE 'ELF 32-bit LSB pie executable, ARM, EABI5%'
-      OR magic.data LIKE 'symbolic link to %'
-      OR magic.data LIKE 'Linux kernel %'
+      OR magic.data LIKE "Unicode text%"
     )
   )
   AND NOT (
@@ -199,9 +202,9 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       'pem',
       'perl',
       'pl',
+      'pub',
       'py',
       'rb',
-      'pub',
       'registry',
       'script',
       'sh',

@@ -65,8 +65,8 @@ WHERE
     'Software Signing'
   )
   AND program NOT IN (
-    '/usr/local/MacGPG2/libexec/shutdown-gpg-agent',
-    '/usr/local/bin/warsaw/core'
+    '/usr/local/bin/warsaw/core',
+    '/usr/local/MacGPG2/libexec/shutdown-gpg-agent'
   )
   -- Special case: Docker does not consistently sign their plist files (security fail)
   AND NOT (

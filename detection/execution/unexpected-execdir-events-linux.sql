@@ -66,27 +66,27 @@ WHERE
     WHERE
       time > (strftime('%s', 'now') -300)
       AND (
-        INSTR(path, "/bin") != 1
+        INSTR(path, "/.terraform/") > 0
+        AND INSTR(path, "/app/") != 1
+        AND INSTR(path, "/bin") != 1
+        AND INSTR(path, "/home/") != 1
+        AND INSTR(path, "/ko-app") != 1
+        AND INSTR(path, "/nix/") != 1
+        AND INSTR(path, "/opt/") != 1
         AND INSTR(path, "/sbin/") != 1
+        AND INSTR(path, "/snap/") != 1
+        AND INSTR(path, "/tmp/go-build") != 1
         AND INSTR(path, "/usr/bin/") != 1
         AND INSTR(path, "/usr/lib/") != 1
         AND INSTR(path, "/usr/lib64/") != 1
         AND INSTR(path, "/usr/libexec") != 1
+        AND INSTR(path, "/usr/local/") != 1
         AND INSTR(path, "/usr/sbin/") != 1
-        AND INSTR(path, "/home/") != 1
-        AND INSTR(path, "/nix/") != 1
-        AND INSTR(path, "/opt/") != 1
-        AND INSTR(path, "/snap/") != 1
+        AND INSTR(path, "/usr/share/code/") != 1
+        AND INSTR(path, "/usr/share/spotify") != 1
+        AND INSTR(path, "/usr/share/teams/") != 1
         AND INSTR(path, "/var/kolide-k2/") != 1
         AND INSTR(path, "/var/lib/snapd/") != 1
-        AND INSTR(path, "/usr/share/spotify") != 1
-        AND INSTR(path, "/usr/share/code/") != 1
-        AND INSTR(path, "/usr/local/") != 1
-        AND INSTR(path, "/tmp/go-build") != 1
-        AND INSTR(path, "/app/") != 1
-        AND INSTR(path, "/ko-app") != 1
-        AND INSTR(path, "/usr/share/teams/") != 1
-        AND INSTR(path, "/.terraform/") > 0
       )
       AND syscall = "execve" -- REGEX_MATCH performed terribly. INSTR and LIKE are very very close.
     GROUP BY

@@ -37,8 +37,8 @@ WHERE
   AND ea.key = 'where_from'
   AND file.btime > (strftime('%s', 'now') -86400)
   AND domain NOT IN (
-    'adobe.com',
     'adguard.com',
+    'adobe.com',
     'akmedia.digidesign.com',
     'alfredapp.com',
     'amazon.com',
@@ -54,25 +54,25 @@ WHERE
     'balsamiq.com',
     'bblmw.com',
     'bluestacks.com',
-    'boxcdn.net',
     'box.com',
+    'boxcdn.net',
     'brave.com',
     'byfly.by',
+    'c-wss.com',
     'canon.co.uk',
     'cdn.mozilla.net',
     'charlesproxy.com',
-    'chime.aws',
     'chatgpt.com',
+    'chime.aws',
     'cloudfront.net',
     'cron.com',
     'csclub.uwaterloo.ca',
     'curseforge.com',
-    'c-wss.com',
     'descript.com',
     'desktop.evernote.com',
     'digidesign.com',
-    'discordapp.net',
     'discord.com',
+    'discordapp.net',
     'dl.meitu.com',
     'dl.sourceforge.net',
     'docker.com',
@@ -89,6 +89,7 @@ WHERE
     'gaomon.net',
     'getutm.app',
     'gimp.org',
+    'gitbutler.com',
     'github.io',
     'githubusercontent.com',
     'google.ca',
@@ -109,6 +110,7 @@ WHERE
     'maxon.net',
     'microsoft.com',
     'minecraft.net',
+    'mirrors.serverside.com',
     'mirrorservice.org',
     'mm.cfix.net',
     'mm.fcix.net',
@@ -116,17 +118,16 @@ WHERE
     'mozilla.org',
     'mutedeck.com',
     'mysql.com',
-    'notion.so',
     'notion-static.com',
-    'ocf.berkeley.edu',
+    'notion.so',
     'obvdev.at',
+    'ocf.berkeley.edu',
     'office.com',
     'oobesaas.adobe.com',
     'openra.net',
     'oracle.com',
     'osuosl.org',
     'overwolf.com',
-    'mirrors.serverside.com',
     'pathofexile.com',
     'perforce.com',
     'poecdn.com',
@@ -142,8 +143,8 @@ WHERE
     'signal.org',
     'siliconmotion.com',
     'skype.com',
-    'slack.com',
     'slack-edge.com',
+    'slack.com',
     'stclairsoft.com',
     'steampowered.com',
     'synaptics.com',
@@ -166,12 +167,11 @@ WHERE
     'webex.com',
     'whatsapp.com',
     'xtom.com',
-    'gitbutler.com',
     'xx.fbcdn.net',
     'yubico.com',
     'zoo.dev',
-    'zoomgov.com',
     'zoom.us',
+    'zoomgov.com',
     'zsa.io'
   )
   -- NOTE: Do not put all of storage.googleapis.com or similarly generic hosts here
@@ -188,24 +188,23 @@ WHERE
     'chatgpt.com',
     'cron.com',
     'discord.com',
-    'duetdownload.com',
     'dl.discordapp.net',
-    'dl2.discordapp.net',
     'dl.google.com',
+    'dl2.discordapp.net',
     'duckduckgo.com',
+    'duetdownload.com',
     'dygma.com',
     'emacsformacosx.com',
     'emeet.com',
     'epson.com',
     'evernote.com',
-    'multipass.run',
     'fbcdn.net',
     'figma.com',
     'flipperzero.one',
     'fnord.com',
     'getkap.co',
-    'github.com',
     'gitbutler.com',
+    'github.com',
     'go.dev',
     'imazing.com',
     'keybase.io',
@@ -219,6 +218,7 @@ WHERE
     'maxon.net',
     'mimestream.com',
     'mnvoip.mm.fcix.net',
+    'multipass.run',
     'mutedeck.com',
     'muteme.com',
     'obdev.at',
@@ -244,10 +244,9 @@ WHERE
     'sourcegraph.com',
     'stclairsoft.s3.amazonaws.com',
     'store.steampowered.com',
-    'superkey.app',
     'superhuman.com',
+    'superkey.app',
     'tableplus.com',
-    'www.talos.dev',
     'textexpander.com',
     'tosmediaserver.schwab.com',
     'transmissionbt.com',
@@ -260,27 +259,28 @@ WHERE
     'welcome.adguard.com',
     'www.google.com',
     'www.messenger.com',
+    'www.talos.dev',
     'zed.dev',
     'zoo.dev',
     'zoom.us'
   )
   -- Yes, these are meant to be fairly broad.
-  AND host NOT LIKE 'download%'
-  AND host NOT LIKE 'cdn%'
   AND host NOT LIKE '%.cdn.%.com'
   AND host NOT LIKE '%.edu'
-  AND host NOT LIKE 'github-production-release-asset-%.s3.amazonaws.com'
   AND host NOT LIKE '%.org'
-  AND host NOT LIKE 'dl.%'
-  AND host NOT LIKE 'dl-%'
-  AND host NOT LIKE 'mirror%'
-  AND host NOT LIKE 'driver.%'
-  AND host NOT LIKE 'support%'
-  AND host NOT LIKE 's3.%.amazonaws.com'
   AND host NOT LIKE '%.s3.%.amazonaws.com'
-  AND host NOT LIKE 'software%'
-  AND host NOT LIKE 'www.google.%'
   AND host NOT LIKE '%release%.storage.googleapis.com'
+  AND host NOT LIKE 'cdn%'
+  AND host NOT LIKE 'dl-%'
+  AND host NOT LIKE 'dl.%'
+  AND host NOT LIKE 'download%'
+  AND host NOT LIKE 'driver.%'
+  AND host NOT LIKE 'github-production-release-asset-%.s3.amazonaws.com'
+  AND host NOT LIKE 'mirror%'
+  AND host NOT LIKE 's3.%.amazonaws.com'
+  AND host NOT LIKE 'software%'
+  AND host NOT LIKE 'support%'
+  AND host NOT LIKE 'www.google.%'
   AND ea.value NOT LIKE 'https://storage.googleapis.com/copilot-mac-releases/%'
   AND ea.value NOT LIKE 'https://storage.googleapis.com/kolide-k2-production-downloads-f414/%'
 GROUP BY

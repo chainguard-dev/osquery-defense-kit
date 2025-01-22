@@ -71,14 +71,14 @@ WHERE
   AND p0_name IN ('curl', 'wget', 'ftp', 'tftp')
   AND NOT exception_key IN (
     'curl,0,nm-dispatcher,',
-    'curl,500,bash,bash',
     'curl,0,nm-dispatcher,nm-dispatcher',
+    'curl,500,bash,bash',
     'curl,500,bash,nix-daemon',
     'curl,500,bash,ShellLauncher',
+    'curl,500,bash,yay',
     'curl,500,bash,zsh',
     'curl,500,env,env',
     'curl,500,fish,gnome-terminal-',
-    'curl,500,bash,yay',
     'curl,500,ruby,zsh',
     'curl,500,ShellLauncher,',
     'curl,500,ShellLauncher,login',
@@ -88,7 +88,13 @@ WHERE
   )
   AND NOT (
     pe.euid > 500
-    AND p1_name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
+    AND p1_name IN (
+      'bash',
+      'dash',
+      'fish',
+      'sh',
+      'zsh'
+    )
     AND p2_name IN (
       'alacritty',
       'gnome-terminal-',
@@ -96,8 +102,8 @@ WHERE
       'login',
       'roxterm',
       'stable',
-      'tmux',
       'tmux:server',
+      'tmux',
       'wezterm-gui',
       'zsh'
     )

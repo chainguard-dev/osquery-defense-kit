@@ -62,7 +62,8 @@ WHERE
     '0,com.apple.MobileSoftwareUpdate.CryptegraftService,/private/var/db/softwareupdate/SplunkHistory',
     '0,snapd,/var/lib/snapd',
     '120,gnome-shell,/run/user/120',
-    '500,kwin_wayland_wrapper,/run/user/1000',
+    '120,pipewire,/run/user/120',
+    '127,pipewire,/run/user/127',
     '200,NRDUpdated,/private~/SplunkHistory',
     '200,softwareupdated,/private~/SplunkHistory',
     '500,Adobe Premiere Pro 2023,~/Library/Caches/Adobe/Premiere Pro/23.0/SentryIO-db',
@@ -78,11 +79,10 @@ WHERE
     '500,Craft,~/Library/Containers/com.lukilabs.lukiapp/Data/Library/Application Support/com.lukilabs.lukiapp',
     '500,Ecamm Live Stream Deck Plugin,~/Library/Application Support/com.elgato.StreamDeck/Sentry',
     '500,flyctl,~/.fly',
-    '500,Hyprland,/run/user/1000',
-    '127,pipewire,/run/user/127',
     '500,gnome-shell,/run/user/1000',
-    '120,pipewire,/run/user/120',
+    '500,Hyprland,/run/user/1000',
     '500,iMovie,~/Movies/iMovie Library.imovielibrary',
+    '500,kwin_wayland_wrapper,/run/user/1000',
     '500,Opera,~/Library/Application Support/com.operasoftware.Opera',
     '500,photolibraryd,~/Library/Photos/Libraries/Syndication.photoslibrary/database',
     '500,photolibraryd,~/Pictures/Photos Library.photoslibrary/database',
@@ -91,21 +91,21 @@ WHERE
     '500,Stream Deck,~/Library/Application Support/com.elgato.StreamDeck/Sentry',
     '500,TwitchStudioStreamDeck,~/Library/Application Support/com.elgato.StreamDeck/Sentry'
   )
-  AND NOT exception_key LIKE '500,com.apple.Virtualization.VirtualMachine,~/%'
-  AND NOT exception_key LIKE '500,iMovie,%.imovielibrary'
-  AND NOT exception_key LIKE '500,go,~/go/pkg/mod/cache/download/%'
-  AND NOT exception_key LIKE '500,remindd,/private/var/folders/%/T/.AddressBookLocks'
-  AND NOT exception_key LIKE '500,com.apple.Virtualization.VirtualMachine,/private/var/folders/%'
-  AND NOT exception_key LIKE '500,lua-language-server,~/%'
-  AND NOT exception_key LIKE '500,ykman-gui,/private/var/folders/%/T'
-  AND NOT exception_key LIKE '500,golangci-lint,/private/var/folders/%/T'
-  AND NOT exception_key LIKE '0,prl_disp_service,/Users/%/Parallels/%.pvm'
-  AND NOT exception_key LIKE '500,iTermServer-%,~/Library/Application Support/iTerm2'
-  AND NOT exception_key LIKE '500,%,/private/var/folders/%/T/Sentry_StreamDeck'
-  AND NOT exception_key LIKE '500,gnome-software,/var/tmp/flatpak-cache-%'
   AND NOT exception_key LIKE '%,gnome-shell,/run/user/%'
   AND NOT exception_key LIKE '%,pipewire%,/run/user/%'
+  AND NOT exception_key LIKE '0,prl_disp_service,/Users/%/Parallels/%.pvm'
+  AND NOT exception_key LIKE '500,%,/private/var/folders/%/T/Sentry_StreamDeck'
+  AND NOT exception_key LIKE '500,com.apple.Virtualization.VirtualMachine,/private/var/folders/%'
+  AND NOT exception_key LIKE '500,com.apple.Virtualization.VirtualMachine,~/%'
   AND NOT exception_key LIKE '500,com.docker.backend,/private/var/folders/%/go/pkg/mod/cache/%'
+  AND NOT exception_key LIKE '500,gnome-software,/var/tmp/flatpak-cache-%'
+  AND NOT exception_key LIKE '500,go,~/go/pkg/mod/cache/download/%'
+  AND NOT exception_key LIKE '500,golangci-lint,/private/var/folders/%/T'
+  AND NOT exception_key LIKE '500,iMovie,%.imovielibrary'
+  AND NOT exception_key LIKE '500,iTermServer-%,~/Library/Application Support/iTerm2'
+  AND NOT exception_key LIKE '500,lua-language-server,~/%'
+  AND NOT exception_key LIKE '500,remindd,/private/var/folders/%/T/.AddressBookLocks'
+  AND NOT exception_key LIKE '500,ykman-gui,/private/var/folders/%/T'
 GROUP BY
   p0.path,
   pof.path

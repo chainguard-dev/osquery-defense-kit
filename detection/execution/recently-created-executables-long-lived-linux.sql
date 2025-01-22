@@ -54,29 +54,63 @@ WHERE
   AND NOT p0.path IN (
     '',
     '/bin/bash',
-    '/bin/sh',
-    '/bin/containerd',
     '/bin/containerd-shim-runc-v2',
-    '/opt/google/chrome/chrome',
+    '/bin/containerd',
+    '/bin/sh',
     '/opt/google/chrome/chrome_crashpad_handler',
+    '/opt/google/chrome/chrome',
     '/opt/google/chrome/nacl_helper',
+    '/opt/kolide-k2/bin/launcher',
+    '/opt/kolide-k2/bin/osqueryd',
     '/opt/Lens/chrome_crashpad_handler',
     '/opt/Lens/lens',
-    '/opt/kolide-k2/bin/osqueryd',
-    '/opt/kolide-k2/bin/launcher',
     '/opt/sublime_text/sublime_text',
+    '/usr/lib/at-spi-bus-launcher',
+    '/usr/lib/at-spi2-registryd',
+    '/usr/lib/cups/notifier/dbus',
+    '/usr/lib/docker/cli-plugins/docker-compose',
+    '/usr/lib/electron25/electron',
+    '/usr/lib/flatpak-session-helper',
+    '/usr/lib/fwupd/fwupd',
+    '/usr/lib/gdm-session-worker',
+    '/usr/lib/gdm-x-session',
+    '/usr/lib/gdm',
+    '/usr/lib/gnome-shell-calendar-server',
+    '/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3',
+    '/usr/lib/ibus/ibus-dconf',
+    '/usr/lib/ibus/ibus-engine-simple',
+    '/usr/lib/ibus/ibus-portal',
+    '/usr/lib/libreoffice/program/oosplash',
+    '/usr/lib/libreoffice/program/soffice.bin',
+    '/usr/lib/opt/google/chrome/chrome',
+    '/usr/lib/opt/kolide-k2/bin/launcher',
+    '/usr/lib/opt/kolide-k2/bin/osqueryd',
+    '/usr/lib/polkit-1/polkitd',
+    '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1',
+    '/usr/lib/slack/chrome_crashpad_handler',
+    '/usr/lib/slack/slack',
+    '/usr/lib/snapd/snapd',
+    '/usr/lib/systemd/systemd-homed',
+    '/usr/lib/systemd/systemd-hostnamed',
+    '/usr/lib/systemd/systemd-journald',
+    '/usr/lib/systemd/systemd-logind',
+    '/usr/lib/systemd/systemd-machined',
+    '/usr/lib/systemd/systemd-oomd',
+    '/usr/lib/systemd/systemd-resolved',
+    '/usr/lib/systemd/systemd-timesyncd',
+    '/usr/lib/systemd/systemd-userdbd',
+    '/usr/lib/systemd/systemd-userwork',
+    '/usr/lib/systemd/systemd',
+    '/usr/lib/tracker-extract-3',
+    '/usr/lib/upowerd',
+    '/usr/lib/x86_64-linux-gnu/obs-plugins/obs-browser-page',
+    '/usr/lib/xdg-desktop-portal-gtk',
+    '/usr/lib/xf86-video-intel-backlight-helper',
     '/usr/lib64/discord/Discord',
     '/usr/lib64/electron/electron',
     '/usr/lib64/firefox/firefox',
     '/usr/lib64/google-cloud-sdk/platform/bundledpythonunix/bin/python3',
     '/usr/lib64/thunderbird/thunderbird',
-    '/usr/lib/at-spi2-registryd',
-    '/usr/lib/at-spi-bus-launcher',
-    '/usr/lib/opt/kolide-k2/bin/osqueryd',
-    '/usr/lib/opt/kolide-k2/bin/launcher',
-    '/usr/lib/cups/notifier/dbus',
-    '/usr/lib/docker/cli-plugins/docker-compose',
-    '/usr/lib/electron25/electron',
     '/usr/libexec/accounts-daemon',
     '/usr/libexec/bluetooth/bluetoothd',
     '/usr/libexec/docker/docker-proxy',
@@ -96,40 +130,6 @@ WHERE
     '/usr/libexec/sssd/sssd_kcm',
     '/usr/libexec/tracker-extract-3',
     '/usr/libexec/tracker-miner-fs-3',
-    '/usr/lib/flatpak-session-helper',
-    '/usr/lib/fwupd/fwupd',
-    '/usr/lib/gdm',
-    '/usr/lib/gdm-session-worker',
-    '/usr/lib/gdm-x-session',
-    '/usr/lib/gnome-shell-calendar-server',
-    '/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3',
-    '/usr/lib/ibus/ibus-dconf',
-    '/usr/lib/ibus/ibus-engine-simple',
-    '/usr/lib/ibus/ibus-portal',
-    '/usr/lib/libreoffice/program/oosplash',
-    '/usr/lib/libreoffice/program/soffice.bin',
-    '/usr/lib/opt/google/chrome/chrome',
-    '/usr/lib/polkit-1/polkitd',
-    '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1',
-    '/usr/lib/slack/chrome_crashpad_handler',
-    '/usr/lib/slack/slack',
-    '/usr/lib/snapd/snapd',
-    '/usr/lib/systemd/systemd',
-    '/usr/lib/systemd/systemd-homed',
-    '/usr/lib/systemd/systemd-hostnamed',
-    '/usr/lib/systemd/systemd-journald',
-    '/usr/lib/systemd/systemd-logind',
-    '/usr/lib/systemd/systemd-machined',
-    '/usr/lib/systemd/systemd-oomd',
-    '/usr/lib/systemd/systemd-resolved',
-    '/usr/lib/systemd/systemd-timesyncd',
-    '/usr/lib/systemd/systemd-userdbd',
-    '/usr/lib/systemd/systemd-userwork',
-    '/usr/lib/tracker-extract-3',
-    '/usr/lib/upowerd',
-    '/usr/lib/x86_64-linux-gnu/obs-plugins/obs-browser-page',
-    '/usr/lib/xdg-desktop-portal-gtk',
-    '/usr/lib/xf86-video-intel-backlight-helper',
     '/usr/local/bin/kind',
     '/usr/sbin/dnsmasq',
     '/usr/share/code/chrome_crashpad_handler',
@@ -137,20 +137,20 @@ WHERE
     '/usr/share/spotify-client/spotify',
     '/usr/share/teams/team'
   )
-  AND NOT p0.path LIKE '/home/%/bin/%'
-  AND NOT p0.path LIKE '/home/%/git/%'
-  AND NOT p0.path LIKE '/home/%/upstream/%'
+  AND NOT p0.path LIKE '/home/%/.cache/JetBrains/%/GoLand/___%'
   AND NOT p0.path LIKE '/home/%/.local/share/JetBrains/Toolbox/apps/%'
   AND NOT p0.path LIKE '/home/%/.local/share/nvim/mason/packages/%'
-  AND NOT p0.path LIKE '/home/%/.cache/JetBrains/%/GoLand/___%'
   AND NOT p0.path LIKE '/home/%/.local/share/Steam/ubuntu%'
   AND NOT p0.path LIKE '/home/%/.rustup/toolchains/%/libexec/%'
-  AND NOT p0.path LIKE '/home/%/jbr/lib/jcef_helper'
+  AND NOT p0.path LIKE '/home/%/%.test'
+  AND NOT p0.path LIKE '/home/%/bin/%'
+  AND NOT p0.path LIKE '/home/%/git/%'
   AND NOT p0.path LIKE '/home/%/jbr/bin/java'
+  AND NOT p0.path LIKE '/home/%/jbr/lib/jcef_helper'
   AND NOT p0.path LIKE '/home/%/node_modules/.bin/%'
   AND NOT p0.path LIKE '/home/%/Projects/%'
   AND NOT p0.path LIKE '/home/%/terraform-provider-%'
-  AND NOT p0.path LIKE '/home/%/%.test'
+  AND NOT p0.path LIKE '/home/%/upstream/%'
   AND NOT p0.path LIKE '/nix/store/%/bin/%'
   AND NOT p0.path LIKE '/nix/store/%/libexec/%'
   AND NOT p0.path LIKE '/opt/%'
@@ -159,14 +159,14 @@ WHERE
   AND NOT p0.path LIKE '/tmp/tmp0.%/%/bin/%'
   AND NOT p0.path LIKE '/usr/local/bin/%'
   AND NOT p0.path LIKE '/usr/local/Cellar/%'
-  AND NOT p0.path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND NOT p0.path LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/launcher'
-  AND NOT p0.path LIKE '/var/kolide-k2/%/osqueryd'
-  AND NOT p0.path LIKE '/var/kolide-k2/%/launcher'
-  AND NOT p0.path LIKE '%/.vscode/extensions/%'
+  AND NOT p0.path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND NOT p0.path LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'
-  AND NOT p0.path LIKE '%/.local/share/spotify-launcher/install/usr/%'
+  AND NOT p0.path LIKE '/var/kolide-k2/%/launcher'
+  AND NOT p0.path LIKE '/var/kolide-k2/%/osqueryd'
   AND NOT p0.path LIKE '/var/opt/Elastic/Agent/data/elastic-agent-%/components/%'
+  AND NOT p0.path LIKE '%/.local/share/spotify-launcher/install/usr/%'
+  AND NOT p0.path LIKE '%/.vscode/extensions/%'
   AND NOT (
     p0.name IN ('osqtool-x86_64', 'osqtool-arm64')
     AND p0.cmdline LIKE './%'

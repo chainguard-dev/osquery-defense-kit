@@ -52,12 +52,14 @@ WHERE
   AND p0.pid > 2
   AND p0.parent != 2
   AND p0.path NOT IN (
-    '/Library/Application Support/Adobe/Adobe Desktop Common/HDBox/Setup',
+    '/app/libexec/mediawriter/helper',
     '/bin-busybox',
     '/bin/bash',
     '/bin/sh',
+    '/Library/Application Support/Adobe/Adobe Desktop Common/HDBox/Setup',
     '/opt/homebrew/bin/qemu-system-aarch64',
     '/opt/osquery/lib/osquery.app/Contents/MacOS/osqueryd',
+    '/System/Library/PrivateFrameworks/MobileDevice.framework/Versions/Current/AppleMobileDeviceHelper.app/Contents/Resources/AppleMobileBackup',
     '/usr/bin/apt',
     '/usr/bin/aptd',
     '/usr/bin/bash',
@@ -77,19 +79,17 @@ WHERE
     '/usr/bin/qemu-system-x86_64',
     '/usr/bin/yay',
     '/usr/bin/zsh',
-    '/usr/lib/baloo_file',
     '/usr/lib/baloo_file_extractor',
+    '/usr/lib/baloo_file',
     '/usr/lib/flatpak-system-helper',
     '/usr/lib/snapd/snapd',
-    '/usr/lib/systemd/systemd',
-    '/app/libexec/mediawriter/helper',
     '/usr/lib/systemd/systemd-journald',
+    '/usr/lib/systemd/systemd',
     '/usr/lib64/thunderbird/thunderbird',
     '/usr/libexec/coreduetd',
     '/usr/libexec/flatpak-system-helper',
     '/usr/libexec/logd_helper',
     '/usr/libexec/packagekitd',
-    '/System/Library/PrivateFrameworks/MobileDevice.framework/Versions/Current/AppleMobileDeviceHelper.app/Contents/Resources/AppleMobileBackup',
     '/usr/libexec/rosetta/oahd',
     '/usr/libexec/secd',
     '/usr/libexec/sharingd',
@@ -129,42 +129,35 @@ WHERE
     AND p0.cmdline = '/usr/bin/python3 /usr/sbin/aptd'
   )
   AND NOT p0.name IN (
-    'GoogleUpdater',
-    'Install',
     'baloo_file_extr',
     'bincapz',
     'bwrap',
-    'nami',
-    'topgrade',
-    'vi',
-    'vim',
     'cargo',
     'chrome',
-    'wimlib-imagex',
     'code',
     'com.apple.MobileSoftwareUpdate.UpdateBrainService',
     'com.apple.NRD.UpdateBrainService',
-    'containerd',
     'containerd-',
     'containerd-shim',
+    'containerd',
     'darkfiles',
     'dlv',
-    'dnf',
     'dnf-automatic',
+    'dnf',
     'docker-index',
     'esbuild',
     'firefox',
-    'osqueryd',
     'flatpak-session',
     'fsdaemon',
     'git',
     'go',
     'goland',
     'golangci-lint-v',
+    'GoogleUpdater',
     'gopls',
-    'qemu-system-x86',
     'grype',
     'idea',
+    'Install',
     'java',
     'jetbrains-toolb',
     'kandji-daemon',
@@ -172,34 +165,41 @@ WHERE
     'limactl',
     'logioptionsplus_updater',
     'mediawriter',
-    'melange',
     'melange-run',
+    'melange',
     'monorail',
+    'nami',
     'nessusd',
     'ninja',
     'node',
+    'osqueryd',
     'photorec',
     'qemu-system-aarch64',
     'qemu-system-x86_64',
+    'qemu-system-x86',
     'rpm-ostree',
     'rsync',
     'rust-analyzer',
     'rustup',
     'slack',
-    'snyk',
     'snyk-macos',
+    'snyk',
     'spotify',
     'staticcheck',
-    'steam',
     'steam_osx',
+    'steam',
     'syft',
-    'terraform',
     'terraform-provider-apko',
+    'terraform',
     'tmux:server',
+    'topgrade',
     'tracker-miner-f',
-    'trivy',
     'trivy-db',
+    'trivy',
     'unattended-upgr',
+    'vi',
+    'vim',
+    'wimlib-imagex',
     'wineserver',
     'wolfictl',
     'yum'
@@ -207,16 +207,16 @@ WHERE
   AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p0.path NOT LIKE '/home/%/.local/share/Steam'
   AND p0.path NOT LIKE '/Library/Application Support/%'
-  AND p0.path NOT LIKE '/nix/store/%/bin/nix'
   AND p0.path NOT LIKE '/nix/store/%/bin/%sh'
+  AND p0.path NOT LIKE '/nix/store/%/bin/nix'
   AND p0.path NOT LIKE '/nix/store/%kolide-launcher-%/bin/launcher'
   AND p0.path NOT LIKE '/System/Applications/%'
   AND p0.path NOT LIKE '/System/Library/%'
-  AND p0.path NOT LIKE "%/terraform-provider-%"
   AND p0.path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
   AND p0.path NOT LIKE '/var/folders/%/T/go-build%'
   AND p0.path NOT LIKE '/var/kolide-k2/%/osqueryd'
-  AND NOT p0.cmdline LIKE '%/lib/gcloud.py components update'
+  AND p0.path NOT LIKE "%/terraform-provider-%"
   AND NOT p0.cmdline LIKE '%/gsutil %rsync%'
+  AND NOT p0.cmdline LIKE '%/lib/gcloud.py components update'
   AND NOT p0.cmdline LIKE '%brew.rb upgrade'
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'

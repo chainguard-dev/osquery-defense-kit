@@ -44,8 +44,8 @@ WHERE
   AND pmm.path LIKE '%libcurl%'
   AND p0.name NOT IN (
     'ir_agent',
-    'nix',
     'nix-daemon',
+    'nix',
     'osqueryd',
     'rapid7_endpoint_broker',
     'socket_vmnet',

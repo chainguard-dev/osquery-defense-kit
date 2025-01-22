@@ -93,7 +93,6 @@ WHERE
     '/bin/ps',
     '/opt/1Password/1Password-KeyringHelper',
     '/usr/bin/doas',
-    '/usr/bin/su',
     '/usr/bin/fusermount',
     '/usr/bin/fusermount3',
     '/usr/bin/gpg',
@@ -102,6 +101,7 @@ WHERE
     '/usr/bin/i3lock',
     '/usr/bin/login',
     '/usr/bin/nvidia-modprobe',
+    '/usr/bin/su',
     '/usr/bin/sudo',
     '/usr/bin/top',
     '/usr/bin/unix_chkpwd',
@@ -112,13 +112,13 @@ WHERE
     '/usr/lib/Xorg.wrap',
     '/usr/lib/xorg/Xorg.wrap'
   )
-  AND pe.path NOT LIKE '/nix/store/%/bin/sudo'
   AND pe.path NOT LIKE '/nix/store/%/bin/dhcpcd'
+  AND pe.path NOT LIKE '/nix/store/%/bin/sudo'
   AND pe.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
   AND pe.path NOT LIKE '/snap/snapd/%/usr/lib/snapd/snap-update-ns'
   AND NOT p1_cmd IN (
-    '/usr/lib/systemd/systemd --user',
-    '/bin/sh -c /usr/bin/pkexec /usr/share/apport/apport-gtk'
+    '/bin/sh -c /usr/bin/pkexec /usr/share/apport/apport-gtk',
+    '/usr/lib/systemd/systemd --user'
   )
   AND NOT p0_cmd = '/usr/bin/pkexec /usr/lib/update-notifier/package-system-locked'
   AND NOT (
