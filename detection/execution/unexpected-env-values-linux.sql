@@ -65,7 +65,8 @@ WHERE -- This time should match the interval
       '/usr/lib/libjemalloc.so',
       '/usr/lib/libsnmallocshim.so',
       '/usr/lib/libsnmallocshim-checks-memcpy-only.so',
-      '/usr/local/lib/libmimalloc.so'
+      '/usr/local/lib/libmimalloc.so',
+      '/run/host/usr/lib/extest/libextest.so'
     )
     AND NOT pe.value LIKE ':/home/%/.local/share/Steam'
     AND NOT pe.value LIKE ':/home/%/.var/app/com.valvesoftware.Steam/%'

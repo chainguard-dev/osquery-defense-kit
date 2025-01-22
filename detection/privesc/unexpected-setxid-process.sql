@@ -43,6 +43,7 @@ WHERE
     '/usr/bin/fusermount',
     '/usr/bin/fusermount3',
     '/usr/bin/newgrp',
+    '/usr/bin/passwd',
     '/usr/bin/schroot',
     '/usr/bin/keybase-redirector',
     '/usr/bin/login',

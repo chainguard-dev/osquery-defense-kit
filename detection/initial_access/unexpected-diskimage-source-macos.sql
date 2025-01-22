@@ -38,10 +38,12 @@ WHERE
   AND file.btime > (strftime('%s', 'now') -86400)
   AND domain NOT IN (
     'adobe.com',
+    'adguard.com',
     'akmedia.digidesign.com',
     'alfredapp.com',
     'amazon.com',
     'android.com',
+    'ankerwork.com',
     'ankiweb.net',
     'apple.com',
     'arc.net',
@@ -146,6 +148,7 @@ WHERE
     'steampowered.com',
     'synaptics.com',
     'tableplus.com',
+    'talos.dev',
     'teams.cdn.office.net',
     'techsmith.com',
     'tweaknews.eu',
@@ -244,14 +247,17 @@ WHERE
     'superkey.app',
     'superhuman.com',
     'tableplus.com',
+    'www.talos.dev',
     'textexpander.com',
     'tosmediaserver.schwab.com',
     'transmissionbt.com',
     'ubuntu.com',
     'ultimaker.com',
     'universal-blue.discourse.group',
+    'us.ankerwork.com',
     'warp-releases.storage.googleapis.com',
     'wavebox.io',
+    'welcome.adguard.com',
     'www.google.com',
     'www.messenger.com',
     'zed.dev',
@@ -271,7 +277,7 @@ WHERE
   AND host NOT LIKE 'driver.%'
   AND host NOT LIKE 'support%'
   AND host NOT LIKE 's3.%.amazonaws.com'
-  AND host NOT LIKe '%.s3.%.amazonaws.com'
+  AND host NOT LIKE '%.s3.%.amazonaws.com'
   AND host NOT LIKE 'software%'
   AND host NOT LIKE 'www.google.%'
   AND host NOT LIKE '%release%.storage.googleapis.com'
