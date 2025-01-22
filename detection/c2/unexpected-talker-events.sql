@@ -108,8 +108,8 @@ WHERE
   )
   AND NOT homedir IN (
     '/opt/spotify',
-    '/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin'
-    '~/Library/Application Support/Foxit Software/Addon/Foxit PDF Reader/FoxitPDFReaderUpdateService.app/Contents/MacOS',
+    '/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin',
+    '~/Library/Application Support/Foxit Software/Addon/Foxit PDF Reader/FoxitPDFReaderUpdateService.app/Contents/MacOS'
   )
   AND NOT exception_key IN (
     '0,velociraptor,velociraptor,500u,80g',

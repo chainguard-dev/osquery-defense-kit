@@ -202,7 +202,7 @@ WHERE
     'cc1',
     'cc1plus',
     'cmake',
-    'compile',,
+    'compile'
   )
   AND NOT exception_key IN (
     'bash,0,bash,containerd-shim-runc-v2',

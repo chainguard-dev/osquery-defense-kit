@@ -263,12 +263,12 @@ WHERE
     exception_key IN (
       '500,Python,Python,,',
       '500,Python,Python,,org.python.python',
-      '500,Python,Python,,Python'
+      '500,Python,Python,,Python',
       '500,Python,Python,0u,80g',
       '500,Python,Python,Developer ID Application: Ned Deily (DJ3H93M7VJ),org.python.python',
       '500,Python,Python,Developer ID Application: Python Software Foundation (BMM5U3QVKW),org.python.python',
       '500,python3.11,python3.11,,python3.11',
-      '500,python3.12,python3.12,,python3.12',
+      '500,python3.12,python3.12,,python3.12'
     )
     AND (
       p0_cmd LIKE '%/gcloud.py%'
