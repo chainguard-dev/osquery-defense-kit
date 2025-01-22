@@ -34,12 +34,12 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
     WHERE
       (
         file.directory = '/tmp'
-        OR file.directory LIKE '/tmp/%'
-        OR file.directory LIKE '/tmp/%/%'
-        OR file.directory LIKE '/tmp/%/.%'
         OR file.directory LIKE '/tmp/.%'
-        OR file.directory LIKE '/tmp/.%/%'
         or file.directory LIKE '/tmp/.%/.%'
+        OR file.directory LIKE '/tmp/.%/%'
+        OR file.directory LIKE '/tmp/%'
+        OR file.directory LIKE '/tmp/%/.%'
+        OR file.directory LIKE '/tmp/%/%'
       ) -- Prevent weird recursion
       AND NOT file.directory LIKE '%/../%'
       AND NOT file.directory LIKE '%/./%' -- Exclude very temporary files
@@ -47,58 +47,58 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       AND file.type = 'regular'
       AND (
         file.mode LIKE '%7%'
-        or file.mode LIKE '%5%'
         or file.mode LIKE '%1%'
+        or file.mode LIKE '%5%'
       )
       AND NOT (
         uid > 500
         AND (
           file.path LIKE '%/go-build%'
-          OR file.path LIKE '%/bin/%'
-          OR file.path LIKE '%/sbin/%'
+          OR file.path LIKE '/tmp/%/AdobePIM.dylib'
           OR file.path LIKE '/tmp/%ctl'
+          OR file.path LIKE '/tmp/com.apple.installer%'
+          OR file.path LIKE '/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%'
+          OR file.path LIKE '/tmp/GoLand/___Test%.test'
+          OR file.path LIKE '/tmp/KSInstallAction.%/m/.keystone_install'
+          OR file.path LIKE '/tmp/lima/%'
+          OR file.path LIKE '/tmp/melange%'
+          OR file.path LIKE '%-release%/%'
+          OR file.path LIKE '%.tfstate.sh'
+          OR file.path LIKE '%/bin/%'
           OR file.path LIKE '%/CCLBS/%'
           OR file.path LIKE '%/checkout/%'
-          OR file.path LIKE '/tmp/lima/%'
           OR file.path LIKE '%/ci/%'
           OR file.path LIKE '%/debug/%'
           OR file.path LIKE '%/dist/%'
+          OR file.path LIKE '%/elastic-agent-%'
           OR file.path LIKE '%/etc/network/if-up.d/%'
           OR file.path LIKE '%/flow/%.npmzS_cacachezStmpzSgit-clone%'
-          OR file.path LIKE '/tmp/GoLand/___Test%.test'
           OR file.path LIKE '%/git/%'
           OR file.path LIKE '%/github/%'
-          OR file.path LIKE '%/elastic-agent-%'
           OR file.path LIKE '%/go.%.sum'
-          OR file.path LIKE "%/%/gradlew"
           OR file.path LIKE '%/guile-%/guile-%'
           OR file.path LIKE '%/ko/%'
-          OR file.path LIKE '%/nix/%'
           OR file.path LIKE '%/kots/%'
-          OR file.path LIKE '/tmp/KSInstallAction.%/m/.keystone_install'
-          OR file.path LIKE '/tmp/%/AdobePIM.dylib'
-          OR file.path LIKE "%/lib/%.so"
-          OR file.path LIKE '/tmp/melange%'
-          OR file.path LIKE "%/lib/%.so.%"
+          OR file.path LIKE '%/nix/%'
           OR file.path LIKE '%/pdf-tools/%'
           OR file.path LIKE '%/Photoshop Installer.app/Contents/%'
-          OR file.path LIKE '%-release%/%'
+          OR file.path LIKE '%/sbin/%'
           OR file.path LIKE '%/site-packages/markupsafe/_speedups.cpython-%'
           OR file.path LIKE '%/src/%'
           OR file.path LIKE '%/target/%'
           OR file.path LIKE '%/terraformer/%'
-          OR file.path LIKE '/tmp/com.apple.installer%'
-          OR file.path LIKE '%.tfstate.sh'
           OR file.path LIKE '%/tmp/epdf%'
-          OR file.path LIKE '/tmp/flow/%.npmzS_cacachezStmpzSgit-clone%'
+          OR file.path LIKE "%/%/gradlew"
+          OR file.path LIKE "%/lib/%.so.%"
+          OR file.path LIKE "%/lib/%.so"
           OR file.filename IN (
-            'mysqld_exporter',
-            'goreleaser',
-            'golangci-lint',
-            'cosign',
-            'grype',
             'chainctl',
-            'configure'
+            'configure',
+            'cosign',
+            'golangci-lint',
+            'goreleaser',
+            'grype',
+            'mysqld_exporter'
           )
         )
       )
@@ -164,19 +164,19 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       AND file.uid > 500
       AND extension IN (
         'adoc',
-        'md',
         'bat',
+        'conf',
         'java',
         'js',
         'json',
         'log',
+        'md',
         'nib',
         'pem',
-        'conf',
         'perl',
         'pl',
-        'rb',
         'py',
+        'rb',
         'script',
         'sh',
         'status',

@@ -39,14 +39,14 @@ FROM
 WHERE
   pop.family = 17 -- PF_PACKET
   AND p0.name NOT IN (
-    'wpa_supplicant',
-    'systemd-network',
-    'NetworkManager',
     'dhclient',
-    'packetbeat',
-    'tailscaled',
     'dhcpcd',
-    'tcpdump'
+    'NetworkManager',
+    'packetbeat',
+    'systemd-network',
+    'tailscaled',
+    'tcpdump',
+    'wpa_supplicant'
   )
   AND NOT (
     p0.cgroup_path LIKE '/system.slice/docker-%'

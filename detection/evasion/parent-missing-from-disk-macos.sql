@@ -62,21 +62,21 @@ WHERE
       p.parent NOT IN (0, 1, 2)
       AND p.path != ""
       -- macOS Optimization
-      AND p.path NOT LIKE '/System/%'
-      AND p.path NOT LIKE '/usr/libexec/%'
-      AND p.path NOT LIKE '/usr/bin/%'
       AND p.path NOT LIKE '/sbin/%'
+      AND p.path NOT LIKE '/System/%'
+      AND p.path NOT LIKE '/usr/bin/%'
+      AND p.path NOT LIKE '/usr/libexec/%'
       -- Exceptions
       AND pp.path NOT LIKE '/opt/homebrew/Cellar/%'
-      AND pp.path NOT LIKE '%google-cloud-sdk/.install/.backup%'
       AND pp.path NOT LIKE '/private/var/folders/%/T/PKInstallSandboxTrash/%.sandboxTrash/%'
+      AND pp.path NOT LIKE '%google-cloud-sdk/.install/.backup%'
       AND pp.path NOT IN (
-        "",
-        "/sbin/launchd",
-        "/var/lib/incus/containers",
         '/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app/Contents/MacOS/Code Helper',
+        "",
         "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)",
-        "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app/Contents/MacOS/Code Helper"
+        "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app/Contents/MacOS/Code Helper",
+        "/sbin/launchd",
+        "/var/lib/incus/containers"
       )
       AND pp.on_disk != 1
   );

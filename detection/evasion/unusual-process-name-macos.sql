@@ -46,30 +46,30 @@ WHERE
   p0.start_time < (strftime('%s', 'now') - 43200)
   AND (
     pname LIKE "%kthread%"
+    OR pname LIKE '%xprotect%'
     OR pname LIKE "%-help"
-    OR pname LIKE "%flush%"
-    OR pname LIKE "%tasks%"
-    OR pname LIKE "%thread%"
-    OR pname LIKE "%initd%"
-    OR pname LIKE "%kdmp%"
     OR pname LIKE "%/%"
+    OR pname LIKE "%acpi%"
+    OR pname LIKE "%crypt%"
+    OR pname LIKE "%flush%"
+    OR pname LIKE "%initd%"
+    OR pname LIKE "%irq%"
+    OR pname LIKE "%kaudit%"
+    OR pname LIKE "%kdev%"
+    OR pname LIKE "%kdmp%"
+    OR pname LIKE "%ksoft%"
+    OR pname LIKE "%kswap%"
     OR pname LIKE "%kworker%"
     OR pname LIKE "%launchd%"
+    OR pname LIKE "%nvme%"
+    OR pname LIKE "%tasks%"
+    OR pname LIKE "%thread%"
     OR pname LIKE "%user_dir%"
     OR pname LIKE "%xdg%"
+    OR pname LIKE "%zswap%"
     OR pname LIKE "cpu%"
     OR pname LIKE "events%"
     OR pname LIKE "idle_%"
-    OR pname LIKE '%xprotect%'
-    OR pname LIKE "%kaudit%"
-    OR pname LIKE "%nvme%"
-    OR pname LIKE "%zswap%"
-    OR pname LIKE "%crypt%"
-    OR pname LIKE "%acpi%"
-    OR pname LIKE "%kdev%"
-    OR pname LIKE "%ksoft%"
-    OR pname LIKE "%irq%"
-    OR pname LIKE "%kswap%"
     OR pname LIKE "mm-%"
     OR pname LIKE "nm_%"
     OR pname LIKE "rcu%"
@@ -100,8 +100,8 @@ WHERE
   )
   AND NOT pname IN (
     'at.obdev.littlesnitch.endpointsecurity',
-    'at.obdev.littlesnitchmini.networkextension',
     'at.obdev.littlesnitch.networkextension',
+    'at.obdev.littlesnitchmini.networkextension',
     'BetterTouchToolAppleScriptRunner',
     'BetterTouchToolAppleScriptRunner3',
     'BetterTouchToolShellScriptRunner',
@@ -119,14 +119,14 @@ WHERE
   )
   -- example: 85C27NK92C.com.flexibits.fantastical2.mac.helper
   AND NOT pname LIKE '___1Test%'
+  AND NOT pname LIKE '___Test%'
+  AND NOT pname LIKE '__%go_build%'
   AND NOT pname LIKE '__debug_bin%'
+  AND NOT pname LIKE '%-macos-arm64'
   AND NOT pname LIKE 'BetterTouchToolAppleScriptRunner%'
   AND NOT pname LIKE 'cody-engine-%'
-  AND NOT pname LIKE "%.com.flexibits.fantastical2.mac.helper"
   AND NOT pname LIKE 'debug.test%'
-  AND NOT pname LIKE '__%go_build%'
-  AND NOT pname LIKE '%-macos-arm64'
-  AND NOT pname LIKE '___Test%'
+  AND NOT pname LIKE "%.com.flexibits.fantastical2.mac.helper"
   AND NOT s.authority IN (
     "Software Signing",
     "Apple Mac OS Application Signing"

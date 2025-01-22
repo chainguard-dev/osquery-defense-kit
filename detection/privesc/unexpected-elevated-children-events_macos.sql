@@ -88,9 +88,9 @@ WHERE
   AND pe.cmdline IS NOT NULL
   AND p1_path NOT IN (
     '/Applications/LogiTune.app/Contents/MacOS/LogiTune',
+    '/Library/Apple/System/Library/CoreServices/XProtect.app/Contents/XPCServices/XProtectPluginService.xpc/Contents/MacOS/XProtectPluginService',
     '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared',
     '/System/Library/PrivateFrameworks/AOSKit.framework/Versions/A/XPCServices/com.apple.iCloudHelper.xpc/Contents/MacOS/com.apple.iCloudHelper',
-    '/Library/Apple/System/Library/CoreServices/XProtect.app/Contents/XPCServices/XProtectPluginService.xpc/Contents/MacOS/XProtectPluginService',
     '/usr/bin/login',
     '/usr/bin/su',
     '/usr/bin/sudo',
@@ -99,33 +99,33 @@ WHERE
     '/usr/local/bin/doas'
   ) -- Exclude weird bad data we've seen due to badly recorded macOS parent/child relationships, fixable by reboot
   AND NOT p0_cmd IN (
-    '/usr/sbin/cupsd -l',
-    '/usr/sbin/cfprefsd agent',
-    '/usr/libexec/wifip2pd',
     '/System/Library/CoreServices/iconservicesd',
-    '/System/Library/PrivateFrameworks/InstallCoordination.framework/Support/installcoordinationd',
+    '/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared -s mdworker -c MDSImporterWorker -m com.apple.mdworker.shared',
     '/System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd',
-    '/usr/libexec/PerfPowerServicesExtended',
+    '/System/Library/PrivateFrameworks/InstallCoordination.framework/Support/installcoordinationd',
     '/usr/libexec/mdmclient daemon',
-    '/System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared -s mdworker -c MDSImporterWorker -m com.apple.mdworker.shared'
+    '/usr/libexec/PerfPowerServicesExtended',
+    '/usr/libexec/wifip2pd',
+    '/usr/sbin/cfprefsd agent',
+    '/usr/sbin/cupsd -l'
   )
   AND NOT exception_key IN (
     'amfid,0,com.docker.backend,Docker',
     'biometrickitd,0,LogiTune,launchd',
     'bioutil,0,callservicesd,launchd',
-    'com.apple.geod,0,fmfd,launchd',
-    'trustd,205,trustd,launchd',
     'CAReportingService,0,LogiTune,launchd',
-    'efilogin-helper,0,containermanagerd,launchd',
     'com.apple.AccountPolicyHelper,0,LogiTune,launchd',
+    'com.apple.geod,0,fmfd,launchd',
     'com.apple.geod,262,com.docker.backend,Docker',
     'com.apple.WebKit.WebContent,200,zsh,Emacs-arm64-11',
     'containermanagerd,262,com.docker.backend,Docker',
     'dprivacyd,0,com.docker.backend,Docker',
+    'efilogin-helper,0,containermanagerd,launchd',
     'SCHelper,0,com.docker.backend,Docker',
     'suhelperd,0,LogiTune,launchd',
     'sysextd,0,LogiTune,launchd',
-    'system_profiler,0,callservicesd,launchd'
+    'system_profiler,0,callservicesd,launchd',
+    'trustd,205,trustd,launchd'
   )
   AND NOT (
     pe.euid = 262 -- core media helper id

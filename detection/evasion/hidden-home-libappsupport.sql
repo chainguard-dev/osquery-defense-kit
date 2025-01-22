@@ -52,19 +52,6 @@ WHERE
     '~/Library/Application Support/CleanMyMac X Menu',
     '~/Library/Application Support/CleanMyMac X',
     '~/Library/Application Support/Code',
-    '~/Library/Application Support/nuclei',
-    '~/Library/Application Support/Docker Desktop',
-    '~/Library/Application Support/DropboxElectron',
-    '~/Library/Application Support/GitHub Desktop',
-    '~/Library/Application Support/Jabra Direct',
-    '~/Library/Application Support/Keybase',
-    '~/Library/Application Support/Lens',
-    '~/Library/Application Support/Loom',
-    '~/Library/Application Support/Presenting',
-    '~/Library/Application Support/Slack',
-    '~/Library/Application Support/ZaloApp',
-    '~/Library/Application Support/ZaloData',
-    '~/Library/Application Support/ZaloPC',
     '~/Library/Application Support/com.apple.spotlight',
     '~/Library/Application Support/com.bohemiancoding.sketch3',
     '~/Library/Application Support/com.intelliscapesolutions.caffeine',
@@ -72,12 +59,25 @@ WHERE
     '~/Library/Application Support/com.psiexams.psi-bridge-secure-browser',
     '~/Library/Application Support/com.tinyapp.TablePlus',
     '~/Library/Application Support/discord',
-    '~/Library/Application Support/lghub'
+    '~/Library/Application Support/Docker Desktop',
+    '~/Library/Application Support/DropboxElectron',
+    '~/Library/Application Support/GitHub Desktop',
+    '~/Library/Application Support/Jabra Direct',
+    '~/Library/Application Support/Keybase',
+    '~/Library/Application Support/Lens',
+    '~/Library/Application Support/lghub',
+    '~/Library/Application Support/Loom',
+    '~/Library/Application Support/nuclei',
+    '~/Library/Application Support/Presenting',
+    '~/Library/Application Support/Slack',
+    '~/Library/Application Support/ZaloApp',
+    '~/Library/Application Support/ZaloData',
+    '~/Library/Application Support/ZaloPC'
   )
   AND NOT homepath IN (
-    '~/Library/Application Support/.Shadowland5.5',
     '~/Library/Application Support/.com.contextsformac.Contexts.plist',
-    '~/Library/Application Support/.settings'
+    '~/Library/Application Support/.settings',
+    '~/Library/Application Support/.Shadowland5.5'
   )
   AND NOT homepath LIKE '~/Library/Application Support/.syssettings%'
   AND NOT magic.data = 'XML 1.0 document, ASCII text'

@@ -69,75 +69,75 @@ WHERE
     p0_name IN (
       'bitspin',
       'bpftool',
-      'heyoka',
-      'nstx',
-      'dnscat2',
-      'tuns',
-      'iodine',
-      'esxcli',
-      'vim-cmd',
-      'minerd',
       'cpuminer-multi',
       'cpuminer',
+      'dnscat2',
+      'esxcli',
+      'heyoka',
       'httpdns',
-      'rshell',
-      'rsh',
-      'xmrig',
       'incbit',
       'insmod',
+      'iodine',
       'kmod',
       'lushput',
+      'minerd',
       'mkfifo',
       'msfvenom',
       'nc',
-      'socat'
+      'nstx',
+      'rsh',
+      'rshell',
+      'socat',
+      'tuns',
+      'vim-cmd',
+      'xmrig'
     ) -- Chrome Stealer
-    OR p0_cmd LIKE '%chrome%-load-extension%' -- Known attack scripts
-    OR p0_name LIKE '%pwn%'
     OR p0_name LIKE '%attack%' -- Unusual behaviors
-    OR p0_cmd LIKE '%ufw disable%'
+    OR p0_name LIKE '%pwn%'
+    OR p0_cmd LIKE '%cat /dev/null >%'
+    OR p0_cmd LIKE '%chattr -i%'
+    OR p0_cmd LIKE '%chrome%-load-extension%' -- Known attack scripts
+    OR p0_cmd LIKE '%dd if=/dev/%'
+    OR p0_cmd LIKE '%iptables -F%'
+    OR p0_cmd LIKE '%iptables -P % ACCEPT%'
     OR p0_cmd LIKE '%iptables stop'
     OR p0_cmd LIKE '%setenforce 0'
-    OR p0_cmd LIKE '%iptables -P % ACCEPT%'
-    OR p0_cmd LIKE '%iptables -F%'
-    OR p0_cmd LIKE '%chattr -i%'
-    OR p0_cmd LIKE '%dd if=/dev/%'
-    OR p0_cmd LIKE '%cat /dev/null >%'
     OR p0_cmd LIKE '%truncate -s0 %'
+    OR p0_cmd LIKE '%ufw disable%'
     OR (
       INSTR(p0_cmd, 'history') > 0
       AND p0_cmd LIKE '%history'
       AND p0_cmd NOT LIKE 'man %'
     )
-    OR p0_cmd LIKE '%touch%acmr%'
-    OR p0_cmd LIKE '%touch -r%'
-    OR p0_cmd LIKE '%ld.so.preload%'
-    OR p0_cmd LIKE '%urllib.urlopen%'
-    OR p0_cmd LIKE '%nohup%tmp%'
-    OR p0_cmd LIKE '%tar % .%'
-    OR p0_cmd LIKE '%tar %/.%'
-    OR p0_cmd LIKE '%.config%gcloud%'
     OR p0_cmd LIKE '%.aws/%'
     OR p0_cmd LIKE '%.config/%chrome%'
-    OR p0_cmd LIKE '%systemctl stop firewalld%'
-    OR p0_cmd LIKE '%systemctl disable firewalld%'
+    OR p0_cmd LIKE '%.config%gcloud%'
+    OR p0_cmd LIKE '%ld.so.preload%'
+    OR p0_cmd LIKE '%nohup%tmp%'
     OR p0_cmd LIKE '%pkill -f%'
+    OR p0_cmd LIKE '%systemctl disable firewalld%'
+    OR p0_cmd LIKE '%systemctl stop firewalld%'
+    OR p0_cmd LIKE '%tar % .%'
+    OR p0_cmd LIKE '%tar %/.%'
+    OR p0_cmd LIKE '%touch -r%'
+    OR p0_cmd LIKE '%touch%acmr%'
+    OR p0_cmd LIKE '%urllib.urlopen%'
     OR (
       p0_cmd LIKE '%xargs kill -9%'
       AND pe.euid = 0
     )
-    OR p0_cmd LIKE '%nohup /bin/bash%'
-    OR p0_cmd LIKE '%echo%|%base64%-d% %|%'
     OR p0_cmd LIKE '%@reboot%crontab%'
-    OR p0_cmd LIKE '%UserKnownHostsFile=/dev/null%' -- Crypto miners
+    OR p0_cmd LIKE '%/dev/%cp/%'
+    OR p0_cmd LIKE '%echo%|%base64%-d% %|%'
+    OR p0_cmd LIKE '%fsockopen%'
     OR p0_cmd LIKE '%monero%'
     OR p0_cmd LIKE '%nanopool%'
     OR p0_cmd LIKE '%nicehash%'
-    OR p0_cmd LIKE '%stratum%'
-    OR p0_cmd LIKE '%/dev/%cp/%'
-    OR p0_cmd LIKE '%fsockopen%'
+    OR p0_cmd LIKE '%nohup /bin/bash%'
     OR p0_cmd LIKE '%openssl%quiet%'
     OR p0_cmd LIKE '%pty.spawn%'
+    OR p0_cmd LIKE '%stratum%'
+    OR p0_cmd LIKE '%UserKnownHostsFile=/dev/null%' -- Crypto miners
     OR (
       p0_cmd LIKE '%sh -i'
       AND NOT p1_name IN ('sh', 'java')
@@ -157,11 +157,11 @@ WHERE
   AND NOT (
     pe.path IN ('/usr/bin/kmod', '/bin/kmod')
     AND p1_name IN (
-      'firewalld',
-      'mkinitramfs',
-      'systemd',
       'dockerd',
-      'kube-proxy'
+      'firewalld',
+      'kube-proxy',
+      'mkinitramfs',
+      'systemd'
     )
   )
   AND NOT (
@@ -186,26 +186,32 @@ WHERE
     '/usr/bin/socat STDIN UNIX-CONNECT:/run/user/1000/kwallet5.socket',
     'socat STDIN UNIX-CONNECT:/run/user/1000/kwallet5.socket'
   )
+  AND NOT p0_cmd LIKE '%/usr/bin/cmake%Socket%'
+  AND NOT p0_cmd LIKE '%modprobe -va%'
+  AND NOT p0_cmd LIKE '%modprobe aufs'
+  AND NOT p0_cmd LIKE '%modprobe nf_nat_netbios_ns'
+  AND NOT p0_cmd LIKE '%modprobe overlay'
+  AND NOT p0_cmd LIKE '%touch -r /tmp/cc%.o %'
   AND NOT p0_cmd LIKE 'find . -executable -type f -name %grep -l GNU Libtool%touch -r%'
   AND NOT p0_cmd LIKE 'modinfo -k%'
-  AND NOT p0_cmd LIKE 'modprobe -ab%'
   AND NOT p0_cmd LIKE 'modprobe --all%'
-  AND NOT p0_cmd LIKE '%modprobe aufs'
-  AND NOT p0_cmd LIKE '%touch -r /tmp/cc%.o %'
-  AND NOT p0_cmd LIKE '%modprobe overlay'
-  AND NOT p0_cmd LIKE '%modprobe nf_nat_netbios_ns'
-  AND NOT p0_cmd LIKE '%modprobe -va%'
+  AND NOT p0_cmd LIKE 'modprobe -ab%'
   AND NOT p0_cmd LIKE 'pkill -f cut -c3%'
-  AND NOT p0_cmd LIKE '%/usr/bin/cmake%Socket%'
-  AND NOT p0_name IN ('ar', 'cc1', 'compile', 'cmake', 'cc1plus')
+  AND NOT p0_name IN (
+    'ar',
+    'cc1',
+    'cc1plus',
+    'cmake',
+    'compile',,
+  )
   AND NOT exception_key IN (
+    'bash,0,bash,containerd-shim-runc-v2',
     'bash,500,ninja,bash',
-    'grep,500,fish,konsole',
-    'tar,0,incusd,systemd',
     'bwrap,500,melange,dash',
+    'chrome_crashpad_handler,500,systemd,systemd',
+    'grep,500,fish,konsole',
+    'kmod,0,incusd,systemd',
     'ls,500,zsh,alacritty',
     'nc,500,fish,konsole',
-    'kmod,0,incusd,systemd',
-    'chrome_crashpad_handler,500,systemd,systemd',
-    'bash,0,bash,containerd-shim-runc-v2'
+    'tar,0,incusd,systemd'
   )

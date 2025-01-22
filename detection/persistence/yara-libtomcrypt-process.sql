@@ -56,8 +56,8 @@ WHERE
   AND yara.sigrule = '    
       rule redflags {
       strings:
-          $libtomcrypt = "LibTomCrypt"
           $email = "tomstdenis@gmail.com"
+          $libtomcrypt = "LibTomCrypt"
       condition:
           filesize < 10MB and 1 of them
   }'

@@ -19,10 +19,10 @@ WHERE
   launchd.name LIKE 'com.apple.%'
   -- Optimization, assumes SIP
   AND file.directory NOT IN (
-    '/System/Library/LaunchAgents',
-    '/System/Library/LaunchDaemons',
+    '/Library/Apple/System/Library/LaunchAgents',
     '/Library/Apple/System/Library/LaunchDaemons',
-    '/Library/Apple/System/Library/LaunchAgents'
+    '/System/Library/LaunchAgents',
+    '/System/Library/LaunchDaemons'
   )
   AND launchd.run_at_load = 1
   AND signature.authority != 'Software Signing'

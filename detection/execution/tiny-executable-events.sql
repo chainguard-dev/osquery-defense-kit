@@ -42,12 +42,12 @@ WHERE
   AND p.path NOT LIKE '%.py'
   AND p.path NOT LIKE '%.rb'
   AND p.path NOT IN (
+    '/opt/incus/bin/skopeo',
     '/sbin/ldconfig',
-    '/usr/bin/yq',
     '/usr/bin/c_rehash',
+    '/usr/bin/yq',
     '/usr/sbin/bpftool',
     '/usr/sbin/ldconfig',
-    '/opt/incus/bin/skopeo',
     '/usr/sbin/update-ca-certificates'
   )
   AND NOT p.path LIKE '%/firefox'
@@ -55,8 +55,8 @@ WHERE
     p.path LIKE '/Users/%'
     AND magic.data LIKE 'POSIX shell script%'
   )
-  AND p.path NOT LIKE '/private/var/folders/%/T/iTerm2-scrip%sh'
   AND p.path NOT LIKE '/home/%/.local/share/Steam/%'
+  AND p.path NOT LIKE '/private/var/folders/%/T/iTerm2-scrip%sh'
   AND p.path NOT LIKE '%/openoffice%/program/pagein'
   -- Removes a false-positive we've seen on Linux, generated through 'runc init'
   AND NOT (

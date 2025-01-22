@@ -32,32 +32,32 @@ WHERE
   f.ctime = f.mtime
   AND p.path != '/'
   AND f.path NOT IN (
-    '/opt/google/endpoint-verification/bin/apihelper',
     '/opt/Elastic/Endpoint/elastic-endpoint',
+    '/opt/google/endpoint-verification/bin/apihelper',
     '/opt/resolve/bin/resolve',
-    '/usr/bin/ld',
     '/usr/bin/ld.bfd',
-    '/var/opt/velociraptor/bin/velociraptor',
-    '/usr/bin/melange'
+    '/usr/bin/ld',
+    '/usr/bin/melange',
+    '/var/opt/velociraptor/bin/velociraptor'
   )
   AND f.path NOT LIKE '/home/%'
-  AND f.path NOT LIKe '/var/home/%'
+  AND f.path NOT LIKE '/opt/Elastic/Agent/data/elastic-agent%'
+  AND f.path NOT LIKE '/opt/rapid7/ir_agent/%'
   AND f.path NOT LIKE '/snap/%'
+  AND f.path NOT LIKE '/tmp/%/.terraform/providers/%'
   AND f.path NOT LIKE '/tmp/%go-build%/exe/%'
   AND f.path NOT LIKE '/tmp/cargo-install%/%'
-  AND f.path NOT LIKE '/usr/local/bin/%'
-  AND f.path NOT LIKE '/opt/rapid7/ir_agent/%'
-  AND f.path NOT LIKE '/var/home/linuxbrew/.linuxbrew/%'
-  AND f.path NOT LIKE '/opt/Elastic/Agent/data/elastic-agent%'
-  AND f.path NOT LIKE '/usr/local/aws-cli/%/dist/aws'
-  AND f.path NOT LIKE '/usr/local/kolide-k2/bin/%-updates/%'
-  AND f.path NOT LIKE '/var/kolide-k2/k2device.kolide.com/updates/%'
   AND f.path NOT LIKE '/tmp/go-build%'
+  AND f.path NOT LIKE '/usr/local/aws-cli/%/dist/aws'
+  AND f.path NOT LIKE '/usr/local/bin/%'
+  AND f.path NOT LIKE '/usr/local/kolide-k2/bin/%-updates/%'
+  AND f.path NOT LIKe '/var/home/%'
+  AND f.path NOT LIKE '/var/home/linuxbrew/.linuxbrew/%'
   AND f.path NOT LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%/bin/%'
-  AND p.name NOT LIKE 'osqtool%'
+  AND f.path NOT LIKE '/var/kolide-k2/k2device.kolide.com/updates/%'
+  AND f.path NOT LIKE '/var/opt/Elastic/Endpoint/elastic-endpoint'
   AND f.path NOT LIKE '%/go/bin/%'
   AND f.path NOT LIKE '%/osqueryi'
-  AND f.path NOT LIKE '/tmp/%/.terraform/providers/%'
-  AND f.path NOT LIKE '/var/opt/Elastic/Endpoint/elastic-endpoint'
+  AND p.name NOT LIKE 'osqtool%'
 GROUP by
   p.pid

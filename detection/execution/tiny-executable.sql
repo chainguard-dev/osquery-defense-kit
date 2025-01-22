@@ -28,10 +28,10 @@ FROM
 WHERE
   file.size > 0
   AND file.size < 10000
-  AND NOT file.path LIKE '/Users/%/.zsh/completion'
-  AND NOT file.path LIKE '/home/%/.zsh/completion'
-  AND NOT file.path LIKE '/home/%/.local/share/Steam/ubuntu%'
   AND NOT file.path LIKE '/home/%/.local/share/Steam/steamapps/%'
+  AND NOT file.path LIKE '/home/%/.local/share/Steam/ubuntu%'
+  AND NOT file.path LIKE '/home/%/.zsh/completion'
+  AND NOT file.path LIKE '/Users/%/.zsh/completion'
   AND NOT file.path IN ('/', '/usr/bin/ruby')
   AND NOT (
     file.path = '/sbin/ldconfig'

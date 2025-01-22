@@ -53,24 +53,24 @@ WHERE
     WHERE
       (
         directory = '/Users/Shared/'
-        OR directory LIKE '/Users/Shared/%'
-        OR directory LIKE '/Users/Shared/.%'
         OR directory = '/var/root/'
-        OR directory LIKE '/var/root/%%'
-        OR directory LIKE '/var/root/.%'
+        OR directory LIKE '/Users/%/.%'
+        OR directory LIKE '/Users/%/.%/%'
         OR directory LIKE '/Users/%/Library'
+        OR directory LIKE '/Users/%/Library/.%'
         OR directory LIKE '/Users/%/Library/%'
         OR directory LIKE '/Users/%/Library/%/.%'
         OR directory LIKE '/Users/%/Library/%/%'
-        OR directory LIKE '/Users/%/Library/.%'
-        OR directory LIKE '/Users/%/Public'
-        OR directory LIKE '/Users/%/Public/%'
-        OR directory LIKE '/Users/%/Public/.%'
         OR directory LIKE '/Users/%/Photos'
-        OR directory LIKE '/Users/%/Photos/%'
         OR directory LIKE '/Users/%/Photos/.%'
-        OR directory LIKE '/Users/%/.%'
-        OR directory LIKE '/Users/%/.%/%'
+        OR directory LIKE '/Users/%/Photos/%'
+        OR directory LIKE '/Users/%/Public'
+        OR directory LIKE '/Users/%/Public/.%'
+        OR directory LIKE '/Users/%/Public/%'
+        OR directory LIKE '/Users/Shared/.%'
+        OR directory LIKE '/Users/Shared/%'
+        OR directory LIKE '/var/root/.%'
+        OR directory LIKE '/var/root/%%'
       )
       AND (
         type = 'regular'
@@ -86,20 +86,20 @@ WHERE
       AND NOT path LIKE '%/./%' -- Exclude very temporary files
       AND NOT directory LIKE '/Users/%/.bin/'
       AND NOT directory LIKE '/Users/%/.cargo/bin/'
+      AND NOT directory LIKE '/Users/%/.crc/bin/'
       AND NOT directory LIKE '/Users/%/.go/bin/'
-      AND NOT directory LIKE '/Users/%/Library/Mobile Documents/com~apple~CloudDocs/'
+      AND NOT directory LIKE '/Users/%/.local/bin/'
+      AND NOT directory LIKE '/Users/%/.minikube/bin/'
+      AND NOT directory LIKE '/Users/%/.Trash/%'
+      AND NOT directory LIKE '/Users/%/.vim/backup/'
       AND NOT directory LIKE '/Users/%/Library/Application Support/AutoFirma/certutil/'
       AND NOT directory LIKE '/Users/%/Library/Caches/chainctl/'
       AND NOT directory LIKE '/Users/%/Library/Containers/%'
       AND NOT directory LIKE '/Users/%/Library/Daemon Containers/%'
+      AND NOT directory LIKE '/Users/%/Library/Mobile Documents/com~apple~CloudDocs/'
       AND NOT directory LIKE '/Users/%/Library/Mobile Documents/com~apple~shoebox/%'
-      AND NOT directory LIKE '/Users/%/.local/bin/'
-      AND NOT directory LIKE '/Users/%/.minikube/bin/'
-      AND NOT directory LIKE '/Users/%/.crc/bin/'
       AND NOT directory LIKE '/Users/Shared/LGHUB/%'
       AND NOT directory LIKE '/Users/Shared/LogiOptionsPlus/%'
-      AND NOT directory LIKE '/Users/%/.Trash/%'
-      AND NOT directory LIKE '/Users/%/.vim/backup/'
       AND NOT directory IN (
         '/Users/Shared/LogiOptionsPlus/cache/',
         '/Users/Shared/logitune/',
@@ -128,16 +128,15 @@ WHERE
     magic.data IS NULL
     AND f.size < 50000
   )
-  AND NOT homedir LIKE '~/%/bin'
-  AND NOT homedir LIKE '~/%/shims'
-  AND NOT homedir LIKE '~/%/plugins'
   AND NOT homedir LIKE '/Users/%/.provisio'
+  AND NOT homedir LIKE '~/%/bin'
+  AND NOT homedir LIKE '~/%/plugins'
+  AND NOT homedir LIKE '~/%/shims'
   AND NOT homedir IN (
     '/Users/Shared/LGHUB',
     '/Users/Shared/LogiOptionsPlus',
     '/Users/Shared/logitune',
     '/var/root/.PenTablet',
-    '~/.PenTablet',
     '~/.amplify/bin',
     '~/.asdf/shims',
     '~/.bazel/bin',
@@ -158,6 +157,7 @@ WHERE
     '~/.kuberlr/darwin-amd64',
     '~/.npm/sentry-cli',
     '~/.oh-my-zsh/tools',
+    '~/.PenTablet',
     '~/.provisio',
     '~/.pulumi-dev/bin',
     '~/.pyenv/shims',
@@ -177,11 +177,20 @@ WHERE
     '~/Library/Mobile Documents/com~apple~CloudDocs'
   )
   AND NOT top2_homedir IN (
+    '/Users/Shared/LGHUB/cache',
+    '/Users/Shared/LogiOptionsPlus/cache',
+    '/Users/Shared/Red Giant/Uninstall',
     '~/.antigen',
     '~/.docker.old/cli-plugins',
     '~/.fzf/test',
     '~/.iterm2',
     '~/.kuberlr/darwin-arm64',
+    '~/.magefile',
+    '~/.nvm',
+    '~/.revox/updates',
+    '~/.sdkman/libexec',
+    '~/.terraform.d',
+    '~/.terraform.versions',
     '~/Library/Application Support',
     '~/Library/Caches',
     '~/Library/CloudStorage',
@@ -192,27 +201,18 @@ WHERE
     '~/Library/QuickLook',
     '~/Library/Screen Savers',
     '~/Library/Services',
-    '~/Library/Thunderbird',
-    '~/.magefile',
-    '~/.nvm',
-    '~/.revox/updates',
-    '~/.sdkman/libexec',
-    '~/.terraform.d',
-    '~/.terraform.versions',
-    '/Users/Shared/LGHUB/cache',
-    '/Users/Shared/LogiOptionsPlus/cache',
-    '/Users/Shared/Red Giant/Uninstall'
+    '~/Library/Thunderbird'
   )
   AND NOT homepath IN (
-    '~/.config/nvm/nvm.sh',
     '~/.config/i3',
+    '~/.config/nvm/nvm.sh',
     '~/.config/polybar',
     '~/Library/Assistant/SiriAnalytics.db',
-    '~/Library/Calendars/Calendar.sqlitedb',
     '~/Library/Calendars/Calendar.sqlitedb-wal',
+    '~/Library/Calendars/Calendar.sqlitedb',
     '~/Library/com.apple.iTunesCloud/play_activity.sqlitedb-wal',
-    '~/Library/Finance/finance_cloud.db',
     '~/Library/Finance/finance_cloud.db-wal',
+    '~/Library/Finance/finance_cloud.db',
     '~/Library/Group Containers/group.com.docker/unleash-repo-schema-v1-Docker Desktop.json',
     '~/Library/HTTPStorages/com.apple.AddressBookSourceSync',
     '~/Library/HTTPStorages/com.apple.AddressBookSourceSync/httpstorages.sqlite-shm',
@@ -220,16 +220,16 @@ WHERE
     '~/Library/Logs/zoom.us/upload_history.txt',
     '~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2'
   )
-  AND NOT homepath LIKE '~/Library/%/%.sqlite'
-  AND NOT homepath LIKE '~/Library/%/%.sqlite-wal'
-  AND NOT homepath LIKE '~/Library/%/%.db'
   AND NOT homepath LIKE '~/Library/%/%.db-wal'
-  AND NOT f.directory LIKE '/var/root/Library/Caches/%/org.sparkle-project.Sparkle/%/Sparkle.framework%'
-  AND NOT f.directory LIKE '/var/root/Library/Caches/%/org.sparkle-project.Sparkle/%/Contents/MacOS'
+  AND NOT homepath LIKE '~/Library/%/%.db'
+  AND NOT homepath LIKE '~/Library/%/%.sqlite-wal'
+  AND NOT homepath LIKE '~/Library/%/%.sqlite'
   AND NOT f.directory LIKE '/Users/%/.docker/cli-plugins'
   AND NOT f.directory LIKE '/Users/%/.nix-profile/bin'
   AND NOT f.directory LIKE '/Users/%/.pkg-cache/%'
-  AND NOT f.path LIKE '/Users/%/Library/Fonts/%.ttf'
+  AND NOT f.directory LIKE '/var/root/Library/Caches/%/org.sparkle-project.Sparkle/%/Contents/MacOS'
+  AND NOT f.directory LIKE '/var/root/Library/Caches/%/org.sparkle-project.Sparkle/%/Sparkle.framework%'
   AND NOT f.path LIKE '/Users/%/Library/Fonts/%.otf'
+  AND NOT f.path LIKE '/Users/%/Library/Fonts/%.ttf'
 GROUP BY
   f.path

@@ -43,30 +43,30 @@ WHERE
   p0.start_time < (strftime('%s', 'now') - 43200)
   AND (
     pname LIKE "%kthread%"
+    OR pname LIKE '%xprotect%'
     OR pname LIKE "%-help"
-    OR pname LIKE "%flush%"
-    OR pname LIKE "%tasks%"
-    OR pname LIKE "%thread%"
-    OR pname LIKE "%initd%"
-    OR pname LIKE "%kdmp%"
     OR pname LIKE "%/%"
+    OR pname LIKE "%acpi%"
+    OR pname LIKE "%crypt%"
+    OR pname LIKE "%flush%"
+    OR pname LIKE "%initd%"
+    OR pname LIKE "%irq%"
+    OR pname LIKE "%kaudit%"
+    OR pname LIKE "%kdev%"
+    OR pname LIKE "%kdmp%"
+    OR pname LIKE "%ksoft%"
+    OR pname LIKE "%kswap%"
     OR pname LIKE "%kworker%"
     OR pname LIKE "%launchd%"
+    OR pname LIKE "%nvme%"
+    OR pname LIKE "%tasks%"
+    OR pname LIKE "%thread%"
     OR pname LIKE "%user_dir%"
     OR pname LIKE "%xdg%"
+    OR pname LIKE "%zswap%"
     OR pname LIKE "cpu%"
     OR pname LIKE "events%"
     OR pname LIKE "idle_%"
-    OR pname LIKE '%xprotect%'
-    OR pname LIKE "%kaudit%"
-    OR pname LIKE "%nvme%"
-    OR pname LIKE "%zswap%"
-    OR pname LIKE "%crypt%"
-    OR pname LIKE "%acpi%"
-    OR pname LIKE "%kdev%"
-    OR pname LIKE "%ksoft%"
-    OR pname LIKE "%irq%"
-    OR pname LIKE "%kswap%"
     OR pname LIKE "mm-%"
     OR pname LIKE "nm_%"
     OR pname LIKE "rcu%"
@@ -97,34 +97,34 @@ WHERE
   AND NOT pname LIKE '.%-wrap%'
   AND p0.path NOT LIKE "/nix/store/%"
   AND basename NOT IN (
+    'firefox-bin',
+    'firefox',
+    'pk-debconf-helper',
+    'udevadm',
+    'xdg-dbus-proxy',
+    'xdg-open',
     "acpid",
     "busybox",
-    "cpulimit",
     "com.docker.backend",
     "com.docker.build",
     "com.docker.extensions",
+    "cpulimit",
     "dynamiclinkmanager",
-    'firefox',
-    'firefox-bin',
     "gmenudbusmenuproxy",
     "irqbalance",
     "kactivitymanagerd",
     "nm-applet",
     "perl",
-    'pk-debconf-helper',
     "pt_main_thread",
-    "systemd",
     "systemd-executor",
-    'udevadm',
+    "systemd",
     "xdg-dbpus-proxy",
-    'xdg-dbus-proxy',
-    'xdg-open',
-    "xdg-desktop-portal",
     "xdg-desktop-portal-gnome",
     "xdg-desktop-portal-gtk",
     "xdg-desktop-portal-kde",
-    "xdg-desktop-portal-xapp",
     "xdg-desktop-portal-regolith",
+    "xdg-desktop-portal-xapp",
+    "xdg-desktop-portal",
     "xdg-document-portal",
     "xdg-permission-store",
     "xwaylandvideobridge"

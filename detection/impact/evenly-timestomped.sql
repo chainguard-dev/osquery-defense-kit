@@ -38,15 +38,15 @@ WHERE
   )
   -- false positives
   AND filename NOT IN (
-    'master.passwd',
+    '_libinput',
     'COPYING',
     'debian_version',
+    'installer-info.json',
+    'master.passwd',
     'NEWS',
-    '_libinput',
     'printcap',
-    'strace-log-merge',
-    'installer-info.json'
+    'strace-log-merge'
   )
+  AND file.path NOT LIKE '/etc/cups/%'
   AND file.path NOT LIKE '%/lynis%'
   AND file.path NOT LIKE '%/yelp-xsl%'
-  AND file.path NOT LIKE '/etc/cups/%'

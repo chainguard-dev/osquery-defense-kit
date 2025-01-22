@@ -57,21 +57,21 @@ WHERE -- Focus on longer-running programs
     WHERE
       start_time < (strftime('%s', 'now') - 25200)
       AND parent != 0 -- Assume STP
+      AND NOT path LIKE '/Applications/%.app/%' -- Other oddball binary paths
+      AND NOT path LIKE '/nix/store/%'
+      AND NOT path LIKE '/opt/%'
+      AND NOT path LIKE '/private/var/folders%/T/go-build%/exe/%'
       AND NOT path LIKE '/System/%'
+      AND NOT path LIKE '/Users/%/.terraform/providers/%'
+      AND NOT path LIKE '/Users/%/bin/%'
+      AND NOT path LIKE '/Users/%/dev/%'
+      AND NOT path LIKE '/Users/%/go/%'
+      AND NOT path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/%'
+      AND NOT path LIKE '/Users/%/Library/Application Support/Zed/extensions/%'
+      AND NOT path LIKE '/Users/%/Library/Application Support/Zed/supermaven/%'
+      AND NOT path LIKE '/Users/%/src/%'
       AND NOT path LIKE '/usr/libexec/%'
       AND NOT path LIKE '/usr/sbin/%' -- Regular apps
-      AND NOT path LIKE '/Applications/%.app/%' -- Other oddball binary paths
-      AND NOT path LIKE '/opt/%'
-      AND NOT path LIKE '/Users/%/go/%'
-      AND NOT path LIKE '/Users/%/dev/%'
-      AND NOT path LIKE '/Users/%/src/%'
-      AND NOT path LIKE '/Users/%/bin/%'
-      AND NOT path LIKE '/nix/store/%'
-      AND NOT path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/%'
-      AND NOT path LIKE '/Users/%/Library/Application Support/Zed/supermaven/%'
-      AND NOT path LIKE '/Users/%/Library/Application Support/Zed/extensions/%'
-      AND NOT path LIKE '/private/var/folders%/T/go-build%/exe/%'
-      AND NOT path LIKE '/Users/%/.terraform/providers/%'
       AND NOT REGEX_MATCH (path, '(.*)/', 1) LIKE '%/bin'
       AND NOT (
         path LIKE '/Users/%/Library/Application Support/com.elgato.StreamDeck/Plugins/com.elgato.cpu.sdPlugin/cpu'
@@ -84,17 +84,17 @@ WHERE -- Focus on longer-running programs
   )
   AND pmm.path LIKE '%Security.framework%'
   AND NOT s.authority IN (
-    'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Google, Inc. (EQHXZ8M8AV)',
+    'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'Developer ID Application: Valve Corporation (MXGJJ98X76)'
   )
   AND exception_key NOT IN (
     '0,velociraptor,a.out,',
+    '500,___1go_build_main_go,a.out,',
     '500,circleci-yaml-language-server,a.out,',
     '500,cloud_sql_proxy,a.out,',
     '500,docker,docker,',
-    '500,___1go_build_main_go,a.out,',
     '500,gopls,a.out,',
     '500,python3,python.exe,',
     '500,sdaudioswitch,,',
@@ -103,14 +103,14 @@ WHERE -- Focus on longer-running programs
     '500,sdzoomplugin,,',
     '500,serial-discovery,a.out,'
   )
-  AND NOT exception_key LIKE '500,lifx-streamdeck,lifx-streamdeck-%'
-  AND NOT exception_key LIKE '500,___Test%.test,a.out'
-  AND NOT exception_key LIKE '500,nvim,bob-%,'
-  AND NOT exception_key LIKE '500,sm-agent,sm_agent-%'
-  AND NOT exception_key LIKE '500,___2go_build_main_go,a.out,'
-  AND NOT exception_key LIKE '500,rust-analyzer,rust_analyzer-%,'
-  AND NOT exception_key LIKE '500,package-version-server-v%,package_version_server-%,'
-  AND NOT exception_key LIKE '500,marksman-macos,marksman-%,'
   AND NOT exception_key LIKE '500,___%go_build_%,a.out,'
+  AND NOT exception_key LIKE '500,___2go_build_main_go,a.out,'
+  AND NOT exception_key LIKE '500,___Test%.test,a.out'
+  AND NOT exception_key LIKE '500,lifx-streamdeck,lifx-streamdeck-%'
+  AND NOT exception_key LIKE '500,marksman-macos,marksman-%,'
+  AND NOT exception_key LIKE '500,nvim,bob-%,'
+  AND NOT exception_key LIKE '500,package-version-server-v%,package_version_server-%,'
+  AND NOT exception_key LIKE '500,rust-analyzer,rust_analyzer-%,'
+  AND NOT exception_key LIKE '500,sm-agent,sm_agent-%'
 GROUP BY
   p0.pid

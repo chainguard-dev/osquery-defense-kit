@@ -77,9 +77,9 @@ WHERE
       AND NOT name IN (
         'apfsd',
         'bindfs',
-        'code',
-        'Code Helper',
         'Code Helper (Plugin)',
+        'Code Helper',
+        'code',
         'find',
         'git',
         'gitsign',
@@ -95,118 +95,118 @@ WHERE
   AND NOT (
     exception_key IN (
       'Arduino IDE Helper,/private/var/folders',
-      'Electron,~/.vscode/extensions',
       'arduino-language-server,/private/var/folders',
       'as,~/.cache/yay',
-      'bash,~/.Trash',
-      'bash,~/.local/share',
-      'bash,~/go/src',
-      'bash,/var/lib/incus',
       'bash,/var/home/linuxbrew',
-      'java,/root/.gradle/daemon',
+      'bash,/var/lib/incus',
       'bash,/var/tmp/.vscode-server',
-      'telegram-deskto,~/snap/telegram-desktop',
+      'bash,~/.local/share',
+      'bash,~/.Trash',
+      'bash,~/go/src',
       'c++,~/.cache/yay',
       'cc1,/home/build/.cache',
       'cc1plus,~/.cache/yay',
       'cgo,~/.gimme/versions',
       'clangd,/private/var/folders',
-      'curl,/var/home/linuxbrew',
       'conmon,/var~/.local/share',
+      'curl,/var/home/linuxbrew',
       'dirhelper,/private/var/folders',
+      'Electron,~/.vscode/extensions',
       'exe,/var~/.local/share',
       'fileproviderd,~/Library/Mobile Documents',
-      'fish,~/.Trash',
       'fish,~/.local/share',
+      'fish,~/.Trash',
       'git,~/.local/share',
       'java,/home/build/.gradle',
       'java,/home/build/.kotlin',
+      'java,/root/.gradle/daemon',
       'java,~/.gradle/daemon',
       'java,~/.local/share',
       'make,~/.cache/yay',
       'makepkg,~/.cache/yay',
       'mysqld,~/.local/share',
+      'npm install,/home/build/.npm',
       'npm install,~/.npm/_cacache',
       'opera_autoupdate,/private/var/folders',
       'postinstall,/Library/InstallerSandboxes/.PKInstallSandboxManager',
       'rm,/private/var/folders',
       'rust-analyzer-p,~/.cargo/registry',
       'rustc,/home/build/.cargo',
+      'telegram-deskto,~/snap/telegram-desktop',
       'vet,/home/build/.cache',
-      'npm install,/home/build/.npm',
       'zsh,/private/tmp/workspace',
-      'zsh,~/Library/Mobile Documents',
-      'zsh,~/.Trash'
+      'zsh,~/.Trash',
+      'zsh,~/Library/Mobile Documents'
     )
     OR exception_key LIKE '%sh,~/.Trash/%'
     OR exception_key LIKE '%sh,~/dev/%'
-    OR exception_key LIKE 'wineserver,/tmp/.wine-1000/server-%'
     OR exception_key LIKE 'java,/.gradle/%'
+    OR exception_key LIKE 'wineserver,/tmp/.wine-1000/server-%'
     OR dir IN (
-      '~/.config',
-      '~/.local/bin',
       '/home/build',
       '/var/home/linuxbrew/.linuxbrew/Cellar',
       '/var/home/linuxbrew/.linuxbrew/Homebrew',
-      '~/.vim',
-      '~/dev/extra-packages/.chainguard',
+      '~/.cache/yay',
+      '~/.config',
+      '~/.emacs.d',
+      '~/.gmailctl',
+      '~/.hunter/_Base',
+      '~/.local/bin',
+      '~/.local/share/chezmoi',
+      '~/.local/share/nvim',
+      '~/.local/share/Steam',
+      '~/.oh-my-zsh',
       '~/.provisio',
       '~/.terraform.d',
-      '~/.cache/yay',
-      '~/.emacs.d',
-      '~/.local/share/chezmoi',
-      '~/.local/share/Steam',
-      '~/.local/share/nvim',
-      '~/.gmailctl',
-      '~/.oh-my-zsh',
-      '~/.hunter/_Base',
-      '~/.zsh'
+      '~/.vim',
+      '~/.zsh',
+      '~/dev/extra-packages/.chainguard'
     )
     OR top_dir IN (
-      '~/Sync',
-      '~/src',
-      '~/workspace',
+      '/var~/.local',
       '~/dev',
-      '/var~/.local'
+      '~/src',
+      '~/Sync',
+      '~/workspace'
     )
-    OR dir LIKE '~/.%'
-    OR dir LIKE '%/.build'
-    OR dir LIKE '%/.cache/melange%'
-    OR dir LIKE '%/.cargo/%'
-    OR dir LIKE '%/.cargo-arm64%'
-    OR dir LIKE '~/code/%'
-    OR dir LIKE '~/%/.config/nvim'
-    OR dir LIKE '~/dev/%/dots/%/.config%'
-    OR dir LIKE '~/%/.docker%'
-    OR dir LIKE '~/%enterprise-packages/.chainguard'
-    OR dir LIKE '%/.git'
-    OR dir LIKE '%/.git/%'
-    OR dir LIKE '%/.venv/%'
-    OR dir LIKE '/run/.ro%'
-    OR dir LIKE '%/.github'
-    OR dir LIKE '%/.github/%'
-    OR dir LIKE '~/%/github.com/%'
-    OR dir LIKE '~/%google-cloud-sdk/.install/.backup%'
-    OR dir LIKE '%/.gradle'
     OR dir LIKE '/.gradle/%'
-    OR dir LIKE '~/.gradle/%'
-    OR dir LIKE '/home/build/%'
     OR dir LIKE '/home/build/.%'
+    OR dir LIKE '/home/build/%'
     OR dir LIKE '/Library/Apple/System/Library/InstallerSandboxes/.PKInstallSandboxManager-SystemSoftware/%'
-    OR dir LIKE '~/%/.modcache/%'
-    OR dir LIKE '%/node_modules/.bin'
-    OR dir LIKE '~/%/node_modules/.pnpm/%'
     OR dir LIKE '/opt/homebrew/%/.cache/%'
     OR dir LIKE '/private/tmp/%/.git'
-    OR dir LIKE '~/%/src/%'
+    OR dir LIKE '/run/.ro%'
+    OR dir LIKE '/tmp/.mount_%'
+    OR dir LIKE '/tmp/%/.git'
+    OR dir LIKE '/tmp/%/.github/workflows'
+    OR dir LIKE '%/.build'
+    OR dir LIKE '%/.cache/melange%'
+    OR dir LIKE '%/.cargo-arm64%'
+    OR dir LIKE '%/.cargo/%'
+    OR dir LIKE '%/.git'
+    OR dir LIKE '%/.git/%'
+    OR dir LIKE '%/.github'
+    OR dir LIKE '%/.github/%'
+    OR dir LIKE '%/.gradle'
+    OR dir LIKE '%/.venv'
+    OR dir LIKE '%/.venv/%'
+    OR dir LIKE '%/node_modules/.bin'
+    OR dir LIKE '~/.%'
+    OR dir LIKE '~/.gradle/%'
+    OR dir LIKE '~/%/.config/nvim'
+    OR dir LIKE '~/%/.docker%'
+    OR dir LIKE '~/%/.modcache/%'
     OR dir LIKE '~/%/.terraform%'
     OR dir LIKE '~/%/.terragrunt-cache/%'
     OR dir LIKE '~/%/.tests/%'
-    OR dir LIKE '/tmp/%/.git'
-    OR dir LIKE '/tmp/%/.github/workflows'
-    OR dir LIKE '/tmp/.mount_%'
-    OR dir LIKE '%/.venv'
     OR dir LIKE '~/%/.vercel%'
+    OR dir LIKE '~/%/github.com/%'
+    OR dir LIKE '~/%/node_modules/.pnpm/%'
+    OR dir LIKE '~/%/src/%'
+    OR dir LIKE '~/%enterprise-packages/.chainguard'
+    OR dir LIKE '~/%google-cloud-sdk/.install/.backup%'
+    OR dir LIKE '~/code/%'
+    OR dir LIKE '~/dev/%/dots/%/.config%'
     OR dir LIKE '~/src/%' -- For sudo calls to other things
     OR (
       dir LIKE '/home/.terraform.d/%'

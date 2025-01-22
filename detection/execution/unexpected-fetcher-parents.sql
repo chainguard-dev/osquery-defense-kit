@@ -37,7 +37,12 @@ FROM
   LEFT JOIN processes gp ON pp.parent = gp.pid
   LEFT JOIN hash ON pp.path = hash.path
 WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-parent-events
-  child_name IN ('curl', 'wget', 'ftp', 'tftp') -- And not a regular local user
+  child_name IN (
+    'curl',
+    'ftp',
+    'tftp',
+    'wget'
+  ) -- And not a regular local user
   AND NOT exception_key IN (
     'curl,0,09-timezone,nm-dispatcher',
     'curl,0,bash,kandji-library-manager',
@@ -53,15 +58,11 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,303,bash,nix',
     'curl,305,bash,nix',
     'curl,307,bash,nix',
-    'curl,500,ShellLauncher,',
-    'curl,500,ShellLauncher,login',
-    'curl,500,Slack,launchd',
-    'curl,500,Stats,bash',
-    'curl,500,bash,ShellLauncher',
     'curl,500,bash,bash',
     'curl,500,bash,fakeroot',
     'curl,500,bash,fish',
     'curl,500,bash,nix-daemon',
+    'curl,500,bash,ShellLauncher',
     'curl,500,bash,zsh',
     'curl,500,colima,zsh',
     'curl,500,endpoint-instal,bash',
@@ -75,6 +76,10 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,500,nvim,nvim',
     'curl,500,nwg-panel,systemd',
     'curl,500,ruby,zsh',
+    'curl,500,ShellLauncher,',
+    'curl,500,ShellLauncher,login',
+    'curl,500,Slack,launchd',
+    'curl,500,Stats,bash',
     'curl,500,zsh,Code Helper',
     'curl,500,zsh,Cursor Helper',
     'curl,500,zsh,Emacs-arm64-11',
@@ -89,13 +94,19 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
   )
   AND NOT (
     p.euid > 500
-    AND parent_name IN ('sh', 'fish', 'zsh', 'bash', 'dash')
+    AND parent_name IN (
+      'bash',
+      'dash',
+      'fish',
+      'sh',
+      'zsh'
+    )
     AND gparent_name IN (
       'alacritty',
+      'bash',
       'Code Helper',
       'Cursor Helper',
       'emacs',
-      'bash',
       'gnome-terminal-',
       'goland',
       'kitty',
@@ -104,8 +115,8 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
       'pycharm',
       'roxterm',
       'stable',
-      'tmux',
       'tmux:server',
+      'tmux',
       'vim',
       'wezterm-gui',
       'zsh'

@@ -50,31 +50,31 @@ WHERE
   AND NOT p1.pid IN (1, 2) -- launchd, kthreadd
   -- Probably a software upgrade
   AND NOT p1_dirname IN (
-    '/usr/lib/electron22',
-    '/usr/bin',
     '/opt/google/chrome',
     '/opt/microsoft/msedge',
-    '/usr/share/codium',
-    '/usr/libexec',
-    '/usr/lib/systemd',
+    '/usr/bin',
     '/usr/lib',
+    '/usr/lib/electron22',
     '/usr/lib/go/bin',
-    '/usr/share/code'
+    '/usr/lib/systemd',
+    '/usr/libexec',
+    '/usr/share/code',
+    '/usr/share/codium'
   ) -- long-running launchers
   AND NOT p1.name IN (
     'bash',
-    'dnf',
     'chrome',
-    'ninja',
-    'make',
+    'dnf',
+    'Docker Desktop',
     'electron',
-    'gnome-terminal',
     'fish',
     'gnome-shell',
-    'kubelet',
+    'gnome-terminal',
     'kube-proxy',
-    'Docker Desktop',
+    'kubelet',
     'lightdm',
+    'make',
+    'ninja',
     'nvim',
     'sh',
     'slack',
@@ -91,12 +91,12 @@ WHERE
   AND NOT p2.name = 'bwrap'
   AND p1.cgroup_path NOT LIKE '/system.slice/docker-%'
   AND p1.cgroup_path NOT IN (
-    '/system.slice/docker.service',
-    '/system.slice/containerd.service'
+    '/system.slice/containerd.service',
+    '/system.slice/docker.service'
   )
-  AND p1.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
-  AND p1.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/libpod-%'
   AND p1.cgroup_path NOT LIKE '/lxc.monitor.n%'
+  AND p1.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/libpod-%'
+  AND p1.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
   AND p1.path NOT LIKE '/opt/homebrew/Cellar/%'
   AND p1.path NOT LIKE '/tmp/.mount_%/%'
   AND p1.path NOT LIKE '%google-cloud-sdk/.install/.backup%'

@@ -47,9 +47,9 @@ WHERE
   AND file.inode IS NULL
   AND p.path != '/bpfilter_umh'
   -- Snap packages?
-  AND p.path NOT LIKE '/tmp/.mount_%'
   AND p.path NOT LIKE '/home/%/.cache/yay/1password-cli/pkg/1password-cli/usr/bin/op'
+  AND p.path NOT LIKE '/tmp/.mount_%'
   -- Probably just an upgrade
+  AND p.path NOT LIKE '/opt/%'
   AND p.path NOT LIKE '/usr/bin/%'
   AND p.path NOT LIKE '/usr/sbin/%'
-  AND p.path NOT LIKE '/opt/%'

@@ -83,24 +83,24 @@ WHERE
       'bitspin',
       'bpftool',
       'csrutil',
-      'heyoka',
-      'nstx',
       'dnscat2',
-      'tuns',
-      'iodine',
-      'rshell',
-      'rsh',
+      'heyoka',
       'incbit',
+      'iodine',
       'kmod',
       'lushput',
       'mkfifo',
       'msfvenom',
       'nc',
-      'socat'
+      'nstx',
+      'rsh',
+      'rshell',
+      'socat',
+      'tuns'
     ) -- Chrome Stealer
+    OR p0_name LIKE '%pwn%'
     OR p0_cmd LIKE '%set visible of front window to false%'
     OR p0_cmd LIKE '%chrome%-load-extension%' -- Known attack scripts
-    OR p0_name LIKE '%pwn%'
     OR p0_name LIKE '%attack%' -- Unusual behaviors
     OR p0_cmd LIKE '%chattr -i%'
     OR p0_cmd LIKE '%dd if=/dev/%'
@@ -168,57 +168,61 @@ WHERE
       '/bin/launchctl bootout gui/501 /Library/LaunchAgents/com.logi.optionsplus.plist',
       '/bin/launchctl bootout system/com.docker.socket',
       '/bin/rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
-      'git history',
-      'dd if=/dev/urandom bs=15 count=1 status=none',
-      'launchctl bootout gui/501/com.grammarly.ProjectLlama.UninstallAgent',
-      'helm history',
       '/Library/Apple/System/Library/StagedFrameworks/Safari/SafariShared.framework/XPCServices/com.apple.Safari.History.xpc/Contents/MacOS/com.apple.Safari.History',
-      'nc -h',
-      'nc',
-      'nc -uv 8.8.8.8 53',
-      'nc localhost 8080 -vz',
-      'nix profile history',
-      'dd if=/dev/stdin conv=unblock cbs=79',
-      'rm -f /tmp/mysql.sock',
-      'sh -c launchctl bootout system "/Library/LaunchDaemons/com.ecamm.EcammAudioXPCHelper.plist"',
       '/usr/bin/csrutil report',
       '/usr/bin/csrutil status',
       '/usr/bin/pkill -F /private/var/run/lima/shared_socket_vmnet.pid',
       '/usr/bin/sudo /bin/rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
       '/usr/bin/xattr -d com.apple.writer_bundle_identifier /Applications/Safari.app',
+      'dd if=/dev/stdin conv=unblock cbs=79',
+      'dd if=/dev/urandom bs=15 count=1 status=none',
+      'git history',
+      'helm history',
+      'launchctl bootout gui/501/com.grammarly.ProjectLlama.UninstallAgent',
+      'nc -h',
+      'nc -uv 8.8.8.8 53',
+      'nc localhost 8080 -vz',
+      'nc',
+      'nix profile history',
+      'rm -f /tmp/mysql.sock',
+      'sh -c launchctl bootout system "/Library/LaunchDaemons/com.ecamm.EcammAudioXPCHelper.plist"',
       'xpcproxy com.apple.Safari.History'
     ) -- The source of these commands is still a mystery to me.
     OR pe.parent = -1
   )
-  AND NOT p0_cmd LIKE 'launchctl bootout gui/501 /Users/%/Library/LaunchAgents/com.elgato.StreamDeck.plist'
   AND NOT p0_cmd LIKE '-history%'
-  AND NOT p0_cmd LIKE 'dirname %history'
-  AND NOT p0_cmd LIKE '/bin/rm -f /tmp/periodic.%'
+  AND NOT p0_cmd LIKE '/bin/cp %history%sessions/%'
+  AND NOT p0_cmd LIKE '/bin/rm -f /tmp/com.adobe.%.updater/%'
   AND NOT p0_cmd LIKE '/bin/rm -f /tmp/nix-shell.%'
-  AND NOT p0_cmd LIKE 'rm -f /tmp/blesh/%'
-  AND NOT p0_cmd LIKE 'touch -r . /private/tmp/nix-build%'
+  AND NOT p0_cmd LIKE '/bin/rm -f /tmp/periodic.%'
+  AND NOT p0_cmd LIKE '%find /Applications/LogiTuneInstaller.app -type d -exec chmod 777 {}%'
   AND NOT p0_cmd LIKE '%GNU Libtool%touch -r%'
+  AND NOT p0_cmd LIKE '%nc -vz localhost%'
+  AND NOT p0_cmd LIKE '%nc localhost%'
+  AND NOT p0_cmd LIKE '%ssh %/lima/%'
+  AND NOT p0_cmd LIKE 'dirname %history'
+  AND NOT p0_cmd LIKE 'launchctl bootout gui/501 /Users/%/Library/LaunchAgents/com.elgato.StreamDeck.plist'
+  AND NOT p0_cmd LIKE 'rm -f /tmp/blesh/%'
+  AND NOT p0_cmd LIKE 'rm -f /tmp/insttmp_%'
   AND NOT p0_cmd LIKE 'rm -f /tmp/locate%/_updatedb%'
   AND NOT p0_cmd LIKE 'rm -f /tmp/locate%/mklocate%/_mklocatedb%'
-  AND NOT p0_cmd LIKE 'rm -f /tmp/insttmp_%'
-  AND NOT p0_cmd LIKE '%nc localhost%'
-  AND NOT p0_cmd LIKE '%nc -vz localhost%'
-  AND NOT p0_cmd LIKE '/bin/cp %history%sessions/%'
-  AND NOT p0_cmd LIKE '%ssh %/lima/%'
+  AND NOT p0_cmd LIKE 'touch -r . /private/tmp/nix-build%'
   AND NOT p0_cmd LIKE 'touch -r /tmp/KSInstallAction.%'
-  AND NOT p0_cmd LIKE '%find /Applications/LogiTuneInstaller.app -type d -exec chmod 777 {}%'
-  AND NOT p0_cmd LIKE '/bin/rm -f /tmp/com.adobe.%.updater/%'
-  AND NOT p0_name IN ('cc1', 'compile', 'yara')
+  AND NOT p0_name IN (
+    'cc1',
+    'compile',
+    'yara'
+  )
   AND NOT exception_key IN (
-    'dd,500,zsh,login',
     'bash,500,idea,launchd',
-    'yara,500,bash,fish',
-    'go,500,fish,login',
-    'ssh,500,limactl.ventura,launchd',
-    'git,500,zsh,login',
     'bat,500,zsh,login',
+    'cat,500,zsh,login',
+    'dd,500,zsh,login',
     'git,500,zsh,goland',
+    'git,500,zsh,login',
+    'go,500,fish,login',
     'jq,500,zsh,login',
     'sh,0,Ecamm Live,launchd',
-    'cat,500,zsh,login'
+    'ssh,500,limactl.ventura,launchd',
+    'yara,500,bash,fish'
   )

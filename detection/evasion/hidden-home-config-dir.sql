@@ -25,18 +25,18 @@ FROM
 WHERE
   (
     file.path LIKE "/home/%/.config/.%"
-    OR file.path LIKE '/home/%/.config/%%/.%/%'
     OR file.path LIKE '/home/%/.config/.%/%'
     OR file.path LIKE '/home/%/.config/%%/.%/.%'
-    OR file.path LIKE '/root/.config/%%/.%/%'
+    OR file.path LIKE '/home/%/.config/%%/.%/%'
+    OR file.path LIKE '/root/.%/.%/%'
     OR file.path LIKE '/root/.config/.%/%'
     OR file.path LIKE '/root/.config/%%/.%/.%'
-    OR file.path LIKE '/root/.%/.%/%'
+    OR file.path LIKE '/root/.config/%%/.%/%'
   )
-  AND file.path NOT LIKE '%/../%'
-  AND file.path NOT LIKE '%/./%'
-  AND file.path NOT LIKE '/root/.cache/.flatpak/%'
-  AND file.path NOT LIKE '/root/.debug/.build-id/%'
-  AND file.path NOT LIKE '/home/%/.config/%/.git%'
   AND file.path NOT LIKE '/home/%/.config/.gsd-keyboard.settings-ported'
   AND file.path NOT LIKE '/home/%/.config/.org.chromium.Chromium.%'
+  AND file.path NOT LIKE '/home/%/.config/%/.git%'
+  AND file.path NOT LIKE '/root/.cache/.flatpak/%'
+  AND file.path NOT LIKE '/root/.debug/.build-id/%'
+  AND file.path NOT LIKE '%/../%'
+  AND file.path NOT LIKE '%/./%'

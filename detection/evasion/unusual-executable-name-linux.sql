@@ -41,29 +41,29 @@ FROM
 WHERE
   (
     pname LIKE "%kthread%"
+    OR pname LIKE '%xprotect%'
     OR pname LIKE "%-help"
+    OR pname LIKE "%acpi%"
+    OR pname LIKE "%crypt%"
     OR pname LIKE "%flush%"
-    OR pname LIKE "%tasks%"
-    OR pname LIKE "%thread%"
     OR pname LIKE "%initd%"
+    OR pname LIKE "%irq%"
+    OR pname LIKE "%kaudit%"
+    OR pname LIKE "%kdev%"
     OR pname LIKE "%kdmp%"
+    OR pname LIKE "%ksoft%"
+    OR pname LIKE "%kswap%"
     OR pname LIKE "%kworker%"
     OR pname LIKE "%launchd%"
+    OR pname LIKE "%nvme%"
+    OR pname LIKE "%tasks%"
+    OR pname LIKE "%thread%"
     OR pname LIKE "%user_dir%"
     OR pname LIKE "%xdg%"
+    OR pname LIKE "%zswap%"
     OR pname LIKE "cpu%"
     OR pname LIKE "events%"
     OR pname LIKE "idle_%"
-    OR pname LIKE '%xprotect%'
-    OR pname LIKE "%kaudit%"
-    OR pname LIKE "%nvme%"
-    OR pname LIKE "%zswap%"
-    OR pname LIKE "%crypt%"
-    OR pname LIKE "%acpi%"
-    OR pname LIKE "%kdev%"
-    OR pname LIKE "%ksoft%"
-    OR pname LIKE "%irq%"
-    OR pname LIKE "%kswap%"
     OR pname LIKE "mm-%"
     OR pname LIKE "nm_%"
     OR pname LIKE "rcu%"
@@ -98,12 +98,12 @@ WHERE
     "nm-applet",
     "nm-dispatcher",
     "xdg-dbus-proxy",
-    "xdg-desktop-portal",
-    "xdg-desktop-portal-xapp",
     "xdg-desktop-portal-gnome",
     "xdg-desktop-portal-gtk",
     "xdg-desktop-portal-kde",
     "xdg-desktop-portal-regolith",
+    "xdg-desktop-portal-xapp",
+    "xdg-desktop-portal",
     "xdg-document-portal",
     "xdg-permission-store",
     "xwaylandvideobridge"

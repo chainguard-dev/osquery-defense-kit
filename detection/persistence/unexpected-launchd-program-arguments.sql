@@ -30,14 +30,14 @@ WHERE
     program IS NULL
     OR program = ''
   )
-  AND l.path NOT LIKE '/System/%'
   AND l.path NOT LIKE '/Library/Apple/System/%'
+  AND l.path NOT LIKE '/System/%'
   AND program_authority NOT IN (
     'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: AtomicJar, Inc. (33C47PTHN6)',
-    'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Canon Inc. (XE2XNRRXZ5)',
+    'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Canva Pty Ltd (5HD2ARTBFS)',
     'Developer ID Application: Cloudflare Inc. (68WVV388M8)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
@@ -46,16 +46,15 @@ WHERE
     'Developer ID Application: Expressco Services, LLC (TC292Y5427)', -- Express VPN
     'Developer ID Application: Foxit Corporation (8GN47HTP75)',
     'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',
-    'Developer ID Application: Google, Inc. (EQHXZ8M8AV)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
+    'Developer ID Application: Google, Inc. (EQHXZ8M8AV)',
     'Developer ID Application: Grammarly, Inc (W8F64X92K3)',
     'Developer ID Application: Hercules Labs Inc. (B8PC799ZGU)',
     'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     'Developer ID Application: Keybase, Inc. (99229SGT5K)',
-    'Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     'Developer ID Application: Kolide Inc (YZ3EM74M78)',
+    'Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     'Developer ID Application: Krisp Technologies, Inc. (U5R26XM5Z2)',
-    'Developer ID Application: Plentycom Systems (UHEB36849R)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: MacPaw Inc. (S8EX82NJP6)',
     'Developer ID Application: Maxon Computer GmbH (4ZY22YGXQG)',
@@ -69,6 +68,7 @@ WHERE
     'Developer ID Application: PaperCut Software International Pty Ltd (B5N3YV5P2H)',
     'Developer ID Application: Paragon Software GmbH (LSJ6YVK468)',
     'Developer ID Application: PFU LIMITED (XW4U7W2E9L)', -- Fujitsu
+    'Developer ID Application: Plentycom Systems (UHEB36849R)',
     'Developer ID Application: Private Internet Access, Inc. (5357M5NW9W)',
     'Developer ID Application: Proton AG (2SB5Z68H26)',
     'Developer ID Application: Proton Technologies AG (6UN54H93QT)',
@@ -93,10 +93,10 @@ WHERE
     '/Library/Application Support/WirelessAutoImport/WirelessImporterDaemon',
     '/Library/PrivilegedHelperTools/MHLinkServer.app/Contents/MacOS/MHLinkServer',
     '/opt/homebrew/bin/gitsign-credential-cache',
-    '/opt/homebrew/opt/emacs/bin/emacs --fg-daemon',
-    '/opt/homebrew/opt/libvirt/sbin/libvirtd -f /opt/homebrew/etc/libvirt/libvirtd.conf',
     '/opt/homebrew/opt/dnsmasq/sbin/dnsmasq --keep-in-foreground -C /opt/homebrew/etc/dnsmasq.conf -7 /opt/homebrew/etc/dnsmasq.d,*.conf',
+    '/opt/homebrew/opt/emacs/bin/emacs --fg-daemon',
     '/opt/homebrew/opt/jenkins/bin/jenkins --httpListenAddress=127.0.0.1 --httpPort=8080',
+    '/opt/homebrew/opt/libvirt/sbin/libvirtd -f /opt/homebrew/etc/libvirt/libvirtd.conf',
     '/opt/homebrew/opt/mariadb/bin/mysqld_safe',
     '/opt/homebrew/opt/nginx/bin/nginx -g daemon off;',
     '/opt/homebrew/opt/pueue/bin/pueued --verbose',
@@ -107,7 +107,7 @@ WHERE
   )
   AND program_arguments NOT LIKE '/opt/homebrew/opt/%/bin/%'
   AND program_arguments NOT LIKE '/opt/homebrew/opt/mongodb-community%/bin/mongod --config /opt/homebrew/etc/mongod.conf'
+  AND program_arguments NOT LIKE '/opt/homebrew/opt/socket_vmnet/bin/socket_vmnet --vmnet-gateway=% /opt/homebrew/var/run/socket_vmnet'
   AND program_arguments NOT LIKE '/Users/%/Library/Application Support/com.grammarly.ProjectLlama/Scripts/Grammarly Uninstaller'
   AND program_arguments NOT LIKE '/Users/%/Library/Application Support/com.grammarly.ProjectLlama/Scripts/post-uninstall.sh'
   AND program_arguments NOT LIKE '%/mysqld_safe --datadir=%'
-  AND program_arguments NOT LIKE '/opt/homebrew/opt/socket_vmnet/bin/socket_vmnet --vmnet-gateway=% /opt/homebrew/var/run/socket_vmnet'

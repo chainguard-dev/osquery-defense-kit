@@ -87,15 +87,15 @@ WHERE
   )
   -- Local DNS servers and custom clients go here
   AND p.path NOT IN (
-    '/Applications/Evernote.app/Contents/MacOS/Evernote',
     '/Applications/Evernote.app/Contents/Frameworks/Evernote Helper.app/Contents/MacOS/Evernote Helper',
+    '/Applications/Evernote.app/Contents/MacOS/Evernote',
     '/Applications/Slack.app/Contents/Frameworks/Slack Helper.app/Contents/MacOS/Slack Helper',
     '/Applications/Spotify.app/Contents/Frameworks/Spotify Helper.app/Contents/MacOS/Spotify Helper',
     '/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/Contents/MacOS/IPNExtension',
     '/opt/podman/bin/gvproxy',
+    '/sbin/apk',
     '/System/Volumes/Preboot/Cryptexes/Incoming/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking',
     '/usr/bin/tailscaled',
-    '/sbin/apk',
     '/usr/lib/systemd/systemd-resolved',
     '/usr/sbin/mDNSResponder'
   )

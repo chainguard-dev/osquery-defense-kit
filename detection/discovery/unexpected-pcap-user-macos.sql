@@ -51,20 +51,20 @@ WHERE
       processes
     WHERE
       euid = 0
-      AND path NOT LIKE '/System/%'
       AND path NOT LIKE '/Library/Apple/%'
-      AND path NOT LIKE '/usr/libexec/%'
-      AND path NOT LIKE '/usr/sbin/%'
-      AND path NOT LIKE '/sbin/%'
-      AND path NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%'
-      AND path NOT LIKE '/usr/bin/%'
       AND path NOT LIKE '/nix/store/%/bin/nix'
-      AND path NOT LIKE '/opt/homebrew/Cellar/vim/%/bin/vim'
-      AND path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
-      AND path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
-      AND path NOT LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
-      AND path NOT LIKE '/usr/local/Cellar/htop/%/bin/htop'
       AND path NOT LIKE '/opt/homebrew/Cellar/btop/%/bin/btop'
+      AND path NOT LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
+      AND path NOT LIKE '/opt/homebrew/Cellar/vim/%/bin/vim'
+      AND path NOT LIKE '/private/var/db/com.apple.xpc.roleaccountd.staging/%'
+      AND path NOT LIKE '/sbin/%'
+      AND path NOT LIKE '/System/%'
+      AND path NOT LIKE '/usr/bin/%'
+      AND path NOT LIKE '/usr/libexec/%'
+      AND path NOT LIKE '/usr/local/Cellar/htop/%/bin/htop'
+      AND path NOT LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
+      AND path NOT LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
+      AND path NOT LIKE '/usr/sbin/%'
       AND path NOT IN (
         '/opt/socket_vmnet/bin/socket_vmnet',
         '/usr/local/sbin/velociraptor'
@@ -73,12 +73,12 @@ WHERE
   AND pmm.path LIKE '%libpcap%'
   -- These are all protected directories
   AND NOT s.authority IN (
-    'Software Signing',
-    'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'Apple Mac OS Application Signing',
-    'Developer ID Application: Kolide Inc (YZ3EM74M78)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
-    'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)'
+    'Developer ID Application: Kolide Inc (YZ3EM74M78)',
+    'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
+    'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
+    'Software Signing'
   )
   AND NOT p0.path LIKE '/opt/homebrew/Cellar/kubernetes-cli/%/bin/kubectl'
 GROUP BY

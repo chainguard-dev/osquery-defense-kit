@@ -24,7 +24,7 @@ FROM
 WHERE
   dcm.source = "/"
   AND image NOT IN (
-    "ghcr.io/ublue-os/ubuntu-toolbox",
-    "ghcr.io/ublue-os/bluefin-cli"
+    "ghcr.io/ublue-os/bluefin-cli",
+    "ghcr.io/ublue-os/ubuntu-toolbox"
   )
   AND image NOT LIKE '%wolfi-sdk-toolbox:latest'

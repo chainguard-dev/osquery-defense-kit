@@ -62,9 +62,17 @@ WHERE
   AND file.path NOT IN (
     '/.autorelabel',
     '/.cache/',
+    '/.equarantine/',
+    '/.file',
+    '/.lesshst',
+    '/.mozilla/',
+    '/.nofollow/',
+    '/.resolve/',
+    '/.vol/',
+    '/.VolumeIcon.icns',
     '/dev/.blkid.tab',
     '/dev/.mdadm/',
-    '/.equarantine/',
+    '/etc/.#sudoers',
     '/etc/.bootcount',
     '/etc/.clean',
     '/etc/.etckeeper',
@@ -76,23 +84,17 @@ WHERE
     '/etc/skel/.local/',
     '/etc/skel/.mozilla/',
     '/etc/skel/.var/',
-    '/etc/.#sudoers',
-    '/.file',
-    '/.lesshst',
     '/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
-    '/.mozilla/',
-    '/.nofollow/',
-    '/.resolve/',
+    '/tmp/._contentbarrier_installed',
     '/tmp/.accounts-agent/',
     '/tmp/.audio-agent/',
     '/tmp/.bazelci/',
     '/tmp/.BBE72B41371180178E084EEAF106AED4F350939DB95D3516864A1CC62E7AE82F', -- Xcode
     '/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress',
     '/tmp/.content-agent/',
-    '/tmp/._contentbarrier_installed',
     '/tmp/.dl.log',
-    '/tmp/.docker/',
     '/tmp/.docker-tmp/',
+    '/tmp/.docker/',
     '/tmp/.dotnet/',
     '/tmp/.dracula-tmux-data',
     '/tmp/.dracula-tmux-weather.lock',
@@ -109,19 +111,19 @@ WHERE
     '/tmp/.melange.yaml',
     '/tmp/.metrics-agent/',
     '/tmp/.PKGINFO',
+    '/tmp/.s.PGSQL.5432.lock',
+    '/tmp/.s.PGSQL.5432',
     '/tmp/.searcher.tmp/',
     '/tmp/.ses',
     '/tmp/.settings-agent/',
-    '/tmp/.SIGN.RSA256.local-melange-enterprise.rsa.pub',
+    '/tmp/.SIGN.RSA..local-melange.rsa.pub',
     '/tmp/.SIGN.RSA.chainguard-enterprise.rsa.pub',
     '/tmp/.SIGN.RSA.local-melange-enterprise.rsa.pub',
-    '/tmp/.SIGN.RSA..local-melange.rsa.pub',
     '/tmp/.SIGN.RSA.local-melange.rsa.pub',
     '/tmp/.SIGN.RSA.wolfi-signing.rsa.pub',
-    '/tmp/.s.PGSQL.5432',
-    '/tmp/.s.PGSQL.5432.lock',
-    '/tmp/.terraform/',
+    '/tmp/.SIGN.RSA256.local-melange-enterprise.rsa.pub',
     '/tmp/.terraform.lock.hcl',
+    '/tmp/.terraform/',
     '/tmp/.Test-unix/',
     '/tmp/.touchpaddefaults',
     '/tmp/.ui-agent/',
@@ -131,13 +133,16 @@ WHERE
     '/tmp/.vscode.dmypy_status/',
     '/tmp/.wsdl/',
     '/tmp/.X0-lock',
-    '/tmp/.X11-unix/',
     '/tmp/.X1-lock',
+    '/tmp/.X11-unix/',
     '/tmp/.X2-lock',
     '/tmp/.XIM-unix/',
     '/usr/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
     '/usr/local/bin/.swtpm',
     '/usr/local/libexec/.ksysguard/',
+    '/var/.ntw_cache',
+    '/var/.Parallels_swap/',
+    '/var/.pwd_cache',
     '/var/db/.AppleInstallType.plist',
     '/var/db/.AppleUpgrade',
     '/var/db/.com.apple.iokit.graphics',
@@ -160,9 +165,6 @@ WHERE
     '/var/home/.snapshots',
     '/var/home/.snapshots/',
     '/var/mail/.cache/',
-    '/var/.ntw_cache',
-    '/var/.Parallels_swap/',
-    '/var/.pwd_cache',
     '/var/root/.bash_history',
     '/var/root/.bash_profile',
     '/var/root/.cache/',
@@ -170,6 +172,18 @@ WHERE
     '/var/root/.config/',
     '/var/root/.docker/',
     '/var/root/.forward',
+    '/var/root/.lesshst',
+    '/var/root/.nix-channels',
+    '/var/root/.nix-defexpr/',
+    '/var/root/.nix-profile/',
+    '/var/root/.nx/',
+    '/var/root/.osquery/',
+    '/var/root/.PenTablet/',
+    '/var/root/.provisio',
+    '/var/root/.ssh/',
+    '/var/root/.Trash/',
+    '/var/root/.viminfo',
+    '/var/root/.zsh_history',
     '/var/roothome/.bash_history',
     '/var/roothome/.bash_logout',
     '/var/roothome/.bash_profile',
@@ -184,18 +198,6 @@ WHERE
     '/var/roothome/.ssh/',
     '/var/roothome/.var/',
     '/var/roothome/.viminfo',
-    '/var/root/.lesshst',
-    '/var/root/.nix-channels',
-    '/var/root/.nix-defexpr/',
-    '/var/root/.nix-profile/',
-    '/var/root/.nx/',
-    '/var/root/.osquery/',
-    '/var/root/.PenTablet/',
-    '/var/root/.provisio',
-    '/var/root/.ssh/',
-    '/var/root/.Trash/',
-    '/var/root/.viminfo',
-    '/var/root/.zsh_history',
     '/var/run/.heim_org.h5l.kcm-socket',
     '/var/run/.sim_diagnosticd_socket',
     '/var/run/.vfs_rsrc_streams_0x2b725bbfb94ba4ef0/',
@@ -203,43 +205,41 @@ WHERE
     '/var/setup/.fseventsd/',
     '/var/setup/.TemporaryItems',
     '/var/setup/.TemporaryItems/',
-    '/var/tmp/.ses',
     '/var/tmp/.ses.bak',
-    '/.vol/',
-    '/.VolumeIcon.icns'
+    '/var/tmp/.ses'
   )
   AND file.directory NOT IN (
+    '/etc/etckeeper/commit.d',
     '/etc/skel',
     '/etc/skel/.config',
-    '/etc/etckeeper/commit.d',
     '/var/root/.provisio'
   )
   AND file.path NOT LIKE '/%bin/bootstrapping/.default_components'
-  AND file.path NOT LIKE '/tmp/.#%'
   AND file.path NOT LIKE '/lib/jvm/.java-%.jinfo'
-  AND file.path NOT LIKE '%/lib/.lib%.hmac'
-  AND file.path NOT LIKE '/tmp/.lark_cache_%'
-  AND file.path NOT LIKE '/tmp/.cdx.json%'
-  AND file.path NOT LIKE '/var/roothome/.xauth%'
-  AND file.path NOT LIKE '/tmp/.wine-%'
+  AND file.path NOT LIKE '/tmp/.#%'
   AND file.path NOT LIKE '/tmp/.%.gcode'
-  AND file.path NOT LIKE '/tmp/.vbox-%-ipc/'
-  AND file.path NOT LIKE '/tmp/.io.nwjs.%'
-  AND file.path NOT LIKE '/tmp/.xfsm-ICE-%'
+  AND file.path NOT LIKE '/tmp/.cdx.json%'
   AND file.path NOT LIKE '/tmp/.com.google.Chrome.%'
-  AND file.path NOT LIKE '/tmp/.org.chromium.Chromium%'
   AND file.path NOT LIKe '/tmp/.com.microsoft.Edge.%'
-  AND file.path NOT LIKE '/var/run/.vfs_rsrc_streams_%/'
+  AND file.path NOT LIKE '/tmp/.dropbox-dist-%'
+  AND file.path NOT LIKE '/tmp/.io.nwjs.%'
+  AND file.path NOT LIKE '/tmp/.lark_cache_%'
+  AND file.path NOT LIKE '/tmp/.org.chromium.Chromium%'
+  AND file.path NOT LIKE '/tmp/.vbox-%-ipc/'
+  AND file.path NOT LIKE '/tmp/.wine-%'
   AND file.path NOT LIKE '/tmp/.X1%-lock'
+  AND file.path NOT LIKE '/tmp/.xfsm-ICE-%'
   AND file.path NOT LIKE '/usr/local/%/.keepme'
+  AND file.path NOT LIKE '/var/roothome/.xauth%'
+  AND file.path NOT LIKE '/var/run/.vfs_rsrc_streams_%/'
   AND file.path NOT LIKE '%/.build-id/'
   AND file.path NOT LIKE '%/.dwz/'
   AND file.path NOT LIKE '%/.updated'
-  AND file.path NOT LIKE '/tmp/.dropbox-dist-%'
+  AND file.path NOT LIKE '%/lib/.lib%.hmac'
   AND file.filename NOT LIKE '.%.swo'
   AND file.filename NOT LIKE '.%.swp'
-  AND file.path NOT LIKE '%/google-cloud-sdk/.install/'
   AND file.path NOT LIKE '/usr/lib/jvm/.java-%-openjdk-%.jinfo'
+  AND file.path NOT LIKE '%/google-cloud-sdk/.install/'
   AND NOT (
     type = 'regular'
     AND (

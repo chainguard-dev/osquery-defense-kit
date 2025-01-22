@@ -45,8 +45,8 @@ WHERE
       JOIN file ON file.directory = mounts.path
       OR file.directory LIKE mounts.path || "/%.app/Contents/MacOS/"
       OR file.directory LIKE mounts.path || "/%.app/Contents/Resources/"
-      OR file.directory LIKE mounts.path || "/%/%.app/Contents/MacOS/"
       OR file.directory LIKE mounts.path || "/%/%.app/Contents/Library/LaunchServices"
+      OR file.directory LIKE mounts.path || "/%/%.app/Contents/MacOS/"
       OR file.directory LIKE mounts.path || "/%/%.app/Contents/Resources/"
     WHERE
       model = 'Disk Image'
@@ -65,14 +65,14 @@ WHERE
   AND yara.sigrule = '    
     rule stealer {
     strings:
-        $data_stealers = "data_stealers" ascii
-        $library_keychains = "/Library/Keychains" ascii
+        $brave_software = "BraveSoftware" ascii
         $cookies_sqlite = "cookies.sqlite" ascii
+        $data_stealers = "data_stealers" ascii
+        $find_generic_password = "find-generic-password" ascii
+        $library_keychains = "/Library/Keychains" ascii
         $moz_cookies = "moz_cookies" ascii
         $operagx = "OperaGX" ascii
-        $brave_software = "BraveSoftware" ascii
         $osascript = "osascript" ascii
-        $find_generic_password = "find-generic-password" ascii
 
     condition:
         2 of them

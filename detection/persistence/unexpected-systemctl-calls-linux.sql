@@ -63,9 +63,9 @@ FROM
 WHERE
   uptime.total_seconds > 30 -- NOTE: The remainder of this query is synced with unexpected-fetcher-parents
   AND pe.path IN (
-    '/usr/bin/systemctl',
     '/bin/systemctl',
-    '/sbin/systemctl'
+    '/sbin/systemctl',
+    '/usr/bin/systemctl'
   )
   AND pe.cmdline != ''
   AND pe.time > (strftime('%s', 'now') -300)
@@ -77,55 +77,55 @@ WHERE
     'systemctl,0,kubeadm,containerd-shim-runc-v2',
     'systemctl,0,pacman,pacman',
     'systemctl,0,pacman,sudo',
-    'systemctl,500,snap,update-notifier',
     'systemctl,0,snapd,systemd',
     'systemctl,0,tailscaled,',
-    'systemctl,500,strace,bash',
-    'systemctl,127,snap,systemd',
     'systemctl,120,systemd-executor,systemd',
+    'systemctl,127,snap,systemd',
     'systemctl,128,systemd,systemd',
-    'systemctl,500,snapd,systemd',
-    'systemctl,500,systemd,systemd',
     'systemctl,500,bash,gnome-terminal-server',
     'systemctl,500,snap,systemd',
+    'systemctl,500,snap,update-notifier',
+    'systemctl,500,snapd,systemd',
+    'systemctl,500,strace,bash',
     'systemctl,500,systemd,',
+    'systemctl,500,systemd,systemd',
     'systemctl,500,zsh,tmux'
   )
   AND NOT p0_cmd IN (
-    '/bin/systemctl is-enabled -q whoopsie.path',
-    '/bin/systemctl -q is-enabled whoopsie.path',
     '/bin/systemctl --quiet is-enabled whoopsie.path',
+    '/bin/systemctl -q is-enabled whoopsie.path',
+    '/bin/systemctl is-enabled -q whoopsie.path',
     '/bin/systemctl stop --no-block nvidia-persistenced',
-    '/usr/bin/systemctl is-system-running',
-    'systemctl is-system-running',
     '/sbin/runlevel',
+    '/usr/bin/systemctl --user is-active slack',
+    '/usr/bin/systemctl is-system-running',
+    '/usr/bin/systemctl try-reload-or-restart dbus',
+    'systemctl --quiet is-enabled cups.service',
+    'systemctl --system daemon-reexec',
+    'systemctl --user import-environment DISPLAY XAUTHORITY',
+    'systemctl --user is-active slack',
+    'systemctl -p LoadState show cups.service',
+    'systemctl -q is-enabled whoopsie',
     'systemctl is-active systemd-resolved.service',
     'systemctl is-enabled power-profiles-daemon.service',
     'systemctl is-enabled snapd.apparmor',
     'systemctl is-enabled systemd-rfkill.service',
     'systemctl is-enabled systemd-rfkill.socket',
     'systemctl is-enabled tlp.service',
+    'systemctl is-system-running',
     'systemctl kill -s HUP rsyslog.service',
-    'systemctl -p LoadState show cups.service',
-    'systemctl -q is-enabled whoopsie',
-    'systemctl --quiet is-enabled cups.service',
     'systemctl reboot',
     'systemctl restart cups.service',
     'systemctl restart NetworkManager.service',
     'systemctl restart reflector.service',
     'systemctl status kubelet',
     'systemctl stop kubelet',
-    'systemctl stop libvirtd.service',
-    'systemctl --system daemon-reexec',
-    'systemctl --user import-environment DISPLAY XAUTHORITY',
-    '/usr/bin/systemctl try-reload-or-restart dbus',
-    '/usr/bin/systemctl --user is-active slack',
-    'systemctl --user is-active slack'
+    'systemctl stop libvirtd.service'
   ) -- apt-helper form
+  AND NOT p0_cmd LIKE '/usr/bin/systemctl --user set-environment%'
+  AND NOT p0_cmd LIKE '%systemctl --user set-environment DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%/bus'
+  AND NOT p0_cmd LIKE '%systemctl % snap-kubectl-%.mount'
   AND NOT p0_cmd LIKE '%systemctl is-active -q %.service'
   AND NOT p0_cmd LIKE '%systemctl show --property=%'
-  AND NOT p0_cmd LIKE '/usr/bin/systemctl --user set-environment%'
-  AND NOT p0_cmd LIKE '%systemctl % snap-kubectl-%.mount'
-  AND NOT p0_cmd LIKE '%systemctl --user set-environment DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%/bus'
 GROUP BY
   pe.pid

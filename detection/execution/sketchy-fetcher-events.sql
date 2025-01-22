@@ -105,23 +105,23 @@ WHERE
     -- Or if it matches weird keywords we've seen
     OR p.cmdline LIKE '%chmod%'
     OR pe.cmdline LIKE '%.onion%'
-    OR pe.cmdline LIKE '%tor2web%'
     OR pe.cmdline LIKE '%aliyun%'
-    OR pe.cmdline LIKE '%pastebin%'
-    OR pe.cmdline LIKE '%curl.*—write-out%'
-    OR pe.cmdline LIKE '%curl %--user-agent%'
     OR pe.cmdline LIKE '%curl -k%'
     OR pe.cmdline LIKE '%curl -sL %'
-    OR pe.cmdline LIKE '%curl%-o-%'
+    OR pe.cmdline LIKE '%curl %--user-agent%'
+    OR pe.cmdline LIKE '%curl.*—write-out%'
     OR pe.cmdline LIKE '%curl%--connect-timeout%'
-    OR pe.cmdline LIKE '%curl%--output /dev/null%'
-    OR pe.cmdline LIKE '%curl%--O /dev/null%'
     OR pe.cmdline LIKE '%curl%--insecure%'
-    OR pe.cmdline LIKE '%wget %--user-agent%'
-    OR pe.cmdline LIKE '%wget %--no-check-certificate%'
+    OR pe.cmdline LIKE '%curl%--O /dev/null%'
+    OR pe.cmdline LIKE '%curl%--output /dev/null%'
+    OR pe.cmdline LIKE '%curl%-o-%'
+    OR pe.cmdline LIKE '%pastebin%'
+    OR pe.cmdline LIKE '%tor2web%'
     OR pe.cmdline LIKE '%wget -nc%'
     OR pe.cmdline LIKE '%wget -q%'
     OR pe.cmdline LIKE '%wget -t%'
+    OR pe.cmdline LIKE '%wget %--no-check-certificate%'
+    OR pe.cmdline LIKE '%wget %--user-agent%'
     -- Or anything launched by a system user
     OR (
       pe.cmdline LIKE '%wget -%'
@@ -139,31 +139,31 @@ WHERE
   AND NOT (
     pe.euid > 500
     AND (
-      pe.cmdline LIKE '%--dump-header%'
-      OR pe.cmdline LIKE '%127.0.0.1:%'
+      p1_cmd LIKE '%brew.rb%'
+      OR p1_cmd LIKE '%brew.sh%'
       OR pe.cmdline LIKE '% localhost:%'
+      OR pe.cmdline LIKE '%--dump-header%'
+      OR pe.cmdline LIKE '%--progress-bar%'
+      OR pe.cmdline LIKE '%.well-known/openid-configuration%'
       OR pe.cmdline LIKE '%/192.168.%:%'
-      OR pe.cmdline LIKE '%application/json%'
       OR pe.cmdline LIKE '%/chainctl_%'
+      OR pe.cmdline LIKE '%/openid/v1/jwks%'
+      OR pe.cmdline LIKE '%127.0.0.1:%'
+      OR pe.cmdline LIKE '%application/json%'
+      OR pe.cmdline LIKE '%Authorization: Bearer%'
       OR pe.cmdline LIKE '%ctlog%'
       OR pe.cmdline LIKE '%curl -X %'
-      OR pe.cmdline LIKE '%Authorization: Bearer%'
-      OR pe.cmdline LIKE 'git %'
       OR pe.cmdline LIKE '%go mod %'
       OR pe.cmdline LIKE '%grpcurl%'
       OR pe.cmdline LIKE '%Homebrew%'
       OR pe.cmdline LIKE '%https://api.github.com/%'
       OR pe.cmdline LIKE '%If-None-Match%'
-      OR pe.cmdline LIKE "%libcurl%"
       OR pe.cmdline LIKE '%LICENSES/vendor/%'
       OR pe.cmdline LIKE '%localhost:%'
-      OR pe.cmdline LIKE '%/openid/v1/jwks%'
-      OR pe.cmdline LIKE '%--progress-bar%'
-      OR pe.cmdline LIKE '%.well-known/openid-configuration%'
-      OR pe.cmdline LIKE 'wget --no-check-certificate https://github.com/%'
       OR pe.cmdline LIKE 'curl -sL wttr.in%'
-      OR p1_cmd LIKE '%brew.rb%'
-      OR p1_cmd LIKE '%brew.sh%'
+      OR pe.cmdline LIKE 'git %'
+      OR pe.cmdline LIKE 'wget --no-check-certificate https://github.com/%'
+      OR pe.cmdline LIKE "%libcurl%"
     )
   )
   AND NOT (
@@ -189,11 +189,11 @@ WHERE
     addr IS NOT NULL
     AND (
       addr IN (
-        'releases.hashicorp.com',
-        'github.com',
         'cdn.zoom.us',
-        'repo1.maven.org',
-        'dl.enforce.dev'
+        'dl.enforce.dev',
+        'github.com',
+        'releases.hashicorp.com',
+        'repo1.maven.org'
       )
       -- Ignore local addresses (Docker development)
       OR addr NOT LIKE '%.%'

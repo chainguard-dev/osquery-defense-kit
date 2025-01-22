@@ -82,34 +82,34 @@ WHERE
     pe.euid > 500
     AND (
       p0_cmd IN (
-        'osascript -e user locale of (get system info)',
-        'osascript -e tell application "Finder" to reveal application file id "com.garmin.renu.client"',
-        'osascript ./ExpressLoginItem.scpt',
-        'osascript -e get POSIX path of (path to application id "com.garmin.LifetimeMapUpdate")',
+        'osascript -e get POSIX path of (path to application id "com.garmin.antagent")',
         'osascript -e get POSIX path of (path to application id "com.garmin.expressfit")',
-        'osascript -e get POSIX path of (path to application id "com.garmin.antagent")'
+        'osascript -e get POSIX path of (path to application id "com.garmin.LifetimeMapUpdate")',
+        'osascript -e tell application "Finder" to reveal application file id "com.garmin.renu.client"',
+        'osascript -e user locale of (get system info)',
+        'osascript ./ExpressLoginItem.scpt'
       )
-      OR p0_cmd LIKE '%"CFBundleName" of property list file (app_path & ":Contents:Info.plist")'
-      OR p0_cmd LIKE 'osascript -e set zoomStatus to "closed"%'
-      OR p0_cmd LIKE 'osascript -l JavaScript%com.elgato.StreamDeck%'
-      OR p0_cmd LIKE 'osascript -e%tell application "System Preferences"%reveal anchor "shortcutsTab"%"com.apple.preference.keyboard"'
-      OR p0_cmd LIKE 'osascript -e tell application "zoom.us"%'
-      OR p0_cmd LIKE 'osascript -l JavaScript /tmp/PKInstallSandbox.%/Scripts/org.gpgtools.gpgmailloader.pkg.%/mailbundle-enabled.jxa -- GPGMailLoader.mailbundle'
-      OR p0_cmd LIKE 'osascript openChrome.applescript http://127.0.0.1:%'
-      OR p0_cmd LIKE 'osascript openChrome.applescript http%://localhost%'
       OR p0_cmd LIKE '/usr/bin/osascript /Applications/Amazon Photos.app/Contents/Resources/quit_and_restart_app.scpt /Applications/Amazon Photos.app com.amazon.clouddrive.mac%'
       OR p0_cmd LIKE '/usr/bin/osascript /Users/%/Library/Caches/com.runningwithcrayons.Alfred/Workflow Scripts/%'
       OR p0_cmd LIKE '/usr/bin/osascript /Users/%/osx-trash/trashfile.AppleScript %'
       OR p0_cmd LIKE '/usr/bin/osascript %com.docker.docker%'
+      OR p0_cmd LIKE '%"CFBundleName" of property list file (app_path & ":Contents:Info.plist")'
       OR p0_cmd LIKE '%osacompile -o /Users/%/Applications/Home Manager Trampolines/%'
+      OR p0_cmd LIKE 'osascript -e set zoomStatus to "closed"%'
+      OR p0_cmd LIKE 'osascript -e tell application "zoom.us"%'
+      OR p0_cmd LIKE 'osascript -e%tell application "System Preferences"%reveal anchor "shortcutsTab"%"com.apple.preference.keyboard"'
+      OR p0_cmd LIKE 'osascript -l JavaScript /tmp/PKInstallSandbox.%/Scripts/org.gpgtools.gpgmailloader.pkg.%/mailbundle-enabled.jxa -- GPGMailLoader.mailbundle'
+      OR p0_cmd LIKE 'osascript -l JavaScript%com.elgato.StreamDeck%'
+      OR p0_cmd LIKE 'osascript openChrome.applescript http://127.0.0.1:%'
+      OR p0_cmd LIKE 'osascript openChrome.applescript http%://localhost%'
+      OR p1_cmd LIKE '/bin/sh %/opt/homebrew/bin/git-gui%'
+      OR p1_cmd LIKE '% /opt/homebrew/bin/jupyter%notebook'
+      OR p1_cmd LIKE '%auth login'
       OR p1_cmd LIKE '%aws %sso%'
       OR p1_cmd LIKE '%gcloud% auth %login%'
       OR p1_cmd LIKE '%gcloud% init'
-      OR p1_cmd LIKE '%auth login'
-      OR p1_cmd LIKE '%tell application "Finder" to empty trash%'
       OR p1_cmd LIKE '%jupyter_mac.command'
-      OR p1_cmd LIKE '% /opt/homebrew/bin/jupyter%notebook'
-      OR p1_cmd LIKE '/bin/sh %/opt/homebrew/bin/git-gui%'
+      OR p1_cmd LIKE '%tell application "Finder" to empty trash%'
       OR p1_cmd LIKE '%tell application "System Events" to sleep%'
       OR p1_authority = 'Developer ID Application: Docker Inc (9BNSXJN65R)'
       OR p1_name IN ('yubikey-agent')
@@ -125,9 +125,9 @@ WHERE
   )
   -- The following apply to all uids
   AND NOT p0_cmd IN (
+    '/usr/bin/osascript -e do shell script "/bin/rm -Rf /opt/vagrant /usr/local/bin/vagrant" with administrator privileges',
     'osascript -e do shell script "/bin/rm -Rf /opt/vagrant /usr/local/bin/vagrant" with administrator privileges',
-    'osascript -e user locale of (get system info)',
-    '/usr/bin/osascript -e do shell script "/bin/rm -Rf /opt/vagrant /usr/local/bin/vagrant" with administrator privileges'
+    'osascript -e user locale of (get system info)'
   )
 GROUP BY
   pe.pid
