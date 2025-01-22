@@ -61,7 +61,7 @@ WHERE
     '/usr/lib/xf86-video-intel-backlight-helper',
     '/usr/lib/Xorg.wrap',
     '/usr/sbin/traceroute',
-    '/usr/bin/bwrap',
+    '/usr/bin/bwrap'
   )
   AND f.filename != 'chrome-sandbox'
   AND f.path NOT LIKE '/Users/%/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
