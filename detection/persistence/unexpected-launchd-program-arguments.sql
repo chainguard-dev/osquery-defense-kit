@@ -43,6 +43,7 @@ WHERE
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
     'Developer ID Application: EnterpriseDB Corporation (26QKX55P9K)',
+    'Developer ID Application: Expressco Services, LLC (TC292Y5427)', -- Express VPN
     'Developer ID Application: Foxit Corporation (8GN47HTP75)',
     'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',
     'Developer ID Application: Google, Inc. (EQHXZ8M8AV)',
@@ -84,6 +85,7 @@ WHERE
   )
   AND program_arguments NOT IN (
     '/Applications/AeroSpace.app/Contents/MacOS/AeroSpace --started-at-login',
+    '/Applications/ExpressVPN.app/Contents/MacOS/expressvpnd',
     '/Applications/RODE Virtual Channels.app/Contents/MacOS/RODE Virtual Channels',
     '/Applications/Stream Deck.app/Contents/MacOS/Stream Deck --runinbk',
     '/Applications/Tunnelblick.app/Contents/Resources/launchAtLogin.sh',

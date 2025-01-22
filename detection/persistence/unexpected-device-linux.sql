@@ -163,6 +163,8 @@ WHERE
     '/dev/ngn,character',
     '/dev/ntsync,character',
     '/dev/null,character',
+    '/dev/nbd,block',
+    '/dev/nbdp,block',
     '/dev/nvidia,character',
     '/dev/nvidiactl,character',
     '/dev/nvidia-modeset,character',

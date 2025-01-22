@@ -43,6 +43,7 @@ WHERE
     '/usr/bin/fusermount',
     '/usr/bin/fusermount3',
     '/usr/bin/newgrp',
+    '/usr/bin/passwd',
     '/usr/bin/schroot',
     '/usr/bin/keybase-redirector',
     '/usr/bin/login',
@@ -60,7 +61,7 @@ WHERE
     '/usr/lib/xf86-video-intel-backlight-helper',
     '/usr/lib/Xorg.wrap',
     '/usr/sbin/traceroute',
-    '/usr/bin/bwrap'
+    '/usr/bin/bwrap',
   )
   AND f.filename != 'chrome-sandbox'
   AND f.path NOT LIKE '/Users/%/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'

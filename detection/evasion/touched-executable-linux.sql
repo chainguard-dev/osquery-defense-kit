@@ -44,6 +44,7 @@ WHERE
   AND f.path NOT LIKe '/var/home/%'
   AND f.path NOT LIKE '/snap/%'
   AND f.path NOT LIKE '/tmp/%go-build%/exe/%'
+  AND f.path NOT LIKE '/tmp/cargo-install%/%'
   AND f.path NOT LIKE '/usr/local/bin/%'
   AND f.path NOT LIKE '/opt/rapid7/ir_agent/%'
   AND f.path NOT LIKE '/var/home/linuxbrew/.linuxbrew/%'
