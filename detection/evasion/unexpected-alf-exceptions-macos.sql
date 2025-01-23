@@ -43,7 +43,7 @@ WHERE -- Filter out stock exceptions to decrease overhead
     '/usr/libexec/discoveryd',
     '/usr/libexec/xartstorageremoted',
     '/usr/sbin/mDNSResponder',
-    '/usr/sbin/racoon',
+    '/usr/sbin/racoon'
   ) -- Ignore files that ahve already been removed
   AND file.filename NOT NULL
   AND exception_key NOT IN (
@@ -69,7 +69,8 @@ WHERE -- Filter out stock exceptions to decrease overhead
   -- Homebrew
   AND NOT exception_key LIKE ',%,/opt/homebrew/Cellar/%,501'
   -- Nix
-  AND NOT exception_key LIKE ',%,/nix/store/%,%'
+  AND NOT exception_key LIKE ',%,/nix/store/%,0'
+  AND NOT exception_key LIKE ',%,/nix/store/%,501'
   -- Apple (root)
   AND NOT exception_key LIKE 'Software Signing,com.apple.%,0'
   -- App Store
