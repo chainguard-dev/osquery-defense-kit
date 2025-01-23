@@ -36,23 +36,22 @@ WHERE -- Filter out stock exceptions to decrease overhead
     '/System/Library/CoreServices/UniversalControl.app/',
     '/System/Library/PrivateFrameworks/Admin.framework/Versions/A/Resources/readconfig',
     '/System/Library/PrivateFrameworks/EmbeddedOSInstall.framework/Versions/A/XPCServices/EmbeddedOSInstallService.xpc/',
+    '/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/',
     '/usr/bin/nmblookup',
     '/usr/libexec/bootpd',
     '/usr/libexec/configd',
     '/usr/libexec/discoveryd',
     '/usr/libexec/xartstorageremoted',
     '/usr/sbin/mDNSResponder',
-    '/usr/sbin/racoon'
+    '/usr/sbin/racoon',
   ) -- Ignore files that ahve already been removed
   AND file.filename NOT NULL
   AND exception_key NOT IN (
-    ',,/Users/cpanato/code/src/github.com/sigstore/docs/node_modules/.bin/hugo/hugo,501',
     ',a.out,/private/tmp/learning-labs-static/server,501',
     ',a.out,/Users/amouat/proj/learning-labs-static/server,501',
     ',a.out,/Users/dlorenc/.wash/downloads/nats-server,501',
     ',com.docker.docker,/Applications/Docker.app/,501',
     ',deskflow-server,/Applications/Deskflow.app/Contents/MacOS/deskflow-server,501',
-    '/System/Volumes/Preboot/Cryptexes/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/',
     'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
     'Apple Mac OS Application Signing,io.tailscale.ipn.macos.network-extension,/Applications/Tailscale.localized/Tailscale.app/Contents/PlugIns/IPNExtension.appex/,0',
     'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF),com.adguard.mac.adguard.network-extension,/Library/SystemExtensions/AD3BCA34-237A-4135-B7A4-0F7477D9144C/com.adguard.mac.adguard.network-extension.systemextension/,0',
@@ -70,8 +69,7 @@ WHERE -- Filter out stock exceptions to decrease overhead
   -- Homebrew
   AND NOT exception_key LIKE ',%,/opt/homebrew/Cellar/%,501'
   -- Nix
-  AND NOT exception_key LIKE ',%,/nix/store/%,0'
-  AND NOT exception_key LIKE ',%,/nix/store/%,501'
+  AND NOT exception_key LIKE ',%,/nix/store/%,%'
   -- Apple (root)
   AND NOT exception_key LIKE 'Software Signing,com.apple.%,0'
   -- App Store
