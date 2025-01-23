@@ -63,3 +63,7 @@ WHERE
     p0.path LIKE '/var/folders/%/T/CanonOFI_TEMP/Data/Software/Install/UniversalInstaller.app/Contents/Frameworks/UIx.framework/Resources/relay'
     AND s.authority = 'Developer ID Application: Canon Inc. (XE2XNRRXZ5)'
   )
+  AND NOT (
+    p0.path = '/Applications/Adguard.app/Contents/MacOS/Adguard'
+    AND s.authority = 'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)'
+  )

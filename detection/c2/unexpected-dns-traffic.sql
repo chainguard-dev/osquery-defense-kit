@@ -75,7 +75,8 @@ WHERE
     '8.8.4.4', -- Google (backup)
     '208.67.222.222', -- OpenDNS
     '75.75.75.75', -- Comcast
-    '68.105.28.13' -- Cox
+    '68.105.28.13', -- Cox
+    '84.116.46.21' -- Liberty Gloval B.V. (major NL telco)
   )
   -- Other exceptions
   AND exception_key NOT IN (

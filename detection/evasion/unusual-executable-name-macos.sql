@@ -112,3 +112,7 @@ WHERE
   -- example: 85C27NK92C.com.flexibits.fantastical2.mac.helper
   AND NOT pname LIKE "%.com.flexibits.fantastical2.mac.helper"
   AND NOT s.authority = "Software Signing"
+  AND NOT (
+    s.authority = 'Developer ID Application: Adobe Inc. (JQ525L2MZD)'
+    AND pname = 'agcinvokerutility'
+  )

@@ -127,6 +127,7 @@ WHERE
   AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'
   AND NOT f.directory LIKE '/Volumes/com.getdropbox.dropbox-%'
   AND NOT f.directory LIKE '%/.terraform/%'
+  AND NOT f.directory LIKE '%/anchore/grype/.tool%'
   AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'
   AND NOT f.directory LIKE '%/com.jetbrains.GoLand/cache/JetBrains/GoLand%'
   AND NOT f.path LIKE '/nix/store/%/%-wrapped'
