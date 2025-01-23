@@ -82,6 +82,7 @@ WHERE
     'true,,Add to Amazon Wish List,ciagpekplgpbepdgggflgmahnjgiaced',
     'true,,Add to Babylist Button,jcmljanephecacpljcpiogonhhadfpda',
     'true,,Adobe Acrobat: PDF edit, convert, sign tools,efaidnbmnnnibpcajpcglclefindmkaj',
+    'true,,Amplitude Event Explorer,acehfjhnmhbmgkedjmjlobpgdicnhkbp', -- https://amplitude.com/ -- https://chromewebstore.google.com/detail/amplitude-event-explorer/acehfjhnmhbmgkedjmjlobpgdicnhkbp?hl=en-US&pli=1
     'true,,Application Launcher For Drive (by Google),lmjegmlicamnimmfhcmpkclmigmmcbeh',
     'true,,Apps Launcher for Chrome,hdmhnhkegdfpajaeijlfopfoallfdiak',
     'true,,Awesome ChatGPT Screenshot & Screen Recorder,nlipoenfbbikpbjkfpfillcgkoblgpmj',

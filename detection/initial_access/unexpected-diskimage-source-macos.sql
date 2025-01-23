@@ -259,6 +259,7 @@ WHERE
     'welcome.adguard.com',
     'www.google.com',
     'www.messenger.com',
+    'www.raycast.com',
     'www.talos.dev',
     'zed.dev',
     'zoo.dev',
@@ -277,6 +278,7 @@ WHERE
   AND host NOT LIKE 'driver.%'
   AND host NOT LIKE 'github-production-release-asset-%.s3.amazonaws.com'
   AND host NOT LIKE 'mirror%'
+  AND host NOT LIKE 'raycast-releases.%.r2.cloudflarestorage.com'
   AND host NOT LIKE 's3.%.amazonaws.com'
   AND host NOT LIKE 'software%'
   AND host NOT LIKE 'support%'

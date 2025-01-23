@@ -101,6 +101,7 @@ WHERE
     '0,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     '0,Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9)',
     '500,Apple Mac OS Application Signing',
+    '500,Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
     '500,Developer ID Application: Autodesk (XXKJ396S2Y)',
     '500,Developer ID Application: Blackmagic Design Inc (9ZGFBWLSYP)',
     '500,Developer ID Application: Cisco (DE8Y96K9QP)',

@@ -39,6 +39,7 @@ WHERE
     'abrt-handle-eve',
     'applydeltarpm',
     'bwrap',
+    'containerd',
     'crond',
     'cupsd',
     'dbus-daemon',
