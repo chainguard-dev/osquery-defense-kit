@@ -57,6 +57,7 @@ WHERE -- Focus on longer-running programs
       AND start_time < (strftime('%s', 'now') - 900)
       AND parent != 0 -- Assume STP
       AND path NOT IN (
+        '/Applications/ExpressVPN.app/Contents/MacOS/expressvpnd',
         '/Applications/Foxit PDF Reader.app/Contents/MacOS/FoxitPDFReaderUpdateService.app/Contents/MacOS/FoxitPDFReaderUpdateService',
         '/Applications/OneDrive.app/Contents/StandaloneUpdaterDaemon.xpc/Contents/MacOS/StandaloneUpdaterDaemon',
         '/Applications/Opal.app/Contents/Library/LaunchServices/com.opalcamera.cameraExtensionShim',
@@ -103,8 +104,8 @@ WHERE -- Focus on longer-running programs
         '/opt/osquery/lib/osquery.app/Contents/MacOS/osqueryd',
         '/opt/socket_vmnet/bin/socket_vmnet',
         '/sbin/launchd',
-        '/System/Library/CoreServices/backupd.bundle/Contents/Resources/backupd-helper',
         '/System/Library/CoreServices/backupd.bundle/Contents/Resources/backupd',
+        '/System/Library/CoreServices/backupd.bundle/Contents/Resources/backupd-helper',
         '/System/Library/CoreServices/CrashReporterSupportHelper',
         '/System/Library/CoreServices/iconservicesagent',
         '/System/Library/CoreServices/launchservicesd',
@@ -128,8 +129,8 @@ WHERE -- Focus on longer-running programs
         '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/Support/coreservicesd',
         '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/XPCServices/csnameddatad.xpc/Contents/MacOS/csnameddatad',
         '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd',
-        '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores',
         '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds',
+        '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores',
         '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mdsync',
         '/System/Library/Frameworks/CryptoTokenKit.framework/ctkahp.bundle/Contents/MacOS/ctkahp',
         '/System/Library/Frameworks/GSS.framework/Helpers/GSSCred',
@@ -226,8 +227,8 @@ WHERE -- Focus on longer-running programs
         '/usr/libexec/ioupsd',
         '/usr/libexec/kernelmanagerd',
         '/usr/libexec/keybagd',
-        '/usr/libexec/logd_helper',
         '/usr/libexec/logd',
+        '/usr/libexec/logd_helper',
         '/usr/libexec/lsd',
         '/usr/libexec/mdmclient',
         '/usr/libexec/memoryanalyticsd',

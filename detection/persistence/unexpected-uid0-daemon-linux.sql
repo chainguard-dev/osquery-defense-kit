@@ -404,11 +404,15 @@ WHERE
   )
   AND NOT exception_key LIKE '%beat,%/opt/Elastic/Agent/data/elastic-%/components/%beat,0,system.slice,elastic-agent.service,%'
   AND NOT exception_key LIKE 'abrt-dbus,/usr/sbin/abrt-dbus,0,system.slice,system-dbus%org.freedesktop.problems.slice,%'
+  AND NOT exception_key LIKE 'containerd,/var/lib/rancher/k3s/data/%/bin/k3s,0,system.slice,k3s.service,0755'
+  AND NOT exception_key LIKE 'containerd-shim,/var/lib/rancher/k3s/data/%/bin/containerd-shim-runc-v2,0,system.slice,k3s.service,0755'
   AND NOT exception_key LIKE 'elastic-agent,%/opt/Elastic/Agent/data/elastic-agent%/elastic-agent,0,system.slice,elastic-agent.service,%'
   AND NOT exception_key LIKE 'fusermount3,/usr/bin/fusermount3,%,user.slice,user-%.slice,4755'
   AND NOT exception_key LIKE 'incusd,%/bin/incusd,0,lxc.monitor.%,,0755'
+  AND NOT exception_key LIKE 'k3s-server,/var/lib/rancher/k3s/data/%/bin/k3s,0,system.slice,k3s.service,0755'
   AND NOT exception_key LIKE 'osquery-extensi,/opt/Elastic/Agent/data/elastic-agent-%/components/osquery-extension.ext,0,system.slice,elastic-agent.service,0750'
   AND NOT exception_key LIKE 'osqueryd,/opt/Elastic/Agent/data/elastic-agent-%/components/osqueryd,0,system.slice,elastic-agent.service,0750'
+  AND NOT exception_key LIKE 'server,/var/lib/rancher/k3s/data/%/bin/k3s,0,system.slice,k3s.service,0755'
   AND NOT exception_key LIKE 'tuned-ppd,/usr/bin/python3.%,system.slice,tuned-ppd.service,0755'
   AND NOT p0.path IN ('/bin/bash', '/usr/bin/bash')
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'

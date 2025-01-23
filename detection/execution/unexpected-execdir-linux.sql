@@ -88,6 +88,10 @@ WHERE
         AND path LIKE '/tmp/%'
       )
       AND NOT (
+        cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-%.scope'
+        AND path LIKE '/usr/share/nvm/versions/node/v%/bin/node'
+      )
+      AND NOT (
         euid > 500
         AND (
           path LIKE '/tmp/terraform_%/terraform'

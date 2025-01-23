@@ -64,12 +64,8 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
       AND file.path NOT LIKE '/var/folders/%/T/sp_relauncher'
       AND file.path NOT LIKE '/var/run/current-system/etc/profiles/per-user/%'
       AND file.path NOT LIKE '/var/tmp/epdfinfo%'
-      AND file.path NOT LIKE '/var/tmp/IN_PROGRESS_sysdiagnose_%.tmp/mddiagnose.mdsdiagnostic/diagnostic.log'
-      -- These mddiagnose ones could maybe be squashed to '/var/tmp/sysdiagnose_%/mddiagnose.mdsdiagnostic/%.log'
-      AND file.path NOT LIKE '/var/tmp/sysdiagnose_%/mddiagnose.mdsdiagnostic/corespotlight%.log'
-      AND file.path NOT LIKE '/var/tmp/sysdiagnose_%/mddiagnose.mdsdiagnostic/diagnostic.log'
-      AND file.path NOT LIKE '/var/tmp/sysdiagnose_%/mddiagnose.mdsdiagnostic/general.log'
-      AND file.path NOT LIKE '/var/tmp/sysdiagnose_%/mddiagnose.mdsdiagnostic/importer_diag.log'
+      AND file.path NOT LIKE '/var/tmp/IN_PROGRESS_sysdiagnose_%.tmp/mddiagnose.mdsdiagnostic/%.log'
+      AND file.path NOT LIKE '/var/tmp/sysdiagnose_%/mddiagnose.mdsdiagnostic/%.log'
       AND file.directory NOT IN (
         '/var/db/xcode_select_link/Makefiles/VersioningSystems/',
         '/var/db/xcode_select_link/usr/bin',
