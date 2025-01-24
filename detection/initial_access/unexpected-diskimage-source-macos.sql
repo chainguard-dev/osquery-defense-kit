@@ -271,6 +271,8 @@ WHERE
   AND host NOT LIKE '%.org'
   AND host NOT LIKE '%.s3.%.amazonaws.com'
   AND host NOT LIKE '%release%.storage.googleapis.com'
+  AND host NOT LIKE '%teams.microsoft.com'
+  AND host NOT LIKE '%teams.microsoft.us'
   AND host NOT LIKE 'cdn%'
   AND host NOT LIKE 'dl-%'
   AND host NOT LIKE 'dl.%'

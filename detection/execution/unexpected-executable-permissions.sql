@@ -65,12 +65,16 @@ WHERE
   AND NOT (
     f.path IN (
       '/Applications/Camera Settings.app/Contents/MacOS/LogitechCamera',
-      '/Applications/EA app.app/Contents/Applications/EABackgroundService.app/Contents/MacOS/EABackgroundService',
       '/Applications/motionVFX/Plugins/mUtility.app/Contents/PlugIns/mUtility XPC Service.pluginkit/Contents/MacOS/mUtility XPC Service',
       '/Library/Application Support/Logitech/com.logitech.vc.LogiVCCoreService/LogiVCCoreService.app/Contents/MacOS/LogiVCCoreService'
     )
     AND f.mode = '0777'
     AND f.uid > 500
+  )
+  AND NOT (
+    f.path = '/Applications/EA app.app/Contents/Applications/EABackgroundService.app/Contents/MacOS/EABackgroundService'
+    AND f.mode = '0777'
+    AND f.uid = 0
   )
   AND NOT (
     f.path LIKE '/Users/%/.local/bin/%'

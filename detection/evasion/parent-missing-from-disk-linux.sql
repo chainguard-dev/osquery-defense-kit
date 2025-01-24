@@ -58,6 +58,7 @@ WHERE
     '/usr/lib/go/bin',
     '/usr/lib/systemd',
     '/usr/libexec',
+    '/usr/sbin/gdm3',
     '/usr/share/code',
     '/usr/share/codium'
   ) -- long-running launchers

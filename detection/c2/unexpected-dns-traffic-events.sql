@@ -140,6 +140,7 @@ WHERE
     'apko',
     'canonical-livep',
     'cg',
+    'chainctl',
     'chrome',
     'com.apple.WebKit.Networking',
     'com.docker.backend',

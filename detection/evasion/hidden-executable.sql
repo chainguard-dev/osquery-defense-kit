@@ -123,13 +123,14 @@ WHERE
     '~/node_modules/.bin',
     '~/thinkorswim/.install4j'
   )
-  AND NOT f.directory LIKE '/Applications/Corsair iCUE5 Software/.cuepkg-%'
-  AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'
-  AND NOT f.directory LIKE '/Volumes/com.getdropbox.dropbox-%'
   AND NOT f.directory LIKE '%/.terraform/%'
   AND NOT f.directory LIKE '%/anchore/grype/.tool%'
   AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'
   AND NOT f.directory LIKE '%/com.jetbrains.GoLand/cache/JetBrains/GoLand%'
+  AND NOT f.directory LIKE '/Applications/Corsair iCUE5 Software/.cuepkg-%'
+  AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/Cellar/%'
+  AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/Homebrew/%'
+  AND NOT f.directory LIKE '/Volumes/com.getdropbox.dropbox-%'
   AND NOT f.path LIKE '/nix/store/%/%-wrapped'
   AND NOT (
     f.path LIKE '/nix/store/%'
