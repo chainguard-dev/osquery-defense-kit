@@ -67,6 +67,7 @@ WHERE
     '/.lesshst',
     '/.mozilla/',
     '/.nofollow/',
+    '/.ostree.cfs',
     '/.resolve/',
     '/.vol/',
     '/.VolumeIcon.icns',

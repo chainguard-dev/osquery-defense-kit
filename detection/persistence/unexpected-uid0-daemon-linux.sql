@@ -415,6 +415,7 @@ WHERE
   AND NOT exception_key LIKE 'server,/var/lib/rancher/k3s/data/%/bin/k3s,0,system.slice,k3s.service,0755'
   AND NOT exception_key LIKE 'tuned-ppd,/usr/bin/python3.%,system.slice,tuned-ppd.service,0755'
   AND NOT p0.path IN ('/bin/bash', '/usr/bin/bash')
+  AND NOT p0.cgroup_path LIKE '/kubepods.slice/kubepods-%'
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
 GROUP BY
   p0.pid

@@ -23,7 +23,12 @@ FROM
 WHERE
   file.path LIKE "/Users/%/Downloads/%"
   -- Frequently targetted extension for InfoStealer attacks
-  AND extension IN ('dmg', 'exe', 'rar', 'pkg')
+  AND extension IN (
+    'dmg',
+    'exe',
+    'pkg',
+    'rar'
+  )
   AND (
     file.filename LIKE "%.app%"
     OR file.filename LIKE "%Adobe Photoshop%"
@@ -70,4 +75,8 @@ WHERE
     OR file.filename LIKE "LogiPresentation%.dmg"
     OR file.filename LIKE "pdftk_server-%-win-setup.exe"
     OR file.filename LIKE "PioneerDriveUpdaterBDR%.dmg"
+  )
+  -- Likely-safe download sources
+  AND NOT (
+    download_url LIKE 'https://definitionupdates.microsoft.com/%' -- https://learn.microsoft.com/en-us/windows/privacy/manage-windows-11-endpoints#:~:text=TLSv1.2-,definitionupdates,-.microsoft.com
   )
