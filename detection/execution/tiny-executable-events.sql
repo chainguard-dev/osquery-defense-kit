@@ -45,6 +45,7 @@ WHERE
     '/opt/incus/bin/skopeo',
     '/sbin/ldconfig',
     '/usr/bin/c_rehash',
+    '/usr/bin/dpkg-realpath',
     '/usr/bin/yq',
     '/usr/sbin/bpftool',
     '/usr/sbin/ldconfig',

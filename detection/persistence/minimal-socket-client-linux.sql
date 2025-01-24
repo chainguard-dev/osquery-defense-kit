@@ -72,6 +72,9 @@ WHERE
     pos.local_address = "127.0.0.1"
     AND pos.remote_address = "127.0.0.1"
   )
+  AND NOT proc_cgroup in (
+    '/system.slice/snapd.service'
+  )
 GROUP BY
   pos.pid -- libc.so, ld-linux
 HAVING

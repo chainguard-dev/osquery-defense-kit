@@ -117,15 +117,12 @@ WHERE
     '443,6,500,limactl,',
     '443,6,500,OrbStack Helper,Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)',
     '443,6,500,ssh,Software Signing',
-    '44383,6,0,io.tailscale.ipn.macsys.network-extension,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     '44450,6,500,Linear Helper,Developer ID Application: Linear Orbit, Inc. (7VZ2S3V9RV)',
     '44554,6,500,Luna Display,Developer ID Application: Astro HQ LLC (8356ZZ8Y5K)',
     '4466,6,500,headlamp-server,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '45972,6,500,IPNExtension,Apple Mac OS Application Signing',
-    '46788,6,0,io.tailscale.ipn.macsys.network-extension,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     '4710,6,500,UA Mixer Engine,Developer ID Application: Universal Audio (4KAC9AX6CG)',
     '49152,6,0,AirPlayXPCHelper,Software Signing',
-    '49152,6,0,io.tailscale.ipn.macsys.network-extension,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     '49152,6,0,launchd,Software Signing',
     '49152,6,0,remoted,Software Signing',
     '49152,6,0,remotepairingdeviced,Software Signing',
@@ -238,6 +235,11 @@ WHERE
   AND NOT exception_key LIKE '%,0,rpc.%,Software Signing'
   AND NOT exception_key LIKE '%,6,500,sourcegraph-backend,Developer ID Application: SOURCEGRAPH INC (74A5FJ7P96)'
   AND NOT exception_key LIKE '88%,6,500,Code Helper,Developer ID Application: Microsoft Corporation (UBF8T346G9)'
+  AND NOT (
+    signature.authority = 'Developer ID Application: Tailscale Inc. (W5364U7YZB)'
+    AND lp.port > 5000
+    AND lp.protocol = 6
+  )
   AND NOT (
     signature.authority = 'Developer ID Application: Linear Orbit, Inc. (7VZ2S3V9RV)'
     AND lp.port > 1024
