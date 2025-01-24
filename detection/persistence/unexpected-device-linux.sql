@@ -279,6 +279,7 @@ WHERE
   AND NOT path LIKE '/dev/mqueue/us.zoom.aom.%'
   AND NOT path LIKE '/dev/shm/.com.google.Chrome.%'
   AND NOT path LIKE '/dev/shm/.com.microsoft.Edge.%'
+  AND NOT path LIKE '/dev/shm/.org.chromium.Chromium.%'
   AND NOT path LIKE '/dev/shm/aomshm.%'
   AND NOT path LIKE '/dev/shm/byobu-%'
   AND NOT path LIKE '/dev/shm/flatpak-com.brave.Browser-%'
