@@ -234,7 +234,7 @@ WHERE
     AND lp.port IN (
       53,   -- DNS
       67,   -- DHCP/BOOTP
-      547  -- DHCPv6 server
+      547   -- DHCPv6 server
     )
     AND lp.protocol IN (
       6, -- TCP
