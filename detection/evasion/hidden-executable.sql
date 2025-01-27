@@ -123,6 +123,7 @@ WHERE
     '~/node_modules/.bin',
     '~/thinkorswim/.install4j'
   )
+  AND NOT f.directory = '/nix/store/.links'
   AND NOT f.directory LIKE '%/.terraform/%'
   AND NOT f.directory LIKE '%/anchore/grype/.tool%'
   AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'

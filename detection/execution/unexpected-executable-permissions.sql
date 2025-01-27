@@ -106,6 +106,10 @@ WHERE
     AND f.mode = '0744'
   )
   AND NOT (
+    f.path LIKE '/home/%/.cache/JetBrains/%/semantic-search/server/%/embeddings-server'
+    AND f.mode = '0764'
+  )
+  AND NOT (
     f.path LIKE '/Users/%/Applications (Parallels)/%.app/Contents/MacOS/WinAppHelper'
     AND f.mode = '0777'
   )

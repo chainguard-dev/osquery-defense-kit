@@ -87,6 +87,7 @@ WHERE
       'node',
       'nuclei',
       'ollama',
+      'ping',
       'qemu-system-aarch64',
       'qemu-system-x86',
       'rootlessport',
