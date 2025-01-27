@@ -239,7 +239,6 @@ WHERE
     AND lp.protocol IN (
       6, -- TCP
       17 -- UDP
-
     )
   )
   -- Exclude processes running inside of Docker containers
