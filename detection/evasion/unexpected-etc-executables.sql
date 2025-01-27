@@ -197,6 +197,7 @@ WHERE
     '/etc/udev/powersave.sh',
     '/etc/vpl/vars.sh'
   )
+  AND file.directory LIKE '/etc/asciidoc/%'
   -- Nix (on macOS) -- actually a symbolic link
   AND file.path NOT LIKE '/etc/etckeeper/%'
   AND file.path NOT LIKE '/etc/profiles/per-user/%/bin/%'

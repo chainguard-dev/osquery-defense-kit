@@ -163,6 +163,7 @@ WHERE
       '~/dev/extra-packages/.chainguard'
     )
     OR top_dir IN (
+      '/var~/.config',
       '/var~/.local',
       '~/dev',
       '~/src',

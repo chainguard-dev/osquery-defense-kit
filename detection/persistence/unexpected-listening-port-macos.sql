@@ -305,6 +305,10 @@ WHERE
     )
   )
   AND NOT (
+    p.path = '/System/Library/CoreServices/UniversalControl.app/Contents/MacOS/UniversalControl'
+    AND lp.port > 5000
+  )
+  AND NOT (
     (
       exception_key LIKE '80,6,500,ssh,Software Signing'
       AND p.cmdline LIKE '%/.colima/_lima/colima-docker/ssh.sock%'

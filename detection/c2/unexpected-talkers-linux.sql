@@ -323,5 +323,8 @@ WHERE
       OR p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
     )
   )
+  AND NOT parent_cmd IN (
+    '/opt/microsoft/msedge/msedge'
+  )
 GROUP BY
   p.cmdline

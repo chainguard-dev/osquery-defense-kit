@@ -132,24 +132,10 @@ WHERE
     '5001,6,0,registry',
     '5005,6,500,rootlesskit',
     '5050,6,500,rootlesskit',
-    '53,17,0,coredns',
-    '53,17,114,dnsmasq',
-    '53,17,123,dnsmasq',
-    '53,17,130,dnsmasq',
-    '53,17,500,aardvark-dns',
-    '53,17,500,coredns',
-    '53,17,500,dnsmasq',
-    '53,6,0,coredns',
-    '53,6,114,dnsmasq',
-    '53,6,123,dnsmasq',
-    '53,6,130,dnsmasq',
-    '53,6,500,coredns',
-    '53,6,500,dnsmasq',
     '5355,6,193,systemd-resolve',
     '5355,6,500,systemd-resolve',
     '5432,6,70,postgres',
     '546,17,500,dhcpcd',
-    '547,17,500,dnsmasq',
     '5556,6,500,dex',
     '5556,6,500,openshot-qt',
     '5558,6,500,dex',
@@ -171,10 +157,6 @@ WHERE
     '6443,6,0,k3s-server',
     '6443,6,0,kube-apiserver',
     '6443,6,500,kube-apiserver',
-    '67,17,114,dnsmasq',
-    '67,17,123,dnsmasq',
-    '67,17,130,dnsmasq',
-    '67,17,500,dnsmasq',
     '68,17,0,dhclient',
     '68,17,100,systemd-network',
     '68,17,500,dhcpcd',
@@ -230,7 +212,6 @@ WHERE
       'com.docker.back',
       'controller',
       'crane',
-      'dnsmasq',
       'docker-proxy',
       'hugo',
       'kubectl',
@@ -242,6 +223,23 @@ WHERE
     )
     AND lp.port > 1024
     and lp.protocol = 6
+  )
+  -- Exclude common/default DNS talking
+  AND NOT (
+    p.name IN (
+      'aardvark-dns',
+      'coredns',
+      'dnsmasq'
+    )
+    AND lp.port IN (
+      53,   -- DNS
+      67,   -- DHCP/BOOTP
+      547   -- DHCPv6 server
+    )
+    AND lp.protocol IN (
+      6, -- TCP
+      17 -- UDP
+    )
   )
   -- Exclude processes running inside of Docker containers
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
