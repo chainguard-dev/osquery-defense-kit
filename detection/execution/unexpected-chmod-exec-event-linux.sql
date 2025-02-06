@@ -117,6 +117,10 @@ WHERE
       AND cmdline NOT LIKE 'chmod +x /home/%/bin/%'
       AND cmdline NOT LIKE '%chmod 755 /home/%/.local/share/cinnamon/applets/download-and-upload-speed@cardsurf/translation.sh'
   )
+  AND NOT (
+    f_path = '/usr/local/bin/kubectl'
+    AND f_mode = '0755'
+  )
   AND pe.time > (strftime('%s', 'now') -300)
   AND pe.syscall = "execve"
   AND f.type != 'directory'

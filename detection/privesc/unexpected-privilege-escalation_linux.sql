@@ -83,7 +83,10 @@ WHERE
   )
   AND NOT (
     p0.name = 'fusermount3'
-    AND p1.path = '/usr/lib/xdg-document-portal'
+    AND p1.path IN (
+      '/usr/lib/xdg-document-portal',
+      '/usr/libexec/xdg-document-portal'
+    )
   )
   AND NOT (
     p0.path = '/usr/bin/pkexec'
