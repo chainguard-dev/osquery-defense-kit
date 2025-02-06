@@ -39,6 +39,7 @@ FROM
 WHERE
   pop.family = 17 -- PF_PACKET
   AND p0.name NOT IN (
+    'agentbeat',
     'dhclient',
     'dhcpcd',
     'NetworkManager',

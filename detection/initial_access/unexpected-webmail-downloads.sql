@@ -56,6 +56,7 @@ WHERE
     'mp4',
     'mpeg',
     'mpg',
+    'msg',
     'numbers',
     'ods',
     'odt',

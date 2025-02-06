@@ -51,6 +51,7 @@ WHERE
     '/Applications/Parallels Desktop.app/Contents/MacOS/Parallels Service',
     '/Applications/VMware Fusion.app/Contents/Library/vmware-vmx',
     '/bin/ps',
+    '/Library/Application Support/Google/GoogleUpdater/Current/GoogleUpdater.app/Contents/Helpers/launcher',
     '/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_session_monitor',
     '/Library/DropboxHelperTools/Dropbox_u501/dbkextd',
     '/usr/bin/login',

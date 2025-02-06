@@ -51,6 +51,7 @@ WHERE
     'gssproxy.pid',
     'haproxy.pid',
     'keyd.socket.lock',
+    'libvirtd.pid',
     'lightdm.pid',
     'lima-boot-done',
     'lima-ssh-ready',

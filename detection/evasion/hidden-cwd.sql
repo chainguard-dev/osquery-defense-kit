@@ -163,11 +163,12 @@ WHERE
       '~/dev/extra-packages/.chainguard'
     )
     OR top_dir IN (
-      '/var~/.config',
-      '/var~/.local',
       '~/dev',
+      '/root/.gradle',
       '~/src',
       '~/Sync',
+      '/var~/.config',
+      '/var~/.local',
       '~/workspace'
     )
     OR dir LIKE '/.gradle/%'

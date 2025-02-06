@@ -232,6 +232,7 @@ WHERE
     'persistent.oaistatic.com',
     'plugable.com',
     'portswigger-cdn.net',
+    'plugable.com',
     'posit.co',
     'prerelease.keybase.io',
     'presenting.app',

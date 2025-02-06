@@ -139,6 +139,7 @@ WHERE
     'agentbeat',
     'apk',
     'apko',
+    'buildkitd',
     'canonical-livep',
     'cg',
     'chainctl',
@@ -171,6 +172,7 @@ WHERE
   -- Chromium/Electron apps seem to send stray packets out like nobodies business
   AND p.path NOT LIKE '%/%.app/Contents/MacOS/% Helper'
   AND p.path NOT LIKE '/snap/%'
+  AND pp.path NOT IN ('/usr/bin/containerd-shim-runc-v2')
   -- Workaround for the GROUP_CONCAT subselect adding a blank ent
 GROUP BY
   s.remote_address,

@@ -214,6 +214,7 @@ WHERE
     '8080,6,500,goland,500u,500g,goland',
     '8080,6,500,idea,0u,0g,idea',
     '8080,6,500,java,u,g,java',
+    '80,6,500,minecraft-launcher,500u,500g,minecraft-launc',
     '8080,6,500,msedge,0u,0g,msedge',
     '80,6,500,ocsp.test,u,g,ocsp.test',
     '8080,6,500,pycharm,500u,500g,pycharm',

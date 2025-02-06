@@ -119,6 +119,7 @@ WHERE
     '~/.steampipe/',
     '~/.supermaven/',
     '~/.tflint.d/',
+    '~/.terraform.d/',
     '~/.Trash/',
     '~/.vs-kubernetes/',
     '~/.vscode/',
@@ -141,6 +142,7 @@ WHERE
     '~/sigstore/',
     '~/src/',
     '~/thinkorswim/',
+    '~/work/',
     '~/workspace/'
   )
   AND NOT top3_homedir IN (
@@ -178,6 +180,7 @@ WHERE
   AND dir NOT LIKE '/private/var/folders/%/GoLand'
   AND dir NOT LIKE '/Volumes/com.getdropbox.dropbox-%'
   AND dir NOT LIKE '%/.terraform/providers/%'
+  AND dir NOT LIKE '~/%_arm64'
   AND homedir NOT LIKE '~/.local/%/packages/%'
   AND homedir NOT LIKE '~/%/google-cloud-sdk/bin/%'
   AND homedir NOT LIKE '~/%/node_modules/%'

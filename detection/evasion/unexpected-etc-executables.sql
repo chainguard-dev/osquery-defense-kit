@@ -39,6 +39,7 @@ WHERE
     '/etc/avahi',
     '/etc/bash_completion.d',
     '/etc/brltty/Contraction',
+    '/etc/asciidoc/filters/code',
     '/etc/ca-certificates/update.d',
     '/etc/chromium/native-messaging-hosts',
     '/etc/cifs-utils',
@@ -197,7 +198,7 @@ WHERE
     '/etc/udev/powersave.sh',
     '/etc/vpl/vars.sh'
   )
-  AND file.directory LIKE '/etc/asciidoc/%'
+  AND file.directory NOT LIKE '/etc/asciidoc/%'
   -- Nix (on macOS) -- actually a symbolic link
   AND file.path NOT LIKE '/etc/etckeeper/%'
   AND file.path NOT LIKE '/etc/profiles/per-user/%/bin/%'
