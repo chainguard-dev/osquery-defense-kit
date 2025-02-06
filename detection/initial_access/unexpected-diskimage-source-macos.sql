@@ -19,7 +19,7 @@ SELECT
   signature.identifier,
   signature.authority,
   ea.value AS url,
-  REGEX_MATCH (ea.value, '/[\w_-]+\.([\w\._-]+)[:/]', 1) AS domain,
+  REGEX_MATCH (ea.value, '/([\w-]+\.[\w-]+)(?=[:/]|$)', 1) AS domain,
   REGEX_MATCH (ea.value, '/([\w_-]+\.[\w\._-]+)[:/]', 1) AS host
 FROM
   mdfind
@@ -95,6 +95,7 @@ WHERE
     'google.ca',
     'google.com',
     'grammarly.com',
+    'granola.ai',
     'imazing.com',
     'integodownload.com',
     'irccloud.com',
@@ -130,6 +131,7 @@ WHERE
     'overwolf.com',
     'pathofexile.com',
     'perforce.com',
+    'plugable.com',
     'poecdn.com',
     'pqrs.org',
     'proxmox.com',
@@ -228,6 +230,7 @@ WHERE
     'openai.com',
     'packages.openvpn.net',
     'persistent.oaistatic.com',
+    'plugable.com',
     'portswigger-cdn.net',
     'posit.co',
     'prerelease.keybase.io',
@@ -258,6 +261,7 @@ WHERE
     'wavebox.io',
     'welcome.adguard.com',
     'www.google.com',
+    'www.granola.ai',
     'www.messenger.com',
     'www.raycast.com',
     'www.talos.dev',

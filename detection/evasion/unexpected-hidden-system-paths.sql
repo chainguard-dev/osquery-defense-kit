@@ -88,6 +88,7 @@ WHERE
     '/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
     '/tmp/._contentbarrier_installed',
     '/tmp/.accounts-agent/',
+    '/tmp/.aqua/',
     '/tmp/.audio-agent/',
     '/tmp/.bazelci/',
     '/tmp/.BBE72B41371180178E084EEAF106AED4F350939DB95D3516864A1CC62E7AE82F', -- Xcode
@@ -221,7 +222,8 @@ WHERE
   AND file.path NOT LIKE '/tmp/.%.gcode'
   AND file.path NOT LIKE '/tmp/.cdx.json%'
   AND file.path NOT LIKE '/tmp/.com.google.Chrome.%'
-  AND file.path NOT LIKe '/tmp/.com.microsoft.Edge.%'
+  AND file.path NOT LIKE '/tmp/.com.microsoft.Edge.%'
+  AND file.path NOT LIKE '/tmp/.com.valvesoftware.Steam.%/'
   AND file.path NOT LIKE '/tmp/.dropbox-dist-%'
   AND file.path NOT LIKE '/tmp/.io.nwjs.%'
   AND file.path NOT LIKE '/tmp/.lark_cache_%'

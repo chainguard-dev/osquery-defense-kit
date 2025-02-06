@@ -249,6 +249,11 @@ WHERE
     AND lp.port > 5000
   )
   AND NOT (
+    signature.authority = 'Developer ID Application: OpenAI, L.L.C. (2DC432GLL2)'
+    AND lp.port > 5000
+    AND lp.protocol = 6
+  )
+  AND NOT (
     exception_key LIKE '%,6,500,IPNExtension,Apple Mac OS Application Signing'
     AND lp.port > 5000
   )

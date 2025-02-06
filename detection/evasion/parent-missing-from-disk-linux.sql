@@ -93,7 +93,8 @@ WHERE
   AND p1.cgroup_path NOT LIKE '/system.slice/docker-%'
   AND p1.cgroup_path NOT IN (
     '/system.slice/containerd.service',
-    '/system.slice/docker.service'
+    '/system.slice/docker.service',
+    '/system.slice/gdm.service'
   )
   AND p1.cgroup_path NOT LIKE '/lxc.monitor.n%'
   AND p1.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/app-steam@%'
