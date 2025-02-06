@@ -229,6 +229,7 @@ WHERE
     'packages.openvpn.net',
     'persistent.oaistatic.com',
     'portswigger-cdn.net',
+    'plugable.com',
     'posit.co',
     'prerelease.keybase.io',
     'presenting.app',

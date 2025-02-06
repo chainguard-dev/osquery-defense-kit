@@ -91,6 +91,7 @@ WHERE
     '/dev/bpf,core,Developer ID Application: TPZ Solucoes Digitais Ltda (X37R283V2T),com.topaz.warsaw.core',
     '/dev/bpf,MHLinkServer,Developer ID Application: Metric Halo Distribution, Inc. (X7EY8SFM86),com.mhlabs.mhlink.server',
     '/dev/bpf,packetbeat,Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z),packetbeat',
+    '/dev/bpf,agentbeat,Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z),agentbeat',
     '/dev/bus/usb/001/01,scdaemon',
     '/dev/console,Arc,Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.Browser',
     '/dev/console,dbeaver,Developer ID Application: DBeaver Corporation (42B6MDKMW8),org.jkiss.dbeaver.core.product',

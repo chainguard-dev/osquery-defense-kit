@@ -103,6 +103,7 @@ WHERE -- Focus on longer-running programs
     '500,sdzoomplugin,,',
     '500,serial-discovery,a.out,'
   )
+  AND NOT exception_key LIKE '500,terraform-provider-%,a.out,'
   AND NOT exception_key LIKE '500,___%go_build_%,a.out,'
   AND NOT exception_key LIKE '500,___2go_build_main_go,a.out,'
   AND NOT exception_key LIKE '500,___Test%.test,a.out'

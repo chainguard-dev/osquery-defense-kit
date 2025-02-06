@@ -68,57 +68,36 @@ WHERE
     OR f.directory LIKE '%/.%'
   )
   AND NOT homedir LIKE '%/node_modules/.%'
-  AND NOT homedir LIKE '~/.%/%x64/%'
-  AND NOT homedir LIKE '~/.%/bin'
+  -- exclude top-level hidden home directories (there are many)
+  AND NOT (
+    homedir LIKE '~/.%'
+    AND NOT homedir LIKE '~/.config/%'
+    AND NOT homedir LIKE '~/.cache/%'
+  )
   AND NOT homedir LIKE '~/%/node_modules/.bin%'
   AND NOT homepath LIKE '~/%arm64%'
   AND NOT homepath LIKE '~/%x86_64%'
-  AND NOT top3_dir LIKE '~/.%/extensions'
   AND NOT top2_dir IN (
-    '/nix/store/.links',
-    '/var~/.local',
-    '~/.cursor',
-    '~/.dropbox-dist',
-    '~/.fzf',
-    '~/.goenv',
-    '~/.gradle/jdks',
-    '~/.krew',
-    '~/.local',
-    '~/.pnpm',
-    '~/.pulumi',
-    '~/.rbenv',
-    '~/.rustup',
-    '~/.sdkman',
-    '~/.supermaven',
-    '~/.terraform',
-    '~/.tflint.d',
-    '~/.vs-kubernetes',
     '~/chainguard-images',
     '~/code',
     '~/Code',
+    '~/.goenv',
+    '/nix/store/.links',
     '~/Projects',
-    '~/src'
+    '~/src',
+    '/var~/.local',
+    '~/.vs-kubernetes'
   )
   AND NOT top3_dir IN (
     '/home/linuxbrew/.linuxbrew',
     '/var~/.local/share',
-    '~/.bin-unwrapped',
-    '~/.bin',
     '~/.cache/gitstatus',
     '~/.cache/JetBrains',
     '~/.cache/selenium',
+    '~/.cache/rod',
     '~/.config/bluejeans-v2',
     '~/.config/Code',
     '~/.config/nvm',
-    '~/.devpod/contexts',
-    '~/.docker/cli-plugins',
-    '~/.dotfiles/.local',
-    '~/.linuxbrew/Cellar',
-    '~/.magefile',
-    '~/.nvm/versions',
-    '~/.pyenv/versions',
-    '~/.steampipe/db',
-    '~/.vscode/cli',
     '~/Documents/GitHub',
     '~/node_modules/.bin',
     '~/thinkorswim/.install4j'

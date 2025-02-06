@@ -104,6 +104,7 @@ WHERE
     '/tmp/.featureflags-agent/',
     '/tmp/.font-unix/',
     '/tmp/.git/',
+    '/tmp/.github/',
     '/tmp/.go-version',
     '/tmp/.helmrepo',
     '/tmp/.ICE-unix/',

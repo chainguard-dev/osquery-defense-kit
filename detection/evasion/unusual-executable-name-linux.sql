@@ -103,6 +103,7 @@ WHERE
     "xdg-desktop-portal-kde",
     "xdg-desktop-portal-regolith",
     "xdg-desktop-portal-xapp",
+    'xdg-desktop-portal-wlr',
     "xdg-desktop-portal",
     "xdg-document-portal",
     "xdg-permission-store",
