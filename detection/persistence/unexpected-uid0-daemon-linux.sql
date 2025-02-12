@@ -16,7 +16,7 @@ SELECT
       p0.path,
       COALESCE(
         REGEX_MATCH (p0.path, "/nix/store/(.*?)/.*", 1),
-        REGEX_MATCH (p0.path, "(\d[\.\d]+)/.*", 1),
+        REGEX_MATCH (p0.path, "(\d[\.\d]+)", 1),
         "3.11"
       ),
       "__VERSION__"
@@ -113,6 +113,7 @@ WHERE
     'boltd,/usr/lib/boltd,0,system.slice,bolt.service,0755',
     'boltd,/usr/libexec/boltd,0,system.slice,bolt.service,0755',
     'bpfilter_umh,/bpfilter_umh,0,,,',
+    'ollama,/snap/ollama/__VERSION__/bin/ollama,0,system.slice,snap.ollama.listener.service,0755',
     'canonical-livep,/snap/canonical-livepatch/__VERSION__/canonical-livepatchd,0,system.slice,snap.canonical-livepatch.canonical-livepatchd.service,0755',
     'cat,/usr/bin/cat,0,user.slice,user-0.slice,0755',
     'chainctl,/usr/local/bin/chainctl,0,user.slice,user-1000.slice,0755',
@@ -122,6 +123,7 @@ WHERE
     'containerd,/usr/bin/containerd,0,system.slice,containerd.service,0755',
     'containerd,/usr/bin/containerd,0,system.slice,docker.service,0755',
     'containerd,/usr/sbin/containerd,0,system.slice,docker.service,0755',
+    'indicator-cpufr,/usr/bin/python3.12,0,system.slice,dbus.service,0755',
     'cron,/usr/sbin/cron,0,system.slice,cron.service,0755',
     'crond,/usr/bin/crond,0,system.slice,cronie.service,0755',
     'crond,/usr/sbin/crond,0,system.slice,crond.service,0755',

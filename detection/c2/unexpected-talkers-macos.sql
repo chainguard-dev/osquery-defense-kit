@@ -86,9 +86,11 @@ WHERE
       AND remote_address NOT LIKE 'fdfd:%'
       AND state != 'LISTEN'
   ) -- Ignore most common application paths
+  AND protocol > 0
   AND p0.path NOT LIKE '/Applications/%.app/Contents/%/MacOS/%'
   AND p0.path NOT LIKE '/Applications/%.app/Contents/MacOS/%'
   AND p0.path NOT LIKE '/Applications/%.app/Contents/Resources/%'
+  AND p0.path NOT LIKE '/Users/%/Applications/%.app/Contents/MacOS/%'
   AND p0.path NOT LIKE '/Library/Apple/%'
   AND p0.path NOT LIKE '/Library/Application Support/%/Contents/%'
   AND p0.path NOT LIKE '/opt/%/bin/%'
@@ -130,6 +132,7 @@ WHERE
   AND NOT unsigned_exception IN (
     '500,0,0,,',
     '500,0,0,.Telegram-wrapped,.Telegram-wrapped',
+    '500,6,80,.Telegram-wrapped,.Telegram-wrapped',
     '500,0,0,chainlink,chainlink',
     '500,0,0,git,git',
     '500,0,0,gvproxy,gvproxy',

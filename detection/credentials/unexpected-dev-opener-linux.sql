@@ -156,6 +156,7 @@ WHERE
     '/dev/shm,Melvor Idle',
     '/dev/shm,msedge',
     '/dev/shm,osqueryd',
+    '/dev/input,sway',
     '/dev/shm,reaper',
     '/dev/shm,slack',
     '/dev/shm,spotify',

@@ -72,7 +72,10 @@ WHERE
     AND f.uid > 500
   )
   AND NOT (
-    f.path = '/Applications/EA app.app/Contents/Applications/EABackgroundService.app/Contents/MacOS/EABackgroundService'
+    f.path IN (
+      '/Applications/EA app.app/Contents/Applications/EABackgroundService.app/Contents/MacOS/EABackgroundService',
+      '/Applications/EA app.app/Contents/Applications/EABackgroundAgent.app/Contents/MacOS/EABackgroundAgent'
+    )
     AND f.mode = '0777'
     AND f.uid = 0
   )

@@ -41,6 +41,7 @@ WHERE
     OR file.path LIKE '/sbin/.%'
     OR file.path LIKE '/sbin/%/.%'
     OR file.path LIKE '/tmp/.%'
+    OR file.path LIKE '/tmp/.gradle%'
     OR file.path LIKE '/usr/bin/.%'
     OR file.path LIKE '/usr/lib/.%'
     OR file.path LIKE '/usr/lib/%/.%'
@@ -114,8 +115,8 @@ WHERE
     '/tmp/.melange.yaml',
     '/tmp/.metrics-agent/',
     '/tmp/.PKGINFO',
-    '/tmp/.s.PGSQL.5432.lock',
     '/tmp/.s.PGSQL.5432',
+    '/tmp/.s.PGSQL.5432.lock',
     '/tmp/.searcher.tmp/',
     '/tmp/.ses',
     '/tmp/.settings-agent/',
@@ -141,6 +142,7 @@ WHERE
     '/tmp/.X2-lock',
     '/tmp/.XIM-unix/',
     '/usr/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
+    '/usr/lib/nvidia-visual-profiler/.eclipseproduct',
     '/usr/local/bin/.swtpm',
     '/usr/local/libexec/.ksysguard/',
     '/var/.ntw_cache',
@@ -208,8 +210,8 @@ WHERE
     '/var/setup/.fseventsd/',
     '/var/setup/.TemporaryItems',
     '/var/setup/.TemporaryItems/',
-    '/var/tmp/.ses.bak',
-    '/var/tmp/.ses'
+    '/var/tmp/.ses',
+    '/var/tmp/.ses.bak'
   )
   AND file.directory NOT IN (
     '/etc/etckeeper/commit.d',

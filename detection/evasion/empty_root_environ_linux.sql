@@ -54,6 +54,7 @@ WHERE
     'launcher',
     'modprobe',
     'nginx',
+    'osqueryd',
     'osqueryi',
     'packagekit-dnf-',
     'realmd',

@@ -43,16 +43,14 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         AND (
           file.path LIKE '%/go-build%'
           OR file.directory LIKE '/tmp/%/out'
-          OR file.path IN (
-            '/tmp/mission',
-            '/tmp/mkinitramfs'
-          )
+          OR file.path IN ('/tmp/mission', '/tmp/mkinitramfs')
           OR file.path LIKE '/tmp/GoLand/___go_build_%_go'
           OR file.path LIKE '/tmp/ko%/out'
           OR file.path LIKE '/tmp/lima/%/out/%'
           OR file.path LIKE '/tmp/wolfi%'
           OR file.path LIKE '%-release%/%'
           OR file.path LIKE '%/bin/%'
+          OR file.path LIKE '/tmp/%.sh'
           OR file.path LIKE '%/checkout/%'
           OR file.path LIKE '%/ci/%'
           OR file.path LIKE '%/configure'

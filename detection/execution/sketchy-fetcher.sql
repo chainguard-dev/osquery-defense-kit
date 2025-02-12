@@ -55,6 +55,7 @@ WHERE
   AND p0.cmdline LIKE '%/%'
   AND (
     ip NOT IN ('', '127.0.0.1', '::1')
+    AND ip NOT LIKE '172.17.%'
     OR port != ''
     OR tld NOT IN (
       '',
