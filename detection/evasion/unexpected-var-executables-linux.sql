@@ -50,6 +50,7 @@ WHERE
     '/var/lib/colord',
     '/var/ossec/agentless',
     '/var/ossec/bin',
+    '/var/vanta',
     '/var/ossec/wodles',
     '/var/run/booted-system',
     '/var/run/current-system'

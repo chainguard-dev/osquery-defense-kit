@@ -101,6 +101,8 @@ WHERE
     '/usr/sbin/mDNSResponder'
   )
   AND p.path NOT LIKE '%/podman/gvproxy'
+  AND p.path NOT LIKE '%/eksctl'
+  AND p.path NOT LIKE '/opt/homebrew/Cellar/lima/%/bin/limactl'
   AND p.path NOT LIKE '%/Steam/Steam.AppBundle/Steam/Contents/MacOS/Frameworks/Steam Helper.app/Contents/MacOS/Steam Helper'
   AND p.path NOT LIKE '/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/%/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper'
   -- Workaround for the GROUP_CONCAT subselect adding a blank ent

@@ -58,6 +58,7 @@ WHERE
     'lxcfs.pid',
     'machine-id',
     'mcelog.pid',
+    'metalauncher.pid',
     'motd.dynamic',
     'motd',
     'multipathd.pid',

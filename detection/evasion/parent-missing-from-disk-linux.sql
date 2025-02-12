@@ -100,6 +100,7 @@ WHERE
   AND p1.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/app-steam@%'
   AND p1.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/libpod-%'
   AND p1.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
+  AND p1.cgroup_path NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/docker-%'
   AND p1.path NOT LIKE '/opt/homebrew/Cellar/%'
   AND p1.path NOT LIKE '/tmp/.mount_%/%'
   AND p1.path NOT LIKE '%google-cloud-sdk/.install/.backup%'

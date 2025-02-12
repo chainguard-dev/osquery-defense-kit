@@ -121,6 +121,7 @@ WHERE
     '~/.tflint.d/',
     '~/.terraform.d/',
     '~/.Trash/',
+    '~/chainguard-dev/',
     '~/.vs-kubernetes/',
     '~/.vscode/',
     '~/Applications (Parallels)/',
@@ -224,8 +225,14 @@ WHERE
   AND NOT (
     s.identifier = "a.out"
     AND homedir LIKE '~/%'
-    AND p1.name LIKE '%sh'
-    AND p2.name = 'login'
+    AND (
+      p1.name LIKE '%sh'
+      OR p1.name = 'make'
+    )
+    AND (
+      p2.name = 'login'
+      OR p2.name LIKE '%sh'
+    )
     AND p0.path NOT LIKE '%/Cache%'
     AND p0.path NOT LIKE '%/Library/%'
     AND p0.path NOT LIKE '%/.%'

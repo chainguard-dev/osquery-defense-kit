@@ -33,6 +33,7 @@ FROM
 WHERE
   p.on_disk != 1
   AND p.path != ''
+  AND p.start_time < (strftime('%s', 'now') - 3600)
   -- use osquery as the reference mount namespace
   AND mnt_namespace IN (
     SELECT DISTINCT

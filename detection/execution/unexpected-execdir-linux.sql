@@ -76,6 +76,8 @@ WHERE
       AND INSTR(path, "/var/lib/snapd/") != 1
       AND INSTR(path, "/var/opt/") != 1
       AND INSTR(path, "/var/usrlocal/bin/") != 1
+      AND INSTR(path, "/var/cache/melange") != 1
+      AND INSTR(path, "/var/vanta/") != 1
       AND path NOT LIKE "%/.terraform%"
       AND path != '/bpfilter_umh'
       AND NOT path LIKE '/tmp/%/osqtool'
@@ -83,6 +85,7 @@ WHERE
       AND NOT cgroup_path LIKE '/system.slice/docker-%' -- Interactive terminal
       AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/libpod-%'
       AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
+      AND NOT cgroup_path LIKE '/kubepods.slice/%'
       AND NOT (
         cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-Alacritty-%.scope'
         AND path LIKE '/tmp/%'

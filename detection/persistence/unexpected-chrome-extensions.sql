@@ -54,26 +54,41 @@ WHERE
         OR perms LIKE "%webRequest%"
       )
     )
+    -- Can make requests and see interesting information
     OR (
-      perms LIKE '%://*/%'
-      OR perms LIKE '%<all_urls>%'
-      OR perms LIKE '%blockchain%'
-      OR perms LIKE '%clipboardRead%'
-      OR perms LIKE '%coinbase%'
-      OR perms LIKE '%cookies%'
-      OR perms LIKE '%debugger%'
-      OR perms LIKE '%declarativeNetRequestFeedback%'
-      OR perms LIKE '%desktopCapture%'
-      OR perms LIKE '%github.com%'
-      OR perms LIKE '%google.com%'
-      OR perms LIKE "%history%"
-      OR perms LIKE "%management%"
-      OR perms LIKE "%nativeMessaging%"
-      OR perms LIKE "%proxy%"
-      OR perms LIKE "%webAuthenticationProxy%"
+      perms like '%webRequest%'
+      OR perms LIKE '%dns%'
+      AND (
+        perms LIKE '%://*/%'
+        OR perms LIKE '%<all_urls>%'
+        OR perms LIKE '%blockchain%'
+        OR perms LIKE '%clipboardRead%'
+        OR perms LIKE '%coinbase%'
+        OR perms LIKE '%cookies%'
+        OR perms LIKE '%github.com%'
+        OR perms LIKE '%google.com%'
+        OR perms LIKE '%pageCapture%'
+        OR perms LIKE '%privacy%'
+        OR perms LIKE '%tabCapture%'
+        OR perms LIKE '%tabs%'
+        OR perms LIKE '%webNavigation%'
+      )
     )
+    -- Unusual permissions
+    OR perms LIKE "%contentSettings%"
+    OR perms LIKE "%history%"
+    OR perms LIKE "%management%"
+    OR perms LIKE "%nativeMessaging%"
+    OR perms LIKE "%proxy%"
+    OR perms LIKE "%vpnProvider%"
+    OR perms LIKE "%webAuthenticationProxy%"
+    OR perms LIKE '%debugger%'
+    OR perms LIKE '%declarativeNetRequestFeedback%'
+    OR perms LIKE '%desktopCapture%'
   )
   AND NOT exception_key IN (
+    "true,Daniel Kladnik @ kiboke studio,I don't care about cookies,fihnjjcciajhdojfnbdddfaoknhalnja",
+    "true,Gareth Stephenson,My O'Reilly Downloader,deebiaolijlopiocielojiipnpnaldlk",
     'false,,Grammarly: AI Writing and Grammar Checker App,cnlefmmeadmemmdciolhbnfeacpdfbkd',
     'false,privacybadger-owner@eff.org,Privacy Badger,mkejgcgkdlddbggjhhflekkondicpnop',
     'true,,[DEPRECATED] Tag Assistant Legacy,kejbdjndbnbjgmefkgdddjlbokphdefk',
@@ -89,6 +104,7 @@ WHERE
     'true,,Awesome Screen Recorder & Screenshot,nlipoenfbbikpbjkfpfillcgkoblgpmj',
     'true,,axe DevTools - Web Accessibility Testing,lhdoppojpmngadmnindnejefpokejbdd',
     'true,,Bardeen - automate manual work,ihhkmalpkhkoedlmcnilbbhhbhnicjga',
+    'true,Omnivore Media, Inc,Omnivore,blkggjdmcfjdbmmmlfcpplkchpeaiiab',
     'true,,Bardeen - automate workflows with one click,ihhkmalpkhkoedlmcnilbbhhbhnicjga',
     'true,,Bionic Reading,kdfkejelgkdjgfoolngegkhkiecmlflj',
     'true,,BlockSite: Block Websites & Stay Focused,eiimnmioipafcokbfikbljfdeojpcgbh',
@@ -194,9 +210,9 @@ WHERE
     'true,,Lever Hire Extension,dgbcohbjchndmjocioegkgdniaffcaia',
     'true,,Link to Text Fragment,pbcodcjpfjdpcineamnnmbkkmkdpajjg',
     'true,,Lolli: Earn Bitcoin When You Shop,fleenceagaplaefnklabikkmocalkcpo',
+    'true,,Loom \xE2\x80\x93 Screen Recorder & Screen Capture,liecbddmkiiihnedobmlmillhodjkdmb',
     'true,,Loom – Free Screen Recorder & Screen Capture,liecbddmkiiihnedobmlmillhodjkdmb',
     'true,,Loom – Screen Recorder & Screen Capture,liecbddmkiiihnedobmlmillhodjkdmb',
-    'true,,Loom \xE2\x80\x93 Screen Recorder & Screen Capture,liecbddmkiiihnedobmlmillhodjkdmb',
     'true,,Lucidchart Diagrams,apboafhkiegglekeafbckfjldecefkhn',
     'true,,Mailvelope,kajibbejlbohfaggdiogboambcijhkke',
     'true,,Markdown Preview Plus,febilkbfcbhebfnokafefeacimjdckgl',
@@ -206,6 +222,7 @@ WHERE
     'true,,Microsoft Single Sign On,ppnbnpeolgkicgegkbkbjmhlideopiji',
     'true,,Moesif Origin/CORS Changer & API Logger,digfbfaphojjndkpccljibejjbppifbc',
     'true,,MQTTLens,hemojaaeigabkbcookmlgmdigohjobjm',
+    'true,,Newsletter Creator for Gmail - Flashissue,cihaednhfbocfdiflmpccekcmjepcnmb',
     'true,,Nooks,kbbdibmbjngifdgbmlleelghocpeimhe',
     'true,,NordVPN - VPN proxy for privacy and security,fjoaledfpmneenckfbpdfhkmimnjocfa',
     'true,,NoScript,doojmbjmlfjjnbmnoijecmcbfeoakpjm',
@@ -299,6 +316,7 @@ WHERE
     'true,,User-Agent Switcher for Chrome,djflhoibgkdhkhhcedjiklpkjnoahfmg',
     'true,,Utime,kpcibgnngaaabebmcabmkocdokepdaki',
     'true,,Video Downloader PLUS,njgehaondchbmjmajphnhlojfnbfokng',
+    'true,,Video Downloader Professional,elicpjhcidhpjomhibiffojpinpmmpil',
     'true,,Vidyard - Webcam & Screen Recorder for Sales,jiihcciniecimeajcniapbngjjbonjan',
     'true,,VidyoWebConnector,mmedphfiemffkinodeemalghecnicmnh',
     'true,,Vimcal,akopimcimmdmklcmegcflfidpfegngke',
@@ -323,13 +341,15 @@ WHERE
     'true,Adaware,Safe Torrent Scanner,aegnopegbbhjeeiganiajffnalhlkkjb',
     'true,Adblock for Chrome Team,Adblock for Chrome™,onomjaelhagjjojbkcafidnepbfkpnee',
     'true,Adblock, Inc.,AdBlock — best ad blocker,gighmmpiobklfepjocnamgkkbiglidom',
+    'true,Adblock, Inc.,AdBlock — block ads across the web,gighmmpiobklfepjocnamgkkbiglidom',
     'true,Adguard Software Ltd,AdGuard AdBlocker,bgnkhhnnamicmpeenaelnjfhikgbkllg',
-    'true,AgileBits,1Password – Password Manager,aeblfdkhhhdcdjpifhhbdiojplfjncoa',
     'true,AgileBits,1Password \xE2\x80\x93 Password Manager,aeblfdkhhhdcdjpifhhbdiojplfjncoa',
     'true,AgileBits,1Password extension (desktop app required),aomjjhallfgjeglblehebfpbcfeobpgk',
     'true,AgileBits,1Password Nightly – Password Manager,gejiddohjgogedgjnonbofjigllpkmbf',
+    'true,AgileBits,1Password – Password Manager,aeblfdkhhhdcdjpifhhbdiojplfjncoa',
     'true,Alexander Shutau,Dark Reader,eimadpbcbfnmbkopoojfekhnkhdbieeh',
     'true,All uBlock contributors,uBlock - free ad blocker,epcnnfbjfcgphgdmggkamkmgojdagdnn',
+    'true,AwardWallet LLC,AwardWallet,lppkddfmnlpjbojooindbmcokchjgbib',
     'true,Benjamin Hollis,JSONView,gmegofmjomhknnokphhckolhcffdaihd',
     'true,BetaFish,AdBlock — best ad blocker,gighmmpiobklfepjocnamgkkbiglidom',
     'true,Bitwarden Inc.,Bitwarden - Free Password Manager,nngceckbapebfimnlniiiahkandclblb',
@@ -347,12 +367,13 @@ WHERE
     'true,eyeo GmbH,Adblock Plus - free ad blocker,cfhdojbkjhnklbpkdaibdccddilifddb',
     'true,Federico Brigante,GitHub Issue Link Status,nbiddhncecgemgccalnoanpnenalmkic',
     'true,François Duprat,Mobile simulator - responsive testing tool,ckejmhbmlajgoklhgbapkiccekfoccmk',
-    'true,Ghostery,Ghostery – Privacy Ad Blocker,mlomiejdfkolichcflejclcbmpeaniij',
     'true,Ghostery,Ghostery Tracker & Ad Blocker - Privacy AdBlock,mlomiejdfkolichcflejclcbmpeaniij',
     'true,Ghostery,Ghostery Tracker Ad Blocker - Privacy AdBlock,mlomiejdfkolichcflejclcbmpeaniij',
+    'true,Ghostery,Ghostery – Privacy Ad Blocker,mlomiejdfkolichcflejclcbmpeaniij',
     'true,GLIDER,Glider Proctoring,dcnidakmkbkbohdaelljpgdhmbbpbdbg',
     'true,Gordon Pedsersen,MarkDownload - Markdown Web Clipper,pcmpcfapbekmbjjkdalcgopdkipoggdi',
     'true,Guilherme Nascimento,Prevent Duplicate Tabs,eednccpckdkpojaiemedoejdngappaag',
+    'true,GZ systems Ltd.,PureVPN Proxy - Best VPN for Chrome,bfidboloedlamgdmenmlbipfnccokknp',
     'true,homerchen19,File Icons for GitHub and GitLab,ficfmibkjjnpogdcfhfokmihanoldbfe',
     'true,https://metamask.io,MetaMask,nkbihfbeogaeaoehlefnkodbefgpgknn',
     'true,James Anderson,LeechBlock NG,blaaajhemilngeeffpbfkdjjoefldkok',
@@ -387,9 +408,7 @@ WHERE
     'true,Wappalyzer,Wappalyzer - Technology profiler,gppongmhjkpfnbhagpmjfkannfbllamg',
     'true,Web to Figma,Web to Figma,mafpepbepbabkenbfpcdjmmjmeeemoal',
     'true,Yuri Konotopov <ykonotopov@gnome.org>,GNOME Shell integration,gphhapmejobijbbhgpjhcjognlahblep',
-    'true,Zinlab <sebastian@Zinlab>,Better History,egehpkpgpgooebopjihjmnpejnjafefi',
-    "true,Daniel Kladnik @ kiboke studio,I don't care about cookies,fihnjjcciajhdojfnbdddfaoknhalnja",
-    "true,Gareth Stephenson,My O'Reilly Downloader,deebiaolijlopiocielojiipnpnaldlk"
+    'true,Zinlab <sebastian@Zinlab>,Better History,egehpkpgpgooebopjihjmnpejnjafefi'
   )
   AND NOT (
     exception_key IN (

@@ -99,7 +99,9 @@ WHERE
   AND basename NOT IN (
     "acpid",
     "busybox",
+    "nm-openvpn-auth",
     "com.docker.backend",
+    "nm-openvpn-service",
     "com.docker.build",
     "com.docker.extensions",
     "cpulimit",

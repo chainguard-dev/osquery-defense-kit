@@ -79,6 +79,7 @@ WHERE
     '500,Craft,~/Library/Containers/com.lukilabs.lukiapp/Data/Library/Application Support/com.lukilabs.lukiapp',
     '500,Ecamm Live Stream Deck Plugin,~/Library/Application Support/com.elgato.StreamDeck/Sentry',
     '500,flyctl,~/.fly',
+    '500,sway,/run/user/1000',
     '500,gnome-shell,/run/user/1000',
     '500,Hyprland,/run/user/1000',
     '500,iMovie,~/Movies/iMovie Library.imovielibrary',
