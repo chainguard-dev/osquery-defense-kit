@@ -41,7 +41,7 @@ WHERE
     OR file.path LIKE '/sbin/.%'
     OR file.path LIKE '/sbin/%/.%'
     OR file.path LIKE '/tmp/.%'
-    OR file.path LIKE '/tmp/.gradle%'
+    OR file.path LIKE '/tmp/.%/%'
     OR file.path LIKE '/usr/bin/.%'
     OR file.path LIKE '/usr/lib/.%'
     OR file.path LIKE '/usr/lib/%/.%'
@@ -56,9 +56,10 @@ WHERE
     OR file.path LIKE '/var/%/.%'
     OR file.path LIKE '/var/lib/.%'
     OR file.path LIKE '/var/tmp/.%'
+    OR file.path LIKE '/var/tmp/.%/%'
   )
-  AND file.path NOT LIKE '%/../'
-  AND file.path NOT LIKE '%/./' -- Avoid mentioning extremely temporary files
+  AND file.path NOT LIKE '%/../%'
+  AND file.path NOT LIKE '%/./%' -- Avoid mentioning extremely temporary files
   AND strftime('%s', 'now') - file.ctime > 20
   AND file.path NOT IN (
     '/.autorelabel',
@@ -99,6 +100,8 @@ WHERE
     '/tmp/.docker-tmp/',
     '/tmp/.docker/',
     '/tmp/.dotnet/',
+    '/tmp/.dotnet/shm/',
+    '/tmp/.dotnet/lockfiles/',
     '/tmp/.dracula-tmux-data',
     '/tmp/.dracula-tmux-weather.lock',
     '/tmp/.DS_Store',
@@ -172,6 +175,7 @@ WHERE
     '/var/mail/.cache/',
     '/var/root/.bash_history',
     '/var/root/.bash_profile',
+    '/tmp/.ydotool_socket',
     '/var/root/.cache/',
     '/var/root/.CFUserTextEncoding',
     '/var/root/.config/',
@@ -219,6 +223,15 @@ WHERE
     '/etc/skel/.config',
     '/var/root/.provisio'
   )
+  -- haven't seen any malware use sockets yet
+  AND NOT file.type = 'socket'
+  AND file.filename NOT LIKE '.%.swo'
+  AND file.filename NOT LIKE '.%.swp'
+  AND file.path NOT LIKE '%/.build-id/'
+  AND file.path NOT LIKE '%/.dwz/'
+  AND file.path NOT LIKE '%/.updated'
+  AND file.path NOT LIKE '%/google-cloud-sdk/.install/'
+  AND file.path NOT LIKE '%/lib/.lib%.hmac'
   AND file.path NOT LIKE '/%bin/bootstrapping/.default_components'
   AND file.path NOT LIKE '/lib/jvm/.java-%.jinfo'
   AND file.path NOT LIKE '/tmp/.#%'
@@ -231,21 +244,17 @@ WHERE
   AND file.path NOT LIKE '/tmp/.io.nwjs.%'
   AND file.path NOT LIKE '/tmp/.lark_cache_%'
   AND file.path NOT LIKE '/tmp/.org.chromium.Chromium%'
+  AND file.path NOT LIKE '/tmp/.tmp%/'
+  AND file.path NOT LIKE '/tmp/.tmp%/stdin'
   AND file.path NOT LIKE '/tmp/.vbox-%-ipc/'
   AND file.path NOT LIKE '/tmp/.wine-%'
   AND file.path NOT LIKE '/tmp/.X1%-lock'
+  AND file.path NOT LIKE '/tmp/.gradle%'
   AND file.path NOT LIKE '/tmp/.xfsm-ICE-%'
+  AND file.path NOT LIKE '/usr/lib/jvm/.java-%-openjdk-%.jinfo'
   AND file.path NOT LIKE '/usr/local/%/.keepme'
   AND file.path NOT LIKE '/var/roothome/.xauth%'
   AND file.path NOT LIKE '/var/run/.vfs_rsrc_streams_%/'
-  AND file.path NOT LIKE '%/.build-id/'
-  AND file.path NOT LIKE '%/.dwz/'
-  AND file.path NOT LIKE '%/.updated'
-  AND file.path NOT LIKE '%/lib/.lib%.hmac'
-  AND file.filename NOT LIKE '.%.swo'
-  AND file.filename NOT LIKE '.%.swp'
-  AND file.path NOT LIKE '/usr/lib/jvm/.java-%-openjdk-%.jinfo'
-  AND file.path NOT LIKE '%/google-cloud-sdk/.install/'
   AND NOT (
     type = 'regular'
     AND (
@@ -276,6 +285,12 @@ WHERE
     AND file.gid = 0
     AND file.mode IN ('0755', '0700')
     AND file.size = 4
+  )
+  AND NOT (
+    file.path = '/var/tmp/.DS_Store'
+    AND file.uid = 501
+    AND file.mode = '0644'
+    AND file.size < 10000
   )
   AND NOT (
     file.path LIKE '/tmp/.java_pid%'

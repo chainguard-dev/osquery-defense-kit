@@ -61,6 +61,7 @@ WHERE
     'sedispatch',
     'ssh',
     'sshd',
+    'sshd-session',
     'sudo',
     'systemd-udevd',
     'systemd-userdbd',
@@ -97,4 +98,4 @@ WHERE
 GROUP BY
   p.pid
 HAVING
-  count == 0;
+  count = 0;

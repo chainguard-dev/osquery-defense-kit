@@ -75,6 +75,7 @@ WHERE
     '/etc/ifplugd',
     '/etc/ifplugd/action.d',
     '/etc/init.d',
+    '/etc/timeshift/restore-hooks.d',
     '/etc/initramfs/post-update.d',
     '/etc/kde/shutdown',
     '/etc/kernel/header_postinst.d',
@@ -83,6 +84,7 @@ WHERE
     '/etc/kernel/postrm.d',
     '/etc/kernel/preinst.d',
     '/etc/kernel/prerm.d',
+    '/etc/framework-ectool',
     '/etc/lightdm',
     '/etc/localtime',
     '/etc/mc',
@@ -140,6 +142,9 @@ WHERE
     '/etc/smartmontools/run.d',
     '/etc/ssl/certs',
     '/etc/ssl/misc',
+    '/etc/sv/pcscd',
+    '/etc/sv/pcscd/log',
+    '/etc/sv/pcscd/control',
     '/etc/ssl/trust-source',
     '/etc/sysconfig/network-scripts',
     '/etc/systemd/system-shutdown',
@@ -204,3 +209,7 @@ WHERE
   AND file.path NOT LIKE '/etc/profiles/per-user/%/bin/%'
   AND file.path NOT LIKE '/etc/pwrstatd-%.sh'
   AND file.path NOT LIKE '/etc/pwrstatd-%.sh'
+  AND (
+    magic.data IS NULL
+    OR magic.data NOT IN ('JSON text data', 'ASCII text')
+  )

@@ -259,6 +259,7 @@ WHERE
   AND path_exception NOT LIKE '/dev/cpu_dma_latency,python%'
   AND path_exception NOT LIKE '/dev/shm/%'
   AND path_exception NOT LIKE '/dev/video%,chrome'
+  AND path_exception NOT LIKE '/dev/video%,chromium'
   AND NOT (
     pof.path = "/dev/uinput"
     AND p0.name LIKE "solaar%"

@@ -62,6 +62,7 @@ WHERE
   )
   -- Some applications hard-code a safe DNS resolver, or allow the user to configure one
   AND s.remote_address NOT IN (
+    '0.0.0.0',
     '100.100.100.100', -- Tailscale Magic DNS
     '1.0.0.1', -- Cloudflare
     '1.1.1.1', -- Cloudflare
@@ -142,6 +143,7 @@ WHERE
     'buildkitd',
     'canonical-livep',
     'cg',
+    'containerd',
     'chainctl',
     'chrome',
     'com.apple.WebKit.Networking',
@@ -150,6 +152,7 @@ WHERE
     'grype',
     'gvproxy',
     'helm',
+    'com.docker.build',
     'incusd',
     'io.tailscale.ipn.macsys.network-extension',
     'IPNExtension',

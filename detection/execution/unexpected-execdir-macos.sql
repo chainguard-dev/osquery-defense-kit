@@ -112,6 +112,7 @@ WHERE
     '~/.config/',
     '~/.kuberlr/',
     '~/.provisio/',
+    '~/.clickshare_button/',
     '~/.pulumi/',
     '~/.pyenv/',
     '~/.rbenv/',
