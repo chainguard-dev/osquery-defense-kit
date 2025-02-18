@@ -98,4 +98,4 @@ WHERE
 GROUP BY
   p.pid
 HAVING
-  count = = 0;
+  count == 0;
