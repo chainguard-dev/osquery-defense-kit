@@ -285,6 +285,7 @@ WHERE
   AND NOT path LIKE '/dev/shm/.com.microsoft.Edge.%'
   AND NOT path LIKE '/dev/shm/.org.chromium.Chromium.%'
   AND NOT path LIKE '/dev/shm/aomshm.%'
+  AND NOT path LIKE '/dev/shm/xapp-tmp-%'
   AND NOT path LIKE '/dev/shm/byobu-%'
   AND NOT path LIKE '/dev/shm/flatpak-com.brave.Browser-%'
   AND NOT path LIKE '/dev/shm/libv4l-%'
@@ -299,5 +300,11 @@ WHERE
     AND uid IN (0, 1000, 1001)
     AND size IN (32, 4096)
   )
+  AND NOT exception_key LIKE '/dev/vg%/,directory'
+  AND NOT exception_key LIKE '/dev/vg%/root,block'
+  AND NOT exception_key LIKE '/dev/vg%/swap%,block'
+  AND NOT exception_key LIKE '/dev/%vg/,directory'
+  AND NOT exception_key LIKE '/dev/%vg/root,block'
+  AND NOT exception_key LIKE '/dev/%vg/swap%,block'
 GROUP BY
   exception_key

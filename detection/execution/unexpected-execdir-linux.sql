@@ -71,6 +71,7 @@ WHERE
       AND INSTR(path, "/usr/x86_64-pc-linux-gnu/bin") != 1
       AND INSTR(path, "/var/home/") != 1
       AND INSTR(path, "/var/kolide-k2/") != 1
+      AND INSTR(path, "/var/lib/rancher/k3s/") != 1
       AND INSTR(path, "/var/lib/awx/") != 1
       AND INSTR(path, "/var/lib/flatpak") != 1
       AND INSTR(path, "/var/lib/snapd/") != 1

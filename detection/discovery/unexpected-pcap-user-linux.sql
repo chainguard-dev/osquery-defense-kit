@@ -41,6 +41,7 @@ WHERE
   AND child_path NOT IN (
     '/run/current-system/systemd/lib/systemd/systemd',
     '/usr/bin/libvirtd',
+    '/usr/sbin/libvirtd',
     '/usr/bin/tcpdump',
     '/usr/libexec/UserEventAgent',
     '/usr/sbin/cupsd',

@@ -33,6 +33,7 @@ WHERE
     'alsactl.pid',
     'apcupsd.pid',
     'apport.lock',
+    'casper-md5check.json',
     'atd.pid',
     'atopacctd.pid',
     'auditd.pid',

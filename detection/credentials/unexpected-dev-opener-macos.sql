@@ -138,5 +138,6 @@ WHERE
   -- Keyboard flashing
   AND NOT exception_key LIKE '/dev/cu.usbmodem%,Google Chrome,Developer ID Application: Google LLC (EQHXZ8M8AV),com.google.Chrome'
   AND NOT exception_key LIKE '/dev/tty.usbserial-%,java,,net.java.openjdk.java'
+  AND NOT exception_key LIKE '/dev/cu.%,screen,Software Signing,com.apple.screen'
 GROUP BY
   pof.pid

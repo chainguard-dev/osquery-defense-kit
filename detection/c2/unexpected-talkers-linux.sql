@@ -165,7 +165,9 @@ WHERE
     '80,6,500,http,u,g,http',
     '80,6,500,java,0u,0g,java',
     '80,6,500,java,u,g,java',
+    '80,6,500,firefox-esr,0u,0g,firefox-esr',
     '80,6,500,main,500u,500g,main',
+    '8080,6,500,speedtest,0u,0g,speedtest',
     '80,6,500,mateweather-applet,0u,0g,mateweather-app',
     '80,6,500,mconvert,500u,500g,mconvert',
     '80,6,500,mediawriter,u,g,mediawriter',
@@ -209,6 +211,7 @@ WHERE
     '80,6,500,wine64-preloader,0u,0g,control.exe',
     '80,6,500,zen,u,g,zen',
     '80,6,500,zoom,0u,0g,zoom',
+    '80,6,500,chromium,0u,0g,chromium',
     '80,6,500,zoom.real,u,g,zoom.real',
     '80,6,500,ZoomWebviewHost,0u,0g,ZoomWebviewHost',
     '8000,6,500,brave,0u,0g,brave',
@@ -286,8 +289,8 @@ WHERE
     AND p.euid > 500
   )
   AND NOT (
-    p.name = 'chrome'
-    AND f.filename = 'chrome'
+    p.name IN ('chrome', 'chromium')
+    AND f.filename IN ('chrome', 'chromium')
     AND s.remote_port > 1024
     AND s.protocol IN (6, 17)
     AND p.euid > 500
@@ -307,8 +310,8 @@ WHERE
     AND p.euid > 500
   )
   AND NOT (
-    p.name IN ('firefox', 'firefox-bin')
-    AND f.filename IN ('firefox', 'firefox-bin')
+    p.name IN ('firefox', 'firefox-bin', 'firefox-esr')
+    AND f.filename IN ('firefox', 'firefox-bin', 'firefox-esr')
     AND s.remote_port > 3000
     AND s.protocol IN (6, 17)
     AND p.euid > 500

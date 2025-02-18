@@ -20,7 +20,7 @@ SELECT
     ',',
     MIN(pos.remote_port, 32768),
     ',',
-    REGEX_MATCH (p0.path, '.*/(.*?)$', 1),
+    COALESCE(REGEX_MATCH (p0.path, '.*/(.*?)$', 1), p0.name),
     ',',
     p0.name
   ) AS unsigned_exception,
@@ -131,6 +131,11 @@ WHERE
   -- port 0 means the connection has come and gone since the original process_open_sockets entry
   AND NOT unsigned_exception IN (
     '500,0,0,,',
+    '500,6,443,,',
+    '500,17,443,,',
+    '500,6,90,java,java',
+    '500,6,5228,,',
+    '500,6,5228,Google Chrome for Testing Helper,Google Chrome for Testing Helper',
     '500,0,0,.Telegram-wrapped,.Telegram-wrapped',
     '500,6,80,.Telegram-wrapped,.Telegram-wrapped',
     '500,0,0,chainlink,chainlink',

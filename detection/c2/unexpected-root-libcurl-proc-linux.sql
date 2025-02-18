@@ -81,6 +81,7 @@ WHERE
     'fwupd,/usr/lib/fwupd/fwupd,0,system.slice,fwupd.service,0755',
     'fwupd,/usr/libexec/fwupd/fwupd,0,system.slice,fwupd.service,0755',
     'implicitclass,/usr/lib/cups/backend/implicitclass,0,system.slice,cups.service,0744',
+    'sddm-helper,/usr/lib/x86_64-linux-gnu/sddm/sddm-helper,0,user.slice,user-1000.slice,0755',
     'libvirtd,/usr/bin/libvirtd,0,system.slice,libvirtd.service,0755',
     'libvirtd,/usr/sbin/libvirtd,0,system.slice,libvirtd.service,0755',
     'ModemManager,/usr/sbin/ModemManager,0,system.slice,ModemManager.service,0755',
