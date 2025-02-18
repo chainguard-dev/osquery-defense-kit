@@ -114,6 +114,7 @@ WHERE
     'true,,Microsoft Single Sign On,ppnbnpeolgkicgegkbkbjmhlideopiji',
     'true,,Newsletter Creator for Gmail - Flashissue,cihaednhfbocfdiflmpccekcmjepcnmb',
     'true,,Nooks,kbbdibmbjngifdgbmlleelghocpeimhe',
+    'true,,NordVPN - VPN proxy for privacy and security,fjoaledfpmneenckfbpdfhkmimnjocfa',
     'true,,Okta Browser Plugin,glnpjglilkicbckjpbgcfkogebgllemb',
     'true,,Outreach Optimization on LinkedIn & Gmail,ngeodglgpmplepchhghijjncnikifaed',
     'true,,Poshmark | PosherVA,ofacfijogapplfgkoolmdojoieiemihl',
@@ -133,6 +134,7 @@ WHERE
     'true,,TextExpander: Keyboard Shortcuts & Templates,mmfhhfjhpadoefoaahomoakamjcfcoil',
     'true,,Touch VPN - Secure and unlimited VPN proxy,bihmplhobchoageeokmgbdihknkjbknd',
     'true,,Video Downloader PLUS,njgehaondchbmjmajphnhlojfnbfokng',
+    'true,,Video Downloader Professional,elicpjhcidhpjomhibiffojpinpmmpil',
     'true,,Vimium,dbepggeogbaibhgnhhndojpepiihcmeb',
     'true,,Web Developer,bfbameneiokkgbdmiekhjnmfkcnldhhm',
     'true,,Wistia Video Downloader,acbiaofoeebeinacmcknopaikmecdehl',
@@ -164,7 +166,9 @@ WHERE
     'true,Raymond Hill & contributors,uBlock Origin,cjpalhdlnbpafiamejdnhcphjbkeiagm',
     'true,Reddit Enhancement Suite contributors,Reddit Enhancement Suite,kbmfpngjjgdllneeigpgjifpgocmfgmb',
     'true,Symantec Corporation,Norton Password Manager,admmjipmmciaobhojoghlmleefbicajg',
+    'true,,Tampermonkey,dhdgffkkebhmkfjojejmpbldmpobfkfo',
     'true,Yuri Konotopov <ykonotopov@gnome.org>,GNOME Shell integration,gphhapmejobijbbhgpjhcjognlahblep',
+    'true,Zinlab <sebastian@Zinlab>,Better History,egehpkpgpgooebopjihjmnpejnjafefi',
     'true,eyeo GmbH,Adblock Plus - free ad blocker,cfhdojbkjhnklbpkdaibdccddilifddb',
     'true,https://metamask.io,MetaMask,nkbihfbeogaeaoehlefnkodbefgpgknn'
   )
