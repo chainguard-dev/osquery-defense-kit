@@ -107,6 +107,7 @@ WHERE
     '500,Developer ID Application: Autodesk (XXKJ396S2Y)',
     '500,Developer ID Application: Blackmagic Design Inc (9ZGFBWLSYP)',
     '500,Developer ID Application: Cisco (DE8Y96K9QP)',
+    '500,Developer ID Application: Azul Systems, Inc. (TDTHCUPYFR)',
     '500,Developer ID Application: David Kocher (G69SCX94XU)',
     '500,Developer ID Application: Google LLC (EQHXZ8M8AV)',
     '500,Developer ID Application: Microsoft Corporation (UBF8T346G9)',

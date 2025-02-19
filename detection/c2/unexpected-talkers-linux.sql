@@ -132,6 +132,7 @@ WHERE
     '80,6,0,python3.12,500u,500g,dnf-automatic',
     '80,6,0,python3.9,u,g,yum',
     '80,6,0,rpm-ostree,0u,0g,rpm-ostree',
+    '32520,6,0,rpm-ostree,0u,0g,rpm-ostree',
     '80,6,0,sort,0u,0g,sort',
     '80,6,0,systemd-hwdb,0u,0g,systemd-hwdb',
     '80,6,0,tailscaled,0u,0g,tailscaled',

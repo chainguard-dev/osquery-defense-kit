@@ -88,6 +88,7 @@ WHERE
     'ext',
     'nox',
     'real',
+    'smp',
     'test',
     'tiny'
   )
