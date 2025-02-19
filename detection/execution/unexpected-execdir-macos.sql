@@ -113,6 +113,7 @@ WHERE
     '~/.kuberlr/',
     '~/.provisio/',
     '~/.clickshare_button/',
+    '~/.clickshare/',
     '~/.pulumi/',
     '~/.pyenv/',
     '~/.rbenv/',
