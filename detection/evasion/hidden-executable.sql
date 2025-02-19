@@ -82,6 +82,7 @@ WHERE
     '~/code',
     '~/Code',
     '~/.goenv',
+    '~/repos',
     '/nix/store/.links',
     '~/Projects',
     '~/src',

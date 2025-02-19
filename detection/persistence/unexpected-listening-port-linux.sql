@@ -18,7 +18,7 @@ SELECT
   p_p.cmdline AS p1_cmd,
   p_p_p.cmdline AS p2_cmd,
   p.cgroup_path,
-  datetime (file.mtime, 'unixepoch') AS mtime,
+  datetime(file.mtime, 'unixepoch') AS mtime,
   p.cwd,
   hash.sha256,
   CONCAT (
@@ -226,15 +226,11 @@ WHERE
   )
   -- Exclude common/default DNS talking
   AND NOT (
-    p.name IN (
-      'aardvark-dns',
-      'coredns',
-      'dnsmasq'
-    )
+    p.name IN ('aardvark-dns', 'coredns', 'dnsmasq')
     AND lp.port IN (
-      53,   -- DNS
-      67,   -- DHCP/BOOTP
-      547   -- DHCPv6 server
+      53, -- DNS
+      67, -- DHCP/BOOTP
+      547 -- DHCPv6 server
     )
     AND lp.protocol IN (
       6, -- TCP
@@ -243,6 +239,7 @@ WHERE
   )
   -- Exclude processes running inside of Docker containers
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
+  AND NOT p.cgroup_path LIKE '/kubepods.slice/%'
   AND NOT p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
   AND NOT p.cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/libpod-%'
   AND NOT p1_cmd LIKE 'bwrap --bind%'
