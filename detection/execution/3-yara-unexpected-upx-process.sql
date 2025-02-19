@@ -1,8 +1,8 @@
 -- Currently running UPX executable
--- 
+--
 -- tags: persistent
 -- interval: 7199
--- platform: posix
+-- platform: linux
 SELECT
   yara.*,
   -- Child
@@ -50,7 +50,7 @@ WHERE
     GROUP BY
       path
   )
-  AND yara.sigrule = '    
+  AND yara.sigrule = '
     rule upx {
     strings:
         $upx_sig = "UPX!"
