@@ -87,6 +87,8 @@ WHERE
     OR perms LIKE '%desktopCapture%'
   )
   AND NOT exception_key IN (
+    "true,GEN Digital Inc.,I don't care about cookies,fihnjjcciajhdojfnbdddfaoknhalnja",
+    "true,OhMyGuus and Community (originally Daniel Kladnik),I still don't care about cookies,edibdbjcniadpccecjdfdjjppcpchdlm",
     'false,privacybadger-owner@eff.org,Privacy Badger,mkejgcgkdlddbggjhhflekkondicpnop',
     'true,,Adobe Acrobat: PDF edit, convert, sign tools,efaidnbmnnnibpcajpcglclefindmkaj',
     'true,,Allow CORS: Access-Control-Allow-Origin,lhobafahddgcelffkeicbaginigeejlf',
@@ -124,6 +126,7 @@ WHERE
     'true,,Newsletter Creator for Gmail - Flashissue,cihaednhfbocfdiflmpccekcmjepcnmb',
     'true,,Nooks,kbbdibmbjngifdgbmlleelghocpeimhe',
     'true,,NordVPN - VPN proxy for privacy and security,fjoaledfpmneenckfbpdfhkmimnjocfa',
+    'true,,NoScript,doojmbjmlfjjnbmnoijecmcbfeoakpjm',
     'true,,Okta Browser Plugin,glnpjglilkicbckjpbgcfkogebgllemb',
     'true,,Outreach Optimization on LinkedIn & Gmail,ngeodglgpmplepchhghijjncnikifaed',
     'true,,Page Analytics (by Google),fnbdnhhicmebfgdgglcdacdapkcihcoh',
@@ -187,6 +190,7 @@ WHERE
     'true,Raymond Hill & contributors,uBlock Origin,cjpalhdlnbpafiamejdnhcphjbkeiagm',
     'true,Reddit Enhancement Suite contributors,Reddit Enhancement Suite,kbmfpngjjgdllneeigpgjifpgocmfgmb',
     'true,Symantec Corporation,Norton Password Manager,admmjipmmciaobhojoghlmleefbicajg',
+    'true,Thomas Rientjes,Decentraleyes,ldpochfccmkkmhdbclfhpagapcfdljkj',
     'true,Wappalyzer,Wappalyzer - Technology profiler,gppongmhjkpfnbhagpmjfkannfbllamg',
     'true,Yuri Konotopov <ykonotopov@gnome.org>,GNOME Shell integration,gphhapmejobijbbhgpjhcjognlahblep',
     'true,Zinlab <sebastian@Zinlab>,Better History,egehpkpgpgooebopjihjmnpejnjafefi'
