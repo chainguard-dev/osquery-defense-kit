@@ -1,5 +1,5 @@
 -- Currently running program with Linux red flags
--- 
+--
 -- reference:
 --   * bpfdoor (old)
 --
@@ -53,7 +53,7 @@ WHERE
     GROUP BY
       path
   )
-  AND yara.sigrule = '    
+  AND yara.sigrule = '
     rule syscalls {
     strings:
         $inet_ntoa = "inet_ntoa"
@@ -67,6 +67,7 @@ WHERE
   AND yara.path NOT IN (
     '/usr/bin/dbus-broker-launch',
     '/usr/bin/sudo',
+    '/usr/sbin/greetd',
     '/usr/lib/git-core/git-remote-https',
     '/usr/sbin/auditd',
     '/usr/sbin/mcelog'
