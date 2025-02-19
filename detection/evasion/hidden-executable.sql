@@ -105,6 +105,7 @@ WHERE
   )
   AND NOT f.directory = '/nix/store/.links'
   AND NOT f.directory LIKE '%/.terraform/%'
+  AND NOT f.directory LIKE '%/.zig-cache/%'
   AND NOT f.directory LIKE '%/anchore/grype/.tool%'
   AND NOT f.directory LIKE '%/Applications/PSI Bridge Secure Browser.app/Contents/Resources/.apps/darwin/%'
   AND NOT f.directory LIKE '%/com.jetbrains.GoLand/cache/JetBrains/GoLand%'
