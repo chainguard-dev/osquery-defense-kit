@@ -242,6 +242,7 @@ WHERE
   -- Exclude processes running inside of Docker containers
   AND NOT p.cgroup_path LIKE '/system.slice/docker-%'
   AND NOT p.cgroup_path LIKE '/kubepods.slice/%'
+  AND NOT p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/docker-%'
   AND NOT p.cgroup_path LIKE '/user.slice/user-%.slice/user@%.service/user.slice/nerdctl-%'
   AND NOT p.cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/libpod-%'
   AND NOT p1_cmd LIKE 'bwrap --bind%'
