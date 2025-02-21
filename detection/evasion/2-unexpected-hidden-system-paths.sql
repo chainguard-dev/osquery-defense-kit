@@ -190,6 +190,8 @@ WHERE
     '/var/root/.PenTablet/',
     '/var/root/.provisio',
     '/var/root/.ssh/',
+    '/.vim/',
+    '/.viminfo',
     '/var/root/.Trash/',
     '/var/root/.viminfo',
     '/var/root/.zsh_history',

@@ -231,5 +231,6 @@ WHERE
   AND NOT f.directory LIKE '/var/root/Library/Caches/%/org.sparkle-project.Sparkle/%/Sparkle.framework%'
   AND NOT f.path LIKE '/Users/%/Library/Fonts/%.otf'
   AND NOT f.path LIKE '/Users/%/Library/Fonts/%.ttf'
+  AND NOT f.path LIKE '/Users/%/result/activate'
 GROUP BY
   f.path

@@ -49,6 +49,7 @@ WHERE
     'jpg',
     'json',
     'key',
+    'loaded_0',
     'loaded_1',
     'md',
     'mov',
@@ -86,3 +87,5 @@ WHERE
     'yml',
     'zip'
   )
+GROUP BY
+  file.path

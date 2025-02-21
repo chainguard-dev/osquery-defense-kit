@@ -72,7 +72,7 @@ WHERE
   p0.euid = 0
   AND p0.parent > 0
   AND p0.path != ""
-  AND p0.start_time < (strftime('%s', 'now') - 1200)
+  AND p0.start_time < (strftime('%s', 'now') - 3600)
   AND exception_key NOT IN (
     '(sd-pam),/usr/lib/systemd/systemd,0,user.slice,user-0.slice,0755',
     '(sd-pam),/usr/lib/systemd/systemd-executor,0,user.slice,user-0.slice,0755',
@@ -141,6 +141,7 @@ WHERE
     'dirmngr,/usr/bin/dirmngr,0,system.slice,archlinux-keyring-wkd-sync.service,0755',
     'dirmngr,/usr/bin/dirmngr,0,system.slice,system-dirmngr.slice,0755',
     'DisplayLinkMana,/usr/libexec/displaylink/DisplayLinkManager,0,system.slice,displaylink.service,0755',
+    'dmeventd,/usr/sbin/dmeventd,0,system.slice,dm-event.service,0755',
     'dnf,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
     'dnsmasq,/usr/bin/dnsmasq,0,system.slice,libvirtd.service,0755',
     'dnsmasq,/usr/sbin/dnsmasq,0,system.slice,libvirtd.service,0755',
@@ -189,8 +190,8 @@ WHERE
     'gpg-agent,/usr/bin/gpg-agent,0,system.slice,fwupd.service,0755',
     'gpg-agent,/usr/bin/gpg-agent,0,system.slice,packagekit.service,0755',
     'gpg-agent,/usr/bin/gpg-agent,0,user.slice,user-1000.slice,0755',
-    'greetd,/usr/sbin/greetd,0,user.slice,user-1000.slice,0755',
     'greetd,/usr/sbin/greetd,0,system.slice,greetd.service,0755',
+    'greetd,/usr/sbin/greetd,0,user.slice,user-1000.slice,0755',
     'group-admin-dae,/usr/libexec/group-admin-daemon,0,system.slice,group-admin-daemon.service,0755',
     'gssproxy,/usr/sbin/gssproxy,0,system.slice,gssproxy.service,0755',
     'gvfsd,/usr/libexec/gvfsd,0,user.slice,user-1000.slice,0755',
@@ -213,6 +214,7 @@ WHERE
     'ir_agent,/opt/rapid7/ir_agent/ir_agent,0,system.slice,ir_agent.service,0700',
     'irqbalance,/usr/sbin/irqbalance,0,system.slice,irqbalance.service,0755',
     'iwd,/usr/lib/iwd/iwd,0,system.slice,iwd.service,0755',
+    'journalctl,/usr/bin/journalctl,0,user.slice,user-1000.slice,0755',
     'just,/usr/bin/just,0,user.slice,user-1000.slice,0755',
     'keyd,/usr/local/bin/keyd,0,system.slice,keyd.service,0755',
     'launcher,/opt/kolide-k2/bin/launcher,0,system.slice,launcher.kolide-k2.service,0755',
@@ -245,6 +247,7 @@ WHERE
     'mc,/usr/bin/mc,0,user.slice,user-0.slice,0755',
     'mcelog,/usr/sbin/mcelog,0,system.slice,mcelog.service,0755',
     'metalauncher,/var/vanta/metalauncher,0,system.slice,vanta.service,0755',
+    'mintUpdate,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
     'ModemManager,/usr/sbin/ModemManager,0,system.slice,ModemManager.service,0755',
     'mount.ntfs,/usr/bin/ntfs-3g,0,system.slice,udisks2.service,0755',
     'mpris-proxy,/usr/bin/mpris-proxy,0,user.slice,user-0.slice,0755',
@@ -286,6 +289,7 @@ WHERE
     'pmdaproc,/usr/libexec/pcp/pmdas/proc/pmdaproc,0,system.slice,pmcd.service,0755',
     'pmdaroot,/usr/libexec/pcp/pmdas/root/pmdaroot,0,system.slice,pmcd.service,0755',
     'pmdaxfs,/usr/libexec/pcp/pmdas/xfs/pmdaxfs,0,system.slice,pmcd.service,0755',
+    'podman,/usr/bin/podman,0,system.slice,podman.service,0755',
     'polkitd,/usr/libexec/polkitd,0,system.slice,polkit.service,0755',
     'pop-system-upda,/usr/bin/pop-system-updater,0,system.slice,com.system76.SystemUpdater.service,0755',
     'power-profiles-,/usr/lib/power-profiles-daemon,0,system.slice,power-profiles-daemon.service,0755',
@@ -410,6 +414,7 @@ WHERE
     'zfs-auto-snapsh,/nix/store/__VERSION__/bin/ruby,0,system.slice,zfs-snapshot-frequent.service,0555',
     'zfs-auto-snapsh,/nix/store/__VERSION__/bin/ruby,0,system.slice,zfs-snapshot-hourly.service,0555'
   )
+  AND NOT exception_key LIKE 'incusd,/usr/libexec/incus/incusd,0,lxc.monitor.%,,0755'
   AND NOT exception_key LIKE 'dhcpcd,/usr/sbin/dhcpcd,0,system.slice,ifup@en%.service,0755'
   AND NOT exception_key LIKE '%beat,%/opt/Elastic/Agent/data/elastic-%/components/%beat,0,system.slice,elastic-agent.service,%'
   AND NOT exception_key LIKE 'abrt-dbus,/usr/sbin/abrt-dbus,0,system.slice,system-dbus%org.freedesktop.problems.slice,%'

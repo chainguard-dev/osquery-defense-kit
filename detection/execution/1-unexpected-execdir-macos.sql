@@ -162,6 +162,7 @@ WHERE
     '~/Library/Caches/com.mimestream.Mimestream/',
     '~/Library/Caches/com.sempliva.Tiles/',
     '~/Library/Caches/Cypress/',
+    '~/Library/Caches/go-build/',
     '~/Library/Caches/JetBrains/',
     '~/Library/Caches/org.gpgtools.updater/',
     '~/Library/Caches/snyk/',
@@ -191,6 +192,8 @@ WHERE
   AND homedir NOT LIKE '~/Library/Caches/%/org.sparkle-project.Sparkle/Launcher/%/Updater.app/Contents/MacOS'
   AND homedir NOT LIKE '~/Library/Caches/ms-playwright/%'
   AND homedir NOT LIKE '~/Library/Printers/%/Contents/MacOS'
+  AND homedir NOT LIKE '~/Documents/%/mono/%'
+  AND homedir NOT LIKE '~/Documents/GH/%'
   AND s.authority NOT IN (
     'Apple iPhone OS Application Signing',
     'Apple Mac OS Application Signing',
