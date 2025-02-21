@@ -3,7 +3,7 @@
 -- false positives:
 --   * possible, but none known
 --
--- tags: transient process state extra
+-- tags: transient process state
 -- platform: darwin
 SELECT
   s.authority AS p0_auth,

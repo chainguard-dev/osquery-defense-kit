@@ -3,7 +3,7 @@
 -- false positives:
 --   * possible, but none known
 --
--- tags: transient process state extra
+-- tags: transient process state
 -- platform: linux
 SELECT
   DATETIME(f.ctime, 'unixepoch') AS p0_changed,
@@ -144,7 +144,7 @@ WHERE
       p0.cmdline LIKE '%tail -f /dev/null%'
       AND NOT p0.cmdline LIKE 'docker run%'
       AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
-      AND NOT p1.pid == 0
+      AND NOT p1.pid = = 0
     )
   )
   AND NOT p0.cmdline like '%socat UNIX-LISTEN:%com.discordapp%discord-ipc%'

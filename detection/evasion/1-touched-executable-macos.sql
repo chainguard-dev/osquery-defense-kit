@@ -9,7 +9,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1070/006/ (Timestomping)
 --
--- tags: transient seldom filesystem state extra
+-- tags: transient seldom filesystem state
 -- platform: darwin
 SELECT
   p.path,
@@ -55,7 +55,7 @@ WHERE
       AND path NOT LIKE '/usr/sbin/%'
       AND path NOT LIKE '/Volumes/%'
   )
-  AND f.btime == f.mtime
+  AND f.btime = = f.mtime
   AND (
     -- change time is older than birth time
     btime_ctime_days_diff > 0 -- change time is older than birth time, but not 1970

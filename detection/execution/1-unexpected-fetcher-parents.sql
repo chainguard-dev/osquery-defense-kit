@@ -3,7 +3,7 @@
 -- refs:
 --   * https://attack.mitre.org/techniques/T1105/ (Ingress Tool Transfer)
 --
--- tags: transient process state often extra
+-- tags: transient process state often
 -- platform: posix
 SELECT
   p.pid,
@@ -37,12 +37,7 @@ FROM
   LEFT JOIN processes gp ON pp.parent = gp.pid
   LEFT JOIN hash ON pp.path = hash.path
 WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-parent-events
-  child_name IN (
-    'curl',
-    'ftp',
-    'tftp',
-    'wget'
-  ) -- And not a regular local user
+  child_name IN ('curl', 'ftp', 'tftp', 'wget') -- And not a regular local user
   AND NOT exception_key IN (
     'curl,0,09-timezone,nm-dispatcher',
     'curl,0,bash,kandji-library-manager',
@@ -94,13 +89,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
   )
   AND NOT (
     p.euid > 500
-    AND parent_name IN (
-      'bash',
-      'dash',
-      'fish',
-      'sh',
-      'zsh'
-    )
+    AND parent_name IN ('bash', 'dash', 'fish', 'sh', 'zsh')
     AND gparent_name IN (
       'alacritty',
       'bash',

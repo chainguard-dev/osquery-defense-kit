@@ -3,7 +3,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1071/ (C&C, Application Layer Protocol)
 --
--- tags: transient state net often extra
+-- tags: transient state net often
 -- platform: macos
 SELECT
   pos.protocol,
