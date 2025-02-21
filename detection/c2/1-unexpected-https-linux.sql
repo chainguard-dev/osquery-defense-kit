@@ -154,6 +154,7 @@ WHERE
     '500,cilium,500u,123g,cilium',
     '500,cloud_sql_proxy,0u,0g,cloud_sql_proxy',
     '500,cockatrice,u,g,cockatrice',
+    '500,codium,0u,0g,codium',
     '500,code,0u,0g,code',
     '500,code,500u,500g,code',
     '500,code,u,g,code',
