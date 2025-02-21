@@ -90,6 +90,8 @@ WHERE
     'sm-agent',
     'stable',
     'uv',
+    'warp',
+    'warp-terminal',
     'wezterm-gui',
     'zed'
   )

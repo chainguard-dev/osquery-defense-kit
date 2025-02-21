@@ -1,4 +1,4 @@
--- tags: volume filesystem seldom extra
+-- tags: volume filesystem seldom
 SELECT
   file.path,
   file.size,

@@ -91,6 +91,7 @@ WHERE
     '/dev/data/,directory',
     '/dev/data/root,block',
     '/dev/dbc,character',
+    '/dev/default/,directory',
     '/dev/disk/,directory',
     '/dev/disk/by-diskseq,directory',
     '/dev/disk/by-dname,directory',
@@ -306,5 +307,6 @@ WHERE
   AND NOT exception_key LIKE '/dev/%vg/,directory'
   AND NOT exception_key LIKE '/dev/%vg/root,block'
   AND NOT exception_key LIKE '/dev/%vg/swap%,block'
+  AND NOT exception_key LIKE '/dev/default/%,block'
 GROUP BY
   exception_key

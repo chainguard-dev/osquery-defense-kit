@@ -87,6 +87,8 @@ WHERE
     '17,255,500,mtr-packet',
     '1716,6,500,daemon.js',
     '1716,6,500,gjs',
+    '58,255,100,dhcpcd',
+    '68,17,100,dhcpcd',
     '1716,6,500,kdeconnectd',
     '17500,6,500,dropbox',
     '18000,6,500,kourier',

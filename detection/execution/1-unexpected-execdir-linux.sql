@@ -58,6 +58,7 @@ WHERE
       AND INSTR(path, "/tmp/go-build") != 1
       AND INSTR(path, "/usr/bin/") != 1
       AND INSTR(path, "/usr/lib/") != 1
+      AND INSTR(path, "/lib/chromium/") != 1
       AND INSTR(path, "/usr/lib64/") != 1
       AND INSTR(path, "/usr/libexec") != 1
       AND INSTR(path, "/usr/local/") != 1
@@ -86,6 +87,7 @@ WHERE
       AND NOT cgroup_path LIKE '/system.slice/docker-%' -- Interactive terminal
       AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/libpod-%'
       AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
+      AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/snap.%'
       AND NOT cgroup_path LIKE '/kubepods.slice/%'
       AND NOT (
         cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-Alacritty-%.scope'

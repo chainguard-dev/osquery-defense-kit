@@ -10,7 +10,7 @@
 -- references:
 --   * https://attack.mitre.org/tactics/TA0009/ (Collection)
 --
--- tags: transient process extra
+-- tags: transient process
 SELECT
   -- WARNING: Writes to tmpfs are not reflected against this counter
   p0.disk_bytes_written AS bytes_written,

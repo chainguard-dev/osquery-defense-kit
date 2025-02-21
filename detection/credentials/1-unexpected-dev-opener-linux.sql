@@ -132,8 +132,9 @@ WHERE
     '/dev/input,Hyprland',
     '/dev/input,keyd',
     '/dev/input,kwin_wayland',
-    '/dev/input,systemd-logind',
+    '/dev/input,sway',
     '/dev/input,systemd',
+    '/dev/input,systemd-logind',
     '/dev/input,thermald',
     '/dev/input,touchegg',
     '/dev/input,upowerd',
@@ -156,7 +157,6 @@ WHERE
     '/dev/shm,Melvor Idle',
     '/dev/shm,msedge',
     '/dev/shm,osqueryd',
-    '/dev/input,sway',
     '/dev/shm,reaper',
     '/dev/shm,slack',
     '/dev/shm,spotify',
@@ -198,6 +198,7 @@ WHERE
     '/dev/kmsg,systemd-journald',
     '/dev/kvm,qemu-system-x86_64',
     '/dev/mapper/control,dockerd',
+    '/dev/mapper/control,dmeventd',
     '/dev/mapper/control,gpartedbin',
     '/dev/mapper/control,multipathd',
     '/dev/mcelog,mcelog',
@@ -255,6 +256,7 @@ WHERE
     '/dev/zfs,zfs',
     '/dev/zfs,zpool'
   )
+  AND path_exception NOT LIKE '/dev/dm-%,qemu-system-%'
   AND path_exception NOT LIKE '/dev/bus/usb/%,scdaemon'
   AND path_exception NOT LIKE '/dev/cpu_dma_latency,python%'
   AND path_exception NOT LIKE '/dev/shm/%'

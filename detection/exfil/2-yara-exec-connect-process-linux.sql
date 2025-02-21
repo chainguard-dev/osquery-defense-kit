@@ -67,8 +67,8 @@ WHERE
   AND yara.path NOT IN (
     '/usr/bin/dbus-broker-launch',
     '/usr/bin/sudo',
-    '/usr/sbin/greetd',
     '/usr/lib/git-core/git-remote-https',
     '/usr/sbin/auditd',
+    '/usr/sbin/greetd',
     '/usr/sbin/mcelog'
   )

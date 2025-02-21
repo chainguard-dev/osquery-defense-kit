@@ -30,7 +30,7 @@ WHERE
     OR file.path LIKE '/dev/%/.%'
     OR file.path LIKE '/dev/%%/.%/%'
     OR file.path LIKE '/dev/mqueue/%%'
-  ) -- We should also use uid for making decisions here
+  )
   AND NOT (
     file.uid > 499
     AND (
@@ -46,6 +46,7 @@ WHERE
       OR file.path LIKE '/dev/shm/u1000-Shm%'
       OR file.path LIKE '/dev/shm/u1000-Valve%'
       OR file.path LIKE '/dev/shm/wayland.mozilla.%'
+      OR file.path LIKE '/dev/shm/xapp-tmp-%'
     )
   )
   AND NOT (

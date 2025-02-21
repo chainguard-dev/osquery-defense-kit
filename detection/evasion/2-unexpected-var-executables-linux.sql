@@ -59,6 +59,12 @@ WHERE
     '/var/run/lima-boot-done',
     '/var/run/lima-ssh-ready'
   )
+  AND NOT (
+    file.directory = '/var/spool/postfix/incoming'
+    AND size < 1024
+    AND mode = '07000'
+    AND gid = 0
+  )
   AND (
     magic.data IS NULL
     OR magic.data != 'JSON data'

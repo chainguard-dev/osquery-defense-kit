@@ -78,24 +78,25 @@ WHERE
   AND NOT homepath LIKE '~/%arm64%'
   AND NOT homepath LIKE '~/%x86_64%'
   AND NOT top2_dir IN (
+    '/nix/store/.links',
+    '/var~/.local',
+    '~/.goenv',
+    '~/.vs-kubernetes',
     '~/chainguard-images',
     '~/code',
     '~/Code',
-    '~/.goenv',
-    '~/repos',
-    '/nix/store/.links',
     '~/Projects',
-    '~/src',
-    '/var~/.local',
-    '~/.vs-kubernetes'
+    '~/repos',
+    '~/src'
   )
   AND NOT top3_dir IN (
     '/home/linuxbrew/.linuxbrew',
     '/var~/.local/share',
     '~/.cache/gitstatus',
+    '~/.cache/go-build',
     '~/.cache/JetBrains',
-    '~/.cache/selenium',
     '~/.cache/rod',
+    '~/.cache/selenium',
     '~/.config/bluejeans-v2',
     '~/.config/Code',
     '~/.config/nvm',

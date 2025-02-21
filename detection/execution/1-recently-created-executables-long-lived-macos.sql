@@ -3,7 +3,7 @@
 -- false-positives:
 --   * many
 --
--- tags: transient process state extra
+-- tags: transient process state
 -- platform: darwin
 SELECT
   f.ctime,
