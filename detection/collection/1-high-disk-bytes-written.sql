@@ -164,6 +164,7 @@ WHERE
     'launcher',
     'limactl',
     'logioptionsplus_updater',
+    'mal',
     'mediawriter',
     'melange-run',
     'melange',

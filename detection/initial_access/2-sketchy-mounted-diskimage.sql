@@ -141,6 +141,7 @@ WHERE
       AND file.directory LIKE "/Volumes/%/Contents/MacOS"
       AND signature.authority NOT IN (
         "Developer ID Application: Bookry Ltd (4259LE8SU5)",
+        "Developer ID Application: Bose Corporation (QC9P7FKWH6)",
         "Developer ID Application: Justin Clift (C34AV33YLK)",
         "Developer ID Application: Logitech Inc. (QED4VVPZWA)",
         "Developer ID Application: Oracle America, Inc. (VB5E2TV963)",
