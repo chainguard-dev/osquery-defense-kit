@@ -8,6 +8,7 @@
 SELECT
   f.ctime AS p0_ctime,
   f.mtime AS p0_mtime,
+  p0.start_time - MAX(f.ctime, f.btime) AS p0_start_delay,
   -- Child
   p0.pid AS p0_pid,
   p0.path AS p0_path,
@@ -44,8 +45,8 @@ FROM
 WHERE
   p0.start_time > 0
   AND f.ctime > 0
-  AND p0.start_time < (strftime('%s', 'now') - 43200)
-  AND (p0.start_time - MAX(f.ctime, f.btime)) < 10800
+  AND p0.start_time < (strftime('%s', 'now') - 86400)
+  AND (p0.start_time - MAX(f.ctime, f.btime)) < 300
   AND p0.start_time >= MAX(f.ctime, f.ctime)
   AND NOT f.directory IN ('/usr/lib/firefox', '/usr/local/kolide-k2/bin') -- Typically daemons or long-running desktop apps
   -- These are binaries that are known to get updated and subsequently executed
@@ -55,6 +56,14 @@ WHERE
     '',
     '/bin/bash',
     '/bin/containerd-shim-runc-v2',
+    '/usr/lib/systemd/systemd-executor',
+    '/usr/libexec/gdm-wayland-session',
+    '/usr/libexec/gdm-session-worker',
+    '/usr/libexec/xdg-document-portal',
+    '/usr/libexec/xdg-permission-store',
+    '/usr/libexec/xdg-desktop-portal',
+    '/usr/share/codium/codium',
+    '/usr/share/codium/chrome-sandbox',
     '/bin/containerd',
     '/bin/sh',
     '/opt/google/chrome/chrome_crashpad_handler',
@@ -74,7 +83,12 @@ WHERE
     '/usr/lib/fwupd/fwupd',
     '/usr/lib/gdm-session-worker',
     '/usr/lib/gdm-x-session',
+    '/usr/libexec/gvfsd-recent',
+    '/usr/libexec/gvfsd-network',
     '/usr/lib/gdm',
+    '/usr/libexec/gvfsd-recent',
+    '/usr/libexec/gvfsd-dnssd',
+    '/usr/libexec/gvfsd-wsdd',
     '/usr/lib/gnome-shell-calendar-server',
     '/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3',
     '/usr/lib/ibus/ibus-dconf',
@@ -144,6 +158,8 @@ WHERE
   AND NOT p0.path LIKE '/home/%/.rustup/toolchains/%/libexec/%'
   AND NOT p0.path LIKE '/home/%/%.test'
   AND NOT p0.path LIKE '/home/%/bin/%'
+  AND NOT p0.path LIKE '/home/%/.cache/JetBrains/%'
+  AND NOT p0.path LIKE '/home/%/.local/share/JetBrains/%'
   AND NOT p0.path LIKE '/home/%/git/%'
   AND NOT p0.path LIKE '/home/%/jbr/bin/java'
   AND NOT p0.path LIKE '/home/%/jbr/lib/jcef_helper'
