@@ -64,6 +64,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,500,env,env',
     'curl,500,eos-connection-,eos-update-noti',
     'curl,500,fish,gnome-terminal-',
+    'curl,500,invoke,sh',
     'curl,500,launchd,kernel_task',
     'curl,500,make,bash',
     'curl,500,makepkg,yay',
@@ -84,6 +85,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,500,zsh,sh',
     'curl,500,zsh,zellij',
     'wget,500,env,env',
+    'wget,500,invoke,sh',
     'wget,500,sh,bwrap',
     'wget,500,zsh,bash'
   )

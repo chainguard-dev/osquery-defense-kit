@@ -111,6 +111,7 @@ WHERE
     '80,6,0,incusd,0u,0g,incusd',
     '80,6,0,kmod,0u,0g,depmod',
     '80,6,0,kubelet,u,g,kubelet',
+    '8080,6,500,goland,u,g,goland',
     '80,6,0,ldconfig,0u,0g,ldconfig',
     '80,6,0,melange,500u,500g,melange',
     '80,6,0,NetworkManager,0u,0g,NetworkManager',

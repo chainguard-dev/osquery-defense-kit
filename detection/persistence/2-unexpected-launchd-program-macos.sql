@@ -61,6 +61,7 @@ WHERE
     'Developer ID Application: Wireshark Foundation (7Z6EMTD2C6)',
     'Developer ID Application: Wireshark Foundation, Inc. (7Z6EMTD2C6)',
     'Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9)',
+    'Developer ID Application: Yufu Fan (S3YBM9ALKM)',
     'Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     'Software Signing'
   )

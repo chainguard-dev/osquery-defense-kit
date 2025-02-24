@@ -98,5 +98,6 @@ WHERE
   AND NOT basename LIKE 'ld-%.so'
   AND NOT basename LIKE 'python2.%'
   AND NOT basename LIKE 'python3.%'
+  AND NOT basename LIKE 'emacs-%'
   AND NOT basename LIKE 'terraform-provider%'
   AND NOT basename LIKE 'unison-%'

@@ -160,6 +160,7 @@ WHERE
   )
   AND NOT p0.path IN (
     '/app/libexec/mediawriter/helper',
+    '/usr/libexec/syspolicyd',
     '/Library/Application Support/Adobe/Adobe Desktop Common/HDBox/Setup',
     '/Library/Elastic/Endpoint/elastic-endpoint',
     '/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/XPCServices/com.apple.Safari.BrowserDataImportingService.xpc/Contents/MacOS/com.apple.Safari.BrowserDataImportingService',
