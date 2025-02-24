@@ -166,6 +166,8 @@ WHERE
     '/dev/ngn,character',
     '/dev/ntsync,character',
     '/dev/null,character',
+    '/dev/nvidia-caps/,directory',
+    '/dev/nvidia-caps/nvidia-cap,character',
     '/dev/nvidia-modeset,character',
     '/dev/nvidia-uvm-tools,character',
     '/dev/nvidia-uvm,character',

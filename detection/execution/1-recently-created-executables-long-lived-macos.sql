@@ -151,6 +151,8 @@ WHERE
       OR homepath LIKE '~/%/pkg/%.test'
       OR homepath LIKE '~/%/src/%.test'
       OR homepath LIKE '~/%/terraform-provider-%'
+      OR homepath LIKE '~/chainguard-dev/%'
+      OR homepath LIKE '~/repos/%'
       OR homepath LIKE '~/github/%'
       OR homepath LIKE '~/go/%/bin'
       OR homepath LIKE '~/go/src/%'
@@ -245,6 +247,7 @@ WHERE
     AND p0.path NOT LIKE '%/.%'
     AND p0.path NOT LIKE '%Cache%'
   )
+  AND NOT p1.name IN ('makepkg', 'make')
   -- Arc
   AND NOT (
     p0.path LIKE '/Users/%/Library/Caches/%/org.sparkle-project.Sparkle/Launcher/%'
