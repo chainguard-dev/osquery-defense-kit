@@ -246,6 +246,7 @@ WHERE
     'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     'Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     'Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
+    'Developer ID Application: SLACK TECHNOLOGIES L.L.C. (BQR82RBBHL)',
     'Developer ID Application: Spotify (2FNC3A47ZF)',
     'Developer ID Application: SteelSeries (6WGL6CHFH2)',
     'Developer ID Application: Sublime HQ Pty Ltd (Z6D26JE4Y4)',
