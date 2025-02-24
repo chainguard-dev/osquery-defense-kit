@@ -19,8 +19,16 @@ SELECT
   signature.identifier,
   signature.authority,
   ea.value AS url,
-  REGEX_MATCH (ea.value, '/([\w-]+\.[\w-]+)(?=[:/]|$)', 1) AS domain,
-  REGEX_MATCH (ea.value, '/([\w_-]+\.[\w\._-]+)[:/]', 1) AS host
+  REGEX_MATCH (ea.value, '/([\w_-]+\.[\w\._-]+)[:/]', 1) AS host,
+  COALESCE(
+    REGEX_MATCH (
+      ea.value,
+      '/\/[\w_-]+\.([\w_-]+\.[\w\._-]+)[:/]',
+      1
+    ),
+    -- Fallback to hostname if no subdomain is found
+    REGEX_MATCH (ea.value, '/([\w_-]+\.[\w\._-]+)[:/]', 1)
+  ) AS subdomain
 FROM
   mdfind
   LEFT JOIN file ON mdfind.path = file.path
@@ -36,7 +44,7 @@ WHERE
   )
   AND ea.key = 'where_from'
   AND file.btime > (strftime('%s', 'now') -86400)
-  AND domain NOT IN (
+  AND subdomain NOT IN (
     'adguard.com',
     'adobe.com',
     'akmedia.digidesign.com',

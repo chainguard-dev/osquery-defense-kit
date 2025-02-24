@@ -193,6 +193,7 @@ WHERE
     'syft',
     'terraform-provider-apko',
     'terraform',
+    'thunderbird-bin',
     'tmux:server',
     'topgrade',
     'tracker-miner-f',
@@ -206,6 +207,7 @@ WHERE
     'wolfictl',
     'yum'
   )
+  AND NOT p1.name IN ('bwrap')
   AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
   AND p0.path NOT LIKE '/home/%/.local/share/Steam'
   AND p0.path NOT LIKE '/Library/Application Support/%'

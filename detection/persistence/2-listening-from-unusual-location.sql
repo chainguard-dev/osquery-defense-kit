@@ -99,6 +99,8 @@ WHERE
   -- Overly broad, but prevents a lot of false positives
   AND NOT homepath LIKE "~/.%"
   AND NOT homecwd LIKE "~/.%"
+  AND NOT homecwd LIKE "~/src/%"
+  AND NOT homecwd LIKE "~/repos/%"
   AND NOT homecwd LIKE '/Users/%/.gradle/daemon/%'
   AND NOT homecwd LIKE '/home/%/.gradle/daemon/%'
   AND NOT f.directory IN (
@@ -121,7 +123,8 @@ WHERE
     '1,1,500,ping'
   )
   AND NOT p0.path LIKE '/nix/store/%'
-  AND NOt p0.path LIKE '/Users/Shared/Epic Games/%'
+  AND NOT p0.path LIKE '/Users/Shared/Epic Games/%'
+  AND NOT p0.path LIKE '/tmp/go-build%'
   AND NOT (
     exception_key = '32768,17,500,qemu-system-x86'
     AND homecwd LIKE '/tmp/wolfi-%'

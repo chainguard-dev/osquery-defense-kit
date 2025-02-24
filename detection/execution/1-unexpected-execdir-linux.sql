@@ -64,11 +64,7 @@ WHERE
       AND INSTR(path, "/usr/local/") != 1
       AND INSTR(path, "/usr/local/kolide-k2/bin/") != 1
       AND INSTR(path, "/usr/sbin/") != 1
-      AND INSTR(path, "/usr/share/code/") != 1
-      AND INSTR(path, "/usr/share/codium/") != 1
-      AND INSTR(path, "/usr/share/smartgit/") != 1
-      AND INSTR(path, "/usr/share/spotify") != 1
-      AND INSTR(path, "/usr/share/teams/") != 1
+      AND INSTR(path, "/usr/share/") != 1
       AND INSTR(path, "/usr/x86_64-pc-linux-gnu/bin") != 1
       AND INSTR(path, "/var/home/") != 1
       AND INSTR(path, "/var/kolide-k2/") != 1
@@ -88,6 +84,7 @@ WHERE
       AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/libpod-%'
       AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
       AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/snap.%'
+      AND NOT cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/docker-%'
       AND NOT cgroup_path LIKE '/kubepods.slice/%'
       AND NOT (
         cgroup_path LIKE '/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome-Alacritty-%.scope'

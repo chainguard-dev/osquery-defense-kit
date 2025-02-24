@@ -89,6 +89,7 @@ WHERE
     'CapCut',
     'cg',
     'chainctl',
+    'chromium',
     'ChatGPT',
     'chrome',
     'Code Helper (Plugin)',
@@ -146,6 +147,7 @@ WHERE
   )
   -- Chromium/Electron apps seem to send stray packets out like nobodies business
   AND basename NOT LIKE '% Helper'
+  AND basename NOT LIKE 'terraform-provider-%'
   AND p.path NOT LIKE '/snap/%'
   AND pp.path NOT IN ('/usr/bin/containerd-shim-runc-v2')
   -- Workaround for the GROUP_CONCAT subselect adding a blank ent

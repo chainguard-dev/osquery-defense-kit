@@ -64,6 +64,7 @@ WHERE
     'BetterDisplay,pro.betterdisplay.BetterDisplay,Developer ID Application: Istvan Toth (299YSU96J7)',
     'BetterTouchTool,com.hegenberg.BetterTouchTool,Developer ID Application: folivora.AI GmbH (DAFVSXZ82P)',
     'Contexts,com.contextsformac.Contexts,Developer ID Application: Usman Khalid (RZ7E748ZSC)',
+    'DDPM,Qisda.DDPM,Developer ID Application: Yufu Fan (S3YBM9ALKM)',
     'deskflow-client,deskflow-client,',
     'deskflow-server,deskflow-server,',
     'Display Pilot 2,com.benq.DisplayPilot2,Developer ID Application: BenQ Corporation (3YMZ8E4Y5W)',

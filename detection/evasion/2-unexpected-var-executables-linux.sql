@@ -55,6 +55,7 @@ WHERE
     '/var/run/booted-system',
     '/var/run/current-system'
   )
+  AND file.directory NOT LIKE '/var/tmp/ostree-unlock-ovl.%/upper/bin'
   AND file.path NOT IN (
     '/var/run/lima-boot-done',
     '/var/run/lima-ssh-ready'
