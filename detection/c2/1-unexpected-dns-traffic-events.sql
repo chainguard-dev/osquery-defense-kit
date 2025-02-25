@@ -89,20 +89,22 @@ WHERE
     'CapCut',
     'cg',
     'chainctl',
-    'chromium',
     'ChatGPT',
     'chrome',
+    'chromium',
     'Code Helper (Plugin)',
     'com.apple.WebKit.Networking',
     'com.docker.backend',
     'com.docker.buil',
     'com.docker.build',
     'com.docker.vpnkit',
+    'com.nordvpn.macos.helper',
     'containerd',
     'coredns',
     'Creative Cloud Content Manager.node',
     'distnoted',
     'dockerd',
+    'eksctl',
     'EpicWebHelper',
     'go',
     'grype',
@@ -148,6 +150,7 @@ WHERE
   -- Chromium/Electron apps seem to send stray packets out like nobodies business
   AND basename NOT LIKE '% Helper'
   AND basename NOT LIKE 'terraform-provider-%'
+  AND p.name != 'terraform-provi'
   AND p.path NOT LIKE '/snap/%'
   AND pp.path NOT IN ('/usr/bin/containerd-shim-runc-v2')
   -- Workaround for the GROUP_CONCAT subselect adding a blank ent

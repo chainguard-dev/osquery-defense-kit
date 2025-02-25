@@ -139,6 +139,7 @@ WHERE
     '500,kubectl,kubectl,Developer ID Application: Docker Inc (9BNSXJN65R),kubectl',
     '500,melange,melange,,a.out',
     '500,nami,nami,,a.out',
+    '500,art,art,,a.out',
     '500,ngrok,ngrok,Developer ID Application: ngrok LLC (TEX8MHRDQ9),a.out',
     '500,node,node,Developer ID Application: Node.js Foundation (HX7739G8FX),node',
     '500,odo-darwin-amd64-b4853e1fa,odo-darwin-amd64-b4853e1fa,500u,20g',

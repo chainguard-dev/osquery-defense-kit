@@ -44,6 +44,8 @@ WHERE
     '/usr/sbin/libvirtd',
     '/usr/bin/tcpdump',
     '/usr/libexec/UserEventAgent',
+    '/opt/datadog-agent/bin/agent/agent',
+    '/opt/datadog-agent/embedded/bin/system-probe',
     '/usr/sbin/cupsd',
     '/usr/sbin/systemstats'
   )

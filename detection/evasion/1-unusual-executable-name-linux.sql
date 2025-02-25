@@ -91,6 +91,7 @@ WHERE
   AND NOT pname LIKE '__Test%.test'
   AND pname NOT IN (
     "acpid",
+    "cpu_sup",
     "akonadi_followupreminder_agent",
     "gmenudbusmenuproxy",
     "irqbalance",

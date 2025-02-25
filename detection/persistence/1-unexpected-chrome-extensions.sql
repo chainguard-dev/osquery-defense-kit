@@ -168,6 +168,7 @@ WHERE
     'true,AgileBits,1Password – Password Manager,aeblfdkhhhdcdjpifhhbdiojplfjncoa',
     'true,AwardWallet LLC,AwardWallet,lppkddfmnlpjbojooindbmcokchjgbib',
     'true,Benjamin Hollis,JSONView,gmegofmjomhknnokphhckolhcffdaihd',
+    'true,BetterLogic <Dev@betterlogic>,Better History | Blacklist Mode,egehpkpgpgooebopjihjmnpejnjafefi',
     'true,Bitwarden Inc.,Bitwarden - Free Password Manager,nngceckbapebfimnlniiiahkandclblb',
     'true,Bitwarden Inc.,Bitwarden Password Manager,nngceckbapebfimnlniiiahkandclblb',
     'true,Cartera,American Airlines AAdvantage® eShopping℠,dcdiajifnnbipfljbggcbbheipfdmgpo',

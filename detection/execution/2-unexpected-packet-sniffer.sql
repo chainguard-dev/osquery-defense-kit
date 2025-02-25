@@ -42,6 +42,7 @@ WHERE
     'agentbeat',
     'dhclient',
     'dhcpcd',
+    'dockerd',
     'NetworkManager',
     'packetbeat',
     'systemd-network',

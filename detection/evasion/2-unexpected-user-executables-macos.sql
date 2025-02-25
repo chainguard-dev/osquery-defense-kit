@@ -211,6 +211,8 @@ WHERE
     '~/Library/Calendars/Calendar.sqlitedb-wal',
     '~/Library/Calendars/Calendar.sqlitedb',
     '~/Library/com.apple.iTunesCloud/play_activity.sqlitedb-wal',
+    '~/Library/Group Containers/group.com.apple.calendar/Calendar.sqlitedb-wal',
+    '~/Library/Group Containers/group.com.apple.calendar/Calendar.sqlitedb',
     '~/Library/Finance/finance_cloud.db-wal',
     '~/Library/Finance/finance_cloud.db',
     '~/Library/Group Containers/group.com.docker/unleash-repo-schema-v1-Docker Desktop.json',

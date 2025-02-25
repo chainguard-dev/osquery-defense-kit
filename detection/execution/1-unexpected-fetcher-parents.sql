@@ -84,6 +84,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,500,zsh,mc',
     'curl,500,zsh,sh',
     'curl,500,zsh,zellij',
+    'wget,500,bootstrap,sh',
     'wget,500,env,env',
     'wget,500,invoke,sh',
     'wget,500,sh,bwrap',
