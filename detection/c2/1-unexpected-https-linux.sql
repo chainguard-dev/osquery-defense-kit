@@ -82,6 +82,7 @@ WHERE
     '0,flatpak,0u,0g,flatpak',
     '0,flatpak-system-helper,0u,0g,flatpak-system-',
     '0,git-remote-http,0u,0g,git-remote-http',
+    '500,git,500u,500g,git',
     '0,go,0u,0g,go',
     '0,gtk4-update-icon-cache,0u,0g,gtk-update-icon',
     '0,http,0u,0g,https',
