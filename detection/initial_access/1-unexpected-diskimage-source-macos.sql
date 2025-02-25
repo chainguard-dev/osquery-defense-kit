@@ -66,6 +66,7 @@ WHERE
     'boxcdn.net',
     'brave.com',
     'byfly.by',
+    'claude.ai',
     'c-wss.com',
     'canon.co.uk',
     'cdn.mozilla.net',

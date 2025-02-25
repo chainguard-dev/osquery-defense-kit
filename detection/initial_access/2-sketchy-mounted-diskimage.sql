@@ -144,6 +144,7 @@ WHERE
         "Developer ID Application: Bose Corporation (QC9P7FKWH6)",
         "Developer ID Application: Justin Clift (C34AV33YLK)",
         "Developer ID Application: Logitech Inc. (QED4VVPZWA)",
+        "Developer ID Application: Google LLC (EQHXZ8M8AV)",
         "Developer ID Application: Oracle America, Inc. (VB5E2TV963)",
         "Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)",
         "Developer ID Application: Roblox Corporation (2CFABCH843)",

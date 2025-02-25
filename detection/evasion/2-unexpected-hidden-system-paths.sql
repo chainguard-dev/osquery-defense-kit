@@ -252,6 +252,7 @@ WHERE
   AND file.path NOT LIKE '/tmp/.wine-%'
   AND file.path NOT LIKE '/tmp/.X1%-lock'
   AND file.path NOT LIKE '/tmp/.gradle%'
+  AND file.path NOT LIKE '/tmp/.git_signing_key%'
   AND file.path NOT LIKE '/tmp/.xfsm-ICE-%'
   AND file.path NOT LIKE '/usr/lib/jvm/.java-%-openjdk-%.jinfo'
   AND file.path NOT LIKE '/usr/local/%/.keepme'

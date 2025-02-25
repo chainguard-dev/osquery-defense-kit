@@ -32,7 +32,11 @@ WHERE
   AND NOT file.path LIKE '/home/%/.local/share/Steam/ubuntu%'
   AND NOT file.path LIKE '/home/%/.zsh/completion'
   AND NOT file.path LIKE '/Users/%/.zsh/completion'
-  AND NOT file.path IN ('/', '/usr/bin/ruby')
+  AND NOT file.path IN (
+    '/',
+    '/usr/bin/ruby',
+    '/Applications/OpenOffice.app/Contents/MacOS/soffice'
+  )
   AND NOT (
     file.path = '/sbin/ldconfig'
     AND pp.euid = 1000

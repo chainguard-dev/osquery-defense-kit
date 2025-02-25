@@ -40,6 +40,7 @@ WHERE
     'bluetooth.blocked',
     'bootupd-lock',
     'dmeventd.pid',
+    'do-not-hibernate',
     'greetd.run',
     'com.rapid7.cnchub.pid',
     'com.rapid7.component_insight_agent.pid',

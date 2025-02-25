@@ -53,6 +53,7 @@ WHERE
     '500,0,/tmp/write.lock,regular,0644',
     '500,1000,/tmp/1000-nwg-bar.lock,regular,0600',
     '500,1000,/tmp/golangci-lint.lock,regular,0600',
+    '500,1000,/tmp/minecraftlauncher.1000.pid.lock,regular,0664',
     '500,1001,/tmp/nwg-dock.lock,regular,0600',
     '74,0,/tmp/mysql.sock.lock,regular,0600',
     '74,0,/tmp/mysqlx.sock.lock,regular,0600'
@@ -61,3 +62,4 @@ WHERE
   AND NOT exception_key LIKE '500,1000,/tmp/keepassxc-%.lock,regular,0644'
   AND NOT exception_key LIKE '500,1000,/tmp/keepassxc-%.lock,regular,0664'
   AND NOT exception_key LIKE '500,1000,/tmp/vscode-remote-ssh-%-install.lock,regular,0664'
+  AND NOT exception_key LIKE '500,1000,/tmp/%.eksctl.lock,regular,0600'

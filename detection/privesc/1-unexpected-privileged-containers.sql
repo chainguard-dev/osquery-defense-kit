@@ -41,3 +41,4 @@ WHERE
   AND image NOT LIKE 'k3d-k3d.localhost:%'
   AND image NOT LIKE 'melange-%'
   AND command NOT LIKE '/usr/bin/melange build %'
+  AND command != '/bin/k3s server'
