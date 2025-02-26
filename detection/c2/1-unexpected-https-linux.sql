@@ -88,6 +88,7 @@ WHERE
     '0,http,0u,0g,https',
     '0,ir_agent,0u,0g,ir_agent',
     '0,kmod,0u,0g,depmod',
+    '500,argo,500u,500g,argo',
     '0,launcher,0u,0g,launcher',
     '0,launcher,500u,500g,launcher',
     '0,ldconfig,0u,0g,ldconfig',

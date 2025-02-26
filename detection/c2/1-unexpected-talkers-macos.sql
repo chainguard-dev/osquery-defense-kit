@@ -102,6 +102,7 @@ WHERE
   AND NOT signed_exception IN (
     '0,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     '0,Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9)',
+    '0,Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
     '500,Apple Mac OS Application Signing',
     '500,Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
     '500,Developer ID Application: Autodesk (XXKJ396S2Y)',

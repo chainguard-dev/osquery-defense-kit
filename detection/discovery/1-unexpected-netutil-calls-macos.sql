@@ -88,13 +88,7 @@ WHERE
   AND pe.status == 0
   AND NOT (
     pe.euid > 500
-    AND p1_name IN (
-      'bash',
-      'dash',
-      'fish',
-      'sh',
-      'zsh'
-    )
+    AND p1_name IN ('bash', 'dash', 'fish', 'sh', 'zsh')
     AND p2_name IN (
       'kitty',
       'login',

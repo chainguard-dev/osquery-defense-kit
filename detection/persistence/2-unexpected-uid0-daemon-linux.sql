@@ -93,6 +93,7 @@ WHERE
     'agetty,/usr/sbin/agetty,0,system.slice,system-serial\x2dgetty.slice,0755',
     'alsactl,/usr/sbin/alsactl,0,system.slice,alsa-state.service,0755',
     'anacron,/usr/bin/anacron,0,system.slice,cronie.service,0755',
+    'iotop,/usr/sbin/iotop-c,0,user.slice,user-1000.slice,0755',
     'anacron,/usr/sbin/anacron,0,system.slice,anacron.service,0755',
     'anacron,/usr/sbin/anacron,0,system.slice,crond.service,0755',
     'apache2,/usr/sbin/apache2,0,system.slice,apache2.service,0755',

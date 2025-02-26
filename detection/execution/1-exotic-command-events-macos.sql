@@ -208,11 +208,7 @@ WHERE
   AND NOT p0_cmd LIKE 'rm -f /tmp/locate%/mklocate%/_mklocatedb%'
   AND NOT p0_cmd LIKE 'touch -r . /private/tmp/nix-build%'
   AND NOT p0_cmd LIKE 'touch -r /tmp/KSInstallAction.%'
-  AND NOT p0_name IN (
-    'cc1',
-    'compile',
-    'yara'
-  )
+  AND NOT p0_name IN ('cc1', 'compile', 'yara')
   AND NOT exception_key IN (
     'bash,500,idea,launchd',
     'bat,500,zsh,login',

@@ -100,5 +100,6 @@ WHERE
   AND p0.path NOT IN (
     '/Applications/safeqclient.app/Contents/MacOS/safeqclient',
     '/Applications/Zed.app/Contents/MacOS/Zed',
+    '/usr/bin/pop-launcher',
     '/Library/safeqclientcore/bin/safeqclientcore'
   )

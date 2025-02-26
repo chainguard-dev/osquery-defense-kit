@@ -60,7 +60,6 @@ WHERE
         OR directory LIKE '/Users/%/Library/.%'
         OR directory LIKE '/Users/%/Library/%'
         OR directory LIKE '/Users/%/Library/%/.%'
-        OR directory LIKE '/Users/%/Library/%/%'
         OR directory LIKE '/Users/%/Photos'
         OR directory LIKE '/Users/%/Photos/.%'
         OR directory LIKE '/Users/%/Photos/%'
@@ -70,7 +69,7 @@ WHERE
         OR directory LIKE '/Users/Shared/.%'
         OR directory LIKE '/Users/Shared/%'
         OR directory LIKE '/var/root/.%'
-        OR directory LIKE '/var/root/%%'
+        OR directory LIKE '/var/root/%'
       )
       AND (
         type = 'regular'
@@ -207,25 +206,15 @@ WHERE
     '~/.config/i3',
     '~/.config/nvm/nvm.sh',
     '~/.config/polybar',
-    '~/Library/Assistant/SiriAnalytics.db',
-    '~/Library/Calendars/Calendar.sqlitedb-wal',
-    '~/Library/Calendars/Calendar.sqlitedb',
-    '~/Library/com.apple.iTunesCloud/play_activity.sqlitedb-wal',
-    '~/Library/Group Containers/group.com.apple.calendar/Calendar.sqlitedb-wal',
-    '~/Library/Group Containers/group.com.apple.calendar/Calendar.sqlitedb',
-    '~/Library/Finance/finance_cloud.db-wal',
-    '~/Library/Finance/finance_cloud.db',
     '~/Library/Group Containers/group.com.docker/unleash-repo-schema-v1-Docker Desktop.json',
-    '~/Library/HTTPStorages/com.apple.AddressBookSourceSync',
-    '~/Library/HTTPStorages/com.apple.AddressBookSourceSync/httpstorages.sqlite-shm',
+    '~/Library/Preferences/Macromedia/Flash Player/www.macromedia.com/bin/airappinstaller/airappinstaller_rsrc',
     '~/Library/Keychains/login.keychain-db',
     '~/Library/Logs/zoom.us/upload_history.txt',
     '~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2'
   )
   AND NOT homepath LIKE '~/Library/%/%.db-wal'
   AND NOT homepath LIKE '~/Library/%/%.db'
-  AND NOT homepath LIKE '~/Library/%/%.sqlite-wal'
-  AND NOT homepath LIKE '~/Library/%/%.sqlite'
+  AND NOT homepath LIKE '~/Library/%/%.sqlite%'
   AND NOT f.directory LIKE '/Users/%/.docker/cli-plugins'
   AND NOT f.directory LIKE '/Users/%/.nix-profile/bin'
   AND NOT f.directory LIKE '/Users/%/.pkg-cache/%'

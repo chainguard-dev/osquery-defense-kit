@@ -80,14 +80,7 @@ WHERE
   AND pe.time > (strftime('%s', 'now') -300)
   AND NOT (
     pe.euid > 500
-    AND p1_name IN (
-      'bash',
-      'dash',
-      'fish',
-      'nu',
-      'sh',
-      'zsh'
-    )
+    AND p1_name IN ('bash', 'dash', 'fish', 'nu', 'sh', 'zsh')
     AND p2_name IN (
       'alacritty',
       'gnome-terminal-',
