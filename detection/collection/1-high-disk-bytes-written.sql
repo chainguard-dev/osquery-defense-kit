@@ -221,6 +221,8 @@ WHERE
   AND p0.path NOT LIKE '/var/kolide-k2/%/osqueryd'
   AND p0.path NOT LIKE "%/terraform-provider-%"
   AND NOT p0.cmdline LIKE '%/gsutil %rsync%'
+  AND NOT p0.cmdline LIKE '%python -m build%'
   AND NOT p0.cmdline LIKE '%/lib/gcloud.py components update'
   AND NOT p0.cmdline LIKE '%brew.rb upgrade'
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
+  AND p0.cwd != '/home/build'
