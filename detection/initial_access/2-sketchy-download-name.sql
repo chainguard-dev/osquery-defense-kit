@@ -23,12 +23,7 @@ FROM
 WHERE
   file.path LIKE "/Users/%/Downloads/%"
   -- Frequently targetted extension for InfoStealer attacks
-  AND extension IN (
-    'dmg',
-    'exe',
-    'pkg',
-    'rar'
-  )
+  AND extension IN ('dmg', 'exe', 'pkg', 'rar')
   AND (
     file.filename LIKE "%.app%"
     OR file.filename LIKE "%Adobe Photoshop%"

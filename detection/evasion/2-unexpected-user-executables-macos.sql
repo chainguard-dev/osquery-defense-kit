@@ -60,7 +60,6 @@ WHERE
         OR directory LIKE '/Users/%/Library/.%'
         OR directory LIKE '/Users/%/Library/%'
         OR directory LIKE '/Users/%/Library/%/.%'
-        OR directory LIKE '/Users/%/Library/%/%'
         OR directory LIKE '/Users/%/Photos'
         OR directory LIKE '/Users/%/Photos/.%'
         OR directory LIKE '/Users/%/Photos/%'
@@ -70,7 +69,7 @@ WHERE
         OR directory LIKE '/Users/Shared/.%'
         OR directory LIKE '/Users/Shared/%'
         OR directory LIKE '/var/root/.%'
-        OR directory LIKE '/var/root/%%'
+        OR directory LIKE '/var/root/%'
       )
       AND (
         type = 'regular'

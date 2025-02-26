@@ -197,13 +197,7 @@ WHERE
   AND NOT p0_cmd LIKE 'modprobe --all%'
   AND NOT p0_cmd LIKE 'modprobe -ab%'
   AND NOT p0_cmd LIKE 'pkill -f cut -c3%'
-  AND NOT p0_name IN (
-    'ar',
-    'cc1',
-    'cc1plus',
-    'cmake',
-    'compile'
-  )
+  AND NOT p0_name IN ('ar', 'cc1', 'cc1plus', 'cmake', 'compile')
   AND NOT exception_key IN (
     'bash,0,bash,containerd-shim-runc-v2',
     'bash,500,ninja,bash',

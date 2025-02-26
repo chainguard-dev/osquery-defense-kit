@@ -4,8 +4,13 @@
 -- platform: darwin
 -- interval: 1800
 SELECT
-  timestamp, pid, process, category, subsystem, message
+  timestamp,
+  pid,
+  process,
+  category,
+  subsystem,
+  message
 FROM
   unified_log
 WHERE
- timestamp > (strftime('%s', 'now') - 1800)
+  timestamp > (strftime('%s', 'now') - 1800)

@@ -145,6 +145,7 @@ WHERE
       OR dir LIKE '~/dev/%'
       OR dir LIKE '~/Downloads/%.app/Contents/MacOS'
       OR dir LIKE '~/git/%'
+      OR dir LIKE '~/Applications/%.app/%'
       OR f.path LIKE '%go-build%'
       OR homepath LIKE '~/%/cloud_sql_proxy'
       OR homepath LIKE '~/%/gopls'
