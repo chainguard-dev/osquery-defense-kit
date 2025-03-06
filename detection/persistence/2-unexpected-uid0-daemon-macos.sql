@@ -236,6 +236,7 @@ WHERE -- Focus on longer-running programs
         '/usr/libexec/misagent',
         '/usr/libexec/mobileactivationd',
         '/usr/libexec/mobileassetd',
+        '/Library/Application Support/com.canonical.multipass/bin/multipassd',
         '/usr/libexec/multiversed',
         '/usr/libexec/nehelper',
         '/usr/libexec/nesessionmanager',

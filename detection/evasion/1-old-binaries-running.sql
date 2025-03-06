@@ -57,6 +57,7 @@ WHERE
     '/Library/Printers/Brother/Utilities/Server/USBAppControl.app/Contents/MacOS/USBAppControl',
     '/Library/Printers/Brother/Utilities/Server/USBserver.app/Contents/MacOS/USBserver',
     '/Library/Printers/Brother/Utilities/Server/WorkflowAppControl.app/Contents/MacOS/WorkflowAppControl',
+    '/Volumes/CANON_IJ/Setup.app/Contents/MacOS/Setup',
     '/opt/IRCCloud/chrome-sandbox',
     '/opt/IRCCloud/irccloud',
     '/snap/brackets/138/opt/brackets/Brackets-node',

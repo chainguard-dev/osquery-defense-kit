@@ -206,6 +206,7 @@ WHERE
     '/var/roothome/.lesshst',
     '/var/roothome/.local/',
     '/var/roothome/.osquery/',
+    '/var/roothome/.mozilla/',
     '/var/roothome/.ssh/',
     '/var/roothome/.var/',
     '/var/roothome/.viminfo',

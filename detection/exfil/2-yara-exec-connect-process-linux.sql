@@ -72,3 +72,4 @@ WHERE
     '/usr/sbin/greetd',
     '/usr/sbin/mcelog'
   )
+  AND p0_name != 'git-remote-htp'
