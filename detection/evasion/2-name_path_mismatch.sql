@@ -81,6 +81,7 @@ WHERE
     'electron',
     'firefox',
     'gjs',
+    'librewolf',
     'node',
     'perl',
     'python',

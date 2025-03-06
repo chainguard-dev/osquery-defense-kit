@@ -176,6 +176,7 @@ WHERE
     '500,chainlink,chainlink,500u,20g',
     '500,cilium,cilium,500u,123g',
     '500,cloud-sql-proxy,cloud-sql-proxy,500u,20g',
+    '500,cmd,cmd,500u,20g',
     '500,cosign,cosign,0u,500g',
     '500,cosign,cosign,500u,20g',
     '500,cosign,cosign,500u,80g',
