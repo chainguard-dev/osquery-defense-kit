@@ -196,6 +196,7 @@ WHERE
     '500,firefox-bin,0u,0g,firefox-bin',
     '500,firefox-bin,500u,500g,firefox-bin',
     '500,firefox-bin,u,g,firefox-bin',
+    '500,librewolf,0u,0g,librewolf',
     '500,flameshot,0u,0g,flameshot',
     '500,flatpak,0u,0g,flatpak',
     '500,flatpak-oci-authenticator,0u,0g,flatpak-oci-aut',

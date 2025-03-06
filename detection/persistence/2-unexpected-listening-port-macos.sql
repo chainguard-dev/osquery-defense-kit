@@ -108,6 +108,7 @@ WHERE
     '49152,6,500,siriactionsd,Software Signing',
     '49152,6,500,telepresence,',
     '49152,6,65,mDNSResponder,Software Signing',
+    '49152,6,500,ChatGPT,Developer ID Application: OpenAI, L.L.C. (2DC432GLL2)',
     '500,6,8883,BambuStudio,BambuStudio,500u,80g',
     '5000,6,500,ControlCenter,Software Signing',
     '5001,6,500,Record It,Apple Mac OS Application Signing',

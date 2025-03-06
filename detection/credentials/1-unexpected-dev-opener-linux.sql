@@ -269,7 +269,7 @@ WHERE
   )
   AND NOT (
     pof.path LIKE "/dev/input/event%"
-    AND p0.name = "openrazer-daemo"
+    AND p0.name IN ("openrazer-daemo", "solaar")
   )
   AND NOT (
     pof.path LIKE '/dev/bus/usb/%'
