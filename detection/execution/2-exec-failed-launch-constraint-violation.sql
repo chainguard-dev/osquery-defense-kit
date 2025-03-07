@@ -65,7 +65,7 @@ WHERE
   AND pe.status = 1
   AND pe.cmdline != ''
   AND pe.cmdline IS NOT NULL
-  AND p0_cmd != '/opt/homebrew/opt/tailscale/bin/tailscaled'
+  AND p0_cmd NOT IN ('/opt/homebrew/opt/tailscale/bin/tailscaled', '/Library/PrivilegedHelperTools/com.docker.vmnetd')
 GROUP BY
   pe.euid,
   pe.path,

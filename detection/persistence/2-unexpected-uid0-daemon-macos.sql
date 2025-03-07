@@ -353,6 +353,7 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     'Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',
     'Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
+    'Developer ID Application: SLACK TECHNOLOGIES L.L.C. (BQR82RBBHL)',
     'Developer ID Application: SparkLabs Pty Ltd (34XR7GXFPX)',
     'Developer ID Application: SURFSHARK LTD (YHUG37CKN8)',
     'Developer ID Application: Tailscale Inc. (W5364U7YZB)',

@@ -67,6 +67,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl,500,invoke,sh',
     'curl,500,launchd,kernel_task',
     'curl,500,make,bash',
+    'curl,500,emacs,systemd',
     'curl,500,makepkg,yay',
     'curl,500,node-cve-count.,bash',
     'curl,500,nvim,nvim',
