@@ -107,6 +107,7 @@ WHERE
   )
   AND NOT exception_key IN (
     '0,AGSService,AGSService,Developer ID Application: Adobe Inc. (JQ525L2MZD),com.adobe.ags',
+    '0,at.obdev.littlesnitch.networkextension,at.obdev.littlesnitch.networkextension,Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R),at.obdev.littlesnitch.networkextension',
     '0,chainctl,chainctl,,a.out',
     '0,com.nordvpn.macos.helper,com.nordvpn.macos.helper,Developer ID Application: Nordvpn S.A. (W5W395V82Y),com.nordvpn.macos.helper',
     '0,licenseDaemon,licenseDaemon,Developer ID Application: PACE Anti-Piracy, Inc. (TFZ8226T6X),com.paceap.eden.licenseDaemon',
@@ -115,6 +116,7 @@ WHERE
     '500,apko,apko,,a.out',
     '500,apkoaas,apkoaas,,a.out',
     '500,Arc Helper,Arc Helper,Developer ID Application: The Browser Company of New York Inc. (S6N382Y83G),company.thebrowser.browser.helper',
+    '500,art,art,,a.out',
     '500,art,art,,a.out',
     '500,Authy,Authy,Apple iPhone OS Application Signing,com.authy',
     '500,bash,bash,,bash',
@@ -139,7 +141,6 @@ WHERE
     '500,kubectl,kubectl,Developer ID Application: Docker Inc (9BNSXJN65R),kubectl',
     '500,melange,melange,,a.out',
     '500,nami,nami,,a.out',
-    '500,art,art,,a.out',
     '500,ngrok,ngrok,Developer ID Application: ngrok LLC (TEX8MHRDQ9),a.out',
     '500,node,node,Developer ID Application: Node.js Foundation (HX7739G8FX),node',
     '500,odo-darwin-amd64-b4853e1fa,odo-darwin-amd64-b4853e1fa,500u,20g',
@@ -197,6 +198,7 @@ WHERE
     '500,istioctl,istioctl,500u,20g',
     '500,java,java,0u,0g',
     '500,log-streaming,log-streaming,500u,80g',
+    '500,monopod,monopod,500u,20g',
     '500,nami,nami,0u,0g',
     '500,nix,nix,0u,500g',
     '500,nodegizmo,nodegizmo,500u,20g',

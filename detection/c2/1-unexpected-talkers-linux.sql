@@ -163,6 +163,7 @@ WHERE
     '80,6,500,firefox-bin,500u,500g,firefox-bin',
     '80,6,500,firefox-bin,u,g,firefox-bin',
     '80,6,500,firefox-esr,0u,0g,firefox-esr',
+    '80,6,500,librewolf,0u,0g,librewolf',
     '80,6,500,flatpak,0u,0g,flatpak',
     '80,6,500,git-remote-http,0u,0g,git-remote-http',
     '80,6,500,gnome-software,0u,0g,gnome-software',
@@ -246,6 +247,7 @@ WHERE
     '9418,6,0,git,0u,0g,git',
     '9418,6,500,git,0u,0g,git',
     '993,6,500,evolution,0u,0g,evolution',
+    '993,6,500,mbsync,0u,0g,mbsync',
     '993,6,500,thunderbird,0u,0g,thunderbird',
     '993,6,500,thunderbird,u,g,thunderbird',
     '993,6,500,thunderbird-bin,0u,0g,thunderbird-bin',
@@ -314,8 +316,8 @@ WHERE
     AND p.euid > 500
   )
   AND NOT (
-    p.name IN ('firefox', 'firefox-bin', 'firefox-esr')
-    AND f.filename IN ('firefox', 'firefox-bin', 'firefox-esr')
+    p.name IN ('firefox', 'firefox-bin', 'firefox-esr', 'librewolf')
+    AND f.filename IN ('firefox', 'firefox-bin', 'firefox-esr', 'librewolf')
     AND s.remote_port > 3000
     AND s.protocol IN (6, 17)
     AND p.euid > 500

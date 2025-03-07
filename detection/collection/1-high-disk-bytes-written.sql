@@ -92,6 +92,7 @@ WHERE
     '/usr/libexec/mobileassetd',
     '/usr/libexec/packagekitd',
     '/usr/libexec/rosetta/oahd',
+    '/usr/libexec/rtcreportingd',
     '/usr/libexec/secd',
     '/usr/libexec/sharingd',
     '/usr/sbin/screencapture',

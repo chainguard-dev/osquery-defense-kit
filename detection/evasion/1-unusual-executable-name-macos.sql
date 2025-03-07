@@ -106,6 +106,7 @@ WHERE
   AND NOT pname LIKE '__%go_build_%'
   AND NOT pname LIKE '__%go_test_%'
   AND NOT pname LIKE '__Test%'
+  AND NOT pname LIKE '%.test'
   AND NOT pname LIKE '.%-wrapped'
   AND NOT pname LIKE 'BetterTouch%Runner%'
   AND NOT pname LIKE 'cody-engine-%'

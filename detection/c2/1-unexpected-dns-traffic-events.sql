@@ -83,6 +83,7 @@ WHERE
     'apk',
     'apko',
     'AssetCacheLocatorService',
+    'Beeper Desktop',
     'brave',
     'buildkitd',
     'canonical-livep',

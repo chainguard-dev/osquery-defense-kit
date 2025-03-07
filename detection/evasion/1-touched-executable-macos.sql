@@ -86,6 +86,7 @@ WHERE
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: Michael Jones (YD6LEYT6WZ)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
+    'Developer ID Application: Oracle America, Inc. (VB5E2TV963)',
     'Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'Developer ID Application: Reflect App, LLC (789ULN5MZB)',
     'Developer ID Application: RescueTime, Inc (FSY4RB8H39)',

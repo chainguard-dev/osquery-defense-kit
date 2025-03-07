@@ -138,6 +138,8 @@ WHERE
     '80,6,500,com.docker.backend,',
     '80,6,500,crc,',
     '80,6,500,limactl,',
+    '80,6,500,OrbStack Helper,Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)',
+    '443,6,500,OrbStack Helper,Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)',
     '80,6,500,ssh,Software Signing',
     '8055,6,500,java,',
     '8081,6,500,crane,',
