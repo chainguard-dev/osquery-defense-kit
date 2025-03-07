@@ -63,6 +63,7 @@ WHERE -- Focus on longer-running programs
         '/Applications/Opal.app/Contents/Library/LaunchServices/com.opalcamera.cameraExtensionShim',
         '/Applications/Parallels Desktop.app/Contents/MacOS/Parallels Service.app/Contents/MacOS/prl_disp_service',
         '/Applications/Parallels Desktop.app/Contents/MacOS/prl_naptd',
+        '/Applications/Slack.app/Contents/Frameworks/Squirrel.framework/Resources/ShipIt',
         '/Applications/Tailscale.app/Contents/Frameworks/Sparkle.framework/Versions/B/Autoupdate',
         '/Applications/VMware Fusion.app/Contents/Library/vmware-vmx',
         '/Applications/WiFiman Desktop.app/Contents/service/wifiman-desktopd',
