@@ -31,6 +31,7 @@ WHERE
   -- Extensions that would not normally raise suspicion if sent by e-mail (excludes dmg, iso, lnk, exe)
   AND extension NOT IN (
     'ai',
+    'avi',
     'cer',
     'csv',
     'doc',

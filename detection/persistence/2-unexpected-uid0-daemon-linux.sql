@@ -435,5 +435,6 @@ WHERE
   AND NOT p0.path IN ('/bin/bash', '/usr/bin/bash')
   AND NOT p0.cgroup_path LIKE '/kubepods.slice/kubepods-%'
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
+  AND NOT (p0.cgroup_path = '/system.slice/dovecot.service' AND p0.cwd = '/run/dovecot')
 GROUP BY
   p0.pid

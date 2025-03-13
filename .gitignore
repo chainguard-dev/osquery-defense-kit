@@ -13,3 +13,7 @@
 out/
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# OS-generated files
+.DS_Store
+.DS_Store?
