@@ -7,66 +7,70 @@
 -- platform: darwin
 -- tags: filesystem events
 SELECT
-  s.identifier AS s_id,
-  s.authority AS s_auth,
-  -- Child
-  pe.path AS p0_path,
-  COALESCE(REGEX_MATCH (pe.path, '.*/(.*)', 1), pe.path) AS p0_name,
-  TRIM(pe.cmdline) AS p0_cmd,
-  pe.time AS p0_time,
-  -- pe.cwd is NULL on macOS
-  p.cwd AS p0_cwd,
-  pe.pid AS p0_pid,
-  pe.euid AS p0_euid,
-  -- Parent
-  pe.parent AS p1_pid,
-  TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
-  p1.cwd AS p1_cwd,
-  COALESCE(p1.path, pe1.path) AS p1_path,
-  COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
-  REGEX_MATCH (COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
-  -- Grandparent
-  COALESCE(p1.parent, pe1.parent) AS p2_pid,
-  TRIM(
-    COALESCE(p1_p2.cmdline, pe1_p2.cmdline, pe1_pe2.cmdline)
-  ) AS p2_cmd,
-  p1_p2.cwd AS p2_cwd,
-  COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path) AS p2_path,
-  COALESCE(
-    p1_p2_hash.path,
-    pe1_p2_hash.path,
-    pe1_pe2_hash.path
-  ) AS p2_hash,
-  REGEX_MATCH (
-    COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path),
-    '.*/(.*)',
-    1
-  ) AS p2_name
+    s.identifier AS s_id,
+    s.authority AS s_auth,
+    -- Child
+    pe.path AS p0_path,
+    COALESCE(REGEX_MATCH (pe.path, '.*/(.*)', 1), pe.path) AS p0_name,
+    TRIM(pe.cmdline) AS p0_cmd,
+    pe.time AS p0_time,
+    -- pe.cwd is NULL on macOS
+    p.cwd AS p0_cwd,
+    pe.pid AS p0_pid,
+    pe.euid AS p0_euid,
+    -- Parent
+    pe.parent AS p1_pid,
+    TRIM(COALESCE(p1.cmdline, pe1.cmdline)) AS p1_cmd,
+    p1.cwd AS p1_cwd,
+    COALESCE(p1.path, pe1.path) AS p1_path,
+    COALESCE(p_hash1.sha256, pe_hash1.sha256) AS p1_hash,
+    REGEX_MATCH (COALESCE(p1.path, pe1.path), '.*/(.*)', 1) AS p1_name,
+    -- Grandparent
+    COALESCE(p1.parent, pe1.parent) AS p2_pid,
+    TRIM(
+        COALESCE(p1_p2.cmdline, pe1_p2.cmdline, pe1_pe2.cmdline)
+    ) AS p2_cmd,
+    p1_p2.cwd AS p2_cwd,
+    COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path) AS p2_path,
+    COALESCE(
+        p1_p2_hash.path,
+        pe1_p2_hash.path,
+        pe1_pe2_hash.path
+    ) AS p2_hash,
+    REGEX_MATCH (
+        COALESCE(p1_p2.path, pe1_p2.path, pe1_pe2.path),
+        '.*/(.*)',
+        1
+    ) AS p2_name
 FROM
-  process_events pe
-  LEFT JOIN file f ON pe.path = f.path
-  LEFT JOIN signature S ON pe.path = s.path
-  LEFT JOIN users u ON pe.uid = u.uid
-  LEFT JOIN processes p ON pe.pid = p.pid -- Parents (via two paths)
-  LEFT JOIN processes p1 ON pe.parent = p1.pid
-  LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
-  LEFT JOIN process_events pe1 ON pe.parent = pe1.pid
-  AND pe1.cmdline != ''
-  LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path -- Grandparents (via 3 paths)
-  LEFT JOIN processes p1_p2 ON p1.parent = p1_p2.pid -- Current grandparent via parent processes
-  LEFT JOIN processes pe1_p2 ON pe1.parent = pe1_p2.pid -- Current grandparent via parent events
-  LEFT JOIN process_events pe1_pe2 ON pe1.parent = pe1_p2.pid
-  AND pe1_pe2.cmdline != '' -- Past grandparent via parent events
-  LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
-  LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
-  LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
+    process_events pe
+    LEFT JOIN file f ON pe.path = f.path
+    LEFT JOIN signature S ON pe.path = s.path
+    LEFT JOIN users u ON pe.uid = u.uid
+    LEFT JOIN processes p ON pe.pid = p.pid -- Parents (via two paths)
+    LEFT JOIN processes p1 ON pe.parent = p1.pid
+    LEFT JOIN hash p_hash1 ON p1.path = p_hash1.path
+    LEFT JOIN process_events pe1 ON pe.parent = pe1.pid
+    AND pe1.cmdline != ''
+    LEFT JOIN hash pe_hash1 ON pe1.path = pe_hash1.path -- Grandparents (via 3 paths)
+    LEFT JOIN processes p1_p2 ON p1.parent = p1_p2.pid -- Current grandparent via parent processes
+    LEFT JOIN processes pe1_p2 ON pe1.parent = pe1_p2.pid -- Current grandparent via parent events
+    LEFT JOIN process_events pe1_pe2 ON pe1.parent = pe1_p2.pid
+    AND pe1_pe2.cmdline != '' -- Past grandparent via parent events
+    LEFT JOIN hash p1_p2_hash ON p1_p2.path = p1_p2_hash.path
+    LEFT JOIN hash pe1_p2_hash ON pe1_p2.path = pe1_p2_hash.path
+    LEFT JOIN hash pe1_pe2_hash ON pe1_pe2.path = pe1_pe2_hash.path
 WHERE
-  pe.time > (strftime('%s', 'now') -900)
-  AND pe.status = 1
-  AND pe.cmdline != ''
-  AND pe.cmdline IS NOT NULL
-  AND p0_cmd NOT IN ('/opt/homebrew/opt/tailscale/bin/tailscaled', '/Library/PrivilegedHelperTools/com.docker.vmnetd')
+    pe.time > (strftime ('%s', 'now') -900)
+    AND pe.status = 1
+    AND pe.cmdline != ''
+    AND pe.cmdline IS NOT NULL
+    AND p0_cmd NOT IN (
+        '/opt/homebrew/opt/tailscale/bin/tailscaled',
+        '/Library/PrivilegedHelperTools/com.docker.vmnetd',
+        '/Applications/ElasticEndpoint.app/Contents/MacOS/ElasticEndpoint --install'
+    )
 GROUP BY
-  pe.euid,
-  pe.path,
-  pe.cmdline
+    pe.euid,
+    pe.path,
+    pe.cmdline

@@ -208,6 +208,7 @@ WHERE
     '/var/roothome/.local/',
     '/var/roothome/.mozilla/',
     '/var/roothome/.osquery/',
+    '/var/roothome/.cargo/',
     '/var/roothome/.ssh/',
     '/var/roothome/.var/',
     '/var/roothome/.viminfo',

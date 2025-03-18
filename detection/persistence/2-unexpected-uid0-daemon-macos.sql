@@ -325,6 +325,7 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: EA Swiss Sarl (TSTV75T6Q5)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
+    'Developer ID Application: Focusrite Audio Engineering Ltd. (7VYBQV3T2Q)',
     'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK)',
     'Developer ID Application: Foxit Corporation (8GN47HTP75)',
     'Developer ID Application: Fumihiko Takayama (G43BCU2T37)',

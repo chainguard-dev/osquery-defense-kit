@@ -120,6 +120,12 @@ FROM
           '/usr/sbin/umount.nfs',
           '/usr/sbin/umount.nfs4',
           '/usr/sbin/userhelper',
+          '/usr/sbin/chsh',
+          '/sbin/chsh',
+          '/sbin/chfn',
+          '/usr/sbin/chfn',
+          '/bin/grub2-set-bootflag',
+          '/usr/bin/grub2-set-bootflag',
           '/usr/sbin/wodim'
         )
       )

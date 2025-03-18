@@ -101,8 +101,11 @@ WHERE
     'virtlockd,/usr/sbin/virtlockd,0,system.slice,virtlockd.service,0755',
     'virtlogd,/usr/bin/virtlogd,0,system.slice,virtlogd.service,0755',
     'virtlogd,/usr/sbin/virtlogd,0,system.slice,virtlogd.service,0755',
+    'virt-manager,/usr/bin/python3.12,0,user.slice,user-1000.slice,0755',
     'virtqemud,/usr/sbin/virtqemud,0,system.slice,virtqemud.service,0755',
     'yum,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
+    'xdg-desktop-por,/usr/libexec/xdg-desktop-portal,0,user.slice,user-1000.slice,0755',
+    'dnf,/usr/bin/dnf5,0,user.slice,user-0.slice,0755',
     'zed,/nix/store/__VERSION__/bin/zed,0,system.slice,zfs-zed.service,0555',
     'zfs,/nix/store/__VERSION__/bin/zfs,0,system.slice,zfs-snapshot-frequent.service,0555'
   )

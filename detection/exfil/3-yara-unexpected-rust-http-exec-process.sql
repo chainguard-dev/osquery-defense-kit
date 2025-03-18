@@ -84,6 +84,7 @@ WHERE
     'nvim',
     'old',
     'OrbStack Helper',
+    'package-version',
     'rpm-ostree',
     'rustc',
     'sg-nvim-agent',
