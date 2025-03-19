@@ -127,6 +127,7 @@ WHERE
     '500,core,core,Developer ID Application: TPZ Solucoes Digitais Ltda (X37R283V2T),com.topaz.warsaw.core',
     '500,CrossyRoad,CrossyRoad,Apple iPhone OS Application Signing,com.hipsterwhale.crossy',
     '500,Fleet,~/Library/Caches/JetBrains/Fleet',
+    '500,codebook-lsp,codebook-lsp,500u,20g',
     '500,gh,gh,,gh',
     '500,git-remote-http,git-remote-http,,git-remote-http-55554944748a32c47cdc35cfa7f071bb69a39ce4',
     '500,goland,goland,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3),com.jetbrains.goland',

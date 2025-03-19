@@ -119,7 +119,7 @@ WHERE
   )
   AND NOT (
     f_path = '/usr/local/bin/kubectl'
-    AND f_mode = '0755'
+    AND f_mode IN ('0755', '0775')
   )
   AND pe.time > (strftime('%s', 'now') -300)
   AND pe.syscall = "execve"

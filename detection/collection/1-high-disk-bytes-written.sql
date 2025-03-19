@@ -131,6 +131,7 @@ WHERE
     AND p0.cmdline = '/usr/bin/python3 /usr/sbin/aptd'
   )
   AND NOT p0.name IN (
+    'Autodesk Fusion 360',
     'baloo_file_extr',
     'bincapz',
     'bwrap',

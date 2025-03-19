@@ -75,6 +75,7 @@ WHERE
     '(sd-exec-strv)',
     '(udev-worker)',
     'crond',
+    'dovecot',
     'dpkg',
     'systemd-nsresou',
     'systemd-udevd',

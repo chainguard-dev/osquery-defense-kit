@@ -57,6 +57,7 @@ WHERE
   AND p0.name NOT IN (
     'Brackets-node',
     'chrome_crashpad',
+    'launcher',
     'dhcpcd',
     'gitaly',
     'kas',

@@ -93,7 +93,6 @@ WHERE
     'agetty,/usr/sbin/agetty,0,system.slice,system-serial\x2dgetty.slice,0755',
     'alsactl,/usr/sbin/alsactl,0,system.slice,alsa-state.service,0755',
     'anacron,/usr/bin/anacron,0,system.slice,cronie.service,0755',
-    'iotop,/usr/sbin/iotop-c,0,user.slice,user-1000.slice,0755',
     'anacron,/usr/sbin/anacron,0,system.slice,anacron.service,0755',
     'anacron,/usr/sbin/anacron,0,system.slice,crond.service,0755',
     'apache2,/usr/sbin/apache2,0,system.slice,apache2.service,0755',
@@ -130,6 +129,7 @@ WHERE
     'cups-proxyd,/snap/cups/__VERSION__/sbin/cups-proxyd,0,system.slice,snap.cups.cupsd.service,0755',
     'cupsd,/snap/cups/__VERSION__/sbin/cupsd,0,system.slice,snap.cups.cupsd.service,0700',
     'cupsd,/usr/bin/cupsd,0,system.slice,cups.service,0700',
+    'cupsd,/usr/bin/cupsd,0,system.slice,system-cups.slice,0755',
     'cupsd,/usr/sbin/cupsd,0,system.slice,cups.service,0755',
     'cupsd,/usr/sbin/cupsd,0,system.slice,system-cups.slice,0700',
     'cupsd,/usr/sbin/cupsd,0,system.slice,system-cups.slice,0755',
@@ -196,6 +196,7 @@ WHERE
     'greetd,/usr/sbin/greetd,0,system.slice,greetd.service,0755',
     'greetd,/usr/sbin/greetd,0,user.slice,user-1000.slice,0755',
     'group-admin-dae,/usr/libexec/group-admin-daemon,0,system.slice,group-admin-daemon.service,0755',
+    'gssproxy,/usr/bin/gssproxy,0,system.slice,gssproxy.service,0755',
     'gssproxy,/usr/sbin/gssproxy,0,system.slice,gssproxy.service,0755',
     'gvfsd,/usr/libexec/gvfsd,0,user.slice,user-1000.slice,0755',
     'gvfsd-fuse,/usr/libexec/gvfsd-fuse,0,user.slice,user-1000.slice,0755',
@@ -211,6 +212,7 @@ WHERE
     'incusd,/usr/libexec/incus/incusd,0,system.slice,incus.service,0755',
     'indicator-cpufr,/usr/bin/python__VERSION__,0,system.slice,dbus.service,0755',
     'input-remapper-,/usr/bin/python__VERSION__,0,system.slice,input-remapper.service,0755',
+    'iotop,/usr/sbin/iotop-c,0,user.slice,user-1000.slice,0755',
     'ir_agent,/opt/rapid7/ir_agent/components/insight_agent/__VERSION__/ir_agent,0,system.slice,ir_agent.service,',
     'ir_agent,/opt/rapid7/ir_agent/components/insight_agent/__VERSION__/ir_agent,0,system.slice,ir_agent.service,0700',
     'ir_agent,/opt/rapid7/ir_agent/ir_agent,0,system.slice,ir_agent.service,',
@@ -251,6 +253,7 @@ WHERE
     'mcelog,/usr/sbin/mcelog,0,system.slice,mcelog.service,0755',
     'metalauncher,/var/vanta/metalauncher,0,system.slice,vanta.service,0755',
     'mintUpdate,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
+    'ModemManager,/usr/bin/ModemManager,0,system.slice,ModemManager.service,0755',
     'ModemManager,/usr/sbin/ModemManager,0,system.slice,ModemManager.service,0755',
     'mount.ntfs,/usr/bin/ntfs-3g,0,system.slice,udisks2.service,0755',
     'mpris-proxy,/usr/bin/mpris-proxy,0,user.slice,user-0.slice,0755',
@@ -399,6 +402,7 @@ WHERE
     'wpa_supplicant,/usr/bin/wpa_supplicant,0,system.slice,wpa_supplicant.service,0755',
     'wpa_supplicant,/usr/sbin/wpa_supplicant,0,system.slice,wpa_supplicant.service,0755',
     'X,/nix/store/__VERSION__/bin/Xorg,0,system.slice,display-manager.service,0555',
+    'xdg-desktop-por,/usr/lib/x__VERSION___64-linux-gnu/libexec/xdg-desktop-portal-kde,0,user.slice,user-1000.slice,0755',
     'xdg-desktop-por,/usr/libexec/xdg-desktop-portal,0,user.slice,user-1000.slice,0755',
     'xdg-desktop-por,/usr/libexec/xdg-desktop-portal-gnome,0,user.slice,user-1000.slice,0755',
     'xdg-desktop-por,/usr/libexec/xdg-desktop-portal-gtk,0,user.slice,user-1000.slice,0755',
@@ -435,6 +439,9 @@ WHERE
   AND NOT p0.path IN ('/bin/bash', '/usr/bin/bash')
   AND NOT p0.cgroup_path LIKE '/kubepods.slice/kubepods-%'
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
-  AND NOT (p0.cgroup_path = '/system.slice/dovecot.service' AND p0.cwd = '/run/dovecot')
+  AND NOT (
+    p0.cgroup_path = '/system.slice/dovecot.service'
+    AND p0.cwd = '/run/dovecot'
+  )
 GROUP BY
   p0.pid

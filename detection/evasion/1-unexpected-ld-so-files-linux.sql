@@ -63,6 +63,7 @@ WHERE
     '/etc/ld.so.conf.d/llvm16-x86_64.conf,0644,22,3ddda874af4dd14e9e873da09d082031abfacd4b5094982c28f53e1fd50a5fe3',
     '/etc/ld.so.conf.d/llvm17-x86_64.conf,0644,22,3aceee0a4efb8cc2b0f981035cdbb6f28be48634f72f9b6fb98c1e282d32347c',
     '/etc/ld.so.conf.d/llvm18-x86_64.conf,0644,22,a22fdfb5b0443aa1e820a319c56867529ebc54b0f11634c51e5dd847cd8f1b97',
+    '/etc/ld.so.conf.d/llvm19-x86_64.conf,0644,22,1913d56931d9831f62a3f22c88512861e790725dd881f0d12b7c39a50b65ec82',
     '/etc/ld.so.conf.d/mariadb-x86_64.conf,0644,17,598466b4954bc66c6f45f1f119211b0698d4a549f6c01b5d9a933a2511b82626',
     '/etc/ld.so.conf.d/mingw32-hostlib.conf,0644,27,3cc2feee654c7193027397a7f6ab41bd1c6db13fda295278205a050f870f3f3d',
     '/etc/ld.so.conf.d/mingw64-hostlib.conf,0644,29,df1b65371bead6dddc703346f56dde023e22d52d9f071a3b646beaaec75a53c9',

@@ -235,6 +235,7 @@ WHERE
     '/dev/video,brave',
     '/dev/video,cheese',
     '/dev/video,chrome',
+    '/dev/video,dash',
     '/dev/video,ffmpeg',
     '/dev/video,firefox',
     '/dev/video,firefox-bin',

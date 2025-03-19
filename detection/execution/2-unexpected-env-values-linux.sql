@@ -61,6 +61,7 @@ WHERE -- This time should match the interval
       '/opt/splunkforwarder/lib/libdlwrapper.so',
       '/run/host/usr/lib/extest/libextest.so',
       '/tmp/preload.so',
+      'libapprun_hooks.so',
       '/usr/lib/extest/libextest.so',
       '/usr/lib/libjemalloc.so',
       '/usr/lib/libsnmallocshim-checks-memcpy-only.so',

@@ -179,6 +179,7 @@ WHERE
       'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
       'Developer ID Application: Eclipse Foundation, Inc. (JCDTMS22B4)',
       'Developer ID Application: EnterpriseDB Corporation (26QKX55P9K)',
+      'Developer ID Application: Focusrite Audio Engineering Ltd. (7VYBQV3T2Q)',
       'Developer ID Application: Jakob Borg (LQE5SYM783)',
       'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
       'Developer ID Application: Kastelo AB (LQE5SYM783)',
