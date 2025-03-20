@@ -6,7 +6,7 @@
 -- references:
 --   * https://attack.mitre.org/techniques/T1071/ (C&C, Application Layer Protocol)
 --
--- tags: transient state net often
+-- tags: transient state net often extra
 -- platform: linux
 SELECT
   s.remote_address,
@@ -114,6 +114,7 @@ WHERE
     '0,yay,0u,0g,yay',
     '105,http,0u,0g,https',
     '106,geoclue,0u,0g,geoclue',
+    '114,geoclue,0u,0g,geoclue',
     '115,geoclue,0u,0g,geoclue',
     '120,fwupdmgr,0u,0g,fwupdmgr',
     '128,fwupdmgr,0u,0g,fwupdmgr',
@@ -135,6 +136,7 @@ WHERE
     '500,aws,0u,0g,aws',
     '500,aws,500u,500g,aws',
     '500,bash,0u,0g,bash',
+    '500,snapd,0u,0g,snapd',
     '500,beeper,u,g,beeper',
     '500,bitwarden,u,g,bitwarden',
     '500,bom,500u,500g,bom',
@@ -142,6 +144,7 @@ WHERE
     '500,Brackets,0u,0g,Brackets',
     '500,brave,0u,0g,brave',
     '500,brave,u,g,brave',
+    '500,bazelisk-linux_amd64,u,g,bazelisk-linux_',
     '500,buildkitd,500u,500g,buildkitd',
     '500,buildkite-agent,500u,500g,buildkite-agent',
     '500,cargo,0u,0g,cargo',
@@ -395,6 +398,7 @@ WHERE
   AND NOT exception_key LIKE '500,node,0u,0g,npm exec %'
   AND NOT exception_key LIKE '500,node,0u,0g,npm install %'
   AND NOT exception_key LIKE '500,python3.%,0u,0g,pip'
+  AND NOT exception_key LIKE '500,go1.%,u,g,go.%'
   AND NOT exception_key LIKE '500,python3.%,0u,0g,update-manager'
   AND NOT exception_key LIKE '500,python3%,u,g,pip'
   AND NOT exception_key LIKE '500,terraform_%,500u,500g,terraform'

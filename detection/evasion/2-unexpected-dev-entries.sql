@@ -40,6 +40,7 @@ WHERE
       OR file.path LIKE '/dev/shm/aomshm.%'
       OR file.path LIKE '/dev/shm/byobu-%'
       OR file.path LIKE '/dev/shm/jack_db%'
+      OR file.path LIKE '/dev/shm/lsp-catalog-%.lock'
       OR file.path LIKE '/dev/shm/pulse-shm-%'
       OR file.path LIKE '/dev/shm/sem.%autosave'
       OR file.path LIKE '/dev/shm/shm-%-%-%'

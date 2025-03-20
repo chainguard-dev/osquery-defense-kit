@@ -6,7 +6,7 @@
 -- references:
 --   * https://www.uptycs.com/blog/new-poc-exploit-backdoor-malware
 --
--- tags: persistent process state
+-- tags: persistent process state extra
 -- platform: linux
 SELECT
   -- Child
@@ -86,6 +86,7 @@ WHERE
     'build',
     'emacs',
     'ext',
+    'gtk3',
     'nox',
     'real',
     'smp',
