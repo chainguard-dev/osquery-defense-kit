@@ -99,6 +99,7 @@ WHERE
     '/opt/homebrew/opt/libvirt/sbin/libvirtd -f /opt/homebrew/etc/libvirt/libvirtd.conf',
     '/opt/homebrew/opt/mariadb/bin/mysqld_safe',
     '/opt/homebrew/opt/nginx/bin/nginx -g daemon off;',
+    '/Library/Application Support/com.canonical.multipass/bin/multipassd --verbosity debug',
     '/opt/homebrew/opt/pueue/bin/pueued --verbose',
     '/opt/homebrew/opt/skhd/bin/skhd',
     '/opt/homebrew/opt/tailscale/bin/tailscaled',

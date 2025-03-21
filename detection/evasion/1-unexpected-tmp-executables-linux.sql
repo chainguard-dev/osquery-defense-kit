@@ -160,7 +160,8 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         "Bourne-Again shell script, ASCII text executable",
         "libtool library file, ASCII text",
         "ASCII text",
-        "JSON data"
+        "JSON data",
+        "JSON text data"
       )
       OR magic.data LIKE 'ELF 32-bit LSB pie executable, ARM, EABI5%'
       OR magic.data LIKE 'ELF 64-bit MSB pie executable, IBM S/390%'

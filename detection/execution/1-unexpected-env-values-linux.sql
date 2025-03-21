@@ -60,6 +60,7 @@ WHERE -- This time should match the interval
     AND NOT pe.value IN (
       '/opt/splunkforwarder/lib/libdlwrapper.so',
       '/run/host/usr/lib/extest/libextest.so',
+      '/snap/lxd/current/lib/x86_64-linux-gnu/libSegFault.so',
       '/tmp/preload.so',
       'libapprun_hooks.so',
       '/usr/lib/extest/libextest.so',

@@ -10,7 +10,7 @@
 -- references:
 --   * https://attack.mitre.org/tactics/TA0010/ (Exfiltration)
 --
--- tags: transient process
+-- tags: transient process extra
 SELECT
   -- WARNING: Writes to tmpfs are not reflected against this counter
   p0.disk_bytes_read AS bytes_read,
@@ -47,7 +47,7 @@ FROM
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
   -- On my Linux machine, tarring up a home directory clocks in at 2,800,000 - 4,986,722
-  bytes_read_rate > 2500000
+  bytes_read_rate > 3000000
   AND age > 180
   AND p0.path NOT LIKE '/app/%'
   AND p0.path NOT LIKE '/Applications/%.app/Contents/%'
@@ -91,6 +91,7 @@ WHERE
     'fleet_backend',
     'fsdaemon',
     'fsnotifier',
+    'git',
     'gnome-software',
     'go',
     'containerd-shim',
