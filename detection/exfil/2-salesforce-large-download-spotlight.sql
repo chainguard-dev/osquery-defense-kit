@@ -17,6 +17,9 @@ FROM
 WHERE
   mdfind.query = 'kMDItemWhereFroms == ''*https://*.my.salesforce.com/*'''
   AND ea.key = 'where_from'
+  -- Software downloads
+  AND ea.value NOT LIKE "%/sfc/dist/version/download/%"
+  AND file.btime > (strftime('%s', 'now') -86400)
   AND file.size > 500000
 GROUP BY
   file.path
