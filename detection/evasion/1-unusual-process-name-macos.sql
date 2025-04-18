@@ -103,6 +103,7 @@ WHERE
     'at.obdev.littlesnitch.networkextension',
     'at.obdev.littlesnitchmini.networkextension',
     'BetterTouchToolAppleScriptRunner',
+    'OneSignalNotificationServiceExtension',
     'BetterTouchToolAppleScriptRunner3',
     'BetterTouchToolShellScriptRunner',
     'com.microsoft.teams2.notificationcenter',

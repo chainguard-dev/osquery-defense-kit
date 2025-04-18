@@ -174,6 +174,7 @@ WHERE
     '/dev/nvidia,character',
     '/dev/nvidiactl,character',
     '/dev/nvme,character',
+    '/dev/nvme-fabrics,character',
     '/dev/nvmen,block',
     '/dev/nvmenp,block',
     '/dev/nvram,character',
@@ -310,5 +311,6 @@ WHERE
   AND NOT exception_key LIKE '/dev/%vg/root,block'
   AND NOT exception_key LIKE '/dev/%vg/swap%,block'
   AND NOT exception_key LIKE '/dev/default/%,block'
+  AND NOT exception_key LIKE '/dev/shm/lsp-catalog-%.shm,regular'
 GROUP BY
   exception_key

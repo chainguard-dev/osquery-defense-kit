@@ -97,6 +97,7 @@ WHERE
     'dynamiclinkmanager',
     'EcammLiveVideoOutAssistantXPCHelper',
     'launchd_startx',
+    'OneSignalNotificationServiceExtension',
     'test',
     'ThingsWidgetExtensionMacAppStore',
     'TwitterNotificationServiceExtension',
