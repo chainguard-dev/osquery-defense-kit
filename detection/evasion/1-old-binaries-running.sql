@@ -95,6 +95,7 @@ WHERE
     'Vimari Extension'
   )
   AND f.path NOT LIKE '/private/var/folders/%/T/AppTranslocation/%/d/Skitch.app/Contents/MacOS/Skitch'
+  AND f.path NOT LIKE '/private/var/folders/%/T/AppTranslocation/%/d/Spectacle.app/Contents/MacOS/Spectacle'
   AND f.path NOT LIKE '/snap/surfshark/%/usr/bin/gjs-console'
   AND f.filename NOT LIKE 'protoc-%'
   AND p.cgroup_path NOT LIKE '/system.slice/docker-%'

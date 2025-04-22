@@ -132,6 +132,7 @@ WHERE
     'mysql.com',
     'notion-static.com',
     'notion.so',
+    'notion.com',
     'obvdev.at',
     'ocf.berkeley.edu',
     'office.com',

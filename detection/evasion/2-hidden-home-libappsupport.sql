@@ -78,6 +78,7 @@ WHERE
     '~/Library/Application Support/.com.contextsformac.Contexts.plist',
     '~/Library/Application Support/.settings',
     '~/Library/Application Support/.Shadowland5.5',
+    '~/Library/Application Support/Evernote/.ldl',
     '~/Library/Application Support/BBEdit/.SupportFolderMigration.txt'
   )
   AND NOT homepath LIKE '~/Library/Application Support/.syssettings%'

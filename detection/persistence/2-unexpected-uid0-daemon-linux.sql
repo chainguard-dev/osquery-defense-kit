@@ -75,8 +75,6 @@ WHERE
   AND p0.start_time < (strftime('%s', 'now') - 3600)
   AND exception_key NOT IN (
     '(sd-pam),/usr/lib/systemd/systemd,0,user.slice,user-0.slice,0755',
-    'atd,/usr/bin/atd,0,system.slice,atd.service,0755',
-    'crond,/usr/bin/crond,0,system.slice,crond.service,0755',
     '(sd-pam),/usr/lib/systemd/systemd-executor,0,user.slice,user-0.slice,0755',
     '(udev-worker),/usr/bin/udevadm,0,system.slice,systemd-udevd.service,0755',
     '.tailscaled-wra,/nix/store/__VERSION__/bin/.tailscaled-wrapped,0,system.slice,tailscaled.service,0555',
@@ -103,6 +101,7 @@ WHERE
     'apcupsd,/usr/bin/apcupsd,0,system.slice,apcupsd.service,0755',
     'apt,/usr/bin/apt,0,user.slice,user-1000.slice,0755',
     'apt.systemd.dai,/usr/bin/dash,0,system.slice,apt-daily-upgrade.service,0755',
+    'atd,/usr/bin/atd,0,system.slice,atd.service,0755',
     'atd,/usr/sbin/atd,0,system.slice,atd.service,0755',
     'atop,/usr/bin/atop,0,system.slice,atop.service,0755',
     'atopacctd,/usr/sbin/atopacctd,0,system.slice,atopacct.service,0755',
@@ -128,6 +127,7 @@ WHERE
     'containerd-shim,/usr/bin/containerd-shim-runc-v2,0,system.slice,containerd.service,0755',
     'containerd-shim,/usr/bin/containerd-shim-runc-v2,0,system.slice,docker.service,0755',
     'cron,/usr/sbin/cron,0,system.slice,cron.service,0755',
+    'crond,/usr/bin/crond,0,system.slice,crond.service,0755',
     'crond,/usr/bin/crond,0,system.slice,cronie.service,0755',
     'crond,/usr/sbin/crond,0,system.slice,crond.service,0755',
     'cups-browsed,/usr/sbin/cups-browsed,0,system.slice,cups-browsed.service,0755',
@@ -196,6 +196,7 @@ WHERE
     'gdm-session-wor,/usr/libexec/gdm/gdm-session-worker,0,user.slice,user-463.slice,0755',
     'gdm3,/usr/sbin/gdm3,0,system.slice,gdm.service,0755',
     'geoclue.service,Location Lookup Service,geoclue,500',
+    'gjs,/snap/surfshark/__VERSION__/usr/bin/gjs-console,0,system.slice,snap.surfshark.surfsharkd.service,0755',
     'gjs,/snap/surfshark/__VERSION__/usr/bin/gjs-console,0,system.slice,snap.surfshark.surfsharkd2.service,0755',
     'glances,/usr/bin/python__VERSION__,0,system.slice,glances.service,0755',
     'gnome-keyring-d,/usr/bin/gnome-keyring-daemon,0,user.slice,user-1000.slice,0755',

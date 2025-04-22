@@ -95,7 +95,7 @@ WHERE
   AND NOT p1_pid = 2
   AND NOT p0_pid = 2
   AND NOT pname LIKE '.%-wrap%'
-  AND NOT pname IN ('xdg-open', 'nm-openvpn-auth')
+  AND NOT pname IN ('xdg-open', 'nm-openvpn-auth', 'MainThread')
   AND p0.path NOT LIKE "/nix/store/%"
   AND basename NOT IN (
     "acpid",

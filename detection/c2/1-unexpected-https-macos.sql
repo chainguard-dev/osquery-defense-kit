@@ -276,6 +276,7 @@ WHERE
       '500,Python,Python,,',
       '500,Python,Python,,org.python.python',
       '500,Python,Python,,Python',
+      '500,Python,Python,0u,80g exception_key:500,Python,Python,Developer ID Application: Python Software Foundation (BMM5U3QVKW),org.python.python',
       '500,Python,Python,0u,80g',
       '500,Python,Python,Developer ID Application: Ned Deily (DJ3H93M7VJ),org.python.python',
       '500,Python,Python,Developer ID Application: Python Software Foundation (BMM5U3QVKW),org.python.python',
@@ -288,7 +289,7 @@ WHERE
       OR p0_cmd LIKE '%/bin/aws%'
       OR p0_cmd LIKE '%/google-cloud-sdk/bin/%'
       OR p0_cmd LIKE '%/google-cloud-sdk/platform/%'
-      OR p0_cmd LIKE '%/pydevd.py'
+      OR p0_cmd LIKE '%/pydevd.py%'
       OR p0_cmd LIKE '%/Python update_plugins.py'
       OR p0_cmd LIKE '%anaconda-navigator%'
       OR p0_cmd LIKE '%bin/chaingpt %'
