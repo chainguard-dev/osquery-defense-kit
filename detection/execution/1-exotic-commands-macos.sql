@@ -111,5 +111,6 @@ WHERE
   AND NOT p0_cmd LIKE "%dd if=/dev/stdin conv=unblock cbs=79"
   AND NOT p0_cmd LIKE '%docker% run % tail -f /dev/null'
   AND NOT p1_path LIKE '/Applications/Emacs.app/Contents/MacOS/Emacs-arm64-%'
+  AND NOT p0_path = '/Applications/Google Drive.app/Contents/MacOS/crashpad_handler'
 GROUP BY
-  p0.pid;
+  p0.cmdline

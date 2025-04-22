@@ -175,6 +175,7 @@ WHERE
     '500,cargo,cargo,500u,80g',
     '500,chainctl,chainctl,0u,0g',
     '500,chainctl,chainctl,500u,20g',
+    '500,codebook-lsp,codebook-lsp,500u,20g',
     '500,chainlink,chainlink,500u,20g',
     '500,cilium,cilium,500u,123g',
     '500,cloud-sql-proxy,cloud-sql-proxy,500u,20g',
@@ -183,6 +184,7 @@ WHERE
     '500,cosign,cosign,500u,20g',
     '500,cosign,cosign,500u,80g',
     '500,cpu,cpu,500u,20g',
+    '500,container-diff,container-diff,500u,20g',
     '500,crane,crane,0u,500g',
     '500,crane,crane,500u,80g',
     '500,docker-scout,docker-scout,500u,20g',
@@ -274,6 +276,7 @@ WHERE
       '500,Python,Python,,',
       '500,Python,Python,,org.python.python',
       '500,Python,Python,,Python',
+      '500,Python,Python,0u,80g exception_key:500,Python,Python,Developer ID Application: Python Software Foundation (BMM5U3QVKW),org.python.python',
       '500,Python,Python,0u,80g',
       '500,Python,Python,Developer ID Application: Ned Deily (DJ3H93M7VJ),org.python.python',
       '500,Python,Python,Developer ID Application: Python Software Foundation (BMM5U3QVKW),org.python.python',
@@ -286,7 +289,7 @@ WHERE
       OR p0_cmd LIKE '%/bin/aws%'
       OR p0_cmd LIKE '%/google-cloud-sdk/bin/%'
       OR p0_cmd LIKE '%/google-cloud-sdk/platform/%'
-      OR p0_cmd LIKE '%/pydevd.py'
+      OR p0_cmd LIKE '%/pydevd.py%'
       OR p0_cmd LIKE '%/Python update_plugins.py'
       OR p0_cmd LIKE '%anaconda-navigator%'
       OR p0_cmd LIKE '%bin/chaingpt %'

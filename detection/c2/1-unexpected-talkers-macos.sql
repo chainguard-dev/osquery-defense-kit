@@ -100,17 +100,18 @@ WHERE
   AND p0.path NOT LIKE '/usr/libexec/%'
   AND p0.path NOT LIKE '/usr/sbin/%'
   AND NOT signed_exception IN (
+    '0,Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
     '0,Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     '0,Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9)',
-    '0,Developer ID Application: Objective Development Software GmbH (MLZF7K7B5R)',
     '500,Apple Mac OS Application Signing',
     '500,Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
     '500,Developer ID Application: Autodesk (XXKJ396S2Y)',
+    '500,Developer ID Application: Azul Systems, Inc. (TDTHCUPYFR)',
     '500,Developer ID Application: Blackmagic Design Inc (9ZGFBWLSYP)',
     '500,Developer ID Application: Cisco (DE8Y96K9QP)',
-    '500,Developer ID Application: Azul Systems, Inc. (TDTHCUPYFR)',
     '500,Developer ID Application: David Kocher (G69SCX94XU)',
     '500,Developer ID Application: Google LLC (EQHXZ8M8AV)',
+    '500,Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
     '500,Developer ID Application: Microsoft Corporation (UBF8T346G9)',
     '500,Developer ID Application: ngrok LLC (TEX8MHRDQ9)',
     '500,Developer ID Application: Oracle America, Inc. (VB5E2TV963)',

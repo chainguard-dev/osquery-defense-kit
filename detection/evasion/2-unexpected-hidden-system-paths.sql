@@ -329,3 +329,8 @@ WHERE
     AND file.size = 28
     AND file.mode = '0666'
   )
+  AND NOT (
+    file.path LIKE '/tmp/.comments/%.jpg.xml'
+    AND file.uid > 0
+    AND file.size < 15000
+  )

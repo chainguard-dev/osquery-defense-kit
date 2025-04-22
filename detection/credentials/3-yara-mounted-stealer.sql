@@ -62,7 +62,7 @@ WHERE
       AND file.type = "regular"
   )
   AND magic.data LIKE "%Executable%"
-  AND yara.sigrule = '    
+  AND yara.sigrule = '
     rule stealer {
     strings:
         $brave_software = "BraveSoftware" ascii
@@ -78,5 +78,9 @@ WHERE
         2 of them
 }'
   AND yara.count > 0
+  AND NOT (
+    vol_name = "Docker"
+    AND s_auth = "Developer ID Application: Docker Inc (9BNSXJN65R)"
+  )
 GROUP BY
   file.path

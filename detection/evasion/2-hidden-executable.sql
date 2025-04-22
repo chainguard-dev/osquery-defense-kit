@@ -86,6 +86,8 @@ WHERE
     '~/code',
     '~/Code',
     '~/Projects',
+    '~/projects',
+    '~/git',
     '~/repos',
     '~/src'
   )
@@ -93,6 +95,7 @@ WHERE
     '/home/linuxbrew/.linuxbrew',
     '/var~/.local/share',
     '~/.cache/gitstatus',
+    '~/.cache/cloud-code',
     '~/.cache/go-build',
     '~/.cache/JetBrains',
     '~/.cache/rod',
@@ -121,6 +124,7 @@ WHERE
   )
   AND NOT homedir LIKE '%/.Trash/1Password %.app/Contents/Library/LoginItems/1Password Extension Helper.app/Contents/MacOS'
   AND NOT homedir LIKE '%/.Trash/Logi Options.app/Contents/Support/LogiMgrDaemon.app/Contents/MacOS'
+  AND NOT homedir LIKE '~/%/.venv/bin'
   AND NOT homedir LIKE '~/.local/share/AppImage/ZenBrowser.AppImage'
   AND NOT homedir LIKE '~/.Trash/1Password %.app/Contents/Library/LoginItems/1Password Extension Helper.app/Contents/MacOS'
   AND NOT homedir LIKE '~/Library/Application Support/Code/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/%'

@@ -85,6 +85,7 @@ WHERE
     '0,go,0u,0g,go',
     '0,gtk4-update-icon-cache,0u,0g,gtk-update-icon',
     '0,http,0u,0g,https',
+    '0,incusd,0u,0g,incusd',
     '0,ir_agent,0u,0g,ir_agent',
     '0,kmod,0u,0g,depmod',
     '0,launcher,0u,0g,launcher',
@@ -135,8 +136,9 @@ WHERE
     '500,armcord,u,g,armcord',
     '500,aws,0u,0g,aws',
     '500,aws,500u,500g,aws',
+    '500,azure,500u,500g,azure',
     '500,bash,0u,0g,bash',
-    '500,snapd,0u,0g,snapd',
+    '500,bazelisk-linux_amd64,u,g,bazelisk-linux_',
     '500,beeper,u,g,beeper',
     '500,bitwarden,u,g,bitwarden',
     '500,bom,500u,500g,bom',
@@ -144,12 +146,12 @@ WHERE
     '500,Brackets,0u,0g,Brackets',
     '500,brave,0u,0g,brave',
     '500,brave,u,g,brave',
-    '500,bazelisk-linux_amd64,u,g,bazelisk-linux_',
     '500,buildkitd,500u,500g,buildkitd',
     '500,buildkite-agent,500u,500g,buildkite-agent',
     '500,cargo,0u,0g,cargo',
     '500,cargo,500u,500g,cargo',
     '500,cargo,u,g,cargo',
+    '500,cargo-cinstall,500u,500g,cargo-cinstall',
     '500,cg,500u,500g,cg',
     '500,chainctl,0u,0g,chainctl',
     '500,chainctl,500u,100g,chainctl',
@@ -162,6 +164,7 @@ WHERE
     '500,chromium,0u,0g,chromium',
     '500,cilium,500u,123g,cilium',
     '500,cloud_sql_proxy,0u,0g,cloud_sql_proxy',
+    '500,cloudcode_cli,500u,500g,cloudcode_cli',
     '500,cockatrice,u,g,cockatrice',
     '500,code,0u,0g,code',
     '500,code,500u,500g,code',
@@ -187,6 +190,7 @@ WHERE
     '500,Docker Desktop,0u,0g,Docker Desktop',
     '500,docker,0u,0g,docker',
     '500,docker-buildx,0u,0g,docker-buildx',
+    '500,docker-language-server-linux-amd64,500u,500g,docker-language ',
     '500,drkonqi,0u,0g,drkonqi',
     '500,dropbox,500u,500g,dropbox',
     '500,eksctl,0u,0g,eksctl',
@@ -207,6 +211,7 @@ WHERE
     '500,flatpak-oci-authenticator,0u,0g,flatpak-oci-aut',
     '500,flux,500u,500g,flux',
     '500,fulcio,500u,500g,fulcio',
+    '500,gce,500u,500g,gce',
     '500,gcsfuse,500u,500g,gcsfuse',
     '500,gdb,0u,0g,gdb',
     '500,geoclue,0u,0g,geoclue',
@@ -240,7 +245,9 @@ WHERE
     '500,gvfsd-google,0u,0g,gvfsd-google',
     '500,gvfsd-http,0u,0g,gvfsd-http',
     '500,helm,0u,0g,helm',
+    '500,helm,500u,500g,helm',
     '500,htop,0u,0g,htop',
+    '500,hugo,0u,0g,hugo',
     '500,hugo,500u,500g,hugo',
     '500,io.elementary.appcenter,0u,0g,io.elementary.a',
     '500,istioctl,500u,500g,istioctl',
@@ -251,6 +258,7 @@ WHERE
     '500,jetbrains-toolbox,u,g,jetbrains-toolb',
     '500,k6,500u,500g,k6',
     '500,k9s,0u,0g,k9s',
+    '500,k9s,500u,500g,k9s',
     '500,kbfsfuse,0u,0g,kbfsfuse',
     '500,keepassxc,u,g,keepassxc',
     '500,keybase,0u,0g,keybase',
@@ -287,6 +295,7 @@ WHERE
     '500,node,0u,0g,.node2nix-wrapp',
     '500,node,0u,0g,node',
     '500,node,0u,0g,npm install',
+    '500,node,500u,500g,node',
     '500,node,500u,500g,npm run start',
     '500,node,500u,500g,npm',
     '500,node,u,g,node',
@@ -305,9 +314,11 @@ WHERE
     '500,php,0u,0g,php',
     '500,php8.1,0u,0g,php',
     '500,pingsender,0u,0g,pingsender',
+    '500,slack-status,500u,500g,slack-status',
     '500,plasma-discover,0u,0g,plasma-discover',
     '500,plasmashell,0u,0g,plasmashell',
     '500,podman,0u,0g,podman',
+    '500,postman,0u,0g,postman',
     '500,promoter,500u,500g,promoter',
     '500,publish-release,500u,500g,publish-release',
     '500,pycharm,500u,500g,pycharm',
@@ -326,7 +337,10 @@ WHERE
     '500,python3.11,u,g,pip',
     '500,python3.12,0u,0g,dnf',
     '500,qemu-system-x86_64,0u,0g,qemu-system-x86',
+    '500,qrader,500u,500g,qrader',
+    '500,rambox,0u,0g,rambox',
     '500,reporter-ureport,0u,0g,reporter-urepor',
+    '500,rerun-pr-ci,500u,500g,rerun-pr-ci',
     '500,rpi-imager,0u,0g,rpi-imager',
     '500,rustup,0u,0g,rustup',
     '500,scoville,500u,500g,scoville',
@@ -334,11 +348,11 @@ WHERE
     '500,signal-desktop,u,g,signal-desktop',
     '500,skopeo,0u,0g,skopeo',
     '500,slack,0u,0g,slack',
-    '500,k9s,500u,500g,k9s',
     '500,slack,u,g,slack',
     '500,slirp4netns,0u,0g,slirp4netns',
     '500,slirp4netns,500u,500g,slirp4netns',
     '500,snap-store,0u,0g,snap-store',
+    '500,snapd,0u,0g,snapd',
     '500,snyk,500u,500g,snyk',
     '500,spotify,0u,0g,spotify',
     '500,spotify,500u,500g,spotify',
@@ -351,8 +365,8 @@ WHERE
     '500,step,500u,500g,step',
     '500,step-cli,0u,0g,step',
     '500,stern,500u,500g,stern',
+    '500,surfshark,0u,0g,surfshark',
     '500,syft,500u,500g,syft',
-    '500,rambox,0u,0g,rambox',
     '500,syncthing,0u,0g,syncthing',
     '500,syncthing,u,g,syncthing',
     '500,synergy,0u,0g,synergy',
@@ -389,20 +403,21 @@ WHERE
     '500,zoom,0u,0g,zoom',
     '500,zoom.real,u,g,zoom.real'
   ) -- Exceptions where we have to be more flexible for the process name
-  AND NOT exception_key LIKE '500,wolfi%,500u,500g,wolfi%'
-  AND NOT exception_key LIKE '0,python3.%,0u,0g,dnf-automatic'
   AND NOT exception_key LIKE '0,python3.%,0u,0g,dnf'
+  AND NOT exception_key LIKE '0,python3.%,0u,0g,dnf-automatic'
   AND NOT exception_key LIKE '0,python3.%,0u,0g,yum'
   AND NOT exception_key LIKE '0,python3.%,500u,500g,dnf-automatic'
   AND NOT exception_key LIKE '500,cosign-%,500u,500g,cosign-%'
+  AND NOT exception_key LIKE '500,go1.%,u,g,go.%'
   AND NOT exception_key LIKE '500,node,0u,0g,npm exec %'
   AND NOT exception_key LIKE '500,node,0u,0g,npm install %'
-  AND NOT exception_key LIKE '500,python3.%,0u,0g,pip'
-  AND NOT exception_key LIKE '500,go1.%,u,g,go.%'
-  AND NOT exception_key LIKE '500,python3.%,0u,0g,update-manager'
   AND NOT exception_key LIKE '500,python3%,u,g,pip'
-  AND NOT exception_key LIKE '500,terraform_%,500u,500g,terraform'
+  AND NOT exception_key LIKE '500,python3.%,0u,0g,pip'
+  AND NOT exception_key LIKE '500,python3.%,0u,0g,update-manager'
+  AND NOT exception_key LIKE '500,python3.%,500u,500g,python3'
   AND NOT exception_key LIKE '500,terraform-provider-%,500u,500g,terraform-provi'
+  AND NOT exception_key LIKE '500,terraform_%,500u,500g,terraform'
+  AND NOT exception_key LIKE '500,wolfi%,500u,500g,wolfi%'
   AND NOT (
     exception_key LIKE '500,python3%,0u,0g,python%'
     AND (
@@ -422,7 +437,10 @@ WHERE
   AND NOT p.path LIKE '/nix/store/%/bin/%'
   AND NOT (
     exception_key LIKE '500,%,500u,500g,%'
-    AND p.path LIKE '/tmp/go-build%/exe/%'
+    AND (
+      p.path LIKE '/tmp/go-build%/exe/%'
+      OR p.path LIKE '/home/%/.cache/go-build/%'
+    )
   )
   AND NOT (
     exception_key = '0,curl,0u,0g,curl'

@@ -71,6 +71,7 @@ WHERE
     '2112,6,500,rekor-server,',
     '2112,6,500,timestamp-server,',
     '22,6,0,launchd,Software Signing',
+    '22,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '22000,6,500,syncthing,',
     '2345,6,500,dlv,',
     '24678,6,500,node,',
@@ -80,7 +81,9 @@ WHERE
     '33333,6,500,Ultimate,',
     '41949,6,500,IPNExtension,Apple Mac OS Application Signing',
     '43398,6,500,IPNExtension,Apple Mac OS Application Signing',
+    '443,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '443,6,500,limactl,',
+    '443,6,500,OrbStack Helper,Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)',
     '443,6,500,ssh,Software Signing',
     '45972,6,500,IPNExtension,Apple Mac OS Application Signing',
     '49152,6,0,AirPlayXPCHelper,Software Signing',
@@ -89,30 +92,30 @@ WHERE
     '49152,6,0,remotepairingdeviced,Software Signing',
     '49152,6,0,webfilterproxyd,Software Signing',
     '49152,6,500,AUHostingServiceXPC_arrow,Software Signing',
+    '49152,6,500,barrier',
+    '49152,6,500,ChatGPT,Developer ID Application: OpenAI, L.L.C. (2DC432GLL2)',
     '49152,6,500,ContinuityCaptureAgent,Software Signing',
+    '49152,6,500,curl,Software Signing',
     '49152,6,500,GarageBand,Apple Mac OS Application Signing',
+    '49152,6,500,git-daemon,',
     '49152,6,500,HP Smart,Apple Mac OS Application Signing',
     '49152,6,500,IPNExtension,Apple Mac OS Application Signing',
+    '49152,6,500,java,',
+    '49152,6,500,java,Developer ID Application: Azul Systems, Inc. (TDTHCUPYFR)',
     '49152,6,500,Logic Pro X,Apple Mac OS Application Signing',
     '49152,6,500,Music,Software Signing',
-    '49152,6,500,OmniFocus,Apple Mac OS Application Signing',
-    '49152,6,500,barrier',
-    '22,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',
-    '80,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',
-    '443,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',
-    '49152,6,500,git-daemon,',
-    '49152,6,500,java,',
     '49152,6,500,node,',
+    '49152,6,500,OmniFocus,Apple Mac OS Application Signing',
+    '49152,6,500,pCloud Drive,Developer ID Application: PCLOUD LTD (KSTWHH4JHP)',
     '49152,6,500,qemu-system-aarch64,',
     '49152,6,500,rapportd,Software Signing',
     '49152,6,500,siriactionsd,Software Signing',
     '49152,6,500,telepresence,',
     '49152,6,65,mDNSResponder,Software Signing',
-    '49152,6,500,ChatGPT,Developer ID Application: OpenAI, L.L.C. (2DC432GLL2)',
-    '500,6,8883,BambuStudio,BambuStudio,500u,80g',
+    '13618,6,500,BambuStudio,Developer ID Application: Shanghai Lunkuo Technology Co., Ltd (T3UBR9Y3B2)',
     '5000,6,500,ControlCenter,Software Signing',
-    '5001,6,500,Record It,Apple Mac OS Application Signing',
     '5001,6,500,crane,',
+    '5001,6,500,Record It,Apple Mac OS Application Signing',
     '5060,6,500,CommCenter,Software Signing',
     '53,17,500,dnsmasq,',
     '53,17,500,server,',
@@ -136,10 +139,10 @@ WHERE
     '7000,6,500,ControlCenter,Software Signing',
     '773,17,0,startupdiskhelper,Software Signing',
     '80,6,500,com.docker.backend,',
+    '80,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '80,6,500,crc,',
     '80,6,500,limactl,',
     '80,6,500,OrbStack Helper,Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)',
-    '443,6,500,OrbStack Helper,Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)',
     '80,6,500,ssh,Software Signing',
     '8055,6,500,java,',
     '8081,6,500,crane,',
@@ -159,26 +162,27 @@ WHERE
     -- hide unanticipated uses of system utilities, like Screen Saharing.
     AND signature.authority IN (
       'Apple Development: Jakub Gluszkiewicz (2LC3SFDY52)',
-      'Developer ID Application: ARDUINO SA (7KT7ZWMCJT)',
       'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
       'Developer ID Application: Apple Inc. - XQuartz (NA574AWV7E)',
+      'Developer ID Application: ARDUINO SA (7KT7ZWMCJT)',
       'Developer ID Application: Astro HQ LLC (8356ZZ8Y5K)',
       'Developer ID Application: Blackmagic Design Inc (9ZGFBWLSYP)',
       'Developer ID Application: Bohemian Coding (WUGMZZ5K46)',
       'Developer ID Application: Brother Industries, LTD. (5HCL85FLGW)',
-      'Developer ID Application: CORE.AI SCIENTIFIC TECHNOLOGIES PRIVATE LIMITED (8F632A866K)',
+      'Developer ID Application: Canon Electronics Inc. (MKRQ6AC8Z5)',
       'Developer ID Application: Capture One A/S (5WTDB5F65L)',
       'Developer ID Application: Cisco (DE8Y96K9QP)',
+      'Developer ID Application: CORE.AI SCIENTIFIC TECHNOLOGIES PRIVATE LIMITED (8F632A866K)',
       'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
       'Developer ID Application: Cypress.Io, Inc. (7D655LWGLY)',
       'Developer ID Application: DBeaver Corporation (42B6MDKMW8)',
       'Developer ID Application: Docker Inc (9BNSXJN65R)',
       'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
       'Developer ID Application: Duet, Inc. (J6L96W8A86)',
-      'Developer ID Application: EXAFUNCTION, INC. (83Z2LHX6XW)',
       'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
       'Developer ID Application: Eclipse Foundation, Inc. (JCDTMS22B4)',
       'Developer ID Application: EnterpriseDB Corporation (26QKX55P9K)',
+      'Developer ID Application: EXAFUNCTION, INC. (83Z2LHX6XW)',
       'Developer ID Application: Focusrite Audio Engineering Ltd. (7VYBQV3T2Q)',
       'Developer ID Application: Jakob Borg (LQE5SYM783)',
       'Developer ID Application: JetBrains s.r.o. (2ZEFAR8TH3)',
@@ -198,12 +202,12 @@ WHERE
       'Developer ID Application: Remo Tech Co.,Ltd. (7GJANK3822)',
       'Developer ID Application: RescueTime, Inc (FSY4RB8H39)',
       'Developer ID Application: Roon Labs LLC (WU8DGC424P)',
-      'Developer ID Application: SOURCEGRAPH INC (74A5FJ7P96)',
       'Developer ID Application: Seiko Epson Corporation (TXAEAV5RN4)',
       'Developer ID Application: Shenzhen Arashi Vision Co., Ltd. (847R5ZLN8S)',
       'Developer ID Application: Signal Messenger, LLC (U68MSDN6DR)',
       'Developer ID Application: Signify Netherlands B.V. (PREPN2W95S)',
       'Developer ID Application: Sonos, Inc. (2G4LW83Q3E)',
+      'Developer ID Application: SOURCEGRAPH INC (74A5FJ7P96)',
       'Developer ID Application: Spotify (2FNC3A47ZF)',
       'Developer ID Application: Symless Ltd (4HX897Y6GJ)',
       'Developer ID Application: Tailscale Inc. (W5364U7YZB)',
@@ -234,6 +238,7 @@ WHERE
         'controller',
         'crane',
         'crc',
+        'curl',
         'docker-proxy',
         'gvproxy',
         'hugo',
@@ -245,12 +250,18 @@ WHERE
       )
       OR p.name LIKE 'kubectl.%'
       OR p.name LIKE '__%_go'
+      OR p.name LIKE 'python3.%'
     )
     AND lp.port > 1024
     and lp.protocol = 6
   )
   AND NOT (
     p.path LIKE '/private/var/folders/%/go-build%/exe/%'
+    AND lp.port > 1024
+    AND lp.protocol = 6
+  )
+  AND NOT (
+    p.path LIKE '/Users/%/Library/Caches/go-build%'
     AND lp.port > 1024
     AND lp.protocol = 6
   )

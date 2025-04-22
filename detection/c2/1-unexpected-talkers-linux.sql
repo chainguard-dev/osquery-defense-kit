@@ -91,6 +91,8 @@ WHERE
     '123,17,500,chronyd,0u,0g,chronyd',
     '19305,6,500,msedge,0u,0g,msedge',
     '21,6,0,rpm-ostree,0u,0g,rpm-ostree',
+    '22,6,500,azure,500u,500g,azure',
+    '22,6,500,gce,500u,500g,gce',
     '25565,6,500,java,500u,500g,java',
     '25567,6,500,java,500u,500g,java',
     '27018,6,500,pasta.avx2,0u,0g,pasta.avx2',
@@ -163,7 +165,6 @@ WHERE
     '80,6,500,firefox-bin,500u,500g,firefox-bin',
     '80,6,500,firefox-bin,u,g,firefox-bin',
     '80,6,500,firefox-esr,0u,0g,firefox-esr',
-    '80,6,500,librewolf,0u,0g,librewolf',
     '80,6,500,flatpak,0u,0g,flatpak',
     '80,6,500,git-remote-http,0u,0g,git-remote-http',
     '80,6,500,gnome-software,0u,0g,gnome-software',
@@ -171,6 +172,7 @@ WHERE
     '80,6,500,http,u,g,http',
     '80,6,500,java,0u,0g,java',
     '80,6,500,java,u,g,java',
+    '80,6,500,librewolf,0u,0g,librewolf',
     '80,6,500,main,500u,500g,main',
     '80,6,500,mateweather-applet,0u,0g,mateweather-app',
     '80,6,500,mconvert,500u,500g,mconvert',
@@ -256,6 +258,7 @@ WHERE
   AND NOT exception_key LIKE '%,6,500,nuclei,500u,500g,nuclei'
   AND NOT exception_key LIKE '%,6,500,ssh,0u,0g,ssh'
   AND NOT exception_key LIKE '80,6,500,terraform_1.1.5,500u,500g,terraform'
+  AND NOT exception_key LIKE '%,6,0,rpm-ostree,0u,0g,rpm-ostree'
   AND NOT (
     s.remote_port = 80
     AND s.protocol = 6
@@ -316,8 +319,18 @@ WHERE
     AND p.euid > 500
   )
   AND NOT (
-    p.name IN ('firefox', 'firefox-bin', 'firefox-esr', 'librewolf')
-    AND f.filename IN ('firefox', 'firefox-bin', 'firefox-esr', 'librewolf')
+    p.name IN (
+      'firefox',
+      'firefox-bin',
+      'firefox-esr',
+      'librewolf'
+    )
+    AND f.filename IN (
+      'firefox',
+      'firefox-bin',
+      'firefox-esr',
+      'librewolf'
+    )
     AND s.remote_port > 3000
     AND s.protocol IN (6, 17)
     AND p.euid > 500

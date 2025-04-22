@@ -50,10 +50,12 @@ WHERE
     '/var/lib/colord',
     '/var/ossec/agentless',
     '/var/ossec/bin',
-    '/var/vanta',
     '/var/ossec/wodles',
     '/var/run/booted-system',
-    '/var/run/current-system'
+    '/var/run/current-system',
+    '/var/usrlocal/bin',
+    '/var/usrlocal/lib64',
+    '/var/vanta'
   )
   AND file.directory NOT LIKE '/var/tmp/ostree-unlock-ovl.%/upper/bin'
   AND file.path NOT IN (

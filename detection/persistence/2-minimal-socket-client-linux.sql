@@ -37,14 +37,16 @@ WHERE
   AND p0.start_time < (strftime('%s', 'now') - 900)
   AND p0.path NOT IN (
     '/opt/bitnami/redis/bin/redis-server',
+    '/opt/java/openjdk/bin/java',
     '/usr/bin/cat',
     '/usr/bin/containerd',
     '/usr/bin/dash',
-    '/usr/bin/docker-proxy',
     '/usr/bin/docker',
+    '/usr/bin/docker-proxy',
     '/usr/bin/fusermount3',
     '/usr/bin/i3blocks',
     '/usr/bin/kas',
+    '/usr/bin/k3s',
     '/usr/bin/vmalert',
     '/usr/lib/electron/chrome-sandbox',
     '/usr/lib/snapd/snapd',
@@ -59,8 +61,10 @@ WHERE
     'chrome_crashpad',
     'launcher',
     'dhcpcd',
+    'gitsign-credent',
     'gitaly',
     'kas',
+    'k9s',
     'redis-server',
     'stern'
   ) -- optimization: minimalistic daemons typically only run 1 pid per path

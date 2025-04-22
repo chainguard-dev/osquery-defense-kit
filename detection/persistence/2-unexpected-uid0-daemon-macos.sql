@@ -305,6 +305,7 @@ WHERE -- Focus on longer-running programs
       AND NOT path LIKE '/opt/homebrew/Cellar/socket_vmnet/%/bin/socket_vmnet'
       AND NOT path LIKE '/usr/local/Cellar/btop/%/bin/btop'
       AND NOT path LIKE '/usr/local/Cellar/htop/%/bin/htop'
+      AND NOT path LIKE '/opt/homebrew/Cellar/cloud-provider-kind/%/bin/cloud-provider-kind'
       AND NOT path LIKE '/usr/local/kolide-k2/bin/launcher-updates/%/Kolide.app/Contents/MacOS/launcher'
       AND NOT path LIKE '/usr/local/kolide-k2/bin/osqueryd-updates/%/osqueryd'
     GROUP BY
@@ -353,6 +354,7 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: PROSOFT Engineering, Inc. (L2JPZL6629)',
     'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     'Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',
+    'Developer ID Application: AVM Software, Inc (72D53DS677)',
     'Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
     'Developer ID Application: SLACK TECHNOLOGIES L.L.C. (BQR82RBBHL)',
     'Developer ID Application: SparkLabs Pty Ltd (34XR7GXFPX)',
@@ -368,5 +370,6 @@ WHERE -- Focus on longer-running programs
     AND s.identifier = 'pnpd'
     AND s.authority = 'Developer ID Application: Sanford, L.P. (N3S6676K3E)'
   )
+  AND NOT p0_cmd = './perflock -daemon'
 GROUP BY
   p0.path

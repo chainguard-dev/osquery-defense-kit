@@ -54,4 +54,7 @@ WHERE
   AND p.path NOT LIKE '/opt/%'
   AND p.path NOT LIKE '/usr/bin/%'
   AND p.path NOT LIKE '/usr/sbin/%'
-  AND p.path NOT IN ('/usr/lib/firefox/firefox-bin')
+  AND p.path NOT IN (
+    '/usr/lib/firefox/firefox-bin',
+    '/usr/lib64/firefox/firefox'
+  )

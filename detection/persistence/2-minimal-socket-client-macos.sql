@@ -113,6 +113,7 @@ WHERE
       processes.path
   )
   AND NOT exception_key = '500,Steam Helper,~/Library/Application Support/Steam/Steam.AppBundle/Steam/Contents/MacOS/Frameworks/Steam Helper.app/Contents/MacOS/Steam HelperDeveloper ID Application: Valve Corporation (MXGJJ98X76)'
+  AND NOT exception_key LIKE '500,python3.%,~/miniconda/envs/skilljar-api/bin/python3.%'
   AND pmm.path LIKE "%.dylib"
 GROUP BY
   pos.pid

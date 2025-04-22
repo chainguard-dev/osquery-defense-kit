@@ -41,6 +41,7 @@ WHERE
     'Developer ID Application: Canva Pty Ltd (5HD2ARTBFS)',
     'Developer ID Application: Cloudflare Inc. (68WVV388M8)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
+    'Developer ID Application: Daniel Georgiev (38RJ64N8CE)', -- Iris
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',
     'Developer ID Application: EnterpriseDB Corporation (26QKX55P9K)',
     'Developer ID Application: Expressco Services, LLC (TC292Y5427)', -- Express VPN
@@ -112,3 +113,4 @@ WHERE
   AND program_arguments NOT LIKE '/Users/%/Library/Application Support/com.grammarly.ProjectLlama/Scripts/Grammarly Uninstaller'
   AND program_arguments NOT LIKE '/Users/%/Library/Application Support/com.grammarly.ProjectLlama/Scripts/post-uninstall.sh'
   AND program_arguments NOT LIKE '%/mysqld_safe --datadir=%'
+  AND program_arguments NOT LIKE '/Users/%/.local/ActiveState/StateTool/release/State Service.app'

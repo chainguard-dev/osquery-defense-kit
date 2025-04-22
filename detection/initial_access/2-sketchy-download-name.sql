@@ -74,4 +74,9 @@ WHERE
   -- Likely-safe download sources
   AND NOT (
     download_url LIKE 'https://definitionupdates.microsoft.com/%' -- https://learn.microsoft.com/en-us/windows/privacy/manage-windows-11-endpoints#:~:text=TLSv1.2-,definitionupdates,-.microsoft.com
+    OR download_url LIKE 'https://myaccount.draftkings.com/%'
+    OR download_url LIKE 'https://prod-downloads.geocomply.com/%'
+    OR download_url LIKE 'https://%.bose.com/%'
   )
+GROUP BY
+  file.filename

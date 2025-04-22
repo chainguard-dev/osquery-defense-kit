@@ -117,7 +117,8 @@ WHERE
     'Developer ID Application: Canon Inc. (XE2XNRRXZ5)',
     'Developer ID Application: Dropbox, Inc. (G7HH3F8CAK)',
     'Developer ID Application: Google LLC (EQHXZ8M8AV)',
-    'Developer ID Application: Logitech Inc. (QED4VVPZWA)'
+    'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
+    'Developer ID Application: Martijn Smit (GX645XXEAX)'
   ) -- Unsigned programs here
   AND trimpath NOT IN (
     '/Volumes/Garmin Express/Install Garmin Express.pkg',

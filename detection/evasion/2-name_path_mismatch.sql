@@ -105,6 +105,7 @@ WHERE
     '500,gjs-console,daemon.js',
     '500,gjs-console,gnome-character',
     '500,libgvc6-config-update,dot',
+    '500,mate-session,x-session-manag',
     '500,nc.openbsd,nc',
     '500,netcat,nc',
     '500,plugin-container,MainThread',
@@ -120,7 +121,7 @@ WHERE
   )
   AND NOT exception_key LIKE '%,systemd,(sd-pam)'
   AND NOT (
-    p0.path = '/usr/lib/xfce4/panel/wrapper-2.0'
+    p0.path LIKE '/usr/lib/%/panel/wrapper-2.0'
     AND exception_key LIKE '500,wrapper-2.0,panel-%'
   )
   AND NOT p0.path IN ('/usr/lib/systemd/systemd')
