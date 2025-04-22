@@ -14,6 +14,7 @@ SELECT
   DATETIME(file.atime, 'unixepoch', 'localtime') AS access_time,
   file.inode,
   file.type,
+  file.mode,
   hash.sha256,
   magic.data
 FROM
@@ -43,10 +44,12 @@ WHERE
     'debian_version',
     'installer-info.json',
     'master.passwd',
+    'METADATA',
     'NEWS',
     'printcap',
     'strace-log-merge'
   )
+  AND filename NOT LIKE '%.txt'
   AND file.path NOT LIKE '/etc/cups/%'
   AND file.path NOT LIKE '%/lynis%'
   AND file.path NOT LIKE '%/yelp-xsl%'

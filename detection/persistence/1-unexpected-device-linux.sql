@@ -233,6 +233,7 @@ WHERE
     '/dev/tpm,character',
     '/dev/tpmrm,character',
     '/dev/tty,character',
+    '/dev/ttyUSB,character',
     '/dev/ttyACM,character',
     '/dev/ttyprintk,character',
     '/dev/ttyS,character',

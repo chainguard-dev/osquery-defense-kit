@@ -138,6 +138,8 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
           file.filename LIKE "%ctl"
           OR file.filename LIKE "%adm"
           OR file.filename LIKE "%-cli"
+          OR file.filename LIKE '.org.chromium.Chromium.%'
+          OR file.filename = "a.out"
         )
       )
       AND NOT (

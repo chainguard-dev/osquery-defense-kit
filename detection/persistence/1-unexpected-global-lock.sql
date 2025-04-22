@@ -63,3 +63,4 @@ WHERE
   AND NOT exception_key LIKE '500,1000,/tmp/keepassxc-%.lock,regular,0664'
   AND NOT exception_key LIKE '500,1000,/tmp/vscode-remote-ssh-%-install.lock,regular,0664'
   AND NOT exception_key LIKE '500,1000,/tmp/%.eksctl.lock,regular,0600'
+  AND NOT exception_key LIKE '500,1000,/dev/shm/lsp-catalog-%.lock,regular,0664'

@@ -30,5 +30,6 @@ WHERE
   AND command NOT LIKE 'root%run-parts%'
   AND command NOT IN (
     "ps -A | grep at.obdev.littlesnitch.networkextension | grep -v 'grep' | awk '{print $1}' | xargs kill",
-    'root [ -d "/run/systemd/system" ] && systemctl restart atop'
+    'root [ -d "/run/systemd/system" ] && systemctl restart atop',
+    'timeout --kill-after=10 100 mbsync -q -a'
   )

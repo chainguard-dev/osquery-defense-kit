@@ -58,6 +58,7 @@ WHERE
         '/usr/bin/fusermount3',
         '/usr/bin/login',
         '/usr/bin/newgrp',
+        '/usr/bin/passwd',
         '/usr/bin/su',
         '/usr/bin/sudo',
         '/usr/bin/top',

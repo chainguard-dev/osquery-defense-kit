@@ -87,6 +87,7 @@ WHERE
       AND NOT directory LIKE '/Users/%/.cargo/bin/'
       AND NOT directory LIKE '/Users/%/.crc/bin/'
       AND NOT directory LIKE '/Users/%/.go/bin/'
+      AND NOT directory LIKE '/Users/%/.venv/bin/'
       AND NOT directory LIKE '/Users/%/.local/bin/'
       AND NOT directory LIKE '/Users/%/.minikube/bin/'
       AND NOT directory LIKE '/Users/%/.Trash/%'
@@ -147,6 +148,7 @@ WHERE
     '~/.docker/scout',
     '~/.dotnet/tools',
     '~/.emacs.d.bak/bin',
+    '~/.oh-my-zsh/themes',
     '~/.emacs.d/backups',
     '~/.fig/bin',
     '~/.fzf',
@@ -180,6 +182,7 @@ WHERE
     '/Users/Shared/LogiOptionsPlus/cache',
     '/Users/Shared/Red Giant/Uninstall',
     '~/.antigen',
+    '~/.cache/fsh',
     '~/.docker.old/cli-plugins',
     '~/.fzf/test',
     '~/.iterm2',
@@ -215,6 +218,7 @@ WHERE
   AND NOT homepath LIKE '~/Library/%/%.db-wal'
   AND NOT homepath LIKE '~/Library/%/%.db'
   AND NOT homepath LIKE '~/Library/%/%.sqlite%'
+  AND NOT homepath LIKE '~/Library/%.aapbz'
   AND NOT f.directory LIKE '/Users/%/.docker/cli-plugins'
   AND NOT f.directory LIKE '/Users/%/.nix-profile/bin'
   AND NOT f.directory LIKE '/Users/%/.pkg-cache/%'

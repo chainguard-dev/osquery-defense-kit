@@ -114,6 +114,7 @@ WHERE -- Focus on longer-running programs
   AND NOT exception_key LIKE '500,nvim,bob-%,'
   AND NOT exception_key LIKE '500,package-version-server-v%,package_version_server-%,'
   AND NOT exception_key LIKE '500,rust-analyzer,rust_analyzer-%,'
+  AND NOT exception_key LIKE '500,rust-analyzer-proc-macro-srv,rust_analyzer_proc_macro_srv-%,'
   AND NOT exception_key LIKE '500,gopls_%_go_%,a.out,'
   AND NOT exception_key LIKE '500,sm-agent,sm_agent-%'
 GROUP BY

@@ -83,6 +83,7 @@ WHERE
     '/usr/lib/fwupd/fwupd',
     '/usr/lib/gdm-session-worker',
     '/usr/lib/gdm-x-session',
+    '/usr/share/librewolf/librewolf',
     '/usr/libexec/gvfsd-recent',
     '/usr/libexec/gvfsd-network',
     '/usr/lib/gdm',
@@ -188,7 +189,7 @@ WHERE
     AND p0.cmdline LIKE './%'
   )
   AND NOT p1.path IN ('/usr/bin/gnome-shell') -- Filter out developers working on their own code
-  AND NOT p1.name IN ('makepkg', 'make')
+  AND NOT p1.name IN ('makepkg', 'make', 'dovecot')
   AND NOT p2.path = '/usr/bin/yay'
   AND NOT p2.cmdline LIKE '/usr/bin/yay %'
   AND NOT (

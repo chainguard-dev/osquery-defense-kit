@@ -45,6 +45,7 @@ WHERE
     'htm',
     'html',
     'icloud',
+    'itermexport',
     'jfif',
     'jpeg',
     'jpg',

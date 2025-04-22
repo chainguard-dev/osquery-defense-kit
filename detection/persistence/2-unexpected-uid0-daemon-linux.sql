@@ -75,6 +75,8 @@ WHERE
   AND p0.start_time < (strftime('%s', 'now') - 3600)
   AND exception_key NOT IN (
     '(sd-pam),/usr/lib/systemd/systemd,0,user.slice,user-0.slice,0755',
+    'atd,/usr/bin/atd,0,system.slice,atd.service,0755',
+    'crond,/usr/bin/crond,0,system.slice,crond.service,0755',
     '(sd-pam),/usr/lib/systemd/systemd-executor,0,user.slice,user-0.slice,0755',
     '(udev-worker),/usr/bin/udevadm,0,system.slice,systemd-udevd.service,0755',
     '.tailscaled-wra,/nix/store/__VERSION__/bin/.tailscaled-wrapped,0,system.slice,tailscaled.service,0555',
@@ -82,6 +84,7 @@ WHERE
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-core,0,system.slice,abrt-journal-core.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-oops,0,system.slice,abrt-oops.service,0755',
     'abrt-dump-journ,/usr/bin/abrt-dump-journal-xorg,0,system.slice,abrt-xorg.service,0755',
+    'abrtd,/usr/bin/abrtd,0,system.slice,abrtd.service,0755',
     'abrtd,/usr/sbin/abrtd,0,system.slice,abrtd.service,0755',
     'accounts-daemon,/nix/store/__VERSION__/libexec/accounts-daemon,0,system.slice,accounts-daemon.service,0555',
     'accounts-daemon,/usr/lib/accounts-daemon,0,system.slice,accounts-daemon.service,0755',
@@ -91,6 +94,7 @@ WHERE
     'agetty,/usr/bin/agetty,0,system.slice,system-getty.slice,0755',
     'agetty,/usr/sbin/agetty,0,system.slice,system-getty.slice,0755',
     'agetty,/usr/sbin/agetty,0,system.slice,system-serial\x2dgetty.slice,0755',
+    'alsactl,/usr/bin/alsactl,0,system.slice,alsa-state.service,0755',
     'alsactl,/usr/sbin/alsactl,0,system.slice,alsa-state.service,0755',
     'anacron,/usr/bin/anacron,0,system.slice,cronie.service,0755',
     'anacron,/usr/sbin/anacron,0,system.slice,anacron.service,0755',
@@ -105,6 +109,7 @@ WHERE
     'auditd,/usr/bin/auditd,0,system.slice,auditd.service,0755',
     'auditd,/usr/sbin/auditd,0,system.slice,auditd.service,0750',
     'auditd,/usr/sbin/auditd,0,system.slice,auditd.service,0755',
+    'authd,/usr/libexec/authd,0,system.slice,authd.service,0755',
     'bash,/usr/bin/bash,0,user.slice,user-1000.slice,0755',
     'blueman-mechani,/usr/bin/python__VERSION__,0,system.slice,blueman-mechanism.service,0755',
     'blueman-mechanism.service,Bluetooth management mechanism,,200',
@@ -133,6 +138,9 @@ WHERE
     'cupsd,/usr/sbin/cupsd,0,system.slice,cups.service,0755',
     'cupsd,/usr/sbin/cupsd,0,system.slice,system-cups.slice,0700',
     'cupsd,/usr/sbin/cupsd,0,system.slice,system-cups.slice,0755',
+    'daemon.start,/usr/bin/dash,0,,,0755',
+    'dbus-broker,/usr/bin/dbus-broker,0,user.slice,user-0.slice,0755',
+    'dbus-broker-lau,/usr/bin/dbus-broker-launch,0,user.slice,user-0.slice,0755',
     'dbus-daemon,/usr/bin/dbus-daemon,0,user.slice,user-0.slice,0755',
     'dbus-daemon,/usr/bin/dbus-daemon,0,user.slice,user-1000.slice,0755',
     'dbus-launch,/usr/bin/dbus-launch,0,user.slice,user-1000.slice,0755',
@@ -188,6 +196,7 @@ WHERE
     'gdm-session-wor,/usr/libexec/gdm/gdm-session-worker,0,user.slice,user-463.slice,0755',
     'gdm3,/usr/sbin/gdm3,0,system.slice,gdm.service,0755',
     'geoclue.service,Location Lookup Service,geoclue,500',
+    'gjs,/snap/surfshark/__VERSION__/usr/bin/gjs-console,0,system.slice,snap.surfshark.surfsharkd2.service,0755',
     'glances,/usr/bin/python__VERSION__,0,system.slice,glances.service,0755',
     'gnome-keyring-d,/usr/bin/gnome-keyring-daemon,0,user.slice,user-1000.slice,0755',
     'gpg-agent,/usr/bin/gpg-agent,0,system.slice,fwupd.service,0755',
@@ -245,11 +254,10 @@ WHERE
     'lxc-monitord,/usr/lib/x86_64-linux-gnu/lxc/lxc-monitord,0,system.slice,lxc-monitord.service,0755',
     'lxc-monitord,/usr/libexec/lxc/lxc-monitord,0,system.slice,lxc-monitord.service,0755',
     'lxcfs,/opt/incus/bin/lxcfs,0,system.slice,incus-lxcfs.service,0755',
+    'lxcfs,/snap/lxd/__VERSION__/bin/lxcfs,0,,,0755',
     'lxcfs,/usr/bin/lxcfs,0,system.slice,lxcfs.service,',
     'lxcfs,/usr/bin/lxcfs,0,system.slice,lxcfs.service,0755',
-    'lxcfs,/snap/lxd/__VERSION__/bin/lxcfs,0,,,0755',
     'lxd,/snap/lxd/__VERSION__/sbin/lxd,0,,,0755',
-    'daemon.start,/usr/bin/dash,0,,,0755',
     'make,/usr/bin/make,0,user.slice,user-1000.slice,0755',
     'mbim-proxy,/usr/libexec/mbim-proxy,0,system.slice,ModemManager.service,0755',
     'mc,/usr/bin/mc,0,user.slice,user-0.slice,0755',
@@ -331,11 +339,13 @@ WHERE
     'sh,/nix/store/__VERSION__/bin/bash,0,system.slice,znapzend.service,0555',
     'sleep,/usr/bin/sleep,0,system.slice,snap.cups.cups-browsed.service,0755',
     'sleep,/usr/bin/sleep,0,system.slice,system-btrfs\x2ddedup.slice,0755',
+    'smartd,/usr/bin/smartd,0,system.slice,smartd.service,0755',
     'smartd,/usr/sbin/smartd,0,system.slice,smartd.service,0755',
     'smartd,/usr/sbin/smartd,0,system.slice,smartmontools.service,0755',
     'snapd,/snap/snapd/__VERSION__/usr/lib/snapd/snapd,0,system.slice,snapd.service,0755',
     'snapd,/usr/lib/snapd/snapd,0,system.slice,snapd.service,0755',
     'snapd,/usr/libexec/snapd/snapd,0,system.slice,snapd.service,0755',
+    'solaar,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
     'ssh,/nix/store/__VERSION__/bin/ssh,0,system.slice,znapzend.service,0555',
     'sshd,/nix/store/__VERSION__/bin/sshd,0,system.slice,sshd.service,0555',
     'sshd,/nix/store/__VERSION__/bin/sshd,0,user.slice,user-1000.slice,0555',
@@ -350,6 +360,8 @@ WHERE
     'su,/usr/bin/su,0,user.slice,user-0.slice,4755',
     'su,/usr/bin/su,0,user.slice,user-1000.slice,4755',
     'su,/usr/bin/su,1000,user.slice,user-0.slice,4755',
+    'sudo,/usr/bin/sudo,1000,user.slice,user-0.slice,4111',
+    'sudo,/usr/bin/sudo,1000,user.slice,user-0.slice,4755',
     'sudo,/usr/bin/sudo,1000,user.slice,user-1000.slice,4111',
     'sudo,/usr/bin/sudo,1000,user.slice,user-1000.slice,4755',
     'sudo,/usr/bin/sudo,1001,user.slice,user-0.slice,4111',
@@ -427,15 +439,16 @@ WHERE
     'zfs-auto-snapsh,/nix/store/__VERSION__/bin/ruby,0,system.slice,zfs-snapshot-frequent.service,0555',
     'zfs-auto-snapsh,/nix/store/__VERSION__/bin/ruby,0,system.slice,zfs-snapshot-hourly.service,0555'
   )
-  AND NOT exception_key LIKE 'incusd,/usr/libexec/incus/incusd,0,lxc.monitor.%,,0755'
-  AND NOT exception_key LIKE 'dhcpcd,/usr/sbin/dhcpcd,0,system.slice,ifup@en%.service,0755'
   AND NOT exception_key LIKE '%beat,%/opt/Elastic/Agent/data/elastic-%/components/%beat,0,system.slice,elastic-agent.service,%'
+  AND NOT exception_key LIKE 'abrt-dbus,/usr/bin/abrt-dbus,0,system.slice,system-dbus%org.freedesktop.problems.slice,0755'
   AND NOT exception_key LIKE 'abrt-dbus,/usr/sbin/abrt-dbus,0,system.slice,system-dbus%org.freedesktop.problems.slice,%'
   AND NOT exception_key LIKE 'containerd,/var/lib/rancher/k3s/data/%/bin/k3s,0,system.slice,k3s.service,0755'
   AND NOT exception_key LIKE 'containerd-shim,/var/lib/rancher/k3s/data/%/bin/containerd-shim-runc-v2,0,system.slice,k3s.service,0755'
+  AND NOT exception_key LIKE 'dhcpcd,/usr/sbin/dhcpcd,0,system.slice,ifup@en%.service,0755'
   AND NOT exception_key LIKE 'elastic-agent,%/opt/Elastic/Agent/data/elastic-agent%/elastic-agent,0,system.slice,elastic-agent.service,%'
   AND NOT exception_key LIKE 'fusermount3,/usr/bin/fusermount3,%,user.slice,user-%.slice,4755'
   AND NOT exception_key LIKE 'incusd,%/bin/incusd,0,lxc.monitor.%,,0755'
+  AND NOT exception_key LIKE 'incusd,/usr/libexec/incus/incusd,0,lxc.monitor.%,,0755'
   AND NOT exception_key LIKE 'k3s-server,/var/lib/rancher/k3s/data/%/bin/k3s,0,system.slice,k3s.service,0755'
   AND NOT exception_key LIKE 'osquery-extensi,/opt/Elastic/Agent/data/elastic-agent-%/components/osquery-extension.ext,0,system.slice,elastic-agent.service,0750'
   AND NOT exception_key LIKE 'osqueryd,/opt/Elastic/Agent/data/elastic-agent-%/components/osqueryd,0,system.slice,elastic-agent.service,0750'

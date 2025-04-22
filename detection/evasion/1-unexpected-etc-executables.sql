@@ -146,6 +146,8 @@ WHERE
     '/etc/sv/pcscd/log',
     '/etc/sv/pcscd/control',
     '/etc/ssl/trust-source',
+    '/etc/sv/incus-user/log',
+    '/etc/sv/incus-user',
     '/etc/sysconfig/network-scripts',
     '/etc/systemd/system-shutdown',
     '/etc/systemd/system',
@@ -167,8 +169,8 @@ WHERE
   AND file.path NOT IN (
     '/etc/auto.net',
     '/etc/auto.smb',
-    '/etc/cloud/clean.d/99-installer-use-networkmanager',
     '/etc/cloud/clean.d/99-installer',
+    '/etc/cloud/clean.d/99-installer-use-networkmanager',
     '/etc/cron.yearly/0anacron',
     '/etc/grub2-efi.cfg',
     '/etc/grub2.cfg',
@@ -201,7 +203,8 @@ WHERE
     '/etc/sv/ssh/log/run',
     '/etc/sv/ssh/run',
     '/etc/udev/powersave.sh',
-    '/etc/vpl/vars.sh'
+    '/etc/vpl/vars.sh',
+    '/etc/xdg/xfce4/xinitrc'
   )
   AND file.directory NOT LIKE '/etc/asciidoc/%'
   -- Nix (on macOS) -- actually a symbolic link
@@ -209,6 +212,7 @@ WHERE
   AND file.path NOT LIKE '/etc/profiles/per-user/%/bin/%'
   AND file.path NOT LIKE '/etc/pwrstatd-%.sh'
   AND file.path NOT LIKE '/etc/pwrstatd-%.sh'
+  AND file.path NOT LIKE '/etc/alternatives/%'
   AND (
     magic.data IS NULL
     OR magic.data NOT IN ('JSON text data', 'ASCII text')

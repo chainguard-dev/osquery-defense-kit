@@ -82,11 +82,13 @@ WHERE -- Optimization: don't join things until we have a whittled down list of f
         '/var/select/X11/lib',
         '/var/select/X11/lib/dri',
         '/var/select/X11/lib/flat_namespace',
-        '/var/select/X11/libexec'
+        '/var/select/X11/libexec',
+        '/var/spool/postfix/incoming'
       )
       AND file.path NOT IN (
         '/var/log/acroUpdaterTools.log',
-        '/var/vm/sleepimage'
+        '/var/vm/sleepimage',
+        '/var/spool/postfix/incoming/D3A82F0F057'
       )
       AND file.size > 10
       AND NOT (
