@@ -112,6 +112,7 @@ WHERE
     '500,pyrogenesis,main',
     '500,rootlesskit,exe',
     '500,rootlessport,exe',
+    '500,docker,code',
     '500,systemd-executor,(sd-pam)',
     '500,udevadm,systemd-udevd',
     '500,vim.basic,vi',

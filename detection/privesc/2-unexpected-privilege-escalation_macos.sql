@@ -54,6 +54,7 @@ WHERE
     '/Library/Application Support/Google/GoogleUpdater/Current/GoogleUpdater.app/Contents/Helpers/launcher',
     '/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_session_monitor',
     '/Library/DropboxHelperTools/Dropbox_u501/dbkextd',
+    '/Library/DropboxHelperTools/Dropbox_u502/dbkextd',
     '/usr/bin/login',
     '/usr/bin/su',
     '/usr/bin/sudo',

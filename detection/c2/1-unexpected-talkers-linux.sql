@@ -233,6 +233,7 @@ WHERE
     '8080,6,500,msedge,0u,0g,msedge',
     '8080,6,500,pycharm,500u,500g,pycharm',
     '8080,6,500,python3.11,0u,0g,speedtest-cli',
+    '32768,6,22,sshd-auth,0u,0g,sshd-auth',
     '8080,6,500,python3.12,u,g,hass',
     '8080,6,500,speedtest,0u,0g,speedtest',
     '8080,6,500,speedtest,500u,500g,speedtest',
@@ -352,5 +353,9 @@ WHERE
     )
   )
   AND NOT parent_cmd IN ('/opt/microsoft/msedge/msedge')
+  AND NOT (
+    exception_key LIKE '%,6,500,sshd-session,0u,0g,sshd-session'
+    AND parent_cmd LIKE '%chainguard_dev%'
+  )
 GROUP BY
   p.cmdline

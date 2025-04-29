@@ -59,6 +59,8 @@ WHERE
   AND p.path NOT LIKE '/home/%/.local/share/Steam/%'
   AND p.path NOT LIKE '/private/var/folders/%/T/iTerm2-scrip%sh'
   AND p.path NOT LIKE '%/openoffice%/program/pagein'
+  AND p.path NOT LIKE '/home/%/.ape-%'
+
   -- Removes a false-positive we've seen on Linux, generated through 'runc init'
   AND NOT (
     p.path = "/"

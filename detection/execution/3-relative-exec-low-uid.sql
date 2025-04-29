@@ -51,6 +51,7 @@ WHERE
       AND NOT cmdline LIKE './out/osqtool-% %'
       AND NOT cmdline LIKE './osqueryi%'
       AND NOT cmdline LIKE './OneDrivePkgTelemetry%'
+      AND NOT cmdline LIKE './xcover %'
       AND NOT cmdline = './utrace -p utrace --debug'
       AND NOT cgroup_path LIKE '/system.slice/docker-%'
   )

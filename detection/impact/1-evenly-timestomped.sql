@@ -53,3 +53,4 @@ WHERE
   AND file.path NOT LIKE '/etc/cups/%'
   AND file.path NOT LIKE '%/lynis%'
   AND file.path NOT LIKE '%/yelp-xsl%'
+  AND file.path != '/bin/VGAuthService'

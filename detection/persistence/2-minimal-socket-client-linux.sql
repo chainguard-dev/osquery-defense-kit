@@ -41,6 +41,7 @@ WHERE
     '/usr/bin/cat',
     '/usr/bin/containerd',
     '/usr/bin/dash',
+    '/usr/bin/daprd',
     '/usr/bin/docker',
     '/usr/bin/docker-proxy',
     '/usr/bin/fusermount3',
@@ -78,6 +79,7 @@ WHERE
     AND pos.remote_address = "127.0.0.1"
   )
   AND NOT proc_cgroup in ('/system.slice/snapd.service')
+  AND NOT proc_cgroup LIKE '/system.slice/docker-%'
 GROUP BY
   pos.pid -- libc.so, ld-linux
 HAVING
