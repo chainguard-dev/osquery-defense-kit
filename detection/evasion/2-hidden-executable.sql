@@ -118,7 +118,7 @@ WHERE
   AND NOT f.directory LIKE '/var/home/linuxbrew/.linuxbrew/Homebrew/%'
   AND NOT f.directory LIKE '/Volumes/com.getdropbox.dropbox-%'
   AND NOT f.path LIKE '/nix/store/%/%-wrapped'
-  AND NOT f.homepath LIKE '~/.ape-1%'
+  AND NOT homepath LIKE '~/.ape-1%'
   AND NOT (
     f.path LIKE '/nix/store/%'
     AND p0.name LIKE '%-wrappe%'
