@@ -84,6 +84,7 @@ WHERE
     'sddm-helper,/usr/lib/x86_64-linux-gnu/sddm/sddm-helper,0,user.slice,user-1000.slice,0755',
     'libvirtd,/usr/bin/libvirtd,0,system.slice,libvirtd.service,0755',
     'libvirtd,/usr/sbin/libvirtd,0,system.slice,libvirtd.service,0755',
+    'sshd-session,/usr/lib/ssh/sshd-session,0,system.slice,sshd.service,0755', -- nss_oslogin
     'ModemManager,/usr/sbin/ModemManager,0,system.slice,ModemManager.service,0755',
     'NetworkManager,/usr/bin/NetworkManager,0,system.slice,NetworkManager.service,0755',
     'NetworkManager,/usr/sbin/NetworkManager,0,system.slice,NetworkManager.service,0755',

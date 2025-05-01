@@ -93,6 +93,8 @@ WHERE
     '/dev/dbc,character',
     '/dev/default/,directory',
     '/dev/disk/,directory',
+    '/dev/gpt-auto-root,block',
+    '/dev/ptp_kvm,character',
     '/dev/disk/by-diskseq,directory',
     '/dev/disk/by-dname,directory',
     '/dev/disk/by-id,directory',
@@ -290,8 +292,10 @@ WHERE
   AND NOT path LIKE '/dev/shm/.com.microsoft.Edge.%'
   AND NOT path LIKE '/dev/shm/.org.chromium.Chromium.%'
   AND NOT path LIKE '/dev/shm/aomshm.%'
+  AND NOT path LIKE '/dev/shm/%CefRaster%'
   AND NOT path LIKE '/dev/shm/xapp-tmp-%'
   AND NOT path LIKE '/dev/shm/byobu-%'
+  AND NOT path LIKE '/dev/shm/lsp-catalog-%.lock'
   AND NOT path LIKE '/dev/shm/flatpak-com.brave.Browser-%'
   AND NOT path LIKE '/dev/shm/libv4l-%'
   AND NOT path LIKE '/dev/shm/sem.mp-%'

@@ -75,6 +75,7 @@ WHERE
         'Developer ID Application: BlueStack Systems, Inc. (QX5T8D6EDU)',
         'Developer ID Application: Galvanix (5BRAQAFB8B)'
       )
+      AND vol_name NOT LIKE 'BBEdit%'
     ) -- Rule 2. App binaries that have mixed-caps names such as LYwjtu0sc3XqkNVbQe_gM4YiRpmgUpRIew or yWnBJLaF (AdobeFlashPlayer_567.app)
     OR (
       file.mode LIKE "%7%"

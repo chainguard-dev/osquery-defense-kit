@@ -200,6 +200,8 @@ WHERE
     'gjs,/snap/surfshark/__VERSION__/usr/bin/gjs-console,0,system.slice,snap.surfshark.surfsharkd2.service,0755',
     'glances,/usr/bin/python__VERSION__,0,system.slice,glances.service,0755',
     'gnome-keyring-d,/usr/bin/gnome-keyring-daemon,0,user.slice,user-1000.slice,0755',
+    'google_guest_ag,/usr/bin/google_guest_agent,0,system.slice,google-guest-agent.service,0755',
+    'google_guest_ag,/usr/bin/google_guest_agent_manager,0,system.slice,google-guest-agent-manager.service,0755',
     'gpg-agent,/usr/bin/gpg-agent,0,system.slice,fwupd.service,0755',
     'gpg-agent,/usr/bin/gpg-agent,0,system.slice,packagekit.service,0755',
     'gpg-agent,/usr/bin/gpg-agent,0,user.slice,user-1000.slice,0755',
@@ -260,6 +262,7 @@ WHERE
     'lxcfs,/usr/bin/lxcfs,0,system.slice,lxcfs.service,0755',
     'lxd,/snap/lxd/__VERSION__/sbin/lxd,0,,,0755',
     'make,/usr/bin/make,0,user.slice,user-1000.slice,0755',
+    'master,/usr/lib/postfix/sbin/master,0,system.slice,system-postfix.slice,0755',
     'mbim-proxy,/usr/libexec/mbim-proxy,0,system.slice,ModemManager.service,0755',
     'mc,/usr/bin/mc,0,user.slice,user-0.slice,0755',
     'mcelog,/usr/sbin/mcelog,0,system.slice,mcelog.service,0755',
@@ -319,6 +322,7 @@ WHERE
     'python3,/usr/bin/python__VERSION__,0,system.slice,system-dbus\x2d:1.1\x2dorg.pop_os.transition_system.slice,0755',
     'python3,/usr/bin/python__VERSION__,0,system.slice,system-dbus\x2d:1.2\x2dorg.pop_os.transition_system.slice,0755',
     'python3,/usr/bin/python__VERSION__,0,system.slice,ubuntu-advantage.service,0755',
+    'python3.13,/usr/bin/python__VERSION__,0,system.slice,networkd-dispatcher.service,0755',
     'qemu-ga,/usr/bin/qemu-ga,0,system.slice,qemu-guest-agent.service,0755',
     'qemu-nbd,/usr/bin/qemu-nbd,0,user.slice,user-1000.slice,0755',
     'qualys-cloud-ag,/usr/local/qualys/cloud-agent/bin/qualys-cloud-agent,0,system.slice,qualys-cloud-agent.service,0700',
@@ -357,6 +361,7 @@ WHERE
     'sshd,/usr/sbin/sshd,0,user.slice,user-1000.slice,0755',
     'sshd,/usr/sbin/sshd,0,user.slice,user-501.slice,0755',
     'sshd-session,/usr/lib/openssh/sshd-session,0,user.slice,user-1000.slice,0755',
+    'sshd-session,/usr/lib/ssh/sshd-session,0,system.slice,sshd.service,0755',
     'sssd_kcm,/usr/libexec/sssd/sssd_kcm,0,system.slice,sssd-kcm.service,0755',
     'su,/usr/bin/su,0,user.slice,user-0.slice,4755',
     'su,/usr/bin/su,0,user.slice,user-1000.slice,4755',
@@ -442,6 +447,7 @@ WHERE
   )
   AND NOT exception_key LIKE '%beat,%/opt/Elastic/Agent/data/elastic-%/components/%beat,0,system.slice,elastic-agent.service,%'
   AND NOT exception_key LIKE 'abrt-dbus,/usr/bin/abrt-dbus,0,system.slice,system-dbus%org.freedesktop.problems.slice,0755'
+  AND NOT exception_key LIKE 'agetty,/usr/bin/agetty,0,system.slice,system-serial%getty.slice,0755'
   AND NOT exception_key LIKE 'abrt-dbus,/usr/sbin/abrt-dbus,0,system.slice,system-dbus%org.freedesktop.problems.slice,%'
   AND NOT exception_key LIKE 'containerd,/var/lib/rancher/k3s/data/%/bin/k3s,0,system.slice,k3s.service,0755'
   AND NOT exception_key LIKE 'containerd-shim,/var/lib/rancher/k3s/data/%/bin/containerd-shim-runc-v2,0,system.slice,k3s.service,0755'
@@ -455,6 +461,7 @@ WHERE
   AND NOT exception_key LIKE 'osqueryd,/opt/Elastic/Agent/data/elastic-agent-%/components/osqueryd,0,system.slice,elastic-agent.service,0750'
   AND NOT exception_key LIKE 'server,/var/lib/rancher/k3s/data/%/bin/k3s,0,system.slice,k3s.service,0755'
   AND NOT exception_key LIKE 'tuned-ppd,/usr/bin/python3.%,system.slice,tuned-ppd.service,0755'
+  AND NOT exception_key LIKE 'xcover,/%/xcover,0,user.slice,user-0.slice,0755'
   AND NOT p0.path IN ('/bin/bash', '/usr/bin/bash')
   AND NOT p0.cgroup_path LIKE '/kubepods.slice/kubepods-%'
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'

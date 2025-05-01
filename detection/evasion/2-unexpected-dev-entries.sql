@@ -47,6 +47,7 @@ WHERE
       OR file.path LIKE '/dev/shm/u1000-Shm%'
       OR file.path LIKE '/dev/shm/u1000-Valve%'
       OR file.path LIKE '/dev/shm/wayland.mozilla.%'
+      OR file.path LIKE '/dev/shm/CefRaster%'
       OR file.path LIKE '/dev/shm/xapp-tmp-%'
       OR file.path LIKE '/dev/mqueue/us.zoom.aom.globalmgr.%.rpc'
     )

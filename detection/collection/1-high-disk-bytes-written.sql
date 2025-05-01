@@ -209,7 +209,8 @@ WHERE
     'wimlib-imagex',
     'wineserver',
     'wolfictl',
-    'yum'
+    'yum',
+    'zsh'
   )
   AND NOT p1.name IN ('bwrap')
   AND p0.path NOT LIKE '/Applications/%.app/Contents/%'

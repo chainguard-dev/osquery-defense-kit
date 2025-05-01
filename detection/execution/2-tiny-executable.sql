@@ -41,3 +41,7 @@ WHERE
     file.path = '/sbin/ldconfig'
     AND pp.euid = 1000
   )
+  AND NOT (
+    file.path LIKE '/home/%/.ape-%'
+    AND pp.euid = 1000
+  )
