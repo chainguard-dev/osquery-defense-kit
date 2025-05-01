@@ -138,7 +138,6 @@ WHERE
     '/tmp/.touchpaddefaults',
     '/tmp/.ui-agent/',
     '/tmp/.updater-agent/',
-    '/tmp/.vbox-t-ipc/',
     '/tmp/.venv/',
     '/tmp/.vscode.dmypy_status/',
     '/tmp/.wsdl/',
@@ -147,6 +146,9 @@ WHERE
     '/tmp/.X11-unix/',
     '/tmp/.X2-lock',
     '/tmp/.XIM-unix/',
+    '/var/.slm/',
+    '/var/.slmauth/',
+    '/var/.slmbackup/',
     '/tmp/.ydotool_socket',
     '/usr/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
     '/usr/lib/nvidia-visual-profiler/.eclipseproduct',
@@ -252,6 +254,7 @@ WHERE
   AND file.path NOT LIKE '/tmp/.tmp%/'
   AND file.path NOT LIKE '/tmp/.tmp%/stdin'
   AND file.path NOT LIKE '/tmp/.vbox-%-ipc/'
+  AND file.path NOT LIKE '/tmp/.vbox-%-ipc/lock'
   AND file.path NOT LIKE '/tmp/.wine-%'
   AND file.path NOT LIKE '/tmp/.X1%-lock'
   AND file.path NOT LIKE '/tmp/.gradle%'

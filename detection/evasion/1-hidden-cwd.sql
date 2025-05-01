@@ -166,6 +166,7 @@ WHERE
       '~/dev',
       '/root/.gradle',
       '~/src',
+      '~/Git',
       '~/Sync',
       '/var~/.config',
       '/var~/.local',

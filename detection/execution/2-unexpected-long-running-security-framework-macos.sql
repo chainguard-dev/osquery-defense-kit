@@ -98,6 +98,7 @@ WHERE -- Focus on longer-running programs
     '500,docker,docker,',
     '500,gopls,a.out,',
     '500,python3,python.exe,',
+    '500,helm_ls_darwin_arm64,a.out,',
     '500,sdaudioswitch,,',
     '500,sdaudioswitch,sdaudioswitch,',
     '500,sdmicmute,sdmicmute,',

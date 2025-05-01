@@ -72,6 +72,7 @@ WHERE
     'accounts-daemon,/usr/libexec/accounts-daemon,0,system.slice,accounts-daemon.service,0755',
     'apache2,/usr/sbin/apache2,0,system.slice,apache2.service,0755',
     'boltd,/usr/libexec/boltd,0,system.slice,bolt.service,0755',
+    'sudo,/usr/bin/sudo,0,system.slice,sshd.service,4755',
     'dnf,/usr/bin/python__VERSION__,0,system.slice,dnf-makecache.service,0755',
     'dnf,/usr/bin/python__VERSION__,0,user.slice,user-1000.slice,0755',
     'dnf-automatic,/usr/bin/python3.12,0,system.slice,dnf-automatic-install.service,0755',

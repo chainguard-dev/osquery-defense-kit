@@ -75,6 +75,7 @@ WHERE
     f.path IN (
       '/Applications/EA app.app/Contents/Applications/EABackgroundService.app/Contents/MacOS/EABackgroundService',
       '/Applications/EA app.app/Contents/Applications/EABackgroundAgent.app/Contents/MacOS/EABackgroundAgent',
+      '/Applications/Finch/lima/bin/limactl',
       '/Applications/Finch/lima/bin/qemu-system-aarch64'
     )
     AND f.mode = '0777'

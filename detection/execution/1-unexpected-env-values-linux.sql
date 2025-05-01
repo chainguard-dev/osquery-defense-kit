@@ -62,12 +62,13 @@ WHERE -- This time should match the interval
       '/run/host/usr/lib/extest/libextest.so',
       '/snap/lxd/current/lib/x86_64-linux-gnu/libSegFault.so',
       '/tmp/preload.so',
-      'libapprun_hooks.so',
       '/usr/lib/extest/libextest.so',
       '/usr/lib/libjemalloc.so',
       '/usr/lib/libsnmallocshim-checks-memcpy-only.so',
       '/usr/lib/libsnmallocshim.so',
       '/usr/local/lib/libmimalloc.so',
+      'libapprun_hooks.so',
+      'libeatmydata.so',
       'libfakeroot.so'
     )
     AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'

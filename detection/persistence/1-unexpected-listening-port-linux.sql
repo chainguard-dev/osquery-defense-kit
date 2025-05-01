@@ -117,6 +117,7 @@ WHERE
     '32768,6,500,dleyna-renderer',
     '32768,6,500,goland',
     '32768,6,500,java',
+    '32768,6,500,rootlesskit',
     '32768,6,500,jetbrains-toolb',
     '32768,6,500,pycharm',
     '32768,6,500,spotify',
