@@ -52,6 +52,7 @@ WHERE
       AND NOT cmdline LIKE './osqueryi%'
       AND NOT cmdline LIKE './OneDrivePkgTelemetry%'
       AND NOT cmdline LIKE './xcover %'
+      AND NOT cmdline LIKE './updater -insecure %'
       AND NOT cmdline = './utrace -p utrace --debug'
       AND NOT cgroup_path LIKE '/system.slice/docker-%'
   )
