@@ -260,6 +260,9 @@ WHERE
   AND NOT exception_key LIKE '%,6,500,ssh,0u,0g,ssh'
   AND NOT exception_key LIKE '80,6,500,terraform_1.1.5,500u,500g,terraform'
   AND NOT exception_key LIKE '%,6,0,rpm-ostree,0u,0g,rpm-ostree'
+  AND NOT exception_key LIKE '%,6,0,sshd-session,0u,0g,sshd-session'
+  AND NOT exception_key LIKE '%,6,22,sshd-auth,0u,0g,sshd-auth'
+
   AND NOT (
     s.remote_port = 80
     AND s.protocol = 6

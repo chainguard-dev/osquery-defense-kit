@@ -167,61 +167,12 @@ WHERE
   )
   AND NOT alt_exception_key IN (
     '0,velociraptor,velociraptor,0u,0g',
-    '0,velociraptor,velociraptor,0u,80g',
-    '500,.man-wrapped,.man-wrapped,0u,500g',
-    '500,apko,apko,0u,0g',
-    '500,apko,apko,500u,20g',
-    '500,aws,aws,0u,0g',
-    '500,cargo,cargo,500u,80g',
-    '500,chainctl,chainctl,0u,0g',
-    '500,chainctl,chainctl,500u,20g',
-    '500,codebook-lsp,codebook-lsp,500u,20g',
-    '500,chainlink,chainlink,500u,20g',
-    '500,cilium,cilium,500u,123g',
-    '500,cloud-sql-proxy,cloud-sql-proxy,500u,20g',
-    '500,cmd,cmd,500u,20g',
-    '500,cosign,cosign,0u,500g',
-    '500,cosign,cosign,500u,20g',
-    '500,cosign,cosign,500u,80g',
-    '500,cpu,cpu,500u,20g',
-    '500,container-diff,container-diff,500u,20g',
-    '500,crane,crane,0u,500g',
-    '500,crane,crane,500u,80g',
-    '500,docker-scout,docker-scout,500u,20g',
-    '500,Emacs,Emacs,500u,80g',
-    '500,gh-dash,gh-dash,500u,20g',
-    '500,git-credential-osxkeychain,git-credential-osxkeychain,500u,80g',
-    '500,git-remote-http,git-remote-http,500u,20g',
-    '500,git-remote-http,git-remote-http,500u,80g',
-    '500,git,git,0u,500g',
-    '500,gitsign,gitsign,500u,20g',
-    '500,go,go,500u,80g',
-    '500,hugo,hugo,500u,20g',
-    '500,istioctl,istioctl,,a.out',
-    '500,istioctl,istioctl,500u,20g',
-    '500,java,java,0u,0g',
-    '500,log-streaming,log-streaming,500u,80g',
-    '500,monopod,monopod,500u,20g',
-    '500,nami,nami,0u,0g',
-    '500,nix,nix,0u,500g',
-    '500,nodegizmo,nodegizmo,500u,20g',
-    '500,pprof,pprof,500u,80g',
-    '500,pulumi-resource-gcp,pulumi-resource-gcp,500u,20g',
-    '500,pulumi-resource-github,pulumi-resource-github,500u,20g',
-    '500,sdaudioswitch,sdaudioswitch,500u,20g',
-    '500,sdzoomplugin,sdzoomplugin,500u,20g',
-    '500,session-manager-plugin,session-manager-plugin,0u,0g',
-    '500,sm-agent,sm-agent,500u,20g',
-    '500,snyk-macos-arm64,snyk-macos-arm64,500u,20g',
-    '500,taplo-full-darwin-aarch64,taplo-full-darwin-aarch64,500u,20g',
-    '500,taplo,taplo,500u,20g',
-    '500,twistcli,twistcli,500u,20g',
-    '500,vexi,vexi,500u,20g',
-    '500,vim,vim,0u,500g',
-    '500,wolfibump,wolfibump,500u,20g',
-    '500,wolfictl,wolfictl,0u,0g',
-    '500,wolfictl,wolfictl,500u,20g'
+    '500,Python,Python,0u,80g',
+    '0,velociraptor,velociraptor,0u,80g'
   )
+  AND NOT alt_exception_key LIKE '500,%,500u,20g'
+  AND NOT alt_exception_key LIKE '500,%,0u,0g'
+
   AND NOT s.authority IN (
     'Developer ID Application: Adguard Software Limited (TC3Q7MAJXF)',
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
@@ -265,52 +216,6 @@ WHERE
     'Developer ID Application: Valve Corporation (MXGJJ98X76)',
     'Developer ID Application: Zoom Video Communications, Inc. (BJ4HAAB9B3)',
     'Developer ID Application: Zwift, Inc (C2GM8Y9VFM)'
-  )
-  AND NOT alt_exception_key LIKE '500,kubectl%,kubectl%,500u,20g'
-  AND NOT alt_exception_key LIKE '500,plugin_host-%,plugin_host-%,500u,20g'
-  AND NOT alt_exception_key LIKE '500,sm-agent-%,sm-agent-%,500u,20g'
-  AND NOT alt_exception_key LIKE '500,terraform-provider-%,terraform-provider-%,500u,20g'
-  AND NOT p0.path LIKE '/private/var/folders/%/T/GoLand/%'
-  AND NOT (
-    exception_key IN (
-      '500,Python,Python,,',
-      '500,Python,Python,,org.python.python',
-      '500,Python,Python,,Python',
-      '500,Python,Python,0u,80g exception_key:500,Python,Python,Developer ID Application: Python Software Foundation (BMM5U3QVKW),org.python.python',
-      '500,Python,Python,0u,80g',
-      '500,Python,Python,Developer ID Application: Ned Deily (DJ3H93M7VJ),org.python.python',
-      '500,Python,Python,Developer ID Application: Python Software Foundation (BMM5U3QVKW),org.python.python',
-      '500,python3.11,python3.11,,python3.11',
-      '500,python3.12,python3.12,,python3.12'
-    )
-    AND (
-      p0_cmd LIKE '%/gcloud.py%'
-      OR p0_cmd LIKE '%__pip-runner__.py install%'
-      OR p0_cmd LIKE '%/bin/aws%'
-      OR p0_cmd LIKE '%/google-cloud-sdk/bin/%'
-      OR p0_cmd LIKE '%/google-cloud-sdk/platform/%'
-      OR p0_cmd LIKE '%/pydevd.py%'
-      OR p0_cmd LIKE '%/Python update_plugins.py'
-      OR p0_cmd LIKE '%anaconda-navigator%'
-      OR p0_cmd LIKE '%bin/chaingpt %'
-      OR p0_cmd LIKE '%fetch_commits%'
-      OR p0_cmd LIKE '%googlecloudsdk/core/metrics_reporter.py%'
-      OR p0_cmd LIKE '%ipykernel_launcher %'
-      OR p0_cmd LIKE '%pip install%'
-      OR p0_cmd LIKE '%pip3 install%'
-      OR p0_cmd LIKE "%/gsutil/gsutil %"
-      OR p0_cwd LIKE "/Users/%/github/%"
-      OR p0_cwd LIKE "/Users/%/src/%"
-    )
-  ) -- theScore and other iPhone apps
-  AND NOT (
-    s.authority = 'Apple iPhone OS Application Signing'
-    AND p0.cwd = '/'
-    AND p0.path = '/private/var/folders/%/Wrapper/%.app/%'
-  ) -- nix socket inheritance
-  AND NOT (
-    p0.path LIKE '/nix/store/%/bin/%'
-    AND p1.path LIKE '/nix/store/%/bin/%'
   )
 GROUP BY
   p0.cmdline

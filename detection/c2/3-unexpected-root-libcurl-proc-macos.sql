@@ -43,6 +43,7 @@ WHERE
   p0.euid = 0
   AND pmm.path LIKE '%libcurl%'
   AND p0.name NOT IN (
+    'cloud-provider-kind',
     'docker-mac-net-connect',
     'ir_agent',
     'nix',

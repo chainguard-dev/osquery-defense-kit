@@ -68,6 +68,7 @@ WHERE
     '~/Library/Application Support/lghub',
     '~/Library/Application Support/Loom',
     '~/Library/Application Support/nuclei',
+    '~/Library/Application Support/Evernote',
     '~/Library/Application Support/Presenting',
     '~/Library/Application Support/Slack',
     '~/Library/Application Support/ZaloApp',

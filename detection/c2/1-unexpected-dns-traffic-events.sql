@@ -121,6 +121,7 @@ WHERE
     'java',
     'launcher',
     'limactl',
+    'librewolf',
     'mDNSResponder',
     'Meeting Center',
     'melange',

@@ -45,5 +45,6 @@ WHERE
   )
   AND p.cmdline != '/usr/bin/python3 /usr/sbin/execsnoop-bpfcc'
   AND p.path NOT LIKE '/nix/store/%/lib/systemd/systemd'
+  AND p.name != "xcover"
 GROUP BY
   pmm.pid
