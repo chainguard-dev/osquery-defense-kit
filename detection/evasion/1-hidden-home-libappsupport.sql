@@ -67,6 +67,7 @@ WHERE
     '~/Library/Application Support/Lens',
     '~/Library/Application Support/lghub',
     '~/Library/Application Support/Loom',
+    '~/Library/Application Support/abnerworks.Typora',
     '~/Library/Application Support/nuclei',
     '~/Library/Application Support/Evernote',
     '~/Library/Application Support/Presenting',

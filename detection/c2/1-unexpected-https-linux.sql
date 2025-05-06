@@ -120,7 +120,8 @@ WHERE
     '120,fwupdmgr,0u,0g,fwupdmgr',
     '128,fwupdmgr,0u,0g,fwupdmgr',
     '129,fwupdmgr,0u,0g,fwupdmgr',
-    '42,http,0u,0g,https'
+    '42,http,0u,0g,https',
+    '500,sus,500u,500g,sus'
   ) -- Exceptions where we have to be more flexible for the process name
   -- Regular user binaries
   AND NOT exception_key LIKE '500,%,500u,500g,%'

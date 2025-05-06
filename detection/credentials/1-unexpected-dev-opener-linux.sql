@@ -148,6 +148,7 @@ WHERE
     '/dev/shm,code',
     '/dev/shm,electron',
     '/dev/shm,firefox',
+    '/dev/input/event,firefox',
     '/dev/shm,gameoverlayui',
     '/dev/shm,gopls',
     '/dev/shm,hl2_linux',

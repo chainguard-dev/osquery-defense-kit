@@ -81,6 +81,7 @@ WHERE
     '33333,6,500,Ultimate,',
     '41949,6,500,IPNExtension,Apple Mac OS Application Signing',
     '43398,6,500,IPNExtension,Apple Mac OS Application Signing',
+    '49152,6,500,org.mozilla.updater,Developer ID Application: Mozilla Corporation (43AQ936H96)',
     '443,6,500,com.docker.backend,Developer ID Application: Docker Inc (9BNSXJN65R)',
     '443,6,500,limactl,',
     '443,6,500,OrbStack Helper,Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)',
