@@ -94,6 +94,7 @@ WHERE
     '/Applications/Spotify.app/Contents/Frameworks/Spotify Helper.app/Contents/MacOS/Spotify Helper',
     '/Applications/Tailscale.app/Contents/PlugIns/IPNExtension.appex/Contents/MacOS/IPNExtension',
     '/opt/podman/bin/gvproxy',
+    '/Applications/Finch/lima/bin/limactl',
     '/sbin/apk',
     '/System/Volumes/Preboot/Cryptexes/Incoming/OS/System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking',
     '/usr/bin/tailscaled',

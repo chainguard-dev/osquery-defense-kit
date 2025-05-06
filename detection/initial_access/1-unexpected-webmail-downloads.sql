@@ -75,6 +75,7 @@ WHERE
     'pub',
     'rtf',
     'svg',
+    'tf',
     'tif',
     'tiff',
     'txt',

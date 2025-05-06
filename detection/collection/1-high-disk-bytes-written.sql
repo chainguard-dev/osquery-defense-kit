@@ -131,6 +131,7 @@ WHERE
     AND p0.cmdline = '/usr/bin/python3 /usr/sbin/aptd'
   )
   AND NOT p0.name IN (
+    'apkoaas',
     'Autodesk Fusion 360',
     'baloo_file_extr',
     'bincapz',
@@ -227,6 +228,7 @@ WHERE
   AND p0.path NOT LIKE "%/terraform-provider-%"
   AND NOT p0.cmdline LIKE '%/gsutil %rsync%'
   AND NOT p0.cmdline LIKE '%python -m build%'
+  AND NOT p0.cmdline LIKE '%python -m pip%'
   AND NOT p0.cmdline LIKE '%/lib/gcloud.py components update'
   AND NOT p0.cmdline LIKE '%brew.rb upgrade%'
   AND NOT p0.cgroup_path LIKE '/system.slice/docker-%'
