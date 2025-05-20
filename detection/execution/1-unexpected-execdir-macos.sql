@@ -133,6 +133,7 @@ WHERE
     '~/code/',
     '~/Code/',
     '~/dev/',
+    '~/Development/',
     '~/git/',
     '~/go/',
     '~/google-cloud-sdk/',
