@@ -125,6 +125,7 @@ WHERE
   )
   AND NOT homedir LIKE '%/.Trash/1Password %.app/Contents/Library/LoginItems/1Password Extension Helper.app/Contents/MacOS'
   AND NOT homedir LIKE '%/.Trash/Logi Options.app/Contents/Support/LogiMgrDaemon.app/Contents/MacOS'
+  AND NOT homedir LIKE '/Users/%/.Trash/lghub.app/Contents/MacOS/lghub_agent.app/Contents/MacOS'
   AND NOT homedir LIKE '~/%/.venv/bin'
   AND NOT homedir LIKE '~/.local/share/AppImage/ZenBrowser.AppImage'
   AND NOT homedir LIKE '~/.Trash/1Password %.app/Contents/Library/LoginItems/1Password Extension Helper.app/Contents/MacOS'

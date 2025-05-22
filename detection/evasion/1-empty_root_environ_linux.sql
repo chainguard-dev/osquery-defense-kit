@@ -77,6 +77,7 @@ WHERE
     'crond',
     'dovecot',
     'dpkg',
+    'launcher',
     'systemd-nsresou',
     'systemd-udevd',
     'systemd-userdbd',
