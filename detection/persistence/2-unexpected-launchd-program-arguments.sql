@@ -37,6 +37,7 @@ WHERE
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: AtomicJar, Inc. (33C47PTHN6)',
     'Developer ID Application: Canon Inc. (XE2XNRRXZ5)',
+    'Developer ID Application: Canon U.S.A., Inc. (NC5A977249)',
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Canva Pty Ltd (5HD2ARTBFS)',
     'Developer ID Application: Cloudflare Inc. (68WVV388M8)',

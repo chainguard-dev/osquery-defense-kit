@@ -76,6 +76,10 @@ WHERE
     AND p1.cmdline LIKE 'yay%'
   )
   AND NOT (
+    p0.path LIKE '/snap/snapd/%/usr/lib/snapd/snap-update-ns'
+    AND p1.path LIKE '/snap/snapd/%/usr/lib/snapd/snap-confine'
+  )
+  AND NOT (
     p0.name = 'polkit-agent-he'
     AND p1.path IN (
       '/usr/bin/gnome-shell',

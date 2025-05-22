@@ -123,7 +123,7 @@ WHERE -- NOTE: The remainder of this query is synced with unexpected-fetcher-par
     'curl -s -4 https://api.serhiy.io/v1/stats/ip',
     'curl https://wttr.in/?format=1 -s'
   )
-  AND NOT parent_name IN ('yay')
+  AND NOT parent_name IN ('yay', 'dget')
   AND NOT p.cmdline LIKE 'curl -s https://support-sp.apple.com/sp/product%'
   AND NOT (
     p.euid > 500
