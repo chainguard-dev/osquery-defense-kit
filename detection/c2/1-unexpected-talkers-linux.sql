@@ -239,6 +239,7 @@ WHERE
     '8080,6,500,speedtest,500u,500g,speedtest',
     '8443,6,500,chrome,0u,0g,chrome',
     '8443,6,500,firefox,0u,0g,firefox',
+    '8443,6,500,WebKitNetworkProcess,0u,0g,WebKitNetworkPr',
     '88,6,500,syncthing,0u,0g,syncthing',
     '8801,17,500,zoom,0u,0g,zoom',
     '8801,17,500,zoom.real,u,g,zoom.real',

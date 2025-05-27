@@ -53,6 +53,7 @@ WHERE
     'ir_agent',
     'launcher',
     'modprobe',
+    'nix-daemon',
     'nginx',
     'osqueryd',
     'osqueryi',

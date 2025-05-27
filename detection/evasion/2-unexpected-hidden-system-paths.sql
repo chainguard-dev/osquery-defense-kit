@@ -64,6 +64,7 @@ WHERE
   AND file.path NOT IN (
     '/.autorelabel',
     '/.cache/',
+    '/.kconfig',
     '/.equarantine/',
     '/.file',
     '/.lesshst',

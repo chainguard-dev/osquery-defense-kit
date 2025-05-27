@@ -71,6 +71,7 @@ WHERE
     '/etc/gdm3/PostSession',
     '/etc/gdm3/PreSession',
     '/etc/gdm3/Prime',
+    '/etc/fstab.script',
     '/etc/gdm3/PrimeOff',
     '/etc/grub.d',
     '/etc/httpd/modules',
