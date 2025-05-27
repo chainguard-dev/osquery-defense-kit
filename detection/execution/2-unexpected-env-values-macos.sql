@@ -48,5 +48,6 @@ WHERE -- This time should match the interval
   OR (
     key = 'DYLD_FRAMEWORK_PATH' -- sort of obsolete, but may affect SIP abusers
     AND NOT pe.value LIKE '%/IDLE.app/%'
+    AND NOT pe.value LIKE '/Users/%/Library/Caches/ms-playwright/webkit-%'
     AND NOT pe.value = '/System/Library/Frameworks'
   )

@@ -60,7 +60,8 @@ WHERE
   AND file.directory NOT LIKE '/var/tmp/ostree-unlock-ovl.%/upper/bin'
   AND file.path NOT IN (
     '/var/run/lima-boot-done',
-    '/var/run/lima-ssh-ready'
+    '/var/run/lima-ssh-ready',
+    '/var/opt/bin/elastic-agent'
   )
   AND NOT (
     file.directory = '/var/spool/postfix/incoming'

@@ -129,6 +129,7 @@ WHERE
     '/Volumes/macFUSE/Install macFUSE.pkg',
     '/Volumes/PMHOME_3601DL/PMH_INST.pkg'
   )
+
   AND trimpath NOT LIKE '/Volumes/Blackmagic DaVinci Resolve/Install Resolve %.pkg'
   AND trimpath NOT LIKE '/Volumes/Google Earth Pro%/Install Google Earth Pro%.pkg'
   AND trimpath NOT LIKE '/Volumes/JDK %/JDK %.pkg'
@@ -138,4 +139,8 @@ WHERE
   AND NOT (
     magic.data = 'AppleDouble encoded Macintosh file'
     AND basename LIKE '._%'
+  )
+  AND NOT (
+    filename = ".install"
+    AND size = 0
   )

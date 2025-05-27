@@ -165,5 +165,6 @@ WHERE
     '500,6,90,java,java',
     '500,6,9418,git,git'
   )
+  AND NOT unsigned_exception LIKE '500,6,%,firefox,firefox'
 GROUP BY
   p0.cmdline

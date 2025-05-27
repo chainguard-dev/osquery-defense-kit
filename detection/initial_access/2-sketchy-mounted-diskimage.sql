@@ -143,6 +143,7 @@ WHERE
       AND signature.authority NOT IN (
         "Developer ID Application: Bookry Ltd (4259LE8SU5)",
         "Developer ID Application: Bose Corporation (QC9P7FKWH6)",
+        "Developer ID Application: OpenAI, L.L.C. (2DC432GLL2)",
         "Developer ID Application: Justin Clift (C34AV33YLK)",
         "Developer ID Application: Logitech Inc. (QED4VVPZWA)",
         "Developer ID Application: Geocomply USA, Inc. (6YPTSWJK4P)",

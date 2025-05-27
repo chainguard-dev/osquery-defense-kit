@@ -151,6 +151,7 @@ WHERE
     'docker-index',
     'esbuild',
     'firefox',
+    'wolfi-package-info-who-owns',
     'flatpak-session',
     'fsdaemon',
     'git',

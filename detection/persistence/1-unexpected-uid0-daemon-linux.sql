@@ -230,6 +230,7 @@ WHERE
     'ir_agent,/opt/rapid7/ir_agent/ir_agent,0,system.slice,ir_agent.service,',
     'ir_agent,/opt/rapid7/ir_agent/ir_agent,0,system.slice,ir_agent.service,0700',
     'irqbalance,/usr/sbin/irqbalance,0,system.slice,irqbalance.service,0755',
+    'irqbalance,/usr/bin/irqbalance,0,system.slice,irqbalance.service,0755',
     'iwd,/usr/lib/iwd/iwd,0,system.slice,iwd.service,0755',
     'journalctl,/usr/bin/journalctl,0,user.slice,user-1000.slice,0755',
     'just,/usr/bin/just,0,user.slice,user-1000.slice,0755',
