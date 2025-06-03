@@ -214,6 +214,7 @@ WHERE
       'Developer ID Application: Tailscale Inc. (W5364U7YZB)',
       'Developer ID Application: Tenable, Inc. (4B8J598M7U)',
       'Developer ID Application: Universal Audio (4KAC9AX6CG)',
+      'Developer ID Application: Ubiquiti Inc. (4P645293E8)',
       'Developer ID Application: Valve Corporation (MXGJJ98X76)',
       'Developer ID Application: X-Rite, Incorporated (2K7GT73B4R)'
     )
