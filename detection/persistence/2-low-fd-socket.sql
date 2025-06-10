@@ -54,6 +54,7 @@ WHERE
   AND pos.family != 1
   AND p0.path NOT IN (
     '/Applications/NetSpot.app/Contents/MacOS/NetSpot',
+    '/Applications/WiFiman Desktop.app/Contents/Resources/wifiman-desktopd',
     '/Library/Application Support/Viscosity/viscosity_openvpn',
     '/usr/bin/skopeo',
     '/usr/libexec/bootpd',
