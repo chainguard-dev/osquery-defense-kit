@@ -364,6 +364,7 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: SURFSHARK LTD (YHUG37CKN8)',
     'Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     'Developer ID Application: Tenable, Inc. (4B8J598M7U)',
+    'Developer ID Application: Ubiquiti Inc. (4P645293E8)',
     'Developer ID Application: X-Rite, Incorporated (2K7GT73B4R)',
     'Developer ID Application: Y Soft Corporation, a.s. (3CPED8WGS9)',
     'Software Signing'
