@@ -330,6 +330,7 @@ WHERE
     'qualys-cloud-ag,/usr/local/qualys/cloud-agent/bin/qualys-cloud-agent,0,system.slice,qualys-cloud-agent.service,0700',
     'rapid7_endpoint,/opt/rapid7/ir_agent/components/endpoint_broker/__VERSION__/rapid7_endpoint_broker,0,system.slice,ir_agent.service,0744',
     'rpm-ostree,/usr/bin/rpm-ostree,0,system.slice,rpm-ostreed.service,0755',
+    'rsyslogd,/usr/bin/rsyslogd,0,system.slice,rsyslog.service,0755',
     'rsyslogd,/usr/sbin/rsyslogd,0,system.slice,rsyslog.service,0755',
     'run-cups-browse,/usr/bin/dash,0,system.slice,snap.cups.cups-browsed.service,0755',
     'run-cupsd,/usr/bin/dash,0,system.slice,snap.cups.cupsd.service,0755',

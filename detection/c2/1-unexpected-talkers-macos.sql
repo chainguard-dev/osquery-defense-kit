@@ -145,6 +145,7 @@ WHERE
     '500,17,0,com.adguard.mac.adguard.network-extension,com.adguard.mac.adguard.network-extension',
     '500,17,0,limactl,limactl',
     '500,17,123,gvproxy,gvproxy',
+    '500,17,123,crc,crc',
     '500,17,443,,',
     '500,17,53,gvproxy,gvproxy',
     '500,6,0,fuscript,fuscript',
