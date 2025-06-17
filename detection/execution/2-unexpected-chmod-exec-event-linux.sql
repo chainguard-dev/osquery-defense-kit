@@ -130,6 +130,7 @@ WHERE
   AND p2_cgroup NOT LIKE '/user.slice/user-1000.slice/user@1000.service/user.slice/nerdctl-%'
   AND NOT exception_key IN (
     'chmod,500,bash,gnome-terminal-server',
+    'chmod,500,fish,alacritty',
     'bash,500,vim.nox,bash',
     'dash,500,code,code'
   )
