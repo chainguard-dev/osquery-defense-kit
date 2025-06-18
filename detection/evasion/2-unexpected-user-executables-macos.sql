@@ -187,11 +187,13 @@ WHERE
     '~/.fzf/test',
     '~/.iterm2',
     '~/.kuberlr/darwin-arm64',
+    '~/.claude-code-tools',
     '~/.magefile',
     '~/.nvm',
     '~/.revox/updates',
     '~/.sdkman/libexec',
     '~/.terraform.d',
+    '~/.wakatime',
     '~/.terraform.versions',
     '~/Library/Application Support',
     '~/Library/Caches',
@@ -209,19 +211,25 @@ WHERE
     '~/.config/i3',
     '~/.config/nvm/nvm.sh',
     '~/.config/polybar',
+    '~/.config/i3/power-manager.sh',
+    '~/.config/polybar/launch.sh',
+    '~/.toolbase/toolbase-runner',
     '~/Library/Group Containers/group.com.docker/unleash-repo-schema-v1-Docker Desktop.json',
     '~/Library/Preferences/Macromedia/Flash Player/www.macromedia.com/bin/airappinstaller/airappinstaller_rsrc',
     '~/Library/Keychains/login.keychain-db',
     '~/Library/Logs/zoom.us/upload_history.txt',
     '~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2'
   )
+  AND NOT top2_homedir LIKE '~/.mvnGoLang/go%.darwin-amd64'
   AND NOT homepath LIKE '~/Library/%/%.db-wal'
   AND NOT homepath LIKE '~/Library/%/%.db'
   AND NOT homepath LIKE '~/Library/%/%.sqlite%'
   AND NOT homepath LIKE '~/Library/%.aapbz'
   AND NOT f.directory LIKE '/Users/%/.docker/cli-plugins'
-  AND NOT f.directory LIKE '/Users/%/.nix-profile/bin'
+  AND NOT f.directory LIKE '/Users/%/.nix-profile/%'
   AND NOT f.directory LIKE '/Users/%/.pkg-cache/%'
+  AND NOT f.directory LIKE '/Users/%/.npm-global/bin'
+
   AND NOT f.directory LIKE '/var/root/Library/Caches/%/org.sparkle-project.Sparkle/%/Contents/MacOS'
   AND NOT f.directory LIKE '/var/root/Library/Caches/%/org.sparkle-project.Sparkle/%/Sparkle.framework%'
   AND NOT f.path LIKE '/Users/%/Library/Fonts/%.otf'

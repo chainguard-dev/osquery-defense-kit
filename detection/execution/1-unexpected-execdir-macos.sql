@@ -153,6 +153,7 @@ WHERE
     '/Library/Application Support/EcammLive',
     '/Library/Developer/Xcode/',
     '/opt/rapid7/ir_agent',
+    '~/.cache/rod/browser/',
     '~/.cache/selenium/chromedriver/',
     '~/.local/share/bob/',
     '~/.local/share/nvim/',
@@ -167,6 +168,8 @@ WHERE
     '~/Library/Caches/JetBrains/',
     '~/Library/Caches/org.gpgtools.updater/',
     '~/Library/Caches/snyk/',
+    '~/Library/pnpm',
+    '~/Library/Razer/RazerAppEngine/',
     '~/Library/Services/UE4EditorServices.app/',
     '~/opentelemetry-operator/cmd/otel-allocator',
     '~/zed/target/release/'

@@ -42,6 +42,7 @@ WHERE
     '0,0,/var/run/ublue-update.lock,regular,0755',
     '0,0,/var/run/ufw.lock,regular,0644',
     '0,0,/var/run/unattended-upgrades.lock,regular,0640',
+    '0,0,/var/run/uupd.lock,regular,0644',
     '0,0,/var/run/xtables.lock,regular,0600',
     '0,1,/var/run/prl_desktop_services.lock,regular,0644',
     '0,1,/var/run/prl_desktop_services_foreground.lock,regular,0644',
@@ -65,3 +66,4 @@ WHERE
   AND NOT exception_key LIKE '500,1000,/tmp/%.eksctl.lock,regular,0600'
   AND NOT exception_key LIKE '500,1000,/dev/shm/lsp-catalog-%.lock,regular,0664'
   AND NOT exception_key LIKE '500,0,/tmp/uv-%.lock,regular,0777'
+  AND NOT exception_key LIKE '500,1000,/tmp/uv-%.lock,regular,0777'

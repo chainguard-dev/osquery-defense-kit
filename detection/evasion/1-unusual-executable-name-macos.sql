@@ -94,6 +94,7 @@ WHERE
     'at.obdev.littlesnitchmini.networkextension',
     'com.microsoft.teams2.notificationcenter',
     'cpu',
+    'dynamiclinkmediaserver',
     'dynamiclinkmanager',
     'EcammLiveVideoOutAssistantXPCHelper',
     'launchd_startx',
@@ -118,3 +119,4 @@ WHERE
     s.authority = 'Developer ID Application: Adobe Inc. (JQ525L2MZD)'
     AND pname = 'agcinvokerutility'
   )
+  AND NOT p0.path LIKE '/nix/store/%'

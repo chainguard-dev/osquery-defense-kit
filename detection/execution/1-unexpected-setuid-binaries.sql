@@ -80,6 +80,7 @@ FROM
           '/bin/umount.nfs',
           '/bin/umount.nfs4',
           '/bin/wodim',
+          '/usr/local/libexec/ssh-keysign',
           '/sbin/cdda2wav',
           '/sbin/cdrecord',
           '/sbin/chfn',
@@ -360,7 +361,7 @@ FROM
       AND NOT (
         mode = '6755'
         AND uid = 0
-        AND gid = 0
+        AND gid IN (0,8)
         AND file.path IN (
           '/bin/light',
           '/bin/man',
@@ -384,14 +385,16 @@ FROM
           '/usr/sbin/mandb',
           '/usr/sbin/mount.cifs',
           '/usr/sbin/mount.smb3',
-          '/usr/sbin/unix_chkpwd'
+          '/usr/sbin/unix_chkpwd',
+          '/bin/procmail',
+          '/usr/bin/procmail'
         )
       )
       AND NOT (
         mode = '4110'
         AND uid = 0
         AND gid = 156
-        AND file.path IN ('/bin/staprun', '/usr/bin/staprun')
+        AND file.path IN ('/bin/staprun', '/usr/bin/staprun', '/sbin/staprun', '/usr/sbin/staprun')
       )
   )
 GROUP BY

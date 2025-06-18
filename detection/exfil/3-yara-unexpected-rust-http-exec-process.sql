@@ -90,6 +90,7 @@ WHERE
     'sg-nvim-agent',
     'sm-agent',
     'stable',
+    'toolbase-runner',
     'uv',
     'warp',
     'warp-terminal',
@@ -101,6 +102,7 @@ WHERE
   AND p0.path NOT IN (
     '/Applications/safeqclient.app/Contents/MacOS/safeqclient',
     '/Applications/Zed.app/Contents/MacOS/Zed',
+    '/usr/local/bin/determinate-nixd',
     '/usr/bin/pop-launcher',
     '/Library/safeqclientcore/bin/safeqclientcore'
   )

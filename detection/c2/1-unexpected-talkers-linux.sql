@@ -93,12 +93,14 @@ WHERE
     '21,6,0,rpm-ostree,0u,0g,rpm-ostree',
     '22,6,500,azure,500u,500g,azure',
     '22,6,500,gce,500u,500g,gce',
+    '22,6,500,gcp,500u,500g,gcp',
     '25565,6,500,java,500u,500g,java',
     '25567,6,500,java,500u,500g,java',
     '27018,6,500,pasta.avx2,0u,0g,pasta.avx2',
     '32520,6,0,rpm-ostree,0u,0g,rpm-ostree',
     '32768,6,0,registry,u,g,registry',
     '32768,6,0,tailscaled,0u,0g,tailscaled',
+    '32768,6,22,sshd-auth,0u,0g,sshd-auth',
     '32768,6,500,mumble,0u,0g,mumble',
     '32768,6,500,slirp4netns,0u,0g,slirp4netns',
     '4070,6,500,spotify,0u,0g,spotify',
@@ -233,7 +235,6 @@ WHERE
     '8080,6,500,msedge,0u,0g,msedge',
     '8080,6,500,pycharm,500u,500g,pycharm',
     '8080,6,500,python3.11,0u,0g,speedtest-cli',
-    '32768,6,22,sshd-auth,0u,0g,sshd-auth',
     '8080,6,500,python3.12,u,g,hass',
     '8080,6,500,speedtest,0u,0g,speedtest',
     '8080,6,500,speedtest,500u,500g,speedtest',
@@ -361,5 +362,6 @@ WHERE
     exception_key LIKE '%,6,500,sshd-session,0u,0g,sshd-session'
     AND parent_cmd LIKE '%chainguard_dev%'
   )
+  AND NOT p.path = '/opt/docker-desktop/bin/com.docker.backend'
 GROUP BY
   p.cmdline

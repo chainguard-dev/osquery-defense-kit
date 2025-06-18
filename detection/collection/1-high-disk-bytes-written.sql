@@ -47,7 +47,7 @@ FROM
   LEFT JOIN hash p2_hash ON p2.path = p2_hash.path
 WHERE
   -- On my Linux machine, creating a gzip archive clocks in at 6780210
-  bytes_written_rate > 4000000
+  bytes_written_rate > 4800000
   AND age > 200
   AND p0.pid > 2
   AND p0.parent != 2
@@ -74,6 +74,7 @@ WHERE
     '/usr/bin/gnome-software',
     '/usr/bin/gnome-text-editor',
     '/usr/bin/make',
+    '/usr/bin/nautilus',
     '/usr/bin/melange',
     '/usr/bin/pacman',
     '/usr/bin/qemu-system-x86_64',
@@ -138,6 +139,7 @@ WHERE
     'bwrap',
     'cargo',
     'chrome',
+    'clair',
     'code',
     'com.apple.MobileSoftwareUpdate.UpdateBrainService',
     'com.apple.NRD.UpdateBrainService',
@@ -167,6 +169,7 @@ WHERE
     'java',
     'jetbrains-toolb',
     'kandji-daemon',
+    'kpromo',
     'launcher',
     'limactl',
     'logioptionsplus_updater',
@@ -185,6 +188,7 @@ WHERE
     'qemu-system-aarch64',
     'qemu-system-x86',
     'qemu-system-x86_64',
+    'postgres',
     'rpm-ostree',
     'rsync',
     'rust-analyzer',

@@ -73,6 +73,8 @@ WHERE
     'Developer ID Application: Plentycom Systems (UHEB36849R)',
     'Developer ID Application: Private Internet Access, Inc. (5357M5NW9W)',
     'Developer ID Application: Proton AG (2SB5Z68H26)',
+    'Developer ID Application: Razer USA Ltd. (R2H967U7J8)',
+    'Developer ID Application: Rewind AI Inc. (NFYJ9X64B5)',
     'Developer ID Application: Proton Technologies AG (6UN54H93QT)',
     'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
     'Developer ID Application: Red Hat, Inc. (HYSCB8KRL2)',
@@ -115,3 +117,5 @@ WHERE
   AND program_arguments NOT LIKE '/Users/%/Library/Application Support/com.grammarly.ProjectLlama/Scripts/post-uninstall.sh'
   AND program_arguments NOT LIKE '%/mysqld_safe --datadir=%'
   AND program_arguments NOT LIKE '/Users/%/.local/ActiveState/StateTool/release/State Service.app'
+  AND program_arguments NOT LIKE '/Users/%/gitsign-credential-cache'
+  AND NOT l.label IN ('org.sigstore.gitsign-credential-cache')

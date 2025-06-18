@@ -28,9 +28,13 @@ WHERE
   AND command NOT LIKE 'root command -v debian-sa1%'
   AND command NOT LIKE 'root test -x /usr/bin/geoipupdate % && /usr/bin/geoipupdate'
   AND command NOT LIKE 'root%run-parts%'
+  AND command NOT LIKE '/opt/homebrew/bin/%'
   AND command NOT IN (
     "ps -A | grep at.obdev.littlesnitch.networkextension | grep -v 'grep' | awk '{print $1}' | xargs kill",
     'root [ -d "/run/systemd/system" ] && systemctl restart atop',
     'root test -x /etc/cron.daily/popularity-contest && /etc/cron.daily/popularity-contest --crond',
-    'timeout --kill-after=10 100 mbsync -q -a'
+    'timeout --kill-after=10 100 mbsync -q -a',
+    '~/scripts/gmail-token-refresh.py',
+    '~/.dotfiles/git_auto_commit.sh',
+    'osascript -e "set volume with output muted"'
   )

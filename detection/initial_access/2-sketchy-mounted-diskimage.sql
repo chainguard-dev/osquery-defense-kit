@@ -87,7 +87,8 @@ WHERE
         'Software Signing',
         'Developer ID Application: Atlassian Pty Ltd (UPXU4CQZ5P)',
         'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
-        'Developer ID Application: MacroMates Ltd. (45TL96F76G)'
+        'Developer ID Application: MacroMates Ltd. (45TL96F76G)',
+        'Developer ID Application: OpenAI, L.L.C. (2DC432GLL2)'
       )
     ) -- Rule 3. App binaries with a numerical name, such as 2829030009 (Player_009.app)
     OR (
@@ -98,7 +99,7 @@ WHERE
     OR (
       file.directory LIKE '/Volumes/%/Resources'
       AND magic.data LIKE '%executable%'
-      AND f_ext NOT IN ('py', 'sh', 'metallib')
+      AND f_ext NOT IN ('py', 'sh', 'metallib', 'js')
     ) --   5. Volumes with a name containing suspicious names: Player, Flash, Update
     OR (
       (
@@ -143,11 +144,12 @@ WHERE
       AND signature.authority NOT IN (
         "Developer ID Application: Bookry Ltd (4259LE8SU5)",
         "Developer ID Application: Bose Corporation (QC9P7FKWH6)",
-        "Developer ID Application: OpenAI, L.L.C. (2DC432GLL2)",
-        "Developer ID Application: Justin Clift (C34AV33YLK)",
-        "Developer ID Application: Logitech Inc. (QED4VVPZWA)",
+        "Developer ID Application: Cisco (DE8Y96K9QP)",
         "Developer ID Application: Geocomply USA, Inc. (6YPTSWJK4P)",
         "Developer ID Application: Google LLC (EQHXZ8M8AV)",
+        "Developer ID Application: Justin Clift (C34AV33YLK)",
+        "Developer ID Application: Logitech Inc. (QED4VVPZWA)",
+        "Developer ID Application: OpenAI, L.L.C. (2DC432GLL2)",
         "Developer ID Application: Oracle America, Inc. (VB5E2TV963)",
         "Developer ID Application: Orbital Labs, LLC (U.S.) (HUAQ24HBR6)",
         "Developer ID Application: Roblox Corporation (2CFABCH843)",
