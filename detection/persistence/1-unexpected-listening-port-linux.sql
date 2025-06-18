@@ -210,6 +210,12 @@ WHERE
     and lp.protocol = 6
   )
   AND NOT (
+    p.path LIKE '%/rootlesskit'
+    AND lp.port > 1024
+    and lp.protocol = 6
+  )
+
+  AND NOT (
     p.name IN (
       'caddy',
       'com.docker.back',

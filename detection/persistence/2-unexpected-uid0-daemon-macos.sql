@@ -299,7 +299,7 @@ WHERE -- Focus on longer-running programs
         '/usr/sbin/systemstats',
         '/usr/sbin/WirelessRadioManagerd'
       )
-      AND NOT path LIKE '/nix/store/%-nix-%/bin/nix'
+      AND NOT path LIKE '/nix/store/%/bin/%'
       AND NOT path LIKE '/opt/homebrew/Cellar/btop/%/bin/btop'
       AND NOT path LIKE '/opt/homebrew/Cellar/htop/%/bin/htop'
       AND NOT path LIKE '/opt/homebrew/Cellar/mtr/%/sbin/%'
@@ -343,6 +343,7 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Kolide, Inc (X98UFR7HA3)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',
     'Developer ID Application: MacPaw Inc. (S8EX82NJP6)',
+    'Developer ID Application: Razer USA Ltd. (R2H967U7J8)',
     'Developer ID Application: Mersive Technologies (63B5A5WDNG)',
     'Developer ID Application: Metric Halo Distribution, Inc. (X7EY8SFM86)',
     'Developer ID Application: Microsoft Corporation (UBF8T346G9)',
@@ -363,6 +364,7 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
     'Developer ID Application: SparkLabs Pty Ltd (34XR7GXFPX)',
     'Developer ID Application: SURFSHARK LTD (YHUG37CKN8)',
+    'Developer ID Application: SUSE LLC (2Q6FHJR3H3)',
     'Developer ID Application: Tailscale Inc. (W5364U7YZB)',
     'Developer ID Application: Tenable, Inc. (4B8J598M7U)',
     'Developer ID Application: Ubiquiti Inc. (4P645293E8)',

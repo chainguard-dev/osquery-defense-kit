@@ -167,6 +167,8 @@ WHERE
     '~/Library/Caches/JetBrains/',
     '~/Library/Caches/org.gpgtools.updater/',
     '~/Library/Caches/snyk/',
+    '~/Library/Razer/RazerAppEngine/',
+    '~/Library/pnpm',
     '~/Library/Services/UE4EditorServices.app/',
     '~/opentelemetry-operator/cmd/otel-allocator',
     '~/zed/target/release/'

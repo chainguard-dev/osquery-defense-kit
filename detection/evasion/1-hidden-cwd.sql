@@ -87,6 +87,7 @@ WHERE
         'nvim',
         'terraform',
         'updatedb',
+        'vi',
         'vim'
       )
       AND NOT cgroup_path LIKE '/system.slice/docker-%'

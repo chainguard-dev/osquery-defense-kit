@@ -64,9 +64,9 @@ WHERE
   AND file.path NOT IN (
     '/.autorelabel',
     '/.cache/',
-    '/.kconfig',
     '/.equarantine/',
     '/.file',
+    '/.kconfig',
     '/.lesshst',
     '/.mozilla/',
     '/.netrwhist',
@@ -127,12 +127,6 @@ WHERE
     '/tmp/.searcher.tmp/',
     '/tmp/.ses',
     '/tmp/.settings-agent/',
-    '/tmp/.SIGN.RSA..local-melange.rsa.pub',
-    '/tmp/.SIGN.RSA.chainguard-enterprise.rsa.pub',
-    '/tmp/.SIGN.RSA.local-melange-enterprise.rsa.pub',
-    '/tmp/.SIGN.RSA.local-melange.rsa.pub',
-    '/tmp/.SIGN.RSA.wolfi-signing.rsa.pub',
-    '/tmp/.SIGN.RSA256.local-melange-enterprise.rsa.pub',
     '/tmp/.terraform.lock.hcl',
     '/tmp/.terraform/',
     '/tmp/.Test-unix/',
@@ -147,10 +141,8 @@ WHERE
     '/tmp/.X11-unix/',
     '/tmp/.X2-lock',
     '/tmp/.XIM-unix/',
-    '/var/.slm/',
-    '/var/.slmauth/',
-    '/var/.slmbackup/',
     '/tmp/.ydotool_socket',
+    '/usr/bin/.kcapi-hasher.hmac',
     '/usr/lib/jvm/.java-1.17.0-openjdk-amd64.jinfo',
     '/usr/lib/nvidia-visual-profiler/.eclipseproduct',
     '/usr/local/bin/.swtpm',
@@ -158,6 +150,9 @@ WHERE
     '/var/.ntw_cache',
     '/var/.Parallels_swap/',
     '/var/.pwd_cache',
+    '/var/.slm/',
+    '/var/.slmauth/',
+    '/var/.slmbackup/',
     '/var/db/.AppleInstallType.plist',
     '/var/db/.AppleUpgrade',
     '/var/db/.com.apple.iokit.graphics',
@@ -171,6 +166,9 @@ WHERE
     '/var/db/.lvm_setupdone',
     '/var/db/.MASManifest',
     '/var/db/.RunLanguageChooserToo',
+    '/usr/lib/x86_64-linux-gnu/.libkcapi.so.1.5.0.hmac',
+    '/lib/x86_64-linux-gnu/.libkcapi.so.1.5.0.hmac',
+    '/bin/X11/.kcapi-hasher.hmac',
     '/var/db/.SoftwareUpdateOptions',
     '/var/db/.StagedAppleUpgrade',
     '/var/db/.SystemPolicy-default',
@@ -198,12 +196,14 @@ WHERE
     '/var/root/.ssh/',
     '/var/root/.Trash/',
     '/var/root/.viminfo',
+    '/var/tmp/.DS_Store',
     '/var/root/.zsh_history',
     '/var/roothome/.bash_history',
     '/var/roothome/.bash_logout',
     '/var/roothome/.bash_profile',
     '/var/roothome/.bashrc',
     '/var/roothome/.cache/',
+    '/var/roothome/.cargo/',
     '/var/roothome/.config/',
     '/var/roothome/.dbus/',
     '/var/roothome/.justfile',
@@ -211,7 +211,6 @@ WHERE
     '/var/roothome/.local/',
     '/var/roothome/.mozilla/',
     '/var/roothome/.osquery/',
-    '/var/roothome/.cargo/',
     '/var/roothome/.ssh/',
     '/var/roothome/.var/',
     '/var/roothome/.viminfo',
@@ -252,11 +251,13 @@ WHERE
   AND file.path NOT LIKE '/tmp/.io.nwjs.%'
   AND file.path NOT LIKE '/tmp/.lark_cache_%'
   AND file.path NOT LIKE '/tmp/.org.chromium.Chromium%'
+  AND file.path NOT LIKE '/tmp/.testcontainers-tmp-%'
   AND file.path NOT LIKE '/tmp/.tmp%/'
   AND file.path NOT LIKE '/tmp/.tmp%/stdin'
   AND file.path NOT LIKE '/tmp/.vbox-%-ipc/'
   AND file.path NOT LIKE '/tmp/.vbox-%-ipc/lock'
   AND file.path NOT LIKE '/tmp/.wine-%'
+  AND file.path NOT LIKE '/tmp/.SIGN.RSA%.rsa.pub'
   AND file.path NOT LIKE '/tmp/.X1%-lock'
   AND file.path NOT LIKE '/tmp/.gradle%'
   AND file.path NOT LIKE '/tmp/.git_signing_key%'

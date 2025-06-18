@@ -384,14 +384,16 @@ FROM
           '/usr/sbin/mandb',
           '/usr/sbin/mount.cifs',
           '/usr/sbin/mount.smb3',
-          '/usr/sbin/unix_chkpwd'
+          '/usr/sbin/unix_chkpwd',
+          '/bin/procmail',
+          '/usr/bin/procmail'
         )
       )
       AND NOT (
         mode = '4110'
         AND uid = 0
         AND gid = 156
-        AND file.path IN ('/bin/staprun', '/usr/bin/staprun')
+        AND file.path IN ('/bin/staprun', '/usr/bin/staprun', '/sbin/staprun', '/usr/sbin/staprun')
       )
   )
 GROUP BY

@@ -94,6 +94,7 @@ WHERE
     'at.obdev.littlesnitchmini.networkextension',
     'com.microsoft.teams2.notificationcenter',
     'cpu',
+    'dynamiclinkmediaserver',
     'dynamiclinkmanager',
     'EcammLiveVideoOutAssistantXPCHelper',
     'launchd_startx',

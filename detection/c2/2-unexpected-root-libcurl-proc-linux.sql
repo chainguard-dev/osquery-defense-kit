@@ -85,6 +85,7 @@ WHERE
     'flatpak-system-,/usr/libexec/flatpak-system-helper,0,system.slice,flatpak-system-helper.service,0755',
     'fwupd,/usr/lib/fwupd/fwupd,0,system.slice,fwupd.service,0755',
     'fwupd,/usr/libexec/fwupd/fwupd,0,system.slice,fwupd.service,0755',
+    'agentbeat,/opt/Elastic/Agent/data/elastic-agent-9.0.1-68f3ed/components/agentbeat,0,system.slice,elastic-agent.service,0750',
     'implicitclass,/usr/lib/cups/backend/implicitclass,0,system.slice,cups.service,0744',
     'sddm-helper,/usr/lib/x86_64-linux-gnu/sddm/sddm-helper,0,user.slice,user-1000.slice,0755',
     'libvirtd,/usr/bin/libvirtd,0,system.slice,libvirtd.service,0755',

@@ -187,11 +187,13 @@ WHERE
     '~/.fzf/test',
     '~/.iterm2',
     '~/.kuberlr/darwin-arm64',
+    '~/.claude-code-tools',
     '~/.magefile',
     '~/.nvm',
     '~/.revox/updates',
     '~/.sdkman/libexec',
     '~/.terraform.d',
+    '~/.wakatime',
     '~/.terraform.versions',
     '~/Library/Application Support',
     '~/Library/Caches',
@@ -220,7 +222,7 @@ WHERE
   AND NOT homepath LIKE '~/Library/%/%.sqlite%'
   AND NOT homepath LIKE '~/Library/%.aapbz'
   AND NOT f.directory LIKE '/Users/%/.docker/cli-plugins'
-  AND NOT f.directory LIKE '/Users/%/.nix-profile/bin'
+  AND NOT f.directory LIKE '/Users/%/.nix-profile/%'
   AND NOT f.directory LIKE '/Users/%/.pkg-cache/%'
   AND NOT f.directory LIKE '/var/root/Library/Caches/%/org.sparkle-project.Sparkle/%/Contents/MacOS'
   AND NOT f.directory LIKE '/var/root/Library/Caches/%/org.sparkle-project.Sparkle/%/Sparkle.framework%'

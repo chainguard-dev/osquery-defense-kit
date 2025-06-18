@@ -41,5 +41,6 @@ WHERE
   pop.family = 2 -- PF_INET
   AND pop.protocol = 1 -- ICMP
   AND p0.name NOT IN ('ping')
+  AND p0.path NOT IN ('/opt/docker-desktop/bin/com.docker.backend')
 GROUP BY
   p0_pid

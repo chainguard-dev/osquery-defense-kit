@@ -96,6 +96,7 @@ WHERE -- Focus on longer-running programs
     '500,circleci-yaml-language-server,a.out,',
     '500,cloud_sql_proxy,a.out,',
     '500,docker,docker,',
+    '500,cuelsp,a.out,',
     '500,gopls,a.out,',
     '500,python3,python.exe,',
     '500,helm_ls_darwin_arm64,a.out,',

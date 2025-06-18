@@ -90,5 +90,6 @@ WHERE
     'yml',
     'zip'
   )
+  AND file.path NOT LIKE '%/Dockerfile'
 GROUP BY
   file.path

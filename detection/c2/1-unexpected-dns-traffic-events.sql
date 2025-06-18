@@ -75,14 +75,15 @@ WHERE
     '75.75.75.75', -- Comcast
     '75.75.76.76', -- Comcast
     '80.248.7.1', -- 21st Century (NG)
-    '185.199.108.154', -- GitHub
     '3.125.36.175' -- Vercel
   )
+  AND s.remote_address NOT LIKE '185.199.%' -- GitHub
   -- Local DNS servers and custom clients go here
   AND basename NOT IN (
     'adguard_dns',
     'agentbeat',
     'apk',
+    'aws',
     'apko',
     'AssetCacheLocatorService',
     'Beeper Desktop',
@@ -113,6 +114,7 @@ WHERE
     'dockerd',
     'drkonqi-coredump-processor',
     'eksctl',
+    'firefox-bin',
     'EpicWebHelper',
     'go',
     'grype',

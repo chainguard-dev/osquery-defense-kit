@@ -131,7 +131,12 @@ WHERE
   AND NOT exception_key IN (
     'chmod,500,bash,gnome-terminal-server',
     'bash,500,vim.nox,bash',
+    'chmod,500,fish,alacritty',
     'dash,500,code,code'
+  )
+  AND NOT (
+    exception_key LIKE '%sh,500,node,%sh'
+    AND f.path LIKE '%claude%'
   )
 GROUP BY
   p0_pid

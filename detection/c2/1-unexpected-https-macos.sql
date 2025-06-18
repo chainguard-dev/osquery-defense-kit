@@ -101,6 +101,8 @@ WHERE
   AND p0.path NOT LIKE '/usr/libexec/%'
   AND p0.path NOT LIKE '/usr/local/kolide-k2/%'
   AND p0.path NOT LIKE '/usr/sbin/%'
+  AND p0.path NOT LIKE '/nix/var/nix/profiles/default/bin/%'
+  AND p0.path NOT LIKE '/nix/store/%/bin/%'
   AND NOT (
     s.identifier LIKE 'com.apple.%'
     AND s.authority = 'Software Signing'
@@ -167,7 +169,9 @@ WHERE
   )
   AND NOT alt_exception_key IN (
     '0,velociraptor,velociraptor,0u,0g',
+    '500,sdaudioswitch,sdaudioswitch,500u,0g',
     '500,Python,Python,0u,80g',
+    '0,nix,nix,0u,350g',
     '0,velociraptor,velociraptor,0u,80g'
   )
   AND NOT alt_exception_key LIKE '500,%,500u,20g'
@@ -178,12 +182,14 @@ WHERE
     'Developer ID Application: Adobe Inc. (JQ525L2MZD)',
     'Developer ID Application: AgileBits Inc. (2BUA8C4S2C)',
     'Developer ID Application: AMZN Mobile LLC (94KV3E626L)',
+    'Developer ID Application: Bookry Ltd (4259LE8SU5)',
     'Developer ID Application: ANCHORE, INC. (9MJHKYX5AT)',
     'Developer ID Application: Autodesk (XXKJ396S2Y)',
     'Developer ID Application: Bitdefender SRL (GUNFMW623Y)',
     'Developer ID Application: Brave Software, Inc. (KL8N8XSYF4)',
     'Developer ID Application: Canonical Group Limited (X4QN7LTP59)',
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
+    'Developer ID Application: Determinate Systems, Inc. (X3JQ4VPJZ6)',
     'Developer ID Application: Denver Technologies, Inc (2BBY89MBSN)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',

@@ -78,13 +78,15 @@ WHERE
     'Lunar,fyi.lunar.Lunar,Developer ID Application: Alin Panaitiu (RDDXV84A73)',
     'Magnet,com.crowdcafe.windowmagnet,Apple Mac OS Application Signing',
     'MonitorControl,me.guillaumeb.MonitorControl,Developer ID Application: Joni Van Roost (CYC8C8R4K9)',
+    'NotesCmdr,app.smallest.NotesCmdr,Developer ID Application: Anders Rex (UL38YXE4DL)',
     'osqueryd,io.osquery.agent,Developer ID Application: OSQUERY A Series of LF Projects, LLC (3522FA9PXF)',
     'polyrecorder,polyrecorder,Developer ID Application: Adam Pietrasiak (SXF593CX2N)',
     'Rocket,net.matthewpalmer.Rocket,Developer ID Application: Matthew Palmer (Z4JV2M65MH)',
     'skhd,skhd,',
     'Superkey,com.knollsoft.Superkey,Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',
     'synergy-core,synergy-core,Developer ID Application: Symless Ltd (4HX897Y6GJ)',
-    'TextExpander,com.smileonmymac.textexpander,Developer ID Application: SmileOnMyMac, LLC (7PKJ6G4DXL)'
+    'TextExpander,com.smileonmymac.textexpander,Developer ID Application: SmileOnMyMac, LLC (7PKJ6G4DXL)',
+    'Wispr Flow,com.electron.wispr-flow.accessibility-mac-app,Developer ID Application: Wispr AI INC (C9VQZ78H85)'
   )
 GROUP BY
   p0.path

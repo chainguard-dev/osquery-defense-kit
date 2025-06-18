@@ -88,5 +88,6 @@ WHERE
     AND program_authority = NULL
     AND program = '/Library/PrivilegedHelperTools/com.docker.vmnetd'
   )
+  AND NOT l.label IN ('org.nix-community.home.sops-nix','com.github.domt4.homebrew-autoupdate')
 GROUP BY
   l.path

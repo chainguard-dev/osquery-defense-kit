@@ -42,6 +42,7 @@ WHERE
     '0,0,/var/run/ublue-update.lock,regular,0755',
     '0,0,/var/run/ufw.lock,regular,0644',
     '0,0,/var/run/unattended-upgrades.lock,regular,0640',
+    '0,0,/var/run/uupd.lock,regular,0644',
     '0,0,/var/run/xtables.lock,regular,0600',
     '0,1,/var/run/prl_desktop_services.lock,regular,0644',
     '0,1,/var/run/prl_desktop_services_foreground.lock,regular,0644',
