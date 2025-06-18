@@ -191,6 +191,7 @@ WHERE
     'Developer ID Application: Corsair Memory, Inc. (Y93VXCB8Q5)',
     'Developer ID Application: Determinate Systems, Inc. (X3JQ4VPJZ6)',
     'Developer ID Application: Denver Technologies, Inc (2BBY89MBSN)',
+    'Developer ID Application: Determinate Systems, Inc. (X3JQ4VPJZ6)',
     'Developer ID Application: Docker Inc (9BNSXJN65R)',
     'Developer ID Application: Ecamm Network, LLC (5EJH68M642)',
     'Developer ID Application: Elasticsearch, Inc (2BT3HPN62Z)',

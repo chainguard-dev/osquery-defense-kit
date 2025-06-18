@@ -359,6 +359,7 @@ WHERE -- Focus on longer-running programs
     'Developer ID Application: Private Internet Access, Inc. (5357M5NW9W)',
     'Developer ID Application: PROSOFT Engineering, Inc. (L2JPZL6629)',
     'Developer ID Application: Rapid7 LLC (UL6CGN7MAL)',
+    'Developer ID Application: Razer USA Ltd. (R2H967U7J8)',
     'Developer ID Application: Ryan Hanson (XSYZ3E4B7D)',
     'Developer ID Application: SLACK TECHNOLOGIES L.L.C. (BQR82RBBHL)',
     'Developer ID Application: Slack Technologies, Inc. (BQR82RBBHL)',
