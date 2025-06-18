@@ -62,6 +62,7 @@ WHERE
   AND NOT exception_key IN (
     'Alfred,com.runningwithcrayons.Alfred,Developer ID Application: Running with Crayons Ltd (XZZXE9SED4)',
     'BetterDisplay,pro.betterdisplay.BetterDisplay,Developer ID Application: Istvan Toth (299YSU96J7)',
+    'MonitorControl,app.monitorcontrol.MonitorControl,Developer ID Application: Istvan Toth (299YSU96J7)',
     'BetterTouchTool,com.hegenberg.BetterTouchTool,Developer ID Application: folivora.AI GmbH (DAFVSXZ82P)',
     'Contexts,com.contextsformac.Contexts,Developer ID Application: Usman Khalid (RZ7E748ZSC)',
     'DDPM,Qisda.DDPM,Developer ID Application: Yufu Fan (S3YBM9ALKM)',

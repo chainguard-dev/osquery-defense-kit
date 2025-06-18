@@ -71,6 +71,7 @@ WHERE
     '/.mozilla/',
     '/.netrwhist',
     '/.nofollow/',
+    '/.profile',
     '/.ostree.cfs',
     '/.resolve/',
     '/.vim/',

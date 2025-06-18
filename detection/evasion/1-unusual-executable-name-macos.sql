@@ -119,3 +119,4 @@ WHERE
     s.authority = 'Developer ID Application: Adobe Inc. (JQ525L2MZD)'
     AND pname = 'agcinvokerutility'
   )
+  AND NOT p0.path LIKE '/nix/store/%'

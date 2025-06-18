@@ -43,6 +43,7 @@ WHERE
     'Developer ID Application: Fortinet, Inc (AH4XFXJ7DK)',
     'Developer ID Application: Hercules Labs Inc. (B8PC799ZGU)',
     'Developer ID Application: Ilya Parniuk (ACC5R6RH47)',
+    'Developer ID Application: iMobie Inc. (2QJGLWL8Y6)',
     'Developer ID Application: Jonathan Bullard (Z2SG5H3HC8)',
     'Developer ID Application: Kandji, Inc. (P3FGV63VK7)',
     'Developer ID Application: Logitech Inc. (QED4VVPZWA)',

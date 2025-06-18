@@ -184,6 +184,7 @@ WHERE
   AND NOT p0.path LIKE '/var/opt/Elastic/Agent/data/elastic-agent-%/components/%'
   AND NOT p0.path LIKE '%/.local/share/spotify-launcher/install/usr/%'
   AND NOT p0.path LIKE '%/.vscode/extensions/%'
+  AND NOT p0.path LIKE '%/gitstatus/gitstatusd-linux-x86_64'
   AND NOT (
     p0.name IN ('osqtool-x86_64', 'osqtool-arm64')
     AND p0.cmdline LIKE './%'

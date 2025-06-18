@@ -66,3 +66,4 @@ WHERE
   AND NOT exception_key LIKE '500,1000,/tmp/%.eksctl.lock,regular,0600'
   AND NOT exception_key LIKE '500,1000,/dev/shm/lsp-catalog-%.lock,regular,0664'
   AND NOT exception_key LIKE '500,0,/tmp/uv-%.lock,regular,0777'
+  AND NOT exception_key LIKE '500,1000,/tmp/uv-%.lock,regular,0777'
