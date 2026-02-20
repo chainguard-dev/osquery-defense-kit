@@ -1,0 +1,25 @@
+query: "detection/evasion/2-unexpected-kernel-modules-linux.sql"
+
+# Add site-specific kernel modules that are expected on this host.
+# The upstream SQL already lists hundreds of common modules; add local extras here.
+#
+# Use name_in for individual module names.
+
+exceptions: []
+# Examples:
+#
+#  - type: name_in
+#    field: "name"
+#    value: "wireguard"
+#    reason: "WireGuard VPN"
+#    owner: "michael"
+#    added: "2024-01-15"
+#    expires: null
+#
+#  - type: name_in
+#    field: "name"
+#    value: "vboxdrv"
+#    reason: "VirtualBox host driver"
+#    owner: "michael"
+#    added: "2024-01-15"
+#    expires: null

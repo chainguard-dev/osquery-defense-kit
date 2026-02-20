@@ -1,0 +1,29 @@
+query: "detection/privesc/1-unexpected-setxid-process.sql"
+
+# Add site-specific setuid/setgid binaries that are expected on this host.
+# The upstream SQL already allowlists common system binaries; add local ones here.
+
+exceptions:
+  - type: path_in
+    field: "f.path"
+    value: "/usr/local/bin/my-test-binary"
+    reason: "Test exception"
+    owner: "michael"
+    added: "2026-02-20"
+    expires: null
+# Example:
+#  - type: path_in
+#    field: "f.path"
+#    value: "/opt/myapp/helper"
+#    reason: "My app helper requires setuid"
+#    owner: "michael"
+#    added: "2024-01-15"
+#    expires: null
+#
+#  - type: path_like
+#    field: "f.path"
+#    value: "/opt/homebrew/Cellar/mynewapp/%/bin/mynewapp"
+#    reason: "Homebrew versioned path"
+#    owner: "michael"
+#    added: "2024-01-15"
+#    expires: null

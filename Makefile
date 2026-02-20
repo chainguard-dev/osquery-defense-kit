@@ -79,3 +79,62 @@ verify: ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION)
 	$(SUDO) ./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --workers 1 --max-results=0 --max-query-duration=16s --max-total-daily-duration=2h30m --max-query-daily-duration=1h verify detection
 
 all: out/packs.zip
+
+# ---------------------------------------------------------------------------
+# Local packs with exceptions applied (never modifies upstream SQL)
+# ---------------------------------------------------------------------------
+
+ENVIRONMENT ?= personal
+EXCEPTIONS_PY = python3 scripts/exceptions.py
+EXCEPTIONS_OUT = out/queries
+
+$(EXCEPTIONS_OUT)/.applied: $(wildcard exceptions/**/*.yaml) $(wildcard environments/*.yaml)
+	$(EXCEPTIONS_PY) apply --env $(ENVIRONMENT) --output-dir $(EXCEPTIONS_OUT)
+	touch $(EXCEPTIONS_OUT)/.applied
+
+out/detection-local.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(EXCEPTIONS_OUT)/.applied
+	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=16s --verify \
+		--exclude-tags=disabled,disabled-privacy,extra \
+		--output out/detection-local.conf \
+		pack $(EXCEPTIONS_OUT)/detection
+
+out/policy-local.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(EXCEPTIONS_OUT)/.applied
+	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=8s \
+		--exclude-tags=disabled,disabled-privacy,extra --verify \
+		--output out/policy-local.conf \
+		pack $(EXCEPTIONS_OUT)/policy
+
+out/vulnerabilities-local.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(EXCEPTIONS_OUT)/.applied
+	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=8s \
+		--exclude-tags=disabled,disabled-privacy,extra \
+		--output out/vulnerabilities-local.conf \
+		pack $(EXCEPTIONS_OUT)/vulnerabilities
+
+out/incident-response-local.conf: out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) $(EXCEPTIONS_OUT)/.applied
+	./out/osqtool-$(ARCH)-$(OSQTOOL_VERSION) --max-query-duration=8s \
+		--exclude-tags=disabled,disabled-privacy,extra \
+		--output out/incident-response-local.conf \
+		pack $(EXCEPTIONS_OUT)/incident_response
+
+.PHONY: packs-local
+packs-local: out/detection-local.conf out/policy-local.conf out/incident-response-local.conf out/vulnerabilities-local.conf
+
+.PHONY: exceptions-list
+exceptions-list:
+	$(EXCEPTIONS_PY) --env $(ENVIRONMENT) list
+
+.PHONY: exceptions-check
+exceptions-check:
+	$(EXCEPTIONS_PY) --env $(ENVIRONMENT) check
+
+.PHONY: exceptions-report
+exceptions-report:
+	$(EXCEPTIONS_PY) --env $(ENVIRONMENT) report --output out/exceptions-report.md
+
+.PHONY: exceptions-add
+exceptions-add:
+	$(EXCEPTIONS_PY) add
+
+.PHONY: clean-queries
+clean-queries:
+	rm -rf $(EXCEPTIONS_OUT)/

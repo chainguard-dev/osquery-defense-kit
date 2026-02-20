@@ -1,0 +1,28 @@
+query: "detection/c2/1-unexpected-https-linux.sql"
+
+# Add site-specific HTTPS exception_key values.
+# The exception_key format is: MIN(euid,500),basename(path),MIN(file.uid,500)u,MIN(file.gid,500)g,p.name
+#
+# NOTE: The upstream SQL already has a broad exception for regular user binaries:
+#   AND NOT exception_key LIKE '500,%,500u,500g,%'
+# So you typically only need entries here for root-run or unusual processes.
+
+exceptions: []
+# Examples:
+#
+#  - type: exception_key_in
+#    field: "exception_key"
+#    value: "0,myagent,0u,0g,myagent"
+#    reason: "Internal monitoring agent"
+#    owner: "michael"
+#    added: "2024-01-15"
+#    expires: null
+#
+#  - type: not_block
+#    conditions:
+#      - "exception_key = '0,curl,0u,0g,curl'"
+#      - "p.cmdline LIKE 'curl --fail %'"
+#    reason: "Health-check curl calls"
+#    owner: "michael"
+#    added: "2024-01-15"
+#    expires: null

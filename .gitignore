@@ -14,6 +14,10 @@ out/
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
+# Python
+__pycache__/
+*.pyc
+
 # OS-generated files
 .DS_Store
 .DS_Store?

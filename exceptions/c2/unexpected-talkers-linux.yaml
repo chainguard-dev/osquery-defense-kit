@@ -1,0 +1,32 @@
+query: "detection/c2/1-unexpected-talkers-linux.sql"
+
+# Add site-specific exception_key values for processes that make unexpected
+# network connections on this host.
+# The exception_key format is: MIN(remote_port,32768),protocol,MIN(euid,500),basename(path),MIN(file.uid,500)u,MIN(file.gid,500)g,p.name
+
+exceptions: []
+# Example:
+#  - type: exception_key_in
+#    field: "exception_key"
+#    value: "123,17,106,chronyd,0u,0g,chronyd"
+#    reason: "NTP daemon"
+#    owner: "michael"
+#    added: "2024-01-15"
+#    expires: null
+#
+#  - type: exception_key_like
+#    field: "exception_key"
+#    value: "%,6,500,ssh,0u,0g,ssh"
+#    reason: "SSH client connections"
+#    owner: "michael"
+#    added: "2024-01-15"
+#    expires: null
+#
+#  - type: not_block
+#    conditions:
+#      - "p.name = 'java'"
+#      - "p.cmdline LIKE '%JetBrains%'"
+#    reason: "JetBrains IDE"
+#    owner: "michael"
+#    added: "2024-01-15"
+#    expires: null

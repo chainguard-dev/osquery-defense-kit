@@ -1,0 +1,29 @@
+query: "detection/persistence/1-unexpected-listening-port-linux.sql"
+
+# Add site-specific listening port exceptions.
+# The exception_key format is: MIN(port,32768),protocol,MIN(uid,500),p.name
+#
+# Use exception_key_in for exact matches (most common).
+# Use not_block for multi-condition exceptions (e.g. specific ports + process combos).
+
+exceptions: []
+# Examples:
+#
+#  - type: exception_key_in
+#    field: "exception_key"
+#    value: "8888,6,500,jupyter"
+#    reason: "Jupyter notebook server"
+#    owner: "michael"
+#    added: "2024-01-15"
+#    expires: null
+#
+#  - type: not_block
+#    conditions:
+#      - "p.name = 'node'"
+#      - "lp.port IN (3000, 4000, 5173)"
+#      - "lp.protocol = 6"
+#      - "p.euid > 500"
+#    reason: "Local dev servers (vite, react, etc.)"
+#    owner: "michael"
+#    added: "2024-01-15"
+#    expires: null

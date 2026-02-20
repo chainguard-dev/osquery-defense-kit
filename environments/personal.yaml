@@ -1,0 +1,18 @@
+name: "personal"
+description: "Personal workstation — applies all exception categories"
+
+include_exceptions:
+  - "privesc/**"
+  - "c2/**"
+  - "persistence/**"
+  - "evasion/**"
+  - "execution/**"
+  - "impact/**"
+  - "initial_access/**"
+  - "_shared/**"
+
+query_dirs:
+  - "detection"
+  - "policy"
+  - "vulnerabilities"
+  - "incident_response"

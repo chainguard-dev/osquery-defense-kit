@@ -1,0 +1,11 @@
+name: "default"
+description: "Minimal exception profile — shared exceptions only"
+
+include_exceptions:
+  - "_shared/**"
+
+query_dirs:
+  - "detection"
+  - "policy"
+  - "vulnerabilities"
+  - "incident_response"
